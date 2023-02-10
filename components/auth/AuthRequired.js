@@ -5,6 +5,8 @@ export default function AuthRequired({ children }) {
   const { data: session } = useSession();
   const router = useRouter();
 
+  // null = unauthenticated
+  // undefined = loading
   if (session === null) {
     router.push("/");
   }
