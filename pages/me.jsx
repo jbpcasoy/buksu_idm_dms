@@ -11,7 +11,6 @@ export default function me() {
   return (
     <AuthRequired>
       <div>
-        <h1>Profile</h1>
         {session?.user?.name && (
           <ProfileFormView
             onSubmit={(profile) => {

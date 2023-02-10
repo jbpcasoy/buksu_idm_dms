@@ -1,4 +1,4 @@
-import { signIn, signOut, useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { useEffect } from "react";
 
 export default function LoginButton() {
@@ -9,16 +9,16 @@ export default function LoginButton() {
 
   if (session) {
     return (
-      <>
-        Signed in as {session.user.email} <br />
-        <button onClick={() => signOut()}>Sign out</button>
-      </>
+      <button
+        className='text-white hover:text-gray-400'
+        onClick={() => signOut()}>
+        Sign out
+      </button>
     );
   }
   return (
-    <>
-      Not signed in <br />
-      <button onClick={() => signIn()}>Sign in</button>
-    </>
+    <button className='text-white hover:text-gray-400' onClick={() => signIn()}>
+      Sign in
+    </button>
   );
 }
