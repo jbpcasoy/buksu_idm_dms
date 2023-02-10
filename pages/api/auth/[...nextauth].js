@@ -12,5 +12,13 @@ export const authOptions = {
     }),
     // ...add more providers here
   ],
+  session: {
+    strategy: "jwt",
+  },
+  callbacks: {
+    session({ session, token }) {
+      return { ...session, user: { id: token.sub, ...session.user } }; // The return type will match the one returned in `useSession()`
+    },
+  },
 };
 export default NextAuth(authOptions);

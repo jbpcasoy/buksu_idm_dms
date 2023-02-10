@@ -1,3 +1,4 @@
+import Header from "@/components/layout/Header";
 import { SessionProvider } from "next-auth/react";
 export default function App({
   Component,
@@ -5,6 +6,7 @@ export default function App({
 }) {
   return (
     <SessionProvider session={session}>
+      <Header />
       <Component {...pageProps} />
     </SessionProvider>
   );
