@@ -7,6 +7,9 @@ export default async function readIMs({ page, limit }) {
     const ims = await prisma.iM.findMany({
       take: limit,
       skip: (page - 1) * limit,
+      include: {
+        owner: true,
+      },
     });
 
     return ims;

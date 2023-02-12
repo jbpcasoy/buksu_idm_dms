@@ -1,12 +1,29 @@
 import frontendCreateIM from "@/services/frontend/im/frontendCreateIM";
+import frontendGetIMs from "@/services/frontend/im/frontendGetIMs";
 import uploadIMFile from "@/services/frontend/im/upload/uploadIMFile";
 import AddIMModelView from "@/views/AddIMModalView";
-import { useState } from "react";
+import IM from "@/views/im/IM";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const [state, setState] = useState({
     addModalOpen: false,
+    ims: [],
   });
+
+  useEffect(() => {
+    let subscribe = true;
+
+    frontendGetIMs({ page: 1, limit: 10 }).then((res) => {
+      if (!subscribe) return;
+
+      setState((prev) => ({ ...prev, ims: res }));
+    });
+
+    return () => {
+      subscribe = false;
+    };
+  }, []);
 
   return (
     <div>
@@ -20,6 +37,41 @@ export default function Home() {
           }}>
           Add
         </button>
+      </div>
+      <div>
+        {state.ims && (
+          <table>
+            <thead className='font-bold'>
+              <tr>
+                <td>ID</td>
+                <td>Serial Number</td>
+                <td>Title</td>
+                <td>Status</td>
+                <td>Owner Name</td>
+                <td>File Name</td>
+                <td>Created At</td>
+                <td>Updated At</td>
+              </tr>
+            </thead>
+            <tbody>
+              {state.ims.map((im) => {
+                return (
+                  <IM
+                    createdAt={im.createdAt}
+                    fileName={im.fileName}
+                    id={im.id}
+                    owner={im.owner}
+                    serialNumber={im.serialNumber}
+                    status={im.status}
+                    title={im.title}
+                    updatedAt={im.updatedAt}
+                    key={im.id}
+                  />
+                );
+              })}
+            </tbody>
+          </table>
+        )}
       </div>
       {state.addModalOpen && (
         <AddIMModelView
