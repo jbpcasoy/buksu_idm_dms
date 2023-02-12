@@ -17,8 +17,9 @@ export default async function handler(req, res) {
       res.status(200).json(ims);
       break;
     case "POST":
-      const { title, fileName, serialNumber } = req.body;
+      const { title, fileName, serialNumber, originalFileName } = req.body;
       const im = await createIM({
+        originalFileName,
         title,
         fileName,
         serialNumber,

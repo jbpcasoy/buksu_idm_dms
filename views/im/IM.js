@@ -4,6 +4,7 @@ export default function IM({
   title,
   status,
   owner,
+  originalFileName,
   fileName,
   createdAt,
   updatedAt,
@@ -16,6 +17,7 @@ export default function IM({
       <td>{title}</td>
       <td>{status}</td>
       <td>{owner.name}</td>
+      <td>{originalFileName}</td>
       <td>{fileName}</td>
       <td>{createdAt}</td>
       <td>{updatedAt}</td>

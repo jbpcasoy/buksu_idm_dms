@@ -4,9 +4,15 @@ export default async function frontendCreateIM({
   title,
   serialNumber,
   fileName,
+  originalFileName,
 }) {
   try {
-    const res = await axios.post("/api/im", { title, serialNumber, fileName });
+    const res = await axios.post("/api/im", {
+      title,
+      serialNumber,
+      fileName,
+      originalFileName,
+    });
     console.log(res);
     return res;
   } catch (err) {

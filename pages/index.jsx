@@ -52,6 +52,7 @@ export default function Home() {
                 <td>Status</td>
                 <td>Owner Name</td>
                 <td>File Name</td>
+                <td>Saved File Name</td>
                 <td>Created At</td>
                 <td>Updated At</td>
                 <td>Actions</td>
@@ -62,6 +63,7 @@ export default function Home() {
                 return (
                   <IM
                     createdAt={im.createdAt}
+                    originalFileName={im.originalFileName}
                     fileName={im.fileName}
                     id={im.id}
                     owner={im.owner}
@@ -90,9 +92,15 @@ export default function Home() {
           }}
           onSubmit={async (values) => {
             const { file, title, serialNumber } = values;
+            const originalFileName = file.name;
             uploadIMFile(file).then((res) => {
               const fileName = res.filename;
-              return frontendCreateIM({ fileName, serialNumber, title });
+              return frontendCreateIM({
+                fileName,
+                serialNumber,
+                title,
+                originalFileName,
+              });
             });
           }}
         />

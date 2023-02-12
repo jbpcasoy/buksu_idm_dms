@@ -1,6 +1,7 @@
 const { PrismaClient } = require("@prisma/client");
 
 export default async function createIM({
+  originalFileName,
   fileName,
   serialNumber,
   title,
@@ -11,6 +12,7 @@ export default async function createIM({
   try {
     const im = await prisma.iM.create({
       data: {
+        originalFileName,
         serialNumber,
         title,
         status: "SUBMITTED",
