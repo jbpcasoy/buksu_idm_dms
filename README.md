@@ -37,9 +37,21 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
+## IMPORTANT
+
+- Do not delete 'uploads' folder, uploaded ims are redirected to this folder
+
 ## Color Palette:
 
-#152033 (Dark Blue)
-#F2C050 (Orange)
-#FFFFFF (White)
-#717883 (Gray)
+![#152033](https://placehold.co/15x15/152033/152033.png) `#152033 (Dark Blue)`<br/>
+![#F2C050](https://placehold.co/15x15/F2C050/F2C050.png) `#F2C050 (Orange)`<br/>
+![#FFFFFF](https://placehold.co/15x15/FFFFFF/FFFFFF.png) `#FFFFFF (White)`<br/>
+![#717883](https://placehold.co/15x15/717883/717883.png) `#717883 (Gray)`<br/>
+
+## Dependencies
+
+- [NextJS](https://nextjs.org) - Javascript Framework
+- [Tailwind](https://tailwindcss.com) - Frontend design
+- [Prisma](https://www.prisma.io) - Database ORM
+- [Postgres](https://www.postgresql.org/) - Database
+- [NextAuth](https://next-auth.js.org/) - Authentication

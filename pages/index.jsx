@@ -1,3 +1,4 @@
+import uploadIMFile from "@/services/im/uploadIMFile";
 import AddIMModelView from "@/views/AddIMModalView";
 import { useState } from "react";
 
@@ -5,6 +6,7 @@ export default function Home() {
   const [state, setState] = useState({
     addModalOpen: false,
   });
+
   return (
     <div>
       <div className='text-right'>
@@ -26,9 +28,9 @@ export default function Home() {
               return { ...prev, addModalOpen: false };
             });
           }}
-          onSubmit={(values) => {
-            console.log({ values });
-            return Promise.resolve();
+          onSubmit={async (values) => {
+            const { file } = values;
+            uploadIMFile(file).then((res) => console.log({ res }));
           }}
         />
       )}
