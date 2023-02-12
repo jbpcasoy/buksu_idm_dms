@@ -16,7 +16,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed at [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
 
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
@@ -41,11 +41,11 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## IMPORTANT
 
-- Do not delete 'uploads' folder, uploaded ims are redirected to this folder
+- Do not delete the 'uploads' folder, uploaded files are stored to this folder
 
 ## Coding Practices
 
-- all url routes must point to 'index.js', this ensures that we can always extend the urls without changing other files.
+- all URL routes must point to 'index.js', this ensures that we can always extend the URLs without changing other files.
 
 ## Color Palette:
 
@@ -66,5 +66,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 - GOOGLE_CLIENT_ID - client id from google console
 - GOOGLE_CLIENT_SECRET - client secret from google console
-- DATABASE_URL - database url for a database supported by prisma, we recommend postgres
-- JWT_SECRET - secret key for encrypting jwt tokens
+- DATABASE_URL - database URL for a database supported by Prisma, we recommend postgres
+- JWT_SECRET - secret key for encrypting JWT tokens
