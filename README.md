@@ -41,6 +41,10 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 - Do not delete 'uploads' folder, uploaded ims are redirected to this folder
 
+## Coding Practices
+
+- all url routes must point to 'index.js', this ensures that we can always extend the urls without changing other files.
+
 ## Color Palette:
 
 ![#152033](https://placehold.co/15x15/152033/152033.png) `#152033 (Dark Blue)`<br/>

@@ -1,4 +1,5 @@
-import uploadIMFile from "@/services/im/uploadIMFile";
+import frontendCreateIM from "@/services/frontend/im/frontendCreateIM";
+import uploadIMFile from "@/services/frontend/im/upload/uploadIMFile";
 import AddIMModelView from "@/views/AddIMModalView";
 import { useState } from "react";
 
@@ -29,8 +30,11 @@ export default function Home() {
             });
           }}
           onSubmit={async (values) => {
-            const { file } = values;
-            uploadIMFile(file).then((res) => console.log({ res }));
+            const { file, title, serialNumber } = values;
+            uploadIMFile(file).then((res) => {
+              const fileName = res.filename;
+              return frontendCreateIM({ fileName, serialNumber, title });
+            });
           }}
         />
       )}

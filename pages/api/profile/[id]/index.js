@@ -1,6 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
-import { updateUser } from "@/services/profile";
+import { updateUser } from "@/services/api/profile";
 
 export default async function handler(req, res) {
   const { id } = req.query;
