@@ -3,6 +3,7 @@ import frontendGetIMs from "@/services/frontend/im/frontendGetIMs";
 import uploadIMFile from "@/services/frontend/im/upload/uploadIMFile";
 import AddIMModelView from "@/views/AddIMModalView";
 import IM from "@/views/im/IM";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -10,6 +11,8 @@ export default function Home() {
     addModalOpen: false,
     ims: [],
   });
+
+  const router = useRouter();
 
   useEffect(() => {
     let subscribe = true;
@@ -51,6 +54,7 @@ export default function Home() {
                 <td>File Name</td>
                 <td>Created At</td>
                 <td>Updated At</td>
+                <td>Actions</td>
               </tr>
             </thead>
             <tbody>
@@ -65,6 +69,9 @@ export default function Home() {
                     status={im.status}
                     title={im.title}
                     updatedAt={im.updatedAt}
+                    onView={() =>
+                      router.push(`/api/im/download/${im.fileName}`)
+                    }
                     key={im.id}
                   />
                 );

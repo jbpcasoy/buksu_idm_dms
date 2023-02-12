@@ -7,7 +7,7 @@ export default async function handler(req, res) {
   const { filename } = req.query;
 
   try {
-    const file = await readFile(`${process.cwd()}/uploads/${filename}`);
+    const file = await readFile(`${process.cwd()}/uploads/im/${filename}`);
     res.setHeader("Content-Disposition", `attachment; filename=${filename}`);
     res.statusCode = 200;
     res.end(file);
