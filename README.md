@@ -37,6 +37,8 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
+# Notes
+
 ## IMPORTANT
 
 - Do not delete 'uploads' folder, uploaded ims are redirected to this folder
@@ -59,3 +61,10 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 - [Prisma](https://www.prisma.io) - Database ORM
 - [Postgres](https://www.postgresql.org/) - Database
 - [NextAuth](https://next-auth.js.org/) - Authentication
+
+## Environment Variables (.env)
+
+- GOOGLE_CLIENT_ID - client id from google console
+- GOOGLE_CLIENT_SECRET - client secret from google console
+- DATABASE_URL - database url for a database supported by prisma, we recommend postgres
+- JWT_SECRET - secret key for encrypting jwt tokens
