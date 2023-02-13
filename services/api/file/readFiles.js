@@ -8,7 +8,7 @@ export default async function readFiles({ page, limit }) {
       take: limit,
       skip: (page - 1) * limit,
       include: {
-        owner: true,
+        iM: true,
       },
     });
 
