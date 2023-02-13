@@ -4,7 +4,7 @@ export default async function readIM(id) {
   const prisma = new PrismaClient();
 
   try {
-    const ims = await prisma.iM.findUnique({
+    const im = await prisma.iM.findUnique({
       where: {
         id,
       },
@@ -13,7 +13,7 @@ export default async function readIM(id) {
       },
     });
 
-    return ims;
+    return im;
   } catch (error) {
     throw error;
   }
