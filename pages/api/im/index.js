@@ -30,9 +30,6 @@ export default async function handler(req, res) {
       });
       res.status(200).json(im);
       break;
-    // case "PATCH":
-    //     res.status(200).json({ message: 'Hello from the PATCH method' });
-    //   break;
     default:
       res.status(405).json({ message: "Method Not Allowed" });
       break;
