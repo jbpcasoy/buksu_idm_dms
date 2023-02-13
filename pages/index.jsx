@@ -1,6 +1,5 @@
 import frontendCreateIM from "@/services/frontend/im/frontendCreateIM";
 import frontendGetIMs from "@/services/frontend/im/frontendGetIMs";
-import uploadIMFile from "@/services/frontend/im/upload/uploadIMFile";
 import AddIMModelView from "@/views/AddIMModalView";
 import IM from "@/views/im/IM";
 import { useRouter } from "next/router";
@@ -91,16 +90,11 @@ export default function Home() {
             });
           }}
           onSubmit={async (values) => {
-            const { file, title, serialNumber } = values;
-            const originalFileName = file.name;
-            uploadIMFile(file).then((res) => {
-              const fileName = res.filename;
-              return frontendCreateIM({
-                fileName,
-                serialNumber,
-                title,
-                originalFileName,
-              });
+            const { title, serialNumber } = values;
+
+            return frontendCreateIM({
+              serialNumber,
+              title,
             });
           }}
         />
