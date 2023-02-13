@@ -14,7 +14,6 @@ export default async function readIMs({ page, limit }) {
 
     return ims;
   } catch (error) {
-    console.error(error);
     throw error;
   }
 }

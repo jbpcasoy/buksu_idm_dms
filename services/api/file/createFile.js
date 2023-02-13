@@ -19,7 +19,6 @@ export default async function createFile({
     });
     return file;
   } catch (error) {
-    console.error(error);
     throw error;
   }
 }

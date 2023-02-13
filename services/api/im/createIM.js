@@ -18,7 +18,6 @@ export default async function createIM({ serialNumber, title, ownerId }) {
     });
     return im;
   } catch (error) {
-    console.error(error);
     throw error;
   }
 }

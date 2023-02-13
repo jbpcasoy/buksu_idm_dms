@@ -3,6 +3,8 @@ import nextConnect from "next-connect";
 import slugify from "slugify";
 import { v4 as uuidv4 } from "uuid";
 
+// TODO implement logging
+
 const upload = multer({
   storage: multer.diskStorage({
     destination: "uploads/im",

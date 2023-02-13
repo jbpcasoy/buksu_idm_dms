@@ -1,11 +1,12 @@
 import createIM from "@/services/api/im/createIM";
 import readIMs from "@/services/api/im/readIMs";
+import { reqLog } from "@/services/api/logger";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]";
 
 export default async function handler(req, res) {
   const session = await getServerSession(req, res, authOptions);
-  console.log({ session });
+  reqLog(req, res);
 
   switch (req.method) {
     case "GET":
