@@ -18,6 +18,10 @@ export default async function handler(req, res) {
       res.status(200).json(ims);
       break;
     case "POST":
+      if (!session?.user) {
+        return res.status(401).json({ error: "Authentication was required." });
+      }
+
       const { title, serialNumber } = req.body;
       const im = await createIM({
         title,
