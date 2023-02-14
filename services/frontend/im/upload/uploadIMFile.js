@@ -11,7 +11,6 @@ export default async function uploadIMFile(file) {
       },
     });
 
-    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error(error);

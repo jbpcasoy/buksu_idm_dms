@@ -1,18 +1,18 @@
 const { PrismaClient } = require("@prisma/client");
 
-export default async function readIMs({ page, limit }) {
+export default async function readFiles({ page, limit }) {
   const prisma = new PrismaClient();
 
   try {
-    const ims = await prisma.iM.findMany({
+    const files = await prisma.file.findMany({
       take: limit,
       skip: (page - 1) * limit,
       include: {
-        owner: true,
+        iM: true,
       },
     });
 
-    return ims;
+    return files;
   } catch (error) {
     throw error;
   }

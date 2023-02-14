@@ -63,14 +63,24 @@ enum IMStatus {
 }
 
 model IM {
+  id           String   @id @default(cuid())
+  serialNumber String
+  title        String
+  status       IMStatus @default(SUBMITTED)
+  owner        User     @relation(fields: [ownerId], references: [id])
+  ownerId      String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @default(now())
+  File         File[]
+}
+
+model File {
   id               String   @id @default(cuid())
-  serialNumber     String
-  title            String
-  status           IMStatus @default(SUBMITTED)
-  owner            User     @relation(fields: [ownerId], references: [id])
-  ownerId          String
   fileName         String
   originalFileName String
+  iM               IM       @relation(fields: [iMId], references: [id])
   createdAt        DateTime @default(now())
   updatedAt        DateTime @default(now())
+  iMId             String
+  googleDocsUrl    String?
 }

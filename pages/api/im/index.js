@@ -1,11 +1,12 @@
 import createIM from "@/services/api/im/createIM";
 import readIMs from "@/services/api/im/readIMs";
+import { reqLog } from "@/services/api/logger";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]";
 
 export default async function handler(req, res) {
   const session = await getServerSession(req, res, authOptions);
-  console.log({ session });
+  reqLog(req, res);
 
   switch (req.method) {
     case "GET":
@@ -17,19 +18,18 @@ export default async function handler(req, res) {
       res.status(200).json(ims);
       break;
     case "POST":
-      const { title, fileName, serialNumber, originalFileName } = req.body;
+      if (!session?.user) {
+        return res.status(401).json({ error: "Authentication was required." });
+      }
+
+      const { title, serialNumber } = req.body;
       const im = await createIM({
-        originalFileName,
         title,
-        fileName,
         serialNumber,
         ownerId: session.user.id,
       });
       res.status(200).json(im);
       break;
-    // case "PATCH":
-    //     res.status(200).json({ message: 'Hello from the PATCH method' });
-    //   break;
     default:
       res.status(405).json({ message: "Method Not Allowed" });
       break;

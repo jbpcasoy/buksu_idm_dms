@@ -1,18 +1,19 @@
 const { PrismaClient } = require("@prisma/client");
 
-export default async function readIMs({ page, limit }) {
+export default async function readIM(id) {
   const prisma = new PrismaClient();
 
   try {
-    const ims = await prisma.iM.findMany({
-      take: limit,
-      skip: (page - 1) * limit,
+    const im = await prisma.iM.findUnique({
+      where: {
+        id,
+      },
       include: {
         owner: true,
       },
     });
 
-    return ims;
+    return im;
   } catch (error) {
     throw error;
   }
