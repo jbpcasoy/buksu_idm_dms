@@ -41,7 +41,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## IMPORTANT
 
-- Do not delete the 'uploads' folder, uploaded files are stored to this folder
+- Do not delete the 'uploads' folder, uploaded files are stored in this folder
 
 ## Coding Practices
 
@@ -68,3 +68,15 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 - GOOGLE_CLIENT_SECRET - client secret from google console
 - DATABASE_URL - database URL for a database supported by Prisma, we recommend postgres
 - JWT_SECRET - secret key for encrypting JWT tokens
+
+## Entity Relationship Diagram (ERD)
+
+[Vuerd](https://vuerd.github.io/) was used to create the ERD diagram (/erd.vuerd.json).
+
+The following can be used to view ERD inside Visual Studio Code:<br/>
+Name: ERD Editor <br />
+Id: dineug.vuerd-vscode <br />
+Description: ERD Editor vscode extension <br />
+Version: 0.9.15 <br />
+Publisher: dineug <br />
+VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=dineug.vuerd-vscode <br />
