@@ -1,31 +1,20 @@
-import deleteFile from "@/services/api/file/deleteFile";
-import readFile from "@/services/api/file/readFile";
-import updateFile from "@/services/api/file/updateFile";
 import { reqLog } from "@/services/api/logger";
+import deleteFileHandler from "@/services/handlers/file/deleteFileHandler";
+import getFileHandler from "@/services/handlers/file/getFileHandler";
+import putFileHandler from "@/services/handlers/file/putFileHandler";
+import methodNaHandler from "@/services/handlers/methodNaHandler";
 
 export default async function handler(req, res) {
-  reqLog(req, res);
-  const { id } = req.query;
+  await reqLog(req, res);
 
   switch (req.method) {
     case "GET":
-      const foundFile = await readFile(id);
-
-      res.status(200).json(foundFile);
-      break;
+      return getFileHandler(req, res);
     case "PUT":
-      const { googleDocsUrl } = req.body;
-      const updatedFile = await updateFile(id, { googleDocsUrl });
-
-      res.status(200).json(updatedFile);
-      break;
+      return putFileHandler(req, res);
     case "DELETE":
-      const deletedFile = await deleteFile(id);
-
-      res.status(200).json(deletedFile);
-      break;
+      return deleteFileHandler(req, res);
     default:
-      res.status(405).json({ message: "Method Not Allowed" });
-      break;
+      return methodNaHandler(req, res);
   }
 }

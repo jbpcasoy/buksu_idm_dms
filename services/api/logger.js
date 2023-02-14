@@ -6,7 +6,7 @@ const logger = pino(pretty());
 
 export async function reqLog(req, res) {
   const session = await getServerSession(req, res, authOptions);
-  logger.info(`${req.method}: ${req.url}, USER: ${session?.user?.id}`);
+  return logger.info(`${req.method}: ${req.url}, USER: ${session?.user?.id}`);
 }
 
 export default logger;

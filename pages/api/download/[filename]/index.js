@@ -5,7 +5,7 @@ import { promisify } from "util";
 const readFile = promisify(fs.readFile);
 
 export default async function handler(req, res) {
-  reqLog(req, res);
+  await reqLog(req, res);
   const { filename } = req.query;
 
   try {
