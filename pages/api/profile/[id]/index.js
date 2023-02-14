@@ -4,7 +4,7 @@ import { reqLog } from "@/services/api/logger";
 import { updateUser } from "@/services/api/profile";
 
 export default async function handler(req, res) {
-  reqLog(req, res);
+  await reqLog(req, res);
   const { id } = req.query;
   const data = req.body;
 

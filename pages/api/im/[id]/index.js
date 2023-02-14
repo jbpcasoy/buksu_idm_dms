@@ -1,31 +1,20 @@
-import deleteIm from "@/services/api/im/deleteIM";
-import readIM from "@/services/api/im/readIM";
-import updateIM from "@/services/api/im/updateIM";
 import { reqLog } from "@/services/api/logger";
+import deleteImHandler from "@/services/handlers/im/deleteImHandler";
+import getImHandler from "@/services/handlers/im/getImHandler";
+import putImHandler from "@/services/handlers/im/putImHandler";
+import methodNaHandler from "@/services/handlers/methodNaHandler";
 
 export default async function handler(req, res) {
-  reqLog(req, res);
-  const { id } = req.query;
+  await reqLog(req, res);
 
   switch (req.method) {
     case "GET":
-      const foundIM = await readIM(id);
-
-      res.status(200).json(foundIM);
-      break;
+      return getImHandler(req, res);
     case "PUT":
-      const { title, serialNumber, status } = req.body;
-      const updatedIm = await updateIM(id, { title, serialNumber, status });
-
-      res.status(200).json(updatedIm);
-      break;
+      return putImHandler(req, res);
     case "DELETE":
-      const deletedIm = await deleteIm(id);
-
-      res.status(200).json(deletedIm);
-      break;
+      return deleteImHandler(req, res);
     default:
-      res.status(405).json({ message: "Method Not Allowed" });
-      break;
+      return methodNaHandler(req, res);
   }
 }
