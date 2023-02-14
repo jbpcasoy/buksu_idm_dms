@@ -3,8 +3,8 @@
     "version": "2.2.11",
     "width": 4000,
     "height": 4000,
-    "scrollTop": -1924.5,
-    "scrollLeft": -2174.5,
+    "scrollTop": -1313.5,
+    "scrollLeft": -2191.5,
     "zoomLevel": 0.8,
     "show": {
       "tableComment": true,
@@ -1126,7 +1126,7 @@
               "notNull": true
             },
             "ui": {
-              "active": false,
+              "active": true,
               "pk": false,
               "fk": true,
               "pfk": false,
@@ -1211,7 +1211,7 @@
               "notNull": true
             },
             "ui": {
-              "active": false,
+              "active": true,
               "pk": true,
               "fk": false,
               "pfk": false,
