@@ -7,7 +7,14 @@ module.exports = {
     "./views/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    fontFamily: {
+      sans: ["Inter", "sans-serif"],
+    },
+    extend: {
+      fontSize: {
+        tableHeader: "1.1rem",
+      },
+    },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 };

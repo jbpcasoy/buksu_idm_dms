@@ -5,14 +5,14 @@ export default function LoginButton({ onSignOut, onSignIn }) {
 
   if (session) {
     return (
-      <button className='text-white hover:text-gray-400' onClick={onSignOut}>
-        Sign out
+      <button onClick={onSignOut} title="Sign out">
+        <i class="fi fi-br-sign-out-alt text-white text-lg"></i>
       </button>
     );
   }
   return (
-    <button className='text-white hover:text-gray-400' onClick={onSignIn}>
-      Sign in
+    <button onClick={onSignIn} title="Sign in">
+      <i class="fi fi-br-sign-in-alt  text-white text-lg"></i>
     </button>
   );
 }

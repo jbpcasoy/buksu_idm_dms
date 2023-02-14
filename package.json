@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@flaticon/flaticon-uicons": "^2.0.1",
     "@next-auth/prisma-adapter": "^1.0.5",
     "@next/font": "13.1.6",
     "@prisma/client": "^4.10.1",
@@ -31,6 +32,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",
+    "@tailwindcss/typography": "^0.5.9",
     "@types/adm-zip": "^0.5.0",
     "@types/multer": "^1.4.7",
     "@types/react": "^18.0.28",
