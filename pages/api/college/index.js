@@ -1,6 +1,6 @@
 import { reqLog } from "@/services/api/logger";
-import getImsHandler from "@/services/handlers/im/getImsHandler";
-import postImHandler from "@/services/handlers/im/postImHandler";
+import getCollegesHandler from "@/services/handlers/college/getCollegesHandler";
+import postCollegeHandler from "@/services/handlers/college/postCollegeHandler";
 import methodNaHandler from "@/services/handlers/methodNaHandler";
 
 export default async function handler(req, res) {
@@ -8,9 +8,9 @@ export default async function handler(req, res) {
 
   switch (req.method) {
     case "GET":
-      return getImsHandler(req, res);
+      return getCollegesHandler(req, res);
     case "POST":
-      return postImHandler(req, res);
+      return postCollegeHandler(req, res);
     default:
       return methodNaHandler(req, res);
   }
