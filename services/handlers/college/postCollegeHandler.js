@@ -5,5 +5,5 @@ export default async function postCollegeHandler(req, res) {
 
   const college = await createCollege({ name });
 
-  return res.status(200).json(college);
+  return res.status(201).json(college);
 }

@@ -15,5 +15,5 @@ export default async function postImHandler(req, res) {
     ownerId: user.id,
   });
 
-  return res.status(200).json(im);
+  return res.status(201).json(im);
 }

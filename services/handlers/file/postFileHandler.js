@@ -8,5 +8,5 @@ export default async function postFileHandler(req, res) {
     iMId,
     googleDocsUrl,
   });
-  return res.status(200).json(file);
+  return res.status(201).json(file);
 }
