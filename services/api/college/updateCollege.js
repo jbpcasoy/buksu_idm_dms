@@ -10,7 +10,6 @@ export default async function updateCollege(id, { name }) {
       },
       data: {
         name,
-        updatedAt: new Date(),
       },
     });
 
