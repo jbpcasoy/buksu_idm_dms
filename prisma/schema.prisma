@@ -86,8 +86,18 @@ model File {
 }
 
 model College {
+  id         String       @id @default(cuid())
+  name       String       @unique
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
+  Department Department[]
+}
+
+model Department {
   id        String   @id @default(cuid())
   name      String   @unique
+  college   College  @relation(fields: [collegeId], references: [id])
+  collegeId String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
