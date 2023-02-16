@@ -64,15 +64,16 @@ enum IMStatus {
 }
 
 model IM {
-  id           String   @id @default(cuid())
-  serialNumber String
-  title        String
-  status       IMStatus @default(SUBMITTED)
-  owner        Faculty  @relation(fields: [ownerId], references: [id])
-  ownerId      String
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @default(now())
-  File         File[]
+  id                 String              @id @default(cuid())
+  serialNumber       String
+  title              String
+  status             IMStatus            @default(SUBMITTED)
+  owner              Faculty             @relation(fields: [ownerId], references: [id])
+  ownerId            String
+  createdAt          DateTime            @default(now())
+  updatedAt          DateTime            @default(now())
+  File               File[]
+  DepartmentApproval DepartmentApproval?
 }
 
 model File {
@@ -180,4 +181,12 @@ model ActiveChairperson {
   updatedAt     DateTime    @updatedAt
   Chairperson   Chairperson @relation(fields: [chairpersonId], references: [id])
   chairpersonId String      @unique
+}
+
+model DepartmentApproval {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  iM        IM       @relation(fields: [iMId], references: [id])
+  iMId      String   @unique
 }
