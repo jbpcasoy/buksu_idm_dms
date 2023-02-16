@@ -115,6 +115,7 @@ model Faculty {
   ActiveFaculty ActiveFaculty?
   IM            IM[]
   Chairperson   Chairperson?
+  Coordinator   Coordinator?
 
   @@unique([userId, departmentId])
 }
@@ -130,6 +131,14 @@ model ActiveFaculty {
 }
 
 model Chairperson {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Faculty   Faculty  @relation(fields: [facultyId], references: [id])
+  facultyId String   @unique
+}
+
+model Coordinator {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
