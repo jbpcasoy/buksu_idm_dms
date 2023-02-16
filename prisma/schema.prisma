@@ -36,14 +36,15 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id            String         @id @default(cuid())
   name          String?
-  email         String?   @unique
+  email         String?        @unique
   emailVerified DateTime?
   image         String?
   accounts      Account[]
   sessions      Session[]
-  IM            IM[]
+  Faculty       Faculty[]
+  ActiveFaculty ActiveFaculty?
 }
 
 model VerificationToken {
@@ -67,7 +68,7 @@ model IM {
   serialNumber String
   title        String
   status       IMStatus @default(SUBMITTED)
-  owner        User     @relation(fields: [ownerId], references: [id])
+  owner        Faculty  @relation(fields: [ownerId], references: [id])
   ownerId      String
   createdAt    DateTime @default(now())
   updatedAt    DateTime @default(now())
@@ -94,10 +95,44 @@ model College {
 }
 
 model Department {
-  id        String   @id @default(cuid())
-  name      String   @unique
-  college   College  @relation(fields: [collegeId], references: [id])
+  id        String    @id @default(cuid())
+  name      String    @unique
+  college   College   @relation(fields: [collegeId], references: [id])
   collegeId String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  Faculty   Faculty[]
+}
+
+model Faculty {
+  id            String         @id @default(cuid())
+  userId        String
+  user          User           @relation(fields: [userId], references: [id])
+  departmentId  String
+  department    Department     @relation(fields: [departmentId], references: [id])
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  ActiveFaculty ActiveFaculty?
+  IM            IM[]
+  Chairperson   Chairperson?
+
+  @@unique([userId, departmentId])
+}
+
+model ActiveFaculty {
+  id        String   @id @default(cuid())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  Faculty   Faculty  @relation(fields: [facultyId], references: [id])
+  facultyId String   @unique
+  User      User     @relation(fields: [userId], references: [id])
+  userId    String   @unique
+}
+
+model Chairperson {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Faculty   Faculty  @relation(fields: [facultyId], references: [id])
+  facultyId String   @unique
 }

@@ -8,6 +8,9 @@ export default async function getUserByEmail(email) {
       where: {
         email,
       },
+      include: {
+        ActiveFaculty: true,
+      },
     });
 
     return user;

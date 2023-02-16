@@ -5,7 +5,7 @@ import putDepartmentHandler from "@/services/handlers/department/putDepartmentHa
 import methodNaHandler from "@/services/handlers/methodNaHandler";
 
 export default async function handler(req, res) {
-  reqLog(req);
+  await reqLog(req, res);
 
   switch (req.method) {
     case "GET":

@@ -1,6 +1,6 @@
 import { reqLog } from "@/services/api/logger";
-import getDepartmentsHandler from "@/services/handlers/department/getDepartmentsHandler";
-import postDepartmentHandler from "@/services/handlers/department/postDepartmentHandler";
+import getChairpersonsHandler from "@/services/handlers/chairperson/getChairpersonsHandler";
+import postChairpersonHandler from "@/services/handlers/chairperson/postChairpersonHandler";
 import methodNaHandler from "@/services/handlers/methodNaHandler";
 
 export default async function handler(req, res) {
@@ -8,9 +8,9 @@ export default async function handler(req, res) {
 
   switch (req.method) {
     case "GET":
-      return getDepartmentsHandler(req, res);
+      return getChairpersonsHandler(req, res);
     case "POST":
-      return postDepartmentHandler(req, res);
+      return postChairpersonHandler(req, res);
     default:
       return methodNaHandler(req, res);
   }
