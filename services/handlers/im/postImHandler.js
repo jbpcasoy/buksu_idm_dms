@@ -12,7 +12,7 @@ export default async function postImHandler(req, res) {
   const im = await createIM({
     title,
     serialNumber,
-    ownerId: user.id,
+    ownerId: user.ActiveFaculty.facultyId,
   });
 
   return res.status(201).json(im);
