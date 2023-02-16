@@ -95,13 +95,14 @@ model College {
 }
 
 model Department {
-  id        String    @id @default(cuid())
-  name      String    @unique
-  college   College   @relation(fields: [collegeId], references: [id])
-  collegeId String
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  Faculty   Faculty[]
+  id                String             @id @default(cuid())
+  name              String             @unique
+  college           College            @relation(fields: [collegeId], references: [id])
+  collegeId         String
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime           @updatedAt
+  Faculty           Faculty[]
+  ActiveCoordinator ActiveCoordinator?
 }
 
 model Faculty {
@@ -140,11 +141,12 @@ model Chairperson {
 }
 
 model Coordinator {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  Faculty   Faculty  @relation(fields: [facultyId], references: [id])
-  facultyId String   @unique
+  id                String             @id @default(cuid())
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime           @updatedAt
+  Faculty           Faculty            @relation(fields: [facultyId], references: [id])
+  facultyId         String             @unique
+  ActiveCoordinator ActiveCoordinator?
 }
 
 model Senior {
@@ -153,4 +155,14 @@ model Senior {
   updatedAt DateTime @updatedAt
   Faculty   Faculty  @relation(fields: [facultyId], references: [id])
   facultyId String   @unique
+}
+
+model ActiveCoordinator {
+  id            String      @id @default(cuid())
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  Department    Department  @relation(fields: [departmentId], references: [id])
+  departmentId  String      @unique
+  Coordinator   Coordinator @relation(fields: [coordinatorId], references: [id])
+  coordinatorId String      @unique
 }

@@ -3,9 +3,9 @@
     "version": "2.2.11",
     "width": 4000,
     "height": 4000,
-    "scrollTop": -1282.5,
-    "scrollLeft": -1373,
-    "zoomLevel": 0.8,
+    "scrollTop": -889.5,
+    "scrollLeft": -2182,
+    "zoomLevel": 0.9,
     "show": {
       "tableComment": true,
       "columnComment": true,
@@ -568,7 +568,7 @@
           "active": false,
           "left": 2374.209103274785,
           "top": 1572.9602768354955,
-          "zIndex": 22,
+          "zIndex": 18,
           "widthName": 60,
           "widthComment": 120,
           "color": "#4CAF50"
@@ -654,7 +654,7 @@
           "active": false,
           "left": 1264.7818698336857,
           "top": 607.3489794766833,
-          "zIndex": 9,
+          "zIndex": 8,
           "widthName": 100.28076171875,
           "widthComment": 120,
           "color": "#4CAF50"
@@ -855,7 +855,7 @@
           "active": false,
           "left": 1308.0725910073115,
           "top": 2230.6077649360973,
-          "zIndex": 21,
+          "zIndex": 17,
           "widthName": 60,
           "widthComment": 60,
           "color": "#4CAF50"
@@ -1033,7 +1033,7 @@
           "active": false,
           "left": 1559.5350900823016,
           "top": 2692.98124453564,
-          "zIndex": 8,
+          "zIndex": 7,
           "widthName": 60,
           "widthComment": 60,
           "color": "#4CAF50"
@@ -1165,7 +1165,7 @@
           "active": false,
           "left": 2054.1625823729128,
           "top": 870.9733434613281,
-          "zIndex": 17,
+          "zIndex": 16,
           "widthName": 69.919921875,
           "widthComment": 60,
           "color": "#4CAF50"
@@ -1274,7 +1274,7 @@
           "active": false,
           "left": 2455.364544882377,
           "top": 694.5514197157852,
-          "zIndex": 11,
+          "zIndex": 10,
           "widthName": 60,
           "widthComment": 60,
           "color": "#4CAF50"
@@ -1383,7 +1383,7 @@
           "active": false,
           "left": 1215.693881390838,
           "top": 1024.8735732182154,
-          "zIndex": 55,
+          "zIndex": 21,
           "widthName": 72.814453125,
           "widthComment": 60,
           "color": "#4CAF50"
@@ -1434,7 +1434,7 @@
               "pk": false,
               "fk": false,
               "pfk": false,
-              "widthName": 67.0634765625,
+              "widthName": 63.4326171875,
               "widthComment": 60,
               "widthDataType": 61.9599609375,
               "widthDefault": 60
@@ -1457,9 +1457,9 @@
               "pk": false,
               "fk": false,
               "pfk": false,
-              "widthName": 60,
+              "widthName": 67.0634765625,
               "widthComment": 60,
-              "widthDataType": 60,
+              "widthDataType": 61.9599609375,
               "widthDefault": 60
             },
             "id": "e1f426fa-2a6a-4225-a7e5-2cd5876f57a8"
@@ -1492,7 +1492,7 @@
           "active": false,
           "left": 2019.7827520252572,
           "top": 1310.1686367533641,
-          "zIndex": 56,
+          "zIndex": 22,
           "widthName": 69.92626953125,
           "widthComment": 60,
           "color": "#4CAF50"
@@ -1732,7 +1732,7 @@
           "active": false,
           "left": 2413.56290868448,
           "top": 1124.167570449826,
-          "zIndex": 65,
+          "zIndex": 28,
           "widthName": 105.3271484375,
           "widthComment": 60
         },
@@ -1863,7 +1863,7 @@
           "active": false,
           "left": 1684.5806114057461,
           "top": 600.5374249160672,
-          "zIndex": 15,
+          "zIndex": 14,
           "widthName": 108.21533203125,
           "widthComment": 60
         },
@@ -1994,7 +1994,7 @@
           "active": false,
           "left": 2024.2637348589406,
           "top": 2592.882294594635,
-          "zIndex": 6,
+          "zIndex": 5,
           "widthName": 60,
           "widthComment": 60
         },
@@ -2148,7 +2148,7 @@
           "active": false,
           "left": 1092.753247016894,
           "top": 2686.818650813524,
-          "zIndex": 7,
+          "zIndex": 6,
           "widthName": 67.75537109375,
           "widthComment": 60
         },
@@ -2210,7 +2210,7 @@
           "active": false,
           "left": 1144.6001839339851,
           "top": 1781.6960132891902,
-          "zIndex": 14,
+          "zIndex": 13,
           "widthName": 121.22802734375,
           "widthComment": 60
         },
@@ -2318,9 +2318,10 @@
           "active": false,
           "left": 1543.8980761497041,
           "top": 1840.7228553595983,
-          "zIndex": 54,
+          "zIndex": 25,
           "widthName": 60,
-          "widthComment": 60
+          "widthComment": 60,
+          "color": "#4CAF50"
         },
         "visible": true,
         "id": "09cde62e-d2bc-4b8d-ae73-10c1c0a4794f"
@@ -2449,7 +2450,7 @@
           "active": false,
           "left": 1644.8378343774386,
           "top": 1053.4189326843366,
-          "zIndex": 10,
+          "zIndex": 9,
           "widthName": 74.97900390625,
           "widthComment": 60
         },
@@ -2580,7 +2581,7 @@
           "active": false,
           "left": 1819.0121501614935,
           "top": 2160.5820399828785,
-          "zIndex": 12,
+          "zIndex": 11,
           "widthName": 90.88623046875,
           "widthComment": 60
         },
@@ -2711,7 +2712,7 @@
           "active": false,
           "left": 854.6900653743465,
           "top": 2106.0237718475446,
-          "zIndex": 13,
+          "zIndex": 12,
           "widthName": 121.234375,
           "widthComment": 60
         },
@@ -2842,7 +2843,7 @@
           "active": false,
           "left": 908.870974632531,
           "top": 1355.2676898317197,
-          "zIndex": 16,
+          "zIndex": 15,
           "widthName": 124.12255859375,
           "widthComment": 60
         },
@@ -2973,7 +2974,7 @@
           "active": false,
           "left": 1381.5773487949236,
           "top": 1419.210854227837,
-          "zIndex": 66,
+          "zIndex": 24,
           "widthName": 60,
           "widthComment": 60,
           "color": "#4CAF50"
@@ -3105,9 +3106,10 @@
           "active": false,
           "left": 1964.0046597001638,
           "top": 1737.8487320766005,
-          "zIndex": 24,
+          "zIndex": 26,
           "widthName": 79.3017578125,
-          "widthComment": 60
+          "widthComment": 60,
+          "color": "#4CAF50"
         },
         "visible": true,
         "id": "fee4c021-73d4-4b08-9a7b-bce684f6adc7"
@@ -3123,7 +3125,7 @@
           "active": false,
           "left": 656,
           "top": 2506.5,
-          "zIndex": 5,
+          "zIndex": 4,
           "width": 221,
           "height": 100
         },
