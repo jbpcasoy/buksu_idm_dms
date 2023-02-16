@@ -95,16 +95,13 @@ model College {
 }
 
 model Department {
-  id                String             @id @default(cuid())
-  name              String             @unique
-  college           College            @relation(fields: [collegeId], references: [id])
-  collegeId         String
-  createdAt         DateTime           @default(now())
-  updatedAt         DateTime           @updatedAt
-  Faculty           Faculty[]
-  ActiveCoordinator ActiveCoordinator?
-  ActiveSenior      ActiveSenior[]
-  ActiveChairperson ActiveChairperson?
+  id        String    @id @default(cuid())
+  name      String    @unique
+  college   College   @relation(fields: [collegeId], references: [id])
+  collegeId String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  Faculty   Faculty[]
 }
 
 model Faculty {
@@ -165,28 +162,22 @@ model ActiveCoordinator {
   id            String      @id @default(cuid())
   createdAt     DateTime    @default(now())
   updatedAt     DateTime    @updatedAt
-  Department    Department  @relation(fields: [departmentId], references: [id])
-  departmentId  String      @unique
   Coordinator   Coordinator @relation(fields: [coordinatorId], references: [id])
   coordinatorId String      @unique
 }
 
 model ActiveSenior {
-  id           String     @id @default(cuid())
-  createdAt    DateTime   @default(now())
-  updatedAt    DateTime   @updatedAt
-  Department   Department @relation(fields: [departmentId], references: [id])
-  departmentId String
-  Senior       Senior     @relation(fields: [seniorId], references: [id])
-  seniorId     String     @unique
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Senior    Senior   @relation(fields: [seniorId], references: [id])
+  seniorId  String   @unique
 }
 
 model ActiveChairperson {
   id            String      @id @default(cuid())
   createdAt     DateTime    @default(now())
   updatedAt     DateTime    @updatedAt
-  Department    Department  @relation(fields: [departmentId], references: [id])
-  departmentId  String      @unique
   Chairperson   Chairperson @relation(fields: [chairpersonId], references: [id])
   chairpersonId String      @unique
 }

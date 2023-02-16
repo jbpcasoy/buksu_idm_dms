@@ -1,15 +1,11 @@
 import { PrismaClient } from "@prisma/client";
 
-export default async function createActiveCoordinator({
-  departmentId,
-  coordinatorId,
-}) {
+export default async function createActiveCoordinator({ coordinatorId }) {
   const prisma = new PrismaClient();
 
   try {
     const activeCoordinator = await prisma.activeCoordinator.create({
       data: {
-        departmentId,
         coordinatorId,
       },
     });
