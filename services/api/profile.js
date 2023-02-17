@@ -9,9 +9,8 @@ export async function updateUser(id, data) {
       data: data,
     });
 
-    console.log("User updated successfully:", updatedUser);
     return updatedUser;
   } catch (error) {
-    console.error("Error updating user:", error);
+    throw error;
   }
 }
