@@ -4,7 +4,7 @@ export default async function readCoordinator(id) {
   const prisma = new PrismaClient();
 
   try {
-    const coordinator = prisma.coordinator.findUnique({
+    const coordinator = prisma.coordinator.findUniqueOrThrow({
       where: {
         id,
       },

@@ -4,7 +4,7 @@ export default async function readSenior(id) {
   const prisma = new PrismaClient();
 
   try {
-    const senior = await prisma.senior.findUnique({
+    const senior = await prisma.senior.findUniqueOrThrow({
       where: {
         id,
       },

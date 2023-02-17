@@ -1,15 +1,16 @@
 import { PrismaClient } from "@prisma/client";
 
-export default async function getActiveSenior(id) {
+export default async function deleteCoordinatorApproval(id) {
   const prisma = new PrismaClient();
 
   try {
-    const activeSenior = await prisma.activeSenior.findUniqueOrThrow({
+    const coordinatorApproval = await prisma.coordinatorApproval.delete({
       where: {
         id,
       },
     });
-    return activeSenior;
+
+    return coordinatorApproval;
   } catch (error) {
     throw error;
   }
