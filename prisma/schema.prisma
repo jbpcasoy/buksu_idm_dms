@@ -117,6 +117,7 @@ model Department {
   Faculty           Faculty[]
   ActiveCoordinator ActiveCoordinator?
   ActiveChairperson ActiveChairperson?
+  ActiveSenior      ActiveSenior[]
 }
 
 model Faculty {
@@ -187,11 +188,13 @@ model ActiveCoordinator {
 }
 
 model ActiveSenior {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  Senior    Senior   @relation(fields: [seniorId], references: [id])
-  seniorId  String   @unique
+  id           String     @id @default(cuid())
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  Senior       Senior     @relation(fields: [seniorId], references: [id])
+  seniorId     String     @unique
+  Department   Department @relation(fields: [departmentId], references: [id])
+  departmentId String
 }
 
 model ActiveChairperson {
