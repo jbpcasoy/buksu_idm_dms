@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from "uuid";
 
 const upload = multer({
   storage: multer.diskStorage({
-    destination: "uploads/im",
+    destination: "uploads/file",
     filename: (req, file, cb) =>
       cb(null, `${uuidv4()}_${slugify(file.originalname, { lower: true })}`),
   }),
