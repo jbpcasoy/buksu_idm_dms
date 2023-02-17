@@ -133,12 +133,13 @@ model ActiveFaculty {
 }
 
 model Chairperson {
-  id                String             @id @default(cuid())
-  createdAt         DateTime           @default(now())
-  updatedAt         DateTime           @updatedAt
-  Faculty           Faculty            @relation(fields: [facultyId], references: [id])
-  facultyId         String             @unique
-  ActiveChairperson ActiveChairperson?
+  id                  String                @id @default(cuid())
+  createdAt           DateTime              @default(now())
+  updatedAt           DateTime              @updatedAt
+  Faculty             Faculty               @relation(fields: [facultyId], references: [id])
+  facultyId           String                @unique
+  ActiveChairperson   ActiveChairperson?
+  ChairpersonApproval ChairpersonApproval[]
 }
 
 model Coordinator {
@@ -191,6 +192,7 @@ model DepartmentApproval {
   iM                  IM                   @relation(fields: [iMId], references: [id])
   iMId                String               @unique
   CoordinatorApproval CoordinatorApproval?
+  ChairpersonApproval ChairpersonApproval?
 }
 
 model CoordinatorApproval {
@@ -201,4 +203,14 @@ model CoordinatorApproval {
   departmentApprovalId String             @unique
   Coordinator          Coordinator        @relation(fields: [coordinatorId], references: [id])
   coordinatorId        String
+}
+
+model ChairpersonApproval {
+  id                   String             @id @default(cuid())
+  createdAt            DateTime           @default(now())
+  updatedAt            DateTime           @updatedAt
+  DepartmentApproval   DepartmentApproval @relation(fields: [departmentApprovalId], references: [id])
+  departmentApprovalId String             @unique
+  Chairperson          Chairperson        @relation(fields: [chairpersonId], references: [id])
+  chairpersonId        String
 }
