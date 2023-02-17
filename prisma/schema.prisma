@@ -108,13 +108,14 @@ model College {
 }
 
 model Department {
-  id        String    @id @default(cuid())
-  name      String    @unique
-  college   College   @relation(fields: [collegeId], references: [id])
-  collegeId String
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  Faculty   Faculty[]
+  id                String             @id @default(cuid())
+  name              String             @unique
+  college           College            @relation(fields: [collegeId], references: [id])
+  collegeId         String
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime           @updatedAt
+  Faculty           Faculty[]
+  ActiveCoordinator ActiveCoordinator?
 }
 
 model Faculty {
@@ -180,6 +181,8 @@ model ActiveCoordinator {
   updatedAt     DateTime    @updatedAt
   Coordinator   Coordinator @relation(fields: [coordinatorId], references: [id])
   coordinatorId String      @unique
+  Department    Department  @relation(fields: [departmentId], references: [id])
+  departmentId  String      @unique
 }
 
 model ActiveSenior {
