@@ -74,17 +74,29 @@ model IM {
   updatedAt          DateTime            @default(now())
   File               File[]
   DepartmentApproval DepartmentApproval?
+  ActiveFile         ActiveFile?
 }
 
 model File {
-  id               String   @id @default(cuid())
+  id               String      @id @default(cuid())
   fileName         String
   originalFileName String
-  iM               IM       @relation(fields: [iMId], references: [id])
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime @default(now())
+  iM               IM          @relation(fields: [iMId], references: [id])
+  createdAt        DateTime    @default(now())
+  updatedAt        DateTime    @default(now())
   iMId             String
   googleDocsUrl    String?
+  ActiveFile       ActiveFile?
+}
+
+model ActiveFile {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAT DateTime @updatedAt
+  File      File     @relation(fields: [fileId], references: [id])
+  fileId    String   @unique
+  IM        IM       @relation(fields: [iMId], references: [id])
+  iMId      String   @unique
 }
 
 model College {

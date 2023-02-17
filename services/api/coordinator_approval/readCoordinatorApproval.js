@@ -4,11 +4,12 @@ export default async function readCoordinatorApproval(id) {
   const prisma = new PrismaClient();
 
   try {
-    const coordinatorApproval = await prisma.coordinatorApproval.findUnique({
-      where: {
-        id,
-      },
-    });
+    const coordinatorApproval =
+      await prisma.coordinatorApproval.findUniqueOrThrow({
+        where: {
+          id,
+        },
+      });
     return coordinatorApproval;
   } catch (error) {
     throw error;

@@ -1,15 +1,16 @@
 import { PrismaClient } from "@prisma/client";
 
-export default async function readSeniorApproval(id) {
+export default async function deleteActiveFile(id) {
   const prisma = new PrismaClient();
 
   try {
-    const seniorApproval = await prisma.seniorApproval.findUniqueOrThrow({
+    const activeFile = await prisma.activeFile.delete({
       where: {
         id,
       },
     });
-    return seniorApproval;
+
+    return activeFile;
   } catch (error) {
     throw error;
   }
