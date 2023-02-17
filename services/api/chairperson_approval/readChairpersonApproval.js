@@ -2,7 +2,6 @@ import { PrismaClient } from "@prisma/client";
 
 export default async function readChairpersonApproval(id) {
   const prisma = new PrismaClient();
-  console.log({ id });
 
   try {
     const chairpersonApproval =
@@ -11,7 +10,6 @@ export default async function readChairpersonApproval(id) {
           id,
         },
       });
-    console.log({ chairpersonApproval });
     return chairpersonApproval;
   } catch (error) {
     throw error;
