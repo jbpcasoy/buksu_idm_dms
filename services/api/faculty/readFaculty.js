@@ -4,7 +4,7 @@ export default async function readFaculty(id) {
   const prisma = new PrismaClient();
 
   try {
-    const faculty = await prisma.faculty.findUnique({
+    const faculty = await prisma.faculty.findUniqueOrThrow({
       where: {
         id,
       },

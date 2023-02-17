@@ -4,7 +4,7 @@ export default async function readIM(id) {
   const prisma = new PrismaClient();
 
   try {
-    const im = await prisma.iM.findUnique({
+    const im = await prisma.iM.findUniqueOrThrow({
       where: {
         id,
       },

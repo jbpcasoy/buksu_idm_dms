@@ -4,7 +4,7 @@ export default async function readActiveChairperson(id) {
   const prisma = new PrismaClient();
 
   try {
-    const activeChairperson = await prisma.activeChairperson.findUnique({
+    const activeChairperson = await prisma.activeChairperson.findUniqueOrThrow({
       where: {
         id,
       },

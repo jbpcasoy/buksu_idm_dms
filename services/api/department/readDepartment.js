@@ -4,7 +4,7 @@ export default async function readDepartment(id) {
   const prisma = new PrismaClient();
 
   try {
-    const department = await prisma.department.findUnique({
+    const department = await prisma.department.findUniqueOrThrow({
       where: {
         id,
       },
