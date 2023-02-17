@@ -11,6 +11,7 @@ export default async function createCoordinatorApproval({
   const prisma = new PrismaClient();
 
   try {
+    // TODO change to find department where coordinator is active coordinator
     const coordinator = await findCoordinator({
       departmentApprovalId,
       coordinatorId,

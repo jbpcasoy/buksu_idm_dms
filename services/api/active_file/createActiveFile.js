@@ -1,13 +1,13 @@
 import { PrismaClient } from "@prisma/client";
-import readFile from "../file/readFile";
+import readIM from "../im/readIM";
 
 export default async function createActiveFile({ fileId, iMId }) {
   const prisma = new PrismaClient();
 
   try {
-    const iM = await findIM({ fileId, iMId });
+    const file = await findFile({ fileId, iMId });
     const activeFile = await prisma.activeFile.create({
-      data: { fileId, iMId: iM.id },
+      data: { fileId: file.id, iMId },
     });
 
     return activeFile;
@@ -16,23 +16,21 @@ export default async function createActiveFile({ fileId, iMId }) {
   }
 }
 
-async function findIM({ fileId, iMId }) {
+async function findFile({ fileId, iMId }) {
   const prisma = new PrismaClient();
 
   try {
-    const file = await readFile(fileId);
-    const iM = await prisma.iM.findFirstOrThrow({
+    const iM = await readIM(iMId);
+    const file = await prisma.file.findFirstOrThrow({
       where: {
-        File: {
-          some: {
-            id: file.id,
-          },
+        iM: {
+          id: iM.id,
         },
-        id: iMId,
+        id: fileId,
       },
     });
 
-    return iM;
+    return file;
   } catch (error) {
     throw error;
   }
