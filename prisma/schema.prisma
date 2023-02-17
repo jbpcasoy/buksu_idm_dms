@@ -116,6 +116,7 @@ model Department {
   updatedAt         DateTime           @updatedAt
   Faculty           Faculty[]
   ActiveCoordinator ActiveCoordinator?
+  ActiveChairperson ActiveChairperson?
 }
 
 model Faculty {
@@ -199,6 +200,8 @@ model ActiveChairperson {
   updatedAt     DateTime    @updatedAt
   Chairperson   Chairperson @relation(fields: [chairpersonId], references: [id])
   chairpersonId String      @unique
+  Department    Department  @relation(fields: [departmentId], references: [id])
+  departmentId  String      @unique
 }
 
 model DepartmentApproval {

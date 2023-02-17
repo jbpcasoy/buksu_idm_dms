@@ -1,5 +1,4 @@
 import { PrismaClient } from "@prisma/client";
-import readDepartment from "../department/readDepartment";
 
 export default async function createActiveCoordinator({
   coordinatorId,
@@ -28,12 +27,10 @@ async function findCoordinator({ coordinatorId, departmentId }) {
   const prisma = new PrismaClient();
 
   try {
-    const department = await readDepartment(departmentId);
-
     const coordinator = await prisma.coordinator.findFirstOrThrow({
       where: {
         Faculty: {
-          departmentId: department.id,
+          departmentId: departmentId,
         },
         id: coordinatorId,
       },
