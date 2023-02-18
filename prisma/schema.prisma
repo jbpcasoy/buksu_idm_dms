@@ -79,7 +79,7 @@ model IM {
 
 model File {
   id               String      @id @default(cuid())
-  fileName         String
+  fileName         String      @unique
   originalFileName String
   iM               IM          @relation(fields: [iMId], references: [id])
   createdAt        DateTime    @default(now())
@@ -249,4 +249,12 @@ model SeniorApproval {
   Senior               Senior             @relation(fields: [seniorId], references: [id])
   seniorId             String
   departmentApprovalId String             @unique
+}
+
+model Attachment {
+  id               String   @id @default(cuid())
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  fileName         String   @unique
+  originalFileName String
 }
