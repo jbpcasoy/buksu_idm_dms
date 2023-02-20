@@ -36,14 +36,15 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id            String         @id @default(cuid())
   name          String?
-  email         String?   @unique
+  email         String?        @unique
   emailVerified DateTime?
   image         String?
   accounts      Account[]
   sessions      Session[]
-  IM            IM[]
+  Faculty       Faculty[]
+  ActiveFaculty ActiveFaculty?
 }
 
 model VerificationToken {
@@ -63,24 +64,197 @@ enum IMStatus {
 }
 
 model IM {
-  id           String   @id @default(cuid())
-  serialNumber String
-  title        String
-  status       IMStatus @default(SUBMITTED)
-  owner        User     @relation(fields: [ownerId], references: [id])
-  ownerId      String
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @default(now())
-  File         File[]
+  id                 String              @id @default(cuid())
+  serialNumber       String
+  title              String
+  status             IMStatus            @default(SUBMITTED)
+  owner              Faculty             @relation(fields: [ownerId], references: [id])
+  ownerId            String
+  createdAt          DateTime            @default(now())
+  updatedAt          DateTime            @default(now())
+  File               File[]
+  DepartmentApproval DepartmentApproval?
+  ActiveFile         ActiveFile?
 }
 
 model File {
-  id               String   @id @default(cuid())
-  fileName         String
+  id               String      @id @default(cuid())
+  fileName         String      @unique
   originalFileName String
-  iM               IM       @relation(fields: [iMId], references: [id])
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime @default(now())
+  iM               IM          @relation(fields: [iMId], references: [id])
+  createdAt        DateTime    @default(now())
+  updatedAt        DateTime    @default(now())
   iMId             String
   googleDocsUrl    String?
+  ActiveFile       ActiveFile?
+}
+
+model ActiveFile {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAT DateTime @updatedAt
+  File      File     @relation(fields: [fileId], references: [id])
+  fileId    String   @unique
+  IM        IM       @relation(fields: [iMId], references: [id])
+  iMId      String   @unique
+}
+
+model College {
+  id         String       @id @default(cuid())
+  name       String       @unique
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
+  Department Department[]
+}
+
+model Department {
+  id                String             @id @default(cuid())
+  name              String             @unique
+  college           College            @relation(fields: [collegeId], references: [id])
+  collegeId         String
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime           @updatedAt
+  Faculty           Faculty[]
+  ActiveCoordinator ActiveCoordinator?
+  ActiveChairperson ActiveChairperson?
+  ActiveSenior      ActiveSenior[]
+  ActiveFaculty     ActiveFaculty[]
+}
+
+model Faculty {
+  id            String         @id @default(cuid())
+  userId        String
+  user          User           @relation(fields: [userId], references: [id])
+  departmentId  String
+  department    Department     @relation(fields: [departmentId], references: [id])
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  ActiveFaculty ActiveFaculty?
+  IM            IM[]
+  Chairperson   Chairperson?
+  Coordinator   Coordinator?
+  Senior        Senior?
+
+  @@unique([userId, departmentId])
+}
+
+model ActiveFaculty {
+  id           String     @id @default(cuid())
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  Faculty      Faculty    @relation(fields: [facultyId], references: [id])
+  facultyId    String     @unique
+  User         User       @relation(fields: [userId], references: [id])
+  userId       String     @unique
+  Department   Department @relation(fields: [departmentId], references: [id])
+  departmentId String
+}
+
+model Chairperson {
+  id                  String                @id @default(cuid())
+  createdAt           DateTime              @default(now())
+  updatedAt           DateTime              @updatedAt
+  Faculty             Faculty               @relation(fields: [facultyId], references: [id])
+  facultyId           String                @unique
+  ActiveChairperson   ActiveChairperson?
+  ChairpersonApproval ChairpersonApproval[]
+}
+
+model Coordinator {
+  id                  String                @id @default(cuid())
+  createdAt           DateTime              @default(now())
+  updatedAt           DateTime              @updatedAt
+  Faculty             Faculty               @relation(fields: [facultyId], references: [id])
+  facultyId           String                @unique
+  ActiveCoordinator   ActiveCoordinator?
+  CoordinatorApproval CoordinatorApproval[]
+}
+
+model Senior {
+  id             String           @id @default(cuid())
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  Faculty        Faculty          @relation(fields: [facultyId], references: [id])
+  facultyId      String           @unique
+  ActiveSenior   ActiveSenior?
+  SeniorApproval SeniorApproval[]
+}
+
+model ActiveCoordinator {
+  id            String      @id @default(cuid())
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  Coordinator   Coordinator @relation(fields: [coordinatorId], references: [id])
+  coordinatorId String      @unique
+  Department    Department  @relation(fields: [departmentId], references: [id])
+  departmentId  String      @unique
+}
+
+model ActiveSenior {
+  id           String     @id @default(cuid())
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  Senior       Senior     @relation(fields: [seniorId], references: [id])
+  seniorId     String     @unique
+  Department   Department @relation(fields: [departmentId], references: [id])
+  departmentId String
+}
+
+model ActiveChairperson {
+  id            String      @id @default(cuid())
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  Chairperson   Chairperson @relation(fields: [chairpersonId], references: [id])
+  chairpersonId String      @unique
+  Department    Department  @relation(fields: [departmentId], references: [id])
+  departmentId  String      @unique
+}
+
+model DepartmentApproval {
+  id                  String               @id @default(cuid())
+  createdAt           DateTime             @default(now())
+  updatedAt           DateTime             @updatedAt
+  iM                  IM                   @relation(fields: [iMId], references: [id])
+  iMId                String               @unique
+  CoordinatorApproval CoordinatorApproval?
+  ChairpersonApproval ChairpersonApproval?
+  SeniorApproval      SeniorApproval?
+}
+
+model CoordinatorApproval {
+  id                   String             @id @default(cuid())
+  createdAt            DateTime           @default(now())
+  updatedAt            DateTime           @updatedAt
+  DepartmentApproval   DepartmentApproval @relation(fields: [departmentApprovalId], references: [id])
+  departmentApprovalId String             @unique
+  Coordinator          Coordinator        @relation(fields: [coordinatorId], references: [id])
+  coordinatorId        String
+}
+
+model ChairpersonApproval {
+  id                   String             @id @default(cuid())
+  createdAt            DateTime           @default(now())
+  updatedAt            DateTime           @updatedAt
+  DepartmentApproval   DepartmentApproval @relation(fields: [departmentApprovalId], references: [id])
+  departmentApprovalId String             @unique
+  Chairperson          Chairperson        @relation(fields: [chairpersonId], references: [id])
+  chairpersonId        String
+}
+
+model SeniorApproval {
+  id                   String             @id @default(cuid())
+  cretaedAt            DateTime           @default(now())
+  updatedAt            DateTime           @updatedAt
+  DepartmentApproval   DepartmentApproval @relation(fields: [departmentApprovalId], references: [id])
+  Senior               Senior             @relation(fields: [seniorId], references: [id])
+  seniorId             String
+  departmentApprovalId String             @unique
+}
+
+model Attachment {
+  id               String   @id @default(cuid())
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  fileName         String   @unique
+  originalFileName String
 }

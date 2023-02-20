@@ -4,7 +4,7 @@ export default async function readFile(id) {
   const prisma = new PrismaClient();
 
   try {
-    const file = await prisma.file.findUnique({
+    const file = await prisma.file.findUniqueOrThrow({
       where: {
         id,
       },

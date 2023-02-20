@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default async function frontendGetIMs({ limit, page }) {
   try {
-    const response = await axios.get(`http://localhost:3000/api/im`, {
+    const response = await axios.get("/api/im", {
       params: {
         limit,
         page,
