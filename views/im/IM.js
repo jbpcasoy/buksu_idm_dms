@@ -21,19 +21,31 @@ export default function IM({
         {serialNumber}
       </td>
 
-      <td className="bg-white border-b dark:border-slate-600 font-medium text-slate-400  text-left">{title}</td>
+      <td className="bg-white border-b dark:border-slate-600 font-medium text-slate-400  text-left">
+        {title}
+      </td>
 
-      <td className="bg-white border-b dark:border-slate-600 font-medium text-slate-400  text-left">{status}</td>
+      <td className="bg-white border-b dark:border-slate-600 font-medium text-slate-400  text-left">
+        {status}
+      </td>
 
-      <td className="bg-white border-b dark:border-slate-600 font-medium text-slate-400  text-left">{owner.name}</td>
+      <td className="bg-white border-b dark:border-slate-600 font-medium text-slate-400  text-left">
+        {owner.name}
+      </td>
 
-      <td className="bg-white border-b dark:border-slate-600 font-medium text-slate-400  text-left">{originalFileName}</td>
+      {/* <td className="bg-white border-b dark:border-slate-600 font-medium text-slate-400  text-left">{originalFileName}</td> */}
 
-      {/* <td className="bg-white border-b dark:border-slate-600 font-medium text-slate-400  text-left">{fileName}</td> */}
+      <td className="bg-white border-b dark:border-slate-600 font-medium text-slate-400  text-left">
+        {fileName}
+      </td>
 
-      <td className="bg-white border-b dark:border-slate-600 font-medium text-slate-400  text-left">{createdAt}</td>
+      <td className="bg-white border-b dark:border-slate-600 font-medium text-slate-400  text-left">
+        {createdAt}
+      </td>
 
-      <td className="bg-white border-b dark:border-slate-600 font-medium text-slate-400  text-left">{updatedAt}</td>
+      <td className="bg-white border-b dark:border-slate-600 font-medium text-slate-400  text-left">
+        {updatedAt}
+      </td>
 
       <td className="bg-white border-b dark:border-slate-600 font-medium text-slate-400  text-left">
         <button
