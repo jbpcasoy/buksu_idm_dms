@@ -9,7 +9,9 @@ export default async function readColleges({ limit, page }) {
       take: limit,
     });
 
-    return colleges;
+    const total = await prisma.college.count();
+
+    return { data: colleges, total };
   } catch (error) {
     throw error;
   }

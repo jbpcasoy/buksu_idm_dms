@@ -26,7 +26,7 @@ const menuItems = [
   {
     label: "Users",
     icon: <PersonIcon />,
-    link: "/admin/users",
+    link: "/admin/user",
   },
   {
     label: "Faculties",
@@ -36,7 +36,7 @@ const menuItems = [
   {
     label: "Colleges",
     icon: <BusinessIcon />,
-    link: "#",
+    link: "/admin/college",
   },
   {
     label: "Departments",
