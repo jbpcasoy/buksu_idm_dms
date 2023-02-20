@@ -1,13 +1,12 @@
 import axios from "axios";
 
-export default async function frontendReadColleges(limit, page) {
-  // TODO implement
-
+export default async function frontendReadColleges({ limit, page, name }) {
   try {
     const colleges = await axios.get("/api/college", {
       params: {
         limit,
         page,
+        name,
       },
     });
 

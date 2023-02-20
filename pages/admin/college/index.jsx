@@ -15,9 +15,12 @@ import {
   TableHead,
   TablePagination,
   TableRow,
+  TextField,
   Toolbar,
+  Tooltip,
   Typography,
 } from "@mui/material";
+import _ from "lodash";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
@@ -28,6 +31,7 @@ export default function AdminCollegePage() {
     openNewCollege: false,
     limit: 5,
     page: 0,
+    name: "",
   });
   const router = useRouter();
 
@@ -38,7 +42,11 @@ export default function AdminCollegePage() {
   useEffect(() => {
     let subscribe = true;
 
-    frontendReadColleges(state.limit, state.page + 1).then((res) => {
+    frontendReadColleges({
+      limit: state.limit,
+      page: state.page + 1,
+      name: state.name,
+    }).then((res) => {
       if (!subscribe) return;
 
       setColleges(res.data);
@@ -77,6 +85,14 @@ export default function AdminCollegePage() {
     }));
   }
 
+  function handleInputChange(e) {
+    setState((prev) => ({
+      ...prev,
+      name: e.target.value,
+    }));
+  }
+  const debouncedHandleInputChange = _.debounce(handleInputChange, 800);
+
   return (
     <AdminLayout>
       <Box sx={{ m: 1 }}>
@@ -89,11 +105,20 @@ export default function AdminCollegePage() {
             alignItems='center'
             spacing={2}
             sx={{ width: "100%" }}>
-            <IconButton onClick={() => openAddDialog(true)}>
-              <AddIcon />
-            </IconButton>
+            <Tooltip title='Add'>
+              <IconButton onClick={() => openAddDialog(true)}>
+                <AddIcon />
+              </IconButton>
+            </Tooltip>
           </Stack>
         </Toolbar>
+        <Stack direction='row' spacing={1} sx={{ px: 2 }}>
+          <TextField
+            size='small'
+            label='Name'
+            onChange={debouncedHandleInputChange}
+          />
+        </Stack>
         <TableContainer>
           <Table sx={{ minWidth: 650 }} aria-label='simple table'>
             <TableHead>
