@@ -9,7 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
     "@flaticon/flaticon-uicons": "^2.0.1",
+    "@fontsource/roboto": "^4.5.8",
+    "@mui/icons-material": "^5.11.9",
+    "@mui/material": "^5.11.9",
     "@next-auth/prisma-adapter": "^1.0.5",
     "@next/font": "13.1.6",
     "@prisma/client": "^4.10.1",
@@ -32,6 +37,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",
+    "@faker-js/faker": "^7.6.0",
     "@tailwindcss/typography": "^0.5.9",
     "@types/adm-zip": "^0.5.0",
     "@types/multer": "^1.4.7",
