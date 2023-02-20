@@ -12,13 +12,14 @@ import {
 } from "@mui/material";
 import { useEffect, useState } from "react";
 
-export default function index() {
+export default function AdminUser() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
     let subscribe = true;
 
     frontendReadUsers(10, 1).then((res) => {
+      if (!subscribe) return;
       setUsers(res);
     });
 
@@ -43,7 +44,7 @@ export default function index() {
             <TableBody>
               {users?.map((users) => (
                 <TableRow
-                  key={users.name}
+                  key={users.id}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
                   <TableCell>
                     <Avatar src={users.image} />
