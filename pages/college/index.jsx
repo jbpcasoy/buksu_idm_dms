@@ -1,51 +1,42 @@
 import WithSidebar from "@/components/WithSidebar";
-import frontendCreateIM from "@/services/frontend/im/frontendCreateIM";
-import frontendGetIMs from "@/services/frontend/im/frontendGetIMs";
-import AddIMModelView from "@/views/AddIMModalView";
-import IM from "@/views/im/IM";
+import College from "@/views/College";
 import Layout from "@/views/layout/Layout";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-export default function Home() {
+export default function CollegePage() {
   const [state, setState] = useState({
     addModalOpen: false,
-    ims: [],
+    // TODO fetch from database
+    colleges: [
+      { name: "College of Technologies" },
+      { name: "College of Business Administration" },
+      { name: "College of Nursing" },
+      { name: "College of Arts and Sciences" },
+      { name: "College of Law" },
+      { name: "College of Public Administration" },
+      { name: "College of Education" },
+    ],
   });
 
   const router = useRouter();
 
-  useEffect(() => {
-    let subscribe = true;
-
-    frontendGetIMs({ page: 1, limit: 10 }).then((res) => {
-      if (!subscribe) return;
-
-      setState((prev) => ({ ...prev, ims: res }));
-    });
-
-    return () => {
-      subscribe = false;
-    };
-  }, []);
-
   return (
     <Layout>
-      <WithSidebar active="myIMs">
+      <WithSidebar active="colleges">
         <div>
-          <div className="flex flex-wrap items-center border border-CITLGray-lighter  bg-CITLWhite m-6 p-3 relative rounded-lg shadow-lg overflow-hidden">
+          <div className="flex flex-wrap items-center border border-slate-300  bg-CITLWhite m-6 p-3 relative rounded-lg shadow-lg overflow-hidden">
             <div className="px-6 py-4 md:w-10/12 sm:w-12/12">
               <h3 className="text-lg font-semibold text-CITLDarkBlue">
                 Announcement
               </h3>
-              <i className="fi fi-rr-bars sort"></i>
-              <p className="text-CITLGray-main mt-2 pb-5">
+              <p className="text-gray-600 mt-2 pb-5">
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia
                 facere natus eos amet dolor quam, sit, consequatur rerum unde
                 similique provident, eaque a perspiciatis aspernatur ex odio
                 sequi corrupti quae!
               </p>
-              <button className="transition ease-in-out delay-150 bg-CITLDarkBlue hover:-translate-y-1 hover:scale-110 hover:bg-CITLOrange duration-300 text-CITLWhite py-2 px-4 rounded-lg ">
+              <button className="bg-CITLDarkBlue rounded p-2 text-CITLWhite font-md">
                 Read more
               </button>
             </div>
@@ -56,7 +47,6 @@ export default function Home() {
               alt="Announcement Image"
             ></img>
           </div>
-
           <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
             <div class="shadow overflow-hidden border border-CITLGray-lighter relative rounded-lg">
               <header className="flex items-center justify-between p-3 bg-CITLGray-light ">
@@ -79,43 +69,7 @@ export default function Home() {
                           href="#responsive-header"
                           className="block mt-4 lg:inline-block lg:mt-0 text-CITLDarkBlue hover:text-CITLOrange font-medium mr-4"
                         >
-                          My IM's
-                        </a>
-                        <div className="inline-block bg-CITLOrange text-CITLWhite text-xs rounded-full px-2 py-1 mr-1">
-                          <span>3</span>
-                        </div>
-                        <a
-                          href="#responsive-header"
-                          className="block mt-4 lg:inline-block lg:mt-0 text-CITLDarkBlue hover:text-CITLOrange font-medium mr-4"
-                        >
-                          To Revise
-                        </a>
-                        <div className="inline-block bg-CITLOrange text-CITLWhite text-xs rounded-full px-2 py-1 mr-1">
-                          <span>3</span>
-                        </div>
-                        <a
-                          href="#responsive-header"
-                          className="block mt-4 lg:inline-block lg:mt-0 text-CITLDarkBlue hover:text-CITLOrange font-medium mr-4"
-                        >
-                          To Review
-                        </a>{" "}
-                        <div className="inline-block bg-CITLOrange text-CITLWhite text-xs rounded-full px-2 py-1 mr-1">
-                          <span>3</span>
-                        </div>
-                        <a
-                          href="#responsive-header"
-                          className="block mt-4 lg:inline-block lg:mt-0 text-CITLDarkBlue hover:text-CITLOrange font-medium mr-4"
-                        >
-                          Reviewed
-                        </a>
-                        <div className="inline-block bg-CITLOrange text-CITLWhite text-xs rounded-full px-2 py-1 mr-1">
-                          <span>3</span>
-                        </div>
-                        <a
-                          href="#responsive-header"
-                          className="block mt-4 lg:inline-block lg:mt-0 text-CITLDarkBlue hover:text-CITLOrange font-medium"
-                        >
-                          Department IM's
+                          Colleges
                         </a>
                       </div>
                     </div>
@@ -175,46 +129,11 @@ export default function Home() {
                     </th>
                     <th
                       scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      className="px-6 py-3 pr-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                     >
-                      Serial No.
+                      Colleges
                     </th>
-                    <th
-                      scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                    >
-                      Title
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                    >
-                      Status
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                    >
-                      Owner
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                    >
-                      File Name
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                    >
-                      Created At
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                    >
-                      Updated At
-                    </th>
+
                     <th
                       scope="col"
                       className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
@@ -224,26 +143,9 @@ export default function Home() {
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200 overflow-y-auto">
-                  {state.ims.map((im, index) => {
-                    return (
-                      <IM
-                        bottomBorder={index < state.ims.length - 1}
-                        createdAt={im.createdAt}
-                        originalFileName={im.originalFileName}
-                        fileName={im.fileName}
-                        id={im.id}
-                        owner={im.owner}
-                        serialNumber={im.serialNumber}
-                        status={im.status}
-                        title={im.title}
-                        updatedAt={im.updatedAt}
-                        onView={() =>
-                          router.push(`/api/im/download/${im.fileName}`)
-                        }
-                        key={im.id}
-                      />
-                    );
-                  })}
+                  {state.colleges.map((college, index) => (
+                    <College name={college.name} id={index} key={index} />
+                  ))}
                 </tbody>
               </table>
             </div>
@@ -258,11 +160,10 @@ export default function Home() {
                 });
               }}
               onSubmit={async (values) => {
-                const { title, serialNumber } = values;
+                const { college } = values;
 
                 return frontendCreateIM({
-                  serialNumber,
-                  title,
+                  college,
                 });
               }}
             />

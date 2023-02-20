@@ -14,6 +14,18 @@ module.exports = {
       fontSize: {
         tableHeader: "1.1rem",
       },
+      colors: {
+        CITLDarkBlue: "#152033",
+        CITLOrange: "#F2C050",
+        CITLWhite: "#FFFFFF",
+        // CITLGray: "#717883",
+        CITLGray: {
+          main: "#717883",
+          light: "#f0f1f2",
+          lighter: "#cccccc",
+        },
+        // "CITLGray-lighter": "#606772",
+      },
     },
   },
   plugins: [require("@tailwindcss/typography")],
