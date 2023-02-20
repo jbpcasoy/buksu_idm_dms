@@ -1,16 +1,4 @@
-export default function IM({
-  id,
-  serialNumber,
-  title,
-  status,
-  owner,
-  originalFileName,
-  fileName,
-  createdAt,
-  updatedAt,
-  onView,
-  bottomBorder = true,
-}) {
+export default function College({ name, onView, bottomBorder = true }) {
   return (
     <tr
       className={` bg-white ${
@@ -24,19 +12,7 @@ export default function IM({
         />
       </td>
 
-      <td className="px-6 py-4 ">{serialNumber}</td>
-
-      <td className="px-6 py-4 ">{title}</td>
-
-      <td className="px-6 py-4 ">{status}</td>
-
-      <td className="px-6 py-4 ">{owner.name}</td>
-
-      <td className="px-6 py-4 ">{fileName}</td>
-
-      <td className="px-6 py-4 ">{createdAt}</td>
-
-      <td className="px-6 py-4 ">{updatedAt}</td>
+      <td className="px-6 py-4 ">{name}</td>
 
       <td className="bg-white  font-medium text-slate-400  items-center justify-center px-6 py-4 ">
         <button

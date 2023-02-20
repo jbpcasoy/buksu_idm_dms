@@ -6,13 +6,13 @@ export default function LoginButton({ onSignOut, onSignIn }) {
   if (session) {
     return (
       <button onClick={onSignOut} title="Sign out">
-        <i class="fi fi-br-sign-out-alt text-white text-lg"></i>
+        <i className="fi fi-br-sign-out-alt text-white text-lg"></i>
       </button>
     );
   }
   return (
     <button onClick={onSignIn} title="Sign in">
-      <i class="fi fi-br-sign-in-alt  text-white text-lg"></i>
+      <i className="fi fi-br-sign-in-alt  text-white text-lg"></i>
     </button>
   );
 }
