@@ -1,12 +1,22 @@
-import DeleteIcon from "@mui/icons-material/Delete";
-import EditIcon from "@mui/icons-material/Edit";
-import { IconButton, Stack, TableCell, TableRow } from "@mui/material";
+import { Stack, TableCell, TableRow } from "@mui/material";
 import { useState } from "react";
+import AdminAddCollegeDepartmentForm from "./AdminAddCollegeDepartmentForm";
+import AdminCollegeActionsMenu from "./AdminCollegeActionsMenu";
 import AdminCollegeUpdateForm from "./AdminCollegeUpdateForm";
 import AdminDeleteCollegeAlert from "./AdminDeleteCollegeAlert";
 
-export default function AdminCollegeView({ name, onEdit, onDelete }) {
-  const [state, setState] = useState({ openUpdate: false, openDelete: false });
+export default function AdminCollegeView({
+  id,
+  name,
+  onEdit,
+  onDelete,
+  onAdd,
+}) {
+  const [state, setState] = useState({
+    openUpdate: false,
+    openDelete: false,
+    openAdd: false,
+  });
 
   function openUpdateDialog(open) {
     return setState((prev) => ({ ...prev, openUpdate: open }));
@@ -14,22 +24,35 @@ export default function AdminCollegeView({ name, onEdit, onDelete }) {
   function openDeleteDialog(open) {
     return setState((prev) => ({ ...prev, openDelete: open }));
   }
+  function openAddDialog(open) {
+    return setState((prev) => ({ ...prev, openAdd: open }));
+  }
 
   return (
     <>
       <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
         <TableCell>{name}</TableCell>
         <TableCell align='center'>
-          <Stack direction='row' justifyContent='flex-end' alignItems='center'>
-            <IconButton onClick={() => openUpdateDialog(true)}>
-              <EditIcon />
-            </IconButton>
-            <IconButton onClick={() => openDeleteDialog(true)}>
-              <DeleteIcon />
-            </IconButton>
+          <Stack direction='row' justifyContent='center' alignItems='center'>
+            <AdminCollegeActionsMenu
+              onEdit={() => openUpdateDialog(true)}
+              onDelete={() => openDeleteDialog(true)}
+              onAdd={() => openAddDialog(true)}
+            />
           </Stack>
         </TableCell>
       </TableRow>
+
+      <AdminAddCollegeDepartmentForm
+        collegeId={id}
+        open={state.openAdd}
+        onClose={() => openAddDialog(false)}
+        onSubmit={(values) =>
+          onAdd(values).then((res) => {
+            openAddDialog(false);
+          })
+        }
+      />
 
       <AdminCollegeUpdateForm
         initialValues={{
