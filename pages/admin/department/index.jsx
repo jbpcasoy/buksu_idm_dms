@@ -101,6 +101,7 @@ export default function AdminDepartmentPage() {
               <TableRow>
                 <TableCell align='center'>Name</TableCell>
                 <TableCell align='center'>College</TableCell>
+                <TableCell align='center'>Actions</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
