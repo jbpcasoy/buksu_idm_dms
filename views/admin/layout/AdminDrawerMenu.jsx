@@ -41,7 +41,7 @@ const menuItems = [
   {
     label: "Departments",
     icon: <ApartmentIcon />,
-    link: "#",
+    link: "/admin/department",
   },
   {
     label: "IMs",

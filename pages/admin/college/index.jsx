@@ -28,7 +28,7 @@ export default function AdminCollegePage() {
   const [colleges, setColleges] = useState([]);
   const [total, setTotal] = useState(0);
   const [state, setState] = useState({
-    openNewCollege: false,
+    openAddCollege: false,
     limit: 5,
     page: 0,
     name: "",
@@ -58,26 +58,25 @@ export default function AdminCollegePage() {
     };
   }, [state]);
 
-  function reloadColleges(limit, page) {
-    frontendReadColleges(limit, page).then((res) => {
-      setColleges(res);
-    });
+  function reloadColleges() {
+    setState((prev) => ({ ...prev }));
   }
 
   function openAddDialog(open) {
-    return setState((prev) => ({ ...prev, openNewCollege: open }));
+    return setState((prev) => ({ ...prev, openAddCollege: open }));
   }
 
   async function onAdd({ name }) {
     return frontendCreateCollege({ name }).then((res) => {
-      reloadColleges(10, 1);
+      reloadColleges();
     });
   }
 
-  async function handleChangePage(_, page) {
+  function handleChangePage(_, page) {
     setState((prev) => ({ ...prev, page }));
   }
-  async function handleChangeRowsPerPage(event) {
+
+  function handleChangeRowsPerPage(event) {
     setState((prev) => ({
       ...prev,
       limit: parseInt(event.target.value, 10),
@@ -120,10 +119,10 @@ export default function AdminCollegePage() {
           />
         </Stack>
         <TableContainer>
-          <Table sx={{ minWidth: 650 }} aria-label='simple table'>
+          <Table>
             <TableHead>
               <TableRow>
-                <TableCell>Name</TableCell>
+                <TableCell align='center'>Name</TableCell>
                 <TableCell align='center' width={100}>
                   Actions
                 </TableCell>
@@ -138,7 +137,7 @@ export default function AdminCollegePage() {
           </Table>
         </TableContainer>
         <TablePagination
-          rowsPerPageOptions={[1, 5, 10, 25]}
+          rowsPerPageOptions={[5, 10, 25]}
           component='div'
           count={total}
           rowsPerPage={state.limit}
@@ -150,7 +149,7 @@ export default function AdminCollegePage() {
       <AdminAddCollegeForm
         onClose={() => openAddDialog(false)}
         onSubmit={onAdd}
-        open={state.openNewCollege}
+        open={state.openAddCollege}
       />
     </AdminLayout>
   );
