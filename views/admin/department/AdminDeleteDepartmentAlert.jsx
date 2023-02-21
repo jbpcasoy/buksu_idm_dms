@@ -5,13 +5,13 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
-export default function AdminDeleteCollegeAlert({ open, onClose, onAgree }) {
+export default function AdminDeleteDepartmentAlert({ open, onClose, onAgree }) {
   return (
     <Dialog open={open}>
-      <DialogTitle>Delete College</DialogTitle>
+      <DialogTitle>Delete Department</DialogTitle>
       <DialogContent>
         <DialogContentText>
-          This action cannot be undone, are you sure? If this college have
+          This action cannot be undone, are you sure? If this department have
           corresponding references, this will fail.
         </DialogContentText>
       </DialogContent>

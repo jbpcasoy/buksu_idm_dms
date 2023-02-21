@@ -22,7 +22,9 @@ export default function AdminCollegeUpdateForm({
       name: Yup.string().required("Name is required"),
     }),
     onSubmit: (values) => {
-      return onSubmit(values);
+      return onSubmit(values).then((res) => {
+        onClose();
+      });
     },
   });
 

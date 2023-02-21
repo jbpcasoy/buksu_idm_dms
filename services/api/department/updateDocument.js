@@ -11,6 +11,13 @@ export default async function updateDocument(id, { name }) {
       data: {
         name,
       },
+      include: {
+        college: {
+          select: {
+            name: true,
+          },
+        },
+      },
     });
 
     return department;
