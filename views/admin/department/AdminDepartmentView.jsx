@@ -1,15 +1,25 @@
 import { TableCell, TableRow } from "@mui/material";
 import { useState } from "react";
 import AdminCollegeUpdateForm from "../college/AdminCollegeUpdateForm";
+import AdminDeleteDepartmentAlert from "./AdminDeleteDepartmentAlert";
 import AdminDepartmentActionsMenu from "./AdminDepartmentActionsMenu";
 
-export default function AdminDepartmentView({ name, college, onEdit }) {
+export default function AdminDepartmentView({
+  name,
+  college,
+  onEdit,
+  onDelete,
+}) {
   const [state, setState] = useState({
     openUpdate: false,
+    openDelete: false,
   });
 
   function openUpdateDialog(open) {
     return setState((prev) => ({ ...prev, openUpdate: open }));
+  }
+  function openDeleteDialog(open) {
+    return setState((prev) => ({ ...prev, openDelete: open }));
   }
 
   return (
@@ -18,7 +28,10 @@ export default function AdminDepartmentView({ name, college, onEdit }) {
         <TableCell>{name}</TableCell>
         <TableCell>{college}</TableCell>
         <TableCell align='center'>
-          <AdminDepartmentActionsMenu onEdit={() => openUpdateDialog(true)} />
+          <AdminDepartmentActionsMenu
+            onEdit={() => openUpdateDialog(true)}
+            onDelete={() => openDeleteDialog(true)}
+          />
         </TableCell>
       </TableRow>
 
@@ -33,6 +46,15 @@ export default function AdminDepartmentView({ name, college, onEdit }) {
             openUpdateDialog(false);
           })
         }
+      />
+      <AdminDeleteDepartmentAlert
+        open={state.openDelete}
+        onClose={() => openDeleteDialog(false)}
+        onAgree={() => {
+          onDelete().then(() => {
+            openDeleteDialog(false);
+          });
+        }}
       />
     </>
   );

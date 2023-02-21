@@ -1,3 +1,4 @@
+import frontendDeleteDepartment from "@/services/frontend/admin/department/frontendDeleteDepartment";
 import frontendUpdateDepartment from "@/services/frontend/admin/department/frontendUpdateDepartment";
 import AdminDepartmentView from "@/views/admin/department/AdminDepartmentView";
 import { useState } from "react";
@@ -13,11 +14,22 @@ export default function AdminDepartment({ department }) {
     });
   }
 
+  async function onDelete() {
+    return frontendDeleteDepartment(departmentData.id).then((res) => {
+      setDepartmentData(null);
+    });
+  }
+
+  if (!departmentData) {
+    return null;
+  }
+
   return (
     <AdminDepartmentView
       name={departmentData.name}
       college={departmentData.college.name}
       onEdit={onEdit}
+      onDelete={onDelete}
     />
   );
 }
