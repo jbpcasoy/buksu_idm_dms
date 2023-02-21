@@ -18,9 +18,9 @@ export default function AdminUser() {
   useEffect(() => {
     let subscribe = true;
 
-    frontendReadUsers(10, 1).then((res) => {
+    frontendReadUsers({ limit: 10, page: 1 }).then((res) => {
       if (!subscribe) return;
-      setUsers(res);
+      setUsers(res.data);
     });
 
     return () => {

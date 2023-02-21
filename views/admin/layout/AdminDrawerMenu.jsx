@@ -31,7 +31,7 @@ const menuItems = [
   {
     label: "Faculties",
     icon: <BadgeIcon />,
-    link: "#",
+    link: "/admin/faculty",
   },
   {
     label: "Colleges",
