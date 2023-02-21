@@ -45,7 +45,7 @@ export default function Home() {
                 similique provident, eaque a perspiciatis aspernatur ex odio
                 sequi corrupti quae!
               </p>
-              <button className="transition ease-in-out delay-150 bg-CITLDarkBlue hover:-translate-y-1 hover:scale-110 hover:bg-CITLOrange duration-300 text-CITLWhite py-2 px-4 rounded-lg ">
+              <button className="px-3 py-2 text-sm font-medium text-center text-white bg-CITLDarkBlue rounded-lg hover:bg-CITLOrange ">
                 Read more
               </button>
             </div>
@@ -94,7 +94,7 @@ export default function Home() {
                           <span>3</span>
                         </div>
                         <a
-                          href="#responsive-header"
+                          href="/review"
                           className="block mt-4 lg:inline-block lg:mt-0 text-CITLDarkBlue hover:text-CITLOrange font-medium mr-4"
                         >
                           To Review
