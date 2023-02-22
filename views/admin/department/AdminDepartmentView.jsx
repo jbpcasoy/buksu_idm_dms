@@ -35,6 +35,7 @@ export default function AdminDepartmentView({
         </TableCell>
       </TableRow>
 
+      {/* FIXME This must be DepartmentUpdateForm (make it)  */}
       <AdminCollegeUpdateForm
         initialValues={{
           name,

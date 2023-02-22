@@ -1,6 +1,12 @@
 import { PrismaClient } from "@prisma/client";
 
-export default async function readFaculties({ limit, page }) {
+export default async function readFaculties({
+  limit,
+  page,
+  name,
+  departmentName,
+  collegeName,
+}) {
   const prisma = new PrismaClient();
 
   try {
@@ -25,9 +31,50 @@ export default async function readFaculties({ limit, page }) {
           },
         },
       },
+      where: {
+        user: {
+          name: {
+            contains: name,
+            mode: "insensitive",
+          },
+        },
+        department: {
+          name: {
+            contains: departmentName,
+            mode: "insensitive",
+          },
+          college: {
+            name: {
+              contains: collegeName,
+              mode: "insensitive",
+            },
+          },
+        },
+      },
     });
 
-    const total = await prisma.faculty.count();
+    const total = await prisma.faculty.count({
+      where: {
+        user: {
+          name: {
+            contains: name,
+            mode: "insensitive",
+          },
+        },
+        department: {
+          name: {
+            contains: departmentName,
+            mode: "insensitive",
+          },
+          college: {
+            name: {
+              contains: collegeName,
+              mode: "insensitive",
+            },
+          },
+        },
+      },
+    });
 
     return { data: faculties, total };
   } catch (error) {

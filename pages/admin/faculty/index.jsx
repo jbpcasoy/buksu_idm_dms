@@ -1,7 +1,7 @@
+import AdminFaculty from "@/components/admin/faculty/AdminFaculty";
 import frontendReadFaculties from "@/services/frontend/admin/faculty/frontendReadFaculties";
 import frontCreateFaculty from "@/services/frontend/faculty/frontCreateFaculty";
 import AdminAddFacultyForm from "@/views/admin/faculty/AdminAddFacultyForm";
-import AdminFacultyView from "@/views/admin/faculty/AdminFacultyView";
 import AdminLayout from "@/views/admin/layout/AdminLayout";
 import AddIcon from "@mui/icons-material/Add";
 import {
@@ -15,10 +15,12 @@ import {
   TableHead,
   TablePagination,
   TableRow,
+  TextField,
   Toolbar,
   Tooltip,
   Typography,
 } from "@mui/material";
+import _ from "lodash";
 import { useEffect, useState } from "react";
 
 export default function AdminFacultyPage() {
@@ -28,19 +30,26 @@ export default function AdminFacultyPage() {
     limit: 5,
     page: 0,
     openAdd: false,
+    name: "",
+    departmentName: "",
+    collegeName: "",
   });
 
   useEffect(() => {
     let subscribe = true;
 
-    frontendReadFaculties({ limit: state.limit, page: state.page + 1 }).then(
-      (res) => {
-        if (!subscribe) return;
+    frontendReadFaculties({
+      limit: state.limit,
+      page: state.page + 1,
+      name: state.name,
+      departmentName: state.departmentName,
+      collegeName: state.collegeName,
+    }).then((res) => {
+      if (!subscribe) return;
 
-        setFaculties(res.data);
-        setTotal(res.total);
-      }
-    );
+      setFaculties(res.data);
+      setTotal(res.total);
+    });
     return () => {
       subscribe = false;
     };
@@ -72,6 +81,33 @@ export default function AdminFacultyPage() {
     return frontCreateFaculty({ departmentId, userId });
   }
 
+  function handleNameChange(e) {
+    setState((prev) => ({
+      ...prev,
+      name: e.target.value,
+    }));
+  }
+  const debouncedHandleNameChange = _.debounce(handleNameChange, 800);
+
+  function handleDepartmentNameChange(e) {
+    setState((prev) => ({
+      ...prev,
+      departmentName: e.target.value,
+    }));
+  }
+  const debouncedHandleDepartmentChange = _.debounce(
+    handleDepartmentNameChange,
+    800
+  );
+
+  function handleCollegeNameChange(e) {
+    setState((prev) => ({
+      ...prev,
+      collegeName: e.target.value,
+    }));
+  }
+  const debouncedHandleCollegeChange = _.debounce(handleCollegeNameChange, 800);
+
   return (
     <AdminLayout>
       <Box sx={{ m: 1 }}>
@@ -91,6 +127,24 @@ export default function AdminFacultyPage() {
             </Tooltip>
           </Stack>
         </Toolbar>
+
+        <Stack direction='row' spacing={1} sx={{ px: 2 }}>
+          <TextField
+            size='small'
+            label='Name'
+            onChange={debouncedHandleNameChange}
+          />
+          <TextField
+            size='small'
+            label='Department'
+            onChange={debouncedHandleDepartmentChange}
+          />
+          <TextField
+            size='small'
+            label='College'
+            onChange={debouncedHandleCollegeChange}
+          />
+        </Stack>
         <TableContainer>
           <Table>
             <TableHead>
@@ -104,13 +158,7 @@ export default function AdminFacultyPage() {
             </TableHead>
             <TableBody>
               {faculties.map((faculty) => (
-                <AdminFacultyView
-                  image={faculty.user.image}
-                  name={faculty.user.name}
-                  departmentName={faculty?.department?.name}
-                  collegeName={faculty?.department?.college?.name}
-                  key={faculty.id}
-                />
+                <AdminFaculty faculty={faculty} key={faculty.id} />
               ))}
             </TableBody>
           </Table>
