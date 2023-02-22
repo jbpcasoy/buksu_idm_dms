@@ -149,11 +149,12 @@ export default function AdminFacultyPage() {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell>Image</TableCell>
-                <TableCell>Name</TableCell>
-                <TableCell>Department</TableCell>
-                <TableCell>College</TableCell>
-                <TableCell>Actions</TableCell>
+                <TableCell align='center'>Image</TableCell>
+                <TableCell align='center'>Name</TableCell>
+                <TableCell align='center'>Department</TableCell>
+                <TableCell align='center'>College</TableCell>
+                <TableCell align='center'>Active</TableCell>
+                <TableCell align='center'>Actions</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>

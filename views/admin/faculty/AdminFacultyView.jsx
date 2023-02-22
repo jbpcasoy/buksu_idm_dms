@@ -1,4 +1,6 @@
-import { Avatar, TableCell, TableRow } from "@mui/material";
+import CheckIcon from "@mui/icons-material/Check";
+import CloseIcon from "@mui/icons-material/Close";
+import { Avatar, Chip, TableCell, TableRow } from "@mui/material";
 import { useState } from "react";
 import AdminDeleteFacultyAlert from "./AdminDeleteFacultyAlert";
 import AdminFacultyActionsMenu from "./AdminFacultyActionsMenu";
@@ -6,9 +8,12 @@ import AdminFacultyActionsMenu from "./AdminFacultyActionsMenu";
 export default function AdminFacultyView({
   image,
   name,
+  active,
   departmentName,
   collegeName,
   onDelete,
+  onActivate,
+  onDeactivate,
 }) {
   const [state, setState] = useState({
     openDelete: false,
@@ -28,7 +33,30 @@ export default function AdminFacultyView({
         <TableCell>{departmentName}</TableCell>
         <TableCell>{collegeName}</TableCell>
         <TableCell>
-          <AdminFacultyActionsMenu onDelete={() => openDeleteDialog(true)} />
+          {active && (
+            <Chip
+              label='Active'
+              size='small'
+              color='success'
+              icon={<CheckIcon />}
+            />
+          )}
+          {!active && (
+            <Chip
+              label='Inactive'
+              size='small'
+              color='error'
+              icon={<CloseIcon />}
+            />
+          )}
+        </TableCell>
+        <TableCell>
+          <AdminFacultyActionsMenu
+            onDelete={() => openDeleteDialog(true)}
+            active={active}
+            onActivate={onActivate}
+            onDeactivate={onDeactivate}
+          />
         </TableCell>
       </TableRow>
       <AdminDeleteFacultyAlert
