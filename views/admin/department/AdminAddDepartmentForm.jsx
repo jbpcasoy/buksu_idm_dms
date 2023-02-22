@@ -40,7 +40,9 @@ export default function AdminAddDepartmentForm({ open, onClose, onSubmit }) {
           </DialogContent>
           <DialogActions>
             <Button onClick={onClose}>Cancel</Button>
-            <Button type='submit'>Submit</Button>
+            <Button type='submit' disabled={formik.isSubmitting}>
+              Submit
+            </Button>
           </DialogActions>
         </form>
       </Dialog>
