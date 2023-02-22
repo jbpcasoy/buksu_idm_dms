@@ -30,6 +30,7 @@ export default async function readFaculties({
             name: true,
           },
         },
+        ActiveFaculty: true,
       },
       where: {
         user: {
