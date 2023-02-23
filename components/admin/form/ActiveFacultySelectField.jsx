@@ -43,7 +43,7 @@ export default function ActiveFacultySelectField({ onChange, ...props }) {
         onChange(value?.id ?? "");
       }}
       renderInput={(params) => (
-        <TextField {...params} label='Active Faculty' {...props} />
+        <TextField {...params} label='Active Faculty' size='small' {...props} />
       )}
       renderOption={(props, option) => {
         return (
