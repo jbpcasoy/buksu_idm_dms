@@ -1,7 +1,7 @@
-import AdminFaculty from "@/components/admin/faculty/AdminFaculty";
-import frontendReadFaculties from "@/services/frontend/admin/faculty/frontendReadFaculties";
-import frontendCreateFaculty from "@/services/frontend/faculty/frontendCreateFaculty";
-import AdminAddFacultyForm from "@/views/admin/faculty/AdminAddFacultyForm";
+import AdminChairperson from "@/components/admin/chairperson/AdminChairperson";
+import frontendCreateChairperson from "@/services/frontend/admin/chairperson/frontendCreateChairperson";
+import frontendReadChairpersons from "@/services/frontend/admin/chairperson/frontendReadChairpersons";
+import AdminAddChairpersonForm from "@/views/admin/chairperson/AdminAddChairpersonForm";
 import AdminLayout from "@/views/admin/layout/AdminLayout";
 import AddIcon from "@mui/icons-material/Add";
 import {
@@ -23,41 +23,40 @@ import {
 import _ from "lodash";
 import { useEffect, useState } from "react";
 
-export default function AdminFacultyPage() {
+export default function AdminChairpersonPage() {
+  const [chairpersons, setChairpersons] = useState([]);
   const [total, setTotal] = useState(0);
-  const [faculties, setFaculties] = useState([]);
   const [state, setState] = useState({
     limit: 5,
     page: 0,
-    openAdd: false,
     name: "",
     departmentName: "",
     collegeName: "",
+    openAdd: false,
   });
 
   useEffect(() => {
     let subscribe = true;
 
-    frontendReadFaculties({
+    frontendReadChairpersons({
       limit: state.limit,
       page: state.page + 1,
       name: state.name,
       departmentName: state.departmentName,
       collegeName: state.collegeName,
     }).then((res) => {
-      if (!subscribe) return;
-
-      setFaculties(res.data);
+      setChairpersons(res.data);
       setTotal(res.total);
     });
+
     return () => {
       subscribe = false;
     };
   }, [state]);
 
-  useEffect(() => {
-    console.log({ faculties });
-  }, [faculties]);
+  function openAddDialog(open) {
+    setState((prev) => ({ ...prev, openAdd: open }));
+  }
 
   function handleChangePage(_, page) {
     setState((prev) => ({ ...prev, page }));
@@ -69,16 +68,6 @@ export default function AdminFacultyPage() {
       limit: parseInt(event.target.value, 10),
       page: 0,
     }));
-  }
-
-  function openAddDialog(open) {
-    setState((prev) => ({ ...prev, openAdd: open }));
-  }
-
-  async function onAdd(value) {
-    const { departmentId, userId } = value;
-
-    return frontendCreateFaculty({ departmentId, userId });
   }
 
   function handleNameChange(e) {
@@ -108,41 +97,45 @@ export default function AdminFacultyPage() {
   }
   const debouncedHandleCollegeChange = _.debounce(handleCollegeNameChange, 800);
 
+  async function onAdd(value) {
+    const { facultyId } = value;
+
+    return frontendCreateChairperson({ facultyId });
+  }
+
   return (
     <AdminLayout>
       <Box sx={{ m: 1 }}>
         <Toolbar>
-          <Typography variant="h6">Faculties</Typography>
+          <Typography variant='h6'>Chairpersons</Typography>
 
           <Stack
-            direction="row"
-            justifyContent="flex-end"
-            alignItems="center"
+            direction='row'
+            justifyContent='flex-end'
+            alignItems='center'
             spacing={2}
-            sx={{ width: "100%" }}
-          >
-            <Tooltip title="Add">
+            sx={{ width: "100%" }}>
+            <Tooltip title='Add'>
               <IconButton onClick={() => openAddDialog(true)}>
                 <AddIcon />
               </IconButton>
             </Tooltip>
           </Stack>
         </Toolbar>
-
-        <Stack direction="row" spacing={1} sx={{ px: 2 }}>
+        <Stack direction='row' spacing={1} sx={{ px: 2 }}>
           <TextField
-            size="small"
-            label="Name"
+            size='small'
+            label='Name'
             onChange={debouncedHandleNameChange}
           />
           <TextField
-            size="small"
-            label="Department"
+            size='small'
+            label='Department'
             onChange={debouncedHandleDepartmentChange}
           />
           <TextField
-            size="small"
-            label="College"
+            size='small'
+            label='College'
             onChange={debouncedHandleCollegeChange}
           />
         </Stack>
@@ -154,21 +147,20 @@ export default function AdminFacultyPage() {
                 <TableCell>Name</TableCell>
                 <TableCell>Department</TableCell>
                 <TableCell>College</TableCell>
-                <TableCell align="center">Active</TableCell>
-                <TableCell align="center">Actions</TableCell>
+                <TableCell align='center'>Active</TableCell>
+                <TableCell align='center'>Actions</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {faculties.map((faculty) => (
-                <AdminFaculty faculty={faculty} key={faculty.id} />
+              {chairpersons.map((chairperson) => (
+                <AdminChairperson chairperson={chairperson} />
               ))}
             </TableBody>
           </Table>
         </TableContainer>
-
         <TablePagination
           rowsPerPageOptions={[5, 10, 25]}
-          component="div"
+          component='div'
           count={total}
           rowsPerPage={state.limit}
           page={state.page}
@@ -176,7 +168,7 @@ export default function AdminFacultyPage() {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </Box>
-      <AdminAddFacultyForm
+      <AdminAddChairpersonForm
         open={state.openAdd}
         onClose={() => openAddDialog(false)}
         onSubmit={onAdd}

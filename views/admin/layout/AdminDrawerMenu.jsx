@@ -49,7 +49,7 @@ const menuItems = [
   {
     label: "Chairpersons",
     icon: <Person4Icon />,
-    link: "#",
+    link: "/admin/chairperson",
   },
   {
     label: "Coordinators",
