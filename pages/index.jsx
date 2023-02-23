@@ -21,7 +21,7 @@ export default function Home() {
     frontendGetIMs({ page: 1, limit: 10 }).then((res) => {
       if (!subscribe) return;
 
-      setState((prev) => ({ ...prev, ims: res }));
+      setState((prev) => ({ ...prev, ims: res.data }));
     });
 
     return () => {
