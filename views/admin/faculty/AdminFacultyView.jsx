@@ -26,31 +26,31 @@ export default function AdminFacultyView({
   return (
     <>
       <TableRow>
-        <TableCell align='center'>
+        <TableCell>
           <Avatar src={image} />
         </TableCell>
         <TableCell>{name}</TableCell>
         <TableCell>{departmentName}</TableCell>
         <TableCell>{collegeName}</TableCell>
-        <TableCell>
+        <TableCell align="center">
           {active && (
             <Chip
-              label='Active'
-              size='small'
-              color='success'
+              label="Active"
+              size="small"
+              color="success"
               icon={<CheckIcon />}
             />
           )}
           {!active && (
             <Chip
-              label='Inactive'
-              size='small'
-              color='error'
+              label="Inactive"
+              size="small"
+              color="error"
               icon={<CloseIcon />}
             />
           )}
         </TableCell>
-        <TableCell>
+        <TableCell align="center">
           <AdminFacultyActionsMenu
             onDelete={() => openDeleteDialog(true)}
             active={active}

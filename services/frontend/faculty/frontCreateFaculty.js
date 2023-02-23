@@ -7,7 +7,7 @@ export default async function frontCreateFaculty({ userId, departmentId }) {
       departmentId,
     });
 
-    return faculty;
+    return faculty.data;
   } catch (error) {
     throw error;
   }
