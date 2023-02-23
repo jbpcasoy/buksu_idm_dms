@@ -7,9 +7,34 @@ export default async function readChairpersons({ limit, page }) {
     const chairpersons = await prisma.chairperson.findMany({
       take: limit,
       skip: (page - 1) * limit,
+      include: {
+        Faculty: {
+          select: {
+            user: {
+              select: {
+                name: true,
+                image: true,
+              },
+            },
+            department: {
+              select: {
+                name: true,
+                college: {
+                  select: {
+                    name: true,
+                  },
+                },
+              },
+            },
+          },
+        },
+        ActiveChairperson: true,
+      },
     });
 
-    return chairpersons;
+    const total = await prisma.chairperson.count();
+
+    return { data: chairpersons, total };
   } catch (error) {
     throw error;
   }
