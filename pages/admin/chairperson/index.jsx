@@ -153,7 +153,10 @@ export default function AdminChairpersonPage() {
             </TableHead>
             <TableBody>
               {chairpersons.map((chairperson) => (
-                <AdminChairperson chairperson={chairperson} />
+                <AdminChairperson
+                  chairperson={chairperson}
+                  key={chairperson.id}
+                />
               ))}
             </TableBody>
           </Table>

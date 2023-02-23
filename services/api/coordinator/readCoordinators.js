@@ -9,7 +9,9 @@ export default async function readCoordinators({ limit, page }) {
       skip: (page - 1) * limit,
     });
 
-    return coordinators;
+    const total = await prisma.coordinator.count();
+
+    return { data: coordinators };
   } catch (error) {
     throw error;
   }
