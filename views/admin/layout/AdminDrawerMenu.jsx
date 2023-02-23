@@ -2,9 +2,12 @@ import ApartmentIcon from "@mui/icons-material/Apartment";
 import BadgeIcon from "@mui/icons-material/Badge";
 import BusinessIcon from "@mui/icons-material/Business";
 import DescriptionIcon from "@mui/icons-material/Description";
+import FileOpenIcon from "@mui/icons-material/FileOpen";
 import HomeIcon from "@mui/icons-material/Home";
 import MenuIcon from "@mui/icons-material/Menu";
 import PersonIcon from "@mui/icons-material/Person";
+import Person2Icon from "@mui/icons-material/Person2";
+import Person4Icon from "@mui/icons-material/Person4";
 import {
   Box,
   Drawer,
@@ -29,11 +32,6 @@ const menuItems = [
     link: "/admin/user",
   },
   {
-    label: "Faculties",
-    icon: <BadgeIcon />,
-    link: "/admin/faculty",
-  },
-  {
     label: "Colleges",
     icon: <BusinessIcon />,
     link: "/admin/college",
@@ -44,8 +42,33 @@ const menuItems = [
     link: "/admin/department",
   },
   {
+    label: "Faculties",
+    icon: <BadgeIcon />,
+    link: "/admin/faculty",
+  },
+  {
+    label: "Chairpersons",
+    icon: <Person4Icon />,
+    link: "#",
+  },
+  {
+    label: "Coordinators",
+    icon: <Person2Icon />,
+    link: "#",
+  },
+  {
+    label: "Seniors",
+    icon: <PersonIcon />,
+    link: "#",
+  },
+  {
     label: "IMs",
     icon: <DescriptionIcon />,
+    link: "/admin/im",
+  },
+  {
+    label: "Files",
+    icon: <FileOpenIcon />,
     link: "#",
   },
 ];
