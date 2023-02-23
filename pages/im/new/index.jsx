@@ -1,11 +1,16 @@
 import WithSidebar from "@/components/WithSidebar";
+import frontendCreateActiveFile from "@/services/frontend/active_file/frontendCreateActiveFile";
+import frontendCreateFile from "@/services/frontend/file/frontendCreateFile";
 import frontendCreateIM from "@/services/frontend/im/frontendCreateIM";
+import uploadIMFile from "@/services/frontend/im/upload/uploadIMFile";
 import Layout from "@/views/layout/Layout";
 import { useFormik } from "formik";
 import { useEffect, useState } from "react";
 import * as Yup from "yup";
 
 export default function createIM() {
+  const [file, setFile] = useState();
+  const [filePreviewUrl, setFilePreviewUrl] = useState();
   const formik = useFormik({
     initialValues: {
       serialNumber: "",
@@ -19,15 +24,26 @@ export default function createIM() {
     onSubmit: (values) => {
       const { title, serialNumber } = values;
 
-      frontendCreateIM({
+      return frontendCreateIM({
         title,
         serialNumber,
+      }).then((im) => {
+        return uploadIMFile(file).then((res) => {
+          return frontendCreateFile({
+            iMId: im.id,
+            originalFileName: file.name,
+            fileName: res.filename,
+            googleDocsUrl: "https://docs.google.com/test-url",
+          }).then((createdFile) => {
+            frontendCreateActiveFile({
+              iMId: im.id,
+              fileId: createdFile.id,
+            });
+          });
+        });
       });
     },
   });
-
-  const [file, setFile] = useState();
-  const [filePreviewUrl, setFilePreviewUrl] = useState();
 
   useEffect(() => {
     if (!file) {

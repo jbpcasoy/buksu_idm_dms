@@ -1,7 +1,5 @@
 import WithSidebar from "@/components/WithSidebar";
-import frontendCreateIM from "@/services/frontend/im/frontendCreateIM";
 import frontendGetIMs from "@/services/frontend/im/frontendGetIMs";
-import AddIMModelView from "@/views/AddIMModalView";
 import IM from "@/views/im/IM";
 import Layout from "@/views/layout/Layout";
 import { useRouter } from "next/router";
@@ -9,7 +7,6 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
   const [state, setState] = useState({
-    addModalOpen: false,
     ims: [],
   });
 
@@ -207,25 +204,6 @@ export default function Home() {
             </tbody>
           </table>
         </div>
-
-        {state.addModalOpen && (
-          <AddIMModelView
-            isOpen={state.addModalOpen}
-            onClose={() => {
-              setState((prev) => {
-                return { ...prev, addModalOpen: false };
-              });
-            }}
-            onSubmit={async (values) => {
-              const { title, serialNumber } = values;
-
-              return frontendCreateIM({
-                serialNumber,
-                title,
-              });
-            }}
-          />
-        )}
       </WithSidebar>
     </Layout>
   );

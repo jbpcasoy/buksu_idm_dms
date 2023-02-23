@@ -6,7 +6,7 @@ export default async function frontendCreateIM({ title, serialNumber }) {
       title,
       serialNumber,
     });
-    return res;
+    return res.data;
   } catch (err) {
     console.error(err);
     throw err;
