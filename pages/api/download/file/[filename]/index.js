@@ -10,7 +10,7 @@ export default async function handler(req, res) {
 
   try {
     const file = await readFile(`${process.cwd()}/uploads/file/${filename}`);
-    res.setHeader("Content-Disposition", `attachment; filename=${filename}`);
+    res.setHeader("Content-Type", `application/pdf`);
     res.statusCode = 200;
     res.end(file);
   } catch (error) {

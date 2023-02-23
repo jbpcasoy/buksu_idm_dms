@@ -5,19 +5,12 @@ export default function College({ name, onView, bottomBorder = true }) {
         bottomBorder ? "border-b dark:border-CITLGray-light" : ""
       } text-sm text-CITLGray-main text-left p-4 `}
     >
-      <td class="px-6 py-4 whitespace-nowrap">
-        <input
-          type="checkbox"
-          class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-        />
-      </td>
-
       <td className="px-6 py-4 ">{name}</td>
 
-      <td className="bg-white  font-medium text-slate-400  items-center justify-center px-6 py-4 ">
+      <td className="bg-white  font-medium text-slate-400  items-center justify-center py-4 flex ">
         <button
           onClick={onView}
-          className="transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-CITLOrange duration-300 text-white text-sm py-2 px-4 rounded mr-3"
+          className="transition ease-in-out delay-150 px-5 py-2.5 text-sm font-medium text-center text-white bg-CITLDarkBlue rounded-lg hover:-translate-y-1 hover:scale-110 hover:bg-CITLOrange duration-300"
         >
           View
         </button>

@@ -316,6 +316,7 @@ const ReviewForm = ({ isOpen, onClose, onSubmit }) => {
                     Senior Faculty
                   </label>
                   <input
+                    disabled
                     {...formik.getFieldProps("seniorFaculty")}
                     className="border border-gray-400 p-2 w-full rounded-md"
                     type="text"
@@ -339,6 +340,7 @@ const ReviewForm = ({ isOpen, onClose, onSubmit }) => {
                     Program Chair
                   </label>
                   <input
+                    disabled
                     {...formik.getFieldProps("imType")}
                     className="border border-gray-400 p-2 w-full rounded-md"
                     type="text"
