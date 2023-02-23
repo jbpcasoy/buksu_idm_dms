@@ -1,6 +1,12 @@
 import { PrismaClient } from "@prisma/client";
 
-export default async function readChairpersons({ limit, page }) {
+export default async function readChairpersons({
+  limit,
+  page,
+  name,
+  departmentName,
+  collegeName,
+}) {
   const prisma = new PrismaClient();
 
   try {
@@ -30,9 +36,54 @@ export default async function readChairpersons({ limit, page }) {
         },
         ActiveChairperson: true,
       },
+      where: {
+        Faculty: {
+          user: {
+            name: {
+              contains: name,
+              mode: "insensitive",
+            },
+          },
+          department: {
+            name: {
+              contains: departmentName,
+              mode: "insensitive",
+            },
+            college: {
+              name: {
+                contains: collegeName,
+                mode: "insensitive",
+              },
+            },
+          },
+        },
+      },
     });
 
-    const total = await prisma.chairperson.count();
+    const total = await prisma.chairperson.count({
+      where: {
+        Faculty: {
+          user: {
+            name: {
+              contains: name,
+              mode: "insensitive",
+            },
+          },
+          department: {
+            name: {
+              contains: departmentName,
+              mode: "insensitive",
+            },
+            college: {
+              name: {
+                contains: collegeName,
+                mode: "insensitive",
+              },
+            },
+          },
+        },
+      },
+    });
 
     return { data: chairpersons, total };
   } catch (error) {

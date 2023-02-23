@@ -1,4 +1,4 @@
-import frontendCreateActivateFaculty from "@/services/frontend/admin/active_faculty/frontendActivateFaculty";
+import frontendCreateActiveFaculty from "@/services/frontend/admin/active_faculty/frontendCreateActiveFaculty";
 import frontendDeleteActiveFaculty from "@/services/frontend/admin/active_faculty/frontendDeleteActiveFaculty";
 import frontendDeleteFaculty from "@/services/frontend/faculty/frontendDeleteFaculty";
 import AdminFacultyView from "@/views/admin/faculty/AdminFacultyView";
@@ -15,7 +15,7 @@ export default function AdminFaculty({ faculty }) {
 
   async function onActivate() {
     try {
-      return frontendCreateActivateFaculty({
+      return frontendCreateActiveFaculty({
         userId: facultyData.userId,
         facultyId: facultyData.id,
         departmentId: facultyData.departmentId,

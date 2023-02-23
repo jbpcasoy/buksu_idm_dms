@@ -1,4 +1,6 @@
+import frontendCreateChairperson from "@/services/frontend/admin/chairperson/frontendCreateChairperson";
 import frontendReadChairpersons from "@/services/frontend/admin/chairperson/frontendReadChairpersons";
+import AdminAddChairpersonForm from "@/views/admin/chairperson/AdminAddChairpersonForm";
 import AdminChairpersonView from "@/views/admin/chairperson/AdminChairpersonView";
 import AdminLayout from "@/views/admin/layout/AdminLayout";
 import AddIcon from "@mui/icons-material/Add";
@@ -13,10 +15,12 @@ import {
   TableHead,
   TablePagination,
   TableRow,
+  TextField,
   Toolbar,
   Tooltip,
   Typography,
 } from "@mui/material";
+import _ from "lodash";
 import { useEffect, useState } from "react";
 
 export default function AdminChairpersonPage() {
@@ -25,6 +29,10 @@ export default function AdminChairpersonPage() {
   const [state, setState] = useState({
     limit: 5,
     page: 0,
+    name: "",
+    departmentName: "",
+    collegeName: "",
+    openAdd: false,
   });
 
   useEffect(() => {
@@ -33,6 +41,9 @@ export default function AdminChairpersonPage() {
     frontendReadChairpersons({
       limit: state.limit,
       page: state.page + 1,
+      name: state.name,
+      departmentName: state.departmentName,
+      collegeName: state.collegeName,
     }).then((res) => {
       setChairpersons(res.data);
       setTotal(res.total);
@@ -42,6 +53,10 @@ export default function AdminChairpersonPage() {
       subscribe = false;
     };
   }, [state]);
+
+  function openAddDialog(open) {
+    setState((prev) => ({ ...prev, openAdd: open }));
+  }
 
   function handleChangePage(_, page) {
     setState((prev) => ({ ...prev, page }));
@@ -53,6 +68,39 @@ export default function AdminChairpersonPage() {
       limit: parseInt(event.target.value, 10),
       page: 0,
     }));
+  }
+
+  function handleNameChange(e) {
+    setState((prev) => ({
+      ...prev,
+      name: e.target.value,
+    }));
+  }
+  const debouncedHandleNameChange = _.debounce(handleNameChange, 800);
+
+  function handleDepartmentNameChange(e) {
+    setState((prev) => ({
+      ...prev,
+      departmentName: e.target.value,
+    }));
+  }
+  const debouncedHandleDepartmentChange = _.debounce(
+    handleDepartmentNameChange,
+    800
+  );
+
+  function handleCollegeNameChange(e) {
+    setState((prev) => ({
+      ...prev,
+      collegeName: e.target.value,
+    }));
+  }
+  const debouncedHandleCollegeChange = _.debounce(handleCollegeNameChange, 800);
+
+  async function onAdd(value) {
+    const { facultyId } = value;
+
+    return frontendCreateChairperson({ facultyId });
   }
 
   return (
@@ -68,12 +116,29 @@ export default function AdminChairpersonPage() {
             spacing={2}
             sx={{ width: "100%" }}>
             <Tooltip title='Add'>
-              <IconButton onClick={() => {}}>
+              <IconButton onClick={() => openAddDialog(true)}>
                 <AddIcon />
               </IconButton>
             </Tooltip>
           </Stack>
         </Toolbar>
+        <Stack direction='row' spacing={1} sx={{ px: 2 }}>
+          <TextField
+            size='small'
+            label='Name'
+            onChange={debouncedHandleNameChange}
+          />
+          <TextField
+            size='small'
+            label='Department'
+            onChange={debouncedHandleDepartmentChange}
+          />
+          <TextField
+            size='small'
+            label='College'
+            onChange={debouncedHandleCollegeChange}
+          />
+        </Stack>
         <TableContainer>
           <Table>
             <TableHead>
@@ -108,6 +173,11 @@ export default function AdminChairpersonPage() {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </Box>
+      <AdminAddChairpersonForm
+        open={state.openAdd}
+        onClose={() => openAddDialog(false)}
+        onSubmit={onAdd}
+      />
     </AdminLayout>
   );
 }

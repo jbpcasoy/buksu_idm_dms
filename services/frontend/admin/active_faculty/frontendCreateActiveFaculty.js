@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export default async function frontendCreateActivateFaculty({
+export default async function frontendCreateActiveFaculty({
   userId,
   facultyId,
   departmentId,
