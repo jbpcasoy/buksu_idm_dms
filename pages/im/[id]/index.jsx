@@ -46,7 +46,7 @@ export default function viewIM() {
           </div>
           {/* TODO change pdf url into dynamic */}
           <iframe
-            src="https://www.africau.edu/images/default/sample.pdf"
+            src={`/api/download/file/${iM?.ActiveFile?.File.fileName}`}
             className="w-full h-screen"
           />
         </div>

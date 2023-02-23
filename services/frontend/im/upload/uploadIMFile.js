@@ -5,7 +5,7 @@ export default async function uploadIMFile(file) {
     const formData = new FormData();
     formData.append("file", file, file.name);
 
-    const response = await axios.post("/api/im/upload", formData, {
+    const response = await axios.post("/api/upload/file", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
