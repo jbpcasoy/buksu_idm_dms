@@ -1,6 +1,7 @@
 import CheckIcon from "@mui/icons-material/Check";
 import CloseIcon from "@mui/icons-material/Close";
 import { Avatar, Chip, TableCell, TableRow } from "@mui/material";
+import AdminChairpersonActionsMenu from "./AdminChairpersonActionsMenu";
 
 export default function AdminChairpersonView({
   image,
@@ -8,6 +9,9 @@ export default function AdminChairpersonView({
   department,
   college,
   active,
+  onDelete,
+  onActivate,
+  onDeactivate,
 }) {
   return (
     <TableRow>
@@ -34,6 +38,14 @@ export default function AdminChairpersonView({
             icon={<CloseIcon />}
           />
         )}
+      </TableCell>
+      <TableCell>
+        <AdminChairpersonActionsMenu
+          active={active}
+          onDelete={onDelete}
+          onActivate={onActivate}
+          onDeactivate={onDeactivate}
+        />
       </TableCell>
     </TableRow>
   );

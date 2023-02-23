@@ -1,7 +1,7 @@
+import AdminChairperson from "@/components/admin/chairperson/AdminChairperson";
 import frontendCreateChairperson from "@/services/frontend/admin/chairperson/frontendCreateChairperson";
 import frontendReadChairpersons from "@/services/frontend/admin/chairperson/frontendReadChairpersons";
 import AdminAddChairpersonForm from "@/views/admin/chairperson/AdminAddChairpersonForm";
-import AdminChairpersonView from "@/views/admin/chairperson/AdminChairpersonView";
 import AdminLayout from "@/views/admin/layout/AdminLayout";
 import AddIcon from "@mui/icons-material/Add";
 import {
@@ -148,17 +148,12 @@ export default function AdminChairpersonPage() {
                 <TableCell>Department</TableCell>
                 <TableCell>College</TableCell>
                 <TableCell align='center'>Active</TableCell>
+                <TableCell align='center'>Actions</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {chairpersons.map((chairperson) => (
-                <AdminChairpersonView
-                  image={chairperson.Faculty.user.image}
-                  name={chairperson.Faculty.user.name}
-                  department={chairperson.Faculty.department.name}
-                  college={chairperson.Faculty.department.college.name}
-                  active={Boolean(chairperson.ActiveChairperson)}
-                />
+                <AdminChairperson chairperson={chairperson} />
               ))}
             </TableBody>
           </Table>

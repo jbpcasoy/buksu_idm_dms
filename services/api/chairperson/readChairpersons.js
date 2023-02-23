@@ -16,6 +16,7 @@ export default async function readChairpersons({
       include: {
         Faculty: {
           select: {
+            departmentId: true,
             user: {
               select: {
                 name: true,
