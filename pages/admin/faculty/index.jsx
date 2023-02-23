@@ -112,15 +112,16 @@ export default function AdminFacultyPage() {
     <AdminLayout>
       <Box sx={{ m: 1 }}>
         <Toolbar>
-          <Typography variant='h6'>Faculties</Typography>
+          <Typography variant="h6">Faculties</Typography>
 
           <Stack
-            direction='row'
-            justifyContent='flex-end'
-            alignItems='center'
+            direction="row"
+            justifyContent="flex-end"
+            alignItems="center"
             spacing={2}
-            sx={{ width: "100%" }}>
-            <Tooltip title='Add'>
+            sx={{ width: "100%" }}
+          >
+            <Tooltip title="Add">
               <IconButton onClick={() => openAddDialog(true)}>
                 <AddIcon />
               </IconButton>
@@ -128,20 +129,20 @@ export default function AdminFacultyPage() {
           </Stack>
         </Toolbar>
 
-        <Stack direction='row' spacing={1} sx={{ px: 2 }}>
+        <Stack direction="row" spacing={1} sx={{ px: 2 }}>
           <TextField
-            size='small'
-            label='Name'
+            size="small"
+            label="Name"
             onChange={debouncedHandleNameChange}
           />
           <TextField
-            size='small'
-            label='Department'
+            size="small"
+            label="Department"
             onChange={debouncedHandleDepartmentChange}
           />
           <TextField
-            size='small'
-            label='College'
+            size="small"
+            label="College"
             onChange={debouncedHandleCollegeChange}
           />
         </Stack>
@@ -149,12 +150,12 @@ export default function AdminFacultyPage() {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell align='center'>Image</TableCell>
-                <TableCell align='center'>Name</TableCell>
-                <TableCell align='center'>Department</TableCell>
-                <TableCell align='center'>College</TableCell>
-                <TableCell align='center'>Active</TableCell>
-                <TableCell align='center'>Actions</TableCell>
+                <TableCell>Image</TableCell>
+                <TableCell>Name</TableCell>
+                <TableCell>Department</TableCell>
+                <TableCell>College</TableCell>
+                <TableCell align="center">Active</TableCell>
+                <TableCell align="center">Actions</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -167,7 +168,7 @@ export default function AdminFacultyPage() {
 
         <TablePagination
           rowsPerPageOptions={[5, 10, 25]}
-          component='div'
+          component="div"
           count={total}
           rowsPerPage={state.limit}
           page={state.page}

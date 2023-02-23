@@ -6,9 +6,9 @@ export default function Header() {
   const router = useRouter();
 
   return (
-    <header className=" flex items-center justify-between flex-wrap bg-CITLDarkBlue pl-4 pr-6">
+    <nav className=" flex items-center justify-between flex-wrap bg-CITLDarkBlue pl-4 pr-6 py-3">
       <a href="/">
-        <img src="/IMAGES/BukSUIMD.png" alt="Logo" className="w-64"></img>
+        <img src="/IMAGES/BukSUIMD.png" alt="Logo" className="w-52"></img>
       </a>
       <nav className="flex items-center">
         <a
@@ -28,32 +28,6 @@ export default function Header() {
 
         <LoginButton onSignIn={signIn} onSignOut={signOut} />
       </nav>
-    </header>
-    // <nav className='flex items-center justify-between flex-wrap bg-gray-800 p-4'>
-    //   <ul className='flex'>
-    //   <img src="/IMAGES/BukSUIMD.png" alt="Logo" className="w-64"></img>
-    //     <li className='mr-6'>
-    //       <Link
-    //         className={`text-white hover:text-gray-400 ${
-    //           router.asPath === "/" ? "underline" : ""
-    //         }`}
-    //         href='/'>
-    //         Home
-    //       </Link>
-    //     </li>
-    //     <li className='mr-6'>
-    //       <Link
-    //         className={`text-white hover:text-gray-400 ${
-    //           router.asPath === "/me" ? "underline" : ""
-    //         }`}
-    //         href='/me'>
-    //         Profile
-    //       </Link>
-    //     </li>
-    //     <li className='mr-6'>
-    //       <LoginButton onSignIn={signIn} onSignOut={signOut} />
-    //     </li>
-    //   </ul>
-    // </nav>
+    </nav>
   );
 }

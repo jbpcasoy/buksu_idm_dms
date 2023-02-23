@@ -10,6 +10,15 @@ export default async function readIM(id) {
       },
       include: {
         owner: true,
+        ActiveFile: {
+          select: {
+            File: {
+              select: {
+                fileName: true,
+              },
+            },
+          },
+        },
       },
     });
 
