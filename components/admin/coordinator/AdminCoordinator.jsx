@@ -43,7 +43,6 @@ export default function AdminCoordinator({ coordinator }) {
       department={coordinatorData.Faculty.department.name}
       college={coordinatorData.Faculty.department.college.name}
       active={Boolean(coordinatorData.ActiveCoordinator)}
-      key={coordinatorData.id}
       onDelete={onDelete}
       onActivate={onActivate}
       onDeactivate={onDeactivate}

@@ -155,7 +155,10 @@ export default function AdminCoordinatorPage() {
             </TableHead>
             <TableBody>
               {coordinators.map((coordinator) => (
-                <AdminCoordinator coordinator={coordinator} />
+                <AdminCoordinator
+                  coordinator={coordinator}
+                  key={coordinator.id}
+                />
               ))}
             </TableBody>
           </Table>

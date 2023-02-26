@@ -135,7 +135,9 @@ export default function AdminIM() {
               onChange={handleStatusChange}>
               <MenuItem value='All'>All</MenuItem>
               {IMStatuses.map((status) => (
-                <MenuItem value={status}>{status}</MenuItem>
+                <MenuItem value={status} key={status}>
+                  {status}
+                </MenuItem>
               ))}
             </Select>
           </FormControl>
@@ -161,6 +163,7 @@ export default function AdminIM() {
                   department={im.owner.department.name}
                   status={im.status}
                   dateCreated={im.createdAt}
+                  key={im.id}
                 />
               ))}
             </TableBody>
