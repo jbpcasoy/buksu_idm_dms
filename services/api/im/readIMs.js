@@ -32,11 +32,11 @@ export default async function readIMs({
       where: {
         serialNumber: {
           contains: serialNumber,
-          mode: "insensitive",
+          // mode: "insensitive",
         },
         title: {
           contains: title,
-          mode: "insensitive",
+          // mode: "insensitive",
         },
         status: {
           equals: status,
@@ -48,11 +48,11 @@ export default async function readIMs({
       where: {
         serialNumber: {
           contains: serialNumber,
-          mode: "insensitive",
+          // mode: "insensitive",
         },
         title: {
           contains: title,
-          mode: "insensitive",
+          // mode: "insensitive",
         },
         status: {
           equals: status,

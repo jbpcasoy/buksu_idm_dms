@@ -12,7 +12,7 @@ export default async function readActiveFaculties({ page, limit, name }) {
           user: {
             name: {
               contains: name,
-              mode: "insensitive",
+              // mode: "insensitive",
             },
           },
         },
@@ -43,7 +43,7 @@ export default async function readActiveFaculties({ page, limit, name }) {
           user: {
             name: {
               contains: name,
-              mode: "insensitive",
+              // mode: "insensitive",
             },
           },
         },
