@@ -54,7 +54,7 @@ const menuItems = [
   {
     label: "Coordinators",
     icon: <Person2Icon />,
-    link: "#",
+    link: "/admin/coordinator",
   },
   {
     label: "Seniors",

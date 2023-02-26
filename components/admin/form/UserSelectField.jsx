@@ -41,7 +41,7 @@ export default function UserSelectField({ onChange, ...props }) {
         onChange(value?.id ?? "");
       }}
       renderInput={(params) => (
-        <TextField {...params} label='User' {...props} />
+        <TextField {...params} label='User' size='small' {...props} />
       )}
       renderOption={(props, option, state) => {
         console.log({ props, option, state });

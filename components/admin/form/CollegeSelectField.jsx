@@ -29,7 +29,7 @@ export default function CollegeSelectField({ onChange, ...props }) {
         onChange(value?.id);
       }}
       renderInput={(params) => (
-        <TextField {...params} label='College' {...props} />
+        <TextField {...params} label='College' size='small' {...props} />
       )}
     />
   );

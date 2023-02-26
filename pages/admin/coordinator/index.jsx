@@ -1,7 +1,7 @@
-import AdminChairperson from "@/components/admin/chairperson/AdminChairperson";
-import frontendCreateChairperson from "@/services/frontend/admin/chairperson/frontendCreateChairperson";
-import frontendReadChairpersons from "@/services/frontend/admin/chairperson/frontendReadChairpersons";
-import AdminAddChairpersonForm from "@/views/admin/chairperson/AdminAddChairpersonForm";
+import AdminCoordinator from "@/components/admin/coordinator/AdminCoordinator";
+import frontendCreateCoordinator from "@/services/frontend/admin/coordinator/frontendCreateCoordinator";
+import frontendReadCoordinators from "@/services/frontend/admin/coordinator/frontendReadCoordinators";
+import AdminAddCoordinatorForm from "@/views/admin/coordinator/AdminAddCoordinatorForm";
 import AdminLayout from "@/views/admin/layout/AdminLayout";
 import AddIcon from "@mui/icons-material/Add";
 import {
@@ -23,29 +23,31 @@ import {
 import _ from "lodash";
 import { useEffect, useState } from "react";
 
-export default function AdminChairpersonPage() {
-  const [chairpersons, setChairpersons] = useState([]);
+export default function AdminCoordinatorPage() {
+  const [coordinators, setCoordinators] = useState([]);
   const [total, setTotal] = useState(0);
   const [state, setState] = useState({
     limit: 5,
     page: 0,
+    openAdd: false,
     name: "",
     departmentName: "",
     collegeName: "",
-    openAdd: false,
   });
 
   useEffect(() => {
     let subscribe = true;
 
-    frontendReadChairpersons({
+    frontendReadCoordinators({
       limit: state.limit,
       page: state.page + 1,
       name: state.name,
       departmentName: state.departmentName,
       collegeName: state.collegeName,
     }).then((res) => {
-      setChairpersons(res.data);
+      if (!subscribe) return;
+
+      setCoordinators(res.data);
       setTotal(res.total);
     });
 
@@ -68,6 +70,12 @@ export default function AdminChairpersonPage() {
       limit: parseInt(event.target.value, 10),
       page: 0,
     }));
+  }
+
+  async function onAdd(values) {
+    const { facultyId } = values;
+
+    return frontendCreateCoordinator({ facultyId });
   }
 
   function handleNameChange(e) {
@@ -97,17 +105,11 @@ export default function AdminChairpersonPage() {
   }
   const debouncedHandleCollegeChange = _.debounce(handleCollegeNameChange, 800);
 
-  async function onAdd(value) {
-    const { facultyId } = value;
-
-    return frontendCreateChairperson({ facultyId });
-  }
-
   return (
     <AdminLayout>
       <Box sx={{ m: 1 }}>
         <Toolbar>
-          <Typography variant='h6'>Chairpersons</Typography>
+          <Typography variant='h6'>Coordinators</Typography>
 
           <Stack
             direction='row'
@@ -152,11 +154,8 @@ export default function AdminChairpersonPage() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {chairpersons.map((chairperson) => (
-                <AdminChairperson
-                  chairperson={chairperson}
-                  key={chairperson.id}
-                />
+              {coordinators.map((coordinator) => (
+                <AdminCoordinator coordinator={coordinator} />
               ))}
             </TableBody>
           </Table>
@@ -171,7 +170,7 @@ export default function AdminChairpersonPage() {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </Box>
-      <AdminAddChairpersonForm
+      <AdminAddCoordinatorForm
         open={state.openAdd}
         onClose={() => openAddDialog(false)}
         onSubmit={onAdd}
