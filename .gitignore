@@ -34,3 +34,8 @@ yarn-error.log*
 
 # Uploaded files
 uploads/*/*
+
+# Prisma
+/prisma/migrations
+/prisma/dev.db
+/prisma/dev.db-journal
