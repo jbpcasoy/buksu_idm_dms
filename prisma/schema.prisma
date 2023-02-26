@@ -55,6 +55,7 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
+// dont use with sqlite
 // enum IMStatus {
 //   SUBMITTED
 //   DEPARTMENT_REVIEWED
@@ -67,7 +68,9 @@ model IM {
   id                 String              @id @default(cuid())
   serialNumber       String
   title              String
-  // status             IMStatus            @default(SUBMITTED)
+  // dont use with sqlite
+  // status             IMStatus            @default(SUBMITTED) 
+  // use with sqlite
   status             String              @default("SUBMITTED")
   owner              Faculty             @relation(fields: [ownerId], references: [id])
   ownerId            String
