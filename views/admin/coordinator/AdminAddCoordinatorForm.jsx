@@ -10,7 +10,7 @@ import {
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
-export default function AdminAddChairpersonForm({ open, onClose, onSubmit }) {
+export default function AdminAddCoordinatorForm({ open, onClose, onSubmit }) {
   const formik = useFormik({
     initialValues: {
       facultyId: "",
@@ -29,7 +29,7 @@ export default function AdminAddChairpersonForm({ open, onClose, onSubmit }) {
 
   return (
     <Dialog open={open} onClose={onClose} fullWidth>
-      <DialogTitle>Add Chairperson</DialogTitle>
+      <DialogTitle>Add Coordinator</DialogTitle>
       <form noValidate onSubmit={formik.handleSubmit}>
         <DialogContent>
           <Stack spacing={1} sx={{ mt: 1 }}>
