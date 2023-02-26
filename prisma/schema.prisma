@@ -1,5 +1,5 @@
 datasource db {
-  provider = "postgres"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
   // shadowDatabaseUrl = env("SHADOW_DATABASE_URL") // Only needed when using a cloud provider that doesn't support the creation of new databases, like Heroku. Learn more: https://pris.ly/migrate-shadow
 }
@@ -55,19 +55,20 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
-enum IMStatus {
-  SUBMITTED
-  DEPARTMENT_REVIEWED
-  DEPARTMENT_ENDORSED
-  CITL_REVIEWED
-  CITL_ENDORSED
-}
+// enum IMStatus {
+//   SUBMITTED
+//   DEPARTMENT_REVIEWED
+//   DEPARTMENT_ENDORSED
+//   CITL_REVIEWED
+//   CITL_ENDORSED
+// }
 
 model IM {
   id                 String              @id @default(cuid())
   serialNumber       String
   title              String
-  status             IMStatus            @default(SUBMITTED)
+  // status             IMStatus            @default(SUBMITTED)
+  status             String              @default("SUBMITTED")
   owner              Faculty             @relation(fields: [ownerId], references: [id])
   ownerId            String
   createdAt          DateTime            @default(now())

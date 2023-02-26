@@ -43,18 +43,18 @@ export default async function readCoordinators({
           user: {
             name: {
               contains: name,
-              mode: "insensitive",
+              // mode: "insensitive",
             },
           },
           department: {
             name: {
               contains: departmentName,
-              mode: "insensitive",
+              // mode: "insensitive",
             },
             college: {
               name: {
                 contains: collegeName,
-                mode: "insensitive",
+                // mode: "insensitive",
               },
             },
           },

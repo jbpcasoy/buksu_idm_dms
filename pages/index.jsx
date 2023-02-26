@@ -49,6 +49,8 @@ export default function Home() {
             </div>
 
             <Image
+              fill={true}
+              position='relative'
               className='md:w-2/12 sm:w-12/12 rounded-lg object-cover relative shadow-lg'
               src='/IMAGES/DSC_6510.jpg'
               alt='Announcement Image'
