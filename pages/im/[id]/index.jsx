@@ -1,10 +1,11 @@
 import WithSidebar from "@/components/WithSidebar";
 import frontendReadIM from "@/services/frontend/im/frontendReadIM";
 import Layout from "@/views/layout/Layout";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-export default function viewIM() {
+export default function ViewIM() {
   const router = useRouter();
   const [iM, setIM] = useState();
 
@@ -20,34 +21,31 @@ export default function viewIM() {
   return (
     <Layout>
       <WithSidebar>
-        <div className="bg-white rounded-md p-4">
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-medium">{iM?.title}</h2>
-            <div className="items-left">
-              <a
+        <div className='bg-white rounded-md p-4'>
+          <div className='flex items-center justify-between mb-4'>
+            <h2 className='text-lg font-medium'>{iM?.title}</h2>
+            <div className='items-left'>
+              <Link
                 href={`/im/${iM?.id}/versions`}
-                className="text-CITLDarkBlue border border-CITLGray-main p-2 rounded hover:bg-CITLOrange"
-              >
+                className='text-CITLDarkBlue border border-CITLGray-main p-2 rounded hover:bg-CITLOrange'>
                 Versions
-              </a>{" "}
-              <a
-                href="#"
-                className="text-CITLDarkBlue border border-CITLGray-main p-2 rounded hover:bg-CITLOrange"
-              >
+              </Link>{" "}
+              <Link
+                href='#'
+                className='text-CITLDarkBlue border border-CITLGray-main p-2 rounded hover:bg-CITLOrange'>
                 Download
-              </a>{" "}
-              <a
-                href="/review/form"
-                className="text-CITLWhite bg-blue-500 p-2 rounded hover:bg-CITLOrange"
-              >
+              </Link>{" "}
+              <Link
+                href='/review/form'
+                className='text-CITLWhite bg-blue-500 p-2 rounded hover:bg-CITLOrange'>
                 Review
-              </a>
+              </Link>
             </div>
           </div>
           {/* TODO change pdf url into dynamic */}
           <iframe
             src={`/api/download/file/${iM?.ActiveFile?.File.fileName}`}
-            className="w-full h-screen"
+            className='w-full h-screen'
           />
         </div>
       </WithSidebar>
