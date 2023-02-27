@@ -1,6 +1,6 @@
 import AdminFaculty from "@/components/admin/faculty/AdminFaculty";
 import frontendReadFaculties from "@/services/frontend/admin/faculty/frontendReadFaculties";
-import frontCreateFaculty from "@/services/frontend/faculty/frontCreateFaculty";
+import frontendCreateFaculty from "@/services/frontend/faculty/frontendCreateFaculty";
 import AdminAddFacultyForm from "@/views/admin/faculty/AdminAddFacultyForm";
 import AdminLayout from "@/views/admin/layout/AdminLayout";
 import AddIcon from "@mui/icons-material/Add";
@@ -78,7 +78,7 @@ export default function AdminFacultyPage() {
   async function onAdd(value) {
     const { departmentId, userId } = value;
 
-    return frontCreateFaculty({ departmentId, userId });
+    return frontendCreateFaculty({ departmentId, userId });
   }
 
   function handleNameChange(e) {

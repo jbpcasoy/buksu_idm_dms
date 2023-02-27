@@ -1,0 +1,169 @@
+[
+  {
+    "_id": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "colName": "buksu_imd_dms",
+    "created": "2023-02-26T01:21:31.345Z",
+    "sortNum": 10000,
+    "folders": [
+      {
+        "_id": "bd1fca66-edfe-47f2-8d18-0d6c8e254442",
+        "name": "IM",
+        "containerId": "",
+        "created": "2023-02-26T01:21:31.353Z",
+        "sortNum": 10000
+      },
+      {
+        "_id": "a3ba7e72-c342-44b0-bcfa-a88f9cd2da5c",
+        "name": "File",
+        "containerId": "",
+        "created": "2023-02-26T01:21:31.354Z",
+        "sortNum": 20000
+      },
+      {
+        "_id": "2818229b-a18b-44b8-a63e-cfc70a2b401e",
+        "name": "Auth",
+        "containerId": "",
+        "created": "2023-02-26T01:21:31.355Z",
+        "sortNum": 30000
+      },
+      {
+        "_id": "afbe835e-c4d4-4588-822a-40c7eed8e6fa",
+        "name": "Upload",
+        "containerId": "",
+        "created": "2023-02-26T01:21:31.356Z",
+        "sortNum": 40000
+      },
+      {
+        "_id": "a11f2aeb-8946-4fd1-8752-a089df16e89a",
+        "name": "Download",
+        "containerId": "",
+        "created": "2023-02-26T01:21:31.357Z",
+        "sortNum": 50000
+      },
+      {
+        "_id": "d12648fd-3f0e-402f-a735-8e75c368d353",
+        "name": "User",
+        "containerId": "",
+        "created": "2023-02-26T01:21:31.358Z",
+        "sortNum": 60000
+      },
+      {
+        "_id": "59c3eab7-bbe9-4212-81a5-2b6a5703958d",
+        "name": "College",
+        "containerId": "",
+        "created": "2023-02-26T01:21:31.359Z",
+        "sortNum": 70000
+      },
+      {
+        "_id": "21b0ff05-c476-4619-a541-247a075614b2",
+        "name": "Department",
+        "containerId": "",
+        "created": "2023-02-26T01:21:31.360Z",
+        "sortNum": 80000
+      },
+      {
+        "_id": "ae9316ac-3fea-4071-b9f0-8b9f170186b2",
+        "name": "Faculty",
+        "containerId": "",
+        "created": "2023-02-26T01:21:31.361Z",
+        "sortNum": 90000
+      },
+      {
+        "_id": "2133be21-f126-4527-be80-ad082ca4d7cd",
+        "name": "ActiveFaculty",
+        "containerId": "",
+        "created": "2023-02-26T01:21:31.363Z",
+        "sortNum": 100000
+      },
+      {
+        "_id": "5e869143-5024-4c93-b955-c3eaa7b11ae4",
+        "name": "Chairperson",
+        "containerId": "",
+        "created": "2023-02-26T01:21:31.364Z",
+        "sortNum": 110000
+      },
+      {
+        "_id": "6d886ec5-bc9e-4b75-a0b7-6922e37da04c",
+        "name": "Coordinator",
+        "containerId": "",
+        "created": "2023-02-26T01:21:31.365Z",
+        "sortNum": 120000
+      },
+      {
+        "_id": "b85e3533-d259-4dd1-8638-1154c3f4d5f0",
+        "name": "Senior",
+        "containerId": "",
+        "created": "2023-02-26T01:21:31.366Z",
+        "sortNum": 130000
+      },
+      {
+        "_id": "cf136302-a036-4d23-8e67-221a33be0a92",
+        "name": "ActiveCoordinator",
+        "containerId": "",
+        "created": "2023-02-26T01:21:31.367Z",
+        "sortNum": 140000
+      },
+      {
+        "_id": "f579dabf-15cb-4e04-b0b5-22c6a6b2cf19",
+        "name": "ActiveSenior",
+        "containerId": "",
+        "created": "2023-02-26T01:21:31.368Z",
+        "sortNum": 150000
+      },
+      {
+        "_id": "7e87e215-cc38-4b2d-bd3b-e056796b38c4",
+        "name": "ActiveChairperson",
+        "containerId": "",
+        "created": "2023-02-26T01:21:31.369Z",
+        "sortNum": 160000
+      },
+      {
+        "_id": "678e5977-4dd6-4891-90f6-f4c1c6ec196d",
+        "name": "DepartmentApproval",
+        "containerId": "",
+        "created": "2023-02-26T01:21:31.370Z",
+        "sortNum": 170000
+      },
+      {
+        "_id": "c985ab96-5576-4cd6-ad59-5eb2625fa8f3",
+        "name": "CoordinatorApproval",
+        "containerId": "",
+        "created": "2023-02-26T01:21:31.371Z",
+        "sortNum": 180000
+      },
+      {
+        "_id": "5c3c0bed-1c8d-424f-98ae-95fd8320ec63",
+        "name": "ChairpersonApproval",
+        "containerId": "",
+        "created": "2023-02-26T01:21:31.372Z",
+        "sortNum": 190000
+      },
+      {
+        "_id": "89d0f6ba-1bf3-4929-baef-b72e0382463f",
+        "name": "SeniorApproval",
+        "containerId": "",
+        "created": "2023-02-26T01:21:31.373Z",
+        "sortNum": 200000
+      },
+      {
+        "_id": "e3ba3dbd-e314-4a35-8e3a-55cf6b019d13",
+        "name": "ActiveFile",
+        "containerId": "",
+        "created": "2023-02-26T01:21:31.374Z",
+        "sortNum": 210000
+      },
+      {
+        "_id": "40492977-aa91-42bb-a19b-c80073c7fb68",
+        "name": "Attachment",
+        "containerId": "",
+        "created": "2023-02-26T01:21:31.375Z",
+        "sortNum": 220000
+      }
+    ],
+    "settings": {
+      "headers": [],
+      "tests": [],
+      "envId": "58383275-0ddb-4ae7-8806-d1309dfb887b"
+    }
+  }
+]

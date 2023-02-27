@@ -32,7 +32,7 @@ export default function DepartmentSelectField({ onChange, ...props }) {
         onChange(value?.id ?? "");
       }}
       renderInput={(params) => (
-        <TextField {...params} label='Department' {...props} />
+        <TextField {...params} label='Department' size='small' {...props} />
       )}
     />
   );

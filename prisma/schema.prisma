@@ -1,7 +1,7 @@
 datasource db {
-  provider = "postgres"
-  url      = env("DATABASE_URL")
-  // shadowDatabaseUrl = env("SHADOW_DATABASE_URL") // Only needed when using a cloud provider that doesn't support the creation of new databases, like Heroku. Learn more: https://pris.ly/migrate-shadow
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
 }
 
 generator client {
@@ -14,17 +14,18 @@ model Account {
   type              String
   provider          String
   providerAccountId String
-  refresh_token     String?
-  access_token      String?
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
   expires_at        Int?
   token_type        String?
   scope             String?
-  id_token          String?
+  id_token          String? @db.Text
   session_state     String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
+  @@index([userId])
 }
 
 model Session {
@@ -33,6 +34,8 @@ model Session {
   userId       String
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
 }
 
 model User {
@@ -55,19 +58,23 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
-enum IMStatus {
-  SUBMITTED
-  DEPARTMENT_REVIEWED
-  DEPARTMENT_ENDORSED
-  CITL_REVIEWED
-  CITL_ENDORSED
-}
+// dont use with sqlite
+// enum IMStatus {
+//   SUBMITTED
+//   DEPARTMENT_REVIEWED
+//   DEPARTMENT_ENDORSED
+//   CITL_REVIEWED
+//   CITL_ENDORSED
+// }
 
 model IM {
   id                 String              @id @default(cuid())
   serialNumber       String
   title              String
-  status             IMStatus            @default(SUBMITTED)
+  // dont use with sqlite
+  // status             IMStatus            @default(SUBMITTED) 
+  // use with sqlite
+  status             String              @default("SUBMITTED")
   owner              Faculty             @relation(fields: [ownerId], references: [id])
   ownerId            String
   createdAt          DateTime            @default(now())
@@ -75,6 +82,8 @@ model IM {
   File               File[]
   DepartmentApproval DepartmentApproval?
   ActiveFile         ActiveFile?
+
+  @@index([ownerId])
 }
 
 model File {
@@ -87,6 +96,8 @@ model File {
   iMId             String
   googleDocsUrl    String?
   ActiveFile       ActiveFile?
+
+  @@index([iMId])
 }
 
 model ActiveFile {
@@ -119,6 +130,8 @@ model Department {
   ActiveChairperson ActiveChairperson?
   ActiveSenior      ActiveSenior[]
   ActiveFaculty     ActiveFaculty[]
+
+  @@index([collegeId])
 }
 
 model Faculty {
@@ -136,6 +149,7 @@ model Faculty {
   Senior        Senior?
 
   @@unique([userId, departmentId])
+  @@index([departmentId])
 }
 
 model ActiveFaculty {
@@ -148,6 +162,8 @@ model ActiveFaculty {
   userId       String     @unique
   Department   Department @relation(fields: [departmentId], references: [id])
   departmentId String
+
+  @@index([departmentId])
 }
 
 model Chairperson {
@@ -198,6 +214,8 @@ model ActiveSenior {
   seniorId     String     @unique
   Department   Department @relation(fields: [departmentId], references: [id])
   departmentId String
+
+  @@index([departmentId])
 }
 
 model ActiveChairperson {
@@ -229,6 +247,8 @@ model CoordinatorApproval {
   departmentApprovalId String             @unique
   Coordinator          Coordinator        @relation(fields: [coordinatorId], references: [id])
   coordinatorId        String
+
+  @@index([coordinatorId])
 }
 
 model ChairpersonApproval {
@@ -239,6 +259,8 @@ model ChairpersonApproval {
   departmentApprovalId String             @unique
   Chairperson          Chairperson        @relation(fields: [chairpersonId], references: [id])
   chairpersonId        String
+
+  @@index([chairpersonId])
 }
 
 model SeniorApproval {
@@ -249,6 +271,8 @@ model SeniorApproval {
   Senior               Senior             @relation(fields: [seniorId], references: [id])
   seniorId             String
   departmentApprovalId String             @unique
+
+  @@index([seniorId])
 }
 
 model Attachment {

@@ -10,7 +10,7 @@ export default async function readColleges({ limit, page, name }) {
       where: {
         name: {
           contains: name,
-          mode: "insensitive",
+          // mode: "insensitive",
         },
       },
     });
@@ -19,7 +19,7 @@ export default async function readColleges({ limit, page, name }) {
       where: {
         name: {
           contains: name,
-          mode: "insensitive",
+          // mode: "insensitive",
         },
       },
     });

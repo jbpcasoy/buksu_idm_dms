@@ -40,6 +40,7 @@ export default function AdminAddCollegeDepartmentForm({
           <Stack spacing={1} sx={{ mt: 1 }}>
             <TextField
               label='Name'
+              size='small'
               {...formik.getFieldProps("name")}
               error={formik.touched.name && formik.errors.name}
               helperText={formik.touched && formik.errors.name}

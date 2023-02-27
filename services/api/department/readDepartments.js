@@ -22,12 +22,12 @@ export default async function readDepartments({
       where: {
         name: {
           contains: name,
-          mode: "insensitive",
+          // mode: "insensitive",
         },
         college: {
           name: {
             contains: collegeName,
-            mode: "insensitive",
+            // mode: "insensitive",
           },
         },
       },
@@ -37,12 +37,12 @@ export default async function readDepartments({
       where: {
         name: {
           contains: name,
-          mode: "insensitive",
+          // mode: "insensitive",
         },
         college: {
           name: {
             contains: collegeName,
-            mode: "insensitive",
+            // mode: "insensitive",
           },
         },
       },
