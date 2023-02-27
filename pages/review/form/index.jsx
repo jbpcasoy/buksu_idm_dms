@@ -97,7 +97,7 @@ const ReviewForm = ({ isOpen, onClose, onSubmit }) => {
 
               <div>
                 <div className="border border-CITLOrange rounded-lg px-3 py-2">
-                  <h3 class=" font-semibold  text-CITLGray-main">
+                  <h3 className=" font-semibold  text-CITLGray-main">
                     To the reviewers:
                   </h3>
                   <p className="text-xs font-normal text-CITLGray-main">
@@ -107,92 +107,92 @@ const ReviewForm = ({ isOpen, onClose, onSubmit }) => {
 
                   {/* TODO: Allign all items to center  */}
 
-                  <ul class="items-center w-full text-sm font-medium    rounded-lg sm:flex  dark:text-CITLDarkBlue mt-2">
-                    <li class="w-full  border-gray-200 sm:border-b-0  dark:border-gray-600">
-                      <div class="flex items-center pl-3">
+                  <ul className="items-center w-full text-sm font-medium    rounded-lg sm:flex  dark:text-CITLDarkBlue mt-2">
+                    <li className="w-full  border-gray-200 sm:border-b-0  dark:border-gray-600">
+                      <div className="flex items-center pl-3">
                         <input
                           disabled
                           id="horizontal-list-radio-license"
                           type="radio"
                           value=""
                           name="list-radio"
-                          class="w-4 h-4 text-CITLDarkBlue border-CITLOrange bg-CITLOrange"
+                          className="w-4 h-4 text-CITLDarkBlue border-CITLOrange bg-CITLOrange"
                         />
                         <label
                           for="horizontal-list-radio-license"
-                          class="w-full py-3 ml-2 text-sm font-medium text-CITLGray-lighter "
+                          className="w-full py-3 ml-2 text-sm font-medium text-CITLGray-lighter "
                         >
                           Very Much{" "}
                         </label>
                       </div>
                     </li>
-                    <li class="w-full  border-gray-200 sm:border-b-0  dark:border-gray-600">
-                      <div class="flex items-center pl-3">
+                    <li className="w-full  border-gray-200 sm:border-b-0  dark:border-gray-600">
+                      <div className="flex items-center pl-3">
                         <input
                           disabled
                           id="horizontal-list-radio-id"
                           type="radio"
                           value=""
                           name="list-radio"
-                          class="w-4 h-4 text-CITLDarkBlue border-CITLOrange bg-CITLOrange"
+                          className="w-4 h-4 text-CITLDarkBlue border-CITLOrange bg-CITLOrange"
                         />
                         <label
                           for="horizontal-list-radio-id"
-                          class="w-full py-3 ml-2 text-sm font-medium text-CITLGray-lighter"
+                          className="w-full py-3 ml-2 text-sm font-medium text-CITLGray-lighter"
                         >
                           Much
                         </label>
                       </div>
                     </li>
-                    <li class="w-full  border-gray-200 sm:border-b-0 dark:border-gray-600">
-                      <div class="flex items-center pl-3">
+                    <li className="w-full  border-gray-200 sm:border-b-0 dark:border-gray-600">
+                      <div className="flex items-center pl-3">
                         <input
                           disabled
                           id="horizontal-list-radio-millitary"
                           type="radio"
                           value=""
                           name="list-radio"
-                          class="w-4 h-4text-CITLDarkBlue border-CITLOrange bg-CITLOrange"
+                          className="w-4 h-4text-CITLDarkBlue border-CITLOrange bg-CITLOrange"
                         />
                         <label
                           for="horizontal-list-radio-millitary"
-                          class="w-full py-3 ml-2 text-sm font-medium text-CITLGray-lighter"
+                          className="w-full py-3 ml-2 text-sm font-medium text-CITLGray-lighter"
                         >
                           Just Enough
                         </label>
                       </div>
                     </li>
-                    <li class="w-full dark:border-gray-600">
-                      <div class="flex items-center pl-3">
+                    <li className="w-full dark:border-gray-600">
+                      <div className="flex items-center pl-3">
                         <input
                           disabled
                           id="horizontal-list-radio-passport"
                           type="radio"
                           value=""
                           name="list-radio"
-                          class="w-4 h-4text-CITLDarkBlue border-CITLOrange bg-CITLOrange"
+                          className="w-4 h-4text-CITLDarkBlue border-CITLOrange bg-CITLOrange"
                         />
                         <label
                           for="horizontal-list-radio-passport"
-                          class="w-full py-3 ml-2 text-sm font-medium text-CITLGray-lighter"
+                          className="w-full py-3 ml-2 text-sm font-medium text-CITLGray-lighter"
                         >
                           Not Much
                         </label>
                       </div>
                     </li>
-                    <li class="w-full dark:border-gray-600">
-                      <div class="flex items-center pl-3">
+                    <li className="w-full dark:border-gray-600">
+                      <div className="flex items-center pl-3">
                         <input
                           disabled
                           id="horizontal-list-radio-passport"
                           type="radio"
                           value=""
                           name="list-radio"
-                          class="w-4 h-4 text-CITLDarkBlue border-CITLOrange bg-CITLOrange"
+                          className="w-4 h-4 text-CITLDarkBlue border-CITLOrange bg-CITLOrange"
                         />
                         <label
                           for="horizontal-list-radio-passport"
-                          class="w-full py-3 ml-2 text-sm font-medium text-CITLGray-lighter"
+                          className="w-full py-3 ml-2 text-sm font-medium text-CITLGray-lighter"
                         >
                           Not at All
                         </label>
