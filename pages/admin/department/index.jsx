@@ -64,6 +64,7 @@ export default function AdminDepartmentPage() {
     setState((prev) => ({
       ...prev,
       name: e.target.value,
+      page: 0,
     }));
   }
   const debouncedHandleNameChange = _.debounce(handleNameChange, 800);
@@ -72,6 +73,7 @@ export default function AdminDepartmentPage() {
     setState((prev) => ({
       ...prev,
       collegeName: e.target.value,
+      page: 0,
     }));
   }
   const debouncedHandleCollegeChange = _.debounce(handleCollegeNameChange, 800);
