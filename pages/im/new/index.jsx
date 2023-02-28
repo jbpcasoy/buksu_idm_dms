@@ -64,13 +64,13 @@ export default function CreateIM() {
 
   return (
     <Layout>
-      <div className="flex items-center border border-CITLGray-lighter  bg-CITLWhite m-6 p-3 relative rounded-lg shadow-lg overflow-hidden">
+      <div className="flex items-center border border-CITLGray-lighter  bg-CITLWhite m-2 mt-5 p-3 relative rounded-lg shadow-lg overflow-hidden">
         <div className="px-6 py-4 md:w-full ">
           <h2 className="text-CITLDarkBlue font-bold text-xl ">Create IM</h2>
 
           <form noValidate onSubmit={formik.handleSubmit}>
             <div className="grid gap-6 mb-6 md:grid-cols-2 mt-8">
-              <div>
+              {/* <div>
                 <label
                   for="serialNo"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -101,9 +101,23 @@ export default function CreateIM() {
                   required
                   {...formik.getFieldProps("title")}
                 />
-              </div>
+              </div> */}
             </div>
             <div>
+            <label
+                  for="title"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Title
+                </label>
+                <input
+                  type="text"
+                  id="title"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder=""
+                  required
+                  {...formik.getFieldProps("title")}
+                />
               <label
                 for="company"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"

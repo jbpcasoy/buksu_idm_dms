@@ -1,4 +1,9 @@
+import LoginButton from "@/views/LoginButton";
+import { signIn, signOut, useSession } from "next-auth/react";
+
 export default function Header() {
+  const { data: session } = useSession();
+
   return (
     <nav className="fixed top-0 z-50 w-full bg-CITLDarkBlue border-b border-CITLGray-main">
       <div className="px-3 py-3 lg:px-5 lg:pl-3">
@@ -34,6 +39,7 @@ export default function Header() {
               />
             </a>
           </div>
+
           <div className="flex items-center">
             <div className="flex items-center mr-3">
               <div>
@@ -46,33 +52,37 @@ export default function Header() {
                   <span className="sr-only">Open user menu</span>
                   <img
                     className="w-8 h-8 rounded-full"
-                    src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                    src={session?.user?.image}
                     alt="user photo"
                   />
                 </button>
               </div>
               <div
-                className=" z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100  shadow dark:bg-gray-700 dark:divide-gray-600 rounded-lg"
+                className={` z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100  shadow dark:bg-gray-700 dark:divide-gray-600 rounded-lg ${
+                  !session ? "w-48" : ""
+                }`}
                 id="dropdown-user"
               >
-                <div className="px-4 py-3 " role="none">
-                  <p
-                    className="text-sm text-gray-900 dark:text-white"
-                    role="none"
-                  >
-                    Neil Sims
-                  </p>
-                  <p
-                    className="text-sm font-medium text-gray-900 truncate dark:text-gray-300"
-                    role="none"
-                  >
-                    neil.sims@flowbite.com
-                  </p>
-                </div>
+                {session && (
+                  <div className="px-4 py-3 " role="none">
+                    <p
+                      className="text-sm text-gray-900 dark:text-white"
+                      role="none"
+                    >
+                      {session?.user?.name}
+                    </p>
+                    <p
+                      className="text-sm font-medium text-gray-900 truncate dark:text-gray-300"
+                      role="none"
+                    >
+                      {session?.user?.email}
+                    </p>
+                  </div>
+                )}
                 <ul className="py-1" role="none">
                   <li>
                     <a
-                      href="#"
+                      href="/me"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                       role="menuitem"
                     >
@@ -90,13 +100,7 @@ export default function Header() {
                   </li>
 
                   <li>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                      role="menuitem"
-                    >
-                      Sign out
-                    </a>
+                    <LoginButton onSignIn={signIn} onSignOut={signOut} />
                   </li>
                 </ul>
               </div>

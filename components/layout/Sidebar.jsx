@@ -9,7 +9,7 @@ export default function Sidebar() {
         <ul className="space-y-2">
           <li>
             <a
-              href="#"
+              href="/"
               className="flex items-center p-2 text-base font-normal text-CITLWhite rounded-lg  hover:bg-CITLGray-main "
             >
               <svg
@@ -22,13 +22,13 @@ export default function Sidebar() {
                 <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
                 <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
               </svg>
-              <span className="ml-3">Dashboard</span>
+              <span className="ml-3">My IM's</span>
             </a>
           </li>
 
           <li>
             <a
-              href="#"
+              href="/college"
               className="flex items-center p-2 text-base font-normal text-CITLWhite rounded-lg  hover:bg-CITLGray-main"
             >
               <svg
@@ -44,7 +44,7 @@ export default function Sidebar() {
                   clip-rule="evenodd"
                 ></path>
               </svg>
-              <span className="flex-1 ml-3 whitespace-nowrap">Users</span>
+              <span className="flex-1 ml-3 whitespace-nowrap">Colleges</span>
             </a>
           </li>
         </ul>

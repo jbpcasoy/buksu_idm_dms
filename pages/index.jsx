@@ -28,7 +28,7 @@ export default function Home() {
   return (
     <Layout>
       <div className="">
-        <div className="flex flex-wrap items-center border border-slate-300  bg-CITLWhite m-6 p-3 relative rounded-lg shadow-lg overflow-hidden">
+        <div className="flex flex-wrap items-center border border-slate-300  bg-CITLWhite m-2 p-3 relative rounded-lg shadow-lg overflow-hidden">
           <div className="px-6 py-4 md:w-10/12 sm:w-12/12">
             <h3 className="text-lg font-semibold text-CITLDarkBlue">
               Announcement
@@ -51,9 +51,9 @@ export default function Home() {
           />
         </div>
       </div>
-      <div className="flex flex-wrap items-center border border-CITLGray-lighter bg-CITLWhite m-6 mt-0 relative rounded-lg shadow-lg overflow-hidden">
+      <div className="flex flex-wrap items-center border border-CITLGray-lighter bg-CITLWhite m-2 mt-5 relative rounded-lg shadow-lg overflow-hidden">
         <div className="flex items-center bg-CITLGray-light justify-between py-3 px-3 w-full">
-          <div className="flex space-between">
+          <div className="flex flex-row flex-no-wrap space-between w-full sm:">
             <button
               type="button"
               className="inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue border-b-2 border-CITLOrange rounded-none"
