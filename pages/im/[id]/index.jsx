@@ -18,6 +18,8 @@ export default function ViewIM() {
     });
   }, [router?.query?.id]);
 
+  console.log({ router });
+
   return (
     <Layout>
       <WithSidebar>
@@ -44,7 +46,7 @@ export default function ViewIM() {
           </div>
           {/* TODO change pdf url into dynamic */}
           <iframe
-            src={`/api/download/file/${iM?.ActiveFile?.File.fileName}`}
+            src={`https://docs.google.com/gview?url=${process.env.NEXT_PUBLIC_HOST_URL}/api/download/file/${iM?.ActiveFile?.File.fileName}&embedded=true`}
             className='w-full h-screen'
           />
         </div>
