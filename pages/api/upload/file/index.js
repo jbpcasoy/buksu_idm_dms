@@ -21,12 +21,11 @@ apiRoute.use(uploadFile);
 
 apiRoute.post(async (req, res) => {
   const file = req.file;
-  console.log({ file });
 
   const filename = `${uuidv4()}_${slugify(file.originalname, { lower: true })}`;
 
   await firebaseUploadFile({ path: `uploads/file/${filename}`, file });
-  res.status(200).json({ ...file, filename });
+  res.status(200).json({ ...file, filename, buffer: undefined });
 });
 
 export default apiRoute;
