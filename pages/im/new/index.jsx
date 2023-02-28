@@ -33,7 +33,6 @@ export default function CreateIM() {
             iMId: im.id,
             originalFileName: file.name,
             fileName: res.filename,
-            googleDocsUrl: "https://docs.google.com/test-url",
           }).then((createdFile) => {
             frontendCreateActiveFile({
               iMId: im.id,

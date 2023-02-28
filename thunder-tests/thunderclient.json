@@ -234,18 +234,21 @@
     "method": "POST",
     "sortNum": 160000,
     "created": "2023-02-26T01:21:31.370Z",
-    "modified": "2023-02-26T01:21:31.370Z",
+    "modified": "2023-02-27T08:44:54.925Z",
     "headers": [],
+    "params": [],
     "body": {
+      "type": "formdata",
+      "raw": "",
       "form": [],
       "files": [
         {
           "name": "file",
-          "value": "/home/casoy/Documents/test.docx"
+          "value": "../../../../Documents/test.pdf"
         }
-      ],
-      "type": "formdata"
-    }
+      ]
+    },
+    "tests": []
   },
   {
     "_id": "61b04c63-67a3-4ab6-85bc-366f625be0b9",
@@ -256,30 +259,35 @@
     "method": "POST",
     "sortNum": 170000,
     "created": "2023-02-26T01:21:31.371Z",
-    "modified": "2023-02-26T01:21:31.371Z",
+    "modified": "2023-02-28T00:22:53.456Z",
     "headers": [],
+    "params": [],
     "body": {
+      "type": "formdata",
+      "raw": "",
       "form": [],
       "files": [
         {
           "name": "file",
-          "value": "/home/casoy/Documents/test.docx"
+          "value": "../../../../Documents/test.pdf"
         }
-      ],
-      "type": "formdata"
-    }
+      ]
+    },
+    "tests": []
   },
   {
     "_id": "498ab276-98d0-4c3d-a0c8-24c164713c20",
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "a11f2aeb-8946-4fd1-8752-a089df16e89a",
     "name": "File",
-    "url": "{{host}}/api/download/file/e43a64d1-ec6b-4037-a238-24e10fe1032a_test.docx",
+    "url": "{{host}}/api/download/file/c8503444-a87c-4abc-b9d1-5731aaa23750_test.pdf",
     "method": "GET",
     "sortNum": 180000,
     "created": "2023-02-26T01:21:31.372Z",
-    "modified": "2023-02-26T01:21:31.372Z",
-    "headers": []
+    "modified": "2023-02-28T05:11:22.998Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   },
   {
     "_id": "be4e8d87-3564-4182-bbb2-6a4e34501544",

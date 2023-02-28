@@ -1,17 +1,10 @@
-import multer from "multer";
+import firebaseUploadFile from "@/services/api/upload/file/firebaseUploadFile";
+import uploadFile from "@/services/middleware/upload/uploadFile";
+import { uuidv4 } from "@firebase/util";
 import nextConnect from "next-connect";
 import slugify from "slugify";
-import { v4 as uuidv4 } from "uuid";
 
 // TODO implement logging
-
-const upload = multer({
-  storage: multer.diskStorage({
-    destination: "uploads/file",
-    filename: (req, file, cb) =>
-      cb(null, `${uuidv4()}_${slugify(file.originalname, { lower: true })}`),
-  }),
-});
 
 const apiRoute = nextConnect({
   onError(error, req, res) {
@@ -24,12 +17,16 @@ const apiRoute = nextConnect({
   },
 });
 
-apiRoute.use(upload.single("file"));
+apiRoute.use(uploadFile);
 
 apiRoute.post(async (req, res) => {
   const file = req.file;
+  console.log({ file });
 
-  res.status(200).json(file);
+  const filename = `${uuidv4()}_${slugify(file.originalname, { lower: true })}`;
+
+  await firebaseUploadFile({ path: `uploads/file/${filename}`, file });
+  res.status(200).json({ ...file, filename });
 });
 
 export default apiRoute;
