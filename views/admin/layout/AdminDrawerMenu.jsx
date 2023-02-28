@@ -59,7 +59,7 @@ const menuItems = [
   {
     label: "Seniors",
     icon: <PersonIcon />,
-    link: "#",
+    link: "/admin/senior",
   },
   {
     label: "IMs",

@@ -1,8 +1,12 @@
-import AdminDepartment from "@/components/admin/department/AdminDepartment";
-import frontendReadDepartments from "@/services/frontend/admin/department/frontendReadDepartments";
+import AdminSenior from "@/components/admin/senior/AdminSenior";
+import frontendCreateSenior from "@/services/frontend/admin/senior/frontendCreateSenior";
+import frontendReadSeniors from "@/services/frontend/admin/senior/frontendReadSeniors";
 import AdminLayout from "@/views/admin/layout/AdminLayout";
+import AdminAddSeniorForm from "@/views/admin/senior/AdminAddSeniorForm";
+import AddIcon from "@mui/icons-material/Add";
 import {
   Box,
+  IconButton,
   Stack,
   Table,
   TableBody,
@@ -13,33 +17,35 @@ import {
   TableRow,
   TextField,
   Toolbar,
+  Tooltip,
   Typography,
 } from "@mui/material";
 import _ from "lodash";
 import { useEffect, useState } from "react";
 
-export default function AdminDepartmentPage() {
-  const [departments, setDepartments] = useState([]);
+export default function AdminSeniorPage() {
+  const [seniors, setSeniors] = useState([]);
   const [total, setTotal] = useState(0);
   const [state, setState] = useState({
     limit: 5,
     page: 0,
+    openAdd: false,
     name: "",
+    departmentName: "",
     collegeName: "",
   });
 
   useEffect(() => {
     let subscribe = true;
 
-    frontendReadDepartments({
+    frontendReadSeniors({
       limit: state.limit,
       page: state.page + 1,
       name: state.name,
+      departmentName: state.departmentName,
       collegeName: state.collegeName,
     }).then((res) => {
-      if (!subscribe) return;
-
-      setDepartments(res.data);
+      setSeniors(res.data);
       setTotal(res.total);
     });
 
@@ -47,6 +53,16 @@ export default function AdminDepartmentPage() {
       subscribe = false;
     };
   }, [state]);
+
+  function openAddDialog(open) {
+    setState((prev) => ({ ...prev, openAdd: open }));
+  }
+
+  async function onAdd(values) {
+    const { facultyId } = values;
+
+    return frontendCreateSenior({ facultyId });
+  }
 
   function handleChangePage(_, page) {
     setState((prev) => ({ ...prev, page }));
@@ -64,16 +80,25 @@ export default function AdminDepartmentPage() {
     setState((prev) => ({
       ...prev,
       name: e.target.value,
-      page: 0,
     }));
   }
   const debouncedHandleNameChange = _.debounce(handleNameChange, 800);
+
+  function handleDepartmentNameChange(e) {
+    setState((prev) => ({
+      ...prev,
+      departmentName: e.target.value,
+    }));
+  }
+  const debouncedHandleDepartmentChange = _.debounce(
+    handleDepartmentNameChange,
+    800
+  );
 
   function handleCollegeNameChange(e) {
     setState((prev) => ({
       ...prev,
       collegeName: e.target.value,
-      page: 0,
     }));
   }
   const debouncedHandleCollegeChange = _.debounce(handleCollegeNameChange, 800);
@@ -82,15 +107,33 @@ export default function AdminDepartmentPage() {
     <AdminLayout>
       <Box sx={{ m: 1 }}>
         <Toolbar>
-          <Typography variant='h6'>Departments</Typography>
+          <Typography variant='h6'>Seniors</Typography>
+
+          <Stack
+            direction='row'
+            justifyContent='flex-end'
+            alignItems='center'
+            spacing={2}
+            sx={{ width: "100%" }}>
+            <Tooltip title='Add'>
+              <IconButton onClick={() => openAddDialog(true)}>
+                <AddIcon />
+              </IconButton>
+            </Tooltip>
+          </Stack>
         </Toolbar>
+
         <Stack direction='row' spacing={1} sx={{ px: 2 }}>
           <TextField
             size='small'
             label='Name'
             onChange={debouncedHandleNameChange}
           />
-          {/* TODO test when add department was implemented */}
+          <TextField
+            size='small'
+            label='Department'
+            onChange={debouncedHandleDepartmentChange}
+          />
           <TextField
             size='small'
             label='College'
@@ -101,20 +144,23 @@ export default function AdminDepartmentPage() {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell align='center'>Name</TableCell>
-                <TableCell align='center'>College</TableCell>
+                <TableCell>Image</TableCell>
+                <TableCell>Name</TableCell>
+                <TableCell>Department</TableCell>
+                <TableCell>College</TableCell>
+                <TableCell align='center'>Active</TableCell>
                 <TableCell align='center'>Actions</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {departments.map((department) => (
-                <AdminDepartment department={department} key={department.id} />
+              {seniors.map((senior) => (
+                <AdminSenior senior={senior} key={senior.id} />
               ))}
             </TableBody>
           </Table>
         </TableContainer>
         <TablePagination
-          rowsPerPageOptions={[5, 10, 25]}
+          rowsPerPageOptions={[1, 5, 10, 25]}
           component='div'
           count={total}
           rowsPerPage={state.limit}
@@ -123,6 +169,12 @@ export default function AdminDepartmentPage() {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </Box>
+
+      <AdminAddSeniorForm
+        open={state.openAdd}
+        onClose={() => openAddDialog(false)}
+        onSubmit={onAdd}
+      />
     </AdminLayout>
   );
 }

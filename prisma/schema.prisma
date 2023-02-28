@@ -59,22 +59,22 @@ model VerificationToken {
 }
 
 // dont use with sqlite
-// enum IMStatus {
-//   SUBMITTED
-//   DEPARTMENT_REVIEWED
-//   DEPARTMENT_ENDORSED
-//   CITL_REVIEWED
-//   CITL_ENDORSED
-// }
+enum IMStatus {
+  SUBMITTED
+  DEPARTMENT_REVIEWED
+  DEPARTMENT_ENDORSED
+  CITL_REVIEWED
+  CITL_ENDORSED
+}
 
 model IM {
   id                 String              @id @default(cuid())
   serialNumber       String
   title              String
   // dont use with sqlite
-  // status             IMStatus            @default(SUBMITTED) 
+  status             IMStatus            @default(SUBMITTED)
   // use with sqlite
-  status             String              @default("SUBMITTED")
+  // status             String              @default("SUBMITTED")
   owner              Faculty             @relation(fields: [ownerId], references: [id])
   ownerId            String
   createdAt          DateTime            @default(now())
