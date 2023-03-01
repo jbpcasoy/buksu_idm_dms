@@ -100,30 +100,6 @@ async function seedDepartment(name, collegeId) {
   }
 }
 
-async function seedFaculty(userId, departmentId) {
-  try {
-    const faculty = await prisma.faculty.create({
-      data: {
-        userId,
-        departmentId,
-      },
-    });
-
-    console.log("Faculty created:");
-    console.log(faculty);
-  } catch (error) {
-    switch (error.code) {
-      case "P2002":
-        console.log(
-          `Faculty {user: '${userId}' department: '${departmentId}'}  already exists.`
-        );
-        break;
-      default:
-        throw error;
-    }
-  }
-}
-
 async function main() {
   // Seed Colleges
   for (let college of colleges) {
@@ -135,15 +111,6 @@ async function main() {
   for (let college of prismaColleges) {
     for (let department of departments[college.name]) {
       await seedDepartment(department, college.id);
-    }
-  }
-
-  // Seed Faculties
-  const prismaDepartments = await prisma.department.findMany();
-  const prismaUsers = await prisma.user.findMany();
-  for (let department of prismaDepartments) {
-    for (let user of prismaUsers) {
-      await seedFaculty(user.id, department.id);
     }
   }
 }
