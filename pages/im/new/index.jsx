@@ -15,31 +15,30 @@ export default function CreateIM() {
     initialValues: {
       serialNumber: "",
       title: "",
-      // TODO add authors
+      authors: "",
     },
     validationSchema: Yup.object({
       serialNumber: Yup.string().required(),
       title: Yup.string().required(),
+      authors: Yup.string().required(),
     }),
-    onSubmit: (values) => {
-      const { title, serialNumber } = values;
+    onSubmit: async (values) => {
+      const { title, serialNumber, authors } = values;
 
-      return frontendCreateIM({
+      const im = await frontendCreateIM({
         title,
         serialNumber,
-      }).then((im) => {
-        return uploadIMFile(file).then((res) => {
-          return frontendCreateFile({
-            iMId: im.id,
-            originalFileName: file.name,
-            fileName: res.filename,
-          }).then((createdFile) => {
-            frontendCreateActiveFile({
-              iMId: im.id,
-              fileId: createdFile.id,
-            });
-          });
-        });
+        authors,
+      });
+      const res = await uploadIMFile(file);
+      const createdFile = await frontendCreateFile({
+        iMId: im.id,
+        originalFileName: file.name,
+        fileName: res.filename,
+      });
+      frontendCreateActiveFile({
+        iMId: im.id,
+        fileId: createdFile.id,
       });
     },
   });
@@ -99,7 +98,7 @@ export default function CreateIM() {
                 </div>
                 <div>
                   <label
-                    for='company'
+                    for='authors'
                     className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'>
                     Authors
                   </label>
@@ -109,6 +108,7 @@ export default function CreateIM() {
                     className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
                     placeholder=''
                     required
+                    {...formik.getFieldProps("authors")}
                   />
                 </div>
                 <div>
