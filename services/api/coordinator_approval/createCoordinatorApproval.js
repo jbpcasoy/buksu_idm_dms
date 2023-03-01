@@ -43,6 +43,11 @@ async function findCoordinator({ departmentApprovalId, coordinatorId }) {
       where: {
         Faculty: {
           departmentId: department.id,
+          department: {
+            ActiveCoordinator: {
+              coordinatorId: coordinatorId,
+            },
+          },
         },
         id: coordinatorId,
       },
