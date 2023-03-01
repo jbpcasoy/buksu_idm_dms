@@ -8,7 +8,7 @@
     "method": "POST",
     "sortNum": 10000,
     "created": "2023-02-26T01:21:31.354Z",
-    "modified": "2023-03-01T02:19:44.017Z",
+    "modified": "2023-03-01T03:03:08.940Z",
     "headers": [
       {
         "name": "Cookie",
@@ -18,7 +18,7 @@
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"title\": \"Hello\",\n    \"serialNumber\": \"cb4df7bb-a5d8-4786-8ecc-c6a78bae305a\"\n}",
+      "raw": "{\n    \"title\": \"Hello\",\n    \"serialNumber\": \"5e44e58f-fd42-492c-98e5-a2b87968d7a2\",\n    \"authors\": \"\"\n}",
       "form": []
     },
     "tests": []
@@ -78,12 +78,14 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "bd1fca66-edfe-47f2-8d18-0d6c8e254442",
     "name": "READ IM",
-    "url": "{{host}}/api/im/cle5epq0v0005s9l15rkt8guy",
+    "url": "{{host}}/api/im/clep3c9f9000fs9rfuslzyydw",
     "method": "GET",
     "sortNum": 50000,
     "created": "2023-02-26T01:21:31.359Z",
-    "modified": "2023-02-26T01:21:31.359Z",
-    "headers": []
+    "modified": "2023-03-01T03:01:44.592Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   },
   {
     "_id": "8825266c-4541-4573-9710-d3494bed974d",

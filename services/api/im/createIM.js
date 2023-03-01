@@ -1,6 +1,11 @@
 const { PrismaClient } = require("@prisma/client");
 
-export default async function createIM({ serialNumber, title, ownerId }) {
+export default async function createIM({
+  serialNumber,
+  title,
+  ownerId,
+  authors,
+}) {
   const prisma = new PrismaClient();
 
   try {
@@ -9,6 +14,7 @@ export default async function createIM({ serialNumber, title, ownerId }) {
         serialNumber,
         title,
         status: "SUBMITTED",
+        authors,
         owner: {
           connect: {
             id: ownerId,

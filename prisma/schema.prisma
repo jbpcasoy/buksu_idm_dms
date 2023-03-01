@@ -82,6 +82,7 @@ model IM {
   File               File[]
   DepartmentApproval DepartmentApproval?
   ActiveFile         ActiveFile?
+  authors            String?             @db.Text
 
   @@index([ownerId])
 }
