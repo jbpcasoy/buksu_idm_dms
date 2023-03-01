@@ -20,13 +20,31 @@ const apiRoute = nextConnect({
 apiRoute.use(uploadFile);
 
 apiRoute.post(async (req, res) => {
+  if (process.env.STORAGE === "cloud") {
+    return cloudUploadFileHandler(req, res);
+  } else if (process.env.STORAGE === "local") {
+    localUploadFileHandler(req, res);
+  } else {
+    throw new Error(
+      `env variable STORAGE ${process.env.STORAGE} is not supported`
+    );
+  }
+});
+
+async function cloudUploadFileHandler(req, res) {
   const file = req.file;
 
   const filename = `${uuidv4()}_${slugify(file.originalname, { lower: true })}`;
 
   await firebaseUploadFile({ path: `uploads/file/${filename}`, file });
-  res.status(200).json({ ...file, filename, buffer: undefined });
-});
+  return res.status(200).json({ ...file, filename, buffer: undefined });
+}
+
+async function localUploadFileHandler(req, res) {
+  const file = req.file;
+
+  res.status(200).json(file);
+}
 
 export default apiRoute;
 
