@@ -69,7 +69,7 @@ const menuItems = [
   {
     label: "Files",
     icon: <FileOpenIcon />,
-    link: "#",
+    link: "/admin/file",
   },
 ];
 
