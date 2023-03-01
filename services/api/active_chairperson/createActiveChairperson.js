@@ -12,10 +12,13 @@ export default async function createActiveChairperson({
       departmentId,
     });
 
+    const activeFaculty = await findActiveFaculty({ chairpersonId });
+
     const activeChairperson = await prisma.activeChairperson.create({
       data: {
         chairpersonId: chairperson.id,
         departmentId,
+        activeFacultyId: activeFaculty.id,
       },
     });
     return activeChairperson;
@@ -37,6 +40,26 @@ async function findChairperson({ chairpersonId, departmentId }) {
       },
     });
     return chairperson;
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function findActiveFaculty({ chairpersonId }) {
+  const prisma = new PrismaClient();
+
+  try {
+    const activeFaculty = await prisma.activeFaculty.findFirstOrThrow({
+      where: {
+        Faculty: {
+          Chairperson: {
+            id: chairpersonId,
+          },
+        },
+      },
+    });
+
+    return activeFaculty;
   } catch (error) {
     throw error;
   }
