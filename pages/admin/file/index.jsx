@@ -134,6 +134,7 @@ export default function AdminFilePage() {
                     fileName={file.fileName}
                     iM={file.iM.serialNumber}
                     active={Boolean(file.ActiveFile)}
+                    key={file.id}
                   />
                 );
               })}
