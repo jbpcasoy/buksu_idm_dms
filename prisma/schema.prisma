@@ -69,7 +69,7 @@ enum IMStatus {
 
 model IM {
   id                 String              @id @default(cuid())
-  serialNumber       String
+  serialNumber       String              @unique
   title              String
   // dont use with sqlite
   status             IMStatus            @default(SUBMITTED)

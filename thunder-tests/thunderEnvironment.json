@@ -10,6 +10,10 @@
       {
         "name": "host",
         "value": "http://localhost:3000"
+      },
+      {
+        "name": "Cookie",
+        "value": "next-auth.csrf-token=045ca8fa1b80a140610b6e6e0289889bec297ee6a66070f41177a1dd297eba33|ec7a4e71d19c875b21026fcc890091fb579b406aa7300ba4e19dfdf68482dc88; next-auth.callback-url=http://localhost:3000/; next-auth.session-token=d0308f1b-272b-4272-a83e-5ebaaf1a4eb2"
       }
     ]
   }
