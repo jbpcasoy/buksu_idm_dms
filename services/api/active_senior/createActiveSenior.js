@@ -5,10 +5,14 @@ export default async function createActiveSenior({ seniorId, departmentId }) {
 
   try {
     const senior = await findSenior({ seniorId, departmentId });
+
+    const activeFaculty = await findActiveFaculty({ seniorId });
+
     const activeSenior = await prisma.activeSenior.create({
       data: {
         seniorId: senior.id,
         departmentId,
+        activeFacultyId: activeFaculty.id,
       },
     });
 
@@ -32,6 +36,26 @@ async function findSenior({ seniorId, departmentId }) {
     });
 
     return senior;
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function findActiveFaculty({ seniorId }) {
+  const prisma = new PrismaClient();
+
+  try {
+    const activeFaculty = await prisma.activeFaculty.findFirstOrThrow({
+      where: {
+        Faculty: {
+          Senior: {
+            id: seniorId,
+          },
+        },
+      },
+    });
+
+    return activeFaculty;
   } catch (error) {
     throw error;
   }
