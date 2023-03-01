@@ -43,6 +43,11 @@ async function findChairperson({ departmentApprovalId, chairpersonId }) {
       where: {
         Faculty: {
           departmentId: department.id,
+          department: {
+            ActiveChairperson: {
+              chairpersonId: chairpersonId,
+            },
+          },
         },
         id: chairpersonId,
       },

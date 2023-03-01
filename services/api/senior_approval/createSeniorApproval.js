@@ -39,6 +39,13 @@ async function findSenior({ departmentApprovalId, seniorId }) {
       where: {
         Faculty: {
           departmentId: department.id,
+          department: {
+            ActiveSenior: {
+              some: {
+                seniorId: seniorId,
+              },
+            },
+          },
         },
         id: seniorId,
       },
