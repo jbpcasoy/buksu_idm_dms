@@ -1,6 +1,6 @@
-<div class="relative px-4 py-2">
+<div className="relative px-4 py-2">
             <button
-              class="flex justify-between items-center w-full text-left focus:outline-none"
+              className="flex justify-between items-center w-full text-left focus:outline-none"
               onClick={() =>
                 setState((prev) => ({
                   ...prev,
@@ -10,54 +10,54 @@
             >
               <span>Colleges</span>
               {!state.servicesOpen && (
-                <i class="fi fi-rr-angle-small-right"></i>
+                <i className="fi fi-rr-angle-small-right"></i>
               )}
-              {state.servicesOpen && <i class="fi fi-rr-angle-small-down"></i>}
+              {state.servicesOpen && <i className="fi fi-rr-angle-small-down"></i>}
             </button>
             {state.servicesOpen && (
-              <div class=" mt-2 w-full bg-gray-700 rounded-lg shadow-lg z-10 ">
-                <a
+              <div className=" mt-2 w-full bg-gray-700 rounded-lg shadow-lg z-10 ">
+                <Link
                   href="#"
-                  class="block px-4 py-2 text-white hover:bg-gray-600 border-b border-slate-500"
+                  className="block px-4 py-2 text-white hover:bg-gray-600 border-b border-slate-500"
                 >
                   College of Arts and Sciences
-                </a>
-                <a
+                </Link>
+                <Link
                   href="#"
-                  class="block px-4 py-2 text-white hover:bg-gray-600 border-b border-slate-500"
+                  className="block px-4 py-2 text-white hover:bg-gray-600 border-b border-slate-500"
                 >
                   College of Business Administration
-                </a>
-                <a
+                </Link>
+                <Link
                   href="#"
-                  class="block px-4 py-2 text-white hover:bg-gray-600 border-b border-slate-500"
+                  className="block px-4 py-2 text-white hover:bg-gray-600 border-b border-slate-500"
                 >
                   College of Education
-                </a>
-                <a
+                </Link>
+                <Link
                   href="#"
-                  class="block px-4 py-2 text-white hover:bg-gray-600 border-b border-slate-500"
+                  className="block px-4 py-2 text-white hover:bg-gray-600 border-b border-slate-500"
                 >
                   College of Law
-                </a>
-                <a
+                </Link>
+                <Link
                   href="#"
-                  class="block px-4 py-2 text-white hover:bg-gray-600 border-b border-slate-500"
+                  className="block px-4 py-2 text-white hover:bg-gray-600 border-b border-slate-500"
                 >
                   College of Nursing
-                </a>
-                <a
+                </Link>
+                <Link
                   href="#"
-                  class="block px-4 py-2 text-white hover:bg-gray-600 border-b border-slate-500"
+                  className="block px-4 py-2 text-white hover:bg-gray-600 border-b border-slate-500"
                 >
                   College of Public Administration
-                </a>
-                <a
+                </Link>
+                <Link
                   href="#"
-                  class="block px-4 py-2 text-white hover:bg-gray-600"
+                  className="block px-4 py-2 text-white hover:bg-gray-600"
                 >
                   College of Technologies
-                </a>
+                </Link>
               </div>
             )}
           </div>
