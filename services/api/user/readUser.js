@@ -8,6 +8,16 @@ export default async function readUser(id) {
       where: {
         id,
       },
+      include: {
+        ActiveFaculty: {
+          include: {
+            ActiveChairperson: true,
+            ActiveCoordinator: true,
+            ActiveSenior: true,
+            Faculty: true,
+          },
+        },
+      },
     });
 
     return user;
