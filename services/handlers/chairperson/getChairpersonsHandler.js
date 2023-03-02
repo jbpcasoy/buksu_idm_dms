@@ -1,7 +1,7 @@
 import readChairpersons from "@/services/api/chairperson/readChairpersons";
 
 export default async function getChairpersonsHandler(req, res) {
-  const { limit, page, name, departmentName, collegeName } = req.query;
+  const { limit, page, name, departmentName, collegeName, active } = req.query;
 
   const chairpersons = await readChairpersons({
     limit: parseInt(limit),
@@ -9,6 +9,7 @@ export default async function getChairpersonsHandler(req, res) {
     name,
     departmentName,
     collegeName,
+    active: active ? JSON.parse(active) : undefined,
   });
 
   res.status(200).json(chairpersons);

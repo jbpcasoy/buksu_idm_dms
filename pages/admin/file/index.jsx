@@ -1,6 +1,7 @@
 import frontendReadFiles from "@/services/frontend/admin/file/frontendReadFiles";
 import AdminFileView from "@/views/admin/file/AdminFileView";
 import AdminLayout from "@/views/admin/layout/AdminLayout";
+import ActiveFilter from "@/views/forms/ActiveFilter";
 import {
   Box,
   Table,
@@ -27,6 +28,7 @@ export default function AdminFilePage() {
     fileName: "",
     originalFileName: "",
     iMSerialNumber: "",
+    active: null,
   });
 
   useEffect(() => {
@@ -38,6 +40,7 @@ export default function AdminFilePage() {
       fileName: state.fileName,
       originalFileName: state.originalFileName,
       iMSerialNumber: state.iMSerialNumber,
+      active: state.active,
     }).then((res) => {
       if (!subscribe) return;
 
@@ -92,6 +95,13 @@ export default function AdminFilePage() {
     800
   );
 
+  function handleActiveChange(active) {
+    setState((prev) => ({
+      ...prev,
+      active,
+    }));
+  }
+
   return (
     <AdminLayout>
       <Box sx={{ m: 1 }}>
@@ -115,6 +125,7 @@ export default function AdminFilePage() {
             label='IM'
             onChange={debouncedHandleIMSerialNumberChange}
           />
+          <ActiveFilter onChange={handleActiveChange} />
         </Stack>
         <TableContainer>
           <Table>

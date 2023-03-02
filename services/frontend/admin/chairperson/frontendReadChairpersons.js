@@ -6,6 +6,7 @@ export default async function frontendReadChairpersons({
   name,
   departmentName,
   collegeName,
+  active,
 }) {
   try {
     const chairpersons = await axios.get("/api/chairperson", {
@@ -15,6 +16,7 @@ export default async function frontendReadChairpersons({
         name,
         departmentName,
         collegeName,
+        active,
       },
     });
 
