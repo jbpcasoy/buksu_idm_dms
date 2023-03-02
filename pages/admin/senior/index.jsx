@@ -3,6 +3,7 @@ import frontendCreateSenior from "@/services/frontend/admin/senior/frontendCreat
 import frontendReadSeniors from "@/services/frontend/admin/senior/frontendReadSeniors";
 import AdminLayout from "@/views/admin/layout/AdminLayout";
 import AdminAddSeniorForm from "@/views/admin/senior/AdminAddSeniorForm";
+import ActiveFilter from "@/views/forms/ActiveFilter";
 import AddIcon from "@mui/icons-material/Add";
 import {
   Box,
@@ -33,6 +34,7 @@ export default function AdminSeniorPage() {
     name: "",
     departmentName: "",
     collegeName: "",
+    active: null,
   });
 
   useEffect(() => {
@@ -44,7 +46,9 @@ export default function AdminSeniorPage() {
       name: state.name,
       departmentName: state.departmentName,
       collegeName: state.collegeName,
+      active: state.active,
     }).then((res) => {
+      if (!subscribe) return;
       setSeniors(res.data);
       setTotal(res.total);
     });
@@ -103,6 +107,10 @@ export default function AdminSeniorPage() {
   }
   const debouncedHandleCollegeChange = _.debounce(handleCollegeNameChange, 800);
 
+  function handleActiveChange(active) {
+    setState((prev) => ({ ...prev, active }));
+  }
+
   return (
     <AdminLayout>
       <Box sx={{ m: 1 }}>
@@ -139,6 +147,7 @@ export default function AdminSeniorPage() {
             label='College'
             onChange={debouncedHandleCollegeChange}
           />
+          <ActiveFilter onChange={handleActiveChange} />
         </Stack>
         <TableContainer>
           <Table>

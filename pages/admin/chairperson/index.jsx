@@ -3,6 +3,7 @@ import frontendCreateChairperson from "@/services/frontend/admin/chairperson/fro
 import frontendReadChairpersons from "@/services/frontend/admin/chairperson/frontendReadChairpersons";
 import AdminAddChairpersonForm from "@/views/admin/chairperson/AdminAddChairpersonForm";
 import AdminLayout from "@/views/admin/layout/AdminLayout";
+import ActiveFilter from "@/views/forms/ActiveFilter";
 import AddIcon from "@mui/icons-material/Add";
 import {
   Box,
@@ -33,6 +34,7 @@ export default function AdminChairpersonPage() {
     departmentName: "",
     collegeName: "",
     openAdd: false,
+    active: null,
   });
 
   useEffect(() => {
@@ -44,6 +46,7 @@ export default function AdminChairpersonPage() {
       name: state.name,
       departmentName: state.departmentName,
       collegeName: state.collegeName,
+      active: state.active,
     }).then((res) => {
       setChairpersons(res.data);
       setTotal(res.total);
@@ -103,6 +106,13 @@ export default function AdminChairpersonPage() {
     return frontendCreateChairperson({ facultyId });
   }
 
+  function handleActiveChange(active) {
+    setState((prev) => ({
+      ...prev,
+      active,
+    }));
+  }
+
   return (
     <AdminLayout>
       <Box sx={{ m: 1 }}>
@@ -138,6 +148,7 @@ export default function AdminChairpersonPage() {
             label='College'
             onChange={debouncedHandleCollegeChange}
           />
+          <ActiveFilter onChange={handleActiveChange} />
         </Stack>
         <TableContainer>
           <Table>

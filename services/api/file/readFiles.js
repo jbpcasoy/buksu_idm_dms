@@ -6,6 +6,7 @@ export default async function readFiles({
   fileName,
   originalFileName,
   iMSerialNumber,
+  active,
 }) {
   const prisma = new PrismaClient();
 
@@ -29,6 +30,16 @@ export default async function readFiles({
             contains: iMSerialNumber,
           },
         },
+        ActiveFile:
+          active === true
+            ? {
+                isNot: null,
+              }
+            : active === false
+            ? {
+                is: null,
+              }
+            : undefined,
       },
     });
 
@@ -45,6 +56,16 @@ export default async function readFiles({
             contains: iMSerialNumber,
           },
         },
+        ActiveFile:
+          active === true
+            ? {
+                isNot: null,
+              }
+            : active === false
+            ? {
+                is: null,
+              }
+            : undefined,
       },
     });
 

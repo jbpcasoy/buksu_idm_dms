@@ -6,6 +6,7 @@ export default async function frontendReadSeniors({
   name,
   departmentName,
   collegeName,
+  active,
 }) {
   try {
     const seniors = await axios.get("/api/senior", {
@@ -15,6 +16,7 @@ export default async function frontendReadSeniors({
         name,
         departmentName,
         collegeName,
+        active,
       },
     });
 

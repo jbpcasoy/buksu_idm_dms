@@ -6,6 +6,7 @@ export default async function readSeniors({
   name,
   departmentName,
   collegeName,
+  active,
 }) {
   const prisma = new PrismaClient();
 
@@ -58,6 +59,16 @@ export default async function readSeniors({
             },
           },
         },
+        ActiveSenior:
+          active === true
+            ? {
+                isNot: null,
+              }
+            : active === false
+            ? {
+                is: null,
+              }
+            : undefined,
       },
     });
 
@@ -83,6 +94,16 @@ export default async function readSeniors({
             },
           },
         },
+        ActiveSenior:
+          active === true
+            ? {
+                isNot: null,
+              }
+            : active === false
+            ? {
+                is: null,
+              }
+            : undefined,
       },
     });
 
