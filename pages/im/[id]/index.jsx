@@ -27,12 +27,14 @@ export default function ViewIM() {
           <div className='items-left'>
             <Link
               href={`/im/${iM?.id}/versions`}
-              className='px-5 py-2.5 mr-2 shadow-xl text-sm font-medium text-CITLDarkBlue bg-CITLOrange border  rounded-lg  hover:text-CITLDarkBlue hover:border-CITLOrange focus:outline-none '>
+              className='px-5 py-2.5 mr-2 shadow-xl text-sm font-medium text-CITLDarkBlue bg-CITLOrange border rounded-md  hover:text-CITLDarkBlue hover:border-CITLOrange focus:outline-none '
+            >
               Versions
             </Link>{" "}
             <Link
               href='/review/form'
-              className='text-CITLWhite bg-CITLDarkBlue font-medium text-sm px-5 py-2.5 mr-2 rounded-lg shadow-xl  hover:text-CITLWhite hover:border-CITLDarkBlue focus:outline-none'>
+              className='text-CITLWhite bg-CITLDarkBlue font-medium text-sm px-5 py-2.5 mr-2 rounded-md shadow-xl  hover:text-CITLWhite hover:border-CITLDarkBlue focus:outline-none'
+            >
               Review
             </Link>
           </div>
