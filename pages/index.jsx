@@ -14,10 +14,14 @@ export default function Home() {
     DepartmentIMs: "DepartmentIMs",
   };
 
-  const [state, setState] = useState({
-    ims: [],
-  });
+  const [ims, setIms] = useState([]);
   const [tab, setTab] = useState(Tabs.MyIMs);
+  const [total, setTotal] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [state, setState] = useState({
+    page: 1,
+    limit: 1,
+  });
 
   const { user, userLoading, userError } = useUser();
 
@@ -30,21 +34,24 @@ export default function Home() {
   useEffect(() => {
     if (!user) return;
     let subscribe = true;
+    setLoading(true);
 
     frontendGetIMs({
-      page: 1,
-      limit: 10,
+      page: state.page,
+      limit: state.limit,
       ownerId: user.ActiveFaculty.Faculty.id,
     }).then((res) => {
+      setLoading(false);
       if (!subscribe) return;
 
-      setState((prev) => ({ ...prev, ims: res.data }));
+      setIms(res.data);
+      setTotal(res.total);
     });
 
     return () => {
       subscribe = false;
     };
-  }, [user]);
+  }, [user, state]);
 
   return (
     <Layout>
@@ -127,8 +134,8 @@ export default function Home() {
               user?.ActiveFaculty?.ActiveChairperson) && (
               <button
                 type='button'
-                onClick={() => setTab(Tabs.DepartmentIMs)}
-                className={`inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue border-CITLOrange rounded-none ${
+                // onClick={() => setTab(Tabs.DepartmentIMs)}
+                className={` inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue border-CITLOrange rounded-none ${
                   tab === Tabs.DepartmentIMs
                     ? "border-b-2 border-CITLOrange"
                     : ""
@@ -211,7 +218,7 @@ export default function Home() {
             </tr>
           </thead>
           <tbody className='bg-white divide-gray-200 overflow-y-auto'>
-            {state.ims.map((im, index) => {
+            {ims.map((im, index) => {
               return (
                 <IM
                   // bottomBorder={index < state.ims.length - 1}
@@ -234,19 +241,37 @@ export default function Home() {
         </table>
 
         <div className='flex flex-row items-center justify-end px-6 py-3 w-full'>
-          <span className='text-sm text-gray-700 dark:text-gray-400 '>
-            Showing{" "}
-            <span className='font-semibold text-gray-900 dark:text-white'>
-              1
-            </span>{" "}
-            of{" "}
-            <span className='font-semibold text-gray-900 dark:text-white'>
-              10
-            </span>{" "}
-            Entries
-          </span>
-          <div className='inline-flex xs:mt-0 ml-2'>
-            <button className='inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-gray-800 rounded-l hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white'>
+          {!loading && (
+            <span className='text-sm text-gray-700 dark:text-gray-400 '>
+              Showing{" "}
+              <span className='font-semibold text-gray-900 dark:text-white'>
+                {state.limit * (state.page - 1) + 1}
+              </span>
+              {" - "}
+              <span className='font-semibold text-gray-900 dark:text-white'>
+                {state.limit * state.page > total
+                  ? total
+                  : state.limit * state.page}
+              </span>{" "}
+              of{" "}
+              <span className='font-semibold text-gray-900 dark:text-white'>
+                {total}
+              </span>{" "}
+              Entries
+            </span>
+          )}
+          {loading && (
+            <span className='text-sm text-gray-700 dark:text-gray-400 '>
+              Loading...
+            </span>
+          )}
+          <div className='inline-flex xs:mt-0 ml-2 gap-x-1'>
+            <button
+              className='inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-gray-800 rounded-l hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white disabled:bg-CITLGray-main'
+              disabled={state.page <= 1 || loading}
+              onClick={() => {
+                setState((prev) => ({ ...prev, page: prev.page - 1 }));
+              }}>
               <svg
                 aria-hidden='true'
                 className='w-5 h-5 mr-2'
@@ -260,7 +285,12 @@ export default function Home() {
               </svg>
               Prev
             </button>
-            <button className='inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-gray-800 border-0 border-l border-gray-700 rounded-r hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white'>
+            <button
+              className='inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-gray-800 border-0  rounded-r hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white disabled:bg-CITLGray-main'
+              disabled={(state.page + 1) * state.limit > total || loading}
+              onClick={() => {
+                setState((prev) => ({ ...prev, page: prev.page + 1 }));
+              }}>
               Next
               <svg
                 aria-hidden='true'
