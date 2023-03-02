@@ -74,32 +74,32 @@ export default function WithSidebar({ children, active }) {
                   </div>
                   <ul className="py-1" role="none">
                     <li>
-                      <a
+                      <Link
                         href="#"
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                         role="menuitem"
                       >
                         Profile
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a
+                      <Link
                         href="#"
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                         role="menuitem"
                       >
                         Settings
-                      </a>
+                      </Link>
                     </li>
 
                     <li>
-                      <a
+                      <Link
                         href="#"
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                         role="menuitem"
                       >
                         Sign out
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>
@@ -117,7 +117,7 @@ export default function WithSidebar({ children, active }) {
         <div className="h-full px-3 pb-4 overflow-y-auto bg-CITLDarkBlue dark:bg-gray-800">
           <ul className="space-y-2">
             <li>
-              <a
+              <Link
                 href="#"
                 className="flex items-center p-2 text-base font-normal text-CITLWhite rounded-lg  hover:bg-CITLGray-main "
               >
@@ -132,11 +132,11 @@ export default function WithSidebar({ children, active }) {
                   <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
                 </svg>
                 <span className="ml-3">Dashboard</span>
-              </a>
+              </Link>
             </li>
 
             <li>
-              <a
+              <Link
                 href="#"
                 className="flex items-center p-2 text-base font-normal text-CITLWhite rounded-lg  hover:bg-CITLGray-main"
               >
@@ -154,7 +154,7 @@ export default function WithSidebar({ children, active }) {
                   ></path>
                 </svg>
                 <span className="flex-1 ml-3 whitespace-nowrap">Users</span>
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

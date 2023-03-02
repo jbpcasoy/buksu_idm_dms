@@ -1,4 +1,5 @@
 import Layout from "@/components/layout/Layout";
+import Link from "next/link";
 
 export default function Instructions() {
   return (
@@ -105,8 +106,8 @@ export default function Instructions() {
                   </h3>
                   <p className="text-sm font-normal text-CITLGray-main">
                     Rate the instructional material by placing the qualitative
-                    description's abbreviation for each statement corresponding
-                    to your rating.
+                    description&apos;s abbreviation for each statement
+                    corresponding to your rating.
                   </p>
                   <p className="text-sm font-normal text-CITLGray-main">
                     Write your rating in the designated column for you.
@@ -402,19 +403,19 @@ export default function Instructions() {
                 </div>
               </div>
               <div className="flex p-2 mt-4">
-                <a
+                <Link
                   href="/evaluation"
                   className="text-base  flex justify-center px-4 py-2 rounded font-bold cursor-pointer shadow-xl hover:border-CITLOrange hover:text-CITLOrange bg-gray-100  text-CITLGray-main  border  border-CITLGray-main"
                 >
                   Previous
-                </a>
+                </Link>
                 <div className="flex-auto flex flex-row-reverse">
-                  <a
+                  <Link
                     href="/evaluation/title1"
                     className="text-base  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer shadow-xl hover:bg-CITLOrange   bg-CITLDarkBlue  text-CITLWhite "
                   >
                     Next
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

@@ -1,5 +1,6 @@
 import Layout from "@/components/layout/Layout";
 import { useFormik } from "formik";
+import Link from "next/link";
 import * as Yup from "yup";
 
 const IMEvaluationForm = ({ isOpen, onClose, onSubmit }) => {
@@ -196,12 +197,12 @@ const IMEvaluationForm = ({ isOpen, onClose, onSubmit }) => {
               </div>
               <div className="flex p-2 mt-4">
                 <div className="flex-auto flex flex-row-reverse">
-                  <a
+                  <Link
                     href="/evaluation/instructions"
                     className="text-base  ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer shadow-xl hover:bg-CITLOrange bg-CITLDarkBlue text-CITLWhite  "
                   >
                     Next
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

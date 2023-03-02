@@ -1,4 +1,5 @@
 import Layout from "@/components/layout/Layout";
+import Link from "next/link";
 import { useRouter } from "next/router";
 
 export default function IMVersions() {
@@ -39,7 +40,7 @@ export default function IMVersions() {
                 explicabo deleniti quaerat, voluptatem molestias animi enim
                 expedita saepe similique cum doloremque laudantium?
               </p>
-              <a
+              <Link
                 href={`/im/${router.query.id}/versions/123`}
                 className="inline-flex items-center px-4 py-2 text-sm font-medium text-CITLDarkBlue bg-CITL border  rounded-lg  hover:text-CITLDarkBlue hover:border-CITLOrange focus:outline-none "
               >
@@ -56,7 +57,7 @@ export default function IMVersions() {
                     clipRule="evenodd"
                   ></path>
                 </svg>
-              </a>
+              </Link>
             </li>
             <li className="mb-10 ml-6">
               <span className="absolute flex items-center justify-center w-6 h-6 bg-CITLOrange rounded-full -left-3 ring-8 ring-CITLGray-light">
@@ -82,7 +83,7 @@ export default function IMVersions() {
                 soluta possimus cumque illum corporis, distinctio, facere dicta
                 vitae officia sed? Architecto enim fugit doloribus?
               </p>
-              <a
+              <Link
                 href={`/im/${router.query.id}/versions/123`}
                 className="inline-flex items-center px-4 py-2 text-sm font-medium text-CITLDarkBlue bg-CITL border  rounded-lg  hover:text-CITLDarkBlue hover:border-CITLOrange focus:outline-none "
               >
@@ -99,7 +100,7 @@ export default function IMVersions() {
                     clipRule="evenodd"
                   ></path>
                 </svg>
-              </a>
+              </Link>
             </li>
             <li className="ml-6 mb-5">
               <span className="absolute flex items-center justify-center w-6 h-6 bg-CITLOrange rounded-full -left-3 ring-8 ring-CITLGray-light">
@@ -125,7 +126,7 @@ export default function IMVersions() {
                 provident expedita voluptate! Quaerat ipsum eveniet voluptates,
                 quod molestias perferendis corporis ab labore.
               </p>
-              <a
+              <Link
                 href={`/im/${router.query.id}/versions/123`}
                 className="inline-flex items-center px-4 py-2 text-sm font-medium text-CITLDarkBlue bg-CITL border  rounded-lg  hover:text-CITLDarkBlue hover:border-CITLOrange focus:outline-none "
               >
@@ -142,7 +143,7 @@ export default function IMVersions() {
                     clipRule="evenodd"
                   ></path>
                 </svg>
-              </a>
+              </Link>
             </li>
           </ol>
         </div>

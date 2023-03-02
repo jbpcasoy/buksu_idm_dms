@@ -109,12 +109,12 @@ export default function ToggleModal() {
                       Remember me
                     </label>
                   </div>
-                  <a
+                  <Link
                     href="#"
                     class="text-sm text-blue-700 hover:underline dark:text-blue-500"
                   >
                     Lost Password?
-                  </a>
+                  </Link>
                 </div> */}
                 <button
                   type="submit"
@@ -124,12 +124,12 @@ export default function ToggleModal() {
                 </button>
                 {/* <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
                   Not registered?{" "}
-                  <a
+                  <Link
                     href="#"
                     class="text-blue-700 hover:underline dark:text-blue-500"
                   >
                     Create account
-                  </a>
+                  </Link>
                 </div> */}
               </form>
             </div>

@@ -1,5 +1,6 @@
 import Layout from "@/components/layout/Layout";
 import ImercQuestion from "@/views/forms/imerc/ImercQuestion";
+import Link from "next/link";
 
 export default function Title() {
   return (
@@ -105,19 +106,19 @@ export default function Title() {
               />
 
               <div className="flex p-2 mt-4">
-                <a
+                <Link
                   href="/evaluation/instructions"
                   className="text-base  flex justify-center px-4 py-2 rounded font-bold cursor-pointer shadow-xl hover:border-CITLOrange hover:text-CITLOrange bg-gray-100 text-CITLGray-main border border-CITLGray-main"
                 >
                   Previous
-                </a>
+                </Link>
                 <div className="flex-auto flex flex-row-reverse">
-                  <a
+                  <Link
                     href="/evaluation/title2"
                     className="text-base  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer shadow-xl hover:bg-CITLOrange   bg-CITLDarkBlue text-CITLWhite"
                   >
                     Next
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
