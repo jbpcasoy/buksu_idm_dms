@@ -1,9 +1,9 @@
 import Layout from "@/components/layout/Layout";
-import Section from "@/views/forms/Section";
 import { useFormik } from "formik";
+import Link from "next/link";
 import * as Yup from "yup";
 
-const ReviewForm = ({ isOpen, onClose, onSubmit }) => {
+const IMEvaluationForm = ({ isOpen, onClose, onSubmit }) => {
   const formik = useFormik({
     initialValues: {
       title: "",
@@ -21,360 +21,180 @@ const ReviewForm = ({ isOpen, onClose, onSubmit }) => {
       });
     },
   });
-
   return (
     <Layout>
-      <div className="flex items-center border border-CITLGray-lighter  bg-CITLWhite m-2 p-3 relative rounded-lg shadow-lg overflow-hidden">
-        <div className="px-6 py-4 md:w-full ">
-          <h2 className="text-gray-800 font-semibold text-xl ">
-            Instructional Material Review Form
-          </h2>
-          <p className="mb-8 text-sm">(Implementation Phase)</p>
+      <div className="pt-12">
+        <div className="flex items-center border border-CITLGray-lighter bg-CITLGray-light m-2 p-3 relative rounded-lg shadow-lg overflow-hidden">
+          <div className="p-5 w-full">
+            <div className="mx-4 p-4">
+              <div className="flex items-center">
+                <div className="flex items-center text-CITLOrange relative">
+                  <div className="rounded-full transition duration-500 ease-in-out h-4 w-4 border-2 border-CITLOrange bg-CITLOrange text-left">
+                    <div className="absolute top-0 mt-6 w-32 text-xs font-medium uppercase text-CITLOrange">
+                      basic info
+                    </div>
+                  </div>
+                </div>
+                <div className="flex-auto border-t-2 transition duration-500 ease-in-out border-CITLOrange"></div>
+                <div className="flex items-center text-white relative">
+                  <div className="rounded-full transition duration-500 ease-in-out h-4 w-4 border-2 border-CITLGray-lighter">
+                    <div className="absolute top-0 text-left mt-6 w-32 text-xs font-medium uppercase text-CITLGray-lighter">
+                      instructions
+                    </div>
+                  </div>
+                </div>
 
-          <form noValidate onSubmit={formik.handleSubmit}>
-            <div className="grid gap-6 mb-6 md:grid-cols-3">
-              <div className="mb-4">
-                <label
-                  className="block mb-1 text-sm font-semibold text-CITLDarkBlue "
-                  htmlFor="serialNumber"
-                >
-                  Title
-                </label>
-                <input
-                  {...formik.getFieldProps("title")}
-                  className="border border-gray-400 p-2 w-full rounded-md"
-                  type="text"
-                  id="title"
-                />
-                {formik.touched.title && formik.errors.title && (
-                  <p className="text-sm text-red-600">
-                    {formik.touched.title && formik.errors.title}
-                  </p>
-                )}
-              </div>
+                <div className="flex-auto border-t-2 transition duration-500 ease-in-out border-CITLGray-lighter"></div>
+                <div className="flex items-center text-CITLOrange relative">
+                  <div className="rounded-full text-left transition duration-500 ease-in-out h-4 w-4 border-2 border-CITLGray-lighter">
+                    <div className="absolute top-0  mt-6 w-32 text-xs font-medium uppercase text-CITLGray-lighter">
+                      The title
+                    </div>
+                  </div>
+                </div>
+                <div className="flex-auto border-t-2 transition duration-500 ease-in-out border-CITLGray-lighter"></div>
+                <div className="flex items-center text-CITLOrange relative">
+                  <div className="rounded-full text-left transition duration-500 ease-in-out h-4 w-4 border-2 border-CITLGray-lighter">
+                    <div className="absolute top-0  mt-6 w-32 text-xs font-medium uppercase text-CITLGray-lighter">
+                      The Preface
+                    </div>
+                  </div>
+                </div>
 
-              <div className="mb-4">
-                <label
-                  className="block mb-1 text-sm font-semibold text-CITLDarkBlue "
-                  htmlFor="authors"
-                >
-                  Author/s
-                </label>
-                <input
-                  {...formik.getFieldProps("authors")}
-                  className="border border-gray-400 p-2 w-full rounded-md"
-                  type="text"
-                  id="authors"
-                />
-                {formik.touched.authors && formik.errors.authors && (
-                  <p className="text-sm text-red-600">
-                    {formik.touched.authors && formik.errors.authors}
-                  </p>
-                )}
-              </div>
-
-              <div className="mb-4">
-                <label
-                  className="block mb-1 text-sm font-semibold text-CITLDarkBlue"
-                  htmlFor="imType"
-                >
-                  IM Type
-                </label>
-                <input
-                  {...formik.getFieldProps("imType")}
-                  className="border border-gray-400 p-2 w-full rounded-md"
-                  type="text"
-                  id="imType"
-                />
-                {formik.touched.imType && formik.errors.imType && (
-                  <p className="text-sm text-red-600">
-                    {formik.touched.imType && formik.errors.imType}
-                  </p>
-                )}
+                <div className="flex-auto border-t-2 transition duration-500 ease-in-out border-CITLGray-lighter"></div>
+                <div className="flex items-center text-CITLGray-lighter relative">
+                  <div className="rounded-full text-left transition duration-500 ease-in-out h-4 w-4 border-2 border-CITLGray-lighter">
+                    <div className="absolute top-0  mt-6 w-32 text-xs font-medium uppercase text-CITLGray-lighter">
+                      The chapters
+                    </div>
+                  </div>
+                </div>
+                <div className="flex-auto border-t-2 transition duration-500 ease-in-out border-CITLGray-lighter"></div>
+                <div className="flex items-center text-CITLGray-lighter relative">
+                  <div className="rounded-full text-left transition duration-500 ease-in-out h-4 w-4 border-2 border-CITLGray-lighter">
+                    <div className="absolute top-0  mt-6 w-32 text-xs font-medium uppercase text-CITLGray-lighter">
+                      The learning outcomes
+                    </div>
+                  </div>
+                </div>
+                <div className="flex-auto border-t-2 transition duration-500 ease-in-out border-CITLGray-lighter"></div>
+                <div className="flex items-center text-CITLGray-lighter relative">
+                  <div className="rounded-full text-left transition duration-500 ease-in-out h-4 w-4 border-2 border-CITLGray-lighter">
+                    <div className="absolute top-0  mt-6 w-32 text-xs font-medium uppercase text-CITLGray-lighter">
+                      The Concepts
+                    </div>
+                  </div>
+                </div>
+                <div className="flex-auto border-t-2 transition duration-500 ease-in-out border-CITLGray-lighter"></div>
+                <div className="flex items-center text-CITLGray-lighter relative">
+                  <div className="rounded-full text-left transition duration-500 ease-in-out h-4 w-4 border-2 border-CITLGray-lighter">
+                    <div className="absolute top-0  mt-6 w-32 text-xs font-medium uppercase text-CITLGray-lighter">
+                      The Examples
+                    </div>
+                  </div>
+                </div>
+                <div className="flex-auto border-t-2 transition duration-500 ease-in-out border-CITLGray-lighter"></div>
+                <div className="flex items-center text-CITLGray-lighter relative">
+                  <div className="rounded-full text-left transition duration-500 ease-in-out h-4 w-4 border-2 border-CITLGray-lighter">
+                    <div className="absolute top-0  mt-6 w-32 text-xs font-medium uppercase text-CITLGray-lighter">
+                      The Activities
+                    </div>
+                  </div>
+                </div>
+                <div className="flex-auto border-t-2 transition duration-500 ease-in-out border-CITLGray-lighter"></div>
+                <div className="flex items-center text-CITLGray-lighter relative">
+                  <div className="rounded-full text-left transition duration-500 ease-in-out h-4 w-4 border-2 border-CITLGray-lighter">
+                    <div className="absolute top-0  mt-6 w-32 text-xs font-medium uppercase text-CITLGray-lighter">
+                      The Rubrics
+                    </div>
+                  </div>
+                </div>
+                <div className="flex-auto border-t-2 transition duration-500 ease-in-out border-CITLGray-lighter"></div>
               </div>
             </div>
 
-            <div>
-              <div className="border border-CITLOrange rounded-lg px-3 py-2">
-                <h3 className=" font-semibold  text-CITLGray-main">
-                  To the reviewers:
-                </h3>
-                <p className="text-xs font-normal text-CITLGray-main">
-                  Check the column corresponding to your rating for each item.
-                  Be guided by the following desciptions.
-                </p>
+            <div className="px-6 pt-16 md:w-full ">
+              <h2 className="text-CITLDarkBlue font-bold text-2xl ">
+                Instructional Material Review Form
+              </h2>
+              <p className="mb-8 text-sm">Implementation Phase</p>
 
-                {/* TODO: Allign all items to center  */}
-
-                <ul className="items-center w-full text-sm font-medium  rounded-lg sm:flex  dark:text-CITLDarkBlue mt-2">
-                  <li className="w-full  border-gray-200 sm:border-b-0  dark:border-gray-600">
-                    <div className="flex items-center pl-3">
-                      <input
-                        disabled
-                        id="horizontal-list-radio-license"
-                        type="radio"
-                        value=""
-                        name="list-radio"
-                        className="w-4 h-4 text-CITLDarkBlue border-CITLOrange bg-CITLOrange"
-                      />
-                      <label
-                        for="horizontal-list-radio-license"
-                        className="w-full py-3 ml-2 text-sm font-medium text-CITLGray-lighter "
-                      >
-                        Very Much{" "}
-                      </label>
-                    </div>
-                  </li>
-                  <li className="w-full  border-gray-200 sm:border-b-0  dark:border-gray-600">
-                    <div className="flex items-center pl-3">
-                      <input
-                        disabled
-                        id="horizontal-list-radio-id"
-                        type="radio"
-                        value=""
-                        name="list-radio"
-                        className="w-4 h-4 text-CITLDarkBlue border-CITLOrange bg-CITLOrange"
-                      />
-                      <label
-                        for="horizontal-list-radio-id"
-                        className="w-full py-3 ml-2 text-sm font-medium text-CITLGray-lighter"
-                      >
-                        Much
-                      </label>
-                    </div>
-                  </li>
-                  <li className="w-full  border-gray-200 sm:border-b-0 dark:border-gray-600">
-                    <div className="flex items-center pl-3">
-                      <input
-                        disabled
-                        id="horizontal-list-radio-millitary"
-                        type="radio"
-                        value=""
-                        name="list-radio"
-                        className="w-4 h-4text-CITLDarkBlue border-CITLOrange bg-CITLOrange"
-                      />
-                      <label
-                        for="horizontal-list-radio-millitary"
-                        className="w-full py-3 ml-2 text-sm font-medium text-CITLGray-lighter"
-                      >
-                        Just Enough
-                      </label>
-                    </div>
-                  </li>
-                  <li className="w-full dark:border-gray-600">
-                    <div className="flex items-center pl-3">
-                      <input
-                        disabled
-                        id="horizontal-list-radio-passport"
-                        type="radio"
-                        value=""
-                        name="list-radio"
-                        className="w-4 h-4text-CITLDarkBlue border-CITLOrange bg-CITLOrange"
-                      />
-                      <label
-                        for="horizontal-list-radio-passport"
-                        className="w-full py-3 ml-2 text-sm font-medium text-CITLGray-lighter"
-                      >
-                        Not Much
-                      </label>
-                    </div>
-                  </li>
-                  <li className="w-full dark:border-gray-600">
-                    <div className="flex items-center pl-3">
-                      <input
-                        disabled
-                        id="horizontal-list-radio-passport"
-                        type="radio"
-                        value=""
-                        name="list-radio"
-                        className="w-4 h-4 text-CITLDarkBlue border-CITLOrange bg-CITLOrange"
-                      />
-                      <label
-                        for="horizontal-list-radio-passport"
-                        className="w-full py-3 ml-2 text-sm font-medium text-CITLGray-lighter"
-                      >
-                        Not at All
-                      </label>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-
-              <Section
-                title=" The Title"
-                questions={[
-                  "The title is definite.",
-                  "The title is relevant to the contents of the instructional material.",
-                ]}
-              />
-
-              <Section
-                title=" The Preface"
-                questions={[
-                  "The preface is written by the author/s himself/herself/themselves.",
-                  "It includes reasons for creating the material.",
-                  "It states the importance to the users.",
-                  "It introduces what the material is about.",
-                ]}
-              />
-
-              <Section
-                title=" The Introduction in Every Chapter/Unit"
-                questions={[
-                  "The introduction in every chapter/unit gives the overview of the coverage.",
-                ]}
-              />
-
-              <Section
-                title=" The Learning Outcomes"
-                questions={[
-                  "The content, activities, and assessment are aligned with the LOs.",
-                  "The Learning outcomes (COs and SLOs) are addressed ain the instructional material.",
-                  "The Learning outcomes are appropriate for the topics covered.",
-                ]}
-              />
-
-              <Section
-                title=" The Discussion/Presentation of the Concepts"
-                questions={[
-                  "The concepts are explicitly discussed.",
-                  "All terms are understandable to the learners.",
-                  "The content is free from gender-bias.",
-                ]}
-              />
-
-              <Section
-                title=" The Examples for the Application of the Concepts"
-                questions={[
-                  "Examples are provided to illustrate the concepts discussed.",
-                  "The examples are consistent with the concepts discussed.",
-                  "They relate to real-world situations.",
-                  "They motivate students to participate in learning process.",
-                  "They illustrate attainment of learning outcomes.",
-                ]}
-              />
-
-              <Section
-                title=" The Exercises/Activities"
-                questions={[
-                  "The Exercises/Activities are appropriate for demonstrating the learned concepts.",
-                  "There are provisions that encourage students to work collaboratively.",
-                  "The exercises/activities develop creativity, critical thinking, and problem-solving skills of the students.",
-                  "They encourage students to communicate effectively.",
-                  "They are prepared within the capability of the students.",
-                ]}
-              />
-              <Section
-                title="  The Rubrics (if applicable)"
-                questions={[
-                  "The rubrics are appropriate for the assessment.",
-                  "The rubrics describe the criteria through which the learners' outputs are rated. ",
-                  "The rubrics show the levels of achievements of the quality of the assessment outputs.",
-                  "They encourage students to communicate effectively.",
-                  "They are prepared within the capability of the students.",
-                ]}
-              />
-            </div>
-
-            <label
-              className="block mb-1 text-sm font-semibold text-CITLDarkBlue pt-5
-                    "
-            >
-              Reviewed by
-            </label>
-            <div className="grid gap-6 mb-6 md:grid-cols-3 mt-5">
-              <div className="mb-4">
-                <label
-                  className="block mb-1 text-sm font-semibold text-CITLDarkBlue "
-                  htmlFor="imdProgramCoordinator"
-                >
-                  IMD Program Coordinator
-                </label>
-                <input
-                  disabled
-                  {...formik.getFieldProps("imdProgramCoordinator")}
-                  className="border border-gray-400 p-2 w-full rounded-md"
-                  type="text"
-                  id="imdProgramCoordinator"
-                  placeholder="JUAN DE LA CRUZ"
-                />
-                {formik.touched.imdProgramCoordinator &&
-                  formik.errors.imdProgramCoordinator && (
+              <div className="grid gap-6 mb-6">
+                <div>
+                  <label
+                    className="block mb-1 text-sm font-semibold text-CITLDarkBlue "
+                    htmlFor="title"
+                  >
+                    Title
+                  </label>
+                  <input
+                    {...formik.getFieldProps("title")}
+                    className="border  border-gray-400 bg-CITLGray-light focus:ring-CITLOrange focus:border-CITLOrange p-2 w-full rounded-md"
+                    type="text"
+                    id="title"
+                  />
+                  {formik.touched.title && formik.errors.title && (
                     <p className="text-sm text-red-600">
-                      {formik.touched.imdProgramCoordinator &&
-                        formik.errors.imdProgramCoordinator}
+                      {formik.touched.title && formik.errors.title}
                     </p>
                   )}
+                </div>
               </div>
-
-              <div className="mb-4">
-                <label
-                  className="block mb-1 text-sm font-semibold text-CITLDarkBlue "
-                  htmlFor="seniorFaculty"
-                >
-                  Senior Faculty
-                </label>
-                <input
-                  disabled
-                  {...formik.getFieldProps("seniorFaculty")}
-                  className="border border-gray-400 p-2 w-full rounded-md"
-                  type="text"
-                  id="seniorFaculty"
-                  placeholder="JUAN DE LA CRUZ"
-                />
-                {formik.touched.seniorFaculty &&
-                  formik.errors.seniorFaculty && (
+              <div className="grid gap-6 mb-6 md:grid-cols-2">
+                <div>
+                  <label
+                    className="block mb-1 text-sm font-semibold text-CITLDarkBlue "
+                    htmlFor="authors"
+                  >
+                    Author/s
+                  </label>
+                  <input
+                    {...formik.getFieldProps("authors")}
+                    className="border border-gray-400 bg-CITLGray-light focus:ring-CITLOrange focus:border-CITLOrange p-2 w-full rounded-md"
+                    type="text"
+                    id="authors"
+                    required
+                  />
+                  {formik.touched.authors && formik.errors.authors && (
                     <p className="text-sm text-red-600">
-                      {formik.touched.seniorFaculty &&
-                        formik.errors.seniorFaculty}
+                      {formik.touched.authors && formik.errors.authors}
                     </p>
                   )}
-              </div>
+                </div>
 
-              <div className="mb-4">
-                <label
-                  className="block mb-1 text-sm font-semibold text-CITLDarkBlue"
-                  htmlFor="programChair"
-                >
-                  Program Chair
-                </label>
-                <input
-                  disabled
-                  {...formik.getFieldProps("imType")}
-                  className="border border-gray-400 p-2 w-full rounded-md"
-                  type="text"
-                  id="programChair"
-                  placeholder="JUAN DE LA CRUZ"
-                />
-                {formik.touched.programChair && formik.errors.programChair && (
-                  <p className="text-sm text-red-600">
-                    {formik.touched.programChair && formik.errors.programChair}
-                  </p>
-                )}
+                <div>
+                  <label
+                    for="im_type"
+                    className="block mb-1 text-sm font-semibold text-gray-900 dark:text-white"
+                  >
+                    Select an IM type
+                  </label>
+                  <select
+                    id="im_type"
+                    className="border border-gray-400 bg-CITLGray-light focus:ring-CITLOrange focus:border-CITLOrange p-2 w-full rounded-md"
+                  >
+                    <option selected>Module</option>
+                    <option>Course File</option>
+                    <option>Worktext</option>
+                    <option>Texbook</option>
+                  </select>
+                </div>
+              </div>
+              <div className="flex p-2 mt-4">
+                <div className="flex-auto flex flex-row-reverse">
+                  <Link
+                    href="/review/form/instructions"
+                    className="text-base  ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer shadow-xl hover:bg-CITLOrange bg-CITLDarkBlue text-CITLWhite  "
+                  >
+                    Next
+                  </Link>
+                </div>
               </div>
             </div>
-            <div className="flex items-center justify-end pt-5">
-              <div className="space-x-2">
-                <button
-                  className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded"
-                  onClick={onClose}
-                  disabled={formik.isSubmitting}
-                >
-                  Cancel
-                </button>
-                <button
-                  className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
-                  type="submit"
-                  disabled={formik.isSubmitting}
-                >
-                  Submit
-                </button>
-              </div>
-            </div>
-          </form>
+          </div>
         </div>
       </div>
     </Layout>
   );
 };
-export default ReviewForm;
+export default IMEvaluationForm;

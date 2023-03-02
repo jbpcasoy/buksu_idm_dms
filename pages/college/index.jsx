@@ -1,5 +1,6 @@
 import Layout from "@/components/layout/Layout";
 import College from "@/views/College";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
@@ -33,9 +34,24 @@ export default function CollegePage() {
               similique provident, eaque a perspiciatis aspernatur ex odio sequi
               corrupti quae!
             </p>
-            <button className="items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-CITLDarkBlue rounded-lg ">
-              Read more
-            </button>
+            <Link
+              href={`/`}
+              className="inline-flex items-center px-4 py-2 text-sm font-medium text-CITLDarkBlue bg-CITLOrange border  rounded-lg  hover:text-CITLDarkBlue hover:border-CITLOrange focus:outline-none "
+            >
+              Read more{" "}
+              <svg
+                className="w-3 h-3 ml-2"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                  clipRule="evenodd"
+                ></path>
+              </svg>
+            </Link>
           </div>
 
           <img
@@ -79,7 +95,7 @@ export default function CollegePage() {
               ></input>
               <button
                 title="Add IM"
-                className="flex items-center bg-CITLDarkBlue rounded-lg px-5 py-2.5 text-sm font-medium text-center text-white "
+                className="flex items-center bg-CITLDarkBlue rounded-lg px-5 py-2.5 text-sm font-medium text-center shadow-md text-white "
                 onClick={() => {
                   router.push("/im/new");
                 }}

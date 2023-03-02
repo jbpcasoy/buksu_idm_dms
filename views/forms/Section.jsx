@@ -2,19 +2,19 @@ import Question from "./Question";
 
 export default function Section({ title, questions }) {
   return (
-    <div className=" mt-5 border border-CITLGray-lighter rounded-lg py-2 px-3">
+    <div className=" mt-5 border border-CITLOrange rounded-lg py-2 px-3">
       <label
         for="helper-radio-4"
         className="font-medium text-gray-900 dark:text-gray-300"
       >
-        <h3 className=" font-semibold  text-CITLGray-main mt-5">{title}</h3>
+        <h3 className=" text-center font-semibold text-lg text-CITLGray-main py-3">{title}</h3>
       </label>
 
       {questions.map((question) => (
         <>
           <Question question={question} />
 
-          <ul className="items-center w-full text-sm font-medium  bg-CITLGray-light border  rounded-lg sm:flex ">
+          <ul className="items-center w-full text-sm font-medium  bg-CITLGray-lighter border  rounded-lg sm:flex ">
             <li className="w-full border-b border-CITLGray- sm:border-b-0 sm:border-r ">
               <div className="flex items-center pl-3">
                 <input

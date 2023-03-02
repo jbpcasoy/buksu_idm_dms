@@ -6,7 +6,7 @@ export default function Title() {
   return (
     <Layout>
       <div className="pt-12">
-        <div className="flex items-center border border-CITLGray-lighter  bg-CITLWhite m-2 p-3 relative rounded-lg shadow-lg overflow-hidden">
+        <div className="flex items-center border border-CITLGray-lighter  bg-CITLGray-light m-2 p-3 relative rounded-lg shadow-lg overflow-hidden">
           <div className="p-5 w-full">
             <div className="mx-4 p-4">
               <div className="flex items-center">
@@ -44,7 +44,7 @@ export default function Title() {
                 </div>
                 <div className="flex-auto border-t-2 transition duration-500 ease-in-out border-CITLGray-lighter"></div>
                 <div className="flex items-center text-CITLGray-lighter relative">
-                  <div className="rounded-full text-left transition duration-500 ease-in-out h-4 w-4 border-2 CITLGray-lighter">
+                  <div className="rounded-full text-left transition duration-500 ease-in-out h-4 w-4 border-2 border-CITLGray-lighter">
                     <div className="absolute top-0  mt-6 w-32 text-xs font-medium uppercase text-CITLGray-lighter">
                       The chapters
                     </div>
@@ -108,14 +108,14 @@ export default function Title() {
               <div className="flex p-2 mt-4">
                 <Link
                   href="/evaluation/title1"
-                  className="text-base  flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:border-CITLOrange hover:text-CITLOrange bg-gray-100 text-CITLGray-main border border-CITLGray-main"
+                  className="text-base  flex justify-center px-4 py-2 rounded font-bold cursor-pointer shadow-xl hover:border-CITLOrange hover:text-CITLOrange bg-gray-100 text-CITLGray-main border border-CITLGray-main"
                 >
                   Previous
                 </Link>
                 <div className="flex-auto flex flex-row-reverse">
                   <Link
                     href="/evaluation/preface1"
-                    className="text-base  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-CITLOrange   bg-CITLDarkBlue text-CITLWhite"
+                    className="text-base  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer shadow-xl hover:bg-CITLOrange   bg-CITLDarkBlue text-CITLWhite"
                   >
                     Next
                   </Link>

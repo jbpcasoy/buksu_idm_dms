@@ -5,7 +5,7 @@ export default function ImercQuestion({ question, title }) {
         {title}
       </h3>
       <p className="text-sm  text-center font-normal text-CITLGray-main mt-5">
-        Q: {question}
+        {question}
       </p>
 
       <ul className="text-center w-full text-sm font-medium rounded-md pt-5 sm:flex ">
