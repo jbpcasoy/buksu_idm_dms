@@ -1,6 +1,13 @@
 import axios from "axios";
 
-export default async function frontendGetIMs({ limit, page, ownerId, status }) {
+export default async function frontendGetIMs({
+  limit,
+  page,
+  ownerId,
+  status,
+  serialNumber,
+  title,
+}) {
   try {
     const response = await axios.get("/api/im", {
       params: {
@@ -8,6 +15,8 @@ export default async function frontendGetIMs({ limit, page, ownerId, status }) {
         page,
         ownerId,
         status,
+        serialNumber,
+        title,
       },
     });
     return response.data;

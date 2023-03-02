@@ -2,6 +2,7 @@ import Layout from "@/components/layout/Layout";
 import useUser from "@/hooks/useUser";
 import frontendGetIMs from "@/services/frontend/im/frontendGetIMs";
 import IM from "@/views/im/IM";
+import _ from "lodash";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
@@ -20,7 +21,10 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [state, setState] = useState({
     page: 1,
-    limit: 1,
+    limit: 10,
+    serialNumber: "",
+    title: "",
+    status: undefined,
   });
 
   const { user, userLoading, userError } = useUser();
@@ -40,6 +44,9 @@ export default function Home() {
       page: state.page,
       limit: state.limit,
       ownerId: user.ActiveFaculty.Faculty.id,
+      serialNumber: state.serialNumber,
+      title: state.title,
+      status: state.status,
     }).then((res) => {
       setLoading(false);
       if (!subscribe) return;
@@ -52,6 +59,27 @@ export default function Home() {
       subscribe = false;
     };
   }, [user, state]);
+
+  function handleSerialNumberChange(e) {
+    setState((prev) => ({ ...prev, serialNumber: e.target.value }));
+  }
+  const debouncedHandleSerialNumberChange = _.debounce(
+    handleSerialNumberChange,
+    800
+  );
+
+  function handleTitleChange(e) {
+    setState((prev) => ({ ...prev, title: e.target.value }));
+  }
+  const debouncedHandleTitleChange = _.debounce(handleTitleChange, 800);
+
+  function handleStatusChange(e) {
+    setState((prev) => ({
+      ...prev,
+      status: e.target.value === "" ? undefined : e.target.value,
+    }));
+  }
+  const debouncedHandleStatusChange = _.debounce(handleStatusChange, 800);
 
   return (
     <Layout>
@@ -79,7 +107,7 @@ export default function Home() {
           />
         </div>
       </div>
-      <div className='flex flex-row flex-wrap items-center border border-CITLGray-lighter bg-CITLWhite m-2 mt-5 relative rounded-lg shadow-lg overflow-x-scroll'>
+      <div className='flex flex-row flex-wrap items-center border border-CITLGray-lighter bg-CITLWhite m-2 mt-5 relative rounded-lg shadow-lg overflow-x-auto'>
         <div className='flex items-center bg-CITLGray-light justify-between py-3 px-3 w-fit xl:w-full'>
           <div className='flex flex-row flex-no-wrap space-between w-full sm:'>
             {user?.ActiveFaculty && (
@@ -149,22 +177,6 @@ export default function Home() {
           </div>
 
           <div className='flex'>
-            <select
-              id='default'
-              className='bg-CITLGray-light border border-CITLGray-lighter text-CITLGray-main text-sm rounded-lg block p-2.5 mr-1'>
-              <option selected>Filter</option>
-              <option>Serial No.</option>
-              <option>Title</option>
-              <option>Status</option>
-              <option>Owner</option>
-              <option>Created At</option>
-              <option>Updated At</option>
-            </select>
-
-            <input
-              className='w-36 py-2 pr-10 pl-4 bg-CITLGray-light border-CITLGray-lighter border text-CITLGray-main rounded-lg mr-5'
-              type='text'
-              placeholder='Search'></input>
             <button
               title='Add IM'
               className='flex items-center bg-CITLDarkBlue rounded-lg px-4 py-2.5 text-sm font-medium text-center text-white '
@@ -175,15 +187,39 @@ export default function Home() {
             </button>
           </div>
         </div>
+        <div className='p-1 space-x-1 w-full bg-CITLGray-light'>
+          <input
+            onChange={debouncedHandleSerialNumberChange}
+            className='bg-CITLGray-light border-CITLGray-lighter border text-CITLGray-main rounded-sm '
+            type='text'
+            placeholder='Serial Number'></input>
+          <input
+            onChange={debouncedHandleTitleChange}
+            className='bg-CITLGray-light border-CITLGray-lighter border text-CITLGray-main rounded-sm'
+            type='text'
+            placeholder='Title'></input>
+          <select
+            id='default'
+            className='bg-CITLGray-light border-CITLGray-lighter border text-CITLGray-main rounded-sm'
+            onChange={debouncedHandleStatusChange}>
+            <option value='' selected>
+              Status
+            </option>
+            <option value='SUBMITTED'>Submitted</option>
+            <option value='DEPARTMENT_REVIEWED'>Department Reviewed</option>
+            <option value='DEPARTMENT_ENDORSED'>Department Endorsed</option>
+            <option value='CITL_REVIEWED'>Citl Reviewed</option>
+            <option value='CITL_ENDORSED'>Citl Endorsed</option>
+          </select>
+        </div>
         <table className='min-w-full divide-y divide-CITLGray-light mb-2'>
           <thead className='bg-CITLGray-light'>
             <tr>
-              {/* <th
-                scope="col"
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-              >
+              <th
+                scope='col'
+                className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>
                 Serial No.
-              </th> */}
+              </th>
               <th
                 scope='col'
                 className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>
@@ -193,11 +229,6 @@ export default function Home() {
                 scope='col'
                 className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>
                 Status
-              </th>
-              <th
-                scope='col'
-                className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>
-                Owner
               </th>
 
               <th
@@ -227,7 +258,6 @@ export default function Home() {
                   originalFileName={im.originalFileName}
                   fileName={im.fileName}
                   id={im.id}
-                  owner={im.owner}
                   serialNumber={im.serialNumber}
                   status={im.status}
                   title={im.title}
@@ -245,7 +275,9 @@ export default function Home() {
             <span className='text-sm text-gray-700 dark:text-gray-400 '>
               Showing{" "}
               <span className='font-semibold text-gray-900 dark:text-white'>
-                {state.limit * (state.page - 1) + 1}
+                {state.limit * (state.page - 1) + 1 > total
+                  ? 0
+                  : state.limit * (state.page - 1) + 1}
               </span>
               {" - "}
               <span className='font-semibold text-gray-900 dark:text-white'>
