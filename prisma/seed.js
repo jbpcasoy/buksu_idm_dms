@@ -12,12 +12,8 @@ const colleges = [
 ];
 
 const departments = {
-  "College of Administration": [
-    "College of Administration",
-    "Public Administration",
-  ],
+  "College of Administration": ["Public Administration"],
   "College of Arts and Sciences": [
-    "College of Arts and Sciences",
     "Community Development",
     "Development Communication",
     "Economics",
@@ -32,11 +28,9 @@ const departments = {
   "College of Business": [
     "Accountancy",
     "Business Administration",
-    "College of Business",
     "Hospitality",
   ],
   "College of Education": [
-    "College of Education",
     "Early Childhood Education",
     "Elementary Education",
     "Elementary Laboratory School",
@@ -48,7 +42,6 @@ const departments = {
   "College of Nursing": ["Nursing"],
   "College of Technologies": [
     "Automotive Technology",
-    "College of Technologies",
     "Electronics Technology",
     "Food Technology",
     "Information Technology",
