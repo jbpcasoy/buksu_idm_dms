@@ -10,7 +10,7 @@ export default function IMVersions() {
       <div className="px-6 py-4 md:w-full ">
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg border border-CITLGray-lighter bg-CITLGray-light">
           <div className="justify-between flex p-5 ">
-            <h6 className="pt-2 text-lg font-semibold text-left text-CITLDarkBlue ">
+            <h6 className="py-5 pl-5 text-lg font-bold text-left text-CITLDarkBlue ">
               Instructional Material Versions
             </h6>
           </div>
@@ -42,7 +42,7 @@ export default function IMVersions() {
               </p>
               <Link
                 href={`/im/${router.query.id}/versions/123`}
-                className="inline-flex items-center px-4 py-2 text-sm font-medium text-CITLDarkBlue bg-CITL border  rounded-lg  hover:text-CITLDarkBlue hover:border-CITLOrange focus:outline-none "
+                className="inline-flex items-center px-4 py-2 text-sm font-medium text-CITLDarkBlue bg-CITLOrange border  rounded-lg  hover:text-CITLDarkBlue hover:border-CITLOrange focus:outline-none "
               >
                 View{" "}
                 <svg
@@ -85,7 +85,7 @@ export default function IMVersions() {
               </p>
               <Link
                 href={`/im/${router.query.id}/versions/123`}
-                className="inline-flex items-center px-4 py-2 text-sm font-medium text-CITLDarkBlue bg-CITL border  rounded-lg  hover:text-CITLDarkBlue hover:border-CITLOrange focus:outline-none "
+                className="inline-flex items-center px-4 py-2 text-sm font-medium text-CITLDarkBlue bg-CITLOrange border  rounded-lg  hover:text-CITLDarkBlue hover:border-CITLOrange focus:outline-none "
               >
                 View{" "}
                 <svg
@@ -128,7 +128,7 @@ export default function IMVersions() {
               </p>
               <Link
                 href={`/im/${router.query.id}/versions/123`}
-                className="inline-flex items-center px-4 py-2 text-sm font-medium text-CITLDarkBlue bg-CITL border  rounded-lg  hover:text-CITLDarkBlue hover:border-CITLOrange focus:outline-none "
+                className="inline-flex items-center px-4 py-2 text-sm font-medium text-CITLDarkBlue bg-CITLOrange border  rounded-lg  hover:text-CITLDarkBlue hover:border-CITLOrange focus:outline-none "
               >
                 View{" "}
                 <svg

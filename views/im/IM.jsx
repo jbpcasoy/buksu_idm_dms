@@ -16,7 +16,8 @@ export default function IM({
     <tr
       className={` bg-white ${
         bottomBorder ? "border-b dark:border-CITLGray-light" : ""
-      } text-sm text-CITLGray-main text-left p-4 `}>
+      } text-sm text-CITLGray-main text-left p-4 `}
+    >
       <td className='px-6 py-4 '>{serialNumber}</td>
 
       <td className='px-6 py-4 '>{title}</td>
@@ -34,7 +35,8 @@ export default function IM({
       <td className='bg-white  font-medium text-slate-400  items-center justify-center px-6 py-4 '>
         <button
           onClick={onView}
-          className='transition ease-in-out delay-150 px-5 py-2.5 text-sm font-medium text-center text-white bg-CITLDarkBlue rounded-lg hover:-translate-y-1 hover:scale-110 hover:bg-CITLOrange duration-300 mr-3'>
+          className=' px-5 py-2.5 text-sm font-medium text-center text-white bg-CITLDarkBlue rounded-lg  hover:bg-CITLDarkBlue shadow-xl  mr-3'
+        >
           View
         </button>
       </td>

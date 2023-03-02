@@ -4,11 +4,11 @@ export default function Endorsement() {
   return (
     <Layout>
       <div className="flex items-center border border-CITLGray-lighter  bg-CITLWhite m-2 p-3 relative rounded-lg shadow-lg overflow-hidden">
-        <div className="px-6 py-4 md:w-full ">
-          <h2 className="text-gray-800 font-semibold text-xl ">
+        <div className="px-6 py-5 md:w-full ">
+          <h2 className="text-gray-800 font-bold text-xl ">
             Endorsement of the Instructional Material
           </h2>
-          <p className="mb-8 text-sm">(Implementation Phase)</p>
+          <p className="mb-8 text-sm">Implementation Phase</p>
           <form>
             <div className="grid gap-6 mb-6 md:grid-cols-2">
               <div>
@@ -70,14 +70,13 @@ export default function Endorsement() {
                   id="semesters"
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-CITLOrange focus:border-CITLOrange block w-full p-2.5 "
                 >
-                  
                   <option selected>Summer</option>
                   <option>First semester only</option>
                   <option>Second Semester only</option>
                   <option>Every semester</option>
                 </select>
               </div>
-              <div>   
+              <div>
                 <label
                   for="im_type"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -154,7 +153,7 @@ export default function Endorsement() {
                   <option>National Service Training Program</option>
                 </select>
               </div>
-              
+
               <div>
                 <div className="flex items-center mb-4">
                   <div className="flex-row">
