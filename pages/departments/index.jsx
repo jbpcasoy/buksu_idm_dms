@@ -1,25 +1,45 @@
 import Layout from "@/components/layout/Layout";
-import College from "@/views/College";
+import Department from "@/views/Department";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
-export default function CollegePage() {
+export default function Departments() {
   const [state, setState] = useState({
     // TODO fetch from database
     colleges: [
-      { name: "College of Technologies" },
-      { name: "College of Business Administration" },
-      { name: "College of Nursing" },
-      { name: "College of Arts and Sciences" },
-      { name: "College of Law" },
-      { name: "College of Public Administration" },
-      { name: "College of Education" },
+      { name: "Public Administration" },
+      { name: "Community Development" },
+      { name: "Development Communication" },
+      { name: "Economics" },
+      { name: "General Education" },
+      { name: "Language and Letters" },
+      { name: "Mathematics" },
+      { name: "Natural Sciences" },
+      { name: "Philosophy" },
+      { name: "Social Sciences" },
+      { name: "Sociology" },
+      { name: "Accountancy" },
+      { name: "Business Administration" },
+      { name: "Hospitality" },
+      { name: "Early Childhood Education" },
+      { name: "Elementary Education" },
+      { name: "Elementary Laboratory School" },
+      { name: "Physical Education" },
+      { name: "Secondary Education" },
+      { name: " Secondary Laboratory Education" },
+      { name: "Law" },
+      { name: "Nursing" },
+      { name: "Automotive Technology" },
+      { name: "Electronics Technology" },
+      { name: "Food Technology" },
+      { name: "Physical Education" },
+      { name: "Information Technology" },
+      { name: " National Service Training Program" },
     ],
   });
 
   const router = useRouter();
-
   return (
     <Layout>
       <div>
@@ -70,9 +90,11 @@ export default function CollegePage() {
                 <span className='inline-flex items-center justify-center w-4 h-4 mr-1 text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
                   2
                 </span>
-                <span>Colleges</span>
+                <span>Departments</span>
               </button>
             </div>
+
+            <p>College of Technologies</p>
 
             <div className='flex'>
               <select
@@ -111,7 +133,7 @@ export default function CollegePage() {
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
-                  Colleges
+                  Departments
                 </th>
 
                 <th
@@ -124,8 +146,7 @@ export default function CollegePage() {
             </thead>
             <tbody className='bg-white divide-gray-200 overflow-y-auto'>
               {state.colleges.map((college, index) => (
-                <College
-                  onView={() => router.push("/departments")}
+                <Department
                   bottomBorder={true}
                   name={college.name}
                   id={index}
