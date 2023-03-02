@@ -10,7 +10,7 @@ export default function College({ name, onView, bottomBorder = true }) {
       <td className="bg-white  font-medium text-slate-400  items-center justify-center py-4 flex ">
         <button
           onClick={onView}
-          className="transition ease-in-out delay-150 px-5 py-2.5 text-sm font-medium text-center text-white bg-CITLDarkBlue rounded-lg hover:-translate-y-1 hover:scale-110 hover:bg-CITLOrange duration-300"
+          className="px-5 py-2.5 text-sm font-medium text-center text-white bg-CITLDarkBlue rounded-lg  hover:bg-CITLDarkBlue"
         >
           View
         </button>
