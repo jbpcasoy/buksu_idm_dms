@@ -6,6 +6,7 @@ export default async function readIMs({
   serialNumber,
   title,
   status,
+  ownerId,
 }) {
   const prisma = new PrismaClient();
 
@@ -30,6 +31,7 @@ export default async function readIMs({
         },
       },
       where: {
+        ownerId: ownerId,
         serialNumber: {
           contains: serialNumber,
           // mode: "insensitive",
@@ -46,6 +48,7 @@ export default async function readIMs({
 
     const total = await prisma.iM.count({
       where: {
+        ownerId: ownerId,
         serialNumber: {
           contains: serialNumber,
           // mode: "insensitive",
