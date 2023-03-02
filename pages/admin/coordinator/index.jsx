@@ -3,6 +3,7 @@ import frontendCreateCoordinator from "@/services/frontend/admin/coordinator/fro
 import frontendReadCoordinators from "@/services/frontend/admin/coordinator/frontendReadCoordinators";
 import AdminAddCoordinatorForm from "@/views/admin/coordinator/AdminAddCoordinatorForm";
 import AdminLayout from "@/views/admin/layout/AdminLayout";
+import ActiveFilter from "@/views/forms/ActiveFilter";
 import AddIcon from "@mui/icons-material/Add";
 import {
   Box,
@@ -33,6 +34,7 @@ export default function AdminCoordinatorPage() {
     name: "",
     departmentName: "",
     collegeName: "",
+    active: null,
   });
 
   useEffect(() => {
@@ -44,6 +46,7 @@ export default function AdminCoordinatorPage() {
       name: state.name,
       departmentName: state.departmentName,
       collegeName: state.collegeName,
+      active: state.active,
     }).then((res) => {
       if (!subscribe) return;
 
@@ -105,6 +108,13 @@ export default function AdminCoordinatorPage() {
   }
   const debouncedHandleCollegeChange = _.debounce(handleCollegeNameChange, 800);
 
+  function handleActiveChange(active) {
+    setState((prev) => ({
+      ...prev,
+      active,
+    }));
+  }
+
   return (
     <AdminLayout>
       <Box sx={{ m: 1 }}>
@@ -140,6 +150,7 @@ export default function AdminCoordinatorPage() {
             label='College'
             onChange={debouncedHandleCollegeChange}
           />
+          <ActiveFilter onChange={handleActiveChange} />
         </Stack>
         <TableContainer>
           <Table>

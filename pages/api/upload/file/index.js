@@ -1,17 +1,10 @@
-import multer from "multer";
+import firebaseUploadFile from "@/services/api/upload/file/firebaseUploadFile";
+import uploadFile from "@/services/middleware/upload/uploadFile";
+import { uuidv4 } from "@firebase/util";
 import nextConnect from "next-connect";
 import slugify from "slugify";
-import { v4 as uuidv4 } from "uuid";
 
 // TODO implement logging
-
-const upload = multer({
-  storage: multer.diskStorage({
-    destination: "uploads/file",
-    filename: (req, file, cb) =>
-      cb(null, `${uuidv4()}_${slugify(file.originalname, { lower: true })}`),
-  }),
-});
 
 const apiRoute = nextConnect({
   onError(error, req, res) {
@@ -24,13 +17,34 @@ const apiRoute = nextConnect({
   },
 });
 
-apiRoute.use(upload.single("file"));
+apiRoute.use(uploadFile);
 
 apiRoute.post(async (req, res) => {
+  if (process.env.STORAGE === "cloud") {
+    return cloudUploadFileHandler(req, res);
+  } else if (process.env.STORAGE === "local") {
+    localUploadFileHandler(req, res);
+  } else {
+    throw new Error(
+      `env variable STORAGE ${process.env.STORAGE} is not supported`
+    );
+  }
+});
+
+async function cloudUploadFileHandler(req, res) {
+  const file = req.file;
+
+  const filename = `${uuidv4()}_${slugify(file.originalname, { lower: true })}`;
+
+  await firebaseUploadFile({ path: `uploads/file/${filename}`, file });
+  return res.status(200).json({ ...file, filename, buffer: undefined });
+}
+
+async function localUploadFileHandler(req, res) {
   const file = req.file;
 
   res.status(200).json(file);
-});
+}
 
 export default apiRoute;
 

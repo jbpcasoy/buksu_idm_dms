@@ -6,6 +6,7 @@ export default async function readCoordinators({
   name,
   collegeName,
   departmentName,
+  active,
 }) {
   const prisma = new PrismaClient();
 
@@ -59,10 +60,53 @@ export default async function readCoordinators({
             },
           },
         },
+        ActiveCoordinator:
+          active === true
+            ? {
+                isNot: null,
+              }
+            : active === false
+            ? {
+                is: null,
+              }
+            : undefined,
       },
     });
 
-    const total = await prisma.coordinator.count();
+    const total = await prisma.coordinator.count({
+      where: {
+        Faculty: {
+          user: {
+            name: {
+              contains: name,
+              // mode: "insensitive",
+            },
+          },
+          department: {
+            name: {
+              contains: departmentName,
+              // mode: "insensitive",
+            },
+            college: {
+              name: {
+                contains: collegeName,
+                // mode: "insensitive",
+              },
+            },
+          },
+        },
+        ActiveCoordinator:
+          active === true
+            ? {
+                isNot: null,
+              }
+            : active === false
+            ? {
+                is: null,
+              }
+            : undefined,
+      },
+    });
 
     return { data: coordinators, total };
   } catch (error) {

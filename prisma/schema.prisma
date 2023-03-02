@@ -69,7 +69,7 @@ enum IMStatus {
 
 model IM {
   id                 String              @id @default(cuid())
-  serialNumber       String
+  serialNumber       String              @unique
   title              String
   // dont use with sqlite
   status             IMStatus            @default(SUBMITTED)
@@ -82,6 +82,7 @@ model IM {
   File               File[]
   DepartmentApproval DepartmentApproval?
   ActiveFile         ActiveFile?
+  authors            String?             @db.Text
 
   @@index([ownerId])
 }
@@ -153,15 +154,18 @@ model Faculty {
 }
 
 model ActiveFaculty {
-  id           String     @id @default(cuid())
-  createdAt    DateTime   @default(now())
-  updatedAt    DateTime   @updatedAt
-  Faculty      Faculty    @relation(fields: [facultyId], references: [id])
-  facultyId    String     @unique
-  User         User       @relation(fields: [userId], references: [id])
-  userId       String     @unique
-  Department   Department @relation(fields: [departmentId], references: [id])
-  departmentId String
+  id                String             @id @default(cuid())
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime           @updatedAt
+  Faculty           Faculty            @relation(fields: [facultyId], references: [id])
+  facultyId         String             @unique
+  User              User               @relation(fields: [userId], references: [id])
+  userId            String             @unique
+  Department        Department         @relation(fields: [departmentId], references: [id])
+  departmentId      String
+  ActiveCoordinator ActiveCoordinator?
+  ActiveSenior      ActiveSenior?
+  ActiveChairperson ActiveChairperson?
 
   @@index([departmentId])
 }
@@ -197,35 +201,41 @@ model Senior {
 }
 
 model ActiveCoordinator {
-  id            String      @id @default(cuid())
-  createdAt     DateTime    @default(now())
-  updatedAt     DateTime    @updatedAt
-  Coordinator   Coordinator @relation(fields: [coordinatorId], references: [id])
-  coordinatorId String      @unique
-  Department    Department  @relation(fields: [departmentId], references: [id])
-  departmentId  String      @unique
+  id              String        @id @default(cuid())
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+  Coordinator     Coordinator   @relation(fields: [coordinatorId], references: [id])
+  coordinatorId   String        @unique
+  ActiveFaculty   ActiveFaculty @relation(fields: [activeFacultyId], references: [id])
+  activeFacultyId String        @unique
+  Department      Department    @relation(fields: [departmentId], references: [id])
+  departmentId    String        @unique
 }
 
 model ActiveSenior {
-  id           String     @id @default(cuid())
-  createdAt    DateTime   @default(now())
-  updatedAt    DateTime   @updatedAt
-  Senior       Senior     @relation(fields: [seniorId], references: [id])
-  seniorId     String     @unique
-  Department   Department @relation(fields: [departmentId], references: [id])
-  departmentId String
+  id              String        @id @default(cuid())
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+  Senior          Senior        @relation(fields: [seniorId], references: [id])
+  seniorId        String        @unique
+  ActiveFaculty   ActiveFaculty @relation(fields: [activeFacultyId], references: [id])
+  activeFacultyId String        @unique
+  Department      Department    @relation(fields: [departmentId], references: [id])
+  departmentId    String
 
   @@index([departmentId])
 }
 
 model ActiveChairperson {
-  id            String      @id @default(cuid())
-  createdAt     DateTime    @default(now())
-  updatedAt     DateTime    @updatedAt
-  Chairperson   Chairperson @relation(fields: [chairpersonId], references: [id])
-  chairpersonId String      @unique
-  Department    Department  @relation(fields: [departmentId], references: [id])
-  departmentId  String      @unique
+  id              String        @id @default(cuid())
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+  Chairperson     Chairperson   @relation(fields: [chairpersonId], references: [id])
+  chairpersonId   String        @unique
+  ActiveFaculty   ActiveFaculty @relation(fields: [activeFacultyId], references: [id])
+  activeFacultyId String        @unique
+  Department      Department    @relation(fields: [departmentId], references: [id])
+  departmentId    String        @unique
 }
 
 model DepartmentApproval {

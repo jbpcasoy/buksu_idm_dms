@@ -16,34 +16,30 @@ export default function CreateIM() {
     initialValues: {
       serialNumber: "",
       title: "",
-      // TODO add authors
+      authors: "",
     },
     validationSchema: Yup.object({
       serialNumber: Yup.string().required(),
       title: Yup.string().required(),
+      authors: Yup.string().required(),
     }),
-    onSubmit: (values) => {
-      const { title, serialNumber } = values;
+    onSubmit: async (values) => {
+      const { title, serialNumber, authors } = values;
 
-      return frontendCreateIM({
+      const im = await frontendCreateIM({
         title,
         serialNumber,
-      }).then((im) => {
-        return uploadIMFile(file).then((res) => {
-          return frontendCreateFile({
-            iMId: im.id,
-            originalFileName: file.name,
-            fileName: res.filename,
-            googleDocsUrl: "https://docs.google.com/test-url",
-          }).then((createdFile) => {
-            return frontendCreateActiveFile({
-              iMId: im.id,
-              fileId: createdFile.id,
-            }).then((res) => {
-              router.push(`/im/${im.id}`);
-            });
-          });
-        });
+        authors,
+      });
+      const res = await uploadIMFile(file);
+      const createdFile = await frontendCreateFile({
+        iMId: im.id,
+        originalFileName: file.name,
+        fileName: res.filename,
+      });
+      frontendCreateActiveFile({
+        iMId: im.id,
+        fileId: createdFile.id,
       });
     },
   });
