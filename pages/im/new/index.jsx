@@ -36,10 +36,12 @@ export default function CreateIM() {
         originalFileName: file.name,
         fileName: res.filename,
       });
-      frontendCreateActiveFile({
+      const activeFile = await frontendCreateActiveFile({
         iMId: im.id,
         fileId: createdFile.id,
       });
+
+      router.push(`/im/${im.id}`);
     },
   });
 
@@ -187,7 +189,8 @@ export default function CreateIM() {
                   />
                   <button
                     type='button'
-                    className='mr-4 text-white  bg-CITLOrange font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center '
+                    disabled={formik.isSubmitting}
+                    className='mr-4 text-white  bg-CITLOrange font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center disabled:bg-CITLGray-main'
                     onClick={() => {
                       setFile(null);
                     }}>
@@ -197,7 +200,8 @@ export default function CreateIM() {
               )}
               <button
                 type='submit'
-                className='text-white bg-CITLDarkBlue font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center '>
+                disabled={formik.isSubmitting}
+                className='text-white bg-CITLDarkBlue font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center disabled:bg-CITLGray-main '>
                 Submit
               </button>
             </div>
