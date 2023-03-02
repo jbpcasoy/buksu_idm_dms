@@ -1,5 +1,6 @@
 import LoginButton from "@/views/LoginButton";
 import { signIn, signOut, useSession } from "next-auth/react";
+import Link from "next/link";
 
 export default function Header() {
   const { data: session } = useSession();
@@ -31,13 +32,13 @@ export default function Header() {
                 ></path>
               </svg>
             </button>
-            <a href="/" className="flex ml-2 md:mr-24">
+            <Link href="/" className="flex ml-2 md:mr-24">
               <img
                 src="/IMAGES/Logo.png"
                 className="h-8 sm:h-10 mr-3"
                 alt="BukSUIMD Logo"
               />
-            </a>
+            </Link>
           </div>
 
           <div className="flex items-center">
@@ -81,13 +82,13 @@ export default function Header() {
                 )}
                 <ul className="py-1" role="none">
                   <li>
-                    <a
+                    <Link
                       href="/me"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                       role="menuitem"
                     >
                       Profile
-                    </a>
+                    </Link>
                   </li>
                   <li>
                     <a

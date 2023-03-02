@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function WithSidebar({ children, active }) {
   return (
     <div>
@@ -27,13 +29,13 @@ export default function WithSidebar({ children, active }) {
                   ></path>
                 </svg>
               </button>
-              <a href="/" className="flex ml-2 md:mr-24">
+              <Link href="/" className="flex ml-2 md:mr-24">
                 <img
                   src="IMAGES/Logo.png"
                   className="h-8 sm:h-10 mr-3"
                   alt="BukSUIMD Logo"
                 />
-              </a>
+              </Link>
             </div>
             <div className="flex items-center">
               <div className="flex items-center mr-3">

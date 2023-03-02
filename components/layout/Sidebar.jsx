@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Sidebar() {
   return (
     <aside
@@ -8,7 +10,7 @@ export default function Sidebar() {
       <div className="h-full px-3 pb-4 overflow-y-auto bg-CITLDarkBlue dark:bg-gray-800">
         <ul className="space-y-2">
           <li>
-            <a
+            <Link
               href="/"
               className="flex items-center p-2 text-base font-normal text-CITLWhite rounded-lg  hover:bg-CITLGray-main "
             >
@@ -23,11 +25,11 @@ export default function Sidebar() {
                 <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
               </svg>
               <span className="ml-3">My IM's</span>
-            </a>
+            </Link>
           </li>
 
           <li>
-            <a
+            <Link
               href="/college"
               className="flex items-center p-2 text-base font-normal text-CITLWhite rounded-lg  hover:bg-CITLGray-main"
             >
@@ -45,7 +47,7 @@ export default function Sidebar() {
                 ></path>
               </svg>
               <span className="flex-1 ml-3 whitespace-nowrap">Colleges</span>
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

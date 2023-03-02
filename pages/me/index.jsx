@@ -10,20 +10,14 @@ export default function Me() {
 
   return (
     <Layout>
-      <div>
-        {session?.user?.name && (
-          <ProfileFormView
-            onSubmit={(profile) => {
-              axios
-                .patch(`/api/profile/${session.user.id}`, profile)
-                .then(() => {
-                  signOut();
-                });
-            }}
-            defaultName={session?.user?.name}
-          />
-        )}
-      </div>
+      <ProfileFormView
+        onSubmit={(profile) => {
+          axios.patch(`/api/profile/${session.user.id}`, profile).then(() => {
+            signOut();
+          });
+        }}
+        defaultName={session?.user?.name}
+      />
     </Layout>
   );
 }

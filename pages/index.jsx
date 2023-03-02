@@ -51,8 +51,8 @@ export default function Home() {
           />
         </div>
       </div>
-      <div className="flex flex-wrap items-center border border-CITLGray-lighter bg-CITLWhite m-2 mt-5 relative rounded-lg shadow-lg overflow-hidden">
-        <div className="flex items-center bg-CITLGray-light justify-between py-3 px-3 w-full">
+      <div className="flex flex-row flex-wrap items-center border border-CITLGray-lighter bg-CITLWhite m-2 mt-5 relative rounded-lg shadow-lg overflow-x-scroll">
+        <div className="flex items-center bg-CITLGray-light justify-between py-3 px-3 w-fit xl:w-full">
           <div className="flex flex-row flex-no-wrap space-between w-full sm:">
             <button
               type="button"
@@ -134,12 +134,12 @@ export default function Home() {
         <table className="min-w-full divide-y divide-CITLGray-light mb-2">
           <thead className="bg-CITLGray-light">
             <tr>
-              <th
+              {/* <th
                 scope="col"
                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
                 Serial No.
-              </th>
+              </th> */}
               <th
                 scope="col"
                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"

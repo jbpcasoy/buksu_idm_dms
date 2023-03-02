@@ -24,12 +24,13 @@ const ReviewForm = ({ isOpen, onClose, onSubmit }) => {
 
   return (
     <Layout>
-      <div className="flex items-center border border-CITLGray-lighter  bg-CITLWhite m-6 p-3 relative rounded-lg shadow-lg overflow-hidden">
+      <div className="flex items-center border border-CITLGray-lighter  bg-CITLWhite m-2 p-3 relative rounded-lg shadow-lg overflow-hidden">
         <div className="px-6 py-4 md:w-full ">
-          <h2 className="text-gray-800 font-bold text-xl ">
+          <h2 className="text-gray-800 font-semibold text-xl ">
             Instructional Material Review Form
           </h2>
-          <p className="mb-4">(Implementation Phase)</p>
+          <p className="mb-8 text-sm">(Implementation Phase)</p>
+
           <form noValidate onSubmit={formik.handleSubmit}>
             <div className="grid gap-6 mb-6 md:grid-cols-3">
               <div className="mb-4">
@@ -105,7 +106,7 @@ const ReviewForm = ({ isOpen, onClose, onSubmit }) => {
 
                 {/* TODO: Allign all items to center  */}
 
-                <ul className="items-center w-full text-sm font-medium    rounded-lg sm:flex  dark:text-CITLDarkBlue mt-2">
+                <ul className="items-center w-full text-sm font-medium  rounded-lg sm:flex  dark:text-CITLDarkBlue mt-2">
                   <li className="w-full  border-gray-200 sm:border-b-0  dark:border-gray-600">
                     <div className="flex items-center pl-3">
                       <input
