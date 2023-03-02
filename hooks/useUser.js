@@ -3,7 +3,9 @@ import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 
 export default function useUser() {
-  const { data: session } = useSession();
+  const { data: session } = useSession({
+    required: true,
+  });
   const [user, setUser] = useState(null);
   const [userLoading, setUserLoading] = useState(true);
   const [userError, setUserError] = useState(null);
