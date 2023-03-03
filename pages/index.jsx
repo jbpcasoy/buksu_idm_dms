@@ -41,14 +41,28 @@ export default function Home() {
     let subscribe = true;
     setLoading(true);
 
-    frontendGetIMs({
+    const filter = {
       page: state.page,
       limit: state.limit,
-      ownerId: user.ActiveFaculty.Faculty.id,
       serialNumber: state.serialNumber,
       title: state.title,
       status: state.status,
-    }).then((res) => {
+    };
+
+    let getter = getMyIMs;
+
+    switch (tab) {
+      case Tabs.MyIMs:
+        getter = getMyIMs;
+        break;
+      case Tabs.ToReview:
+        getter = getToReview;
+        break;
+      default:
+        throw new Error("Tab unsupported");
+    }
+
+    getter(filter).then((res) => {
       setLoading(false);
       if (!subscribe) return;
 
@@ -59,7 +73,22 @@ export default function Home() {
     return () => {
       subscribe = false;
     };
-  }, [user, state]);
+  }, [user, state, tab]);
+
+  async function getMyIMs(filter) {
+    return frontendGetIMs({
+      ownerId: user.ActiveFaculty.Faculty.id,
+      ...filter,
+    });
+  }
+
+  async function getToReview(filter) {
+    return frontendGetIMs({
+      notOwnerId: user.ActiveFaculty.Faculty.id,
+      departmentId: user.ActiveFaculty.Faculty.departmentId,
+      ...filter,
+    });
+  }
 
   function handleSerialNumberChange(e) {
     setState((prev) => ({ ...prev, serialNumber: e.target.value }));
@@ -193,7 +222,7 @@ export default function Home() {
                   <button
                     type='button'
                     // onClick={() => setTab(Tabs.ToRevise)}
-                    className={`inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue border-CITLOrange rounded-none ${
+                    className={`line-through inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue border-CITLOrange rounded-none ${
                       tab === Tabs.ToRevise
                         ? "border-b-2 border-CITLOrange"
                         : ""
@@ -206,7 +235,7 @@ export default function Home() {
                   </button>
                   <button
                     type='button'
-                    // onClick={() => setTab(Tabs.ToReview)}
+                    onClick={() => setTab(Tabs.ToReview)}
                     className={`inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue  border-CITLOrange rounded-none ${
                       tab === Tabs.ToReview
                         ? "border-b-2 border-CITLOrange"
@@ -221,7 +250,7 @@ export default function Home() {
                   <button
                     type='button'
                     // onClick={() => setTab(Tabs.Reviewed)}
-                    className={`inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue border-CITLOrange rounded-none ${
+                    className={`line-through inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue border-CITLOrange rounded-none ${
                       tab === Tabs.Reviewed
                         ? "border-b-2 border-CITLOrange"
                         : ""
@@ -239,7 +268,7 @@ export default function Home() {
                 <button
                   type='button'
                   // onClick={() => setTab(Tabs.DepartmentIMs)}
-                  className={` inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue border-CITLOrange rounded-none ${
+                  className={`line-through inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue border-CITLOrange rounded-none ${
                     tab === Tabs.DepartmentIMs
                       ? "border-b-2 border-CITLOrange"
                       : ""
@@ -289,8 +318,8 @@ export default function Home() {
               <option value='SUBMITTED'>Submitted</option>
               <option value='DEPARTMENT_REVIEWED'>Department Reviewed</option>
               <option value='DEPARTMENT_ENDORSED'>Department Endorsed</option>
-              <option value='CITL_REVIEWED'>Citl Reviewed</option>
-              <option value='CITL_ENDORSED'>Citl Endorsed</option>
+              <option value='CITL_REVIEWED'>CITL Reviewed</option>
+              <option value='CITL_ENDORSED'>CITL Endorsed</option>
             </select>
           </div>
           <table className='min-w-full divide-y divide-CITLGray-light mb-2'>
@@ -312,9 +341,14 @@ export default function Home() {
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
+                  Owner
+                </th>
+                <th
+                  scope='col'
+                  className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
+                >
                   Status
                 </th>
-
                 <th
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
@@ -350,6 +384,7 @@ export default function Home() {
                     title={im.title}
                     updatedAt={im.updatedAt}
                     onView={() => router.push(`/im/${im.id}`)}
+                    owner={im.owner.user.name}
                     key={im.id}
                   />
                 );
