@@ -1,22 +1,22 @@
 import Layout from "@/components/layout/Layout";
+import useUser from "@/hooks/useUser";
 import ProfileFormView from "@/views/ProfileFormView";
 import axios from "axios";
-import { signOut, useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 
 export default function Me() {
-  const { data: session } = useSession({
-    required: true,
-  });
+  const { user, userLoading, userError } = useUser();
+  const router = useRouter();
 
   return (
     <Layout>
       <ProfileFormView
         onSubmit={(profile) => {
-          axios.patch(`/api/profile/${session.user.id}`, profile).then(() => {
-            signOut();
+          axios.patch(`/api/profile/${user.id}`, profile).then((res) => {
+            router.reload();
           });
         }}
-        defaultName={session?.user?.name}
+        defaultName={user?.name}
       />
     </Layout>
   );

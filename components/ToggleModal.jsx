@@ -1,11 +1,22 @@
-export default function ToggleModal() {
+import { useEffect, useState } from "react";
+
+export default function ToggleModal({ onSubmit, defaultName }) {
+  const [state, setState] = useState({
+    name: "",
+  });
+
+  useEffect(() => {
+    setState((prev) => ({ ...prev, name: defaultName }));
+  }, [defaultName]);
+
   return (
     <div className=''>
       <button
         data-modal-target='authentication-modal'
         data-modal-toggle='authentication-modal'
         class='block text-sm font-medium text-center px-4 py-2 text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100'
-        type='button'>
+        type='button'
+      >
         Edit Profile
       </button>
 
@@ -13,7 +24,8 @@ export default function ToggleModal() {
         id='authentication-modal'
         tabindex='-1'
         aria-hidden='true'
-        class='fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full'>
+        class='fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full'
+      >
         <div class='relative w-full h-full max-w-md md:h-auto'>
           <div class='relative bg-white rounded-lg shadow dark:bg-gray-700'>
             {/* <button
@@ -40,26 +52,39 @@ export default function ToggleModal() {
               <h3 class='mb-4 text-xl font-medium text-gray-900 dark:text-white '>
                 Edit your profile
               </h3>
-              <form class='space-y-6' action='#'>
+
+              <form
+                className='space-y-6'
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  onSubmit(state);
+                }}
+              >
                 <div>
                   <label
                     for='name'
-                    class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'>
+                    class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
+                  >
                     Name
                   </label>
                   <input
-                    type='name'
-                    name='name'
-                    id='name'
+                    type='text'
                     class='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white'
-                    placeholder='John Doe'
+                    placeholder='Name'
+                    value={state.name}
+                    onChange={(e) =>
+                      setState((prev) => {
+                        return { ...prev, name: e.target.value };
+                      })
+                    }
                     required
                   />
                 </div>
-                <div>
+                {/* <div>
                   <label
                     for='email'
-                    class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'>
+                    class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
+                  >
                     Email
                   </label>
                   <input
@@ -70,7 +95,7 @@ export default function ToggleModal() {
                     placeholder='name@company.com'
                     required
                   />
-                </div>
+                </div> */}
                 {/* <div>
                   <label
                     for="password"
@@ -114,7 +139,8 @@ export default function ToggleModal() {
                 </div> */}
                 <button
                   type='submit'
-                  class='w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'>
+                  class='w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
+                >
                   Confirm changes
                 </button>
                 {/* <div class="text-sm font-medium text-gray-500 dark:text-gray-300">

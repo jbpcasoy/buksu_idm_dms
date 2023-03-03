@@ -1,17 +1,13 @@
 import ToggleModal from "@/components/ToggleModal";
-import { useSession } from "next-auth/react";
-import Link from "next/link";
-import { useState } from "react";
+import useUser from "@/hooks/useUser";
 
 export default function ProfileFormView({ onSubmit, defaultName }) {
-  const [state, setState] = useState({ name: defaultName ?? "" });
-  const { data: session } = useSession({
-    required: true,
-  });
+  const { user, userError, userLoading } = useUser();
+
   return (
-    <div className="pt-36">
-      <div className="w-full mx-auto max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-        <div className="flex justify-end px-4 pt-10">
+    <div className='pt-36'>
+      <div className='w-full mx-auto max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700'>
+        <div className='flex justify-end px-4 pt-10'>
           {/* <button
           id="dropdownButton"
           data-dropdown-toggle="dropdown"
@@ -62,32 +58,32 @@ export default function ProfileFormView({ onSubmit, defaultName }) {
           </ul>
         </div> */}
         </div>
-        <div className="flex flex-col items-center pb-10">
+        <div className='flex flex-col items-center pb-10'>
           <img
-            className="w-24 h-24 mb-3 rounded-full shadow-lg"
-            src={session?.user?.image}
-            alt="image"
+            className='w-24 h-24 mb-3 rounded-full shadow-lg'
+            src={user?.image}
+            alt='image'
           />
-          <h5 className="mb-1 text-xl font-semibold text-gray-900 dark:text-white">
-            {session?.user?.name}
+          <h5 className='mb-1 text-xl font-semibold text-gray-900 dark:text-white'>
+            {user?.name}
           </h5>
-          <span className="text-sm text-gray-500 dark:text-gray-400">
-            {session?.user?.email}
+          <span className='text-sm text-gray-500 dark:text-gray-400'>
+            {user?.email}
           </span>
-          <div className="flex mt-4 space-x-3 md:mt-6">
+          <div className='flex mt-4 space-x-3 md:mt-6'>
             {/* <Link
             href="#"
             className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100    "
           >
             Edit
           </Link> */}
-            <ToggleModal />
-            <Link
-              href="#"
-              className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-CITLDarkBlue rounded-lg "
+            <ToggleModal onSubmit={onSubmit} defaultName={defaultName} />
+            {/* <Link
+              href='#'
+              className='inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-CITLDarkBlue rounded-lg '
             >
               Save
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>
@@ -98,18 +94,18 @@ export default function ProfileFormView({ onSubmit, defaultName }) {
     //     e.preventDefault();
     //     onSubmit(state);
     //   }}>
-    //   <div className='mb-4'>
-    //     <input
-    //       className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
-    //       type='text'
-    //       placeholder='Name'
-    //       value={state.name}
-    //       onChange={(e) =>
-    //         setState((prev) => {
-    //           return { ...prev, name: e.target.value };
-    //         })
-    //       }
-    //     />
+    // <div className='mb-4'>
+    //   <input
+    //     className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+    //     type='text'
+    //     placeholder='Name'
+    //     value={state.name}
+    //     onChange={(e) =>
+    //       setState((prev) => {
+    //         return { ...prev, name: e.target.value };
+    //       })
+    //     }
+    //   />
     //   </div>
     //   <div className='flex items-center justify-center'>
     //     <button
