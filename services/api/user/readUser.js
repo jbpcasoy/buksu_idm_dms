@@ -13,7 +13,6 @@ export default async function readUser(id) {
           include: {
             ActiveChairperson: true,
             ActiveCoordinator: true,
-            ActiveSenior: true,
             Faculty: true,
           },
         },

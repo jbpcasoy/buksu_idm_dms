@@ -129,7 +129,6 @@ model Department {
   Faculty           Faculty[]
   ActiveCoordinator ActiveCoordinator?
   ActiveChairperson ActiveChairperson?
-  ActiveSenior      ActiveSenior[]
   ActiveFaculty     ActiveFaculty[]
 
   @@index([collegeId])
@@ -147,7 +146,7 @@ model Faculty {
   IM            IM[]
   Chairperson   Chairperson?
   Coordinator   Coordinator?
-  Senior        Senior?
+  PeerApproval  PeerApproval[]
 
   @@unique([userId, departmentId])
   @@index([departmentId])
@@ -164,7 +163,6 @@ model ActiveFaculty {
   Department        Department         @relation(fields: [departmentId], references: [id])
   departmentId      String
   ActiveCoordinator ActiveCoordinator?
-  ActiveSenior      ActiveSenior?
   ActiveChairperson ActiveChairperson?
 
   @@index([departmentId])
@@ -190,15 +188,15 @@ model Coordinator {
   CoordinatorApproval CoordinatorApproval[]
 }
 
-model Senior {
-  id             String           @id @default(cuid())
-  createdAt      DateTime         @default(now())
-  updatedAt      DateTime         @updatedAt
-  Faculty        Faculty          @relation(fields: [facultyId], references: [id])
-  facultyId      String           @unique
-  ActiveSenior   ActiveSenior?
-  SeniorApproval SeniorApproval[]
-}
+// model Senior {
+//   id             String           @id @default(cuid())
+//   createdAt      DateTime         @default(now())
+//   updatedAt      DateTime         @updatedAt
+//   Faculty        Faculty          @relation(fields: [facultyId], references: [id])
+//   facultyId      String           @unique
+//   ActiveSenior   ActiveSenior?
+//   SeniorApproval SeniorApproval[]
+// }
 
 model ActiveCoordinator {
   id              String        @id @default(cuid())
@@ -212,19 +210,19 @@ model ActiveCoordinator {
   departmentId    String        @unique
 }
 
-model ActiveSenior {
-  id              String        @id @default(cuid())
-  createdAt       DateTime      @default(now())
-  updatedAt       DateTime      @updatedAt
-  Senior          Senior        @relation(fields: [seniorId], references: [id])
-  seniorId        String        @unique
-  ActiveFaculty   ActiveFaculty @relation(fields: [activeFacultyId], references: [id])
-  activeFacultyId String        @unique
-  Department      Department    @relation(fields: [departmentId], references: [id])
-  departmentId    String
+// model ActiveSenior {
+//   id              String        @id @default(cuid())
+//   createdAt       DateTime      @default(now())
+//   updatedAt       DateTime      @updatedAt
+//   Senior          Senior        @relation(fields: [seniorId], references: [id])
+//   seniorId        String        @unique
+//   ActiveFaculty   ActiveFaculty @relation(fields: [activeFacultyId], references: [id])
+//   activeFacultyId String        @unique
+//   Department      Department    @relation(fields: [departmentId], references: [id])
+//   departmentId    String
 
-  @@index([departmentId])
-}
+//   @@index([departmentId])
+// }
 
 model ActiveChairperson {
   id              String        @id @default(cuid())
@@ -246,7 +244,19 @@ model DepartmentApproval {
   iMId                String               @unique
   CoordinatorApproval CoordinatorApproval?
   ChairpersonApproval ChairpersonApproval?
-  SeniorApproval      SeniorApproval?
+  PeerApproval        PeerApproval?
+}
+
+model PeerApproval {
+  id                   String             @id @default(cuid())
+  createdAt            DateTime           @default(now())
+  updatedAt            DateTime           @updatedAt
+  DepartmentApproval   DepartmentApproval @relation(fields: [departmentApprovalId], references: [id])
+  departmentApprovalId String             @unique
+  Faculty              Faculty            @relation(fields: [facultyId], references: [id])
+  facultyId            String
+
+  @@index([facultyId])
 }
 
 model CoordinatorApproval {
@@ -273,17 +283,17 @@ model ChairpersonApproval {
   @@index([chairpersonId])
 }
 
-model SeniorApproval {
-  id                   String             @id @default(cuid())
-  cretaedAt            DateTime           @default(now())
-  updatedAt            DateTime           @updatedAt
-  DepartmentApproval   DepartmentApproval @relation(fields: [departmentApprovalId], references: [id])
-  Senior               Senior             @relation(fields: [seniorId], references: [id])
-  seniorId             String
-  departmentApprovalId String             @unique
+// model SeniorApproval {
+//   id                   String             @id @default(cuid())
+//   cretaedAt            DateTime           @default(now())
+//   updatedAt            DateTime           @updatedAt
+//   DepartmentApproval   DepartmentApproval @relation(fields: [departmentApprovalId], references: [id])
+//   Senior               Senior             @relation(fields: [seniorId], references: [id])
+//   seniorId             String
+//   departmentApprovalId String             @unique
 
-  @@index([seniorId])
-}
+//   @@index([seniorId])
+// }
 
 model Attachment {
   id               String   @id @default(cuid())

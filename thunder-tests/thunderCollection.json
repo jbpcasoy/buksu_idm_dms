@@ -90,25 +90,11 @@
         "sortNum": 120000
       },
       {
-        "_id": "b85e3533-d259-4dd1-8638-1154c3f4d5f0",
-        "name": "Senior",
-        "containerId": "",
-        "created": "2023-02-26T01:21:31.366Z",
-        "sortNum": 130000
-      },
-      {
         "_id": "cf136302-a036-4d23-8e67-221a33be0a92",
         "name": "ActiveCoordinator",
         "containerId": "",
         "created": "2023-02-26T01:21:31.367Z",
         "sortNum": 140000
-      },
-      {
-        "_id": "f579dabf-15cb-4e04-b0b5-22c6a6b2cf19",
-        "name": "ActiveSenior",
-        "containerId": "",
-        "created": "2023-02-26T01:21:31.368Z",
-        "sortNum": 150000
       },
       {
         "_id": "7e87e215-cc38-4b2d-bd3b-e056796b38c4",
@@ -137,13 +123,6 @@
         "containerId": "",
         "created": "2023-02-26T01:21:31.372Z",
         "sortNum": 190000
-      },
-      {
-        "_id": "89d0f6ba-1bf3-4929-baef-b72e0382463f",
-        "name": "SeniorApproval",
-        "containerId": "",
-        "created": "2023-02-26T01:21:31.373Z",
-        "sortNum": 200000
       },
       {
         "_id": "e3ba3dbd-e314-4a35-8e3a-55cf6b019d13",
