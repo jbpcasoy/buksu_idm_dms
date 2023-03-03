@@ -7,6 +7,8 @@ export default async function readIMs({
   title,
   status,
   ownerId,
+  notOwnerId,
+  departmentId,
 }) {
   const prisma = new PrismaClient();
 
@@ -31,35 +33,59 @@ export default async function readIMs({
         },
       },
       where: {
-        ownerId: ownerId,
-        serialNumber: {
-          contains: serialNumber,
-          // mode: "insensitive",
-        },
-        title: {
-          contains: title,
-          // mode: "insensitive",
-        },
-        status: {
-          equals: status,
-        },
+        AND: [
+          {
+            ownerId: {
+              not: notOwnerId,
+            },
+          },
+          {
+            owner: {
+              departmentId: departmentId,
+            },
+            ownerId: ownerId,
+            serialNumber: {
+              contains: serialNumber,
+              // mode: "insensitive",
+            },
+            title: {
+              contains: title,
+              // mode: "insensitive",
+            },
+            status: {
+              equals: status,
+            },
+          },
+        ],
       },
     });
 
     const total = await prisma.iM.count({
       where: {
-        ownerId: ownerId,
-        serialNumber: {
-          contains: serialNumber,
-          // mode: "insensitive",
-        },
-        title: {
-          contains: title,
-          // mode: "insensitive",
-        },
-        status: {
-          equals: status,
-        },
+        AND: [
+          {
+            ownerId: {
+              not: notOwnerId,
+            },
+          },
+          {
+            owner: {
+              departmentId: departmentId,
+            },
+            ownerId: ownerId,
+            serialNumber: {
+              contains: serialNumber,
+              // mode: "insensitive",
+            },
+            title: {
+              contains: title,
+              // mode: "insensitive",
+            },
+            status: {
+              equals: status,
+            },
+          },
+        ],
       },
     });
     return { data: ims, total };

@@ -7,6 +7,7 @@ export default function IM({
   status,
   originalFileName,
   fileName,
+  owner,
   createdAt,
   updatedAt,
   onView,
@@ -21,6 +22,8 @@ export default function IM({
       <td className='px-6 py-4 '>{serialNumber}</td>
 
       <td className='px-6 py-4 '>{title}</td>
+
+      <td className='px-6 py-4 '>{owner}</td>
 
       <td className='px-6 py-4 '>{status}</td>
 

@@ -28,22 +28,41 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "bd1fca66-edfe-47f2-8d18-0d6c8e254442",
     "name": "READ IMs",
-    "url": "{{host}}/api/im?page=1&limit=10",
+    "url": "{{host}}/api/im?page=1&limit=10&notOwnerId=clers1yor001bs9h365gyui5w&departmentId=cleqv7jyi001vs9gua5uk9a04",
     "method": "GET",
     "sortNum": 20000,
     "created": "2023-02-26T01:21:31.356Z",
-    "modified": "2023-02-26T01:21:31.356Z",
+    "modified": "2023-03-03T01:24:02.880Z",
     "headers": [],
     "params": [
       {
         "name": "page",
-        "value": "1"
+        "value": "1",
+        "isPath": false
       },
       {
         "name": "limit",
-        "value": "10"
+        "value": "10",
+        "isPath": false
+      },
+      {
+        "name": "notOwnerId",
+        "value": "clers1yor001bs9h365gyui5w",
+        "isPath": false
+      },
+      {
+        "name": "ownerId",
+        "value": "clers1yor001bs9h365gyui5w",
+        "isDisabled": true,
+        "isPath": false
+      },
+      {
+        "name": "departmentId",
+        "value": "cleqv7jyi001vs9gua5uk9a04",
+        "isPath": false
       }
-    ]
+    ],
+    "tests": []
   },
   {
     "_id": "95f8d3cf-4bd2-4c37-b6a0-b25e19e98dba",
