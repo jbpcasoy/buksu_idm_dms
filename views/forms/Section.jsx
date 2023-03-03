@@ -66,7 +66,7 @@ export default function Section({ title, questions }) {
                 </label>
               </div>
             </li>
-            <li className="w-full  sm:border-r">
+            <li className="w-full border-b border-gray-200 sm:border-b-0 sm:border-r">
               <div className="flex items-center pl-3">
                 <input
                   id="horizontal-list-radio-passport"
