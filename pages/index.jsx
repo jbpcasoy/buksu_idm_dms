@@ -202,28 +202,75 @@ export default function Home() {
         </div>
       )}
       {user?.ActiveFaculty && (
-        <div className='flex flex-row flex-wrap items-center border border-CITLGray-lighter bg-CITLWhite m-2 mt-5 relative rounded-lg shadow-lg overflow-x-auto'>
-          <div className='flex items-center bg-CITLGray-light justify-between py-3 px-3 w-fit xl:w-full'>
-            <div className='flex flex-row flex-no-wrap space-between w-full sm:'>
-              {user?.ActiveFaculty && (
-                <>
+        <div className=' grid grid-flow-row items-center border border-CITLGray-lighter bg-CITLWhite m-2 mt-5 relative rounded-lg shadow-lg overflow-x-auto'>
+          <div className=' bg-CITLGray-light py-3 px-3 pr-3'>
+            <div className='w-full justify-between grid grid-flow-col auto-cols-max'>
+              <div>
+                {user?.ActiveFaculty && (
+                  <>
+                    <button
+                      type='button'
+                      onClick={() => setTab(Tabs.MyIMs)}
+                      className={`inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue rounded-none ${
+                        tab === Tabs.MyIMs ? "border-b-2 border-CITLOrange" : ""
+                      }`}
+                    >
+                      <span className='inline-flex items-center justify-center w-4 h-4 mr-1 text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
+                        2
+                      </span>
+                      <span>My IM&apos;s</span>
+                    </button>
+                    <button
+                      type='button'
+                      // onClick={() => setTab(Tabs.ToRevise)}
+                      className={`line-through inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue border-CITLOrange rounded-none ${
+                        tab === Tabs.ToRevise
+                          ? "border-b-2 border-CITLOrange"
+                          : ""
+                      }`}
+                    >
+                      <span className='inline-flex items-center justify-center w-4 h-4 mr-1 text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full'>
+                        2
+                      </span>
+                      To Revise
+                    </button>
+                    <button
+                      type='button'
+                      onClick={() => setTab(Tabs.ToReview)}
+                      className={`inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue  border-CITLOrange rounded-none ${
+                        tab === Tabs.ToReview
+                          ? "border-b-2 border-CITLOrange"
+                          : ""
+                      }`}
+                    >
+                      <span className='inline-flex items-center justify-center w-4 h-4 mr-1 text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full'>
+                        2
+                      </span>
+                      To Review
+                    </button>
+                    <button
+                      type='button'
+                      // onClick={() => setTab(Tabs.Reviewed)}
+                      className={`line-through inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue border-CITLOrange rounded-none ${
+                        tab === Tabs.Reviewed
+                          ? "border-b-2 border-CITLOrange"
+                          : ""
+                      }`}
+                    >
+                      <span className='inline-flex items-center justify-center w-4 h-4 mr-1 text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full'>
+                        2
+                      </span>
+                      Reviewed
+                    </button>
+                  </>
+                )}
+                {(user?.ActiveFaculty?.ActiveCoordinator ||
+                  user?.ActiveFaculty?.ActiveChairperson) && (
                   <button
                     type='button'
-                    onClick={() => setTab(Tabs.MyIMs)}
-                    className={`inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue rounded-none ${
-                      tab === Tabs.MyIMs ? "border-b-2 border-CITLOrange" : ""
-                    }`}
-                  >
-                    <span className='inline-flex items-center justify-center w-4 h-4 mr-1 text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
-                      2
-                    </span>
-                    <span>My IM&apos;s</span>
-                  </button>
-                  <button
-                    type='button'
-                    // onClick={() => setTab(Tabs.ToRevise)}
+                    // onClick={() => setTab(Tabs.DepartmentIMs)}
                     className={`line-through inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue border-CITLOrange rounded-none ${
-                      tab === Tabs.ToRevise
+                      tab === Tabs.DepartmentIMs
                         ? "border-b-2 border-CITLOrange"
                         : ""
                     }`}
@@ -231,98 +278,57 @@ export default function Home() {
                     <span className='inline-flex items-center justify-center w-4 h-4 mr-1 text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full'>
                       2
                     </span>
-                    To Revise
+                    Department IM&apos;s
                   </button>
-                  <button
-                    type='button'
-                    onClick={() => setTab(Tabs.ToReview)}
-                    className={`inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue  border-CITLOrange rounded-none ${
-                      tab === Tabs.ToReview
-                        ? "border-b-2 border-CITLOrange"
-                        : ""
-                    }`}
-                  >
-                    <span className='inline-flex items-center justify-center w-4 h-4 mr-1 text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full'>
-                      2
-                    </span>
-                    To Review
-                  </button>
-                  <button
-                    type='button'
-                    // onClick={() => setTab(Tabs.Reviewed)}
-                    className={`line-through inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue border-CITLOrange rounded-none ${
-                      tab === Tabs.Reviewed
-                        ? "border-b-2 border-CITLOrange"
-                        : ""
-                    }`}
-                  >
-                    <span className='inline-flex items-center justify-center w-4 h-4 mr-1 text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full'>
-                      2
-                    </span>
-                    Reviewed
-                  </button>
-                </>
-              )}
-              {(user?.ActiveFaculty?.ActiveCoordinator ||
-                user?.ActiveFaculty?.ActiveChairperson) && (
-                <button
-                  type='button'
-                  // onClick={() => setTab(Tabs.DepartmentIMs)}
-                  className={`line-through inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue border-CITLOrange rounded-none ${
-                    tab === Tabs.DepartmentIMs
-                      ? "border-b-2 border-CITLOrange"
-                      : ""
-                  }`}
+                )}
+              </div>
+              <div className=' grid grid-flow-col auto-cols-max gap-2 px-2 '>
+                <input
+                  onChange={debouncedHandleSerialNumberChange}
+                  className='bg-CITLGray-light w-32 border-CITLGray-lighter border text-CITLGray-main rounded-lg text-sm font-medium'
+                  type='text'
+                  placeholder='Serial Number'
+                ></input>
+                <input
+                  onChange={debouncedHandleTitleChange}
+                  className='bg-CITLGray-light w-32 border-CITLGray-lighter border text-CITLGray-main rounded-lg text-sm font-medium'
+                  type='text'
+                  placeholder='Title'
+                ></input>
+                <select
+                  id='default'
+                  className='bg-CITLGray-light border-CITLGray-lighter border text-CITLGray-main rounded-lg text-sm font-medium'
+                  onChange={debouncedHandleStatusChange}
                 >
-                  <span className='inline-flex items-center justify-center w-4 h-4 mr-1 text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full'>
-                    2
-                  </span>
-                  Department IM&apos;s
-                </button>
-              )}
+                  <option value='' selected>
+                    Status
+                  </option>
+                  <option value='SUBMITTED'>Submitted</option>
+                  <option value='DEPARTMENT_REVIEWED'>
+                    Department Reviewed
+                  </option>
+                  <option value='DEPARTMENT_ENDORSED'>
+                    Department Endorsed
+                  </option>
+                  <option value='CITL_REVIEWED'>CITL Reviewed</option>
+                  <option value='CITL_ENDORSED'>CITL Endorsed</option>
+                </select>
+                <div className=''>
+                  <button
+                    title='Add IM'
+                    className='flex items-center bg-CITLDarkBlue rounded-lg px-4 py-2.5 text-sm font-medium text-center shadow-md text-white '
+                    onClick={() => {
+                      router.push("/im/new");
+                    }}
+                  >
+                    <i className='fi fi-br-plus mt-1  '></i>
+                  </button>
+                </div>
+              </div>{" "}
             </div>
+          </div>
 
-            <div className='flex'>
-              <button
-                title='Add IM'
-                className='flex items-center bg-CITLDarkBlue rounded-lg px-4 py-2.5 text-sm font-medium text-center shadow-md text-white '
-                onClick={() => {
-                  router.push("/im/new");
-                }}
-              >
-                <i className='fi fi-br-plus mt-1  '></i>
-              </button>
-            </div>
-          </div>
-          <div className='p-1 space-x-1 w-full bg-CITLGray-light'>
-            <input
-              onChange={debouncedHandleSerialNumberChange}
-              className='bg-CITLGray-light border-CITLGray-lighter border text-CITLGray-main rounded-sm '
-              type='text'
-              placeholder='Serial Number'
-            ></input>
-            <input
-              onChange={debouncedHandleTitleChange}
-              className='bg-CITLGray-light border-CITLGray-lighter border text-CITLGray-main rounded-sm'
-              type='text'
-              placeholder='Title'
-            ></input>
-            <select
-              id='default'
-              className='bg-CITLGray-light border-CITLGray-lighter border text-CITLGray-main rounded-sm'
-              onChange={debouncedHandleStatusChange}
-            >
-              <option value='' selected>
-                Status
-              </option>
-              <option value='SUBMITTED'>Submitted</option>
-              <option value='DEPARTMENT_REVIEWED'>Department Reviewed</option>
-              <option value='DEPARTMENT_ENDORSED'>Department Endorsed</option>
-              <option value='CITL_REVIEWED'>CITL Reviewed</option>
-              <option value='CITL_ENDORSED'>CITL Endorsed</option>
-            </select>
-          </div>
-          <table className='min-w-full divide-y divide-CITLGray-light mb-2'>
+          <table className='w-full divide-y divide-CITLGray-light mb-2'>
             <thead className='bg-CITLGray-light'>
               <tr>
                 <th
@@ -349,6 +355,7 @@ export default function Home() {
                 >
                   Status
                 </th>
+
                 <th
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
