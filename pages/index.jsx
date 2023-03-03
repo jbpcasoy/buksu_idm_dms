@@ -328,7 +328,7 @@ export default function Home() {
             </div>
           </div>
 
-          <table className='w-full divide-y divide-CITLGray-light mb-2'>
+          <table className='divide-y divide-CITLGray-light mb-2'>
             <thead className='bg-CITLGray-light'>
               <tr>
                 <th
