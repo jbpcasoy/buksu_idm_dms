@@ -790,68 +790,6 @@
     "headers": []
   },
   {
-    "_id": "98bfb7ba-686b-4c17-8524-0198626f3d57",
-    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
-    "containerId": "b85e3533-d259-4dd1-8638-1154c3f4d5f0",
-    "name": "CREATE Senior",
-    "url": "{{host}}/api/senior",
-    "method": "POST",
-    "sortNum": 490000,
-    "created": "2023-02-26T01:21:31.405Z",
-    "modified": "2023-02-26T01:21:31.405Z",
-    "headers": [],
-    "body": {
-      "type": "json",
-      "raw": "{\n    \"facultyId\": \"cle5chbbu0007s9qeoer0lhj6\"\n}"
-    }
-  },
-  {
-    "_id": "ba21a508-defa-4cf7-8451-ff18e2ca1aa3",
-    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
-    "containerId": "b85e3533-d259-4dd1-8638-1154c3f4d5f0",
-    "name": "READ Seniors",
-    "url": "{{host}}/api/senior?limit=10&page=1",
-    "method": "GET",
-    "sortNum": 500000,
-    "created": "2023-02-26T01:21:31.406Z",
-    "modified": "2023-02-26T01:21:31.406Z",
-    "headers": [],
-    "params": [
-      {
-        "name": "limit",
-        "value": "10"
-      },
-      {
-        "name": "page",
-        "value": "1"
-      }
-    ]
-  },
-  {
-    "_id": "0040bc9c-9ea0-43d2-b964-b57f6ba8fd7b",
-    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
-    "containerId": "b85e3533-d259-4dd1-8638-1154c3f4d5f0",
-    "name": "READ Senior",
-    "url": "{{host}}/api/senior/cle6jttw70003s9h6fpnxjl4e",
-    "method": "GET",
-    "sortNum": 510000,
-    "created": "2023-02-26T01:21:31.407Z",
-    "modified": "2023-02-26T01:21:31.407Z",
-    "headers": []
-  },
-  {
-    "_id": "84b7936e-b911-46a8-9724-b54666fb6442",
-    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
-    "containerId": "b85e3533-d259-4dd1-8638-1154c3f4d5f0",
-    "name": "DELETE Senior",
-    "url": "{{host}}/api/senior/cle6jttw70003s9h6fpnxjl4e",
-    "method": "DELETE",
-    "sortNum": 520000,
-    "created": "2023-02-26T01:21:31.409Z",
-    "modified": "2023-02-26T01:21:31.409Z",
-    "headers": []
-  },
-  {
     "_id": "ea06b074-d265-4506-a74d-a75e9b962ef4",
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "cf136302-a036-4d23-8e67-221a33be0a92",
@@ -911,68 +849,6 @@
     "sortNum": 560000,
     "created": "2023-02-26T01:21:31.413Z",
     "modified": "2023-02-26T01:21:31.413Z",
-    "headers": []
-  },
-  {
-    "_id": "20f9a36a-b720-48de-b51a-caecfffb510c",
-    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
-    "containerId": "f579dabf-15cb-4e04-b0b5-22c6a6b2cf19",
-    "name": "CREATE ActiveSenior",
-    "url": "{{host}}/api/active_senior/",
-    "method": "POST",
-    "sortNum": 570000,
-    "created": "2023-02-26T01:21:31.414Z",
-    "modified": "2023-02-26T01:21:31.414Z",
-    "headers": [],
-    "body": {
-      "type": "json",
-      "raw": "{\n    \"seniorId\": \"cle6og1cq0003s9a6jx7ru1mr\",\n    \"departmentId\":\"cle6e1gao0001s9n8dodvhbj8\"\n}"
-    }
-  },
-  {
-    "_id": "cb7952b9-8264-482c-a17e-97403fc4c042",
-    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
-    "containerId": "f579dabf-15cb-4e04-b0b5-22c6a6b2cf19",
-    "name": "READ ActiveSeniors",
-    "url": "{{host}}/api/active_senior?limit=10&page=1",
-    "method": "GET",
-    "sortNum": 580000,
-    "created": "2023-02-26T01:21:31.415Z",
-    "modified": "2023-02-26T01:21:31.415Z",
-    "headers": [],
-    "params": [
-      {
-        "name": "limit",
-        "value": "10"
-      },
-      {
-        "name": "page",
-        "value": "1"
-      }
-    ]
-  },
-  {
-    "_id": "a2b8da02-ba94-4557-8e2c-e2600a44127c",
-    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
-    "containerId": "f579dabf-15cb-4e04-b0b5-22c6a6b2cf19",
-    "name": "READ ActiveSenior",
-    "url": "{{host}}/api/active_senior/cle6oq9so0007s9a6iy7w1v5m",
-    "method": "GET",
-    "sortNum": 590000,
-    "created": "2023-02-26T01:21:31.416Z",
-    "modified": "2023-02-26T01:21:31.416Z",
-    "headers": []
-  },
-  {
-    "_id": "da8ab760-3187-47d8-a260-cf84132346ee",
-    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
-    "containerId": "f579dabf-15cb-4e04-b0b5-22c6a6b2cf19",
-    "name": "DELETE ActiveSenior",
-    "url": "{{host}}/api/active_senior/cle6oq9so0007s9a6iy7w1v5m",
-    "method": "DELETE",
-    "sortNum": 600000,
-    "created": "2023-02-26T01:21:31.417Z",
-    "modified": "2023-02-26T01:21:31.417Z",
     "headers": []
   },
   {
@@ -1230,71 +1106,6 @@
     "sortNum": 760000,
     "created": "2023-02-26T01:21:31.433Z",
     "modified": "2023-02-26T01:21:31.433Z",
-    "headers": []
-  },
-  {
-    "_id": "3ebc4c51-98c0-408c-89f2-2553f6738786",
-    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
-    "containerId": "89d0f6ba-1bf3-4929-baef-b72e0382463f",
-    "name": "CREATE SeniorApproval",
-    "url": "{{host}}/api/senior_approval",
-    "method": "POST",
-    "sortNum": 770000,
-    "created": "2023-02-26T01:21:31.434Z",
-    "modified": "2023-03-01T01:28:32.695Z",
-    "headers": [],
-    "params": [],
-    "body": {
-      "type": "json",
-      "raw": "{\n    \"departmentApprovalId\": \"cleozpvs90002s9qrn9t7rkmf\",\n    \"seniorId\": \"clemg2nex0007s9ajmdl3jaro\"\n}",
-      "form": []
-    },
-    "tests": []
-  },
-  {
-    "_id": "fc1c7b93-7833-4118-a500-87a290749893",
-    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
-    "containerId": "89d0f6ba-1bf3-4929-baef-b72e0382463f",
-    "name": "READ SeniorApprovals",
-    "url": "{{host}}/api/senior_approval?limit=10&page=1",
-    "method": "GET",
-    "sortNum": 780000,
-    "created": "2023-02-26T01:21:31.435Z",
-    "modified": "2023-02-26T01:21:31.435Z",
-    "headers": [],
-    "params": [
-      {
-        "name": "limit",
-        "value": "10"
-      },
-      {
-        "name": "page",
-        "value": "1"
-      }
-    ]
-  },
-  {
-    "_id": "fcd5f8c5-4459-4146-82ba-d06ee2188977",
-    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
-    "containerId": "89d0f6ba-1bf3-4929-baef-b72e0382463f",
-    "name": "READ SeniorApproval",
-    "url": "{{host}}/api/senior_approval/cle7y54l00001s98wpkmcejv6",
-    "method": "GET",
-    "sortNum": 790000,
-    "created": "2023-02-26T01:21:31.436Z",
-    "modified": "2023-02-26T01:21:31.436Z",
-    "headers": []
-  },
-  {
-    "_id": "e284facb-c6f6-4673-b494-333eaa3bcaa9",
-    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
-    "containerId": "89d0f6ba-1bf3-4929-baef-b72e0382463f",
-    "name": "DELETE SeniorApproval",
-    "url": "{{host}}/api/senior_approval/cle7y54l00001s98wpkmcejv6",
-    "method": "DELETE",
-    "sortNum": 800000,
-    "created": "2023-02-26T01:21:31.437Z",
-    "modified": "2023-02-26T01:21:31.437Z",
     "headers": []
   },
   {

@@ -1,5 +1,4 @@
 import ApartmentIcon from "@mui/icons-material/Apartment";
-import BadgeIcon from "@mui/icons-material/Badge";
 import BusinessIcon from "@mui/icons-material/Business";
 import DescriptionIcon from "@mui/icons-material/Description";
 import FileOpenIcon from "@mui/icons-material/FileOpen";
@@ -43,7 +42,7 @@ const menuItems = [
   },
   {
     label: "Faculties",
-    icon: <BadgeIcon />,
+    icon: <PersonIcon />,
     link: "/admin/faculty",
   },
   {
@@ -55,11 +54,6 @@ const menuItems = [
     label: "Coordinators",
     icon: <Person2Icon />,
     link: "/admin/coordinator",
-  },
-  {
-    label: "Seniors",
-    icon: <PersonIcon />,
-    link: "/admin/senior",
   },
   {
     label: "IMs",
@@ -84,7 +78,8 @@ export default function AdminDrawerMenu() {
         color='inherit'
         aria-label='menu'
         sx={{ mr: 2 }}
-        onClick={() => setOpenMenu(true)}>
+        onClick={() => setOpenMenu(true)}
+      >
         <MenuIcon />
       </IconButton>
       <Drawer anchor='left' open={openMenu} onClose={() => setOpenMenu(false)}>
@@ -92,7 +87,8 @@ export default function AdminDrawerMenu() {
           sx={{ width: 250 }}
           role='presentation'
           onClick={() => setOpenMenu(false)}
-          onKeyDown={() => setOpenMenu(false)}>
+          onKeyDown={() => setOpenMenu(false)}
+        >
           <List>
             {menuItems.map((item) => (
               <ListItem disablePadding key={item.label}>
