@@ -1330,5 +1330,30 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "26347836-16c5-4bb0-bd01-b114fb792a5c",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "53202484-a44c-4a1a-9ae0-ccd9974dd9e8",
+    "name": "READ IMReviewSections",
+    "url": "{{host}}/api/im_review_section?limit=10&page=1",
+    "method": "GET",
+    "sortNum": 940000,
+    "created": "2023-03-06T01:22:39.050Z",
+    "modified": "2023-03-06T01:23:03.992Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "limit",
+        "value": "10",
+        "isPath": false
+      },
+      {
+        "name": "page",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "tests": []
   }
 ]
