@@ -1388,5 +1388,19 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "2550f8d1-dfdf-4c11-93dd-9c0cc30eccb8",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "53202484-a44c-4a1a-9ae0-ccd9974dd9e8",
+    "name": "DELETE IMReviewSection",
+    "url": "{{host}}/api/im_review_section/clew4tj1z0004s9cf3ud3xciy",
+    "method": "DELETE",
+    "sortNum": 970000,
+    "created": "2023-03-06T02:12:07.471Z",
+    "modified": "2023-03-06T02:12:20.555Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
