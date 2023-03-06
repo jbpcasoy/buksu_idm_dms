@@ -304,8 +304,23 @@ model Attachment {
 }
 
 model IMReviewSection {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  title     String   @unique
+  id               String             @id @default(cuid())
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+  title            String             @unique
+  IMReviewQuestion IMReviewQuestion[]
+
+  @@unique([id, title])
+}
+
+model IMReviewQuestion {
+  id                   String          @id @default(cuid())
+  createdAt            DateTime        @default(now())
+  updatedAt            DateTime        @updatedAt
+  question             String          @unique
+  IMReviewSection      IMReviewSection @relation(fields: [iMReviewSectionId, iMReviewSectionTitle], references: [id, title], onUpdate: Restrict)
+  iMReviewSectionId    String
+  iMReviewSectionTitle String
+
+  @@index([iMReviewSectionId, iMReviewSectionTitle])
 }
