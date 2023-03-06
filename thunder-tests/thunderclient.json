@@ -1311,5 +1311,96 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "4b3e60c0-d351-4ed6-b718-a29424b31b0b",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "53202484-a44c-4a1a-9ae0-ccd9974dd9e8",
+    "name": "CREATE IMReviewSection",
+    "url": "{{host}}/api/im_review_section",
+    "method": "POST",
+    "sortNum": 930000,
+    "created": "2023-03-06T01:10:32.489Z",
+    "modified": "2023-03-06T01:16:51.492Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"title\": \"The Title2\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "26347836-16c5-4bb0-bd01-b114fb792a5c",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "53202484-a44c-4a1a-9ae0-ccd9974dd9e8",
+    "name": "READ IMReviewSections",
+    "url": "{{host}}/api/im_review_section?limit=10&page=1",
+    "method": "GET",
+    "sortNum": 940000,
+    "created": "2023-03-06T01:22:39.050Z",
+    "modified": "2023-03-06T01:23:03.992Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "limit",
+        "value": "10",
+        "isPath": false
+      },
+      {
+        "name": "page",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "65c8b57f-8c1e-448e-a32a-975d8d64278a",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "53202484-a44c-4a1a-9ae0-ccd9974dd9e8",
+    "name": "READ IMReviewSection",
+    "url": "{{host}}/api/im_review_section/clew4tj1z0004s9cf3ud3xciy",
+    "method": "GET",
+    "sortNum": 950000,
+    "created": "2023-03-06T01:35:36.050Z",
+    "modified": "2023-03-06T01:37:10.999Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "7b24de4e-43e6-42e0-b711-7b35f11a0780",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "53202484-a44c-4a1a-9ae0-ccd9974dd9e8",
+    "name": "UPDATE IMReviewSection",
+    "url": "{{host}}/api/im_review_section/clew4tj1z0004s9cf3ud3xciy",
+    "method": "PUT",
+    "sortNum": 960000,
+    "created": "2023-03-06T02:04:41.074Z",
+    "modified": "2023-03-06T02:06:14.038Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"title\": \"The Title Updated\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "2550f8d1-dfdf-4c11-93dd-9c0cc30eccb8",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "53202484-a44c-4a1a-9ae0-ccd9974dd9e8",
+    "name": "DELETE IMReviewSection",
+    "url": "{{host}}/api/im_review_section/clew4tj1z0004s9cf3ud3xciy",
+    "method": "DELETE",
+    "sortNum": 970000,
+    "created": "2023-03-06T02:12:07.471Z",
+    "modified": "2023-03-06T02:12:20.555Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]

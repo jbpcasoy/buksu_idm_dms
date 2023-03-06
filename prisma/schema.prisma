@@ -302,3 +302,10 @@ model Attachment {
   fileName         String   @unique
   originalFileName String
 }
+
+model IMReviewSection {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  title     String   @unique
+}
