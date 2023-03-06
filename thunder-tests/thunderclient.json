@@ -1369,5 +1369,24 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "7b24de4e-43e6-42e0-b711-7b35f11a0780",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "53202484-a44c-4a1a-9ae0-ccd9974dd9e8",
+    "name": "UPDATE IMReviewSection",
+    "url": "{{host}}/api/im_review_section/clew4tj1z0004s9cf3ud3xciy",
+    "method": "PUT",
+    "sortNum": 960000,
+    "created": "2023-03-06T02:04:41.074Z",
+    "modified": "2023-03-06T02:06:14.038Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"title\": \"The Title Updated\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
