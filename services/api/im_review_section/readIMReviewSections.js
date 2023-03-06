@@ -5,7 +5,7 @@ export default async function readIMReviewSections({ limit, page }) {
 
   const iMReviewSections = await prisma.iMReviewSection.findMany({
     take: limit,
-    skip: (page - 1) * limit,
+    skip: page ? (page - 1) * limit : undefined,
   });
 
   const total = await prisma.iMReviewSection.count();
