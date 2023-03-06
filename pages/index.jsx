@@ -451,7 +451,7 @@ export default function Home() {
               </button>
               <button
                 className='inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-gray-800 border-0  rounded-r hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white disabled:bg-CITLGray-main'
-                disabled={(state.page + 1) * state.limit > total || loading}
+                // disabled={(state.page + 1) * state.limit > total}
                 onClick={() => {
                   setState((prev) => ({ ...prev, page: prev.page + 1 }));
                 }}

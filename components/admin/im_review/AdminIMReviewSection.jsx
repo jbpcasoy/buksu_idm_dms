@@ -3,14 +3,22 @@ import AdminDeleteIMReviewSectionAlert from "@/views/admin/im_review_section/Adm
 import AdminIMReviewSectionActionsMenu from "@/views/admin/im_review_section/AdminIMReviewSectionActionsMenu";
 import adminIMReviewSectionEdit from "@/views/admin/im_review_section/adminIMReviewSectionEdit";
 import AdminIMReviewSectionUpdateForm from "@/views/admin/im_review_section/AdminIMReviewSectionUpdateForm";
-import { Card, CardContent, CardHeader, Typography } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  IconButton,
+  Stack,
+  Typography,
+} from "@mui/material";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
 export default function AdminIMReviewSection({ section }) {
   const router = useRouter();
   const [state, setState] = useState({ openDelete: false, openUpdate: false });
-
+  const [questions, setQuestions] = useState([]);
   const [sectionData, setSectionData] = useState(section);
 
   function handleToggleDelete(open) {
@@ -51,7 +59,16 @@ export default function AdminIMReviewSection({ section }) {
         }
       />
       <CardContent>
-        <Typography>{"<Question Here>"}</Typography>
+        {questions.length === 0 && (
+          <Typography align='center' color='GrayText'>
+            No Questions Found
+          </Typography>
+        )}
+        <Stack direction='row' justifyContent='center' sx={{ mt: 2 }}>
+          <IconButton>
+            <AddIcon />
+          </IconButton>
+        </Stack>
       </CardContent>
 
       <AdminDeleteIMReviewSectionAlert
