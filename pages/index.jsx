@@ -168,9 +168,9 @@ export default function Home() {
         </div>
       </div>
       {!user?.ActiveFaculty && (
-        <div className='flex flex-wrap items-center border border-slate-300  bg-CITLWhite m-2 p-3 relative rounded-lg shadow-lg overflow-hidden'>
+        <div className=' flex-wrap grid text-center justify-items-center  border min-h-fit border-slate-300  bg-CITLWhite m-2 p-3 rounded-lg shadow-lg overflow-hidden'>
           <div className='px-6 py-4 md:w-10/12 sm:w-12/12'>
-            <h3 className='text-lg font-semibold text-CITLDarkBlue'>
+            <h3 className='text-3xl font-bold text-CITLDarkBlue'>
               Unauthorized
             </h3>
             <p className='text-gray-600 mt-2 pb-5'>
@@ -193,9 +193,8 @@ export default function Home() {
             </svg>
           </button> */}
           </div>
-
           <img
-            className='md:w-2/12 sm:w-12/12 rounded-lg object-cover relative shadow-lg'
+            className=' md:w-2/12 sm:w-12/12 rounded-lg '
             src='/IMAGES/undraw_personal_information_re_vw8a.svg'
             alt='Announcement Image'
           />
