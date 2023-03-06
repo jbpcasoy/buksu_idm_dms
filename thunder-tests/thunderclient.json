@@ -1355,5 +1355,19 @@
       }
     ],
     "tests": []
+  },
+  {
+    "_id": "65c8b57f-8c1e-448e-a32a-975d8d64278a",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "53202484-a44c-4a1a-9ae0-ccd9974dd9e8",
+    "name": "READ IMReviewSection",
+    "url": "{{host}}/api/im_review_section/clew4tj1z0004s9cf3ud3xciy",
+    "method": "GET",
+    "sortNum": 950000,
+    "created": "2023-03-06T01:35:36.050Z",
+    "modified": "2023-03-06T01:37:10.999Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
