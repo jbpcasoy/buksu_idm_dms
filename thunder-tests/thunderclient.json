@@ -1311,5 +1311,24 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "4b3e60c0-d351-4ed6-b718-a29424b31b0b",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "53202484-a44c-4a1a-9ae0-ccd9974dd9e8",
+    "name": "CREATE IMReviewSection",
+    "url": "{{host}}/api/im_review_section",
+    "method": "POST",
+    "sortNum": 930000,
+    "created": "2023-03-06T01:10:32.489Z",
+    "modified": "2023-03-06T01:16:51.492Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"title\": \"The Title2\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
