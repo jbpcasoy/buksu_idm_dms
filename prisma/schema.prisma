@@ -352,5 +352,6 @@ model PeerReviewItem {
   PeerReview   PeerReview @relation(fields: [peerReviewId], references: [id])
   peerReviewId String
 
+  @@unique([peerReviewId, questionId])
   @@index([peerReviewId])
 }

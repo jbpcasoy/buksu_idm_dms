@@ -1584,5 +1584,24 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "b7fe730f-8cae-4016-9f47-779af6695599",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "f2ba22cf-9ed6-4991-9c0b-01ab9b6f260c",
+    "name": "CREATE PeerReviewItem",
+    "url": "{{host}}/api/peer_review_item",
+    "method": "POST",
+    "sortNum": 1090000,
+    "created": "2023-03-07T05:31:43.373Z",
+    "modified": "2023-03-07T05:35:36.439Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"questionId\": \"76d47fd0-35a0-4db3-8dc6-75bf5aed53b6\",\n  \"answer\": \"Not At All\",\n  \"peerReviewId\": \"clextg1qr0001s92uy3p0femm\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
