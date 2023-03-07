@@ -1570,5 +1570,19 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "9feb7998-54da-4a30-8b49-2de1a3905455",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "70001f34-a1c2-45b8-980c-d64f3240a73a",
+    "name": "DELETE PeerReview",
+    "url": "{{host}}/api/peer_review/clexkheze0001s91033q6nuxy",
+    "method": "DELETE",
+    "sortNum": 1080000,
+    "created": "2023-03-07T01:57:50.831Z",
+    "modified": "2023-03-07T01:58:04.924Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
