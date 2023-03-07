@@ -67,13 +67,6 @@ enum IMStatus {
   CITL_ENDORSED
 }
 
-enum IMType {
-  MODULE
-  COURSE_FILE
-  WORKTEXT
-  TEXTBOOK
-}
-
 model IM {
   id                 String              @id @default(cuid())
   serialNumber       String              @unique
@@ -90,7 +83,7 @@ model IM {
   DepartmentApproval DepartmentApproval?
   ActiveFile         ActiveFile?
   authors            String?             @db.Text
-  type               IMType              @default(MODULE)
+  PeerReview         PeerReview[]
 
   @@index([ownerId])
 }
@@ -155,6 +148,7 @@ model Faculty {
   Chairperson   Chairperson?
   Coordinator   Coordinator?
   PeerApproval  PeerApproval[]
+  PeerReview    PeerReview[]
 
   @@unique([userId, departmentId])
   @@index([departmentId])
@@ -311,6 +305,7 @@ model Attachment {
   originalFileName String
 }
 
+// Ideal IM review schema
 model IMReviewSection {
   id               String             @id @default(cuid())
   createdAt        DateTime           @default(now())
@@ -331,4 +326,31 @@ model IMReviewQuestion {
   iMReviewSectionTitle String
 
   @@index([iMReviewSectionId, iMReviewSectionTitle])
+}
+
+model PeerReview {
+  id             String           @id @default(cuid())
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  Faculty        Faculty          @relation(fields: [facultyId], references: [id])
+  facultyId      String
+  IM             IM               @relation(fields: [iMId], references: [id])
+  iMId           String
+  PeerReviewItem PeerReviewItem[]
+  submitted      Boolean          @default(false) // PeerReview will be created before PeerReviewItems, must have submitted state
+
+  @@index([iMId])
+  @@index([facultyId])
+}
+
+model PeerReviewItem {
+  id           String     @id @default(cuid())
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  questionId   String // static uuid from frontend, for prototype, production should have question table with google forms like features
+  answer       String
+  PeerReview   PeerReview @relation(fields: [peerReviewId], references: [id])
+  peerReviewId String
+
+  @@index([peerReviewId])
 }

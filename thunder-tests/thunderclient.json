@@ -1493,5 +1493,24 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "9f22469d-b393-469c-9841-bdbc1962aed6",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "70001f34-a1c2-45b8-980c-d64f3240a73a",
+    "name": "CREATE PeerReview",
+    "url": "{{host}}/api/peer_review",
+    "method": "POST",
+    "sortNum": 1040000,
+    "created": "2023-03-07T01:20:33.484Z",
+    "modified": "2023-03-07T01:22:06.837Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"facultyId\": \"clexhzjfr002xs9kmqbdv8zaz\",\n  \"iMId\": \"clew3gv9v000as96yjzxr4tpm\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
