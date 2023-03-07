@@ -4,8 +4,8 @@ export default async function getImReviewSectionsHandler(req, res) {
   const { limit, page } = req.query;
 
   const iMReviewSections = await readIMReviewSections({
-    limit: parseInt(limit),
-    page: parseInt(page),
+    limit: limit ? parseInt(limit) : undefined,
+    page: page ? parseInt(page) : undefined,
   });
   return res.status(200).json(iMReviewSections);
 }
