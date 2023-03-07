@@ -161,8 +161,7 @@ export default function Endorsement() {
                       for="semesters"
                       className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     >
-                      Do you agree to have a Student Evaluation Form included in
-                      the IM?
+                      This instructional material, having undergone review from the Program IM Committee, is endorsed for:
                     </label>
                     <input
                       id="default-radio-1"
