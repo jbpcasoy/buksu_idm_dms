@@ -1537,5 +1537,19 @@
       }
     ],
     "tests": []
+  },
+  {
+    "_id": "ef81ea5e-b44c-463c-85e6-86ddb2954211",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "70001f34-a1c2-45b8-980c-d64f3240a73a",
+    "name": "READ PeerReview",
+    "url": "{{host}}/api/peer_review/clexkheze0001s91033q6nuxy",
+    "method": "GET",
+    "sortNum": 1060000,
+    "created": "2023-03-07T01:39:51.055Z",
+    "modified": "2023-03-07T01:40:03.781Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
