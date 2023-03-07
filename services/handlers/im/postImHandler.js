@@ -4,7 +4,7 @@ import getUserByEmail from "@/services/helpers/getUserByEmail";
 import { getServerSession } from "next-auth";
 
 export default async function postImHandler(req, res) {
-  const { title, serialNumber, authors } = req.body;
+  const { title, serialNumber, authors, type } = req.body;
   const session = await getServerSession(req, res, authOptions);
 
   const user = await getUserByEmail(session?.user?.email);
@@ -14,6 +14,7 @@ export default async function postImHandler(req, res) {
     serialNumber,
     ownerId: user.ActiveFaculty.facultyId,
     authors,
+    type,
   });
 
   return res.status(201).json(im);

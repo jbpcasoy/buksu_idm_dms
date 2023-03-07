@@ -67,6 +67,13 @@ enum IMStatus {
   CITL_ENDORSED
 }
 
+enum IMType {
+  MODULE
+  COURSE_FILE
+  WORKTEXT
+  TEXTBOOK
+}
+
 model IM {
   id                 String              @id @default(cuid())
   serialNumber       String              @unique
@@ -83,6 +90,7 @@ model IM {
   DepartmentApproval DepartmentApproval?
   ActiveFile         ActiveFile?
   authors            String?             @db.Text
+  type               IMType              @default(MODULE)
 
   @@index([ownerId])
 }

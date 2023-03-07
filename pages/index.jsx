@@ -282,15 +282,15 @@ export default function Home() {
                 )}
               </div>
               <div className=' grid grid-flow-col auto-cols-max gap-2 px-2 '>
-                <input
+                {/* <input
                   onChange={debouncedHandleSerialNumberChange}
                   className='bg-CITLGray-light w-32 border-CITLGray-lighter border text-CITLGray-main rounded-lg text-sm font-medium'
                   type='text'
                   placeholder='Serial Number'
-                ></input>
+                ></input> */}
                 <input
                   onChange={debouncedHandleTitleChange}
-                  className='bg-CITLGray-light w-32 border-CITLGray-lighter border text-CITLGray-main rounded-lg text-sm font-medium'
+                  className='bg-CITLGray-light w-64 border-CITLGray-lighter border text-CITLGray-main rounded-lg text-sm font-medium'
                   type='text'
                   placeholder='Title'
                 ></input>
@@ -330,17 +330,23 @@ export default function Home() {
           <table className='divide-y divide-CITLGray-light mb-2'>
             <thead className='bg-CITLGray-light'>
               <tr>
-                <th
+                {/* <th
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
                   Serial No.
-                </th>
+                </th> */}
                 <th
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
                   Title
+                </th>
+                <th
+                  scope='col'
+                  className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
+                >
+                  Type
                 </th>
                 <th
                   scope='col'
@@ -391,6 +397,7 @@ export default function Home() {
                     updatedAt={im.updatedAt}
                     onView={() => router.push(`/im/${im.id}`)}
                     owner={im.owner.user.name}
+                    type={im.type}
                     key={im.id}
                   />
                 );
@@ -448,9 +455,13 @@ export default function Home() {
                 </svg>
                 Prev
               </button>
+              {console.log({
+                value: state.page * state.limit,
+                enableNext: state.page * state.limit < total,
+              })}
               <button
                 className='inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-gray-800 border-0  rounded-r hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white disabled:bg-CITLGray-main'
-                // disabled={(state.page + 1) * state.limit > total}
+                disabled={!(state.page * state.limit < total) || loading}
                 onClick={() => {
                   setState((prev) => ({ ...prev, page: prev.page + 1 }));
                 }}

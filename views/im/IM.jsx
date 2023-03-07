@@ -12,6 +12,7 @@ export default function IM({
   updatedAt,
   onView,
   bottomBorder = true,
+  type,
 }) {
   return (
     <tr
@@ -19,9 +20,11 @@ export default function IM({
         bottomBorder ? "border-b dark:border-CITLGray-light" : ""
       } text-sm text-CITLGray-main text-left p-4 `}
     >
-      <td className='px-6 py-4 truncate '>{serialNumber}</td>
+      {/* <td className='px-6 py-4 truncate '>{serialNumber}</td> */}
 
       <td className='px-6 py-4 '>{title}</td>
+
+      <td className='px-6 py-4 '>{type}</td>
 
       <td className='px-6 py-4 '>{owner}</td>
 
