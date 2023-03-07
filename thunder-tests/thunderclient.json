@@ -1512,5 +1512,30 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "50d37a60-3c00-4543-afd9-bc85045a285c",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "70001f34-a1c2-45b8-980c-d64f3240a73a",
+    "name": "READ PeerReviews",
+    "url": "{{host}}/api/peer_review?limit=10&page=1",
+    "method": "GET",
+    "sortNum": 1050000,
+    "created": "2023-03-07T01:29:33.019Z",
+    "modified": "2023-03-07T01:29:51.861Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "limit",
+        "value": "10",
+        "isPath": false
+      },
+      {
+        "name": "page",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "tests": []
   }
 ]
