@@ -6,6 +6,6 @@
 @import "~@flaticon/flaticon-uicons/css/all/all";
 
 /* to fix tailwind overriding mui style */
-.MuiButton-root {
+.MuiButton-contained {
     background-color: #152033 !important;
 }

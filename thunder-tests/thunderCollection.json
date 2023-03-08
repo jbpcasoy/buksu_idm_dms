@@ -158,6 +158,20 @@
         "containerId": "",
         "created": "2023-03-06T03:46:24.570Z",
         "sortNum": 250000
+      },
+      {
+        "_id": "70001f34-a1c2-45b8-980c-d64f3240a73a",
+        "name": "PeerReview",
+        "containerId": "",
+        "created": "2023-03-07T01:20:21.175Z",
+        "sortNum": 260000
+      },
+      {
+        "_id": "f2ba22cf-9ed6-4991-9c0b-01ab9b6f260c",
+        "name": "PeerReviewItem",
+        "containerId": "",
+        "created": "2023-03-07T05:31:33.690Z",
+        "sortNum": 270000
       }
     ],
     "settings": {

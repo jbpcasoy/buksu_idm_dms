@@ -67,22 +67,32 @@ enum IMStatus {
   CITL_ENDORSED
 }
 
+enum IMType {
+  MODULE
+  COURSE_FILE
+  WORKTEXT
+  TEXTBOOK
+}
+
 model IM {
-  id                 String              @id @default(cuid())
-  serialNumber       String              @unique
-  title              String
+  id                  String               @id @default(cuid())
+  serialNumber        String               @unique
+  title               String
   // dont use with sqlite
-  status             IMStatus            @default(SUBMITTED)
+  status              IMStatus             @default(SUBMITTED)
   // use with sqlite
   // status             String              @default("SUBMITTED")
-  owner              Faculty             @relation(fields: [ownerId], references: [id])
-  ownerId            String
-  createdAt          DateTime            @default(now())
-  updatedAt          DateTime            @default(now())
-  File               File[]
-  DepartmentApproval DepartmentApproval?
-  ActiveFile         ActiveFile?
-  authors            String?             @db.Text
+  owner               Faculty              @relation(fields: [ownerId], references: [id])
+  ownerId             String
+  createdAt           DateTime             @default(now())
+  updatedAt           DateTime             @default(now())
+  File                File[]
+  DepartmentApproval  DepartmentApproval?
+  ActiveFile          ActiveFile?
+  authors             String?              @db.Text
+  PeerReview          PeerReview[]
+  type                IMType               @default(MODULE)
+  SubmittedPeerReview SubmittedPeerReview?
 
   @@index([ownerId])
 }
@@ -147,6 +157,7 @@ model Faculty {
   Chairperson   Chairperson?
   Coordinator   Coordinator?
   PeerApproval  PeerApproval[]
+  PeerReview    PeerReview[]
 
   @@unique([userId, departmentId])
   @@index([departmentId])
@@ -303,6 +314,7 @@ model Attachment {
   originalFileName String
 }
 
+// Ideal IM review schema
 model IMReviewSection {
   id               String             @id @default(cuid())
   createdAt        DateTime           @default(now())
@@ -323,4 +335,43 @@ model IMReviewQuestion {
   iMReviewSectionTitle String
 
   @@index([iMReviewSectionId, iMReviewSectionTitle])
+}
+
+model PeerReview {
+  id                  String               @id @default(cuid())
+  createdAt           DateTime             @default(now())
+  updatedAt           DateTime             @updatedAt
+  Faculty             Faculty              @relation(fields: [facultyId], references: [id])
+  facultyId           String
+  IM                  IM                   @relation(fields: [iMId], references: [id])
+  iMId                String
+  PeerReviewItem      PeerReviewItem[]
+  SubmittedPeerReview SubmittedPeerReview?
+
+  @@unique([facultyId, iMId])
+  @@index([iMId])
+  @@index([facultyId])
+}
+
+model PeerReviewItem {
+  id           String     @id @default(cuid())
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  questionId   String // static uuid from frontend, for prototype, production should have question table with google forms like features
+  answer       String
+  PeerReview   PeerReview @relation(fields: [peerReviewId], references: [id])
+  peerReviewId String
+
+  @@unique([peerReviewId, questionId])
+  @@index([peerReviewId])
+}
+
+model SubmittedPeerReview {
+  id           String     @id @default(cuid())
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  IM           IM         @relation(fields: [iMId], references: [id])
+  iMId         String     @unique
+  PeerReview   PeerReview @relation(fields: [peerReviewId], references: [id])
+  peerReviewId String     @unique
 }

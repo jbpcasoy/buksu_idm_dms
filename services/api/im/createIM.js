@@ -5,6 +5,7 @@ export default async function createIM({
   title,
   ownerId,
   authors,
+  type,
 }) {
   const prisma = new PrismaClient();
 
@@ -20,6 +21,7 @@ export default async function createIM({
             id: ownerId,
           },
         },
+        type,
       },
     });
     return im;

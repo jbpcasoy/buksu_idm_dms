@@ -6,10 +6,11 @@
     "seed": "node prisma/seed.js"
   },
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "npm run validate && next dev",
+    "build": "npm run validate && next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "npm run validate && next lint",
+    "validate": "node validator.js",
     "vercel-build": "prisma generate && next build"
   },
   "dependencies": {

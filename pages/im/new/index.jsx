@@ -17,18 +17,23 @@ export default function CreateIM() {
     initialValues: {
       title: "",
       authors: "",
+      type: "MODULE",
     },
     validationSchema: Yup.object({
       title: Yup.string().required(),
       authors: Yup.string().required(),
+      type: Yup.string()
+        .oneOf(["MODULE", "COURSE_FILE", "WORKTEXT", "TEXTBOOK"])
+        .required(),
     }),
     onSubmit: async (values) => {
-      const { title, authors } = values;
+      const { title, authors, type } = values;
 
       const im = await frontendCreateIM({
         title,
         serialNumber: uuidv4(),
         authors,
+        type,
       });
       const res = await uploadIMFile(file);
       const createdFile = await frontendCreateFile({
@@ -129,6 +134,24 @@ export default function CreateIM() {
                 required
                 {...formik.getFieldProps("authors")}
               />
+              <label
+                for='type'
+                className='block mt-5 mb-2 text-sm font-medium text-gray-900 dark:text-white'
+              >
+                Type
+              </label>
+              <select
+                id='type'
+                className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+                {...formik.getFieldProps("type")}
+              >
+                <option value='MODULE' selected>
+                  Module
+                </option>
+                <option value='COURSE_FILE'>Course File</option>
+                <option value='WORKTEXT'>Worktext</option>
+                <option value='TEXTBOOK'>Textbook</option>
+              </select>
             </div>
 
             {/* {filePreviewUrl && (
