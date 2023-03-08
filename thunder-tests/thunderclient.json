@@ -1821,5 +1821,19 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "d503b9c0-158f-48c8-a940-55b6431276af",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "816fa3f5-537a-448b-a3e0-bff5d11d1b75",
+    "name": "DELETE ChairpersonReview",
+    "url": "{{host}}/api/chairperson_review/clezbq5m70001s9ntao2okviw",
+    "method": "DELETE",
+    "sortNum": 1210000,
+    "created": "2023-03-08T07:11:33.603Z",
+    "modified": "2023-03-08T07:12:03.271Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
