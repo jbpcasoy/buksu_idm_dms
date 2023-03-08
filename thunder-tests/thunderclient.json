@@ -1854,5 +1854,30 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "f4707164-5790-45f2-99fd-459b7d06fc61",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "12a4571b-7e4d-458b-86bd-06986c1a44f7",
+    "name": "READ ChairpersonReviewItems",
+    "url": "{{host}}/api/chairperson_review_item?limit=10&page=1",
+    "method": "GET",
+    "sortNum": 1230000,
+    "created": "2023-03-08T07:41:29.748Z",
+    "modified": "2023-03-08T07:42:05.122Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "limit",
+        "value": "10",
+        "isPath": false
+      },
+      {
+        "name": "page",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "tests": []
   }
 ]
