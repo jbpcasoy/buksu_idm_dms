@@ -201,7 +201,7 @@ const sections = [
   },
 ];
 
-export default function countQuestions(sections) {
+function countQuestions(sections) {
   let total = 0;
 
   for (let section of sections) {
