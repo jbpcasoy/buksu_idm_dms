@@ -1730,5 +1730,19 @@
       }
     ],
     "tests": []
+  },
+  {
+    "_id": "9e2089a1-75cd-4c79-9f4a-b9a25a47e91c",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "9999eff5-60b5-438f-9363-386b007dbbde",
+    "name": "READ SubmittedPeerReview",
+    "url": "{{host}}/api/submitted_peer_review/clez87dmh0004s9sv7hefv7hk",
+    "method": "GET",
+    "sortNum": 1160000,
+    "created": "2023-03-08T05:29:45.986Z",
+    "modified": "2023-03-08T05:30:08.940Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
