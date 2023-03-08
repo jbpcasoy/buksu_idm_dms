@@ -1758,5 +1758,29 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "9c731565-3472-4674-90bb-c0180ca1229a",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "816fa3f5-537a-448b-a3e0-bff5d11d1b75",
+    "name": "CREATE ChairpersonReview",
+    "url": "{{host}}/api/chairperson_review",
+    "method": "POST",
+    "sortNum": 1180000,
+    "created": "2023-03-08T06:50:19.370Z",
+    "modified": "2023-03-08T06:52:49.966Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"iMId\": \"clew3gv9v000as96yjzxr4tpm\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
