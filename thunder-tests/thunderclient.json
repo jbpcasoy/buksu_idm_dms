@@ -1744,5 +1744,19 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "451cce19-986c-415c-8625-2fbc6e4a9a7b",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "9999eff5-60b5-438f-9363-386b007dbbde",
+    "name": "DELETE SubmittedPeerReview",
+    "url": "{{host}}/api/submitted_peer_review/clez87dmh0004s9sv7hefv7hk",
+    "method": "DELETE",
+    "sortNum": 1170000,
+    "created": "2023-03-08T05:34:29.800Z",
+    "modified": "2023-03-08T05:35:30.335Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
