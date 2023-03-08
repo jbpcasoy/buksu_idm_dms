@@ -379,15 +379,29 @@ model SubmittedPeerReview {
 }
 
 model ChairpersonReview {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  Faculty   Faculty  @relation(fields: [facultyId], references: [id])
-  facultyId String
-  IM        IM       @relation(fields: [iMId], references: [id])
-  iMId      String
+  id                    String                  @id @default(cuid())
+  createdAt             DateTime                @default(now())
+  updatedAt             DateTime                @updatedAt
+  Faculty               Faculty                 @relation(fields: [facultyId], references: [id])
+  facultyId             String
+  IM                    IM                      @relation(fields: [iMId], references: [id])
+  iMId                  String
+  ChairpersonReviewItem ChairpersonReviewItem[]
 
   @@unique([facultyId, iMId])
   @@index([iMId])
   @@index([facultyId])
+}
+
+model ChairpersonReviewItem {
+  id                  String            @id @default(cuid())
+  createdAt           DateTime          @default(now())
+  updatedAt           DateTime          @updatedAt
+  questionId          String // static uuid from frontend, for prototype, production should have question table with google forms like features
+  answer              String
+  ChairpersonReview   ChairpersonReview @relation(fields: [chairpersonReviewId], references: [id])
+  chairpersonReviewId String
+
+  @@unique([chairpersonReviewId, questionId])
+  @@index([chairpersonReviewId])
 }

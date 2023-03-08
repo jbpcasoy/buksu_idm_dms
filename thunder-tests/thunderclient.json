@@ -1835,5 +1835,24 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "55153aa5-ee89-4206-a6da-4e4e67ac1468",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "12a4571b-7e4d-458b-86bd-06986c1a44f7",
+    "name": "CREATE ChairpersonReviewItem",
+    "url": "{{host}}/api/chairperson_review_item",
+    "method": "POST",
+    "sortNum": 1220000,
+    "created": "2023-03-08T07:33:25.885Z",
+    "modified": "2023-03-08T07:36:09.617Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"questionId\": \"5179c011-286d-4ab8-bc7f-8b118b16a4e3\",\n  \"answer\": \"NAA\",\n  \"chairpersonReviewId\": \"clezd8p7n0001s9o6ljs2r243\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
