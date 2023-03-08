@@ -1,8 +1,13 @@
 /**
  * Rules:
+ *  !!!
+ *  !IMPORTANT - don't delete questions, set active = false instead.
+ *  !!!
+ *
  *  1. Section titles must be unique.
  *  2. Question labels must be unique.
  *  3. Question ids must be unique.
+ *  4. run `npm run validate` each time this file was updated to validate for unique values such as titles, questions, and ids.
  */
 
 const sections = [
@@ -24,7 +29,7 @@ const sections = [
     ],
   },
   {
-    title: "The preface",
+    title: "The Preface",
     active: true,
     questions: [
       {
@@ -196,5 +201,17 @@ const sections = [
   },
 ];
 
+export default function countQuestions(sections) {
+  let total = 0;
+
+  for (let section of sections) {
+    for (let question of section.questions) {
+      total += 1;
+    }
+  }
+
+  return total;
+}
+
 //  don't change format, used by /validator.js
-module.exports = { sections };
+module.exports = { sections, countQuestions };

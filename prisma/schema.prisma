@@ -67,23 +67,32 @@ enum IMStatus {
   CITL_ENDORSED
 }
 
+enum IMType {
+  MODULE
+  COURSE_FILE
+  WORKTEXT
+  TEXTBOOK
+}
+
 model IM {
-  id                 String              @id @default(cuid())
-  serialNumber       String              @unique
-  title              String
+  id                  String               @id @default(cuid())
+  serialNumber        String               @unique
+  title               String
   // dont use with sqlite
-  status             IMStatus            @default(SUBMITTED)
+  status              IMStatus             @default(SUBMITTED)
   // use with sqlite
   // status             String              @default("SUBMITTED")
-  owner              Faculty             @relation(fields: [ownerId], references: [id])
-  ownerId            String
-  createdAt          DateTime            @default(now())
-  updatedAt          DateTime            @default(now())
-  File               File[]
-  DepartmentApproval DepartmentApproval?
-  ActiveFile         ActiveFile?
-  authors            String?             @db.Text
-  PeerReview         PeerReview[]
+  owner               Faculty              @relation(fields: [ownerId], references: [id])
+  ownerId             String
+  createdAt           DateTime             @default(now())
+  updatedAt           DateTime             @default(now())
+  File                File[]
+  DepartmentApproval  DepartmentApproval?
+  ActiveFile          ActiveFile?
+  authors             String?              @db.Text
+  PeerReview          PeerReview[]
+  type                IMType               @default(MODULE)
+  SubmittedPeerReview SubmittedPeerReview?
 
   @@index([ownerId])
 }
@@ -329,16 +338,17 @@ model IMReviewQuestion {
 }
 
 model PeerReview {
-  id             String           @id @default(cuid())
-  createdAt      DateTime         @default(now())
-  updatedAt      DateTime         @updatedAt
-  Faculty        Faculty          @relation(fields: [facultyId], references: [id])
-  facultyId      String
-  IM             IM               @relation(fields: [iMId], references: [id])
-  iMId           String
-  PeerReviewItem PeerReviewItem[]
-  submitted      Boolean          @default(false) // PeerReview will be created before PeerReviewItems, must have submitted state
+  id                  String               @id @default(cuid())
+  createdAt           DateTime             @default(now())
+  updatedAt           DateTime             @updatedAt
+  Faculty             Faculty              @relation(fields: [facultyId], references: [id])
+  facultyId           String
+  IM                  IM                   @relation(fields: [iMId], references: [id])
+  iMId                String
+  PeerReviewItem      PeerReviewItem[]
+  SubmittedPeerReview SubmittedPeerReview?
 
+  @@unique([facultyId, iMId])
   @@index([iMId])
   @@index([facultyId])
 }
@@ -354,4 +364,14 @@ model PeerReviewItem {
 
   @@unique([peerReviewId, questionId])
   @@index([peerReviewId])
+}
+
+model SubmittedPeerReview {
+  id           String     @id @default(cuid())
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  IM           IM         @relation(fields: [iMId], references: [id])
+  iMId         String     @unique
+  PeerReview   PeerReview @relation(fields: [peerReviewId], references: [id])
+  peerReviewId String     @unique
 }

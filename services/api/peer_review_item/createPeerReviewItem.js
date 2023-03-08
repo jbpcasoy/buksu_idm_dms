@@ -12,7 +12,11 @@ export default async function createPeerReviewItem({
       data: {
         questionId,
         answer,
-        peerReviewId,
+        PeerReview: {
+          connect: {
+            id: peerReviewId,
+          },
+        },
       },
     });
     return peerReviewItem;
