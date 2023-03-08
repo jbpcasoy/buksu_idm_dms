@@ -13,7 +13,7 @@
       },
       {
         "name": "Cookie",
-        "value": "next-auth.csrf-token=e8b7c02ed6e6ea12505f702d24076ba59f05f481d2eb7f5805ec58ba3b3bfa48|f0117305b7fddd97831a089a9cbc8b3b33100453883d3252e52a1efea2159a13; next-auth.session-token=735dd152-289b-42d9-ad08-d0b4b6e0497c; next-auth.callback-url=http://localhost:3000/im/clexv57fx0000s9njt60648dl/review"
+        "value": "next-auth.csrf-token=e8b7c02ed6e6ea12505f702d24076ba59f05f481d2eb7f5805ec58ba3b3bfa48|f0117305b7fddd97831a089a9cbc8b3b33100453883d3252e52a1efea2159a13; next-auth.callback-url=http://localhost:3000/; next-auth.session-token=fda936fc-0d6f-42fa-b609-828a59fc3ef5"
       }
     ]
   }
