@@ -19,11 +19,15 @@ const IMEvaluationForm = () => {
   const [step, setStep] = useState(0);
   const [items, setItems] = useState({});
   const [iMInfo, setIMInfo] = useState(
-    <IMInfo authors='' title='' type='MODULE' onNext={handleNext} />
+    <IMInfo key='info' authors='' title='' type='MODULE' onNext={handleNext} />
   );
   const steps = [
     iMInfo,
-    <Instructions onNext={handleNext} onPrevious={handlePrevious} />,
+    <Instructions
+      key='instruction'
+      onNext={handleNext}
+      onPrevious={handlePrevious}
+    />,
     ...generateQuestions(sections),
   ];
 
