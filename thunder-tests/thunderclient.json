@@ -1705,5 +1705,30 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "d216141a-3fe9-4ccc-9f4d-5abbb66b2be8",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "9999eff5-60b5-438f-9363-386b007dbbde",
+    "name": "READ SubmittedPeerReviews",
+    "url": "{{host}}/api/submitted_peer_review?limit=10&page=1",
+    "method": "GET",
+    "sortNum": 1150000,
+    "created": "2023-03-08T05:22:56.585Z",
+    "modified": "2023-03-08T05:23:19.878Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "limit",
+        "value": "10",
+        "isPath": false
+      },
+      {
+        "name": "page",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "tests": []
   }
 ]
