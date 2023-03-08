@@ -40,7 +40,15 @@ const IMEvaluationForm = () => {
   }
 
   async function handleSubmit() {
-    return frontendCreateSubmittedPeerReview({ peerReviewId: peerReview.id });
+    return frontendCreateSubmittedPeerReview({
+      peerReviewId: peerReview.id,
+    })
+      .catch((err) => {
+        console.error(err);
+      })
+      .finally(() => {
+        router.push(`/im/${iM.id}`);
+      });
   }
 
   function generateQuestions(sections) {
