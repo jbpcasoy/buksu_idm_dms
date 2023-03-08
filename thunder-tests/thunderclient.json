@@ -1879,5 +1879,19 @@
       }
     ],
     "tests": []
+  },
+  {
+    "_id": "db9350aa-9c79-45df-946e-53d41fedc63a",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "12a4571b-7e4d-458b-86bd-06986c1a44f7",
+    "name": "READ ChairpersonReviewItem",
+    "url": "{{host}}/api/chairperson_review_item/clezd919c0003s9o6f8hjotg7",
+    "method": "GET",
+    "sortNum": 1240000,
+    "created": "2023-03-08T07:48:51.662Z",
+    "modified": "2023-03-08T07:49:33.627Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
