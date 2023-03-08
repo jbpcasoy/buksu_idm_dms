@@ -7,7 +7,7 @@ import useUser from "@/hooks/useUser";
 import frontendReadIM from "@/services/frontend/im/frontendReadIM";
 import frontendCreatePeerReview from "@/services/frontend/peer_review/frontendCreatePeerReview";
 import frontendReadPeerReview from "@/services/frontend/peer_review/frontendReadPeerReview";
-import frontendUpdatePeerReview from "@/services/frontend/peer_review/frontendUpdatePeerReview";
+import frontendCreateSubmittedPeerReview from "@/services/frontend/submitted_pper_review/frontendCreateSubmittedPeerReview";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
@@ -40,7 +40,15 @@ const IMEvaluationForm = () => {
   }
 
   async function handleSubmit() {
-    return frontendUpdatePeerReview(peerReview.id, { submitted: true });
+    return frontendCreateSubmittedPeerReview({
+      peerReviewId: peerReview.id,
+    })
+      .catch((err) => {
+        console.error(err);
+      })
+      .finally(() => {
+        router.push(`/im/${iM.id}`);
+      });
   }
 
   function generateQuestions(sections) {
@@ -108,7 +116,7 @@ const IMEvaluationForm = () => {
 
   useEffect(() => {
     console.log({ user });
-    if (!iM || !user?.ActiveFaculty) return;
+    if (!iM?.id || !user?.ActiveFaculty) return;
     let subscribe = true;
 
     frontendCreatePeerReview({

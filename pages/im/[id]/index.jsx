@@ -1,4 +1,5 @@
 import Layout from "@/components/layout/Layout";
+import useUser from "@/hooks/useUser";
 import frontendReadIM from "@/services/frontend/im/frontendReadIM";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -6,6 +7,7 @@ import { useEffect, useState } from "react";
 
 export default function ViewIM() {
   const router = useRouter();
+  const { user } = useUser();
   const [iM, setIM] = useState();
 
   useEffect(() => {
@@ -31,12 +33,14 @@ export default function ViewIM() {
             >
               Versions
             </Link>{" "}
-            <Link
-              href={`/im/${iM?.id}/review`}
-              className='text-CITLWhite bg-CITLDarkBlue font-medium text-sm px-5 py-2.5 mr-2 rounded-md shadow-xl  hover:text-CITLWhite hover:border-CITLDarkBlue focus:outline-none'
-            >
-              Review
-            </Link>
+            {user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId && (
+              <Link
+                href={`/im/${iM?.id}/review`}
+                className='text-CITLWhite bg-CITLDarkBlue font-medium text-sm px-5 py-2.5 mr-2 rounded-md shadow-xl  hover:text-CITLWhite hover:border-CITLDarkBlue focus:outline-none'
+              >
+                Review
+              </Link>
+            )}
           </div>
         </div>
         {/* TODO change pdf url into dynamic */}
