@@ -386,6 +386,7 @@ export default function Home() {
                 return (
                   <IM
                     // bottomBorder={index < state.ims.length - 1}
+                    peerReviewed={Boolean(im.SubmittedPeerReview)}
                     bottomBorder={true}
                     createdAt={im.createdAt}
                     originalFileName={im.originalFileName}

@@ -11,6 +11,7 @@ export default function IM({
   createdAt,
   updatedAt,
   onView,
+  peerReviewed = false,
   bottomBorder = true,
   type,
 }) {
@@ -28,7 +29,20 @@ export default function IM({
 
       <td className='px-6 py-4 '>{owner}</td>
 
-      <td className='px-6 py-4 '>{status}</td>
+      <td className='px-6 py-4 '>
+        <div>
+          {status}
+          <br />
+          {peerReviewed && (
+            <span className='bg-green-600 text-white px-3 rounded-lg'>
+              Peer
+            </span>
+          )}
+          {!peerReviewed && (
+            <span className='bg-red-600 text-white px-3 rounded-lg'>Peer</span>
+          )}
+        </div>
+      </td>
 
       <td className='px-6 py-4 '>
         {moment(createdAt).format("M/D/YYYY, h:mm A")}
