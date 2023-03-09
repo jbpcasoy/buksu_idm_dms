@@ -306,7 +306,7 @@ export default function StudentOpinionnaire() {
                     </label>
                   </div>
                 </div>
-                <div className='grid grid-cols-2 gap-6 mb-6'>
+                <div className='grid grid-cols-2 gap-6 mt-6'>
                   <div>
                     <label
                       className='block mb-1 text-sm font-semibold text-CITLDarkBlue '
