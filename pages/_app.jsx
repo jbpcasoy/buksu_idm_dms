@@ -33,7 +33,7 @@ export default function App({
     initModals();
     initPopovers();
     initTabs();
-    initTooltips;
+    initTooltips();
   });
 
   return (

@@ -147,20 +147,19 @@ model Department {
 }
 
 model Faculty {
-  id                String              @id @default(cuid())
-  userId            String
-  user              User                @relation(fields: [userId], references: [id])
-  departmentId      String
-  department        Department          @relation(fields: [departmentId], references: [id])
-  createdAt         DateTime            @default(now())
-  updatedAt         DateTime            @updatedAt
-  ActiveFaculty     ActiveFaculty?
-  IM                IM[]
-  Chairperson       Chairperson?
-  Coordinator       Coordinator?
-  PeerApproval      PeerApproval[]
-  PeerReview        PeerReview[]
-  ChairpersonReview ChairpersonReview[]
+  id            String         @id @default(cuid())
+  userId        String
+  user          User           @relation(fields: [userId], references: [id])
+  departmentId  String
+  department    Department     @relation(fields: [departmentId], references: [id])
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  ActiveFaculty ActiveFaculty?
+  IM            IM[]
+  Chairperson   Chairperson?
+  Coordinator   Coordinator?
+  PeerApproval  PeerApproval[]
+  PeerReview    PeerReview[]
 
   @@unique([userId, departmentId])
   @@index([departmentId])
@@ -190,6 +189,7 @@ model Chairperson {
   facultyId           String                @unique
   ActiveChairperson   ActiveChairperson?
   ChairpersonApproval ChairpersonApproval[]
+  ChairpersonReview   ChairpersonReview[]
 }
 
 model Coordinator {
@@ -383,16 +383,16 @@ model ChairpersonReview {
   id                         String                      @id @default(cuid())
   createdAt                  DateTime                    @default(now())
   updatedAt                  DateTime                    @updatedAt
-  Faculty                    Faculty                     @relation(fields: [facultyId], references: [id])
-  facultyId                  String
+  Chairperson                Chairperson                 @relation(fields: [chairpersonId], references: [id])
+  chairpersonId              String
   IM                         IM                          @relation(fields: [iMId], references: [id])
   iMId                       String
   ChairpersonReviewItem      ChairpersonReviewItem[]
   SubmittedChairpersonReview SubmittedChairpersonReview?
 
-  @@unique([facultyId, iMId])
+  @@unique([chairpersonId, iMId])
   @@index([iMId])
-  @@index([facultyId])
+  @@index([chairpersonId])
 }
 
 model ChairpersonReviewItem {

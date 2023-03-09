@@ -9,7 +9,12 @@ export default async function getUserByEmail(email) {
         email,
       },
       include: {
-        ActiveFaculty: true,
+        ActiveFaculty: {
+          include: {
+            ActiveChairperson: true,
+            ActiveCoordinator: true,
+          },
+        },
       },
     });
 
