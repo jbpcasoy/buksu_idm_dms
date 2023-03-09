@@ -2087,5 +2087,30 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "2b4d6d12-fe9d-4435-9e50-385727106f66",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "97334de5-c0ce-404e-babd-5bd5dc3cecbd",
+    "name": "READ CoordinatorReviewItems",
+    "url": "{{host}}/api/coordinator_review_item?limit=10&page=1",
+    "method": "GET",
+    "sortNum": 1360000,
+    "created": "2023-03-09T07:40:38.045Z",
+    "modified": "2023-03-09T07:41:11.415Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "limit",
+        "value": "10",
+        "isPath": false
+      },
+      {
+        "name": "page",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "tests": []
   }
 ]
