@@ -1,13 +1,11 @@
 import axios from "axios";
 
 export default async function frontendCreateActiveCoordinator({
-  facultyId,
-  departmentId,
+  coordinatorId,
 }) {
   try {
     const activeCoordinator = await axios.post("/api/active_coordinator", {
-      facultyId,
-      departmentId,
+      coordinatorId,
     });
 
     return activeCoordinator.data;

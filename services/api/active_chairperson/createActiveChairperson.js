@@ -1,23 +1,21 @@
 import { PrismaClient } from "@prisma/client";
 
-export default async function createActiveChairperson({
-  chairpersonId,
-  departmentId,
-}) {
+export default async function createActiveChairperson({ chairpersonId }) {
   const prisma = new PrismaClient();
 
   try {
     const chairperson = await findChairperson({
       chairpersonId,
-      departmentId,
     });
 
-    const activeFaculty = await findActiveFaculty({ chairpersonId });
+    const activeFaculty = await findActiveFaculty({
+      facultyId: chairperson.facultyId,
+    });
 
     const activeChairperson = await prisma.activeChairperson.create({
       data: {
         chairpersonId: chairperson.id,
-        departmentId,
+        departmentId: chairperson.Faculty.department.id,
         activeFacultyId: activeFaculty.id,
       },
     });
@@ -27,15 +25,20 @@ export default async function createActiveChairperson({
   }
 }
 
-async function findChairperson({ chairpersonId, departmentId }) {
+async function findChairperson({ chairpersonId }) {
   const prisma = new PrismaClient();
 
   try {
     const chairperson = await prisma.chairperson.findFirstOrThrow({
-      where: {
+      include: {
         Faculty: {
-          departmentId: departmentId,
+          include: {
+            department: true,
+            ActiveFaculty: true,
+          },
         },
+      },
+      where: {
         id: chairpersonId,
       },
     });
@@ -45,20 +48,15 @@ async function findChairperson({ chairpersonId, departmentId }) {
   }
 }
 
-async function findActiveFaculty({ chairpersonId }) {
+async function findActiveFaculty({ facultyId }) {
   const prisma = new PrismaClient();
 
   try {
-    const activeFaculty = await prisma.activeFaculty.findFirstOrThrow({
+    const activeFaculty = await prisma.activeFaculty.findUnique({
       where: {
-        Faculty: {
-          Chairperson: {
-            id: chairpersonId,
-          },
-        },
+        facultyId,
       },
     });
-
     return activeFaculty;
   } catch (error) {
     throw error;

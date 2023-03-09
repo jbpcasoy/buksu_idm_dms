@@ -1,23 +1,21 @@
 import { PrismaClient } from "@prisma/client";
 
-export default async function createActiveCoordinator({
-  coordinatorId,
-  departmentId,
-}) {
+export default async function createActiveCoordinator({ coordinatorId }) {
   const prisma = new PrismaClient();
 
   try {
     const coordinator = await findCoordinator({
       coordinatorId,
-      departmentId,
     });
 
-    const activeFaculty = await findActiveFaculty({ coordinatorId });
+    const activeFaculty = await findActiveFaculty({
+      facultyId: coordinator.facultyId,
+    });
 
     const activeCoordinator = await prisma.activeCoordinator.create({
       data: {
         coordinatorId: coordinator.id,
-        departmentId,
+        departmentId: coordinator.Faculty.departmentId,
         activeFacultyId: activeFaculty.id,
       },
     });
@@ -38,6 +36,13 @@ async function findCoordinator({ coordinatorId, departmentId }) {
         },
         id: coordinatorId,
       },
+      include: {
+        Faculty: {
+          include: {
+            department: true,
+          },
+        },
+      },
     });
 
     return coordinator;
@@ -46,17 +51,13 @@ async function findCoordinator({ coordinatorId, departmentId }) {
   }
 }
 
-async function findActiveFaculty({ coordinatorId }) {
+async function findActiveFaculty({ facultyId }) {
   const prisma = new PrismaClient();
 
   try {
-    const activeFaculty = await prisma.activeFaculty.findFirstOrThrow({
+    const activeFaculty = await prisma.activeFaculty.findUniqueOrThrow({
       where: {
-        Faculty: {
-          Coordinator: {
-            id: coordinatorId,
-          },
-        },
+        facultyId,
       },
     });
 
