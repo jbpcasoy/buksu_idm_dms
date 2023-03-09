@@ -6,8 +6,16 @@ export default async function createCoordinatorReview({ iMId, coordinatorId }) {
   try {
     const coordinatorReview = await prisma.coordinatorReview.create({
       data: {
-        iMId,
-        coordinatorId,
+        IM: {
+          connect: {
+            id: iMId,
+          },
+        },
+        Coordinator: {
+          connect: {
+            id: coordinatorId,
+          },
+        },
       },
     });
 

@@ -4,11 +4,9 @@ import getUserByEmail from "@/services/helpers/getUserByEmail";
 import { getServerSession } from "next-auth";
 
 export default async function postCoordinatorReviewHandler(req, res) {
-  const { iMId } = req.query;
+  const { iMId } = req.body;
   const session = await getServerSession(req, res, authOptions);
   const user = await getUserByEmail(session?.user?.email);
-
-  console.log({ user });
 
   const coordinatorReview = await createCoordinatorReview({
     iMId,
