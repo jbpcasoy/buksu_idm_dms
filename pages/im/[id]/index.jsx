@@ -35,7 +35,11 @@ export default function ViewIM() {
             </Link>{" "}
             {user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId && (
               <Link
-                href={`/im/${iM?.id}/review`}
+                href={`/im/${iM?.id}/review/${
+                  user?.ActiveFaculty?.ActiveChairperson
+                    ? "chairperson"
+                    : "peer"
+                }`}
                 className='text-CITLWhite bg-CITLDarkBlue font-medium text-sm px-5 py-2.5 mr-2 rounded-md shadow-xl  hover:text-CITLWhite hover:border-CITLDarkBlue focus:outline-none'
               >
                 Review

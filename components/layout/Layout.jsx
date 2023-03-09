@@ -7,8 +7,8 @@ export default function Layout({ children, active }) {
       <Header />
       <Sidebar />
 
-      <div className="p-2 sm:ml-64">
-        <div className=" mt-16">{children}</div>
+      <div className='p-2 sm:ml-64'>
+        <div className=' mt-16'>{children}</div>
       </div>
     </div>
   );

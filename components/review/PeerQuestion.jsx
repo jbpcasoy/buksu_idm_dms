@@ -3,7 +3,7 @@ import frontendReadPeerReviewItem from "@/services/frontend/peer_review_item/fro
 import frontendUpdatePeerReviewItem from "@/services/frontend/peer_review_item/frontendUpdatePeerReviewItem";
 import { useEffect, useState } from "react";
 
-export default function Question({
+export default function PeerQuestion({
   title,
   question,
   questionId,
