@@ -18,6 +18,7 @@ export default async function readIMs({
       skip: (page - 1) * limit,
       include: {
         SubmittedPeerReview: true,
+        SubmittedChairpersonReview: true,
         owner: {
           select: {
             department: {
