@@ -12,6 +12,7 @@ export default function IM({
   updatedAt,
   onView,
   peerReviewed = false,
+  chairpersonReviewed = false,
   bottomBorder = true,
   type,
 }) {
@@ -40,6 +41,17 @@ export default function IM({
           )}
           {!peerReviewed && (
             <span className='bg-red-600 text-white px-3 rounded-lg'>Peer</span>
+          )}
+          <br />
+          {chairpersonReviewed && (
+            <span className='bg-green-600 text-white px-3 rounded-lg'>
+              Chairperson
+            </span>
+          )}
+          {!chairpersonReviewed && (
+            <span className='bg-red-600 text-white px-3 rounded-lg'>
+              Chairperson
+            </span>
           )}
         </div>
       </td>
