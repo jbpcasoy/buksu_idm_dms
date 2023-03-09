@@ -34,7 +34,7 @@ export default function App({
     initPopovers();
     initTabs();
     initTooltips();
-  }, []);
+  });
 
   return (
     <SessionProvider session={session}>

@@ -11,7 +11,7 @@ export default async function postChairpersonReviewHandler(req, res) {
 
   // TODO ensure that user does not own im
   const chairpersonReview = await createChairpersonReview({
-    facultyId: user.ActiveFaculty.facultyId,
+    chairpersonId: user.ActiveFaculty.ActiveChairperson.chairpersonId,
     iMId,
   });
   return res.status(201).json(chairpersonReview);
