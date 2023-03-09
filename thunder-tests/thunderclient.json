@@ -2126,5 +2126,19 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "1edc5811-3d48-403d-951e-bbd7bd20ee5b",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "97334de5-c0ce-404e-babd-5bd5dc3cecbd",
+    "name": "DELETE CoordinatorReviewItem",
+    "url": "{{host}}/api/coordinator_review_item/clf0sixc30003s945hq5hxfzx",
+    "method": "DELETE",
+    "sortNum": 1380000,
+    "created": "2023-03-09T07:53:24.440Z",
+    "modified": "2023-03-09T07:53:52.719Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
