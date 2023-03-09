@@ -1,7 +1,7 @@
 import Layout from "@/components/layout/Layout";
 import useUser from "@/hooks/useUser";
 import frontendGetIMs from "@/services/frontend/im/frontendGetIMs";
-import QAMIS from "@/views/QAMIS/QAMIS";
+import Suggestions from "@/views/suggestions/suggestions";
 import _ from "lodash";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -114,16 +114,16 @@ export default function Home() {
     <Layout>
       <div className=' grid grid-flow-row items-center border border-CITLGray-lighter bg-CITLWhite m-2 mt-5 relative rounded-lg shadow-lg overflow-x-auto'>
         <div className='px-6 pt-12 md:w-full '>
-          <h2 className='text-gray-800 font-bold text-xl '>
+          <h2 className='text-gray-800 font-bold text-xl mb-8 '>
             Suggestions and Actions Taken on IM Evaluation from IMERC
           </h2>
-          <p className='mb-8 text-sm'>for IPTTU Endorsement</p>
+          {/* <p className='mb-8 text-sm'>for IPTTU Endorsement</p> */}
         </div>
         <div className='border border-CITLGray-lighter mx-5 rounded-lg'>
           <div className='bg-CITLGray-light rounded-t-lg py-3 px-3 pr-3'>
             <div className='flex justify-between text-center '>
               <h2 className='text-center pt-2 font-semibold'>
-                A. QAMIS (Student and Teacher-Users)
+                Part A. Program Review
               </h2>
               <button
                 title='Add IM'
@@ -142,22 +142,11 @@ export default function Home() {
               <tr>
                 <th
                   scope='col'
-                  className='px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
-                >
-                  No.
-                </th>
-                <th
-                  scope='col'
-                  className=' py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
+                  className=' px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
                   suggestion
                 </th>
-                <th
-                  scope='col'
-                  className='py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
-                >
-                  IM Part & Page No.
-                </th>
+
                 <th
                   scope='col'
                   className=' py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
@@ -169,7 +158,7 @@ export default function Home() {
                   scope='col'
                   className=' py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
-                  IM Part & Page No.
+                  Page No.
                 </th>
                 <th
                   scope='col'
@@ -181,15 +170,17 @@ export default function Home() {
             </thead>
 
             <tbody className='bg-white divide-gray-200 overflow-y-auto'>
-              <QAMIS />
+              <Suggestions />
             </tbody>
           </table>
         </div>
 
-        <div className='border border-CITLGray-lighter mx-5 rounded-lg mt-5 mb-5'>
+        <div className='border border-CITLGray-lighter mx-5 rounded-lg mt-5  mb-5 '>
           <div className='bg-CITLGray-light rounded-t-lg py-3 px-3 pr-3 '>
             <div className='flex justify-between text-center '>
-              <h2 className='text-center pt-2 font-semibold'>B. IMERC</h2>
+              <h2 className='text-center pt-2 font-semibold'>
+                Part B. CITL Review
+              </h2>
               <button
                 title='Add IM'
                 className='flex items-center bg-CITLDarkBlue rounded-lg px-4 py-2.5 text-sm font-medium text-center shadow-md text-white '
@@ -207,22 +198,11 @@ export default function Home() {
               <tr>
                 <th
                   scope='col'
-                  className='px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
-                >
-                  No.
-                </th>
-                <th
-                  scope='col'
-                  className=' py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
+                  className='px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
                   suggestion
                 </th>
-                <th
-                  scope='col'
-                  className='py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
-                >
-                  IM Part & Page No.
-                </th>
+
                 <th
                   scope='col'
                   className=' py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
@@ -234,7 +214,7 @@ export default function Home() {
                   scope='col'
                   className=' py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
-                  IM Part & Page No.
+                  Page No.
                 </th>
                 <th
                   scope='col'
@@ -246,7 +226,7 @@ export default function Home() {
             </thead>
 
             <tbody className='bg-white divide-gray-200 overflow-y-auto'>
-              <QAMIS />
+              <Suggestions />
             </tbody>
           </table>
         </div>
