@@ -1,12 +1,8 @@
-import readCoordinatorReviewItems from "@/services/api/coordinator_review_item/readCoordinatorReviewItems";
+import readCoordinatorReviewItem from "@/services/api/coordinator_review_item/readCoordinatorReviewItem";
 
 export default async function getCoordinatorReviewItemHandler(req, res) {
-  const { limit = 10, page = 1 } = req.query;
+  const { id } = req.query;
 
-  const coordinatorReviewItems = await readCoordinatorReviewItems({
-    limit: parseInt(limit),
-    page: parseInt(page),
-  });
-
-  return res.status(200).json(coordinatorReviewItems);
+  const coordinatorReviewItem = await readCoordinatorReviewItem(id);
+  return res.status(200).json(coordinatorReviewItem);
 }

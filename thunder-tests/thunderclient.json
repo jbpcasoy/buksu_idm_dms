@@ -2112,5 +2112,19 @@
       }
     ],
     "tests": []
+  },
+  {
+    "_id": "ceeb75e9-7804-4523-8177-f2ae9406009c",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "97334de5-c0ce-404e-babd-5bd5dc3cecbd",
+    "name": "READ CoordinatorReviewItem",
+    "url": "{{host}}/api/coordinator_review_item/clf0sixc30003s945hq5hxfzx",
+    "method": "GET",
+    "sortNum": 1370000,
+    "created": "2023-03-09T07:48:09.552Z",
+    "modified": "2023-03-09T07:48:36.778Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
