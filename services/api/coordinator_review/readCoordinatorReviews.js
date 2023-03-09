@@ -1,16 +1,16 @@
 import { PrismaClient } from "@prisma/client";
 
-export default async function readCoordinatorPreviews({ limit, page }) {
+export default async function readCoordinatorReviews({ limit, page }) {
   const prisma = new PrismaClient();
 
   try {
-    const coordinatorPreviews = await prisma.coordinatorReview.findMany({
+    const coordinatorReviews = await prisma.coordinatorReview.findMany({
       take: limit,
       skip: (page - 1) * limit,
     });
     const total = await prisma.coordinatorReview.count();
 
-    return { data: coordinatorPreviews, total };
+    return { data: coordinatorReviews, total };
   } catch (error) {
     throw error;
   }
