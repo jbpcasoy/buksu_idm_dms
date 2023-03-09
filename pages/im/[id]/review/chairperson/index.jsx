@@ -1,21 +1,21 @@
+import ChairpersonQuestion from "@/components/review/ChairpersonQuestion";
 import IMInfo from "@/components/review/IMInfo";
 import Instructions from "@/components/review/Instructions";
-import PeerQuestion from "@/components/review/PeerQuestion";
 import ReviewPage from "@/components/review/ReviewPage";
 import { countQuestions, sections } from "@/constants/questions";
 import useUser from "@/hooks/useUser";
+import frontendCreateChairpersonReview from "@/services/frontend/chairperson_review/frontendCreateChairpersonReview";
+import frontendReadChairpersonReviews from "@/services/frontend/chairperson_review/frontendReadChairpersonReview";
 import frontendReadIM from "@/services/frontend/im/frontendReadIM";
-import frontendCreatePeerReview from "@/services/frontend/peer_review/frontendCreatePeerReview";
-import frontendReadPeerReview from "@/services/frontend/peer_review/frontendReadPeerReview";
-import frontendCreateSubmittedPeerReview from "@/services/frontend/submitted_peer_review/frontendCreateSubmittedPeerReview";
+import frontendCreateSubmittedChairpersonReview from "@/services/frontend/submitted_chairperson_review/frontendCreateSubmittedChairpersonReview";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-const PeerReviewPage = () => {
+const ChairpersonReviewPage = () => {
   const { user, userLoading, userError } = useUser();
   const router = useRouter();
   const [iM, setIM] = useState();
-  const [peerReview, setPeerReview] = useState();
+  const [chairpersonReview, setChairpersonReview] = useState();
   const [step, setStep] = useState(0);
   const [iMInfo, setIMInfo] = useState(
     <IMInfo key='info' authors='' title='' type='MODULE' onNext={handleNext} />
@@ -39,8 +39,8 @@ const PeerReviewPage = () => {
   }
 
   async function handleSubmit() {
-    return frontendCreateSubmittedPeerReview({
-      peerReviewId: peerReview.id,
+    return frontendCreateSubmittedChairpersonReview({
+      chairpersonReviewId: chairpersonReview.id,
     })
       .catch((err) => {
         console.error(err);
@@ -54,14 +54,13 @@ const PeerReviewPage = () => {
     const questions = [];
     const questionNumber = countQuestions(sections);
     let i = 0;
-
     for (let section of sections) {
       for (let question of section.questions) {
         questions.push(
-          <PeerQuestion
+          <ChairpersonQuestion
             key={question.id}
             questionId={question.id}
-            peerReview={peerReview}
+            chairpersonReview={chairpersonReview}
             title={section.title}
             question={question.label}
             onNext={handleNext}
@@ -114,22 +113,22 @@ const PeerReviewPage = () => {
     if (!iM?.id || !user?.ActiveFaculty) return;
     let subscribe = true;
 
-    frontendCreatePeerReview({
+    frontendCreateChairpersonReview({
       iMId: iM.id,
     })
       .then((res) => {
         if (!subscribe) return;
 
-        setPeerReview(res);
+        setChairpersonReview(res);
       })
       .catch((err) => {
-        frontendReadPeerReview({
+        frontendReadChairpersonReviews({
           iMId: iM.id,
-          facultyId: user.ActiveFaculty.Faculty.id,
+          chairpersonId: user.ActiveFaculty.ActiveChairperson.chairpersonId,
         }).then((res) => {
           if (!subscribe) return;
 
-          setPeerReview(res.data[0]);
+          setChairpersonReview(res.data[0]);
         });
       });
 
@@ -139,9 +138,9 @@ const PeerReviewPage = () => {
   }, [iM, user]);
 
   useEffect(() => {
-    console.log({ peerReview });
-  }, [peerReview]);
+    console.log({ chairpersonReview });
+  }, [chairpersonReview]);
 
   return <ReviewPage step={step} steps={steps} />;
 };
-export default PeerReviewPage;
+export default ChairpersonReviewPage;
