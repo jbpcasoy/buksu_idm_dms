@@ -2159,5 +2159,30 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "713ed705-7094-44b7-a3ea-ef5d6a30b281",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "327637e1-b39d-480c-ac73-f1814c515440",
+    "name": "READ SubmittedCoordinatorReviews",
+    "url": "{{host}}/api/submitted_coordinator_review?limit=10&page=1",
+    "method": "GET",
+    "sortNum": 1400000,
+    "created": "2023-03-09T08:27:51.828Z",
+    "modified": "2023-03-09T08:29:02.197Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "limit",
+        "value": "10",
+        "isPath": false
+      },
+      {
+        "name": "page",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "tests": []
   }
 ]
