@@ -2140,5 +2140,24 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "af078d63-a3d6-43e6-aec1-099c444ba57a",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "327637e1-b39d-480c-ac73-f1814c515440",
+    "name": "CREATE SubmittedCoordinatorReview",
+    "url": "{{host}}/api/submitted_coordinator_review",
+    "method": "POST",
+    "sortNum": 1390000,
+    "created": "2023-03-09T08:16:53.943Z",
+    "modified": "2023-03-09T08:19:09.875Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"coordinatorReviewId\": \"clf0sdu9c0000s945a6ptbum5\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]

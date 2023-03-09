@@ -96,6 +96,7 @@ model IM {
   ChairpersonReview          ChairpersonReview[]
   SubmittedChairpersonReview SubmittedChairpersonReview?
   CoordinatorReview          CoordinatorReview[]
+  SubmittedCoordinatorReview SubmittedCoordinatorReview?
 
   @@index([ownerId])
 }
@@ -427,9 +428,10 @@ model CoordinatorReview {
   Coordinator Coordinator @relation(fields: [coordinatorId], references: [id])
   IM          IM          @relation(fields: [iMId], references: [id])
 
-  coordinatorId         String
-  iMId                  String
-  CoordinatorReviewItem CoordinatorReviewItem[]
+  coordinatorId              String
+  iMId                       String
+  CoordinatorReviewItem      CoordinatorReviewItem[]
+  SubmittedCoordinatorReview SubmittedCoordinatorReview?
 
   @@unique([coordinatorId, iMId])
   @@index([coordinatorId])
@@ -447,4 +449,14 @@ model CoordinatorReviewItem {
 
   @@unique([coordinatorReviewId, questionId])
   @@index([coordinatorReviewId])
+}
+
+model SubmittedCoordinatorReview {
+  id                  String            @id @default(cuid())
+  createdAt           DateTime          @default(now())
+  updatedAt           DateTime          @updatedAt
+  IM                  IM                @relation(fields: [iMId], references: [id])
+  iMId                String            @unique
+  CoordinatorReview   CoordinatorReview @relation(fields: [coordinatorReviewId], references: [id])
+  coordinatorReviewId String            @unique
 }
