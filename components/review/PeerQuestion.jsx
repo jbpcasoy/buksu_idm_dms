@@ -16,7 +16,7 @@ export default function PeerQuestion({
   disablePrevious = false,
   disableSubmit = true,
 }) {
-  const [answer, setAnswer] = useState("NAA");
+  const [answer, setAnswer] = useState();
   const [peerReviewItem, setPeerReviewItem] = useState();
   const [loading, setLoading] = useState(true);
 
@@ -32,7 +32,11 @@ export default function PeerQuestion({
       peerReviewId: peerReview.id,
     })
       .catch((err) => {
-        return frontendUpdatePeerReviewItem(peerReviewItem.id, { answer });
+        return frontendUpdatePeerReviewItem(peerReviewItem.id, {
+          answer,
+        }).catch((err) => {
+          console.error(err);
+        });
       })
       .finally(() => setLoading(false));
   }

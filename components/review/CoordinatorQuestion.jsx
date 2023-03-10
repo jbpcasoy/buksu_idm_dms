@@ -16,7 +16,7 @@ export default function CoordinatorQuestion({
   disablePrevious = false,
   disableSubmit = true,
 }) {
-  const [answer, setAnswer] = useState("NAA");
+  const [answer, setAnswer] = useState();
   const [coordinatorReviewItem, setCoordinatorReviewItem] = useState();
   const [loading, setLoading] = useState(true);
 
@@ -34,6 +34,8 @@ export default function CoordinatorQuestion({
       .catch((err) => {
         return frontendUpdateCoordinatorReviewItem(coordinatorReviewItem.id, {
           answer,
+        }).catch((err) => {
+          console.error(err);
         });
       })
       .finally(() => setLoading(false));
