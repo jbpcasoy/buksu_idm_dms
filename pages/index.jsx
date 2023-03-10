@@ -58,6 +58,9 @@ export default function Home() {
       case Tabs.ToReview:
         getter = getToReview;
         break;
+      case Tabs.DepartmentIMs:
+        getter = getDepartmentIms;
+        break;
       default:
         throw new Error("Tab unsupported");
     }
@@ -85,6 +88,13 @@ export default function Home() {
   async function getToReview(filter) {
     return frontendGetIMs({
       notOwnerId: user.ActiveFaculty.Faculty.id,
+      departmentId: user.ActiveFaculty.Faculty.departmentId,
+      ...filter,
+    });
+  }
+
+  async function getDepartmentIms(filter) {
+    return frontendGetIMs({
       departmentId: user.ActiveFaculty.Faculty.departmentId,
       ...filter,
     });
@@ -267,8 +277,8 @@ export default function Home() {
                   user?.ActiveFaculty?.ActiveChairperson) && (
                   <button
                     type='button'
-                    // onClick={() => setTab(Tabs.DepartmentIMs)}
-                    className={`line-through inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue border-CITLOrange rounded-none ${
+                    onClick={() => setTab(Tabs.DepartmentIMs)}
+                    className={`inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue border-CITLOrange rounded-none ${
                       tab === Tabs.DepartmentIMs
                         ? "border-b-2 border-CITLOrange"
                         : ""
@@ -367,12 +377,12 @@ export default function Home() {
                 >
                   Created At
                 </th>
-                <th
+                {/* <th
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
                   Updated At
-                </th>
+                </th> */}
                 <th
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'

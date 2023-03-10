@@ -72,9 +72,9 @@ export default function IM({
         {moment(createdAt).format("M/D/YYYY, h:mm A")}
       </td>
 
-      <td className='px-6 py-4 '>
+      {/* <td className='px-6 py-4 '>
         {moment(updatedAt).format("M/D/YYYY, h:mm A")}
-      </td>
+      </td> */}
 
       <td className='bg-white  font-medium text-slate-400  items-center justify-center px-6 py-4 '>
         <button
