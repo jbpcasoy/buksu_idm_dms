@@ -2,13 +2,14 @@ import Layout from "@/components/layout/Layout";
 import frontendReadCollege from "@/services/frontend/admin/college/frontendReadCollege";
 import frontendReadDepartments from "@/services/frontend/admin/department/frontendReadDepartments";
 import Department from "@/views/Department";
+import _ from "lodash";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 export default function Departments() {
   const [departments, setDepartments] = useState([]);
-  const [state, setState] = useState({ limit: 5, page: 1 });
+  const [state, setState] = useState({ limit: 5, page: 1, name: "" });
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
@@ -24,6 +25,7 @@ export default function Departments() {
       limit: state.limit,
       page: state.page,
       collegeId: college.id,
+      name: state.name,
     }).then((res) => {
       setLoading(false);
       if (!subscribe) return;
@@ -51,6 +53,14 @@ export default function Departments() {
       subscribe = false;
     };
   }, [router.query.id]);
+
+  function handleNameChange(e) {
+    setState((prev) => ({
+      ...prev,
+      name: e.target.value,
+    }));
+  }
+  const debouncedHandleNameChange = _.debounce(handleNameChange, 800);
 
   return (
     <Layout>
@@ -109,33 +119,12 @@ export default function Departments() {
             <p>{college?.name}</p>
 
             <div className='flex'>
-              <select
-                id='default'
-                className='bg-CITLGray-light border border-CITLGray-lighter text-CITLGray-main text-sm rounded-lg block p-2.5 mr-1'
-              >
-                <option selected>Filter</option>
-                <option>Serial No.</option>
-                <option>Title</option>
-                <option>Status</option>
-                <option>Owner</option>
-                <option>Created At</option>
-                <option>Updated At</option>
-              </select>
-
               <input
-                className='w-36 py-2 pr-10 pl-4 bg-CITLGray-light border-CITLGray-lighter border text-CITLGray-main rounded-lg mr-5'
+                className='w-72 py-2 pr-10 pl-4 bg-CITLGray-light border-CITLGray-lighter border text-CITLGray-main rounded-lg mr-5'
                 type='text'
-                placeholder='Search'
+                placeholder='Name'
+                onChange={debouncedHandleNameChange}
               ></input>
-              <button
-                title='Add IM'
-                className='flex items-center bg-CITLDarkBlue rounded-lg px-5 py-2.5 text-sm font-medium text-center shadow-md text-white '
-                onClick={() => {
-                  router.push("/im/new");
-                }}
-              >
-                <i className='fi fi-br-plus mt-1  '></i>
-              </button>
             </div>
           </div>
           <table className='min-w-full divide-y divide-CITLGray-light'>
@@ -159,6 +148,11 @@ export default function Departments() {
             <tbody className='bg-white divide-gray-200 overflow-y-auto'>
               {departments.map((department, index) => (
                 <Department
+                  onView={() =>
+                    router.push(
+                      `/college/${college.id}/department/${department.id}`
+                    )
+                  }
                   bottomBorder={true}
                   name={department.name}
                   id={index}

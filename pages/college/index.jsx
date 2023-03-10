@@ -1,13 +1,14 @@
 import Layout from "@/components/layout/Layout";
 import frontendReadColleges from "@/services/frontend/admin/college/frontendReadColleges";
 import College from "@/views/College";
+import _ from "lodash";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 export default function CollegePage() {
   const [colleges, setColleges] = useState([]);
-  const [state, setState] = useState({ limit: 5, page: 1 });
+  const [state, setState] = useState({ limit: 5, page: 1, name: "" });
   const [loading, setLoading] = useState(true);
   const [total, setTotal] = useState(0);
   const router = useRouter();
@@ -19,6 +20,7 @@ export default function CollegePage() {
     frontendReadColleges({
       page: state.page,
       limit: state.limit,
+      name: state.name,
     }).then((res) => {
       setLoading(false);
       if (!subscribe) return;
@@ -31,6 +33,14 @@ export default function CollegePage() {
       subscribe = false;
     };
   }, [state]);
+
+  function handleNameChange(e) {
+    setState((prev) => ({
+      ...prev,
+      name: e.target.value,
+    }));
+  }
+  const debouncedHandleNameChange = _.debounce(handleNameChange, 800);
 
   return (
     <Layout>
@@ -87,33 +97,12 @@ export default function CollegePage() {
             </div>
 
             <div className='flex'>
-              <select
-                id='default'
-                className='bg-CITLGray-light border border-CITLGray-lighter text-CITLGray-main text-sm rounded-lg block p-2.5 mr-1'
-              >
-                <option selected>Filter</option>
-                <option>Serial No.</option>
-                <option>Title</option>
-                <option>Status</option>
-                <option>Owner</option>
-                <option>Created At</option>
-                <option>Updated At</option>
-              </select>
-
               <input
-                className='w-36 py-2 pr-10 pl-4 bg-CITLGray-light border-CITLGray-lighter border text-CITLGray-main rounded-lg mr-5'
+                className='w-72 py-2 pr-10 pl-4 bg-CITLGray-light border-CITLGray-lighter border text-CITLGray-main rounded-lg mr-5'
                 type='text'
-                placeholder='Search'
+                placeholder='Name'
+                onChange={debouncedHandleNameChange}
               ></input>
-              <button
-                title='Add IM'
-                className='flex items-center bg-CITLDarkBlue rounded-lg px-5 py-2.5 text-sm font-medium text-center shadow-md text-white '
-                onClick={() => {
-                  router.push("/im/new");
-                }}
-              >
-                <i className='fi fi-br-plus mt-1  '></i>
-              </button>
             </div>
           </div>
           <table className='min-w-full divide-y divide-CITLGray-light'>
@@ -138,7 +127,7 @@ export default function CollegePage() {
               {colleges.map((college, index) => (
                 <College
                   onView={() =>
-                    router.push(`/college/${college.id}/departments`)
+                    router.push(`/college/${college.id}/department`)
                   }
                   bottomBorder={true}
                   name={college.name}
