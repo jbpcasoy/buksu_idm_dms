@@ -284,47 +284,66 @@ export default function TeacherUserEvaluation() {
               </div>
 
               <div>
-                <div className='border border-CITLOrange rounded-lg px-3 py-8'>
+                <div className='border border-CITLGray-main rounded-lg px-3 py-8'>
                   <h3 className=' font-semibold text-lg text-CITLGray-main'>
                     B. Directions:
                   </h3>
                   <p className='text-sm font-normal text-CITLGray-main'>
                     Please provide comments and suggestions for each area below:
                   </p>
-                </div>
-              </div>
-              <div className='py-5'>
-                <div className='border border-CITLGray-main rounded-lg px-3 py-5'>
+
                   <label
                     for='message'
-                    class='block mb-2 mt-3 text-sm font-medium text-CITLGray-main'
+                    class='block mb-2 mt-3 text-md font-semibold text-CITLGray-main'
                   >
                     1. Strengths:
                   </label>
-                  <textarea
-                    id='message'
-                    rows='4'
-                    class='block p-2.5 w-full text-sm text-CITLGray-main bg-gray-50 rounded-lg border border-gray-300 focus:ring-CITLDarkBlue focus:border-CITLDarkBlue '
-                    placeholder='Write your thoughts here...'
-                  ></textarea>
+                  <div>
+                    <div className='indent-8 grid-cols-4 '>
+                      <label className=' text-CITLGray-main'>a. </label>
+                      <input
+                        type='text'
+                        placeholder='-'
+                        class='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
+                      />
+                    </div>
+                    <div className='indent-8 grid-cols-4'>
+                      <label className=' text-CITLGray-main'>b. </label>
+                      <input
+                        type='text'
+                        placeholder='-'
+                        class='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
+                      />
+                    </div>
+                  </div>
+
                   <label
                     for='message'
-                    class='block mb-2 mt-3 text-sm font-medium text-CITLGray-main'
+                    class='block mb-2 mt-3  text-md font-semibold text-CITLGray-main'
                   >
-                    <label
-                      for='message'
-                      class='block mb-2 mt-3 text-sm font-medium text-CITLGray-main'
-                    >
-                      2. Weaknesses:
-                    </label>
-                    <textarea
-                      id='message'
-                      rows='4'
-                      class='block p-2.5 w-full text-sm text-CITLGray-main bg-gray-50 rounded-lg border border-gray-300 focus:ring-CITLDarkBlue focus:border-CITLDarkBlue '
-                      placeholder='Write your thoughts here...'
-                    ></textarea>
+                    2. Weaknesses:
                   </label>
+                  <div>
+                    <div className='indent-8 grid-cols-4 '>
+                      <label className=' text-CITLGray-main'>a. </label>
+                      <input
+                        type='text'
+                        placeholder='-'
+                        class='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
+                      />
+                    </div>
+                    <div className='indent-8 grid-cols-4'>
+                      <label className=' text-CITLGray-main'>b. </label>
+                      <input
+                        type='text'
+                        placeholder='-'
+                        class='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
+                      />
+                    </div>
+                  </div>
                 </div>
+              </div>
+              <div className='py-5'>
                 <div className='grid grid-cols-2 gap-6 mt-6'>
                   <div>
                     <label

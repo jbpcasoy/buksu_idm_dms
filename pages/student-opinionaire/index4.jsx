@@ -280,12 +280,29 @@ export default function StudentOpinionnaire() {
                     >
                       1. What I like in the module is/are:
                     </label>
-                    <textarea
-                      id='message'
-                      rows='4'
-                      class='block p-2.5 w-full text-sm text-CITLGray-main bg-gray-50 rounded-lg border border-gray-300 focus:ring-CITLDarkBlue focus:border-CITLDarkBlue '
-                      placeholder='Write your thoughts here...'
-                    ></textarea>
+                    <div>
+                      <div className='indent-8 grid-cols-4 '>
+                        <label className=' text-CITLGray-main'>a. </label>
+                        <input
+                          type='text' placeholder="-"
+                          class='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
+                        />
+                      </div>
+                      <div className='indent-8 grid-cols-4'>
+                        <label className=' text-CITLGray-main'>b. </label>
+                        <input
+                          type='text'  placeholder="-"
+                          class='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
+                        />
+                      </div>
+                      <div className='indent-8 grid-cols-4'>
+                        <label className=' text-CITLGray-main'>c. </label>
+                        <input
+                          type='text'  placeholder="-"
+                          class='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
+                        />
+                      </div>
+                    </div>
                     <label
                       for='message'
                       class='block mb-2 mt-3 text-sm font-medium text-CITLGray-main'
@@ -297,12 +314,29 @@ export default function StudentOpinionnaire() {
                         2. What I think can still be improved in the module
                         is/are:
                       </label>
-                      <textarea
-                        id='message'
-                        rows='4'
-                        class='block p-2.5 w-full text-sm text-CITLGray-main bg-gray-50 rounded-lg border border-gray-300 focus:ring-CITLDarkBlue focus:border-CITLDarkBlue '
-                        placeholder='Write your thoughts here...'
-                      ></textarea>
+                      <div>
+                      <div className='indent-8 grid-cols-4 '>
+                        <label className=' text-CITLGray-main'>a. </label>
+                        <input
+                          type='text' placeholder="-"
+                          class='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
+                        />
+                      </div>
+                      <div className='indent-8 grid-cols-4'>
+                        <label className=' text-CITLGray-main'>b. </label>
+                        <input
+                          type='text'  placeholder="-"
+                          class='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
+                        />
+                      </div>
+                      <div className='indent-8 grid-cols-4'>
+                        <label className=' text-CITLGray-main'>c. </label>
+                        <input
+                          type='text'  placeholder="-"
+                          class='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
+                        />
+                      </div>
+                    </div>
                     </label>
                   </div>
                 </div>
