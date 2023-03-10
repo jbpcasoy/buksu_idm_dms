@@ -19,6 +19,7 @@ export default async function readIMs({
       include: {
         SubmittedPeerReview: true,
         SubmittedChairpersonReview: true,
+        SubmittedCoordinatorReview: true,
         owner: {
           select: {
             department: {
