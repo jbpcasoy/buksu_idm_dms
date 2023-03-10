@@ -18,7 +18,14 @@ const PeerReviewPage = () => {
   const [peerReview, setPeerReview] = useState();
   const [step, setStep] = useState(0);
   const [iMInfo, setIMInfo] = useState(
-    <IMInfo key='info' authors='' title='' type='MODULE' onNext={handleNext} />
+    <IMInfo
+      key='info'
+      authors=''
+      title=''
+      type='MODULE'
+      onNext={handleNext}
+      loading={!peerReview}
+    />
   );
   const steps = [
     iMInfo,
@@ -101,13 +108,14 @@ const PeerReviewPage = () => {
 
     setIMInfo(
       <IMInfo
+        loading={!peerReview}
         authors={iM.authors}
         title={iM.title}
         type={iM.type}
         onNext={handleNext}
       />
     );
-  }, [iM]);
+  }, [iM, peerReview]);
 
   useEffect(() => {
     console.log({ user });
@@ -142,6 +150,6 @@ const PeerReviewPage = () => {
     console.log({ peerReview });
   }, [peerReview]);
 
-  return <ReviewPage step={step} steps={steps} />;
+  return <ReviewPage reviewingAs='Peer' step={step} steps={steps} />;
 };
 export default PeerReviewPage;

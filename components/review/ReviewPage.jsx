@@ -1,6 +1,6 @@
 import Layout from "@/components/layout/Layout";
 
-export default function ReviewPage({ step, steps }) {
+export default function ReviewPage({ step, steps, reviewingAs }) {
   return (
     <Layout>
       <div className='sm:pt-12'>
@@ -33,7 +33,10 @@ export default function ReviewPage({ step, steps }) {
 
             <div className='px-2 pt-10'>
               <h2 className='text-CITLDarkBlue font-bold text-2xl '>
-                Instructional Material Review Form
+                Instructional Material Review Form{" "}
+                <span className='text-white bg-CITLDarkBlue px-3 rounded-xl'>
+                  {reviewingAs}
+                </span>
               </h2>
               <p className='mb-8 text-sm'>Implementation Phase</p>
 
