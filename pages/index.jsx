@@ -380,6 +380,12 @@ export default function Home() {
                 >
                   Status
                 </th>
+                <th
+                  scope='col'
+                  className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
+                >
+                  Reviewed As
+                </th>
 
                 <th
                   scope='col'
@@ -406,6 +412,7 @@ export default function Home() {
                 return (
                   <IM
                     // bottomBorder={index < state.ims.length - 1}
+                    im={im}
                     peerReviewed={Boolean(im.SubmittedPeerReview)}
                     chairpersonReviewed={Boolean(im.SubmittedChairpersonReview)}
                     coordinatorReviewed={Boolean(im.SubmittedCoordinatorReview)}

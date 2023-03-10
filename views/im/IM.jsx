@@ -1,4 +1,6 @@
+import useUser from "@/hooks/useUser";
 import moment from "moment/moment";
+import { useEffect, useState } from "react";
 
 export default function IM({
   id,
@@ -15,8 +17,34 @@ export default function IM({
   chairpersonReviewed = false,
   coordinatorReviewed = false,
   bottomBorder = true,
+  im,
   type,
 }) {
+  const { user, userLoading } = useUser();
+  const [reviewedAs, setReviewedAs] = useState("-");
+  useEffect(() => {
+    if (!user || userLoading) return;
+    const reviewedAsTemp = [];
+    if (user.id === im.SubmittedPeerReview?.PeerReview?.Faculty?.userId) {
+      reviewedAsTemp.push("Peer");
+    }
+    if (
+      user.id ===
+      im.SubmittedCoordinatorReview?.CoordinatorReview?.Coordinator?.Faculty
+        ?.userId
+    ) {
+      reviewedAsTemp.push("Coordinator");
+    }
+    if (
+      user.id ===
+      im.SubmittedChairpersonReview?.ChairpersonReview?.Chairperson?.Faculty
+        ?.userId
+    ) {
+      reviewedAsTemp.push("Chairperson");
+    }
+    setReviewedAs(reviewedAsTemp.join(", "));
+  }, [im, user]);
+
   return (
     <tr
       className={` bg-white ${
@@ -67,6 +95,8 @@ export default function IM({
           )}
         </div>
       </td>
+
+      <td className='px-6 py-4 '>{reviewedAs}</td>
 
       <td className='px-6 py-4 '>
         {moment(createdAt).format("M/D/YYYY, h:mm A")}

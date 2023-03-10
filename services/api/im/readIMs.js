@@ -18,9 +18,47 @@ export default async function readIMs({
       take: limit,
       skip: (page - 1) * limit,
       include: {
-        SubmittedPeerReview: true,
-        SubmittedChairpersonReview: true,
-        SubmittedCoordinatorReview: true,
+        SubmittedPeerReview: {
+          select: {
+            PeerReview: {
+              select: {
+                Faculty: {
+                  select: { userId: true },
+                },
+              },
+            },
+          },
+        },
+        SubmittedChairpersonReview: {
+          select: {
+            ChairpersonReview: {
+              select: {
+                Chairperson: {
+                  select: {
+                    Faculty: {
+                      select: { userId: true },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+        SubmittedCoordinatorReview: {
+          select: {
+            CoordinatorReview: {
+              select: {
+                Coordinator: {
+                  select: {
+                    Faculty: {
+                      select: { userId: true },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
         owner: {
           select: {
             department: {
