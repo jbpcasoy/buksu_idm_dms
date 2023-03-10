@@ -5,6 +5,7 @@ export default async function frontendReadDepartments({
   page,
   name,
   collegeName,
+  collegeId,
 }) {
   try {
     const departments = await axios.get("/api/department", {
@@ -13,6 +14,7 @@ export default async function frontendReadDepartments({
         page,
         name,
         collegeName,
+        collegeId,
       },
     });
 

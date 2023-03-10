@@ -1,6 +1,11 @@
 import { PrismaClient } from "@prisma/client";
 
-export default async function readActiveFaculties({ page, limit, name }) {
+export default async function readActiveFaculties({
+  page,
+  limit,
+  name,
+  departmentId,
+}) {
   const prisma = new PrismaClient();
 
   try {
@@ -8,6 +13,9 @@ export default async function readActiveFaculties({ page, limit, name }) {
       take: limit,
       skip: (page - 1) * limit,
       where: {
+        departmentId: {
+          contains: departmentId,
+        },
         Faculty: {
           user: {
             name: {
@@ -39,6 +47,9 @@ export default async function readActiveFaculties({ page, limit, name }) {
 
     const total = await prisma.activeFaculty.count({
       where: {
+        departmentId: {
+          contains: departmentId,
+        },
         Faculty: {
           user: {
             name: {
