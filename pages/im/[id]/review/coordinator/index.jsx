@@ -18,7 +18,14 @@ const CoordinatorReviewPage = () => {
   const [coordinatorReview, setCoordinatorReview] = useState();
   const [step, setStep] = useState(0);
   const [iMInfo, setIMInfo] = useState(
-    <IMInfo key='info' authors='' title='' type='MODULE' onNext={handleNext} />
+    <IMInfo
+      key='info'
+      authors=''
+      title=''
+      type='MODULE'
+      onNext={handleNext}
+      loading={!coordinatorReview}
+    />
   );
   const steps = [
     iMInfo,
@@ -100,13 +107,14 @@ const CoordinatorReviewPage = () => {
 
     setIMInfo(
       <IMInfo
+        loading={!coordinatorReview}
         authors={iM.authors}
         title={iM.title}
         type={iM.type}
         onNext={handleNext}
       />
     );
-  }, [iM]);
+  }, [iM, coordinatorReview]);
 
   useEffect(() => {
     console.log({ user });
@@ -141,6 +149,6 @@ const CoordinatorReviewPage = () => {
     console.log({ coordinatorReview });
   }, [coordinatorReview]);
 
-  return <ReviewPage step={step} steps={steps} />;
+  return <ReviewPage reviewingAs='Coordinator' step={step} steps={steps} />;
 };
 export default CoordinatorReviewPage;

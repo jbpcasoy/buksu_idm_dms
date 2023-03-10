@@ -162,7 +162,7 @@ export default function Question({
             <button
               onClick={onPrevious}
               disabled={loading}
-              className='text-base  flex justify-center px-4 py-2 rounded font-bold cursor-pointer shadow-xl enabled:hover:border-CITLOrange enabled:hover:text-CITLOrange bg-gray-100 disabled:bg-CITLGray-lighter  text-CITLGray-main  border  border-CITLGray-main'
+              className='text-base  flex justify-center px-4 py-2 rounded font-bold cursor-pointer shadow-xl enabled:hover:border-CITLOrange  bg-gray-100 disabled:bg-CITLGray-lighter  text-CITLGray-main  border  border-CITLGray-main'
             >
               Previous
             </button>
