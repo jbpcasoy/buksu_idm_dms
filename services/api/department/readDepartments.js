@@ -5,6 +5,7 @@ export default async function readDepartments({
   page,
   name,
   collegeName,
+  collegeId,
 }) {
   const prisma = new PrismaClient();
 
@@ -25,6 +26,9 @@ export default async function readDepartments({
           // mode: "insensitive",
         },
         college: {
+          id: {
+            contains: collegeId,
+          },
           name: {
             contains: collegeName,
             // mode: "insensitive",
@@ -40,6 +44,9 @@ export default async function readDepartments({
           // mode: "insensitive",
         },
         college: {
+          id: {
+            contains: collegeId,
+          },
           name: {
             contains: collegeName,
             // mode: "insensitive",

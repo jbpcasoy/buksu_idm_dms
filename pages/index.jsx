@@ -485,10 +485,6 @@ export default function Home() {
                 </svg>
                 Prev
               </button>
-              {console.log({
-                value: state.page * state.limit,
-                enableNext: state.page * state.limit < total,
-              })}
               <button
                 className='inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-gray-800 border-0  rounded-r hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white disabled:bg-CITLGray-main'
                 disabled={!(state.page * state.limit < total) || loading}
