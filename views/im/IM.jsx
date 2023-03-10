@@ -13,6 +13,7 @@ export default function IM({
   onView,
   peerReviewed = false,
   chairpersonReviewed = false,
+  coordinatorReviewed = false,
   bottomBorder = true,
   type,
 }) {
@@ -51,6 +52,17 @@ export default function IM({
           {!chairpersonReviewed && (
             <span className='bg-red-600 text-white px-3 rounded-lg'>
               Chairperson
+            </span>
+          )}
+          <br />
+          {coordinatorReviewed && (
+            <span className='bg-green-600 text-white px-3 rounded-lg'>
+              Coordinator
+            </span>
+          )}
+          {!coordinatorReviewed && (
+            <span className='bg-red-600 text-white px-3 rounded-lg'>
+              Coordinator
             </span>
           )}
         </div>

@@ -32,17 +32,31 @@ export default function ViewIM() {
               className='px-5 py-2.5 mr-2 shadow-xl text-sm font-medium text-CITLDarkBlue bg-CITLOrange border rounded-md  hover:text-CITLDarkBlue hover:border-CITLOrange focus:outline-none '
             >
               Versions
-            </Link>{" "}
+            </Link>
+            {user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId &&
+              user?.ActiveFaculty?.ActiveCoordinator && (
+                <Link
+                  href={`/im/${iM?.id}/review/coordinator`}
+                  className='text-CITLWhite bg-CITLDarkBlue font-medium text-sm px-5 py-2.5 mr-2 rounded-md shadow-xl  hover:text-CITLWhite hover:border-CITLDarkBlue focus:outline-none'
+                >
+                  Coordinator Review
+                </Link>
+              )}
+            {user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId &&
+              user?.ActiveFaculty?.ActiveChairperson && (
+                <Link
+                  href={`/im/${iM?.id}/review/chairperson`}
+                  className='text-CITLWhite bg-CITLDarkBlue font-medium text-sm px-5 py-2.5 mr-2 rounded-md shadow-xl  hover:text-CITLWhite hover:border-CITLDarkBlue focus:outline-none'
+                >
+                  Chairperson Review
+                </Link>
+              )}
             {user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId && (
               <Link
-                href={`/im/${iM?.id}/review/${
-                  user?.ActiveFaculty?.ActiveChairperson
-                    ? "chairperson"
-                    : "peer"
-                }`}
+                href={`/im/${iM?.id}/review/peer`}
                 className='text-CITLWhite bg-CITLDarkBlue font-medium text-sm px-5 py-2.5 mr-2 rounded-md shadow-xl  hover:text-CITLWhite hover:border-CITLDarkBlue focus:outline-none'
               >
-                Review
+                Peer Review
               </Link>
             )}
           </div>

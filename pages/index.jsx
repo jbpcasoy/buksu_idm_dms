@@ -388,6 +388,7 @@ export default function Home() {
                     // bottomBorder={index < state.ims.length - 1}
                     peerReviewed={Boolean(im.SubmittedPeerReview)}
                     chairpersonReviewed={Boolean(im.SubmittedChairpersonReview)}
+                    coordinatorReviewed={Boolean(im.SubmittedCoordinatorReview)}
                     bottomBorder={true}
                     createdAt={im.createdAt}
                     originalFileName={im.originalFileName}
