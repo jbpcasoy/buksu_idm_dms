@@ -61,6 +61,9 @@ export default function Home() {
       case Tabs.DepartmentIMs:
         getter = getDepartmentIms;
         break;
+      case Tabs.Reviewed:
+        getter = getReviewed;
+        break;
       default:
         throw new Error("Tab unsupported");
     }
@@ -96,6 +99,13 @@ export default function Home() {
   async function getDepartmentIms(filter) {
     return frontendGetIMs({
       departmentId: user.ActiveFaculty.Faculty.departmentId,
+      ...filter,
+    });
+  }
+
+  async function getReviewed(filter) {
+    return frontendGetIMs({
+      reviewerId: user.id,
       ...filter,
     });
   }
@@ -259,8 +269,8 @@ export default function Home() {
                     </button>
                     <button
                       type='button'
-                      // onClick={() => setTab(Tabs.Reviewed)}
-                      className={`line-through inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue border-CITLOrange rounded-none ${
+                      onClick={() => setTab(Tabs.Reviewed)}
+                      className={`inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue border-CITLOrange rounded-none ${
                         tab === Tabs.Reviewed
                           ? "border-b-2 border-CITLOrange"
                           : ""

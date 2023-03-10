@@ -10,6 +10,7 @@ export default async function getImsHandler(req, res) {
     ownerId,
     notOwnerId,
     departmentId,
+    reviewerId,
   } = req.query;
   const ims = await readIMs({
     limit: parseInt(limit),
@@ -20,6 +21,7 @@ export default async function getImsHandler(req, res) {
     ownerId,
     notOwnerId,
     departmentId,
+    reviewerId,
   });
 
   return res.status(200).json(ims);

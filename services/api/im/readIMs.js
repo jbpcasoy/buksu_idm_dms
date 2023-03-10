@@ -9,6 +9,7 @@ export default async function readIMs({
   ownerId,
   notOwnerId,
   departmentId,
+  reviewerId,
 }) {
   const prisma = new PrismaClient();
 
@@ -43,6 +44,41 @@ export default async function readIMs({
             },
           },
           {
+            OR: reviewerId
+              ? [
+                  {
+                    SubmittedPeerReview: {
+                      PeerReview: {
+                        Faculty: {
+                          userId: { contains: reviewerId },
+                        },
+                      },
+                    },
+                  },
+                  {
+                    SubmittedChairpersonReview: {
+                      ChairpersonReview: {
+                        Chairperson: {
+                          Faculty: {
+                            userId: { contains: reviewerId },
+                          },
+                        },
+                      },
+                    },
+                  },
+                  {
+                    SubmittedCoordinatorReview: {
+                      CoordinatorReview: {
+                        Coordinator: {
+                          Faculty: {
+                            userId: { contains: reviewerId },
+                          },
+                        },
+                      },
+                    },
+                  },
+                ]
+              : undefined,
             owner: {
               departmentId: departmentId,
             },
@@ -72,6 +108,41 @@ export default async function readIMs({
             },
           },
           {
+            OR: reviewerId
+              ? [
+                  {
+                    SubmittedPeerReview: {
+                      PeerReview: {
+                        Faculty: {
+                          userId: { contains: reviewerId },
+                        },
+                      },
+                    },
+                  },
+                  {
+                    SubmittedChairpersonReview: {
+                      ChairpersonReview: {
+                        Chairperson: {
+                          Faculty: {
+                            userId: { contains: reviewerId },
+                          },
+                        },
+                      },
+                    },
+                  },
+                  {
+                    SubmittedCoordinatorReview: {
+                      CoordinatorReview: {
+                        Coordinator: {
+                          Faculty: {
+                            userId: { contains: reviewerId },
+                          },
+                        },
+                      },
+                    },
+                  },
+                ]
+              : undefined,
             owner: {
               departmentId: departmentId,
             },
