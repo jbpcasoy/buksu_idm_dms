@@ -9,6 +9,7 @@ export default async function frontendGetIMs({
   title,
   notOwnerId,
   departmentId,
+  reviewerId,
 }) {
   try {
     const response = await axios.get("/api/im", {
@@ -21,6 +22,7 @@ export default async function frontendGetIMs({
         title,
         notOwnerId,
         departmentId,
+        reviewerId,
       },
     });
     return response.data;

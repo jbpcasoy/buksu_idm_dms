@@ -16,8 +16,7 @@ export default function AdminCoordinator({ coordinator }) {
   async function onActivate() {
     try {
       return frontendCreateActiveCoordinator({
-        facultyId: coordinatorData.Faculty.id,
-        departmentId: coordinatorData.Faculty.department.id,
+        coordinatorId: coordinatorData.id,
       }).then((res) => {
         setCoordinatorData((prev) => ({ ...prev, ActiveCoordinator: res }));
       });

@@ -16,7 +16,7 @@ export default function ChairpersonQuestion({
   disablePrevious = false,
   disableSubmit = true,
 }) {
-  const [answer, setAnswer] = useState("NAA");
+  const [answer, setAnswer] = useState();
   const [chairpersonReviewItem, setChairpersonReviewItem] = useState();
   const [loading, setLoading] = useState(true);
 
@@ -34,6 +34,8 @@ export default function ChairpersonQuestion({
       .catch((err) => {
         return frontendUpdateChairpersonReviewItem(chairpersonReviewItem.id, {
           answer,
+        }).catch((err) => {
+          console.error(err);
         });
       })
       .finally(() => setLoading(false));

@@ -5,6 +5,34 @@ export default async function readDepartment(id) {
 
   try {
     const department = await prisma.department.findUniqueOrThrow({
+      include: {
+        ActiveChairperson: {
+          select: {
+            Chairperson: {
+              select: {
+                Faculty: {
+                  select: {
+                    user: true,
+                  },
+                },
+              },
+            },
+          },
+        },
+        ActiveCoordinator: {
+          select: {
+            Coordinator: {
+              select: {
+                Faculty: {
+                  select: {
+                    user: true,
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
       where: {
         id,
       },

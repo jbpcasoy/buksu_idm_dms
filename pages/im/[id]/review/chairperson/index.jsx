@@ -18,7 +18,14 @@ const ChairpersonReviewPage = () => {
   const [chairpersonReview, setChairpersonReview] = useState();
   const [step, setStep] = useState(0);
   const [iMInfo, setIMInfo] = useState(
-    <IMInfo key='info' authors='' title='' type='MODULE' onNext={handleNext} />
+    <IMInfo
+      key='info'
+      authors=''
+      title=''
+      type='MODULE'
+      onNext={handleNext}
+      loading={!chairpersonReview}
+    />
   );
   const steps = [
     iMInfo,
@@ -100,13 +107,14 @@ const ChairpersonReviewPage = () => {
 
     setIMInfo(
       <IMInfo
+        loading={!chairpersonReview}
         authors={iM.authors}
         title={iM.title}
         type={iM.type}
         onNext={handleNext}
       />
     );
-  }, [iM]);
+  }, [iM, chairpersonReview]);
 
   useEffect(() => {
     console.log({ user });
@@ -141,6 +149,6 @@ const ChairpersonReviewPage = () => {
     console.log({ chairpersonReview });
   }, [chairpersonReview]);
 
-  return <ReviewPage step={step} steps={steps} />;
+  return <ReviewPage reviewingAs='Chairperson' step={step} steps={steps} />;
 };
 export default ChairpersonReviewPage;

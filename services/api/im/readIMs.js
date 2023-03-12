@@ -9,6 +9,7 @@ export default async function readIMs({
   ownerId,
   notOwnerId,
   departmentId,
+  reviewerId,
 }) {
   const prisma = new PrismaClient();
 
@@ -17,7 +18,47 @@ export default async function readIMs({
       take: limit,
       skip: (page - 1) * limit,
       include: {
-        SubmittedPeerReview: true,
+        SubmittedPeerReview: {
+          select: {
+            PeerReview: {
+              select: {
+                Faculty: {
+                  select: { userId: true },
+                },
+              },
+            },
+          },
+        },
+        SubmittedChairpersonReview: {
+          select: {
+            ChairpersonReview: {
+              select: {
+                Chairperson: {
+                  select: {
+                    Faculty: {
+                      select: { userId: true },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+        SubmittedCoordinatorReview: {
+          select: {
+            CoordinatorReview: {
+              select: {
+                Coordinator: {
+                  select: {
+                    Faculty: {
+                      select: { userId: true },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
         owner: {
           select: {
             department: {
@@ -41,6 +82,41 @@ export default async function readIMs({
             },
           },
           {
+            OR: reviewerId
+              ? [
+                  {
+                    SubmittedPeerReview: {
+                      PeerReview: {
+                        Faculty: {
+                          userId: { contains: reviewerId },
+                        },
+                      },
+                    },
+                  },
+                  {
+                    SubmittedChairpersonReview: {
+                      ChairpersonReview: {
+                        Chairperson: {
+                          Faculty: {
+                            userId: { contains: reviewerId },
+                          },
+                        },
+                      },
+                    },
+                  },
+                  {
+                    SubmittedCoordinatorReview: {
+                      CoordinatorReview: {
+                        Coordinator: {
+                          Faculty: {
+                            userId: { contains: reviewerId },
+                          },
+                        },
+                      },
+                    },
+                  },
+                ]
+              : undefined,
             owner: {
               departmentId: departmentId,
             },
@@ -70,6 +146,41 @@ export default async function readIMs({
             },
           },
           {
+            OR: reviewerId
+              ? [
+                  {
+                    SubmittedPeerReview: {
+                      PeerReview: {
+                        Faculty: {
+                          userId: { contains: reviewerId },
+                        },
+                      },
+                    },
+                  },
+                  {
+                    SubmittedChairpersonReview: {
+                      ChairpersonReview: {
+                        Chairperson: {
+                          Faculty: {
+                            userId: { contains: reviewerId },
+                          },
+                        },
+                      },
+                    },
+                  },
+                  {
+                    SubmittedCoordinatorReview: {
+                      CoordinatorReview: {
+                        Coordinator: {
+                          Faculty: {
+                            userId: { contains: reviewerId },
+                          },
+                        },
+                      },
+                    },
+                  },
+                ]
+              : undefined,
             owner: {
               departmentId: departmentId,
             },

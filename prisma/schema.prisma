@@ -95,6 +95,8 @@ model IM {
   SubmittedPeerReview        SubmittedPeerReview?
   ChairpersonReview          ChairpersonReview[]
   SubmittedChairpersonReview SubmittedChairpersonReview?
+  CoordinatorReview          CoordinatorReview[]
+  SubmittedCoordinatorReview SubmittedCoordinatorReview?
 
   @@index([ownerId])
 }
@@ -200,6 +202,7 @@ model Coordinator {
   facultyId           String                @unique
   ActiveCoordinator   ActiveCoordinator?
   CoordinatorApproval CoordinatorApproval[]
+  CoordinatorReview   CoordinatorReview[]
 }
 
 // model Senior {
@@ -416,4 +419,44 @@ model SubmittedChairpersonReview {
   iMId                String            @unique
   ChairpersonReview   ChairpersonReview @relation(fields: [chairpersonReviewId], references: [id])
   chairpersonReviewId String            @unique
+}
+
+model CoordinatorReview {
+  id          String      @id @default(cuid())
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  Coordinator Coordinator @relation(fields: [coordinatorId], references: [id])
+  IM          IM          @relation(fields: [iMId], references: [id])
+
+  coordinatorId              String
+  iMId                       String
+  CoordinatorReviewItem      CoordinatorReviewItem[]
+  SubmittedCoordinatorReview SubmittedCoordinatorReview?
+
+  @@unique([coordinatorId, iMId])
+  @@index([coordinatorId])
+  @@index([iMId])
+}
+
+model CoordinatorReviewItem {
+  id                  String            @id @default(cuid())
+  createdAt           DateTime          @default(now())
+  updatedAt           DateTime          @updatedAt
+  questionId          String // static uuid from frontend, for prototype, production should have question table with google forms like features
+  answer              String
+  CoordinatorReview   CoordinatorReview @relation(fields: [coordinatorReviewId], references: [id])
+  coordinatorReviewId String
+
+  @@unique([coordinatorReviewId, questionId])
+  @@index([coordinatorReviewId])
+}
+
+model SubmittedCoordinatorReview {
+  id                  String            @id @default(cuid())
+  createdAt           DateTime          @default(now())
+  updatedAt           DateTime          @updatedAt
+  IM                  IM                @relation(fields: [iMId], references: [id])
+  iMId                String            @unique
+  CoordinatorReview   CoordinatorReview @relation(fields: [coordinatorReviewId], references: [id])
+  coordinatorReviewId String            @unique
 }

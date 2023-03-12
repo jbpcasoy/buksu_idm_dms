@@ -17,7 +17,6 @@ export default function AdminChairperson({ chairperson }) {
     try {
       return frontendCreateActiveChairperson({
         chairpersonId: chairpersonData.id,
-        departmentId: chairpersonData.Faculty.departmentId,
       }).then((res) => {
         setChairpersonData((prev) => ({ ...prev, ActiveChairperson: res }));
       });

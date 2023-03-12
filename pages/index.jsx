@@ -58,6 +58,12 @@ export default function Home() {
       case Tabs.ToReview:
         getter = getToReview;
         break;
+      case Tabs.DepartmentIMs:
+        getter = getDepartmentIms;
+        break;
+      case Tabs.Reviewed:
+        getter = getReviewed;
+        break;
       default:
         throw new Error("Tab unsupported");
     }
@@ -86,6 +92,20 @@ export default function Home() {
     return frontendGetIMs({
       notOwnerId: user.ActiveFaculty.Faculty.id,
       departmentId: user.ActiveFaculty.Faculty.departmentId,
+      ...filter,
+    });
+  }
+
+  async function getDepartmentIms(filter) {
+    return frontendGetIMs({
+      departmentId: user.ActiveFaculty.Faculty.departmentId,
+      ...filter,
+    });
+  }
+
+  async function getReviewed(filter) {
+    return frontendGetIMs({
+      reviewerId: user.id,
       ...filter,
     });
   }
@@ -167,7 +187,7 @@ export default function Home() {
           />
         </div>
       </div>
-      {!user?.ActiveFaculty && (
+      {!user?.ActiveFaculty && !userLoading && (
         <div className=' flex-wrap grid text-center justify-items-center  border min-h-fit border-slate-300  bg-CITLWhite m-2 p-3 rounded-lg shadow-lg overflow-hidden'>
           <div className='px-6 py-4 md:w-10/12 sm:w-12/12'>
             <h3 className='text-3xl font-bold text-CITLDarkBlue'>
@@ -249,8 +269,8 @@ export default function Home() {
                     </button>
                     <button
                       type='button'
-                      // onClick={() => setTab(Tabs.Reviewed)}
-                      className={`line-through inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue border-CITLOrange rounded-none ${
+                      onClick={() => setTab(Tabs.Reviewed)}
+                      className={`inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue border-CITLOrange rounded-none ${
                         tab === Tabs.Reviewed
                           ? "border-b-2 border-CITLOrange"
                           : ""
@@ -267,8 +287,8 @@ export default function Home() {
                   user?.ActiveFaculty?.ActiveChairperson) && (
                   <button
                     type='button'
-                    // onClick={() => setTab(Tabs.DepartmentIMs)}
-                    className={`line-through inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue border-CITLOrange rounded-none ${
+                    onClick={() => setTab(Tabs.DepartmentIMs)}
+                    className={`inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue border-CITLOrange rounded-none ${
                       tab === Tabs.DepartmentIMs
                         ? "border-b-2 border-CITLOrange"
                         : ""
@@ -360,6 +380,12 @@ export default function Home() {
                 >
                   Status
                 </th>
+                <th
+                  scope='col'
+                  className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
+                >
+                  Reviewed As
+                </th>
 
                 <th
                   scope='col'
@@ -367,12 +393,12 @@ export default function Home() {
                 >
                   Created At
                 </th>
-                <th
+                {/* <th
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
                   Updated At
-                </th>
+                </th> */}
                 <th
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
@@ -386,7 +412,10 @@ export default function Home() {
                 return (
                   <IM
                     // bottomBorder={index < state.ims.length - 1}
+                    im={im}
                     peerReviewed={Boolean(im.SubmittedPeerReview)}
+                    chairpersonReviewed={Boolean(im.SubmittedChairpersonReview)}
+                    coordinatorReviewed={Boolean(im.SubmittedCoordinatorReview)}
                     bottomBorder={true}
                     createdAt={im.createdAt}
                     originalFileName={im.originalFileName}
@@ -456,10 +485,6 @@ export default function Home() {
                 </svg>
                 Prev
               </button>
-              {console.log({
-                value: state.page * state.limit,
-                enableNext: state.page * state.limit < total,
-              })}
               <button
                 className='inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-gray-800 border-0  rounded-r hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white disabled:bg-CITLGray-main'
                 disabled={!(state.page * state.limit < total) || loading}

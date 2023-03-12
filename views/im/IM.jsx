@@ -1,4 +1,6 @@
+import useUser from "@/hooks/useUser";
 import moment from "moment/moment";
+import { useEffect, useState } from "react";
 
 export default function IM({
   id,
@@ -12,9 +14,37 @@ export default function IM({
   updatedAt,
   onView,
   peerReviewed = false,
+  chairpersonReviewed = false,
+  coordinatorReviewed = false,
   bottomBorder = true,
+  im,
   type,
 }) {
+  const { user, userLoading } = useUser();
+  const [reviewedAs, setReviewedAs] = useState("-");
+  useEffect(() => {
+    if (!user || userLoading) return;
+    const reviewedAsTemp = [];
+    if (user.id === im.SubmittedPeerReview?.PeerReview?.Faculty?.userId) {
+      reviewedAsTemp.push("Peer");
+    }
+    if (
+      user.id ===
+      im.SubmittedCoordinatorReview?.CoordinatorReview?.Coordinator?.Faculty
+        ?.userId
+    ) {
+      reviewedAsTemp.push("Coordinator");
+    }
+    if (
+      user.id ===
+      im.SubmittedChairpersonReview?.ChairpersonReview?.Chairperson?.Faculty
+        ?.userId
+    ) {
+      reviewedAsTemp.push("Chairperson");
+    }
+    setReviewedAs(reviewedAsTemp.join(", "));
+  }, [im, user]);
+
   return (
     <tr
       className={` bg-white ${
@@ -41,16 +71,40 @@ export default function IM({
           {!peerReviewed && (
             <span className='bg-red-600 text-white px-3 rounded-lg'>Peer</span>
           )}
+          <br />
+          {chairpersonReviewed && (
+            <span className='bg-green-600 text-white px-3 rounded-lg'>
+              Chairperson
+            </span>
+          )}
+          {!chairpersonReviewed && (
+            <span className='bg-red-600 text-white px-3 rounded-lg'>
+              Chairperson
+            </span>
+          )}
+          <br />
+          {coordinatorReviewed && (
+            <span className='bg-green-600 text-white px-3 rounded-lg'>
+              Coordinator
+            </span>
+          )}
+          {!coordinatorReviewed && (
+            <span className='bg-red-600 text-white px-3 rounded-lg'>
+              Coordinator
+            </span>
+          )}
         </div>
       </td>
+
+      <td className='px-6 py-4 '>{reviewedAs}</td>
 
       <td className='px-6 py-4 '>
         {moment(createdAt).format("M/D/YYYY, h:mm A")}
       </td>
 
-      <td className='px-6 py-4 '>
+      {/* <td className='px-6 py-4 '>
         {moment(updatedAt).format("M/D/YYYY, h:mm A")}
-      </td>
+      </td> */}
 
       <td className='bg-white  font-medium text-slate-400  items-center justify-center px-6 py-4 '>
         <button
