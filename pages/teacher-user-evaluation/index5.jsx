@@ -199,7 +199,8 @@ export default function TeacherUserEvaluation() {
               <div className='py-5'>
                 <div className='border border-CITLGray-main rounded-lg px-3 py-5'>
                   <h3 className=' font-semibold text-lg text-CITLGray-main'>
-                    20. Caters to varied levels of the students' mental ability.
+                    20. Caters to varied levels of the students&apos; mental
+                    ability.
                   </h3>
 
                   <div
