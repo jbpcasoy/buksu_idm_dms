@@ -2435,5 +2435,19 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "e04eaf9f-cb2a-4d02-b161-73be4330d985",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "9d22f5a3-9315-4e10-8e8e-217b6d94eec1",
+    "name": "DELETE ChairpersonSuggestion",
+    "url": "{{host}}/api/chairperson_suggestion/clf6ix7xr0000s9z92tevwfa0",
+    "method": "DELETE",
+    "sortNum": 1540000,
+    "created": "2023-03-13T08:04:24.637Z",
+    "modified": "2023-03-13T08:04:41.734Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
