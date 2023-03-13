@@ -463,9 +463,24 @@ model SubmittedCoordinatorReview {
 }
 
 model PeerSuggestion {
-  id                    String              @id @default(cuid())
-  createdAt             DateTime            @default(now())
-  updatedAt             DateTime            @updatedAt
-  SubmittedPeerReview   SubmittedPeerReview @relation(fields: [submittedPeerReviewId], references: [id])
-  submittedPeerReviewId String              @unique
+  id                    String               @id @default(cuid())
+  createdAt             DateTime             @default(now())
+  updatedAt             DateTime             @updatedAt
+  SubmittedPeerReview   SubmittedPeerReview  @relation(fields: [submittedPeerReviewId], references: [id])
+  submittedPeerReviewId String               @unique
+  PeerSuggestionItem    PeerSuggestionItem[]
+}
+
+model PeerSuggestionItem {
+  id               String         @id @default(cuid())
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+  PeerSuggestion   PeerSuggestion @relation(fields: [peerSuggestionId], references: [id])
+  peerSuggestionId String
+  value            String         @db.Text
+  actionTaken      String?        @db.Text
+  pageNumber       Int
+  remarks          String?        @db.Text
+
+  @@index([peerSuggestionId])
 }

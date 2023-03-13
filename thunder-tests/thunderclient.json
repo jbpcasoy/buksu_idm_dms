@@ -2286,5 +2286,96 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "c3d62cab-ba81-4841-bacd-9acb8c94083e",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "6d8a5d29-bfb8-4433-a90d-3e27b6343515",
+    "name": "CREATE PeerSuggestionItem",
+    "url": "{{host}}/api/peer_suggestion_item",
+    "method": "POST",
+    "sortNum": 1470000,
+    "created": "2023-03-13T07:03:37.797Z",
+    "modified": "2023-03-13T07:05:43.148Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"value\": \"Bad title\",\n  \"pageNumber\": 1,\n  \"peerSuggestionId\":\"clf6hcy1n0000s92fyujhssze\",\n  \"remarks\":\"\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "c96c32ab-7044-458b-bf75-ae3e228397ca",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "6d8a5d29-bfb8-4433-a90d-3e27b6343515",
+    "name": "READ PeerSuggestionItems",
+    "url": "{{host}}/api/peer_suggestion_item?limit=10&page=1",
+    "method": "GET",
+    "sortNum": 1480000,
+    "created": "2023-03-13T07:14:45.720Z",
+    "modified": "2023-03-13T07:15:14.570Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "limit",
+        "value": "10",
+        "isPath": false
+      },
+      {
+        "name": "page",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "278ae452-2f1e-4348-9ad9-2457334e1927",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "6d8a5d29-bfb8-4433-a90d-3e27b6343515",
+    "name": "READ PeerSuggestionItem",
+    "url": "{{host}}/api/peer_suggestion_item/clf6hfd0v0002s92f9yatimyi",
+    "method": "GET",
+    "sortNum": 1490000,
+    "created": "2023-03-13T07:22:24.363Z",
+    "modified": "2023-03-13T07:22:46.853Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "1fd182f1-ce75-463f-bab4-20e0b0cf4fb0",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "6d8a5d29-bfb8-4433-a90d-3e27b6343515",
+    "name": "PUT PeerSuggestionItem",
+    "url": "{{host}}/api/peer_suggestion_item/clf6hfd0v0002s92f9yatimyi",
+    "method": "PUT",
+    "sortNum": 1500000,
+    "created": "2023-03-13T07:27:56.326Z",
+    "modified": "2023-03-13T07:28:27.076Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"value\": \"updated value\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "5a263d67-0d42-4bc3-9498-c5e8f4d2a5ba",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "6d8a5d29-bfb8-4433-a90d-3e27b6343515",
+    "name": "DELETE PeerSuggestionItem",
+    "url": "{{host}}/api/peer_suggestion_item/clf6hfd0v0002s92f9yatimyi",
+    "method": "DELETE",
+    "sortNum": 1495000,
+    "created": "2023-03-13T07:31:55.461Z",
+    "modified": "2023-03-13T07:32:11.108Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
