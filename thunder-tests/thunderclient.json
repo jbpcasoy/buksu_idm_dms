@@ -2272,5 +2272,19 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "df6eee20-7637-42f4-ad72-a96ba32f7bfd",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "df6d868b-52c7-418b-9748-750d72da79a0",
+    "name": "DELETE PeerSuggestion",
+    "url": "{{host}}/api/peer_suggestion/clf6ga00l0004s98ivpu7e6y0",
+    "method": "DELETE",
+    "sortNum": 1460000,
+    "created": "2023-03-13T06:50:28.170Z",
+    "modified": "2023-03-13T06:50:41.516Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
