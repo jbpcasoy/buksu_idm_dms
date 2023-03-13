@@ -2396,5 +2396,30 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "a2329050-9b2f-4b87-8709-b943df670abd",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "9d22f5a3-9315-4e10-8e8e-217b6d94eec1",
+    "name": "READ ChairpersonSuggestions",
+    "url": "{{host}}/api/chairperson_suggestion?limit=10&page=1",
+    "method": "GET",
+    "sortNum": 1520000,
+    "created": "2023-03-13T07:54:31.014Z",
+    "modified": "2023-03-13T07:54:56.058Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "limit",
+        "value": "10",
+        "isPath": false
+      },
+      {
+        "name": "page",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "tests": []
   }
 ]
