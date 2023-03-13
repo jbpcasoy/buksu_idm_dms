@@ -12,7 +12,11 @@ export default async function createChairpersonReviewItem({
       data: {
         answer,
         questionId,
-        chairpersonReviewId,
+        ChairpersonReview: {
+          connect: {
+            id: chairpersonReviewId,
+          },
+        },
       },
     });
     return chairpersonReviewItem;

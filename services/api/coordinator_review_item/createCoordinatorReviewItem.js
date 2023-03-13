@@ -10,7 +10,11 @@ export default async function createCoordinatorReviewItem({
   try {
     const coordinatorReviewItem = await prisma.coordinatorReviewItem.create({
       data: {
-        coordinatorReviewId,
+        CoordinatorReview: {
+          connect: {
+            id: coordinatorReviewId,
+          },
+        },
         answer,
         questionId,
       },
