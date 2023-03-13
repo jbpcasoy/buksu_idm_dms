@@ -1,11 +1,11 @@
 import readPeerReviewItems from "@/services/api/peer_review_item/readPeerReviewItems";
 
 export default async function getPeerReviewItemsHandler(req, res) {
-  const { limit = 10, page = 1, questionId, peerReviewId } = req.query;
+  const { limit, page, questionId, peerReviewId } = req.query;
 
   const peerReviewItems = await readPeerReviewItems({
-    limit: parseInt(limit),
-    page: parseInt(page),
+    limit: limit ? parseInt(limit) : undefined,
+    page: limit ? parseInt(page) : undefined,
     questionId,
     peerReviewId,
   });

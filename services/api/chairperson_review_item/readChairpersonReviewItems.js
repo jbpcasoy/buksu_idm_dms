@@ -11,7 +11,7 @@ export default async function readChairpersonReviewItems({
   try {
     const chairpersonReviewItems = await prisma.chairpersonReviewItem.findMany({
       take: limit,
-      skip: (page - 1) * limit,
+      skip: page ? (page - 1) * limit : undefined,
       where: {
         questionId,
         chairpersonReviewId,
