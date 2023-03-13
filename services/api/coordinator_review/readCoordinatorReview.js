@@ -7,6 +7,18 @@ export default async function readCoordinatorReview(id) {
       where: {
         id,
       },
+      include: {
+        IM: true,
+        Coordinator: {
+          select: {
+            Faculty: {
+              include: {
+                user: true,
+              },
+            },
+          },
+        },
+      },
     });
 
     return coordinatorReview;

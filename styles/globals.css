@@ -6,6 +6,12 @@
 @import "~@flaticon/flaticon-uicons/css/all/all";
 
 /* to fix tailwind overriding mui style */
-.MuiButton-contained {
+.MuiButton-contained:enabled {
     background-color: #152033 !important;
+}
+
+.MuiOutlinedInput-input:focus {
+    outline: 0 !important;
+    border: 0 !important;
+    box-shadow: none !important;
 }

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export default async function frontendReadPeerReview({ facultyId, iMId }) {
+export default async function frontendReadPeerReviews({ facultyId, iMId }) {
   try {
     const peerReview = await axios.get("/api/peer_review", {
       params: {

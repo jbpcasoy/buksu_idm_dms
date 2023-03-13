@@ -6,7 +6,7 @@ import { countQuestions, sections } from "@/constants/questions";
 import useUser from "@/hooks/useUser";
 import frontendReadIM from "@/services/frontend/im/frontendReadIM";
 import frontendCreatePeerReview from "@/services/frontend/peer_review/frontendCreatePeerReview";
-import frontendReadPeerReview from "@/services/frontend/peer_review/frontendReadPeerReview";
+import frontendReadPeerReviews from "@/services/frontend/peer_review/frontendReadPeerReview";
 import frontendCreateSubmittedPeerReview from "@/services/frontend/submitted_peer_review/frontendCreateSubmittedPeerReview";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -131,7 +131,7 @@ const PeerReviewPage = () => {
         setPeerReview(res);
       })
       .catch((err) => {
-        frontendReadPeerReview({
+        frontendReadPeerReviews({
           iMId: iM.id,
           facultyId: user.ActiveFaculty.Faculty.id,
         }).then((res) => {
