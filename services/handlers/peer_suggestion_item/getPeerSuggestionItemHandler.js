@@ -1,11 +1,8 @@
-import readPeerSuggestionItems from "@/services/api/peer_suggestion_item/readPeerSuggestionItems";
+import readPeerSuggestionItem from "@/services/api/peer_suggestion_item/readPeerSuggestionItem";
 
 export default async function getPeerSuggestionItemHandler(req, res) {
-  const { limit = 10, page = 1 } = req.query;
+  const { id } = req.query;
 
-  const peerSuggestionItems = await readPeerSuggestionItems({
-    limit: parseInt(limit),
-    page: parseInt(page),
-  });
-  return res.status(200).json(peerSuggestionItems);
+  const peerSuggestionItem = await readPeerSuggestionItem(id);
+  return res.status(200).json(peerSuggestionItem);
 }
