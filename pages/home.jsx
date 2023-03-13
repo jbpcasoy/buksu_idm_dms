@@ -23,7 +23,7 @@ export default function Home() {
         <div class='h-screen bg-gradient-to-t from-CITLDarkBlue'>
           <div class='h-screen flex justify-center'>
             <div class='relative justify-center h-full max-w-md md:h-auto'>
-              <div class='m-5 relative bg-white rounded-lg shadow-lg '>
+              <div class='m-5 relative bg-white opacity-90 rounded-lg shadow-lg '>
                 <div class='px-6 py-12 mt-64 justify-center lg:px-8'>
                   <div className='justify-center flex mb-8'>
                     <img src='/IMAGES/CITL.png' className='h-20 ' />
@@ -34,13 +34,13 @@ export default function Home() {
                   <form class='space-y-4' action='#'>
                     <button
                       type='submit'
-                      class='w-full text-CITLDarkBlue bg-CITLWhite border  font-medium rounded-lg text-sm px-5 py-2.5 text-center '
+                      class='w-full text-CITLDarkBlue  focus:ring-2 focus:ring-inset focus:ring-CITLDarkBlue bg-white/5 p-2 ring-1 ring-white/10 border  font-medium rounded-lg text-sm px-5 py-2.5 text-center '
                     >
                       Login as Faculty
                     </button>
                     <button
                       type='submit'
-                      class='w-full text-CITLWhite bg-CITLDarkBlue  font-medium rounded-lg text-sm px-5 py-2.5 text-center '
+                      class='w-full text-CITLWhite bg-CITLDarkBlue hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center '
                     >
                       Login as Admin
                     </button>
