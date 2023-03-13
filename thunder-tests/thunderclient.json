@@ -2344,5 +2344,24 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "1fd182f1-ce75-463f-bab4-20e0b0cf4fb0",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "6d8a5d29-bfb8-4433-a90d-3e27b6343515",
+    "name": "PUT PeerSuggestionItem",
+    "url": "{{host}}/api/peer_suggestion_item/clf6hfd0v0002s92f9yatimyi",
+    "method": "PUT",
+    "sortNum": 1500000,
+    "created": "2023-03-13T07:27:56.326Z",
+    "modified": "2023-03-13T07:28:27.076Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"value\": \"updated value\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
