@@ -2363,5 +2363,19 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "5a263d67-0d42-4bc3-9498-c5e8f4d2a5ba",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "6d8a5d29-bfb8-4433-a90d-3e27b6343515",
+    "name": "DELETE PeerSuggestionItem",
+    "url": "{{host}}/api/peer_suggestion_item/clf6hfd0v0002s92f9yatimyi",
+    "method": "DELETE",
+    "sortNum": 1495000,
+    "created": "2023-03-13T07:31:55.461Z",
+    "modified": "2023-03-13T07:32:11.108Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
