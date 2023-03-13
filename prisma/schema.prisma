@@ -373,13 +373,14 @@ model PeerReviewItem {
 }
 
 model SubmittedPeerReview {
-  id           String     @id @default(cuid())
-  createdAt    DateTime   @default(now())
-  updatedAt    DateTime   @updatedAt
-  IM           IM         @relation(fields: [iMId], references: [id])
-  iMId         String     @unique
-  PeerReview   PeerReview @relation(fields: [peerReviewId], references: [id])
-  peerReviewId String     @unique
+  id             String          @id @default(cuid())
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  IM             IM              @relation(fields: [iMId], references: [id])
+  iMId           String          @unique
+  PeerReview     PeerReview      @relation(fields: [peerReviewId], references: [id])
+  peerReviewId   String          @unique
+  PeerSuggestion PeerSuggestion?
 }
 
 model ChairpersonReview {
@@ -459,4 +460,12 @@ model SubmittedCoordinatorReview {
   iMId                String            @unique
   CoordinatorReview   CoordinatorReview @relation(fields: [coordinatorReviewId], references: [id])
   coordinatorReviewId String            @unique
+}
+
+model PeerSuggestion {
+  id                    String              @id @default(cuid())
+  createdAt             DateTime            @default(now())
+  updatedAt             DateTime            @updatedAt
+  SubmittedPeerReview   SubmittedPeerReview @relation(fields: [submittedPeerReviewId], references: [id])
+  submittedPeerReviewId String              @unique
 }
