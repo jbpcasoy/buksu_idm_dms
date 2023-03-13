@@ -1,55 +1,40 @@
-export default function Test() {
-  function addRow() {
-    var table = document.getElementById("input-table");
-    var row = table.insertRow(-1);
-    var cell1 = row.insertCell(0);
-    var cell2 = row.insertCell(1);
-    var cell3 = row.insertCell(2);
-    cell1.innerHTML = '<input type="text" name="column1[]">';
-    cell2.innerHTML = '<input type="text" name="column2[]">';
-    cell3.innerHTML = '<input type="text" name="column3[]">';
-  }
+import Layout from "@/components/layout/Layout";
+
+export default function test() {
   return (
-    <div>
-      {" "}
-      <head>
-        <title>Input Table with Add Row Button</title>
-        {/* <style>
-      table, th, td {
-        border: 1px solid black;
-        border-collapse: collapse;
-        padding: 5px;
-      }
-      th {
-        background-color: lightgray;
-      }
-    </style> */}
-      </head>
-      <body>
-        <table id='input-table'>
-          <thead>
-            <tr>
-              <th>Column 1</th>
-              <th>Column 2</th>
-              <th>Column 3</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <input type='text' name='column1[]' />
-              </td>
-              <td>
-                <input type='text' name='column2[]' />
-              </td>
-              <td>
-                <input type='text' name='column3[]' />
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <button onclick='addRow()'>Add Row</button>
-      </body>
-    </div>
+    <Layout>
+      <div class='grid gap-6 mb-6 md:grid-rows-2'>
+        <div className="inline-block">
+          <label
+            for='first_name'
+            class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
+          >
+            First name
+          </label>
+          <input
+            type='text'
+            id='first_name'
+            class='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+            placeholder='John'
+            required
+          />
+        </div>
+        <div>
+          <label
+            for='last_name'
+            class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
+          >
+            Last name
+          </label>
+          <input
+            type='text'
+            id='last_name'
+            class='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+            placeholder='Doe'
+            required
+          />
+        </div>
+      </div>
+    </Layout>
   );
 }
