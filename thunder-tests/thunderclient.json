@@ -2507,5 +2507,24 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "5d47c2e2-5d8f-4720-a7ed-af610a415057",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "ab920acd-b282-45eb-98a9-e854efbf9d2e",
+    "name": "UPDATE ChairpersonSuggestionItem",
+    "url": "{{host}}/api/chairperson_suggestion_item/clf7ilt3r000ys9273u7r6mu4",
+    "method": "PUT",
+    "sortNum": 1580000,
+    "created": "2023-03-14T00:50:22.561Z",
+    "modified": "2023-03-14T00:51:10.498Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"value\": \"Updated value\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
