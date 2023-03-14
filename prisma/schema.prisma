@@ -511,9 +511,24 @@ model ChairpersonSuggestionItem {
 }
 
 model CoordinatorSuggestion {
-  id                           String                     @id @default(cuid())
-  createdAt                    DateTime                   @default(now())
-  updatedAt                    DateTime                   @updatedAt
-  SubmittedCoordinatorReview   SubmittedCoordinatorReview @relation(fields: [submittedCoordinatorReviewId], references: [id])
-  submittedCoordinatorReviewId String                     @unique
+  id                           String                      @id @default(cuid())
+  createdAt                    DateTime                    @default(now())
+  updatedAt                    DateTime                    @updatedAt
+  SubmittedCoordinatorReview   SubmittedCoordinatorReview  @relation(fields: [submittedCoordinatorReviewId], references: [id])
+  submittedCoordinatorReviewId String                      @unique
+  CoordinatorSuggestionItem    CoordinatorSuggestionItem[]
+}
+
+model CoordinatorSuggestionItem {
+  id                      String                @id @default(cuid())
+  createdAt               DateTime              @default(now())
+  updatedAt               DateTime              @updatedAt
+  value                   String                @db.Text
+  actionTaken             String?               @db.Text
+  pageNumber              Int
+  remarks                 String?               @db.Text
+  CoordinatorSuggestion   CoordinatorSuggestion @relation(fields: [coordinatorSuggestionId], references: [id])
+  coordinatorSuggestionId String
+
+  @@index([coordinatorSuggestionId])
 }

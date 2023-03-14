@@ -2612,5 +2612,24 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "b9e7dc84-eed8-471d-8a90-a7f9a4c06937",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "bc4ee471-f0e8-4de9-ada6-ac238a2eec7c",
+    "name": "CREATE CoordinatorSuggestionItem",
+    "url": "{{host}}/api/coordinator_suggestion_item",
+    "method": "POST",
+    "sortNum": 1630000,
+    "created": "2023-03-14T02:13:15.356Z",
+    "modified": "2023-03-14T02:19:18.044Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"coordinatorSuggestionId\": \"clf7mezca0000s9i207fl6wvv\",\n  \"value\": \"Bad title\",\n  \"pageNumber\": 1,\n  \"remarks\":\"remarks\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
