@@ -66,7 +66,7 @@ export default function CreateIM() {
 
   return (
     <Layout>
-      <div className=' items-center border border-CITLGray-lighter  bg-CITLWhite m-2 mt-5 p-3 relative rounded-lg shadow-lg overflow-hidden'>
+      <div className=' items-center border border-CITLGray-lighter  bg-CITLDark m-2 mt-5 p-3 relative rounded-lg shadow-lg overflow-hidden'>
         <div className='px-6 py-4 md:w-full '>
           <h2 className='text-CITLDarkBlue font-bold text-xl '>Create IM</h2>
 
