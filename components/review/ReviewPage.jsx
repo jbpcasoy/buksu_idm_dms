@@ -34,7 +34,7 @@ export default function ReviewPage({ step, steps, reviewingAs }) {
             <div className='px-2 pt-10'>
               <h2 className='text-CITLDarkBlue font-bold text-2xl '>
                 Instructional Material Review Form{" "}
-                <span className='text-white bg-CITLDarkBlue px-3 rounded-xl'>
+                <span className='text-white bg-CITLOrange px-3 py-1 rounded-lg'>
                   {reviewingAs}
                 </span>
               </h2>

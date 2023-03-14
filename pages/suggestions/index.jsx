@@ -11,7 +11,7 @@ export default function Home() {
           </h2>
           {/* <p className='mb-8 text-sm'>for IPTTU Endorsement</p> */}
         </div>
-        <div className='border border-CITLGray-lighter mx-5 rounded-lg'>
+        <div className='border border-CITLGray-lighter mx-5 rounded-lg mb-5'>
           <div className='bg-CITLGray-light rounded-t-lg py-3 px-3 pr-3'>
             <div className='flex justify-between text-center '>
               <h2 className='text-center pt-2 font-semibold'>
@@ -67,7 +67,7 @@ export default function Home() {
           </table>
         </div>
 
-        <div className='border border-CITLGray-lighter mx-5 rounded-lg mt-5  mb-5 '>
+        {/* <div className='border border-CITLGray-lighter mx-5 rounded-lg mt-5  mb-5 '>
           <div className='bg-CITLGray-light rounded-t-lg py-3 px-3 pr-3 '>
             <div className='flex justify-between text-center '>
               <h2 className='text-center pt-2 font-semibold'>
@@ -121,7 +121,7 @@ export default function Home() {
               <Suggestions />
             </tbody>
           </table>
-        </div>
+        </div> */}
       </div>
     </Layout>
   );
