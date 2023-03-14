@@ -8,6 +8,18 @@ export default async function readChairpersonReview(id) {
       where: {
         id,
       },
+      include: {
+        IM: true,
+        Chairperson: {
+          select: {
+            Faculty: {
+              include: {
+                user: true,
+              },
+            },
+          },
+        },
+      },
     });
     return chairpersonReview;
   } catch (error) {

@@ -21,9 +21,11 @@ import {
 } from "@mui/material";
 import { Stack } from "@mui/system";
 import _ from "lodash";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 export default function AdminIM() {
+  const router = useRouter();
   const [ims, setIms] = useState([]);
   const [total, setTotal] = useState(0);
   const [state, setState] = useState({
@@ -132,7 +134,8 @@ export default function AdminIM() {
             <Select
               value={state.status}
               label='Status'
-              onChange={handleStatusChange}>
+              onChange={handleStatusChange}
+            >
               <MenuItem value='All'>All</MenuItem>
               {IMStatuses.map((status) => (
                 <MenuItem value={status} key={status}>
@@ -151,12 +154,18 @@ export default function AdminIM() {
                 <TableCell>Owner</TableCell>
                 <TableCell>Department</TableCell>
                 <TableCell>Status</TableCell>
+                <TableCell align='center'>Peer Review</TableCell>
+                <TableCell align='center'>Chairperson Review</TableCell>
+                <TableCell align='center'>Coordinator Review</TableCell>
                 <TableCell>Date Created</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {ims.map((im) => (
                 <AdminIMView
+                  peerReviewed={Boolean(im.SubmittedPeerReview)}
+                  coordinatorReviewed={Boolean(im.SubmittedCoordinatorReview)}
+                  chairpersonReviewed={Boolean(im.SubmittedChairpersonReview)}
                   serialNumber={im.serialNumber}
                   title={im.title}
                   owner={im.owner.user.name}
@@ -164,6 +173,21 @@ export default function AdminIM() {
                   status={im.status}
                   dateCreated={im.createdAt}
                   key={im.id}
+                  onViewPeerReview={() =>
+                    router.push(
+                      `/admin/peer_review/${im.SubmittedPeerReview.PeerReview.id}`
+                    )
+                  }
+                  onViewChairpersonReview={() =>
+                    router.push(
+                      `/admin/chairperson_review/${im.SubmittedChairpersonReview.ChairpersonReview.id}`
+                    )
+                  }
+                  onViewCoordinatorReview={() =>
+                    router.push(
+                      `/admin/coordinator_review/${im.SubmittedCoordinatorReview.CoordinatorReview.id}`
+                    )
+                  }
                 />
               ))}
             </TableBody>

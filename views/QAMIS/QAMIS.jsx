@@ -3,7 +3,7 @@ export default function QAMIS({}) {
     <tr
       className={` bg-white border-b border-CITLGray-light text-sm text-CITLGray-main text-left p-4 `}
     >
-      <td className=' px-1 py-4 '>
+      <td className=' px-5 py-4 '>
         <input
           name='name'
           type='text'

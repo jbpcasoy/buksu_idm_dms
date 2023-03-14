@@ -1931,7 +1931,7 @@
     "method": "POST",
     "sortNum": 1270000,
     "created": "2023-03-08T08:39:12.782Z",
-    "modified": "2023-03-08T08:39:48.464Z",
+    "modified": "2023-03-13T07:45:27.217Z",
     "headers": [],
     "params": [],
     "body": {
@@ -2211,6 +2211,241 @@
     "sortNum": 1420000,
     "created": "2023-03-09T08:42:02.968Z",
     "modified": "2023-03-09T08:42:16.606Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "a4d14dca-4736-4bcb-98b8-76f3ad7f4661",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "df6d868b-52c7-418b-9748-750d72da79a0",
+    "name": "CREATE PeerSuggestion",
+    "url": "{{host}}/api/peer_suggestion",
+    "method": "POST",
+    "sortNum": 1430000,
+    "created": "2023-03-13T06:30:21.997Z",
+    "modified": "2023-03-13T06:33:36.237Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"submittedPeerReviewId\": \"clf0i3t28004cs9hbm1z03ho2\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "169cf507-9136-46be-b055-e35c45b79a54",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "df6d868b-52c7-418b-9748-750d72da79a0",
+    "name": "GET PeerSuggestions",
+    "url": "{{host}}/api/peer_suggestion?limit=10&page=1",
+    "method": "GET",
+    "sortNum": 1440000,
+    "created": "2023-03-13T06:40:24.838Z",
+    "modified": "2023-03-13T06:40:40.971Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "limit",
+        "value": "10",
+        "isPath": false
+      },
+      {
+        "name": "page",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "77967ee5-6f2f-40a3-b7e0-358ee1aa715e",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "df6d868b-52c7-418b-9748-750d72da79a0",
+    "name": "GET PeerSuggestion",
+    "url": "{{host}}/api/peer_suggestion/clf6ga00l0004s98ivpu7e6y0",
+    "method": "GET",
+    "sortNum": 1450000,
+    "created": "2023-03-13T06:45:50.335Z",
+    "modified": "2023-03-13T06:46:12.596Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "df6eee20-7637-42f4-ad72-a96ba32f7bfd",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "df6d868b-52c7-418b-9748-750d72da79a0",
+    "name": "DELETE PeerSuggestion",
+    "url": "{{host}}/api/peer_suggestion/clf6ga00l0004s98ivpu7e6y0",
+    "method": "DELETE",
+    "sortNum": 1460000,
+    "created": "2023-03-13T06:50:28.170Z",
+    "modified": "2023-03-13T06:50:41.516Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "c3d62cab-ba81-4841-bacd-9acb8c94083e",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "6d8a5d29-bfb8-4433-a90d-3e27b6343515",
+    "name": "CREATE PeerSuggestionItem",
+    "url": "{{host}}/api/peer_suggestion_item",
+    "method": "POST",
+    "sortNum": 1470000,
+    "created": "2023-03-13T07:03:37.797Z",
+    "modified": "2023-03-13T07:05:43.148Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"value\": \"Bad title\",\n  \"pageNumber\": 1,\n  \"peerSuggestionId\":\"clf6hcy1n0000s92fyujhssze\",\n  \"remarks\":\"\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "c96c32ab-7044-458b-bf75-ae3e228397ca",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "6d8a5d29-bfb8-4433-a90d-3e27b6343515",
+    "name": "READ PeerSuggestionItems",
+    "url": "{{host}}/api/peer_suggestion_item?limit=10&page=1",
+    "method": "GET",
+    "sortNum": 1480000,
+    "created": "2023-03-13T07:14:45.720Z",
+    "modified": "2023-03-13T07:15:14.570Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "limit",
+        "value": "10",
+        "isPath": false
+      },
+      {
+        "name": "page",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "278ae452-2f1e-4348-9ad9-2457334e1927",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "6d8a5d29-bfb8-4433-a90d-3e27b6343515",
+    "name": "READ PeerSuggestionItem",
+    "url": "{{host}}/api/peer_suggestion_item/clf6hfd0v0002s92f9yatimyi",
+    "method": "GET",
+    "sortNum": 1490000,
+    "created": "2023-03-13T07:22:24.363Z",
+    "modified": "2023-03-13T07:22:46.853Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "1fd182f1-ce75-463f-bab4-20e0b0cf4fb0",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "6d8a5d29-bfb8-4433-a90d-3e27b6343515",
+    "name": "PUT PeerSuggestionItem",
+    "url": "{{host}}/api/peer_suggestion_item/clf6hfd0v0002s92f9yatimyi",
+    "method": "PUT",
+    "sortNum": 1500000,
+    "created": "2023-03-13T07:27:56.326Z",
+    "modified": "2023-03-13T07:28:27.076Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"value\": \"updated value\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "5a263d67-0d42-4bc3-9498-c5e8f4d2a5ba",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "6d8a5d29-bfb8-4433-a90d-3e27b6343515",
+    "name": "DELETE PeerSuggestionItem",
+    "url": "{{host}}/api/peer_suggestion_item/clf6hfd0v0002s92f9yatimyi",
+    "method": "DELETE",
+    "sortNum": 1495000,
+    "created": "2023-03-13T07:31:55.461Z",
+    "modified": "2023-03-13T07:32:11.108Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "fd7d17dc-8834-4ae1-aa3e-5a27b1e2660a",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "9d22f5a3-9315-4e10-8e8e-217b6d94eec1",
+    "name": "CREATE ChairpersonSuggestion",
+    "url": "{{host}}/api/chairperson_suggestion",
+    "method": "POST",
+    "sortNum": 1510000,
+    "created": "2023-03-13T07:46:18.074Z",
+    "modified": "2023-03-13T07:49:19.495Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"submittedChairpersonReviewId\": \"clf0k5469008bs9hbf1edxvdt\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "a2329050-9b2f-4b87-8709-b943df670abd",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "9d22f5a3-9315-4e10-8e8e-217b6d94eec1",
+    "name": "READ ChairpersonSuggestions",
+    "url": "{{host}}/api/chairperson_suggestion?limit=10&page=1",
+    "method": "GET",
+    "sortNum": 1520000,
+    "created": "2023-03-13T07:54:31.014Z",
+    "modified": "2023-03-13T07:54:56.058Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "limit",
+        "value": "10",
+        "isPath": false
+      },
+      {
+        "name": "page",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "d6c79c3b-a132-4003-991e-feb065926580",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "9d22f5a3-9315-4e10-8e8e-217b6d94eec1",
+    "name": "READ ChairpersonSuggestion",
+    "url": "{{host}}/api/chairperson_suggestion/clf6ix7xr0000s9z92tevwfa0",
+    "method": "GET",
+    "sortNum": 1530000,
+    "created": "2023-03-13T08:00:17.777Z",
+    "modified": "2023-03-13T08:00:36.789Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "e04eaf9f-cb2a-4d02-b161-73be4330d985",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "9d22f5a3-9315-4e10-8e8e-217b6d94eec1",
+    "name": "DELETE ChairpersonSuggestion",
+    "url": "{{host}}/api/chairperson_suggestion/clf6ix7xr0000s9z92tevwfa0",
+    "method": "DELETE",
+    "sortNum": 1540000,
+    "created": "2023-03-13T08:04:24.637Z",
+    "modified": "2023-03-13T08:04:41.734Z",
     "headers": [],
     "params": [],
     "tests": []

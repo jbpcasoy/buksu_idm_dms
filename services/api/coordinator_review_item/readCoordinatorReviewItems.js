@@ -11,7 +11,7 @@ export default async function readCoordinatorReviewItems({
   try {
     const coordinatorReviewItems = await prisma.coordinatorReviewItem.findMany({
       take: limit,
-      skip: (page - 1) * limit,
+      skip: page ? (page - 1) * limit : undefined,
       where: {
         questionId: {
           contains: questionId,

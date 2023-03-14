@@ -21,7 +21,7 @@ export default async function readIMs({
         SubmittedPeerReview: {
           select: {
             PeerReview: {
-              select: {
+              include: {
                 Faculty: {
                   select: { userId: true },
                 },
@@ -32,7 +32,7 @@ export default async function readIMs({
         SubmittedChairpersonReview: {
           select: {
             ChairpersonReview: {
-              select: {
+              include: {
                 Chairperson: {
                   select: {
                     Faculty: {
@@ -47,7 +47,7 @@ export default async function readIMs({
         SubmittedCoordinatorReview: {
           select: {
             CoordinatorReview: {
-              select: {
+              include: {
                 Coordinator: {
                   select: {
                     Faculty: {
