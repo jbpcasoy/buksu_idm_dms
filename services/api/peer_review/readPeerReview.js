@@ -8,6 +8,15 @@ export default async function readPeerReview(id) {
       where: {
         id,
       },
+      include: {
+        IM: true,
+        Faculty: {
+          include: {
+            user: true,
+          },
+        },
+        PeerReviewItem: true,
+      },
     });
     return peerReview;
   } catch (error) {

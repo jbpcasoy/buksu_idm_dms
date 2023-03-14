@@ -373,13 +373,14 @@ model PeerReviewItem {
 }
 
 model SubmittedPeerReview {
-  id           String     @id @default(cuid())
-  createdAt    DateTime   @default(now())
-  updatedAt    DateTime   @updatedAt
-  IM           IM         @relation(fields: [iMId], references: [id])
-  iMId         String     @unique
-  PeerReview   PeerReview @relation(fields: [peerReviewId], references: [id])
-  peerReviewId String     @unique
+  id             String          @id @default(cuid())
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  IM             IM              @relation(fields: [iMId], references: [id])
+  iMId           String          @unique
+  PeerReview     PeerReview      @relation(fields: [peerReviewId], references: [id])
+  peerReviewId   String          @unique
+  PeerSuggestion PeerSuggestion?
 }
 
 model ChairpersonReview {
@@ -412,13 +413,14 @@ model ChairpersonReviewItem {
 }
 
 model SubmittedChairpersonReview {
-  id                  String            @id @default(cuid())
-  createdAt           DateTime          @default(now())
-  updatedAt           DateTime          @updatedAt
-  IM                  IM                @relation(fields: [iMId], references: [id])
-  iMId                String            @unique
-  ChairpersonReview   ChairpersonReview @relation(fields: [chairpersonReviewId], references: [id])
-  chairpersonReviewId String            @unique
+  id                    String                 @id @default(cuid())
+  createdAt             DateTime               @default(now())
+  updatedAt             DateTime               @updatedAt
+  IM                    IM                     @relation(fields: [iMId], references: [id])
+  iMId                  String                 @unique
+  ChairpersonReview     ChairpersonReview      @relation(fields: [chairpersonReviewId], references: [id])
+  chairpersonReviewId   String                 @unique
+  ChairpersonSuggestion ChairpersonSuggestion?
 }
 
 model CoordinatorReview {
@@ -452,11 +454,81 @@ model CoordinatorReviewItem {
 }
 
 model SubmittedCoordinatorReview {
-  id                  String            @id @default(cuid())
-  createdAt           DateTime          @default(now())
-  updatedAt           DateTime          @updatedAt
-  IM                  IM                @relation(fields: [iMId], references: [id])
-  iMId                String            @unique
-  CoordinatorReview   CoordinatorReview @relation(fields: [coordinatorReviewId], references: [id])
-  coordinatorReviewId String            @unique
+  id                    String                 @id @default(cuid())
+  createdAt             DateTime               @default(now())
+  updatedAt             DateTime               @updatedAt
+  IM                    IM                     @relation(fields: [iMId], references: [id])
+  iMId                  String                 @unique
+  CoordinatorReview     CoordinatorReview      @relation(fields: [coordinatorReviewId], references: [id])
+  coordinatorReviewId   String                 @unique
+  CoordinatorSuggestion CoordinatorSuggestion?
+}
+
+model PeerSuggestion {
+  id                    String               @id @default(cuid())
+  createdAt             DateTime             @default(now())
+  updatedAt             DateTime             @updatedAt
+  SubmittedPeerReview   SubmittedPeerReview  @relation(fields: [submittedPeerReviewId], references: [id])
+  submittedPeerReviewId String               @unique
+  PeerSuggestionItem    PeerSuggestionItem[]
+}
+
+model PeerSuggestionItem {
+  id               String         @id @default(cuid())
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+  PeerSuggestion   PeerSuggestion @relation(fields: [peerSuggestionId], references: [id])
+  peerSuggestionId String
+  value            String         @db.Text
+  actionTaken      String?        @db.Text
+  pageNumber       Int
+  remarks          String?        @db.Text
+
+  @@index([peerSuggestionId])
+}
+
+model ChairpersonSuggestion {
+  id                           String                      @id @default(cuid())
+  createdAt                    DateTime                    @default(now())
+  updatedAt                    DateTime                    @updatedAt
+  SubmittedChairpersonReview   SubmittedChairpersonReview  @relation(fields: [submittedChairpersonReviewId], references: [id])
+  submittedChairpersonReviewId String                      @unique
+  ChairpersonSuggestionItem    ChairpersonSuggestionItem[]
+}
+
+model ChairpersonSuggestionItem {
+  id                      String                @id @default(cuid())
+  createdAt               DateTime              @default(now())
+  updatedAt               DateTime              @updatedAt
+  ChairpersonSuggestion   ChairpersonSuggestion @relation(fields: [chairpersonSuggestionId], references: [id])
+  chairpersonSuggestionId String
+  value                   String                @db.Text
+  actionTaken             String?               @db.Text
+  pageNumber              Int
+  remarks                 String?               @db.Text
+
+  @@index([chairpersonSuggestionId])
+}
+
+model CoordinatorSuggestion {
+  id                           String                      @id @default(cuid())
+  createdAt                    DateTime                    @default(now())
+  updatedAt                    DateTime                    @updatedAt
+  SubmittedCoordinatorReview   SubmittedCoordinatorReview  @relation(fields: [submittedCoordinatorReviewId], references: [id])
+  submittedCoordinatorReviewId String                      @unique
+  CoordinatorSuggestionItem    CoordinatorSuggestionItem[]
+}
+
+model CoordinatorSuggestionItem {
+  id                      String                @id @default(cuid())
+  createdAt               DateTime              @default(now())
+  updatedAt               DateTime              @updatedAt
+  value                   String                @db.Text
+  actionTaken             String?               @db.Text
+  pageNumber              Int
+  remarks                 String?               @db.Text
+  CoordinatorSuggestion   CoordinatorSuggestion @relation(fields: [coordinatorSuggestionId], references: [id])
+  coordinatorSuggestionId String
+
+  @@index([coordinatorSuggestionId])
 }

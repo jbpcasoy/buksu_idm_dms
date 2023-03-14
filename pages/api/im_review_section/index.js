@@ -4,7 +4,7 @@ import postImReviewSectionHandler from "@/services/handlers/im_review_section/po
 import methodNaHandler from "@/services/handlers/methodNaHandler";
 
 export default async function handler(req, res) {
-  reqLog(req, res);
+  await reqLog(req, res);
 
   switch (req.method) {
     case "GET":

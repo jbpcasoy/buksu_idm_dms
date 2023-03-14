@@ -1,11 +1,11 @@
 import readChairpersonReviewItems from "@/services/api/chairperson_review_item/readChairpersonReviewItems";
 
 export default async function getChairpersonReviewItemsHandler(req, res) {
-  const { limit = 10, page = 1, questionId, chairpersonReviewId } = req.query;
+  const { limit, page, questionId, chairpersonReviewId } = req.query;
 
   const chairpersonReviewItems = await readChairpersonReviewItems({
-    limit: parseInt(limit),
-    page: parseInt(page),
+    limit: limit ? parseInt(limit) : undefined,
+    page: page ? parseInt(page) : undefined,
     questionId,
     chairpersonReviewId,
   });

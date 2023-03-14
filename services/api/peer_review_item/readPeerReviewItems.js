@@ -11,7 +11,7 @@ export default async function readPeerReviewItems({
   try {
     const peerReviewItems = await prisma.peerReviewItem.findMany({
       take: limit,
-      skip: (page - 1) * limit,
+      skip: page ? (page - 1) * limit : undefined,
       where: {
         questionId: {
           contains: questionId,
@@ -21,7 +21,16 @@ export default async function readPeerReviewItems({
         },
       },
     });
-    const total = await prisma.peerReviewItem.count();
+    const total = await prisma.peerReviewItem.count({
+      where: {
+        questionId: {
+          contains: questionId,
+        },
+        peerReviewId: {
+          contains: peerReviewId,
+        },
+      },
+    });
 
     return { data: peerReviewItems, total };
   } catch (error) {
