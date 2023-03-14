@@ -4,7 +4,7 @@ import deletePeerApprovalHandler from "@/services/handlers/peer_approval/deleteP
 import getPeerApprovalHandler from "@/services/handlers/peer_approval/getPeerApprovalHandler";
 
 export default async function handler(req, res) {
-  reqLog(req, res);
+  await reqLog(req, res);
 
   switch (req.method) {
     case "GET":

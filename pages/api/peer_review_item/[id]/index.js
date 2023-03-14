@@ -5,7 +5,7 @@ import getPeerReviewItemHandler from "@/services/handlers/peer_review_item/getPe
 import putReviewItemHandler from "@/services/handlers/peer_review_item/putReviewItemHandler";
 
 export default async function handler(req, res) {
-  reqLog(req, res);
+  await reqLog(req, res);
 
   switch (req.method) {
     case "GET":
