@@ -5,7 +5,7 @@ import putCoordinatorReviewItemHandler from "@/services/handlers/coordinator_rev
 import methodNaHandler from "@/services/handlers/methodNaHandler";
 
 export default async function handler(req, res) {
-  reqLog(req, res);
+  await reqLog(req, res);
 
   switch (req.method) {
     case "GET":

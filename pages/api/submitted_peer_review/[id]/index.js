@@ -4,7 +4,7 @@ import deleteSubmittedPeerReviewHandler from "@/services/handlers/submitted_peer
 import getSubmittedPeerReviewHandler from "@/services/handlers/submitted_peer_review/getSubmittedPeerReviewHandler";
 
 export default async function handler(req, res) {
-  reqLog(req, res);
+  await reqLog(req, res);
 
   switch (req.method) {
     case "GET":

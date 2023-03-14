@@ -4,7 +4,7 @@ import getSubmittedPeerReviewsHandler from "@/services/handlers/submitted_peer_r
 import postSubmittedPeerReviewHandler from "@/services/handlers/submitted_peer_review/postSubmittedPeerReviewHandler";
 
 export default async function handler(req, res) {
-  reqLog(req, res);
+  await reqLog(req, res);
 
   switch (req.method) {
     case "POST":

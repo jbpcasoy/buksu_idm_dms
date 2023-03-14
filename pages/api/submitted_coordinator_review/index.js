@@ -4,7 +4,7 @@ import getSubmittedCoordinatorReviewsHandler from "@/services/handlers/submitted
 import postSubmittedCoordinatorReview from "@/services/handlers/submitted_coordinator_review/postSubmittedCoordinatorReview";
 
 export default async function handler(req, res) {
-  reqLog(req, res);
+  await reqLog(req, res);
 
   switch (req.method) {
     case "POST":

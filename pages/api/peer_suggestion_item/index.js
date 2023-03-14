@@ -4,7 +4,7 @@ import getPeerSuggestionItemsHandler from "@/services/handlers/peer_suggestion_i
 import postPeerSuggestionItemHandler from "@/services/handlers/peer_suggestion_item/postPeerSuggestionItemHandler";
 
 export default async function handler(req, res) {
-  reqLog(req, res);
+  await reqLog(req, res);
 
   switch (req.method) {
     case "POST":

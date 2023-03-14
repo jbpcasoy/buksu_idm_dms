@@ -4,7 +4,7 @@ import getPeerApprovalsHandler from "@/services/handlers/peer_approval/getPeerAp
 import postPeerApprovalHandler from "@/services/handlers/peer_approval/postPeerApprovalHandler";
 
 export default async function handler(req, res) {
-  reqLog(req, res);
+  await reqLog(req, res);
 
   switch (req.method) {
     case "POST":
