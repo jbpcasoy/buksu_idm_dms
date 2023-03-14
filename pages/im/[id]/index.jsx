@@ -29,7 +29,7 @@ export default function ViewIM() {
           <div className='items-left'>
             <Link
               href={`/im/${iM?.id}/versions`}
-              className='px-5 py-2.5 mr-2 shadow-xl text-sm font-medium text-CITLDarkBlue bg-CITLOrange border rounded-md  hover:text-CITLDarkBlue hover:border-CITLOrange focus:outline-none '
+              className='px-5 py-2.5 mr-2 shadow-xl text-sm font-medium text-CITLDarkBlue bg-CITLOrange border rounded-md  hover:text-CITLOrange hover:bg-transparent focus:outline-none border-CITLOrange '
             >
               Versions
             </Link>
@@ -37,7 +37,7 @@ export default function ViewIM() {
               user?.ActiveFaculty?.ActiveCoordinator && (
                 <Link
                   href={`/im/${iM?.id}/review/coordinator`}
-                  className='text-CITLWhite bg-CITLDarkBlue font-medium text-sm px-5 py-2.5 mr-2 rounded-md shadow-xl  hover:text-CITLWhite hover:border-CITLDarkBlue focus:outline-none'
+                  className='text-CITLWhite bg-CITLDarkBlue font-medium text-sm px-5 py-2.5 mr-2 rounded-md shadow-xl  hover:text-CITLDarkBlue hover:bg-transparent focus:outline-none border border-CITLDarkBlue'
                 >
                   Coordinator Review
                 </Link>
@@ -46,7 +46,7 @@ export default function ViewIM() {
               user?.ActiveFaculty?.ActiveChairperson && (
                 <Link
                   href={`/im/${iM?.id}/review/chairperson`}
-                  className='text-CITLWhite bg-CITLDarkBlue font-medium text-sm px-5 py-2.5 mr-2 rounded-md shadow-xl  hover:text-CITLWhite hover:border-CITLDarkBlue focus:outline-none'
+                  className='text-CITLWhite bg-CITLDarkBlue font-medium text-sm px-5 py-2.5 mr-2 rounded-md shadow-xl  hover:text-CITLDarkBlue hover:bg-transparent focus:outline-none border border-CITLDarkBlue'
                 >
                   Chairperson Review
                 </Link>
@@ -54,7 +54,7 @@ export default function ViewIM() {
             {user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId && (
               <Link
                 href={`/im/${iM?.id}/review/peer`}
-                className='text-CITLWhite bg-CITLDarkBlue font-medium text-sm px-5 py-2.5 mr-2 rounded-md shadow-xl  hover:text-CITLWhite hover:border-CITLDarkBlue focus:outline-none'
+                className='text-CITLWhite bg-CITLDarkBlue font-medium text-sm px-5 py-2.5 mr-2 rounded-md shadow-xl  hover:text-CITLDarkBlue hover:bg-transparent focus:outline-none border border-CITLDarkBlue'
               >
                 Peer Review
               </Link>

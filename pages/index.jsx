@@ -147,7 +147,7 @@ export default function Home() {
             </p>
             <Link
               href={`/`}
-              className='inline-flex items-center px-4 py-2 text-sm font-medium text-CITLDarkBlue bg-CITLOrange border  rounded-lg  hover:text-CITLDarkBlue hover:border-CITLOrange focus:outline-none '
+              className='inline-flex items-center px-4 py-2 text-sm font-medium text-CITLDarkBlue bg-CITLOrange border  rounded-lg hover:bg-transparent hover:text-CITLOrange hover:border-CITLOrange focus:outline-none '
             >
               Read more{" "}
               <svg
@@ -335,7 +335,7 @@ export default function Home() {
                 <div className=''>
                   <button
                     title='Add IM'
-                    className='flex items-center bg-CITLDarkBlue rounded-lg px-4 py-2.5 text-sm font-medium text-center shadow-md text-white '
+                    className='flex items-center bg-CITLDarkBlue rounded-lg px-4 py-2.5 text-sm font-medium text-center shadow-md text-white hover:bg-transparent hover:text-CITLDarkBlue focus:outline-none focus:ring border border-CITLDarkBlue'
                     onClick={() => {
                       router.push("/im/new");
                     }}

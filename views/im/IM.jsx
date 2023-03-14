@@ -107,7 +107,7 @@ export default function IM({
       <td className='bg-white  font-medium text-slate-400  items-center justify-center px-6 py-4 '>
         <button
           onClick={onView}
-          className=' px-5 py-2.5 text-sm font-medium text-center text-white bg-CITLDarkBlue rounded-lg  hover:bg-CITLDarkBlue shadow-xl  mr-3'
+          className=' px-5 py-2.5 text-sm font-medium text-center text-white bg-CITLDarkBlue rounded-lg  hover:bg-transparent hover:text-CITLDarkBlue shadow-xl  mr-3 border border-CITLDarkBlue'
         >
           View
         </button>

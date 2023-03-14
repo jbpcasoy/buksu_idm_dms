@@ -36,16 +36,36 @@ export default function ConfirmCoordinatorReview({
                 setLoading(false);
               });
             }}
-            className='text-base  ml-2  focus:outline-none flex justify-center px-4 py-2 rounded font-medium cursor-pointer shadow-xl hover:bg-CITLOrange disabled:bg-CITLGray-lighter disabled:border disabled:border-CITLGray-main disabled:text-CITLGray-main bg-CITLDarkBlue text-CITLWhite  '
+            className='text-base  ml-2  focus:outline-none flex justify-center px-7 py-3 rounded font-semibold cursor-pointer  hover:bg-transparent border hover:text-CITLOrange hover:border-CITLOrange bg-CITLDarkBlue text-CITLWhite  '
           >
             Submit
           </button>
+
           <button
-            disabled={loading}
             onClick={onPrevious}
-            className='text-base  flex justify-center px-4 py-2 rounded font-bold cursor-pointer shadow-xl enabled:hover:border-CITLOrange  bg-gray-100 disabled:bg-CITLGray-lighter  text-CITLGray-main  border  border-CITLGray-main'
+            disabled={loading}
+            class='group relative inline-flex items-center overflow-hidden rounded border border-current px-8 py-3 text-CITLDarkBlue focus:outline-none focus:ring active:text-CITLDarkBlue'
           >
-            Previous
+            <span class='absolute left-0 -translate-x-full transition-transform group-hover:translate-x-4'>
+              <svg
+                class='h-5 w-5 rotate-180'
+                xmlns='http://www.w3.org/2000/svg'
+                fill='none'
+                viewBox='0 0 24 24'
+                stroke='currentColor'
+              >
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M17 8l4 4m0 0l-4 4m4-4H3'
+                />
+              </svg>
+            </span>
+
+            <span class='text-sm font-medium transition-all group-hover:ml-4'>
+              Previous
+            </span>
           </button>
         </div>
       </div>
