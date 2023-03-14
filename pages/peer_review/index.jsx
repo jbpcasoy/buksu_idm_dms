@@ -2832,7 +2832,7 @@ export default function PeerReview() {
                   className='text-sm  text-left font-semibold text-CITLGray-main py-3 px-5'
                 >
                   2. The rubrics describe the criteria through which the
-                  learners' outputs are rated.
+                  learners&apos; outputs are rated.
                 </p>
 
                 <ul className='items-left text-sm font-medium border px-5 mx-5 mb-5 rounded-lg sm:flex '>

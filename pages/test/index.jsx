@@ -1,5 +1,3 @@
-import Layout from "@/components/layout/Layout";
-
 export default function test() {
   return (
     <div class='h-screen isolate overflow-hidden bg-CITLDarkBlue py-16 sm:py-24 lg:py-32'>
@@ -99,6 +97,6 @@ export default function test() {
           />
         </div>
       </div>
-    </Layout>
+    </div>
   );
 }
