@@ -1,9 +1,9 @@
 import { sections } from "@/constants/questions";
-import CoordinatorPreviewQuestion from "./ChairpersonPreviewQuestion";
+import ChairpersonPreviewQuestion from "./ChairpersonPreviewQuestion";
 import PreviewSection from "./PreviewSection";
 
-export default function ConfirmCoordinatorReview({
-  coordinatorReviewId,
+export default function ConfirmChairpersonReview({
+  chairpersonReviewId,
   onPrevious,
   onSubmit,
 }) {
@@ -14,10 +14,10 @@ export default function ConfirmCoordinatorReview({
           {section.questions.map((question) => {
             if (question.active)
               return (
-                <CoordinatorPreviewQuestion
+                <ChairpersonPreviewQuestion
                   key={question.id}
                   question={question}
-                  coordinatorReviewId={coordinatorReviewId}
+                  chairpersonReviewId={chairpersonReviewId}
                 />
               );
           })}

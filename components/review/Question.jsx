@@ -12,6 +12,7 @@ export default function Question({
   disableSubmit = true,
   handleRespond,
 }) {
+  console.log({ answer });
   return (
     <div>
       <div className=' mt-5 border border-CITLOrange rounded-lg py-2 px-3'>
@@ -140,7 +141,7 @@ export default function Question({
         <div className='flex-auto flex flex-row-reverse justify-between'>
           {!disableNext && (
             <button
-              disabled={loading}
+              disabled={!answer || loading}
               onClick={() => {
                 handleRespond().then(() => onNext());
               }}
