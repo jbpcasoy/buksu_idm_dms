@@ -2559,5 +2559,30 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "fef2d8bd-9bc9-4315-908b-d85feb0a9eae",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "0da99ad0-5045-4ae3-b0ff-9326023ccf1a",
+    "name": "READ CoordinatorSuggestions",
+    "url": "{{host}}/api/coordinator_suggestion?limit=10&page=1",
+    "method": "GET",
+    "sortNum": 1600000,
+    "created": "2023-03-14T01:21:09.384Z",
+    "modified": "2023-03-14T01:21:26.132Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "limit",
+        "value": "10",
+        "isPath": false
+      },
+      {
+        "name": "page",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "tests": []
   }
 ]
