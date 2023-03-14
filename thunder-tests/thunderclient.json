@@ -2631,5 +2631,30 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "7f7bdadb-4b28-4fec-8318-eea6c9d5181c",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "bc4ee471-f0e8-4de9-ada6-ac238a2eec7c",
+    "name": "READ CoordinatorSuggestionItems",
+    "url": "{{host}}/api/coordinator_suggestion_item?limit=10&page=1",
+    "method": "GET",
+    "sortNum": 1640000,
+    "created": "2023-03-14T02:27:19.122Z",
+    "modified": "2023-03-14T02:27:45.632Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "limit",
+        "value": "10",
+        "isPath": false
+      },
+      {
+        "name": "page",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "tests": []
   }
 ]
