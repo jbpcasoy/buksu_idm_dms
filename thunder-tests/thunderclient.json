@@ -2449,5 +2449,96 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "5d487899-cdf0-4469-a360-b8ee3473b501",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "ab920acd-b282-45eb-98a9-e854efbf9d2e",
+    "name": "CREATE ChairpersonSuggestionItem",
+    "url": "{{host}}/api/chairperson_suggestion_item",
+    "method": "POST",
+    "sortNum": 1550000,
+    "created": "2023-03-14T00:25:27.670Z",
+    "modified": "2023-03-14T00:28:11.275Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"chairpersonSuggestionId\": \"clf7ikgfb000ws9274bputt9i\",\n  \"value\": \"Bad title\",\n  \"pageNumber\": 1,\n  \"remarks\":\"\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "ef6ad037-1020-4b71-8f1b-00f42716d678",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "ab920acd-b282-45eb-98a9-e854efbf9d2e",
+    "name": "READ ChairpersonSuggestionItems",
+    "url": "{{host}}/api/chairperson_suggestion_item?limit=10&page=1",
+    "method": "GET",
+    "sortNum": 1560000,
+    "created": "2023-03-14T00:35:30.953Z",
+    "modified": "2023-03-14T00:35:54.776Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "limit",
+        "value": "10",
+        "isPath": false
+      },
+      {
+        "name": "page",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "678e0ccf-c281-42c7-a10d-25dca1a7d9b7",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "ab920acd-b282-45eb-98a9-e854efbf9d2e",
+    "name": "READ ChairpersonSuggestionItem",
+    "url": "{{host}}/api/chairperson_suggestion_item/clf7ilt3r000ys9273u7r6mu4",
+    "method": "GET",
+    "sortNum": 1570000,
+    "created": "2023-03-14T00:42:51.031Z",
+    "modified": "2023-03-14T00:43:31.723Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "5d47c2e2-5d8f-4720-a7ed-af610a415057",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "ab920acd-b282-45eb-98a9-e854efbf9d2e",
+    "name": "UPDATE ChairpersonSuggestionItem",
+    "url": "{{host}}/api/chairperson_suggestion_item/clf7ilt3r000ys9273u7r6mu4",
+    "method": "PUT",
+    "sortNum": 1580000,
+    "created": "2023-03-14T00:50:22.561Z",
+    "modified": "2023-03-14T00:51:10.498Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"value\": \"Updated value\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "b08f9c33-a95c-4845-81f4-db0771e53489",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "ab920acd-b282-45eb-98a9-e854efbf9d2e",
+    "name": "DELETE ChairpersonSuggestionItem",
+    "url": "{{host}}/api/chairperson_suggestion_item/clf7ilt3r000ys9273u7r6mu4",
+    "method": "DELETE",
+    "sortNum": 1575000,
+    "created": "2023-03-14T00:55:25.928Z",
+    "modified": "2023-03-14T00:55:56.101Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
