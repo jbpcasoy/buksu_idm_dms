@@ -37,7 +37,7 @@ export default function Question({
               <div className='flex items-center pl-3'>
                 <input
                   disabled={loading}
-                  id='horizontal-list-radio-license'
+                  id='vm'
                   type='radio'
                   value='VM'
                   checked={answer === "VM" && !loading}
@@ -46,7 +46,7 @@ export default function Question({
                   className='w-4 h-4 text-CITLDarkBlue disabled:text-CITLGray-main  bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue'
                 />
                 <label
-                  for='horizontal-list-radio-license'
+                  for='vm'
                   className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main '
                 >
                   Very Much
@@ -57,7 +57,7 @@ export default function Question({
               <div className='flex items-center pl-3'>
                 <input
                   disabled={loading}
-                  id='horizontal-list-radio-id'
+                  id='m'
                   type='radio'
                   value='M'
                   checked={answer === "M" && !loading}
@@ -66,7 +66,7 @@ export default function Question({
                   className='w-4 h-4 text-CITLDarkBlue disabled:text-CITLGray-main bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue'
                 />
                 <label
-                  for='horizontal-list-radio-id'
+                  for='m'
                   className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
                 >
                   Much
@@ -77,7 +77,7 @@ export default function Question({
               <div className='flex items-center pl-3'>
                 <input
                   disabled={loading}
-                  id='horizontal-list-radio-millitary'
+                  id='je'
                   type='radio'
                   value='JE'
                   checked={answer === "JE" && !loading}
@@ -86,7 +86,7 @@ export default function Question({
                   className='w-4 h-4 text-CITLDarkBlue disabled:text-CITLGray-main bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue'
                 />
                 <label
-                  for='horizontal-list-radio-millitary'
+                  for='je'
                   className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
                 >
                   Just Enough
@@ -97,7 +97,7 @@ export default function Question({
               <div className='flex items-center pl-3'>
                 <input
                   disabled={loading}
-                  id='horizontal-list-radio-passport'
+                  id='nm'
                   type='radio'
                   checked={answer === "NM" && !loading}
                   onChange={handleSelect}
@@ -106,7 +106,7 @@ export default function Question({
                   className='w-4 h-4 text-CITLDarkBlue disabled:text-CITLGray-main bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue'
                 />
                 <label
-                  for='horizontal-list-radio-passport'
+                  for='nm'
                   className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
                 >
                   Not Much
@@ -119,14 +119,14 @@ export default function Question({
                   disabled={loading}
                   checked={answer === "NAA" && !loading}
                   onChange={handleSelect}
-                  id='horizontal-list-radio-passport'
+                  id='naa'
                   type='radio'
                   value='NAA'
                   name='list-radio'
                   className='w-4 h-4 text-CITLDarkBlue disabled:text-CITLGray-main bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue'
                 />
                 <label
-                  for='horizontal-list-radio-passport'
+                  for='naa'
                   className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
                 >
                   Not at All
