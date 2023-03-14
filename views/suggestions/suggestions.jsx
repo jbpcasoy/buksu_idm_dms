@@ -7,8 +7,8 @@ export default function Suggestions({}) {
         <input
           name='name'
           type='text'
-          placeholder='Type here...'
-          className='border-none pl-0'
+          placeholder='--'
+          className='border-0 border-b-2 border-CITLGray-lighter outline-none  focus:ring-0 pl-0 text-CITLGray-main'
         />
       </td>
 
@@ -16,8 +16,8 @@ export default function Suggestions({}) {
         <input
           name='name'
           type='text'
-          placeholder='Type here...'
-          className='border-none pl-0'
+          placeholder='--'
+          className='border-0 border-b-2 border-CITLGray-lighter outline-none  focus:ring-0 pl-0 text-CITLGray-main'
         />
       </td>
 
@@ -25,8 +25,8 @@ export default function Suggestions({}) {
         <input
           name='name'
           type='text'
-          placeholder='Type here...'
-          className='border-none pl-0'
+          placeholder='--'
+          className='border-0 border-b-2 border-CITLGray-lighter outline-none  focus:ring-0 pl-0 text-CITLGray-main'
         />
       </td>
 
@@ -34,8 +34,8 @@ export default function Suggestions({}) {
         <input
           name='name'
           type='text'
-          placeholder='Type here...'
-          className='border-none pl-0'
+          placeholder='--'
+          className='border-0 border-b-2 border-CITLGray-lighter outline-none  focus:ring-0 pl-0 text-CITLGray-main'
         />
 
         {/* <input
