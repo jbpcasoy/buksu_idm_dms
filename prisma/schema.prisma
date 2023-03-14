@@ -487,9 +487,24 @@ model PeerSuggestionItem {
 }
 
 model ChairpersonSuggestion {
-  id                           String                     @id @default(cuid())
-  createdAt                    DateTime                   @default(now())
-  updatedAt                    DateTime                   @updatedAt
-  SubmittedChairpersonReview   SubmittedChairpersonReview @relation(fields: [submittedChairpersonReviewId], references: [id])
-  submittedChairpersonReviewId String                     @unique
+  id                           String                      @id @default(cuid())
+  createdAt                    DateTime                    @default(now())
+  updatedAt                    DateTime                    @updatedAt
+  SubmittedChairpersonReview   SubmittedChairpersonReview  @relation(fields: [submittedChairpersonReviewId], references: [id])
+  submittedChairpersonReviewId String                      @unique
+  ChairpersonSuggestionItem    ChairpersonSuggestionItem[]
+}
+
+model ChairpersonSuggestionItem {
+  id                      String                @id @default(cuid())
+  createdAt               DateTime              @default(now())
+  updatedAt               DateTime              @updatedAt
+  ChairpersonSuggestion   ChairpersonSuggestion @relation(fields: [chairpersonSuggestionId], references: [id])
+  chairpersonSuggestionId String
+  value                   String                @db.Text
+  actionTaken             String?               @db.Text
+  pageNumber              Int
+  remarks                 String?               @db.Text
+
+  @@index([chairpersonSuggestionId])
 }
