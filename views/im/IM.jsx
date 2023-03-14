@@ -60,7 +60,7 @@ export default function IM({
       <td className='px-6 py-4 '>{owner}</td>
 
       <td className='px-6 py-4 '>{status}</td>
-      <td className=' py-4 flex gap-1 m-2'>
+      <td className=' py-4 flex gap-1 m-2 align-middle'>
         {peerReviewed && (
           <span className='bg-green-300 text-green-900 text-xs px-3 py-1 rounded-2xl'>
             Peer
@@ -72,23 +72,18 @@ export default function IM({
           </span>
         )}
         {chairpersonReviewed && (
-          <span className='bg-green-600 text-white text-xs px-3  py-1 rounded-2xl'>
+          <span className='bg-green-300 text-green-900 text-xs px-3  py-1 rounded-2xl'>
             Chairperson
           </span>
         )}
 
-        {chairpersonReviewed && (
-          <span className='bg-green-600 text-green-900 text-xs px-3  py-1 rounded-2xl'>
-            Chairperson
-          </span>
-        )}
         {!chairpersonReviewed && (
           <span className='bg-red-300 text-red-600 text-xs px-3 py-1 rounded-2xl'>
             Chairperson
           </span>
         )}
         {coordinatorReviewed && (
-          <span className='bg-green-600 text-green-900 text-xs px-3 py-1 rounded-2xl'>
+          <span className='bg-green-300 text-green-900 text-xs px-3 py-1 rounded-2xl'>
             Coordinator
           </span>
         )}

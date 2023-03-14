@@ -12,7 +12,7 @@
 
 const sections = [
   {
-    title: "The title",
+    title: "The Title",
     active: true,
     questions: [
       {
