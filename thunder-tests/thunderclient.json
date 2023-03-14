@@ -2670,5 +2670,24 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "e3ae976f-01ec-42ba-bc8f-c47f9b9201cf",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "bc4ee471-f0e8-4de9-ada6-ac238a2eec7c",
+    "name": "UPDATE CorrdinatorSuggestionItem",
+    "url": "{{host}}/api/coordinator_suggestion_item/clf7mknuo0002s9i28i1pl4xs",
+    "method": "PUT",
+    "sortNum": 1660000,
+    "created": "2023-03-14T02:41:33.257Z",
+    "modified": "2023-03-14T02:42:03.767Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"actionTaken\": \"I've done this\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
