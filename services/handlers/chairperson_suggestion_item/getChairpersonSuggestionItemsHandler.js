@@ -1,6 +1,6 @@
 import readChairpersonSuggestionItems from "@/services/api/chairperson_suggestion_item/readChairpersonSuggestionItems";
 
-export default async function getChairpersonSuggestionItem(req, res) {
+export default async function getChairpersonSuggestionItemsHandler(req, res) {
   const { limit = 10, page = 1 } = req.query;
 
   const chairpersonSuggestionItems = await readChairpersonSuggestionItems({
