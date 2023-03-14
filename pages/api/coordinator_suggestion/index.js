@@ -1,5 +1,5 @@
 import { reqLog } from "@/services/api/logger";
-import getCoordinatorSuggestionHandler from "@/services/handlers/coordinator_suggestion/getCoordinatorSuggestionHandler";
+import getCoordinatorSuggestionsHandler from "@/services/handlers/coordinator_suggestion/getCoordinatorSuggestionsHandler";
 import postCoordinatorSuggestionHandler from "@/services/handlers/coordinator_suggestion/postCoordinatorSuggestionHandler";
 import methodNaHandler from "@/services/handlers/methodNaHandler";
 
@@ -10,7 +10,7 @@ export default async function handler(req, res) {
     case "POST":
       return postCoordinatorSuggestionHandler(req, res);
     case "GET":
-      return getCoordinatorSuggestionHandler(req, res);
+      return getCoordinatorSuggestionsHandler(req, res);
     default:
       return methodNaHandler(req, res);
   }
