@@ -1,4 +1,4 @@
-import usePeerReviewItemByQuestion from "@/hooks/usePeerReviewResponse";
+import usePeerReviewItemByQuestion from "@/hooks/usePeerReviewItemByQuestion";
 import frontendUpdatePeerReviewItem from "@/services/frontend/peer_review_item/frontendUpdatePeerReviewItem";
 import { useState } from "react";
 import PreviewQuestion from "./PreviewQuestion";
