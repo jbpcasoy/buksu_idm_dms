@@ -37,6 +37,7 @@ const CoordinatorReviewPage = () => {
     />,
     ...generateQuestions(sections),
     <ConfirmCoordinatorReview
+      key='confirm'
       coordinatorReviewId={coordinatorReview?.id}
       onPrevious={handlePrevious}
       onSubmit={handleSubmit}

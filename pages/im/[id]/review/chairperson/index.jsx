@@ -37,6 +37,7 @@ const ChairpersonReviewPage = () => {
     />,
     ...generateQuestions(sections),
     <ConfirmChairpersonReview
+      key='confirm'
       chairpersonReviewId={chairpersonReview?.id}
       onPrevious={handlePrevious}
       onSubmit={handleSubmit}

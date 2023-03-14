@@ -37,6 +37,7 @@ const PeerReviewPage = () => {
     />,
     ...generateQuestions(sections),
     <ConfirmPeerReview
+      key='confirm'
       peerReviewId={peerReview?.id}
       onPrevious={handlePrevious}
       onSubmit={handleSubmit}
