@@ -1,8 +1,9 @@
 import ChairpersonQuestion from "@/components/review/ChairpersonQuestion";
 import IMInfo from "@/components/review/IMInfo";
 import Instructions from "@/components/review/Instructions";
+import ConfirmChairpersonReview from "@/components/review/preview/ConfirmChairpersonReview";
 import ReviewPage from "@/components/review/ReviewPage";
-import { countQuestions, sections } from "@/constants/questions";
+import { sections } from "@/constants/questions";
 import useUser from "@/hooks/useUser";
 import frontendCreateChairpersonReview from "@/services/frontend/chairperson_review/frontendCreateChairpersonReview";
 import frontendReadChairpersonReviews from "@/services/frontend/chairperson_review/frontendReadChairpersonReview";
@@ -35,6 +36,12 @@ const ChairpersonReviewPage = () => {
       onPrevious={handlePrevious}
     />,
     ...generateQuestions(sections),
+    <ConfirmChairpersonReview
+      key='confirm'
+      chairpersonReviewId={chairpersonReview?.id}
+      onPrevious={handlePrevious}
+      onSubmit={handleSubmit}
+    />,
   ];
 
   function handlePrevious() {
@@ -59,8 +66,6 @@ const ChairpersonReviewPage = () => {
 
   function generateQuestions(sections) {
     const questions = [];
-    const questionNumber = countQuestions(sections);
-    let i = 0;
     for (let section of sections) {
       for (let question of section.questions) {
         questions.push(
@@ -71,14 +76,10 @@ const ChairpersonReviewPage = () => {
             title={section.title}
             question={question.label}
             onNext={handleNext}
-            disableNext={i === questionNumber - 1}
-            disableSubmit={i < questionNumber - 1}
             onPrevious={handlePrevious}
             onSubmit={handleSubmit}
           />
         );
-
-        i++;
       }
     }
 

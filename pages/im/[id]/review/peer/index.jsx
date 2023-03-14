@@ -1,8 +1,9 @@
 import IMInfo from "@/components/review/IMInfo";
 import Instructions from "@/components/review/Instructions";
 import PeerQuestion from "@/components/review/PeerQuestion";
+import ConfirmPeerReview from "@/components/review/preview/ConfirmPeerReview";
 import ReviewPage from "@/components/review/ReviewPage";
-import { countQuestions, sections } from "@/constants/questions";
+import { sections } from "@/constants/questions";
 import useUser from "@/hooks/useUser";
 import frontendReadIM from "@/services/frontend/im/frontendReadIM";
 import frontendCreatePeerReview from "@/services/frontend/peer_review/frontendCreatePeerReview";
@@ -35,6 +36,12 @@ const PeerReviewPage = () => {
       onPrevious={handlePrevious}
     />,
     ...generateQuestions(sections),
+    <ConfirmPeerReview
+      key='confirm'
+      peerReviewId={peerReview?.id}
+      onPrevious={handlePrevious}
+      onSubmit={handleSubmit}
+    />,
   ];
 
   function handlePrevious() {
@@ -59,27 +66,22 @@ const PeerReviewPage = () => {
 
   function generateQuestions(sections) {
     const questions = [];
-    const questionNumber = countQuestions(sections);
-    let i = 0;
 
     for (let section of sections) {
       for (let question of section.questions) {
-        questions.push(
-          <PeerQuestion
-            key={question.id}
-            questionId={question.id}
-            peerReview={peerReview}
-            title={section.title}
-            question={question.label}
-            onNext={handleNext}
-            disableNext={i === questionNumber - 1}
-            disableSubmit={i < questionNumber - 1}
-            onPrevious={handlePrevious}
-            onSubmit={handleSubmit}
-          />
-        );
-
-        i++;
+        if (question.active) {
+          questions.push(
+            <PeerQuestion
+              key={question.id}
+              questionId={question.id}
+              peerReview={peerReview}
+              title={section.title}
+              question={question.label}
+              onNext={handleNext}
+              onPrevious={handlePrevious}
+            />
+          );
+        }
       }
     }
 

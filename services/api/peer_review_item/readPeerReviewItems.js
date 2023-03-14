@@ -21,7 +21,16 @@ export default async function readPeerReviewItems({
         },
       },
     });
-    const total = await prisma.peerReviewItem.count();
+    const total = await prisma.peerReviewItem.count({
+      where: {
+        questionId: {
+          contains: questionId,
+        },
+        peerReviewId: {
+          contains: peerReviewId,
+        },
+      },
+    });
 
     return { data: peerReviewItems, total };
   } catch (error) {

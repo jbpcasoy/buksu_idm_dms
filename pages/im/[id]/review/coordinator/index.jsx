@@ -1,8 +1,9 @@
 import CoordinatorQuestion from "@/components/review/CoordinatorQuestion";
 import IMInfo from "@/components/review/IMInfo";
 import Instructions from "@/components/review/Instructions";
+import ConfirmCoordinatorReview from "@/components/review/preview/ConfirmCoordinatorReview";
 import ReviewPage from "@/components/review/ReviewPage";
-import { countQuestions, sections } from "@/constants/questions";
+import { sections } from "@/constants/questions";
 import useUser from "@/hooks/useUser";
 import frontendCreateSubmittedCoordinatorReview from "@/services/api/submitted_coordinator_review/frontendCreateSubmittedCoordinatorReview";
 import frontendCreateCoordinatorReview from "@/services/frontend/coordinator_review/frontendCreateCoordinatorReview";
@@ -35,6 +36,12 @@ const CoordinatorReviewPage = () => {
       onPrevious={handlePrevious}
     />,
     ...generateQuestions(sections),
+    <ConfirmCoordinatorReview
+      key='confirm'
+      coordinatorReviewId={coordinatorReview?.id}
+      onPrevious={handlePrevious}
+      onSubmit={handleSubmit}
+    />,
   ];
 
   function handlePrevious() {
@@ -59,8 +66,6 @@ const CoordinatorReviewPage = () => {
 
   function generateQuestions(sections) {
     const questions = [];
-    const questionNumber = countQuestions(sections);
-    let i = 0;
     for (let section of sections) {
       for (let question of section.questions) {
         questions.push(
@@ -71,14 +76,9 @@ const CoordinatorReviewPage = () => {
             title={section.title}
             question={question.label}
             onNext={handleNext}
-            disableNext={i === questionNumber - 1}
-            disableSubmit={i < questionNumber - 1}
             onPrevious={handlePrevious}
-            onSubmit={handleSubmit}
           />
         );
-
-        i++;
       }
     }
 
