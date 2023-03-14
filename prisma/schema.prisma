@@ -454,13 +454,14 @@ model CoordinatorReviewItem {
 }
 
 model SubmittedCoordinatorReview {
-  id                  String            @id @default(cuid())
-  createdAt           DateTime          @default(now())
-  updatedAt           DateTime          @updatedAt
-  IM                  IM                @relation(fields: [iMId], references: [id])
-  iMId                String            @unique
-  CoordinatorReview   CoordinatorReview @relation(fields: [coordinatorReviewId], references: [id])
-  coordinatorReviewId String            @unique
+  id                    String                 @id @default(cuid())
+  createdAt             DateTime               @default(now())
+  updatedAt             DateTime               @updatedAt
+  IM                    IM                     @relation(fields: [iMId], references: [id])
+  iMId                  String                 @unique
+  CoordinatorReview     CoordinatorReview      @relation(fields: [coordinatorReviewId], references: [id])
+  coordinatorReviewId   String                 @unique
+  CoordinatorSuggestion CoordinatorSuggestion?
 }
 
 model PeerSuggestion {
@@ -507,4 +508,12 @@ model ChairpersonSuggestionItem {
   remarks                 String?               @db.Text
 
   @@index([chairpersonSuggestionId])
+}
+
+model CoordinatorSuggestion {
+  id                           String                     @id @default(cuid())
+  createdAt                    DateTime                   @default(now())
+  updatedAt                    DateTime                   @updatedAt
+  SubmittedCoordinatorReview   SubmittedCoordinatorReview @relation(fields: [submittedCoordinatorReviewId], references: [id])
+  submittedCoordinatorReviewId String                     @unique
 }
