@@ -1,5 +1,6 @@
 import { sections } from "@/constants/questions";
 import { useState } from "react";
+import Suggestion from "../suggestion/Suggestion";
 import PeerPreviewQuestion from "./PeerPreviewQuestion";
 import PreviewSection from "./PreviewSection";
 
@@ -25,6 +26,8 @@ export default function ConfirmPeerReview({
           })}
         </PreviewSection>
       ))}
+
+      <Suggestion />
 
       <div className='flex mt-4'>
         <div className='flex-auto flex flex-row-reverse justify-between'>
