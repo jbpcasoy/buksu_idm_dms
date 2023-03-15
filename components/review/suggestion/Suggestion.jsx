@@ -1,7 +1,9 @@
+import useIM from "@/hooks/useIM";
 import usePeerSuggestion from "@/hooks/usePeerSuggestion";
 import usePeerSuggestionItems from "@/hooks/usePeerSuggestionItems";
 import useSubmittedPeerReview from "@/hooks/useSubmittedPeerReview";
 import frontendCreatePeerSuggestionItem from "@/services/frontend/peer_suggestion_item/frontendCreatePeerSuggestionItem";
+import { useRouter } from "next/router";
 import { useEffect } from "react";
 import PeerSuggestionItem from "./PeerSuggestionItem";
 import SuggestionAddModal from "./SuggestionAddModal";
@@ -20,6 +22,8 @@ export default function Suggestion({ peerReview, onFinish, onPrevious }) {
     peerSuggestionItemsLoading,
     refreshPeerSuggestionItems,
   } = usePeerSuggestionItems({ peerSuggestionId: peerSuggestion?.id });
+  const router = useRouter();
+  const { iM, iMError, iMLoading } = useIM(router?.query?.id);
 
   async function handleSubmit(values) {
     return frontendCreatePeerSuggestionItem({
@@ -109,6 +113,18 @@ export default function Suggestion({ peerReview, onFinish, onPrevious }) {
           </table>
         </div>
       </div>
+      {process.env.NODE_ENV === "production" && iM && (
+        <iframe
+          src={`https://docs.google.com/gview?url=${process.env.NEXT_PUBLIC_HOST_URL}/api/download/file/${iM?.ActiveFile?.File.fileName}&embedded=true`}
+          className='w-full h-screen'
+        />
+      )}
+      {process.env.NODE_ENV !== "production" && iM && (
+        <iframe
+          src={`${process.env.NEXT_PUBLIC_HOST_URL}/api/download/file/${iM?.ActiveFile?.File.fileName}`}
+          className='w-full h-screen'
+        />
+      )}
       <div className='flex mt-4'>
         <div className='flex-auto flex flex-row-reverse justify-between'>
           <button
