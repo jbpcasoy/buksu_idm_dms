@@ -1,53 +1,12 @@
-import useIM from "@/hooks/useIM";
-import usePeerSuggestion from "@/hooks/usePeerSuggestion";
-import usePeerSuggestionItems from "@/hooks/usePeerSuggestionItems";
-import useSubmittedPeerReview from "@/hooks/useSubmittedPeerReview";
-import frontendCreatePeerSuggestionItem from "@/services/frontend/peer_suggestion_item/frontendCreatePeerSuggestionItem";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
-import PeerSuggestionItem from "./PeerSuggestionItem";
 import SuggestionAddModal from "./SuggestionAddModal";
 
-export default function Suggestion({ peerReview, onFinish, onPrevious }) {
-  const {
-    submittedPeerReview,
-    submittedPeerReviewError,
-    submittedPeerReviewLoading,
-  } = useSubmittedPeerReview({ peerReviewId: peerReview.id });
-  const { peerSuggestion, peerSuggestionError, peerSuggestionLoading } =
-    usePeerSuggestion({ submittedPeerReviewId: submittedPeerReview?.id });
-  const {
-    peerSuggestionItems,
-    peerSuggestionItemsError,
-    peerSuggestionItemsLoading,
-    refreshPeerSuggestionItems,
-  } = usePeerSuggestionItems({ peerSuggestionId: peerSuggestion?.id });
-  const router = useRouter();
-  const { iM, iMError, iMLoading } = useIM(router?.query?.id);
-
-  async function handleSubmit(values) {
-    return frontendCreatePeerSuggestionItem({
-      peerSuggestionId: peerSuggestion.id,
-      value: values.value,
-      pageNumber: values.pageNumber,
-      remarks: values.remarks,
-    }).then(() => {
-      refreshPeerSuggestionItems();
-    });
-  }
-
-  useEffect(() => {
-    console.log({ submittedPeerReview });
-  }, [submittedPeerReview]);
-
-  useEffect(() => {
-    console.log({ peerSuggestion });
-  }, [peerSuggestion]);
-
-  useEffect(() => {
-    console.log({ peerSuggestionItems });
-  }, [peerSuggestionItems]);
-
+export default function Suggestion({
+  onFinish,
+  onPrevious,
+  children,
+  handleSubmit,
+  iM,
+}) {
   return (
     <div>
       <div className=' grid grid-flow-row items-center mt-5 relative overflow-x-auto'>
@@ -106,9 +65,7 @@ export default function Suggestion({ peerReview, onFinish, onPrevious }) {
             </thead>
 
             <tbody className='bg-white divide-gray-200 overflow-y-auto'>
-              {peerSuggestionItems.map((peerSuggestionItem) => (
-                <PeerSuggestionItem peerSuggestionItem={peerSuggestionItem} />
-              ))}
+              {children}
             </tbody>
           </table>
         </div>

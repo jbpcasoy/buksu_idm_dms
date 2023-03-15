@@ -3,7 +3,7 @@ import Instructions from "@/components/review/Instructions";
 import PeerQuestion from "@/components/review/PeerQuestion";
 import ConfirmPeerReview from "@/components/review/preview/ConfirmPeerReview";
 import ReviewPage from "@/components/review/ReviewPage";
-import Suggestion from "@/components/review/suggestion/Suggestion";
+import PeerSuggestion from "@/components/review/suggestion/PeerSuggestion";
 import { sections } from "@/constants/questions";
 import useUser from "@/hooks/useUser";
 import frontendReadIM from "@/services/frontend/im/frontendReadIM";
@@ -44,7 +44,7 @@ const PeerReviewPage = () => {
       onPrevious={handlePrevious}
       onSubmit={handleSubmit}
     />,
-    <Suggestion
+    <PeerSuggestion
       peerReview={peerReview}
       onFinish={() => {
         router.push(`/im/${iM.id}`);
