@@ -1,4 +1,5 @@
 import usePeerSuggestion from "@/hooks/usePeerSuggestion";
+import usePeerSuggestionItems from "@/hooks/usePeerSuggestionItems";
 import useSubmittedPeerReview from "@/hooks/useSubmittedPeerReview";
 import frontendCreatePeerSuggestionItem from "@/services/frontend/peer_suggesion_item/frontendCreatePeerSuggestionItem";
 import SuggestionItem from "@/views/suggestions/SuggestionItem";
@@ -13,6 +14,12 @@ export default function Suggestion({ peerReview }) {
   } = useSubmittedPeerReview({ peerReviewId: peerReview.id });
   const { peerSuggestion, peerSuggestionError, peerSuggestionLoading } =
     usePeerSuggestion({ submittedPeerReviewId: submittedPeerReview?.id });
+  const {
+    peerSuggestionItems,
+    peerSuggestionItemsError,
+    peerSuggestionItemsLoading,
+    refreshPeerSuggestionItems,
+  } = usePeerSuggestionItems({ peerSuggestionId: peerSuggestion?.id });
 
   async function handleSubmit(values) {
     return frontendCreatePeerSuggestionItem({
@@ -20,6 +27,8 @@ export default function Suggestion({ peerReview }) {
       value: values.value,
       pageNumber: values.pageNumber,
       remarks: values.remarks,
+    }).then(() => {
+      refreshPeerSuggestionItems();
     });
   }
 
@@ -30,6 +39,10 @@ export default function Suggestion({ peerReview }) {
   useEffect(() => {
     console.log({ peerSuggestion });
   }, [peerSuggestion]);
+
+  useEffect(() => {
+    console.log({ peerSuggestionItems });
+  }, [peerSuggestionItems]);
 
   return (
     <div className=' grid grid-flow-row items-center mt-5 relative overflow-x-auto'>
@@ -82,7 +95,14 @@ export default function Suggestion({ peerReview }) {
           </thead>
 
           <tbody className='bg-white divide-gray-200 overflow-y-auto'>
-            <SuggestionItem />
+            {peerSuggestionItems.map((peerSuggestionItem) => (
+              <SuggestionItem
+                actionTaken={peerSuggestionItem.actionTaken}
+                pageNumber={peerSuggestionItem.pageNumber}
+                remarks={peerSuggestionItem.remarks}
+                value={peerSuggestionItem.value}
+              />
+            ))}
           </tbody>
         </table>
       </div>
