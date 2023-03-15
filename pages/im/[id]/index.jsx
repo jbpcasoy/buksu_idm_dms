@@ -4,6 +4,7 @@ import frontendReadIM from "@/services/frontend/im/frontendReadIM";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import ToggleIM from "../ToggleIM";
 
 export default function ViewIM() {
   const router = useRouter();
@@ -26,13 +27,21 @@ export default function ViewIM() {
       <div className='bg-white rounded-md p-4'>
         <div className='flex items-center justify-between mb-4'>
           <h2 className='text-lg font-medium'>{iM?.title}</h2>
-          <div className='items-left'>
+          <div className="flex flex-row items-center">
+          <div className='flex justify-between gap-2'>
+            <ToggleIM
+              // href={`/im/${iM?.id}/ToggleIM`}
+              className='px-5 py-2.5 mr-2 shadow-xl text-sm font-medium text-CITLDarkBlue bg-transparent border border-CITLDarkBlue rounded-md hover:bg-CITLDarkBlue hover:text-CITLWhite focus:outline-none '
+            >
+              Edit IM
+            </ToggleIM>
             <Link
               href={`/im/${iM?.id}/versions`}
-              className='px-5 py-2.5 mr-2 shadow-xl text-sm font-medium text-CITLDarkBlue bg-CITLOrange border rounded-md  hover:text-CITLDarkBlue hover:border-CITLOrange focus:outline-none '
+              className='px-5 py-2.5 mr-2 shadow-xl text-sm font-medium text-CITLDarkBlue bg-CITLOrange border rounded-md hover:bg-transparent hover:text-CITLOrange hover:border-CITLOrange focus:outline-none '
             >
               Versions
-            </Link>
+            </Link></div>
+
             {user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId &&
               user?.ActiveFaculty?.ActiveCoordinator && (
                 <Link
