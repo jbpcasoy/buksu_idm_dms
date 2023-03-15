@@ -1,7 +1,36 @@
+import usePeerSuggestion from "@/hooks/usePeerSuggestion";
+import useSubmittedPeerReview from "@/hooks/useSubmittedPeerReview";
+import frontendCreatePeerSuggestionItem from "@/services/frontend/peer_suggesion_item/frontendCreatePeerSuggestionItem";
 import SuggestionItem from "@/views/suggestions/SuggestionItem";
+import { useEffect } from "react";
 import SuggestionModal from "./SuggestionModal";
 
-export default function Suggestion() {
+export default function Suggestion({ peerReview }) {
+  const {
+    submittedPeerReview,
+    submittedPeerReviewError,
+    submittedPeerReviewLoading,
+  } = useSubmittedPeerReview({ peerReviewId: peerReview.id });
+  const { peerSuggestion, peerSuggestionError, peerSuggestionLoading } =
+    usePeerSuggestion({ submittedPeerReviewId: submittedPeerReview?.id });
+
+  async function handleSubmit(values) {
+    return frontendCreatePeerSuggestionItem({
+      peerSuggestionId: peerSuggestion.id,
+      value: values.value,
+      pageNumber: values.pageNumber,
+      remarks: values.remarks,
+    });
+  }
+
+  useEffect(() => {
+    console.log({ submittedPeerReview });
+  }, [submittedPeerReview]);
+
+  useEffect(() => {
+    console.log({ peerSuggestion });
+  }, [peerSuggestion]);
+
   return (
     <div className=' grid grid-flow-row items-center mt-5 relative overflow-x-auto'>
       <div className=' md:w-full '>
@@ -16,16 +45,7 @@ export default function Suggestion() {
             <h2 className='text-center pt-2 font-semibold'>
               Part A. Program Review
             </h2>
-            {/* <button
-              title='Add IM'
-              className='flex items-center bg-CITLDarkBlue rounded-lg px-4 py-2.5 text-sm font-medium text-center shadow-md text-white '
-              // onClick={() => {
-              //   router.push("/im/new");
-              // }}
-            >
-              Add row
-            </button> */}
-            <SuggestionModal />
+            <SuggestionModal onSubmit={handleSubmit} />
           </div>
         </div>
 

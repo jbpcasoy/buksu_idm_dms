@@ -3,6 +3,7 @@ import Instructions from "@/components/review/Instructions";
 import PeerQuestion from "@/components/review/PeerQuestion";
 import ConfirmPeerReview from "@/components/review/preview/ConfirmPeerReview";
 import ReviewPage from "@/components/review/ReviewPage";
+import Suggestion from "@/components/review/suggestion/Suggestion";
 import { sections } from "@/constants/questions";
 import useUser from "@/hooks/useUser";
 import frontendReadIM from "@/services/frontend/im/frontendReadIM";
@@ -18,6 +19,7 @@ const PeerReviewPage = () => {
   const [iM, setIM] = useState();
   const [peerReview, setPeerReview] = useState();
   const [step, setStep] = useState(0);
+  const [submittedPeerReview, setSubmittedPeerReview] = useState();
   const [iMInfo, setIMInfo] = useState(
     <IMInfo
       key='info'
@@ -42,6 +44,7 @@ const PeerReviewPage = () => {
       onPrevious={handlePrevious}
       onSubmit={handleSubmit}
     />,
+    <Suggestion peerReview={peerReview} />,
   ];
 
   function handlePrevious() {
@@ -56,11 +59,14 @@ const PeerReviewPage = () => {
     return frontendCreateSubmittedPeerReview({
       peerReviewId: peerReview.id,
     })
+      .then((res) => {
+        setSubmittedPeerReview(res);
+      })
       .catch((err) => {
         console.error(err);
       })
       .finally(() => {
-        router.push(`/im/${iM.id}`);
+        handleNext();
       });
   }
 

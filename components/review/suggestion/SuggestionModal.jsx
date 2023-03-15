@@ -11,6 +11,7 @@ export default function SuggestionModal({ onSubmit }) {
       remarks: "",
     },
     validateOnMount: true,
+    validateOnChange: true,
     validationSchema: Yup.object({
       value: Yup.string().required("Suggestion is required"),
       pageNumber: Yup.number()
@@ -19,7 +20,9 @@ export default function SuggestionModal({ onSubmit }) {
       remarks: Yup.string().required("Remarks is required"),
     }),
     onSubmit: (values) => {
-      console.log({ values });
+      return onSubmit(values).then(() => {
+        formik.resetForm();
+      });
     },
   });
 
@@ -50,7 +53,7 @@ export default function SuggestionModal({ onSubmit }) {
               {/* <h3 className='mb-4 text-xl font-medium text-gray-900 dark:text-white '>
                 Add a Suggestion
               </h3> */}
-              <div class='flex items-start justify-between mb-4 border-b rounded-t dark:border-gray-600'>
+              <div class='flex items-start justify-between mb-4  rounded-t'>
                 <h3 class='text-xl font-semibold text-gray-900 dark:text-white'>
                   Add a Suggestion
                 </h3>
@@ -120,7 +123,12 @@ export default function SuggestionModal({ onSubmit }) {
                 </div>
                 <button
                   type='submit'
-                  disabled={!formik.isValid}
+                  disabled={
+                    !formik.isValid ||
+                    !formik.values.pageNumber ||
+                    !formik.values.remarks ||
+                    !formik.values.value
+                  }
                   data-modal-hide='suggestion-modal'
                   className='mt-2 w-full text-white enabled:bg-blue-700 enabled:hover:bg-blue-800 disabled:bg-CITLGray-main  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center '
                 >
