@@ -44,7 +44,13 @@ const PeerReviewPage = () => {
       onPrevious={handlePrevious}
       onSubmit={handleSubmit}
     />,
-    <Suggestion peerReview={peerReview} />,
+    <Suggestion
+      peerReview={peerReview}
+      onFinish={() => {
+        router.push(`/im/${iM.id}`);
+      }}
+      onPrevious={handlePrevious}
+    />,
   ];
 
   function handlePrevious() {
