@@ -1,7 +1,7 @@
 import usePeerSuggestion from "@/hooks/usePeerSuggestion";
 import usePeerSuggestionItems from "@/hooks/usePeerSuggestionItems";
 import useSubmittedPeerReview from "@/hooks/useSubmittedPeerReview";
-import frontendCreatePeerSuggestionItem from "@/services/frontend/peer_suggesion_item/frontendCreatePeerSuggestionItem";
+import frontendCreatePeerSuggestionItem from "@/services/frontend/peer_suggestion_item/frontendCreatePeerSuggestionItem";
 import { useEffect } from "react";
 import PeerSuggestionItem from "./PeerSuggestionItem";
 import SuggestionAddModal from "./SuggestionAddModal";

@@ -1,4 +1,4 @@
-import frontendReadPeerSuggestionItems from "@/services/frontend/peer_suggesion_item/frontendReadPeerSuggestionItems";
+import frontendReadPeerSuggestionItems from "@/services/frontend/peer_suggestion_item/frontendReadPeerSuggestionItems";
 import { useEffect, useState } from "react";
 
 export default function usePeerSuggestionItems({ peerSuggestionId }) {

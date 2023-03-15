@@ -1,4 +1,5 @@
-import frontendUpdatePeerSuggestionItem from "@/services/frontend/peer_suggesion_item/frontendUpdatePeerSuggestionItem";
+import frontendDeletePeerSuggestionItem from "@/services/frontend/peer_suggestion_item/frontendDeletePeerSuggestionItem";
+import frontendUpdatePeerSuggestionItem from "@/services/frontend/peer_suggestion_item/frontendUpdatePeerSuggestionItem";
 import SuggestionItem from "@/views/suggestions/SuggestionItem";
 import { useState } from "react";
 
@@ -16,6 +17,14 @@ export default function PeerSuggestionItem({ peerSuggestionItem }) {
     });
   }
 
+  async function handleDelete() {
+    return frontendDeletePeerSuggestionItem(peerSuggestionItem.id).then(() =>
+      setPeerSuggestionItemData(null)
+    );
+  }
+
+  if (!peerSuggestionItemData) return null;
+
   return (
     <SuggestionItem
       suggestionItemId={peerSuggestionItemData.id}
@@ -24,6 +33,7 @@ export default function PeerSuggestionItem({ peerSuggestionItem }) {
       remarks={peerSuggestionItemData.remarks}
       value={peerSuggestionItemData.value}
       onEdit={handleEdit}
+      onDelete={handleDelete}
     />
   );
 }

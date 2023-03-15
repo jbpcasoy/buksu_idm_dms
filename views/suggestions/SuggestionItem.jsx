@@ -20,7 +20,7 @@ export default function SuggestionItem({
       <td className='px-1py-4 '>{pageNumber}</td>
 
       <td className='px-1 py-4 '>{remarks}</td>
-      <td className='px-1 py-4 '>
+      <td className='px-1 py-4'>
         <SuggestionItemMenu
           suggestionItemId={suggestionItemId}
           value={value}
