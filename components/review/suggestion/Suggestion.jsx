@@ -2,9 +2,9 @@ import usePeerSuggestion from "@/hooks/usePeerSuggestion";
 import usePeerSuggestionItems from "@/hooks/usePeerSuggestionItems";
 import useSubmittedPeerReview from "@/hooks/useSubmittedPeerReview";
 import frontendCreatePeerSuggestionItem from "@/services/frontend/peer_suggesion_item/frontendCreatePeerSuggestionItem";
-import SuggestionItem from "@/views/suggestions/SuggestionItem";
 import { useEffect } from "react";
-import SuggestionModal from "./SuggestionModal";
+import PeerSuggestionItem from "./PeerSuggestionItem";
+import SuggestionAddModal from "./SuggestionAddModal";
 
 export default function Suggestion({ peerReview }) {
   const {
@@ -58,7 +58,7 @@ export default function Suggestion({ peerReview }) {
             <h2 className='text-center pt-2 font-semibold'>
               Part A. Program Review
             </h2>
-            <SuggestionModal onSubmit={handleSubmit} />
+            <SuggestionAddModal onSubmit={handleSubmit} />
           </div>
         </div>
 
@@ -91,17 +91,18 @@ export default function Suggestion({ peerReview }) {
               >
                 Remarks
               </th>
+              <th
+                scope='col'
+                className=' py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
+              >
+                Actions
+              </th>
             </tr>
           </thead>
 
           <tbody className='bg-white divide-gray-200 overflow-y-auto'>
             {peerSuggestionItems.map((peerSuggestionItem) => (
-              <SuggestionItem
-                actionTaken={peerSuggestionItem.actionTaken}
-                pageNumber={peerSuggestionItem.pageNumber}
-                remarks={peerSuggestionItem.remarks}
-                value={peerSuggestionItem.value}
-              />
+              <PeerSuggestionItem peerSuggestionItem={peerSuggestionItem} />
             ))}
           </tbody>
         </table>

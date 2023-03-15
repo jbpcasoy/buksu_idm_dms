@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import { useEffect } from "react";
 import * as Yup from "yup";
 
-export default function SuggestionModal({ onSubmit }) {
+export default function SuggestionAddModal({ onSubmit }) {
   const formik = useFormik({
     initialValues: {
       value: "",
@@ -17,7 +17,7 @@ export default function SuggestionModal({ onSubmit }) {
       pageNumber: Yup.number()
         .integer("Page Number must be an integer")
         .required("Page number is required"),
-      remarks: Yup.string().required("Remarks is required"),
+      remarks: Yup.string(),
     }),
     onSubmit: (values) => {
       return onSubmit(values).then(() => {
@@ -79,7 +79,11 @@ export default function SuggestionModal({ onSubmit }) {
                 </button>
               </div>
 
-              <form className='space-y-6' onSubmit={formik.handleSubmit}>
+              <form
+                className='space-y-6'
+                noValidate
+                onSubmit={formik.handleSubmit}
+              >
                 <div>
                   <textarea
                     className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white ${
@@ -126,7 +130,6 @@ export default function SuggestionModal({ onSubmit }) {
                   disabled={
                     !formik.isValid ||
                     !formik.values.pageNumber ||
-                    !formik.values.remarks ||
                     !formik.values.value
                   }
                   data-modal-hide='suggestion-modal'
