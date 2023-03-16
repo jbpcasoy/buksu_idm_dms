@@ -74,6 +74,7 @@ export default function ChairpersonSuggestion({
     >
       {chairpersonSuggestionItems.map((chairpersonSuggestionItem) => (
         <ChairpersonSuggestionItem
+          key={chairpersonSuggestionItem.id}
           chairpersonSuggestionItem={chairpersonSuggestionItem}
         />
       ))}

@@ -74,6 +74,7 @@ export default function CoordinatorSuggestion({
     >
       {coordinatorSuggestionItems.map((coordinatorSuggestionItem) => (
         <CoordinatorSuggestionItem
+          key={coordinatorSuggestionItem.id}
           coordinatorSuggestionItem={coordinatorSuggestionItem}
         />
       ))}

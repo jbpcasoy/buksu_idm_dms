@@ -56,7 +56,10 @@ export default function PeerSuggestion({ peerReview, onFinish, onPrevious }) {
       iM={iM}
     >
       {peerSuggestionItems.map((peerSuggestionItem) => (
-        <PeerSuggestionItem peerSuggestionItem={peerSuggestionItem} />
+        <PeerSuggestionItem
+          key={peerSuggestionItem.id}
+          peerSuggestionItem={peerSuggestionItem}
+        />
       ))}
     </Suggestion>
   );
