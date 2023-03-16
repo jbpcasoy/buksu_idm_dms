@@ -4,7 +4,7 @@ import useSubmittedPeerReview from "@/hooks/useSubmittedPeerReview";
 import PeerSuggestionItemView from "./PeerSuggestionItemView";
 import SuggestionView from "./SuggestionView";
 
-export default function PeerSuggestionView({ peerReview }) {
+export default function PeerSuggestionView({ peerReview, viewOnly = false }) {
   const {
     submittedPeerReview,
     submittedPeerReviewError,
@@ -20,7 +20,7 @@ export default function PeerSuggestionView({ peerReview }) {
   } = usePeerSuggestionItems({ peerSuggestionId: peerSuggestion?.id });
 
   return (
-    <SuggestionView title={"Peer Suggestions"}>
+    <SuggestionView title={"Peer Suggestions"} viewOnly={viewOnly}>
       {peerSuggestionItems.map((peerSuggestionItem) => (
         <PeerSuggestionItemView
           key={peerSuggestionItem.id}

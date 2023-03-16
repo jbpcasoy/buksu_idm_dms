@@ -7,6 +7,7 @@ export default function SuggestionItemView({
   pageNumber,
   remarks,
   onEdit,
+  viewOnly,
 }) {
   return (
     <tr
@@ -19,16 +20,18 @@ export default function SuggestionItemView({
       <td className='px-1py-4 '>{pageNumber}</td>
 
       <td className='px-1 py-4 '>{remarks}</td>
-      <td className='px-1 py-4'>
-        <ActionTakenModal
-          value={value}
-          pageNumber={pageNumber}
-          remarks={remarks}
-          actionTaken={actionTaken}
-          suggestionItemId={suggestionItemId}
-          onSubmit={onEdit}
-        />
-      </td>
+      {!viewOnly && (
+        <td className='px-1 py-4'>
+          <ActionTakenModal
+            value={value}
+            pageNumber={pageNumber}
+            remarks={remarks}
+            actionTaken={actionTaken}
+            suggestionItemId={suggestionItemId}
+            onSubmit={onEdit}
+          />
+        </td>
+      )}
     </tr>
   );
 }

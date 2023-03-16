@@ -3,6 +3,7 @@ import SuggestionItemView from "@/views/suggestions/SuggestionItemView";
 import { useState } from "react";
 
 export default function CoordinatorSuggestionItemView({
+  viewOnly,
   coordinatorSuggestionItem,
 }) {
   const [coordinatorSuggestionItemData, setCoordinatorSuggestionItemData] =
@@ -23,6 +24,7 @@ export default function CoordinatorSuggestionItemView({
 
   return (
     <SuggestionItemView
+      viewOnly={viewOnly}
       suggestionItemId={coordinatorSuggestionItemData.id}
       actionTaken={coordinatorSuggestionItemData.actionTaken}
       pageNumber={coordinatorSuggestionItemData.pageNumber}

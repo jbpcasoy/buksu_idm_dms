@@ -1,4 +1,4 @@
-export default function SuggestionView({ children, title }) {
+export default function SuggestionView({ children, title, viewOnly = false }) {
   return (
     <div>
       <p>{title}</p>
@@ -31,12 +31,14 @@ export default function SuggestionView({ children, title }) {
             >
               Remarks
             </th>
-            <th
-              scope='col'
-              className=' py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
-            >
-              Actions
-            </th>
+            {!viewOnly && (
+              <th
+                scope='col'
+                className=' py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
+              >
+                Actions
+              </th>
+            )}
           </tr>
         </thead>
 

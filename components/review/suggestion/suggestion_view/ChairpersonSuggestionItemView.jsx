@@ -4,6 +4,7 @@ import { useState } from "react";
 
 export default function ChairpersonSuggestionItemView({
   chairpersonSuggestionItem,
+  viewOnly = false,
 }) {
   const [chairpersonSuggestionItemData, setChairpersonSuggestionItemData] =
     useState(chairpersonSuggestionItem);
@@ -29,6 +30,7 @@ export default function ChairpersonSuggestionItemView({
       remarks={chairpersonSuggestionItemData.remarks}
       value={chairpersonSuggestionItemData.value}
       onEdit={handleUpdate}
+      viewOnly={viewOnly}
     />
   );
 }

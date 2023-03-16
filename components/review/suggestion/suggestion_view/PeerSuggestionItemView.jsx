@@ -2,7 +2,10 @@ import frontendUpdatePeerSuggestionItem from "@/services/frontend/peer_suggestio
 import SuggestionItemView from "@/views/suggestions/SuggestionItemView";
 import { useState } from "react";
 
-export default function PeerSuggestionItemView({ peerSuggestionItem }) {
+export default function PeerSuggestionItemView({
+  peerSuggestionItem,
+  viewOnly,
+}) {
   const [peerSuggestionItemData, setPeerSuggestionItemData] =
     useState(peerSuggestionItem);
 
@@ -18,6 +21,7 @@ export default function PeerSuggestionItemView({ peerSuggestionItem }) {
 
   return (
     <SuggestionItemView
+      viewOnly={viewOnly}
       suggestionItemId={peerSuggestionItemData.id}
       actionTaken={peerSuggestionItemData.actionTaken}
       pageNumber={peerSuggestionItemData.pageNumber}

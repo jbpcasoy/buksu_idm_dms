@@ -4,7 +4,10 @@ import useSubmittedCoordinatorReview from "@/hooks/useSubmittedCoordinatorReview
 import CoordinatorSuggestionItemView from "./CoordinatorSuggestionItemView";
 import SuggestionView from "./SuggestionView";
 
-export default function CoordinatorSuggestionView({ coordinatorReview }) {
+export default function CoordinatorSuggestionView({
+  coordinatorReview,
+  viewOnly = false,
+}) {
   const {
     submittedCoordinatorReview,
     submittedCoordinatorReviewError,
@@ -29,9 +32,10 @@ export default function CoordinatorSuggestionView({ coordinatorReview }) {
   });
 
   return (
-    <SuggestionView title={"Coordinator Suggestions"}>
+    <SuggestionView title={"Coordinator Suggestions"} viewOnly={viewOnly}>
       {coordinatorSuggestionItems.map((coordinatorSuggestionItem) => (
         <CoordinatorSuggestionItemView
+          viewOnly={viewOnly}
           key={coordinatorSuggestionItem.id}
           coordinatorSuggestionItem={coordinatorSuggestionItem}
         />

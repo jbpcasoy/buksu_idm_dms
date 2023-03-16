@@ -4,7 +4,10 @@ import useSubmittedChairpersonReview from "@/hooks/useSubmittedChairpersonReview
 import ChairpersonSuggestionItemView from "./ChairpersonSuggestionItemView";
 import SuggestionView from "./SuggestionView";
 
-export default function ChairpersonSuggestionView({ chairpersonReview }) {
+export default function ChairpersonSuggestionView({
+  chairpersonReview,
+  viewOnly = false,
+}) {
   const {
     submittedChairpersonReview,
     submittedChairpersonReviewError,
@@ -29,9 +32,10 @@ export default function ChairpersonSuggestionView({ chairpersonReview }) {
   });
 
   return (
-    <SuggestionView title={"Chairperson Suggestions"}>
+    <SuggestionView title={"Chairperson Suggestions"} viewOnly={viewOnly}>
       {chairpersonSuggestionItems.map((chairpersonSuggestionItem) => (
         <ChairpersonSuggestionItemView
+          viewOnly={viewOnly}
           key={chairpersonSuggestionItem.id}
           chairpersonSuggestionItem={chairpersonSuggestionItem}
         />
