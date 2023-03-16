@@ -20,6 +20,11 @@ export default async function readIM(id) {
             ChairpersonReview: true,
           },
         },
+        SubmittedCoordinatorReview: {
+          include: {
+            CoordinatorReview: true,
+          },
+        },
         ActiveFile: {
           select: {
             File: {
