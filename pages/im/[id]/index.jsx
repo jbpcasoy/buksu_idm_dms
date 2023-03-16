@@ -112,24 +112,28 @@ export default function ViewIM() {
           Edit IM
         </ToggleIM>
 
-        {iM?.SubmittedPeerReview?.PeerReview && (
-          <PeerSuggestionView
-            peerReview={iM?.SubmittedPeerReview?.PeerReview}
-          />
-        )}
-        {iM?.SubmittedChairpersonReview?.ChairpersonReview && (
-          <ChairpersonSuggestionView
-            chairpersonReview={
-              iM?.SubmittedChairpersonReview?.ChairpersonReview
-            }
-          />
-        )}
-        {iM?.SubmittedCoordinatorReview?.CoordinatorReview && (
-          <CoordinatorSuggestionView
-            coordinatorReview={
-              iM?.SubmittedCoordinatorReview?.CoordinatorReview
-            }
-          />
+        {iM?.owner?.userId === user?.id && (
+          <>
+            {iM?.SubmittedPeerReview?.PeerReview && (
+              <PeerSuggestionView
+                peerReview={iM?.SubmittedPeerReview?.PeerReview}
+              />
+            )}
+            {iM?.SubmittedChairpersonReview?.ChairpersonReview && (
+              <ChairpersonSuggestionView
+                chairpersonReview={
+                  iM?.SubmittedChairpersonReview?.ChairpersonReview
+                }
+              />
+            )}
+            {iM?.SubmittedCoordinatorReview?.CoordinatorReview && (
+              <CoordinatorSuggestionView
+                coordinatorReview={
+                  iM?.SubmittedCoordinatorReview?.CoordinatorReview
+                }
+              />
+            )}
+          </>
         )}
 
         {/* TODO change pdf url into dynamic */}
