@@ -11,15 +11,6 @@ export default function ToggleIM({ onSubmit, defaultName }) {
 
   return (
     <div className=''>
-      <button
-        data-modal-target='authentication-modal'
-        data-modal-toggle='authentication-modal'
-        class='block text-sm font-medium text-center px-4 py-2.5 text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-CITLDarkBlue hover:text-CITLWhite'
-        type='button'
-      >
-        Edit IM
-      </button>
-
       <div
         id='authentication-modal'
         tabindex='-1'
