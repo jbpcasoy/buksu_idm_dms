@@ -67,7 +67,7 @@ export default function DepartmentPage() {
       {loading && <p>Loading...</p>}
       {!loading && (
         <div>
-          <div>
+          {/* <div>
             <h1 className='text-xl'>{department?.name}</h1>
           </div>
           <div>
@@ -95,31 +95,114 @@ export default function DepartmentPage() {
               {department?.ActiveCoordinator?.Coordinator?.Faculty?.user
                 ?.name ?? "None"}
             </p>
-          </div>
+          </div> */}
 
           <div className='flex flex-wrap items-center border border-CITLGray-lighter bg-CITLWhite m-2 mt-5 relative rounded-lg shadow-lg overflow-hidden'>
             <div className='flex items-center bg-CITLGray-light justify-between py-3 px-3 w-full'>
-              <div className='flex space-between'>
-                <button
-                  type='button'
-                  className='inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue border-b-2 border-CITLOrange rounded-none'
-                >
-                  <span className='inline-flex items-center justify-center w-4 h-4 mr-1 text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
-                    2
-                  </span>
-                  <span>Active Faculty</span>
-                </button>
-              </div>
+              {/* 1. if nav IS active (text-CITLDarkBlue border-b-2 border-CITLOrange) if nav is NOT active (text-CITLGray-main)
+                2. if nav IS active Badge should be active as well. Otherwise, it should be hidden.
+            
+            */}
+              <nav className='flex' aria-label='Breadcrumb'>
+                <ol className='inline-flex items-center space-x-1 md:space-x-3'>
+                  <li className='inline-flex items-center'>
+                    <button
+                      type='button'
+                      href='#'
+                      className='inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue border-b-2 border-CITLOrange rounded-none'
+                    >
+                      <span className='inline-flex items-center justify-center w-4 h-4 mr-1 text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
+                        2
+                      </span>
+                      Colleges
+                    </button>
+                  </li>
+                  <li>
+                    <div className='flex items-center'>
+                      <svg
+                        aria-hidden='true'
+                        className='w-6 h-6 text-gray-400'
+                        fill='currentColor'
+                        viewBox='0 0 20 20'
+                        xmlns='http://www.w3.org/2000/svg'
+                      >
+                        <path
+                          fill-rule='evenodd'
+                          d='M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z'
+                          clip-rule='evenodd'
+                        ></path>
+                      </svg>
+                      <button
+                        href='#'
+                        className='inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue border-b-2 border-CITLOrange rounded-none'
+                      >
+                        <span className='inline-flex items-center justify-center w-4 h-4 mr-1 text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
+                          2
+                        </span>
+                        Departments
+                      </button>
+                    </div>
+                  </li>
+                  <li aria-current='page'>
+                    <div className='flex items-center'>
+                      <svg
+                        aria-hidden='true'
+                        className='w-6 h-6 text-gray-400'
+                        fill='currentColor'
+                        viewBox='0 0 20 20'
+                        xmlns='http://www.w3.org/2000/svg'
+                      >
+                        <path
+                          fill-rule='evenodd'
+                          d='M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z'
+                          clip-rule='evenodd'
+                        ></path>
+                      </svg>
+                      <span className='inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue border-b-2 border-CITLOrange rounded-none'>
+                        <span className='inline-flex items-center justify-center w-4 h-4 mr-1 text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
+                          2
+                        </span>
+                        Faculty
+                      </span>
+                    </div>
+                  </li>
+                </ol>
+              </nav>
 
-              <p>{department?.name}</p>
+              {/* if the chairperson and coordinator IS active both avatars should be visible. if one is NOT active it should be hidden*/}
 
-              <div className='flex'>
-                <input
-                  className='w-72 py-2 pr-10 pl-4 bg-CITLGray-light border-CITLGray-lighter border text-CITLGray-main rounded-lg mr-5'
-                  type='text'
-                  placeholder='Name'
-                  onChange={debouncedHandleNameChange}
-                ></input>
+              <div className='flex space-between gap-6 items-center'>
+                <div className='flex -space-x-4'>
+                  <img
+                    className='w-10 h-10 border-2 border-CITLOrange rounded-full dark:border-gray-800'
+                    src={
+                      department?.ActiveChairperson?.Chairperson?.Faculty?.user
+                        ?.image
+                    }
+                    title='Chairperson'
+                    alt=''
+                  />
+                  <img
+                    className='w-10 h-10 border-2 border-CITLOrange rounded-full dark:border-gray-800'
+                    src={
+                      department?.ActiveCoordinator?.Coordinator?.Faculty?.user
+                        ?.image
+                    }
+                    title='Coordinator'
+                    alt=''
+                  />
+                </div>
+
+                {/* <p>{department?.name}</p> */}
+
+                <div className='flex'>
+                  <input
+                    className='w-72 py-2 pr-10 pl-4 bg-CITLGray-light border-CITLGray-lighter border text-CITLGray-main rounded-lg mr-5'
+                    type='text'
+                    placeholder='Name'
+                    onChange={debouncedHandleNameChange}
+                  ></input>
+                </div>
               </div>
             </div>
             <table className='min-w-full divide-y divide-CITLGray-light'>
@@ -127,7 +210,7 @@ export default function DepartmentPage() {
                 <tr>
                   <th
                     scope='col'
-                    className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
+                    className='px-6 py-3 w-20 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                   >
                     Image
                   </th>

@@ -109,15 +109,53 @@ export default function Instructions({ onNext, onPrevious }) {
         <div className='flex-auto flex flex-row-reverse justify-between'>
           <button
             onClick={onNext}
-            className='text-base  ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer shadow-xl hover:bg-CITLOrange bg-CITLDarkBlue text-CITLWhite  '
+            class='group relative inline-flex items-center overflow-hidden rounded bg-CITLDarkBlue px-8 py-3 text-white focus:outline-none focus:ring active:bg-CITLDarkBlue'
           >
-            Next
+            <span class='absolute right-0 translate-x-full transition-transform group-hover:-translate-x-4'>
+              <svg
+                class='h-5 w-5'
+                xmlns='http://www.w3.org/2000/svg'
+                fill='none'
+                viewBox='0 0 24 24'
+                stroke='currentColor'
+              >
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M17 8l4 4m0 0l-4 4m4-4H3'
+                />
+              </svg>
+            </span>
+
+            <span class='text-sm font-medium transition-all group-hover:mr-4'>
+              Next
+            </span>
           </button>
           <button
             onClick={onPrevious}
-            className='text-base  flex justify-center px-4 py-2 rounded font-bold cursor-pointer shadow-xl hover:border-CITLOrange hover:text-CITLOrange bg-gray-100  text-CITLGray-main  border  border-CITLGray-main'
+            class='group relative inline-flex items-center overflow-hidden rounded border border-current px-8 py-3 text-CITLGray-main focus:outline-none focus:ring active:text-CITLGray-main'
           >
-            Previous
+            <span class='absolute left-0 -translate-x-full transition-transform group-hover:translate-x-4'>
+              <svg
+                class='h-5 w-5 rotate-180'
+                xmlns='http://www.w3.org/2000/svg'
+                fill='none'
+                viewBox='0 0 24 24'
+                stroke='currentColor'
+              >
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M17 8l4 4m0 0l-4 4m4-4H3'
+                />
+              </svg>
+            </span>
+
+            <span class='text-sm font-medium transition-all group-hover:ml-4'>
+              Previous
+            </span>
           </button>
         </div>
       </div>

@@ -69,10 +69,30 @@ export default function IMInfo({
         <div className='flex-auto flex flex-row-reverse justify-between'>
           <button
             disabled={loading}
-            onClick={onNext} // continue
-            className='text-base  ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer shadow-xl enabled:hover:bg-CITLOrange disabled:bg-CITLGray-lighter disabled:border disabled:border-CITLGray-main disabled:text-CITLGray-main bg-CITLDarkBlue text-CITLWhite'
+            onClick={onNext}
+            // className='text-base  ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer shadow-xl enabled:hover:bg-CITLOrange disabled:bg-CITLGray-lighter disabled:border disabled:border-CITLGray-main disabled:text-CITLGray-main bg-CITLDarkBlue text-CITLWhite'
+            class='group relative inline-flex items-center overflow-hidden rounded bg-CITLDarkBlue px-8 py-3 text-white focus:outline-none focus:ring active:bg-CITLDarkBlue disabled:bg-CITLGray-lighter disabled:border disabled:border-CITLGray-main disabled:text-CITLGray-main'
           >
-            Next
+            <span class='absolute right-0 translate-x-full transition-transform group-hover:-translate-x-4'>
+              <svg
+                class='h-5 w-5'
+                xmlns='http://www.w3.org/2000/svg'
+                fill='none'
+                viewBox='0 0 24 24'
+                stroke='currentColor'
+              >
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M17 8l4 4m0 0l-4 4m4-4H3'
+                />
+              </svg>
+            </span>
+
+            <span class='text-sm font-medium transition-all group-hover:mr-4'>
+              Next
+            </span>
           </button>
         </div>
       </div>
