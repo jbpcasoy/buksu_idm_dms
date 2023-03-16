@@ -44,6 +44,7 @@ const ChairpersonReviewPage = () => {
       onSubmit={handleSubmit}
     />,
     <ChairpersonSuggestion
+      key='suggestion'
       chairpersonReview={chairpersonReview}
       onFinish={() => {
         router.push(`/im/${iM.id}`);

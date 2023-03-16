@@ -44,6 +44,7 @@ const PeerReviewPage = () => {
       onSubmit={handleSubmit}
     />,
     <PeerSuggestion
+      key='suggestion'
       peerReview={peerReview}
       onFinish={() => {
         router.push(`/im/${iM.id}`);

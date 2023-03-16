@@ -41,6 +41,35 @@ export default function Home() {
     let subscribe = true;
     setLoading(true);
 
+    async function getMyIMs(filter) {
+      return frontendGetIMs({
+        ownerId: user.ActiveFaculty.Faculty.id,
+        ...filter,
+      });
+    }
+
+    async function getToReview(filter) {
+      return frontendGetIMs({
+        notOwnerId: user.ActiveFaculty.Faculty.id,
+        departmentId: user.ActiveFaculty.Faculty.departmentId,
+        ...filter,
+      });
+    }
+
+    async function getDepartmentIms(filter) {
+      return frontendGetIMs({
+        departmentId: user.ActiveFaculty.Faculty.departmentId,
+        ...filter,
+      });
+    }
+
+    async function getReviewed(filter) {
+      return frontendGetIMs({
+        reviewerId: user.id,
+        ...filter,
+      });
+    }
+
     const filter = {
       page: state.page,
       limit: state.limit,
@@ -79,36 +108,15 @@ export default function Home() {
     return () => {
       subscribe = false;
     };
-  }, [user, state, tab]);
-
-  async function getMyIMs(filter) {
-    return frontendGetIMs({
-      ownerId: user.ActiveFaculty.Faculty.id,
-      ...filter,
-    });
-  }
-
-  async function getToReview(filter) {
-    return frontendGetIMs({
-      notOwnerId: user.ActiveFaculty.Faculty.id,
-      departmentId: user.ActiveFaculty.Faculty.departmentId,
-      ...filter,
-    });
-  }
-
-  async function getDepartmentIms(filter) {
-    return frontendGetIMs({
-      departmentId: user.ActiveFaculty.Faculty.departmentId,
-      ...filter,
-    });
-  }
-
-  async function getReviewed(filter) {
-    return frontendGetIMs({
-      reviewerId: user.id,
-      ...filter,
-    });
-  }
+  }, [
+    user,
+    state,
+    tab,
+    Tabs.DepartmentIMs,
+    Tabs.MyIMs,
+    Tabs.Reviewed,
+    Tabs.ToReview,
+  ]);
 
   function handleSerialNumberChange(e) {
     setState((prev) => ({ ...prev, serialNumber: e.target.value }));

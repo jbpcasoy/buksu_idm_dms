@@ -44,6 +44,7 @@ const CoordinatorReviewPage = () => {
       onSubmit={handleSubmit}
     />,
     <CoordinatorSuggestion
+      key='suggestion'
       coordinatorReview={coordinatorReview}
       onFinish={() => {
         router.push(`/im/${iM.id}`);
