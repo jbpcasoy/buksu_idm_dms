@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default async function frontendUpdatePeerSuggestionItem(
   id,
-  { value, pageNumber, remarks }
+  { value, pageNumber, remarks, actionTaken }
 ) {
   try {
     const peerSuggestionItem = await axios.put(
@@ -11,6 +11,7 @@ export default async function frontendUpdatePeerSuggestionItem(
         value,
         pageNumber,
         remarks,
+        actionTaken,
       }
     );
     return peerSuggestionItem.data;

@@ -1,4 +1,5 @@
 import Layout from "@/components/layout/Layout";
+import PeerSuggestionView from "@/components/review/suggestion/suggestion_view/PeerSuggestionView";
 import useIM from "@/hooks/useIM";
 import useUser from "@/hooks/useUser";
 import Link from "next/link";
@@ -108,6 +109,12 @@ export default function ViewIM() {
         <ToggleIM class='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'>
           Edit IM
         </ToggleIM>
+
+        {iM?.SubmittedPeerReview?.PeerReview && (
+          <PeerSuggestionView
+            peerReview={iM?.SubmittedPeerReview?.PeerReview}
+          />
+        )}
 
         {/* TODO change pdf url into dynamic */}
         {process.env.NODE_ENV === "production" && iM && (

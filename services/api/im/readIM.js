@@ -10,6 +10,11 @@ export default async function readIM(id) {
       },
       include: {
         owner: true,
+        SubmittedPeerReview: {
+          include: {
+            PeerReview: true,
+          },
+        },
         ActiveFile: {
           select: {
             File: {
