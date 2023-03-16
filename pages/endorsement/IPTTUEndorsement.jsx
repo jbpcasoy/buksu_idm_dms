@@ -1,7 +1,15 @@
 import Layout from "@/components/layout/Layout";
 import QAMIS from "@/views/QAMIS/QAMIS";
+import { useState } from "react";
 
 export default function Home() {
+  const [loading, setLoading] = useState(false);
+  const [total, setTotal] = useState(0);
+  const [state, setState] = useState({
+    limit: 10,
+    page: 1,
+  });
+
   return (
     <Layout>
       <div className=' grid grid-flow-row items-center border border-CITLGray-lighter bg-CITLWhite m-2 mt-5 relative rounded-lg shadow-lg overflow-x-auto'>
