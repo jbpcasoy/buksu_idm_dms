@@ -27,26 +27,28 @@ export default function ViewIM() {
       <div className='bg-white rounded-md p-4'>
         <div className='flex items-center justify-between mb-4'>
           <h2 className='text-lg font-medium'>{iM?.title}</h2>
-          <div className="flex flex-row items-center">
-          <div className='flex justify-between gap-2'>
-            <ToggleIM
-              // href={`/im/${iM?.id}/ToggleIM`}
-              className='px-5 py-2.5 mr-2 shadow-xl text-sm font-medium text-CITLDarkBlue bg-transparent border border-CITLDarkBlue rounded-md hover:bg-CITLDarkBlue hover:text-CITLWhite focus:outline-none '
-            >
-              Edit IM
-            </ToggleIM>
-            <Link
-              href={`/im/${iM?.id}/versions`}
-              className='px-5 py-2.5 mr-2 shadow-xl text-sm font-medium text-CITLDarkBlue bg-CITLOrange border rounded-md hover:bg-transparent hover:text-CITLOrange hover:border-CITLOrange focus:outline-none '
-            >
-              Versions
-            </Link></div>
+          <div className='flex flex-row items-center'>
+            <div className='flex justify-between gap-2'>
+              {/* EDIT IM should be visible and accessible only for the owner of the IM */}
+              <ToggleIM
+                // href={`/im/${iM?.id}/ToggleIM`}
+                className='px-5 py-2.5 mr-2 shadow-xl text-sm font-medium text-CITLDarkBlue bg-transparent border border-CITLDarkBlue rounded-md hover:bg-CITLDarkBlue hover:text-CITLWhite focus:outline-none '
+              >
+                Edit IM
+              </ToggleIM>
+              <Link
+                href={`/im/${iM?.id}/versions`}
+                className='px-5 py-2.5 mr-2 shadow-xl text-sm font-medium text-CITLDarkBlue bg-CITLOrange border rounded-md hover:bg-transparent hover:text-CITLOrange hover:border-CITLOrange focus:outline-none '
+              >
+                Versions
+              </Link>
+            </div>
 
             {user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId &&
               user?.ActiveFaculty?.ActiveCoordinator && (
                 <Link
                   href={`/im/${iM?.id}/review/coordinator`}
-                  className='text-CITLWhite bg-CITLDarkBlue font-medium text-sm px-5 py-2.5 mr-2 rounded-md shadow-xl  hover:text-CITLWhite hover:border-CITLDarkBlue focus:outline-none'
+                  className='text-CITLWhite bg-CITLDarkBlue font-medium text-sm px-5 py-2.5 mr-2 rounded-md shadow-xl  hover:text-CITLDarkBlue hover:border-CITLDarkBlue hover:bg-transparent border focus:outline-none'
                 >
                   Coordinator Review
                 </Link>
@@ -55,7 +57,7 @@ export default function ViewIM() {
               user?.ActiveFaculty?.ActiveChairperson && (
                 <Link
                   href={`/im/${iM?.id}/review/chairperson`}
-                  className='text-CITLWhite bg-CITLDarkBlue font-medium text-sm px-5 py-2.5 mr-2 rounded-md shadow-xl  hover:text-CITLWhite hover:border-CITLDarkBlue focus:outline-none'
+                  className='text-CITLWhite bg-CITLDarkBlue font-medium text-sm px-5 py-2.5 mr-2 rounded-md shadow-xl  hover:text-CITLDarkBlue hover:border-CITLDarkBlue hover:bg-transparent border focus:outline-none'
                 >
                   Chairperson Review
                 </Link>
@@ -63,7 +65,7 @@ export default function ViewIM() {
             {user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId && (
               <Link
                 href={`/im/${iM?.id}/review/peer`}
-                className='text-CITLWhite bg-CITLDarkBlue font-medium text-sm px-5 py-2.5 mr-2 rounded-md shadow-xl  hover:text-CITLWhite hover:border-CITLDarkBlue focus:outline-none'
+                className='text-CITLWhite bg-CITLDarkBlue font-medium text-sm px-5 py-2.5 mr-2 rounded-md shadow-xl  hover:text-CITLDarkBlue hover:border-CITLDarkBlue hover:bg-transparent border focus:outline-none'
               >
                 Peer Review
               </Link>
