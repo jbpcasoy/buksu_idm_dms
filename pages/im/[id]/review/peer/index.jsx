@@ -3,6 +3,7 @@ import Instructions from "@/components/review/Instructions";
 import PeerQuestion from "@/components/review/PeerQuestion";
 import ConfirmPeerReview from "@/components/review/preview/ConfirmPeerReview";
 import ReviewPage from "@/components/review/ReviewPage";
+import PeerSuggestion from "@/components/review/suggestion/PeerSuggestion";
 import { sections } from "@/constants/questions";
 import useUser from "@/hooks/useUser";
 import frontendReadIM from "@/services/frontend/im/frontendReadIM";
@@ -42,6 +43,14 @@ const PeerReviewPage = () => {
       onPrevious={handlePrevious}
       onSubmit={handleSubmit}
     />,
+    <PeerSuggestion
+      key='suggestion'
+      peerReview={peerReview}
+      onFinish={() => {
+        router.push(`/im/${iM.id}`);
+      }}
+      onPrevious={handlePrevious}
+    />,
   ];
 
   function handlePrevious() {
@@ -60,7 +69,7 @@ const PeerReviewPage = () => {
         console.error(err);
       })
       .finally(() => {
-        router.push(`/im/${iM.id}`);
+        handleNext();
       });
   }
 
