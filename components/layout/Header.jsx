@@ -1,9 +1,14 @@
 import LoginButton from "@/views/LoginButton";
+import { initDropdowns } from "flowbite";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
+import { useEffect } from "react";
 
 export default function Header() {
   const { data: session } = useSession();
+  useEffect(() => {
+    initDropdowns();
+  });
 
   return (
     <nav className='fixed top-0 z-50 w-full bg-CITLDarkBlue border-b border-CITLGray-main'>

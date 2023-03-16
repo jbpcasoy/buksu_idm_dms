@@ -67,6 +67,8 @@ export default function ChairpersonSuggestion({
 
   return (
     <Suggestion
+      showCoordinatorSuggestion
+      showPeerSuggestion
       handleSubmit={handleSubmit}
       onFinish={onFinish}
       onPrevious={onPrevious}

@@ -1,4 +1,7 @@
 import Layout from "@/components/layout/Layout";
+import ChairpersonSuggestionView from "@/components/review/suggestion/suggestion_view/ChairpersonSuggestionView";
+import CoordinatorSuggestionView from "@/components/review/suggestion/suggestion_view/CoordinatorSuggestionView";
+import PeerSuggestionView from "@/components/review/suggestion/suggestion_view/PeerSuggestionView";
 import useIM from "@/hooks/useIM";
 import useUser from "@/hooks/useUser";
 import Link from "next/link";
@@ -108,6 +111,30 @@ export default function ViewIM() {
         <ToggleIM class='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'>
           Edit IM
         </ToggleIM>
+
+        {iM?.owner?.userId === user?.id && (
+          <>
+            {iM?.SubmittedPeerReview?.PeerReview && (
+              <PeerSuggestionView
+                peerReview={iM?.SubmittedPeerReview?.PeerReview}
+              />
+            )}
+            {iM?.SubmittedChairpersonReview?.ChairpersonReview && (
+              <ChairpersonSuggestionView
+                chairpersonReview={
+                  iM?.SubmittedChairpersonReview?.ChairpersonReview
+                }
+              />
+            )}
+            {iM?.SubmittedCoordinatorReview?.CoordinatorReview && (
+              <CoordinatorSuggestionView
+                coordinatorReview={
+                  iM?.SubmittedCoordinatorReview?.CoordinatorReview
+                }
+              />
+            )}
+          </>
+        )}
 
         {/* TODO change pdf url into dynamic */}
         {process.env.NODE_ENV === "production" && iM && (

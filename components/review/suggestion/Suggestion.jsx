@@ -1,4 +1,7 @@
 import SuggestionAddModal from "./SuggestionAddModal";
+import ChairpersonSuggestionView from "./suggestion_view/ChairpersonSuggestionView";
+import CoordinatorSuggestionView from "./suggestion_view/CoordinatorSuggestionView";
+import PeerSuggestionView from "./suggestion_view/PeerSuggestionView";
 
 export default function Suggestion({
   onFinish,
@@ -6,6 +9,9 @@ export default function Suggestion({
   children,
   handleSubmit,
   iM,
+  showPeerSuggestion = false,
+  showChairpersonSuggestion = false,
+  showCoordinatorSuggestion = false,
 }) {
   return (
     <div>
@@ -16,6 +22,31 @@ export default function Suggestion({
           </h2>
           {/* <p className='mb-8 text-sm'>for IPTTU Endorsement</p> */}
         </div>
+
+        {iM?.SubmittedPeerReview?.PeerReview && showPeerSuggestion && (
+          <PeerSuggestionView
+            viewOnly={true}
+            peerReview={iM?.SubmittedPeerReview?.PeerReview}
+          />
+        )}
+        {iM?.SubmittedChairpersonReview?.ChairpersonReview &&
+          showChairpersonSuggestion && (
+            <ChairpersonSuggestionView
+              viewOnly={true}
+              chairpersonReview={
+                iM?.SubmittedChairpersonReview?.ChairpersonReview
+              }
+            />
+          )}
+        {iM?.SubmittedCoordinatorReview?.CoordinatorReview &&
+          showCoordinatorSuggestion && (
+            <CoordinatorSuggestionView
+              viewOnly={true}
+              coordinatorReview={
+                iM?.SubmittedCoordinatorReview?.CoordinatorReview
+              }
+            />
+          )}
         <div className='border border-CITLGray-lighter rounded-lg mb-5'>
           <div className='bg-CITLGray-light rounded-t-lg py-3 px-3 pr-3'>
             <div className='flex justify-between text-center '>
