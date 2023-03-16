@@ -3,6 +3,7 @@ import IMInfo from "@/components/review/IMInfo";
 import Instructions from "@/components/review/Instructions";
 import ConfirmChairpersonReview from "@/components/review/preview/ConfirmChairpersonReview";
 import ReviewPage from "@/components/review/ReviewPage";
+import ChairpersonSuggestion from "@/components/review/suggestion/ChairpersonSuggestion";
 import { sections } from "@/constants/questions";
 import useUser from "@/hooks/useUser";
 import frontendCreateChairpersonReview from "@/services/frontend/chairperson_review/frontendCreateChairpersonReview";
@@ -42,6 +43,13 @@ const ChairpersonReviewPage = () => {
       onPrevious={handlePrevious}
       onSubmit={handleSubmit}
     />,
+    <ChairpersonSuggestion
+      chairpersonReview={chairpersonReview}
+      onFinish={() => {
+        router.push(`/im/${iM.id}`);
+      }}
+      onPrevious={handlePrevious}
+    />,
   ];
 
   function handlePrevious() {
@@ -60,7 +68,7 @@ const ChairpersonReviewPage = () => {
         console.error(err);
       })
       .finally(() => {
-        router.push(`/im/${iM.id}`);
+        handleNext();
       });
   }
 
@@ -68,18 +76,19 @@ const ChairpersonReviewPage = () => {
     const questions = [];
     for (let section of sections) {
       for (let question of section.questions) {
-        questions.push(
-          <ChairpersonQuestion
-            key={question.id}
-            questionId={question.id}
-            chairpersonReview={chairpersonReview}
-            title={section.title}
-            question={question.label}
-            onNext={handleNext}
-            onPrevious={handlePrevious}
-            onSubmit={handleSubmit}
-          />
-        );
+        if (question.active) {
+          questions.push(
+            <ChairpersonQuestion
+              key={question.id}
+              questionId={question.id}
+              chairpersonReview={chairpersonReview}
+              title={section.title}
+              question={question.label}
+              onNext={handleNext}
+              onPrevious={handlePrevious}
+            />
+          );
+        }
       }
     }
 

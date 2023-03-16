@@ -1,5 +1,5 @@
 import frontendCreatePeerSuggestion from "@/services/frontend/peer_suggestion/frontendCreatePeerSuggestion";
-import frontEndReadPeerSuggestions from "@/services/frontend/peer_suggestion/frontEndReadPeerSuggestions";
+import frontendReadPeerSuggestions from "@/services/frontend/peer_suggestion/frontendReadPeerSuggestions";
 import { useEffect, useState } from "react";
 
 export default function usePeerSuggestion({ submittedPeerReviewId }) {
@@ -19,7 +19,7 @@ export default function usePeerSuggestion({ submittedPeerReviewId }) {
       })
       .catch((err) => {
         if (!isSubscribed) return;
-        frontEndReadPeerSuggestions({ submittedPeerReviewId })
+        frontendReadPeerSuggestions({ submittedPeerReviewId })
           .then((res) => {
             if (!isSubscribed) return;
             setPeerSuggestion(res.data[0]);

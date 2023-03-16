@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export default async function frontEndReadPeerSuggestions({
+export default async function frontendReadPeerSuggestions({
   submittedPeerReviewId,
 }) {
   try {

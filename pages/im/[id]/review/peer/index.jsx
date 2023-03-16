@@ -19,7 +19,6 @@ const PeerReviewPage = () => {
   const [iM, setIM] = useState();
   const [peerReview, setPeerReview] = useState();
   const [step, setStep] = useState(0);
-  const [submittedPeerReview, setSubmittedPeerReview] = useState();
   const [iMInfo, setIMInfo] = useState(
     <IMInfo
       key='info'
@@ -65,9 +64,6 @@ const PeerReviewPage = () => {
     return frontendCreateSubmittedPeerReview({
       peerReviewId: peerReview.id,
     })
-      .then((res) => {
-        setSubmittedPeerReview(res);
-      })
       .catch((err) => {
         console.error(err);
       })
