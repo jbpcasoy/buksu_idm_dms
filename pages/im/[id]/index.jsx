@@ -1,4 +1,5 @@
 import Layout from "@/components/layout/Layout";
+import ChairpersonSuggestionView from "@/components/review/suggestion/suggestion_view/ChairpersonSuggestionView";
 import PeerSuggestionView from "@/components/review/suggestion/suggestion_view/PeerSuggestionView";
 import useIM from "@/hooks/useIM";
 import useUser from "@/hooks/useUser";
@@ -113,6 +114,13 @@ export default function ViewIM() {
         {iM?.SubmittedPeerReview?.PeerReview && (
           <PeerSuggestionView
             peerReview={iM?.SubmittedPeerReview?.PeerReview}
+          />
+        )}
+        {iM?.SubmittedChairpersonReview?.ChairpersonReview && (
+          <ChairpersonSuggestionView
+            chairpersonReview={
+              iM?.SubmittedChairpersonReview?.ChairpersonReview
+            }
           />
         )}
 

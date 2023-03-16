@@ -15,6 +15,11 @@ export default async function readIM(id) {
             PeerReview: true,
           },
         },
+        SubmittedChairpersonReview: {
+          include: {
+            ChairpersonReview: true,
+          },
+        },
         ActiveFile: {
           select: {
             File: {
