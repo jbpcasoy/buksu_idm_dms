@@ -73,6 +73,7 @@ export default function DepartmentPage() {
           <div>
             <h2 className='text-lg'>Chairperson:</h2>
             <img
+              alt='Chairperson'
               src={
                 department?.ActiveChairperson?.Chairperson?.Faculty?.user?.image
               }
@@ -85,6 +86,7 @@ export default function DepartmentPage() {
           <div>
             <h2 className='text-lg'>Coordinator:</h2>
             <img
+              alt='Coordinator'
               src={
                 department?.ActiveCoordinator?.Coordinator?.Faculty?.user?.image
               }

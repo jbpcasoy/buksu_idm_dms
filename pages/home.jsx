@@ -26,7 +26,7 @@ export default function Home() {
               <div class='m-5 relative bg-white opacity-90 rounded-lg shadow-lg '>
                 <div class='px-6 py-12 mt-64 justify-center lg:px-8'>
                   <div className='justify-center flex mb-8'>
-                    <img src='/IMAGES/CITL.png' className='h-20 ' />
+                    <img src='/IMAGES/CITL.png' className='h-20 ' alt='CITL' />
                   </div>
                   {/* <h3 class='mb-8 text-xl font-medium break-words leading-normal text-gray-900 '>
                     Welcome to Center for Innovative Teaching and Learning.

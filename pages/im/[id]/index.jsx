@@ -1,24 +1,14 @@
 import Layout from "@/components/layout/Layout";
+import useIM from "@/hooks/useIM";
 import useUser from "@/hooks/useUser";
-import frontendReadIM from "@/services/frontend/im/frontendReadIM";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 import ToggleIM from "../ToggleIM";
 
 export default function ViewIM() {
   const router = useRouter();
   const { user } = useUser();
-  const [iM, setIM] = useState();
-
-  useEffect(() => {
-    const id = router?.query?.id;
-    if (!id) return;
-
-    frontendReadIM(id).then((res) => {
-      setIM(res);
-    });
-  }, [router?.query?.id]);
+  const { iM, iMError, iMLoading } = useIM(router?.query?.id);
 
   console.log({ router });
 
