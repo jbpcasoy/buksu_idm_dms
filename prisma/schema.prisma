@@ -537,17 +537,24 @@ model CoordinatorSuggestionItem {
   @@index([coordinatorSuggestionId])
 }
 
+enum Type {
+  SUBMITTED_PEER_REVIEW
+  SUBMITTED_CHAIRPERSON_REVIEW
+  SUBMITTED_COORDINATOR_REVIEW
+}
+
 model Notification {
-  id                           String                     @id @default(cuid())
-  createdAt                    DateTime                   @default(now())
-  updatedAt                    DateTime                   @updatedAt
-  SubmittedPeerReview          SubmittedPeerReview        @relation(fields: [submittedPeerReviewId], references: [id])
-  submittedPeerReviewId        String                     @unique
-  SubmittedChairpersonReview   SubmittedChairpersonReview @relation(fields: [submittedChairpersonReviewId], references: [id])
-  submittedChairpersonReviewId String                     @unique
-  SubmittedCoordinatorReview   SubmittedCoordinatorReview @relation(fields: [submittedCoordinatorReviewId], references: [id])
-  submittedCoordinatorReviewId String                     @unique
+  id                           String                      @id @default(cuid())
+  createdAt                    DateTime                    @default(now())
+  updatedAt                    DateTime                    @updatedAt
   ReadNotification             ReadNotification[]
+  Type                         Type
+  SubmittedPeerReview          SubmittedPeerReview?        @relation(fields: [submittedPeerReviewId], references: [id])
+  submittedPeerReviewId        String?                     @unique
+  SubmittedChairpersonReview   SubmittedChairpersonReview? @relation(fields: [submittedChairpersonReviewId], references: [id])
+  submittedChairpersonReviewId String?                     @unique
+  SubmittedCoordinatorReview   SubmittedCoordinatorReview? @relation(fields: [submittedCoordinatorReviewId], references: [id])
+  submittedCoordinatorReviewId String?                     @unique
 }
 
 model ReadNotification {

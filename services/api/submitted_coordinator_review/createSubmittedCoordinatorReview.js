@@ -13,6 +13,11 @@ export default async function createSubmittedCoordinatorReview({
       data: {
         coordinatorReviewId,
         iMId: coordinatorReview.iMId,
+        Notification: {
+          create: {
+            Type: "SUBMITTED_COORDINATOR_REVIEW",
+          },
+        },
       },
     });
 

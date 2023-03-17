@@ -350,7 +350,7 @@ export default function StudentOpinionnaire() {
                   <div>
                     <label
                       className='block mb-1 text-sm font-semibold text-CITLDarkBlue '
-                      htmlhtmlFor='title'
+                      htmlfor='title'
                     >
                       Name of Evaluator
                     </label>
@@ -365,7 +365,7 @@ export default function StudentOpinionnaire() {
                   <div>
                     <label
                       className='block mb-1 text-sm font-semibold text-CITLDarkBlue '
-                      htmlhtmlFor='title'
+                      htmlfor='title'
                     >
                       Date
                     </label>

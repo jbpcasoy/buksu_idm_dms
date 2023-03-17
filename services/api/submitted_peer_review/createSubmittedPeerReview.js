@@ -19,6 +19,11 @@ export default async function createSubmittedPeerReview({ peerReviewId }) {
             id: peerReview.iMId,
           },
         },
+        Notification: {
+          create: {
+            Type: "SUBMITTED_PEER_REVIEW",
+          },
+        },
       },
     });
     return submittedPeerReview;
