@@ -17,7 +17,7 @@ export default function Question({
     <div>
       <div className=' mt-5 border border-CITLOrange rounded-lg py-2 px-3'>
         <label
-          for='helper-radio-4'
+          htmlFor='helper-radio-4'
           className='font-medium text-gray-900 dark:text-gray-300'
         >
           <h3 className=' text-center font-semibold text-lg text-CITLGray-main py-3'>
@@ -47,7 +47,7 @@ export default function Question({
                   className='w-4 h-4 text-CITLDarkBlue disabled:text-CITLGray-main  bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue'
                 />
                 <label
-                  for='vm'
+                  htmlFor='vm'
                   className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main '
                 >
                   Very Much
@@ -67,7 +67,7 @@ export default function Question({
                   className='w-4 h-4 text-CITLDarkBlue disabled:text-CITLGray-main bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue'
                 />
                 <label
-                  for='m'
+                  htmlFor='m'
                   className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
                 >
                   Much
@@ -87,7 +87,7 @@ export default function Question({
                   className='w-4 h-4 text-CITLDarkBlue disabled:text-CITLGray-main bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue'
                 />
                 <label
-                  for='je'
+                  htmlFor='je'
                   className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
                 >
                   Just Enough
@@ -107,7 +107,7 @@ export default function Question({
                   className='w-4 h-4 text-CITLDarkBlue disabled:text-CITLGray-main bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue'
                 />
                 <label
-                  for='nm'
+                  htmlFor='nm'
                   className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
                 >
                   Not Much
@@ -127,7 +127,7 @@ export default function Question({
                   className='w-4 h-4 text-CITLDarkBlue disabled:text-CITLGray-main bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue'
                 />
                 <label
-                  for='naa'
+                  htmlFor='naa'
                   className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
                 >
                   Not at All
@@ -145,26 +145,26 @@ export default function Question({
               onClick={() => {
                 handleRespond().then(() => onNext());
               }}
-              class='group relative inline-flex items-center overflow-hidden rounded bg-CITLDarkBlue px-8 py-3 text-white focus:outline-none focus:ring active:bg-CITLDarkBlue disabled:bg-CITLGray-lighter disabled:border disabled:border-CITLGray-main disabled:text-CITLGray-main'
+              className='group relative inline-flex items-center overflow-hidden rounded bg-CITLDarkBlue px-8 py-3 text-white focus:outline-none focus:ring active:bg-CITLDarkBlue disabled:bg-CITLGray-lighter disabled:border disabled:border-CITLGray-main disabled:text-CITLGray-main'
             >
-              <span class='absolute right-0 translate-x-full transition-transform group-hover:-translate-x-4'>
+              <span className='absolute right-0 translate-x-full transition-transform group-hover:-translate-x-4'>
                 <svg
-                  class='h-5 w-5'
+                  className='h-5 w-5'
                   xmlns='http://www.w3.org/2000/svg'
                   fill='none'
                   viewBox='0 0 24 24'
                   stroke='currentColor'
                 >
                   <path
-                    stroke-linecap='round'
-                    stroke-linejoin='round'
-                    stroke-width='2'
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    strokeWidth='2'
                     d='M17 8l4 4m0 0l-4 4m4-4H3'
                   />
                 </svg>
               </span>
 
-              <span class='text-sm font-medium transition-all group-hover:mr-4'>
+              <span className='text-sm font-medium transition-all group-hover:mr-4'>
                 Next
               </span>
             </button>
@@ -184,26 +184,26 @@ export default function Question({
             <button
               onClick={onPrevious}
               disabled={loading}
-              class='group relative inline-flex items-center overflow-hidden rounded border border-current px-8 py-3 text-CITLGray-main focus:outline-none focus:ring active:text-CITLGray-main'
+              className='group relative inline-flex items-center overflow-hidden rounded border border-current px-8 py-3 text-CITLGray-main focus:outline-none focus:ring active:text-CITLGray-main'
             >
-              <span class='absolute left-0 -translate-x-full transition-transform group-hover:translate-x-4'>
+              <span className='absolute left-0 -translate-x-full transition-transform group-hover:translate-x-4'>
                 <svg
-                  class='h-5 w-5 rotate-180'
+                  className='h-5 w-5 rotate-180'
                   xmlns='http://www.w3.org/2000/svg'
                   fill='none'
                   viewBox='0 0 24 24'
                   stroke='currentColor'
                 >
                   <path
-                    stroke-linecap='round'
-                    stroke-linejoin='round'
-                    stroke-width='2'
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    strokeWidth='2'
                     d='M17 8l4 4m0 0l-4 4m4-4H3'
                   />
                 </svg>
               </span>
 
-              <span class='text-sm font-medium transition-all group-hover:ml-4'>
+              <span className='text-sm font-medium transition-all group-hover:ml-4'>
                 Previous
               </span>
             </button>

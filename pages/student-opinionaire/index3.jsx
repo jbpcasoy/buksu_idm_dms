@@ -41,7 +41,7 @@ export default function StudentOpinionnaire() {
                           className='w-4 h-4 text-CITLDarkBlue bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue'
                         />
                         <label
-                          for='horizontal-list-radio-license'
+                          htmlFor='horizontal-list-radio-license'
                           className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main '
                         >
                           Yes{" "}
@@ -58,7 +58,7 @@ export default function StudentOpinionnaire() {
                           className='w-4 h-4 text-CITLDarkBlue bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue'
                         />
                         <label
-                          for='horizontal-list-radio-id'
+                          htmlFor='horizontal-list-radio-id'
                           className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
                         >
                           Somewhat
@@ -75,7 +75,7 @@ export default function StudentOpinionnaire() {
                           className='w-4 h-4 text-CITLDarkBlue bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue'
                         />
                         <label
-                          for='horizontal-list-radio-millitary'
+                          htmlFor='horizontal-list-radio-millitary'
                           className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
                         >
                           No
@@ -92,7 +92,7 @@ export default function StudentOpinionnaire() {
                           className='w-4 h-4 text-CITLDarkBlue bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue '
                         />
                         <label
-                          for='horizontal-list-radio-passport'
+                          htmlFor='horizontal-list-radio-passport'
                           className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
                         >
                           Not Applicable
@@ -120,7 +120,7 @@ export default function StudentOpinionnaire() {
                           className='w-4 h-4 text-CITLDarkBlue bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue'
                         />
                         <label
-                          for='horizontal-list-radio-license'
+                          htmlFor='horizontal-list-radio-license'
                           className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main '
                         >
                           Yes{" "}
@@ -137,7 +137,7 @@ export default function StudentOpinionnaire() {
                           className='w-4 h-4 text-CITLDarkBlue bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue'
                         />
                         <label
-                          for='horizontal-list-radio-id'
+                          htmlFor='horizontal-list-radio-id'
                           className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
                         >
                           Somewhat
@@ -154,7 +154,7 @@ export default function StudentOpinionnaire() {
                           className='w-4 h-4 text-CITLDarkBlue bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue'
                         />
                         <label
-                          for='horizontal-list-radio-millitary'
+                          htmlFor='horizontal-list-radio-millitary'
                           className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
                         >
                           No
@@ -171,7 +171,7 @@ export default function StudentOpinionnaire() {
                           className='w-4 h-4 text-CITLDarkBlue bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue '
                         />
                         <label
-                          for='horizontal-list-radio-passport'
+                          htmlFor='horizontal-list-radio-passport'
                           className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
                         >
                           Not Applicable
@@ -200,7 +200,7 @@ export default function StudentOpinionnaire() {
                           className='w-4 h-4 text-CITLDarkBlue bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue'
                         />
                         <label
-                          for='horizontal-list-radio-license'
+                          htmlFor='horizontal-list-radio-license'
                           className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main '
                         >
                           Yes{" "}
@@ -217,7 +217,7 @@ export default function StudentOpinionnaire() {
                           className='w-4 h-4 text-CITLDarkBlue bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue'
                         />
                         <label
-                          for='horizontal-list-radio-id'
+                          htmlFor='horizontal-list-radio-id'
                           className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
                         >
                           Somewhat
@@ -234,7 +234,7 @@ export default function StudentOpinionnaire() {
                           className='w-4 h-4 text-CITLDarkBlue bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue'
                         />
                         <label
-                          for='horizontal-list-radio-millitary'
+                          htmlFor='horizontal-list-radio-millitary'
                           className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
                         >
                           No
@@ -251,7 +251,7 @@ export default function StudentOpinionnaire() {
                           className='w-4 h-4 text-CITLDarkBlue bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue '
                         />
                         <label
-                          for='horizontal-list-radio-passport'
+                          htmlFor='horizontal-list-radio-passport'
                           className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
                         >
                           Not Applicable
@@ -281,7 +281,7 @@ export default function StudentOpinionnaire() {
                           className='w-4 h-4 text-CITLDarkBlue bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue'
                         />
                         <label
-                          for='horizontal-list-radio-license'
+                          htmlFor='horizontal-list-radio-license'
                           className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main '
                         >
                           Yes{" "}
@@ -298,7 +298,7 @@ export default function StudentOpinionnaire() {
                           className='w-4 h-4 text-CITLDarkBlue bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue'
                         />
                         <label
-                          for='horizontal-list-radio-id'
+                          htmlFor='horizontal-list-radio-id'
                           className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
                         >
                           Somewhat
@@ -315,7 +315,7 @@ export default function StudentOpinionnaire() {
                           className='w-4 h-4 text-CITLDarkBlue bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue'
                         />
                         <label
-                          for='horizontal-list-radio-millitary'
+                          htmlFor='horizontal-list-radio-millitary'
                           className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
                         >
                           No
@@ -332,7 +332,7 @@ export default function StudentOpinionnaire() {
                           className='w-4 h-4 text-CITLDarkBlue bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue '
                         />
                         <label
-                          for='horizontal-list-radio-passport'
+                          htmlFor='horizontal-list-radio-passport'
                           className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
                         >
                           Not Applicable
@@ -360,7 +360,7 @@ export default function StudentOpinionnaire() {
                           className='w-4 h-4 text-CITLDarkBlue bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue'
                         />
                         <label
-                          for='horizontal-list-radio-license'
+                          htmlFor='horizontal-list-radio-license'
                           className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main '
                         >
                           Yes{" "}
@@ -377,7 +377,7 @@ export default function StudentOpinionnaire() {
                           className='w-4 h-4 text-CITLDarkBlue bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue'
                         />
                         <label
-                          for='horizontal-list-radio-id'
+                          htmlFor='horizontal-list-radio-id'
                           className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
                         >
                           Somewhat
@@ -394,7 +394,7 @@ export default function StudentOpinionnaire() {
                           className='w-4 h-4 text-CITLDarkBlue bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue'
                         />
                         <label
-                          for='horizontal-list-radio-millitary'
+                          htmlFor='horizontal-list-radio-millitary'
                           className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
                         >
                           No
@@ -411,7 +411,7 @@ export default function StudentOpinionnaire() {
                           className='w-4 h-4 text-CITLDarkBlue bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue '
                         />
                         <label
-                          for='horizontal-list-radio-passport'
+                          htmlFor='horizontal-list-radio-passport'
                           className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
                         >
                           Not Applicable

@@ -15,7 +15,7 @@ export default function Endorsement() {
                 <div className='flex items-center mb-4'>
                   <div className='flex-row'>
                     <label
-                      for='semesters'
+                      htmlFor='semesters'
                       className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
                     >
                       1. Will the department/program require this IM in the
@@ -29,7 +29,7 @@ export default function Endorsement() {
                       className='w-4 h-4  text-CITLDarkBlue bg-CITLWhite border-CITLDarkBlue focus:ring-CITLDarkBlue '
                     />
                     <label
-                      for='default-radio-1'
+                      htmlFor='default-radio-1'
                       className='ml-2 text-sm font-medium text-gray-900 dark:text-gray-300'
                     >
                       Yes
@@ -46,7 +46,7 @@ export default function Endorsement() {
                     className='w-4 h-4 text-CITLDarkBlue bg-CITLWhite border-CITLDarkBlue focus:ring-CITLDarkBlue '
                   />
                   <label
-                    for='default-radio-2'
+                    htmlFor='default-radio-2'
                     className='ml-2 text-sm font-medium text-gray-900 dark:text-gray-300'
                   >
                     No
@@ -57,10 +57,11 @@ export default function Endorsement() {
                 <div className='flex items-center mb-4'>
                   <div className='flex-row'>
                     <label
-                      for='semesters'
+                      htmlFor='semesters'
                       className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
                     >
-                      2. Will the department/program commit to using it for the length of time indicated by the authors?
+                      2. Will the department/program commit to using it for the
+                      length of time indicated by the authors?
                     </label>
                     <input
                       id='default-radio-1'
@@ -70,7 +71,7 @@ export default function Endorsement() {
                       className='w-4 h-4  text-CITLDarkBlue bg-CITLWhite border-CITLDarkBlue focus:ring-CITLDarkBlue '
                     />
                     <label
-                      for='default-radio-1'
+                      htmlFor='default-radio-1'
                       className='ml-2 text-sm font-medium text-gray-900 dark:text-gray-300'
                     >
                       Yes
@@ -87,7 +88,7 @@ export default function Endorsement() {
                     className='w-4 h-4 text-CITLDarkBlue bg-CITLWhite border-CITLDarkBlue focus:ring-CITLDarkBlue '
                   />
                   <label
-                    for='default-radio-2'
+                    htmlFor='default-radio-2'
                     className='ml-2 text-sm font-medium text-gray-900 dark:text-gray-300'
                   >
                     No

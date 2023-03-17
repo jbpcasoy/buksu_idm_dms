@@ -13,7 +13,7 @@ export default function Endorsement() {
             <div className='grid gap-6 mb-6 md:grid-cols-2'>
               <div>
                 <label
-                  for='name_of_author'
+                  htmlFor='name_of_author'
                   className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
                 >
                   Authors
@@ -31,7 +31,7 @@ export default function Endorsement() {
               </div>
               <div>
                 <label
-                  for='im_title'
+                  htmlFor='im_title'
                   className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
                 >
                   Title of IM
@@ -46,7 +46,7 @@ export default function Endorsement() {
               </div>
               <div>
                 <label
-                  for='course-code'
+                  htmlFor='course-code'
                   className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
                 >
                   Course Code
@@ -61,7 +61,7 @@ export default function Endorsement() {
               </div>
               <div>
                 <label
-                  for='semesters'
+                  htmlFor='semesters'
                   className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
                 >
                   Select Semester & School Year
@@ -78,7 +78,7 @@ export default function Endorsement() {
               </div>
               <div>
                 <label
-                  for='im_type'
+                  htmlFor='im_type'
                   className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
                 >
                   Select an IM type
@@ -95,7 +95,7 @@ export default function Endorsement() {
               </div>
               <div>
                 <label
-                  for='college'
+                  htmlFor='college'
                   className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
                 >
                   Select College
@@ -115,7 +115,7 @@ export default function Endorsement() {
               </div>
               <div>
                 <label
-                  for='department'
+                  htmlFor='department'
                   className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
                 >
                   Select Departments
@@ -158,7 +158,7 @@ export default function Endorsement() {
                 <div className='flex items-center mb-4'>
                   <div className='flex-row'>
                     <label
-                      for='semesters'
+                      htmlFor='semesters'
                       className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
                     >
                       This instructional material, having undergone review from
@@ -172,7 +172,7 @@ export default function Endorsement() {
                       className='w-4 h-4  text-CITLDarkBlue bg-CITLWhite border-CITLDarkBlue focus:ring-CITLDarkBlue '
                     />
                     <label
-                      for='default-radio-1'
+                      htmlFor='default-radio-1'
                       className='ml-2 text-sm font-medium text-gray-900 dark:text-gray-300'
                     >
                       Printing
@@ -189,7 +189,7 @@ export default function Endorsement() {
                     className='w-4 h-4 text-CITLDarkBlue bg-CITLWhite border-CITLDarkBlue focus:ring-CITLDarkBlue '
                   />
                   <label
-                    for='default-radio-2'
+                    htmlFor='default-radio-2'
                     className='ml-2 text-sm font-medium text-gray-900 dark:text-gray-300'
                   >
                     e-Distribution
@@ -205,7 +205,7 @@ export default function Endorsement() {
                     className='w-4 h-4 text-CITLDarkBlue bg-CITLWhite border-CITLDarkBlue focus:ring-CITLDarkBlue '
                   />
                   <label
-                    for='default-radio-2'
+                    htmlFor='default-radio-2'
                     className='ml-2 text-sm font-medium text-gray-900 dark:text-gray-300'
                   >
                     Printing & e-Distribution

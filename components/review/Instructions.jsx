@@ -24,7 +24,7 @@ export default function Instructions({ onNext, onPrevious }) {
                 className='w-4 h-4 text-CITLDarkBlue border-CITLOrange bg-CITLOrange'
               />
               <label
-                for='horizontal-list-radio-license'
+                htmlFor='horizontal-list-radio-license'
                 className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main '
               >
                 Very Much{" "}
@@ -42,7 +42,7 @@ export default function Instructions({ onNext, onPrevious }) {
                 className='w-4 h-4 text-CITLDarkBlue border-CITLOrange bg-CITLOrange'
               />
               <label
-                for='horizontal-list-radio-id'
+                htmlFor='horizontal-list-radio-id'
                 className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
               >
                 Much
@@ -60,7 +60,7 @@ export default function Instructions({ onNext, onPrevious }) {
                 className='w-4 h-4text-CITLDarkBlue border-CITLOrange bg-CITLOrange'
               />
               <label
-                for='horizontal-list-radio-millitary'
+                htmlFor='horizontal-list-radio-millitary'
                 className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
               >
                 Just Enough
@@ -78,7 +78,7 @@ export default function Instructions({ onNext, onPrevious }) {
                 className='w-4 h-4text-CITLDarkBlue border-CITLOrange bg-CITLOrange'
               />
               <label
-                for='horizontal-list-radio-passport'
+                htmlFor='horizontal-list-radio-passport'
                 className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
               >
                 Not Much
@@ -96,7 +96,7 @@ export default function Instructions({ onNext, onPrevious }) {
                 className='w-4 h-4 text-CITLDarkBlue border-CITLOrange bg-CITLOrange'
               />
               <label
-                for='horizontal-list-radio-passport'
+                htmlFor='horizontal-list-radio-passport'
                 className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
               >
                 Not at All
@@ -109,51 +109,51 @@ export default function Instructions({ onNext, onPrevious }) {
         <div className='flex-auto flex flex-row-reverse justify-between'>
           <button
             onClick={onNext}
-            class='group relative inline-flex items-center overflow-hidden rounded bg-CITLDarkBlue px-8 py-3 text-white focus:outline-none focus:ring active:bg-CITLDarkBlue'
+            className='group relative inline-flex items-center overflow-hidden rounded bg-CITLDarkBlue px-8 py-3 text-white focus:outline-none focus:ring active:bg-CITLDarkBlue'
           >
-            <span class='absolute right-0 translate-x-full transition-transform group-hover:-translate-x-4'>
+            <span className='absolute right-0 translate-x-full transition-transform group-hover:-translate-x-4'>
               <svg
-                class='h-5 w-5'
+                className='h-5 w-5'
                 xmlns='http://www.w3.org/2000/svg'
                 fill='none'
                 viewBox='0 0 24 24'
                 stroke='currentColor'
               >
                 <path
-                  stroke-linecap='round'
-                  stroke-linejoin='round'
-                  stroke-width='2'
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  strokeWidth='2'
                   d='M17 8l4 4m0 0l-4 4m4-4H3'
                 />
               </svg>
             </span>
 
-            <span class='text-sm font-medium transition-all group-hover:mr-4'>
+            <span className='text-sm font-medium transition-all group-hover:mr-4'>
               Next
             </span>
           </button>
           <button
             onClick={onPrevious}
-            class='group relative inline-flex items-center overflow-hidden rounded border border-current px-8 py-3 text-CITLGray-main focus:outline-none focus:ring active:text-CITLGray-main'
+            className='group relative inline-flex items-center overflow-hidden rounded border border-current px-8 py-3 text-CITLGray-main focus:outline-none focus:ring active:text-CITLGray-main'
           >
-            <span class='absolute left-0 -translate-x-full transition-transform group-hover:translate-x-4'>
+            <span className='absolute left-0 -translate-x-full transition-transform group-hover:translate-x-4'>
               <svg
-                class='h-5 w-5 rotate-180'
+                className='h-5 w-5 rotate-180'
                 xmlns='http://www.w3.org/2000/svg'
                 fill='none'
                 viewBox='0 0 24 24'
                 stroke='currentColor'
               >
                 <path
-                  stroke-linecap='round'
-                  stroke-linejoin='round'
-                  stroke-width='2'
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  strokeWidth='2'
                   d='M17 8l4 4m0 0l-4 4m4-4H3'
                 />
               </svg>
             </span>
 
-            <span class='text-sm font-medium transition-all group-hover:ml-4'>
+            <span className='text-sm font-medium transition-all group-hover:ml-4'>
               Previous
             </span>
           </button>
