@@ -295,7 +295,7 @@ export default function TeacherUserEvaluation() {
 
                   <label
                     for='message'
-                    class='block mb-2 mt-3 text-md font-semibold text-CITLGray-main'
+                    className='block mb-2 mt-3 text-md font-semibold text-CITLGray-main'
                   >
                     1. Strengths:
                   </label>
@@ -305,7 +305,7 @@ export default function TeacherUserEvaluation() {
                       <input
                         type='text'
                         placeholder='-'
-                        class='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
+                        className='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
                       />
                     </div>
                     <div className='indent-8 grid-cols-4'>
@@ -313,14 +313,14 @@ export default function TeacherUserEvaluation() {
                       <input
                         type='text'
                         placeholder='-'
-                        class='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
+                        className='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
                       />
                     </div>
                   </div>
 
                   <label
                     for='message'
-                    class='block mb-2 mt-3  text-md font-semibold text-CITLGray-main'
+                    className='block mb-2 mt-3  text-md font-semibold text-CITLGray-main'
                   >
                     2. Weaknesses:
                   </label>
@@ -330,7 +330,7 @@ export default function TeacherUserEvaluation() {
                       <input
                         type='text'
                         placeholder='-'
-                        class='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
+                        className='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
                       />
                     </div>
                     <div className='indent-8 grid-cols-4'>
@@ -338,7 +338,7 @@ export default function TeacherUserEvaluation() {
                       <input
                         type='text'
                         placeholder='-'
-                        class='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
+                        className='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
                       />
                     </div>
                   </div>

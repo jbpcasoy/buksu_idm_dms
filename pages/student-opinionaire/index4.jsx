@@ -276,7 +276,7 @@ export default function StudentOpinionnaire() {
                   <div className='border border-CITLGray-main rounded-lg px-3 py-5'>
                     <label
                       for='message'
-                      class='block mb-2 mt-3 text-sm font-medium text-CITLGray-main'
+                      className='block mb-2 mt-3 text-sm font-medium text-CITLGray-main'
                     >
                       1. What I like in the module is/are:
                     </label>
@@ -284,59 +284,65 @@ export default function StudentOpinionnaire() {
                       <div className='indent-8 grid-cols-4 '>
                         <label className=' text-CITLGray-main'>a. </label>
                         <input
-                          type='text' placeholder="-"
-                          class='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
+                          type='text'
+                          placeholder='-'
+                          className='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
                         />
                       </div>
                       <div className='indent-8 grid-cols-4'>
                         <label className=' text-CITLGray-main'>b. </label>
                         <input
-                          type='text'  placeholder="-"
-                          class='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
+                          type='text'
+                          placeholder='-'
+                          className='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
                         />
                       </div>
                       <div className='indent-8 grid-cols-4'>
                         <label className=' text-CITLGray-main'>c. </label>
                         <input
-                          type='text'  placeholder="-"
-                          class='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
+                          type='text'
+                          placeholder='-'
+                          className='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
                         />
                       </div>
                     </div>
                     <label
                       for='message'
-                      class='block mb-2 mt-3 text-sm font-medium text-CITLGray-main'
+                      className='block mb-2 mt-3 text-sm font-medium text-CITLGray-main'
                     >
                       <label
                         for='message'
-                        class='block mb-2 mt-3 text-sm font-medium text-CITLGray-main'
+                        className='block mb-2 mt-3 text-sm font-medium text-CITLGray-main'
                       >
                         2. What I think can still be improved in the module
                         is/are:
                       </label>
                       <div>
-                      <div className='indent-8 grid-cols-4 '>
-                        <label className=' text-CITLGray-main'>a. </label>
-                        <input
-                          type='text' placeholder="-"
-                          class='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
-                        />
+                        <div className='indent-8 grid-cols-4 '>
+                          <label className=' text-CITLGray-main'>a. </label>
+                          <input
+                            type='text'
+                            placeholder='-'
+                            className='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
+                          />
+                        </div>
+                        <div className='indent-8 grid-cols-4'>
+                          <label className=' text-CITLGray-main'>b. </label>
+                          <input
+                            type='text'
+                            placeholder='-'
+                            className='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
+                          />
+                        </div>
+                        <div className='indent-8 grid-cols-4'>
+                          <label className=' text-CITLGray-main'>c. </label>
+                          <input
+                            type='text'
+                            placeholder='-'
+                            className='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
+                          />
+                        </div>
                       </div>
-                      <div className='indent-8 grid-cols-4'>
-                        <label className=' text-CITLGray-main'>b. </label>
-                        <input
-                          type='text'  placeholder="-"
-                          class='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
-                        />
-                      </div>
-                      <div className='indent-8 grid-cols-4'>
-                        <label className=' text-CITLGray-main'>c. </label>
-                        <input
-                          type='text'  placeholder="-"
-                          class='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
-                        />
-                      </div>
-                    </div>
                     </label>
                   </div>
                 </div>

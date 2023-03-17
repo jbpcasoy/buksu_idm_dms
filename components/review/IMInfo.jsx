@@ -71,11 +71,11 @@ export default function IMInfo({
             disabled={loading}
             onClick={onNext}
             // className='text-base  ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer shadow-xl enabled:hover:bg-CITLOrange disabled:bg-CITLGray-lighter disabled:border disabled:border-CITLGray-main disabled:text-CITLGray-main bg-CITLDarkBlue text-CITLWhite'
-            class='group relative inline-flex items-center overflow-hidden rounded bg-CITLDarkBlue px-8 py-3 text-white focus:outline-none focus:ring active:bg-CITLDarkBlue disabled:bg-CITLGray-lighter disabled:border disabled:border-CITLGray-main disabled:text-CITLGray-main'
+            className='group relative inline-flex items-center overflow-hidden rounded bg-CITLDarkBlue px-8 py-3 text-white focus:outline-none focus:ring active:bg-CITLDarkBlue disabled:bg-CITLGray-lighter disabled:border disabled:border-CITLGray-main disabled:text-CITLGray-main'
           >
-            <span class='absolute right-0 translate-x-full transition-transform group-hover:-translate-x-4'>
+            <span className='absolute right-0 translate-x-full transition-transform group-hover:-translate-x-4'>
               <svg
-                class='h-5 w-5'
+                className='h-5 w-5'
                 xmlns='http://www.w3.org/2000/svg'
                 fill='none'
                 viewBox='0 0 24 24'
@@ -90,7 +90,7 @@ export default function IMInfo({
               </svg>
             </span>
 
-            <span class='text-sm font-medium transition-all group-hover:mr-4'>
+            <span className='text-sm font-medium transition-all group-hover:mr-4'>
               Next
             </span>
           </button>

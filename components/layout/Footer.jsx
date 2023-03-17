@@ -16,17 +16,17 @@ export default function Footer() {
             />
           </Link>
           <div>
-            <ul class=' flex gap-6 md:gap-8'>
+            <ul className=' flex gap-6 md:gap-8'>
               <li>
                 <a
                   href='/'
                   rel='noreferrer'
                   target='_blank'
-                  class='text-CITLDarkBlue transition hover:text-gray-700/75'
+                  className='text-CITLDarkBlue transition hover:text-gray-700/75'
                 >
-                  <span class='sr-only'>Facebook</span>
+                  <span className='sr-only'>Facebook</span>
                   <svg
-                    class='h-6 w-6'
+                    className='h-6 w-6'
                     fill='currentColor'
                     viewBox='0 0 24 24'
                     aria-hidden='true'
@@ -45,13 +45,13 @@ export default function Footer() {
                   href='/'
                   rel='noreferrer'
                   target='_blank'
-                  class='text-CITLDarkBlue transition hover:text-gray-700/75'
+                  className='text-CITLDarkBlue transition hover:text-gray-700/75'
                 >
-                  <span class='sr-only'>Instagram</span>
+                  <span className='sr-only'>Instagram</span>
                   <svg
                     fill='currentColor'
                     stroke='currentColor'
-                    class='w-6 h-6'
+                    className='w-6 h-6'
                     viewBox='0 0 24 24'
                     xmlns='http://www.w3.org/2000/svg'
                     aria-hidden='true'
@@ -70,13 +70,13 @@ export default function Footer() {
                   href='/'
                   rel='noreferrer'
                   target='_blank'
-                  class='text-CITLDarkBlue transition hover:text-gray-700/75'
+                  className='text-CITLDarkBlue transition hover:text-gray-700/75'
                 >
-                  <span class='sr-only'>Twitter</span>
+                  <span className='sr-only'>Twitter</span>
                   <svg
                     fill='none'
                     stroke='currentColor'
-                    class='w-6 h-6 '
+                    className='w-6 h-6 '
                     viewBox='0 0 24 24'
                     xmlns='http://www.w3.org/2000/svg'
                     aria-hidden='true'
@@ -96,8 +96,8 @@ export default function Footer() {
     </footer>
   );
 }
-// <footer aria-label='Site Footer' class='bg-CITLWhite border border-t-2 '>
-//   <div class='mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8 flex items-center justify-between'>
+// <footer aria-label='Site Footer' className='bg-CITLWhite border border-t-2 '>
+//   <div className='mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8 flex items-center justify-between'>
 //   <div className='flex items-center justify-start'>
 
 //         <Link href='/' className='flex ml-2 md:mr-24'>
@@ -110,17 +110,17 @@ export default function Footer() {
 //       </div>
 {
   /* <div>
-  <ul class='mt-12 flex gap-6 md:gap-8'>
+  <ul className='mt-12 flex gap-6 md:gap-8'>
     <li>
       <a
         href='/'
         rel='noreferrer'
         target='_blank'
-        class='text-gray-700 transition hover:text-gray-700/75'
+        className='text-gray-700 transition hover:text-gray-700/75'
       >
-        <span class='sr-only'>Facebook</span>
+        <span className='sr-only'>Facebook</span>
         <svg
-          class='h-6 w-6'
+          className='h-6 w-6'
           fill='currentColor'
           viewBox='0 0 24 24'
           aria-hidden='true'
@@ -139,11 +139,11 @@ export default function Footer() {
         href='/'
         rel='noreferrer'
         target='_blank'
-        class='text-gray-700 transition hover:text-gray-700/75'
+        className='text-gray-700 transition hover:text-gray-700/75'
       >
-        <span class='sr-only'>Instagram</span>
+        <span className='sr-only'>Instagram</span>
         <svg
-          class='h-6 w-6'
+          className='h-6 w-6'
           fill='currentColor'
           viewBox='0 0 24 24'
           aria-hidden='true'
@@ -162,11 +162,11 @@ export default function Footer() {
         href='/'
         rel='noreferrer'
         target='_blank'
-        class='text-gray-700 transition hover:text-gray-700/75'
+        className='text-gray-700 transition hover:text-gray-700/75'
       >
-        <span class='sr-only'>Twitter</span>
+        <span className='sr-only'>Twitter</span>
         <svg
-          class='h-6 w-6'
+          className='h-6 w-6'
           fill='currentColor'
           viewBox='0 0 24 24'
           aria-hidden='true'
@@ -181,11 +181,11 @@ export default function Footer() {
         href='/'
         rel='noreferrer'
         target='_blank'
-        class='text-gray-700 transition hover:text-gray-700/75'
+        className='text-gray-700 transition hover:text-gray-700/75'
       >
-        <span class='sr-only'>GitHub</span>
+        <span className='sr-only'>GitHub</span>
         <svg
-          class='h-6 w-6'
+          className='h-6 w-6'
           fill='currentColor'
           viewBox='0 0 24 24'
           aria-hidden='true'
@@ -204,11 +204,11 @@ export default function Footer() {
         href='/'
         rel='noreferrer'
         target='_blank'
-        class='text-gray-700 transition hover:text-gray-700/75'
+        className='text-gray-700 transition hover:text-gray-700/75'
       >
-        <span class='sr-only'>Dribbble</span>
+        <span className='sr-only'>Dribbble</span>
         <svg
-          class='h-6 w-6'
+          className='h-6 w-6'
           fill='currentColor'
           viewBox='0 0 24 24'
           aria-hidden='true'

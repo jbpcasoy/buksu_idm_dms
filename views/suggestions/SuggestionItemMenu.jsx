@@ -17,7 +17,7 @@ export default function SuggestionItemMenu({
 
   return (
     <div>
-      <div class='inline-flex space-x-1'>
+      <div className='inline-flex space-x-1'>
         <SuggestionEditModal
           value={value}
           pageNumber={pageNumber}
