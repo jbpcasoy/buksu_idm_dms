@@ -71,6 +71,8 @@ export default function CoordinatorSuggestion({
       onFinish={onFinish}
       onPrevious={onPrevious}
       iM={iM}
+      showChairpersonSuggestion
+      showPeerSuggestion
     >
       {coordinatorSuggestionItems.map((coordinatorSuggestionItem) => (
         <CoordinatorSuggestionItem

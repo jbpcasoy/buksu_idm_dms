@@ -10,20 +10,24 @@ export default function ConfirmChairpersonReview({
 }) {
   return (
     <ConfirmReview onPrevious={onPrevious} onSubmit={onSubmit}>
-      {sections.map((section) => (
-        <PreviewSection key={section.title} section={section}>
-          {section.questions.map((question) => {
-            if (question.active)
-              return (
-                <ChairpersonPreviewQuestion
-                  key={question.id}
-                  question={question}
-                  chairpersonReviewId={chairpersonReviewId}
-                />
-              );
-          })}
-        </PreviewSection>
-      ))}
+      {sections.map((section) => {
+        if (section.active) {
+          return (
+            <PreviewSection key={section.title} section={section}>
+              {section.questions.map((question) => {
+                if (question.active)
+                  return (
+                    <ChairpersonPreviewQuestion
+                      key={question.id}
+                      question={question}
+                      chairpersonReviewId={chairpersonReviewId}
+                    />
+                  );
+              })}
+            </PreviewSection>
+          );
+        }
+      })}
     </ConfirmReview>
   );
 }

@@ -10,20 +10,24 @@ export default function ConfirmPeerReview({
 }) {
   return (
     <ConfirmReview onPrevious={onPrevious} onSubmit={onSubmit}>
-      {sections.map((section) => (
-        <PreviewSection key={section.title} section={section}>
-          {section.questions.map((question) => {
-            if (question.active)
-              return (
-                <PeerPreviewQuestion
-                  key={question.id}
-                  question={question}
-                  peerReviewId={peerReviewId}
-                />
-              );
-          })}
-        </PreviewSection>
-      ))}
+      {sections.map((section) => {
+        if (section.active) {
+          return (
+            <PreviewSection key={section.title} section={section}>
+              {section.questions.map((question) => {
+                if (question.active)
+                  return (
+                    <PeerPreviewQuestion
+                      key={question.id}
+                      question={question}
+                      peerReviewId={peerReviewId}
+                    />
+                  );
+              })}
+            </PreviewSection>
+          );
+        }
+      })}
     </ConfirmReview>
   );
 }

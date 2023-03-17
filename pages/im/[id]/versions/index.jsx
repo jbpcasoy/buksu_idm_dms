@@ -10,7 +10,7 @@ export default function IMVersions() {
       <div className='py-4 md:w-full '>
         <div className='relative overflow-x-auto shadow-md border rounded-lg  border-CITLGray-lighter bg-CITLGray-light'>
           <div className='justify-between flex p-5 '>
-            <h6 className='py-5 pl-5 text-lg font-bold text-left text-CITLDarkBlue '>
+            <h6 className='py-5 pl-10 text-2xl font-bold text-left text-CITLDarkBlue '>
               Instructional Material Versions
             </h6>
           </div>

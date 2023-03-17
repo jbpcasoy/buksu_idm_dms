@@ -10,20 +10,24 @@ export default function ConfirmCoordinatorReview({
 }) {
   return (
     <ConfirmReview onPrevious={onPrevious} onSubmit={onSubmit}>
-      {sections.map((section) => (
-        <PreviewSection key={section.title} section={section}>
-          {section.questions.map((question) => {
-            if (question.active)
-              return (
-                <CoordinatorPreviewQuestion
-                  key={question.id}
-                  question={question}
-                  coordinatorReviewId={coordinatorReviewId}
-                />
-              );
-          })}
-        </PreviewSection>
-      ))}
+      {sections.map((section) => {
+        if (section.active) {
+          return (
+            <PreviewSection key={section.title} section={section}>
+              {section.questions.map((question) => {
+                if (question.active)
+                  return (
+                    <CoordinatorPreviewQuestion
+                      key={question.id}
+                      question={question}
+                      coordinatorReviewId={coordinatorReviewId}
+                    />
+                  );
+              })}
+            </PreviewSection>
+          );
+        }
+      })}
     </ConfirmReview>
   );
 }

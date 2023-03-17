@@ -50,6 +50,8 @@ export default function PeerSuggestion({ peerReview, onFinish, onPrevious }) {
 
   return (
     <Suggestion
+      showChairpersonSuggestion
+      showCoordinatorSuggestion
       handleSubmit={handleSubmit}
       onFinish={onFinish}
       onPrevious={onPrevious}

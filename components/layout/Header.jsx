@@ -6,6 +6,9 @@ import { useEffect } from "react";
 
 export default function Header() {
   const { data: session } = useSession();
+  useEffect(() => {
+    initDropdowns();
+  });
 
   useEffect(() => {
     initDropdowns();

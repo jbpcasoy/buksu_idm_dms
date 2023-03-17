@@ -1,8 +1,10 @@
 import Layout from "@/components/layout/Layout";
+import ChairpersonSuggestionView from "@/components/review/suggestion/suggestion_view/ChairpersonSuggestionView";
+import CoordinatorSuggestionView from "@/components/review/suggestion/suggestion_view/CoordinatorSuggestionView";
+import PeerSuggestionView from "@/components/review/suggestion/suggestion_view/PeerSuggestionView";
 import useIM from "@/hooks/useIM";
 import useUser from "@/hooks/useUser";
 import { initDropdowns } from "flowbite";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import ToggleIM from "../ToggleIM";
@@ -77,34 +79,82 @@ export default function ViewIM() {
               </li>
               <li>
                 {user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId && (
-                  <Link
-                    href={`/im/${iM?.id}/review/peer`}
-                    className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
+                  <button
+                    disabled={
+                      iM?.SubmittedPeerReview &&
+                      user?.ActiveFaculty?.facultyId !==
+                        iM?.SubmittedPeerReview?.PeerReview?.facultyId
+                    }
+                    title={
+                      iM?.SubmittedPeerReview &&
+                      user?.ActiveFaculty?.facultyId !==
+                        iM?.SubmittedPeerReview?.PeerReview?.facultyId
+                        ? "Other peer's review exists"
+                        : undefined
+                    }
+                    onClick={() => router.push(`/im/${iM?.id}/review/peer`)}
+                    className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter text-left w-full'
                   >
                     Peer Review
-                  </Link>
+                  </button>
                 )}
               </li>
               <li>
                 {user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId &&
                   user?.ActiveFaculty?.ActiveCoordinator && (
-                    <Link
-                      href={`/im/${iM?.id}/review/coordinator`}
-                      className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
+                    <button
+                      onClick={() =>
+                        router.push(`/im/${iM?.id}/review/coordinator`)
+                      }
+                      disabled={
+                        iM?.SubmittedCoordinatorReview &&
+                        user?.ActiveFaculty?.ActiveCoordinator
+                          ?.coordinatorId !==
+                          iM?.SubmittedCoordinatorReview?.CoordinatorReview
+                            ?.coordinatorId
+                      }
+                      title={
+                        iM?.SubmittedCoordinatorReview &&
+                        user?.ActiveFaculty?.ActiveCoordinator
+                          ?.coordinatorId !==
+                          iM?.SubmittedCoordinatorReview?.CoordinatorReview
+                            ?.coordinatorId
+                          ? "Other coordinator's review exists"
+                          : undefined
+                      }
+                      className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter text-left w-full'
                     >
                       Coordinator Review
-                    </Link>
+                    </button>
                   )}
               </li>
               <li>
                 {user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId &&
                   user?.ActiveFaculty?.ActiveChairperson && (
-                    <Link
-                      href={`/im/${iM?.id}/review/chairperson`}
-                      className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
+                    <button
+                      onClick={() =>
+                        router.push(`/im/${iM?.id}/review/chairperson`)
+                      }
+                      disabled={
+                        iM?.SubmittedChairpersonReview &&
+                        user?.ActiveFaculty?.ActiveChairperson
+                          ?.chairpersonId !==
+                          iM?.SubmittedChairpersonReview?.ChairpersonReview
+                            ?.chairpersonId
+                      }
+                      title={
+                        iM?.SubmittedChairpersonReview &&
+                        user?.ActiveFaculty?.ActiveChairperson
+                          ?.chairpersonId !==
+                          iM?.SubmittedChairpersonReview?.ChairpersonReview
+                            ?.chairpersonId
+                          ? "Other chairperson's review exists"
+                          : undefined
+                      }
+                      className='block w-full  text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter'
                     >
                       Chairperson Review
-                    </Link>
+                    </button>
                   )}
               </li>
             </ul>
@@ -114,6 +164,30 @@ export default function ViewIM() {
         <ToggleIM class='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'>
           Edit IM
         </ToggleIM>
+
+        {iM?.owner?.userId === user?.id && (
+          <>
+            {iM?.SubmittedPeerReview?.PeerReview && (
+              <PeerSuggestionView
+                peerReview={iM?.SubmittedPeerReview?.PeerReview}
+              />
+            )}
+            {iM?.SubmittedChairpersonReview?.ChairpersonReview && (
+              <ChairpersonSuggestionView
+                chairpersonReview={
+                  iM?.SubmittedChairpersonReview?.ChairpersonReview
+                }
+              />
+            )}
+            {iM?.SubmittedCoordinatorReview?.CoordinatorReview && (
+              <CoordinatorSuggestionView
+                coordinatorReview={
+                  iM?.SubmittedCoordinatorReview?.CoordinatorReview
+                }
+              />
+            )}
+          </>
+        )}
 
         {/* TODO change pdf url into dynamic */}
         {process.env.NODE_ENV === "production" && iM && (
