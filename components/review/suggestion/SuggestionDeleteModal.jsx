@@ -15,7 +15,7 @@ export default function SuggestionDeleteModal({ suggestionItemId, onAgree }) {
         id={`delete-suggestion-modal-${suggestionItemId}`}
         className='hidden relative z-50'
         aria-labelledby='modal-title'
-        tabindex='-1'
+        tabIndex='-1'
         role='dialog'
         aria-hidden='true'
       >

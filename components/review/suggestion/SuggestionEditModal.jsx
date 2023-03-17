@@ -50,7 +50,7 @@ export default function SuggestionEditModal({
 
       <div
         id={`edit-suggestion-modal-${suggestionItemId}`}
-        tabindex='-1'
+        tabIndex='-1'
         aria-hidden='true'
         className='fixed top-0 left-0 right-0 bottom-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-screen md:h-full'
       >
