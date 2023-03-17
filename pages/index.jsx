@@ -41,6 +41,35 @@ export default function Home() {
     let subscribe = true;
     setLoading(true);
 
+    async function getMyIMs(filter) {
+      return frontendGetIMs({
+        ownerId: user.ActiveFaculty.Faculty.id,
+        ...filter,
+      });
+    }
+
+    async function getToReview(filter) {
+      return frontendGetIMs({
+        notOwnerId: user.ActiveFaculty.Faculty.id,
+        departmentId: user.ActiveFaculty.Faculty.departmentId,
+        ...filter,
+      });
+    }
+
+    async function getDepartmentIms(filter) {
+      return frontendGetIMs({
+        departmentId: user.ActiveFaculty.Faculty.departmentId,
+        ...filter,
+      });
+    }
+
+    async function getReviewed(filter) {
+      return frontendGetIMs({
+        reviewerId: user.id,
+        ...filter,
+      });
+    }
+
     const filter = {
       page: state.page,
       limit: state.limit,
@@ -79,36 +108,15 @@ export default function Home() {
     return () => {
       subscribe = false;
     };
-  }, [user, state, tab]);
-
-  async function getMyIMs(filter) {
-    return frontendGetIMs({
-      ownerId: user.ActiveFaculty.Faculty.id,
-      ...filter,
-    });
-  }
-
-  async function getToReview(filter) {
-    return frontendGetIMs({
-      notOwnerId: user.ActiveFaculty.Faculty.id,
-      departmentId: user.ActiveFaculty.Faculty.departmentId,
-      ...filter,
-    });
-  }
-
-  async function getDepartmentIms(filter) {
-    return frontendGetIMs({
-      departmentId: user.ActiveFaculty.Faculty.departmentId,
-      ...filter,
-    });
-  }
-
-  async function getReviewed(filter) {
-    return frontendGetIMs({
-      reviewerId: user.id,
-      ...filter,
-    });
-  }
+  }, [
+    user,
+    state,
+    tab,
+    Tabs.DepartmentIMs,
+    Tabs.MyIMs,
+    Tabs.Reviewed,
+    Tabs.ToReview,
+  ]);
 
   function handleSerialNumberChange(e) {
     setState((prev) => ({ ...prev, serialNumber: e.target.value }));
@@ -134,7 +142,7 @@ export default function Home() {
   return (
     <Layout>
       <div className=''>
-        <div className='flex flex-wrap items-center border border-slate-300  bg-CITLWhite m-2 p-3 relative rounded-lg shadow-lg overflow-hidden'>
+        <div className='flex flex-wrap items-center border border-slate-300  bg-CITLGray-light m-2 p-3 relative rounded-lg shadow-lg overflow-hidden'>
           <div className='px-6 py-4 md:w-10/12 sm:w-12/12'>
             <h3 className='text-lg font-semibold text-CITLDarkBlue'>
               Announcement
@@ -147,7 +155,7 @@ export default function Home() {
             </p>
             <Link
               href={`/`}
-              className='inline-flex items-center px-4 py-2 text-sm font-medium text-CITLDarkBlue bg-CITLOrange border  rounded-lg hover:bg-transparent hover:text-CITLOrange hover:border-CITLOrange focus:outline-none '
+              className='inline-flex items-center px-4 py-2.5 text-sm font-medium text-CITLDarkBlue bg-CITLOrange border  rounded-lg  hover:text-CITLOrange hover:bg-transparent hover:border-CITLOrange focus:outline-none '
             >
               Read more{" "}
               <svg
@@ -335,7 +343,7 @@ export default function Home() {
                 <div className=''>
                   <button
                     title='Add IM'
-                    className='flex items-center bg-CITLDarkBlue rounded-lg px-4 py-2.5 text-sm font-medium text-center shadow-md text-white hover:bg-transparent hover:text-CITLDarkBlue focus:outline-none focus:ring border border-CITLDarkBlue'
+                    className='flex items-center bg-CITLDarkBlue rounded-lg px-4 py-2.5 text-sm font-medium text-center shadow-md text-white hover:bg-transparent hover:text-CITLDarkBlue hover:border-CITLDarkBlue border'
                     onClick={() => {
                       router.push("/im/new");
                     }}
@@ -382,7 +390,7 @@ export default function Home() {
                 </th>
                 <th
                   scope='col'
-                  className='px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider'
+                  className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
                   Review Status
                 </th>

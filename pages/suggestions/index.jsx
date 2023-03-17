@@ -1,5 +1,5 @@
 import Layout from "@/components/layout/Layout";
-import Suggestions from "@/views/suggestions/suggestions";
+import SuggestionItem from "@/views/suggestions/SuggestionItem";
 
 export default function Home() {
   return (
@@ -62,7 +62,7 @@ export default function Home() {
             </thead>
 
             <tbody className='bg-white divide-gray-200 overflow-y-auto'>
-              <Suggestions />
+              <SuggestionItem />
             </tbody>
           </table>
         </div>

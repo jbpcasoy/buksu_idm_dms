@@ -145,11 +145,11 @@ export default function Question({
               onClick={() => {
                 handleRespond().then(() => onNext());
               }}
-              className='group relative inline-flex items-center overflow-hidden rounded bg-CITLDarkBlue px-8 py-3 text-white focus:outline-none focus:ring active:bg-CITLDarkBlue'
+              class='group relative inline-flex items-center overflow-hidden rounded bg-CITLDarkBlue px-8 py-3 text-white focus:outline-none focus:ring active:bg-CITLDarkBlue disabled:bg-CITLGray-lighter disabled:border disabled:border-CITLGray-main disabled:text-CITLGray-main'
             >
-              <span className='absolute right-0 translate-x-full transition-transform group-hover:-translate-x-4'>
+              <span class='absolute right-0 translate-x-full transition-transform group-hover:-translate-x-4'>
                 <svg
-                  className='h-5 w-5'
+                  class='h-5 w-5'
                   xmlns='http://www.w3.org/2000/svg'
                   fill='none'
                   viewBox='0 0 24 24'
@@ -164,7 +164,7 @@ export default function Question({
                 </svg>
               </span>
 
-              <span className='text-sm font-medium transition-all group-hover:mr-4'>
+              <span class='text-sm font-medium transition-all group-hover:mr-4'>
                 Next
               </span>
             </button>
@@ -184,7 +184,7 @@ export default function Question({
             <button
               onClick={onPrevious}
               disabled={loading}
-              class='group relative inline-flex items-center overflow-hidden rounded border border-current px-8 py-3 text-CITLDarkBlue focus:outline-none focus:ring active:text-CITLDarkBlue'
+              class='group relative inline-flex items-center overflow-hidden rounded border border-current px-8 py-3 text-CITLGray-main focus:outline-none focus:ring active:text-CITLGray-main'
             >
               <span class='absolute left-0 -translate-x-full transition-transform group-hover:translate-x-4'>
                 <svg

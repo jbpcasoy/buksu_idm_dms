@@ -4,7 +4,7 @@ import ProgressBar from "../ProgressBar";
 export default function ReviewPage({ step, steps, reviewingAs }) {
   return (
     <Layout>
-      <div className='sm:pt-12'>
+      <div className='sm:pt-'>
         <div className='flex items-center border border-CITLGray-lighter bg-CITLGray-light m-2 p-3 relative rounded-lg shadow-lg overflow-hidden'>
           <div className='w-full '>
             <ProgressBar max={steps.length} value={step} />

@@ -132,21 +132,9 @@ export default function Instructions({ onNext, onPrevious }) {
               Next
             </span>
           </button>
-          {/* <button
-            onClick={onNext}
-            className='text-base  ml-2  focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer  hover:bg-transparent hover:text-CITLDarkBlue bg-CITLDarkBlue text-CITLWhite  border border-CITLDarkBlue'
-          >
-            Next
-          </button> */}
-          {/* <button
-            onClick={onPrevious}
-            className='text-base  flex justify-center px-4 py-2 rounded font-bold cursor-pointer  hover:border-CITLOrange hover:text-CITLOrange bg-gray-100  text-CITLGray-main  border  border-CITLGray-main'
-          >
-            Previous
-          </button> */}
           <button
             onClick={onPrevious}
-            class='group relative inline-flex items-center overflow-hidden rounded border border-current px-8 py-3 text-CITLDarkBlue focus:outline-none focus:ring active:text-CITLDarkBlue'
+            class='group relative inline-flex items-center overflow-hidden rounded border border-current px-8 py-3 text-CITLGray-main focus:outline-none focus:ring active:text-CITLGray-main'
           >
             <span class='absolute left-0 -translate-x-full transition-transform group-hover:translate-x-4'>
               <svg
