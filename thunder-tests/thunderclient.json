@@ -2791,5 +2791,19 @@
       }
     ],
     "tests": []
+  },
+  {
+    "_id": "eac43c41-9854-48dc-8540-4b6049e662ab",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "4a3fab0b-abd7-402d-a549-8dcd7d29cea1",
+    "name": "READ ReadNotification",
+    "url": "{{host}}/api/read_notification/clfc7ksb50000s9lu713cgv6a",
+    "method": "GET",
+    "sortNum": 1720000,
+    "created": "2023-03-17T07:34:54.001Z",
+    "modified": "2023-03-17T07:35:18.226Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
