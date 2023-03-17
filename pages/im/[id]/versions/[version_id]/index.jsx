@@ -30,13 +30,13 @@ export default function IMVersion() {
           <div className='items-left'>
             <Link
               href={`/im/${iM?.id}/versions`}
-              className='text-CITLDarkBlue border border-CITLGray-main p-2 rounded hover:bg-CITLOrange'
+              className='text-CITLDarkBlue font-medium border border-CITLGray-main p-2 rounded hover:bg-CITLOrange hover:border-CITLOrange'
             >
               Current Version
             </Link>{" "}
             <Link
               href='/'
-              className='text-CITLDarkBlue border border-CITLGray-main p-2 rounded hover:bg-CITLOrange'
+              className='text-CITLDarkBlue font-medium border border-CITLGray-main p-2 rounded hover:bg-CITLOrange hover:border-CITLOrange'
             >
               Download
             </Link>{" "}
