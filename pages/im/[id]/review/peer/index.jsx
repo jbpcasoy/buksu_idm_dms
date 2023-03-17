@@ -77,6 +77,7 @@ const PeerReviewPage = () => {
     const questions = [];
 
     for (let section of sections) {
+      if (!section.active) continue;
       for (let question of section.questions) {
         if (question.active) {
           questions.push(
