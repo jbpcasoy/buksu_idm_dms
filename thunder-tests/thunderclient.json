@@ -2766,5 +2766,30 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "489cf966-9048-420d-bc33-b3e9ddaf53f3",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "4a3fab0b-abd7-402d-a549-8dcd7d29cea1",
+    "name": "READ ReadNotifications",
+    "url": "{{host}}/api/read_notification?limit=10&page=1",
+    "method": "GET",
+    "sortNum": 1710000,
+    "created": "2023-03-17T07:25:51.336Z",
+    "modified": "2023-03-17T07:26:11.032Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "limit",
+        "value": "10",
+        "isPath": false
+      },
+      {
+        "name": "page",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "tests": []
   }
 ]
