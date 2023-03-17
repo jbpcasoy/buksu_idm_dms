@@ -49,7 +49,7 @@ export default function SuggestionAddModal({ onSubmit }) {
         >
           <path
             strokeLinecap='round'
-            stroke-linejoin='round'
+            strokeLinejoin='round'
             d='M12 6v12m6-6H6'
           ></path>
         </svg>
