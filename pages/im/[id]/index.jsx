@@ -187,7 +187,6 @@ export default function ViewIM() {
           </>
         )}
 
-        {/* TODO change pdf url into dynamic */}
         {process.env.NODE_ENV === "production" && iM && (
           <iframe
             src={`https://docs.google.com/gview?url=${process.env.NEXT_PUBLIC_HOST_URL}/api/download/file/${iM?.ActiveFile?.File.fileName}&embedded=true`}

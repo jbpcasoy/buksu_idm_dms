@@ -158,6 +158,7 @@ export default function AdminIM() {
                 <TableCell align='center'>Chairperson Review</TableCell>
                 <TableCell align='center'>Coordinator Review</TableCell>
                 <TableCell>Date Created</TableCell>
+                <TableCell>Actions</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -188,6 +189,9 @@ export default function AdminIM() {
                       `/admin/coordinator_review/${im.SubmittedCoordinatorReview.CoordinatorReview.id}`
                     )
                   }
+                  onViewIM={() => {
+                    router.push(`/admin/im/${im.id}`);
+                  }}
                 />
               ))}
             </TableBody>
