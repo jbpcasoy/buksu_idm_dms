@@ -158,7 +158,7 @@ export default function Question({
                   <path
                     strokeLinecap='round'
                     strokeLinejoin='round'
-                    stroke-width='2'
+                    strokeWidth='2'
                     d='M17 8l4 4m0 0l-4 4m4-4H3'
                   />
                 </svg>
@@ -197,7 +197,7 @@ export default function Question({
                   <path
                     strokeLinecap='round'
                     strokeLinejoin='round'
-                    stroke-width='2'
+                    strokeWidth='2'
                     d='M17 8l4 4m0 0l-4 4m4-4H3'
                   />
                 </svg>
