@@ -62,17 +62,17 @@ export default function Suggestion({
               <tr>
                 <th
                   scope='col'
-                  className=' px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
+                  className=' px-5 py-3 text-left w-3/5 text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
                   suggestion
                 </th>
 
-                <th
+                {/* <th
                   scope='col'
                   className=' py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
                   Action Taken
-                </th>
+                </th> */}
 
                 <th
                   scope='col'
@@ -117,15 +117,53 @@ export default function Suggestion({
         <div className='flex-auto flex flex-row-reverse justify-between'>
           <button
             onClick={onFinish}
-            className='text-base  ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer shadow-xl hover:bg-CITLOrange bg-CITLDarkBlue text-CITLWhite  '
+            class='group relative inline-flex items-center overflow-hidden rounded bg-CITLOrange px-8 py-3 text-CITLDarkBlue focus:outline-none focus:ring active:bg-CITLDarkBlue'
           >
-            Finish
+            <span class='absolute right-0 translate-x-full transition-transform group-hover:-translate-x-4'>
+              <svg
+                class='h-5 w-5'
+                xmlns='http://www.w3.org/2000/svg'
+                fill='none'
+                viewBox='0 0 24 24'
+                stroke='currentColor'
+              >
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M17 8l4 4m0 0l-4 4m4-4H3'
+                />
+              </svg>
+            </span>
+
+            <span class='text-sm font-medium transition-all group-hover:mr-4'>
+              Submit
+            </span>
           </button>
           <button
             onClick={onPrevious}
-            className='text-base  flex justify-center px-4 py-2 rounded font-bold cursor-pointer shadow-xl hover:border-CITLOrange hover:text-CITLOrange bg-gray-100  text-CITLGray-main  border  border-CITLGray-main'
+            class='group relative inline-flex items-center overflow-hidden rounded border border-current px-8 py-3 text-CITLGray-main focus:outline-none focus:ring active:text-CITLGray-main'
           >
-            Previous
+            <span class='absolute left-0 -translate-x-full transition-transform group-hover:translate-x-4'>
+              <svg
+                class='h-5 w-5 rotate-180'
+                xmlns='http://www.w3.org/2000/svg'
+                fill='none'
+                viewBox='0 0 24 24'
+                stroke='currentColor'
+              >
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M17 8l4 4m0 0l-4 4m4-4H3'
+                />
+              </svg>
+            </span>
+
+            <span class='text-sm font-medium transition-all group-hover:ml-4'>
+              Previous
+            </span>
           </button>
         </div>
       </div>

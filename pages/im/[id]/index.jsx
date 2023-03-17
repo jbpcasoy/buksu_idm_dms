@@ -4,7 +4,9 @@ import CoordinatorSuggestionView from "@/components/review/suggestion/suggestion
 import PeerSuggestionView from "@/components/review/suggestion/suggestion_view/PeerSuggestionView";
 import useIM from "@/hooks/useIM";
 import useUser from "@/hooks/useUser";
+import { initDropdowns } from "flowbite";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 import ToggleIM from "../ToggleIM";
 
 export default function ViewIM() {
@@ -13,6 +15,10 @@ export default function ViewIM() {
   const { iM, iMError, iMLoading } = useIM(router?.query?.id);
 
   console.log({ router });
+
+  useEffect(() => {
+    initDropdowns();
+  });
 
   return (
     <Layout>
