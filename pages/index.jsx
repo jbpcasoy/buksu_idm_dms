@@ -242,9 +242,9 @@ export default function Home() {
                         tab === Tabs.MyIMs ? "border-b-2 border-CITLOrange" : ""
                       }`}
                     >
-                      <span className='inline-flex items-center justify-center w-4 h-4 mr-1 text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
+                      <div className='inline-flex items-center justify-center w-4 h-4 mr-1 text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
                         2
-                      </span>
+                      </div>
                       <span>My IM&apos;s</span>
                     </button>
                     <button

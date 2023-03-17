@@ -35,10 +35,25 @@ export default function SuggestionAddModal({ onSubmit }) {
       <button
         data-modal-target='suggestion-modal'
         data-modal-toggle='suggestion-modal'
-        className='block text-sm font-medium text-center px-4 py-2 text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100'
+        className='flex gap-2 text-sm font-medium text-center px-4 py-2 text-CITLWhite  bg-CITLDarkBlue rounded-lg hover:bg-transparent hover:border-CITLDarkBlue border hover:text-CITLDarkBlue'
         type='button'
       >
-        Add Row
+        <svg
+          fill='none'
+          stroke='currentColor'
+          stroke-width='1.5'
+          className='w-5 h-5'
+          viewBox='0 0 24 24'
+          xmlns='http://www.w3.org/2000/svg'
+          aria-hidden='true'
+        >
+          <path
+            stroke-linecap='round'
+            stroke-linejoin='round'
+            d='M12 6v12m6-6H6'
+          ></path>
+        </svg>
+        Add Suggestion
       </button>
 
       <div
@@ -133,7 +148,7 @@ export default function SuggestionAddModal({ onSubmit }) {
                     !formik.values.value
                   }
                   data-modal-hide='suggestion-modal'
-                  className='mt-2 w-full text-white enabled:bg-blue-700 enabled:hover:bg-blue-800 disabled:bg-CITLGray-main  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center '
+                  className='mt-2 w-full text-white enabled:bg-CITLDarkBlue disabled:bg-CITLGray-main  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center '
                 >
                   Confirm changes
                 </button>

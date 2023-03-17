@@ -1,8 +1,10 @@
 import Layout from "@/components/layout/Layout";
 import useIM from "@/hooks/useIM";
 import useUser from "@/hooks/useUser";
+import { initDropdowns } from "flowbite";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 import ToggleIM from "../ToggleIM";
 
 export default function ViewIM() {
@@ -11,6 +13,10 @@ export default function ViewIM() {
   const { iM, iMError, iMLoading } = useIM(router?.query?.id);
 
   console.log({ router });
+
+  useEffect(() => {
+    initDropdowns();
+  });
 
   return (
     <Layout>
