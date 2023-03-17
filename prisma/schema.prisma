@@ -566,6 +566,7 @@ model ReadNotification {
   User           User         @relation(fields: [userId], references: [id])
   userId         String
 
+  @@unique([userId, notificationId])
   @@index([notificationId])
   @@index([userId])
 }

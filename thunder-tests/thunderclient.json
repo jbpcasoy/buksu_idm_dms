@@ -2742,5 +2742,29 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "9b7d51f8-aad0-49a6-bac5-c908b7ad4174",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "4a3fab0b-abd7-402d-a549-8dcd7d29cea1",
+    "name": "CREATE ReadNotification",
+    "url": "{{host}}/api/read_notification",
+    "method": "POST",
+    "sortNum": 1700000,
+    "created": "2023-03-17T07:13:29.149Z",
+    "modified": "2023-03-17T07:14:35.862Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"notificationId\": \"clfc5bf4d0007s9fqofa47gtj\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
