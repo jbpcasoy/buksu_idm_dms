@@ -109,7 +109,7 @@ export default function Header() {
                           <span class='font-semibold text-gray-900 dark:text-white'>
                             Jese Leos
                           </span>
-                          : "Hey, what's up? All set for the presentation?"
+                          : {`"Hey, what's up? All set for the presentation?"`}
                         </div>
                         <div class='text-xs text-blue-600 dark:text-blue-500'>
                           a few moments ago
