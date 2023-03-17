@@ -29,6 +29,7 @@
     "eslint-config-next": "13.1.6",
     "firebase": "^9.17.1",
     "flowbite": "^1.6.3",
+    "flowbite-datepicker": "^1.2.2",
     "formik": "^2.2.9",
     "lodash": "^4.17.21",
     "moment": "^2.29.4",
