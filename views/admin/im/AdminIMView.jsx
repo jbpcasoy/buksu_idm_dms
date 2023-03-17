@@ -1,6 +1,7 @@
 import { Button, TableCell, TableRow } from "@mui/material";
 import moment from "moment";
 import { useRouter } from "next/router";
+import AdminIMActionsMenu from "./AdminIMActionsMenu";
 
 export default function AdminIMView({
   peerReviewed,
@@ -15,6 +16,7 @@ export default function AdminIMView({
   onViewPeerReview,
   onViewChairpersonReview,
   onViewCoordinatorReview,
+  onViewIM,
 }) {
   const router = useRouter();
 
@@ -56,6 +58,9 @@ export default function AdminIMView({
         </Button>
       </TableCell>
       <TableCell>{moment(dateCreated).format("lll")}</TableCell>
+      <TableCell>
+        <AdminIMActionsMenu onView={onViewIM} />
+      </TableCell>
     </TableRow>
   );
 }
