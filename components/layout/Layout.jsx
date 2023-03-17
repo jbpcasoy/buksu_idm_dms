@@ -1,4 +1,3 @@
-import Footer from "./Footer";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 
@@ -12,7 +11,6 @@ export default function Layout({ children, active }) {
           <div className=' mt-16'>{children}</div>
         </div>
       </div>{" "}
-      <Footer />
     </div>
   );
 }
