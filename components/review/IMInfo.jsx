@@ -11,7 +11,7 @@ export default function IMInfo({
         <div>
           <label
             className='block mb-1 text-sm font-semibold text-CITLDarkBlue '
-            htmlFor='title'
+            htmlhtmlFor='title'
           >
             Title
           </label>
@@ -28,7 +28,7 @@ export default function IMInfo({
         <div>
           <label
             className='block mb-1 text-sm font-semibold text-CITLDarkBlue '
-            htmlFor='authors'
+            htmlhtmlFor='authors'
           >
             Author/s
           </label>
@@ -44,7 +44,7 @@ export default function IMInfo({
 
         <div>
           <label
-            for='im_type'
+            htmlFor='im_type'
             className='block mb-1 text-sm font-semibold text-gray-900 dark:text-white'
           >
             Select an IM type

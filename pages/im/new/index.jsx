@@ -107,7 +107,7 @@ export default function CreateIM() {
             </div>
             <div>
               <label
-                for='title'
+                htmlFor='title'
                 className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
               >
                 Title
@@ -121,7 +121,7 @@ export default function CreateIM() {
                 {...formik.getFieldProps("title")}
               />
               <label
-                for='company'
+                htmlFor='company'
                 className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
               >
                 Authors
@@ -135,7 +135,7 @@ export default function CreateIM() {
                 {...formik.getFieldProps("authors")}
               />
               <label
-                for='type'
+                htmlFor='type'
                 className='block mt-5 mb-2 text-sm font-medium text-gray-900 dark:text-white'
               >
                 Type
@@ -171,7 +171,7 @@ export default function CreateIM() {
             {!filePreviewUrl && (
               <div className='flex items-center justify-center w-full mt-6 mb-6'>
                 <label
-                  for='dropzone-file'
+                  htmlFor='dropzone-file'
                   className='flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600'
                 >
                   <div className='flex flex-col items-center justify-center pt-5 pb-6'>

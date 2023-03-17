@@ -53,7 +53,7 @@ export default function ToggleIM({ onSubmit, defaultName }) {
               >
                 <div>
                   <label
-                    for='name'
+                    htmlFor='name'
                     className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
                   >
                     Name
@@ -73,7 +73,7 @@ export default function ToggleIM({ onSubmit, defaultName }) {
                 </div>
                 <div>
                   <label
-                    for='author'
+                    htmlFor='author'
                     className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
                   >
                     Author
@@ -88,7 +88,7 @@ export default function ToggleIM({ onSubmit, defaultName }) {
                 </div>
                 <div>
                   <label
-                    for='type'
+                    htmlFor='type'
                     className='block mt-5 mb-2 text-sm font-medium text-gray-900 dark:text-white'
                   >
                     Type

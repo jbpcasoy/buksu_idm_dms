@@ -62,7 +62,7 @@ export default function ToggleModal({ onSubmit, defaultName }) {
               >
                 <div>
                   <label
-                    for='name'
+                    htmlFor='name'
                     className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
                   >
                     Name
@@ -82,7 +82,7 @@ export default function ToggleModal({ onSubmit, defaultName }) {
                 </div>
                 {/* <div>
                   <label
-                    for='email'
+                    htmlFor='email'
                     className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
                   >
                     Email

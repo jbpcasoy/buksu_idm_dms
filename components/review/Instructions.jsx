@@ -24,7 +24,7 @@ export default function Instructions({ onNext, onPrevious }) {
                 className='w-4 h-4 text-CITLDarkBlue border-CITLOrange bg-CITLOrange'
               />
               <label
-                for='horizontal-list-radio-license'
+                htmlFor='horizontal-list-radio-license'
                 className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main '
               >
                 Very Much{" "}
@@ -42,7 +42,7 @@ export default function Instructions({ onNext, onPrevious }) {
                 className='w-4 h-4 text-CITLDarkBlue border-CITLOrange bg-CITLOrange'
               />
               <label
-                for='horizontal-list-radio-id'
+                htmlFor='horizontal-list-radio-id'
                 className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
               >
                 Much
@@ -60,7 +60,7 @@ export default function Instructions({ onNext, onPrevious }) {
                 className='w-4 h-4text-CITLDarkBlue border-CITLOrange bg-CITLOrange'
               />
               <label
-                for='horizontal-list-radio-millitary'
+                htmlFor='horizontal-list-radio-millitary'
                 className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
               >
                 Just Enough
@@ -78,7 +78,7 @@ export default function Instructions({ onNext, onPrevious }) {
                 className='w-4 h-4text-CITLDarkBlue border-CITLOrange bg-CITLOrange'
               />
               <label
-                for='horizontal-list-radio-passport'
+                htmlFor='horizontal-list-radio-passport'
                 className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
               >
                 Not Much
@@ -96,7 +96,7 @@ export default function Instructions({ onNext, onPrevious }) {
                 className='w-4 h-4 text-CITLDarkBlue border-CITLOrange bg-CITLOrange'
               />
               <label
-                for='horizontal-list-radio-passport'
+                htmlFor='horizontal-list-radio-passport'
                 className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
               >
                 Not at All
