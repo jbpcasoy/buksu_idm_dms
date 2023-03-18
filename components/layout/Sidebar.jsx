@@ -11,7 +11,7 @@ export default function Sidebar() {
         <ul className='space-y-2'>
           <li>
             <Link
-              href='/'
+              href='/my_ims'
               className='flex items-center p-2 text-base font-normal text-CITLWhite rounded-lg  hover:bg-CITLGray-main '
             >
               <svg
@@ -36,7 +36,7 @@ export default function Sidebar() {
 
           <li>
             <Link
-              href='/'
+              href='/to_revise'
               className='flex items-center p-2 text-base font-normal text-CITLWhite rounded-lg  hover:bg-CITLGray-main '
             >
               <svg
@@ -61,7 +61,7 @@ export default function Sidebar() {
 
           <li>
             <Link
-              href='/'
+              href='/to_review'
               className='flex items-center p-2 text-base font-normal text-CITLWhite rounded-lg  hover:bg-CITLGray-main '
             >
               <svg
@@ -91,7 +91,7 @@ export default function Sidebar() {
 
           <li>
             <Link
-              href='/'
+              href='/reviewed'
               className='flex items-center p-2 text-base font-normal text-CITLWhite rounded-lg  hover:bg-CITLGray-main '
             >
               <svg
@@ -116,7 +116,7 @@ export default function Sidebar() {
 
           <li>
             <Link
-              href='/college'
+              href='/department_ims'
               className='flex items-center p-2 text-base font-normal text-CITLWhite rounded-lg  hover:bg-CITLGray-main'
             >
               <svg
