@@ -1,23 +1,27 @@
 export default function SuggestionView({ children, title, viewOnly = false }) {
   return (
-    <div>
-      <p>{title}</p>
-      <table className='w-full divide-y divide-CITLGray-light mb-2'>
+    <div className='border border-CITLOrange rounded-lg mb-5 overflow-hidden'>
+      <div className='bg-CITLGray-light rounded-t-lg py-3 px-3 pr-3'>
+        <div className='flex justify-between text-center'>
+          <h2 className='pt-2 font-semibold text-CITLDarkBlue '>{title}</h2>
+        </div>
+      </div>
+      <table className='w-full divide-y divide-CITLGray-light overflow-hidden'>
         <thead className='bg-CITLGray-light'>
           <tr>
             <th
               scope='col'
-              className=' px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
+              className=' px-5 py-3 text-left w-4/5 text-xs font-medium text-gray-500 uppercase tracking-wider'
             >
               suggestion
             </th>
 
-            <th
+            {/* <th
               scope='col'
               className=' py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
             >
               Action Taken
-            </th>
+            </th> */}
 
             <th
               scope='col'

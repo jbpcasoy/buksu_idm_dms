@@ -47,7 +47,7 @@ export default function Suggestion({
               }
             />
           )}
-        <div className='border border-CITLGray-lighter rounded-lg mb-5'>
+        <div className='border border-CITLGray-lighter rounded-lg mb-5 overflow-hidden'>
           <div className='bg-CITLGray-light rounded-t-lg py-3 px-3 pr-3'>
             <div className='flex justify-between text-center '>
               <h2 className='text-center pt-2 font-semibold'>
@@ -57,7 +57,7 @@ export default function Suggestion({
             </div>
           </div>
 
-          <table className='w-full divide-y divide-CITLGray-light mb-2'>
+          <table className='w-full divide-y divide-CITLGray-light'>
             <thead className='bg-CITLGray-light'>
               <tr>
                 <th
