@@ -108,8 +108,8 @@ export default function DepartmentPage() {
                   <li className='inline-flex items-center'>
                     <button
                       type='button'
-                      href='#'
-                      className='inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue border-b-2 border-CITLOrange rounded-none'
+                      onClick={() => router.push(`/college`)}
+                      className='inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue rounded-none'
                     >
                       <span className='inline-flex items-center justify-center w-4 h-4 mr-1 text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
                         2
@@ -133,8 +133,10 @@ export default function DepartmentPage() {
                         ></path>
                       </svg>
                       <button
-                        href='#'
-                        className='inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue border-b-2 border-CITLOrange rounded-none'
+                        onClick={() =>
+                          router.push(`/college/${router.query.id}/department`)
+                        }
+                        className='inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue rounded-none'
                       >
                         <span className='inline-flex items-center justify-center w-4 h-4 mr-1 text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
                           2
