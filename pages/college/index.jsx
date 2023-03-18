@@ -2,7 +2,6 @@ import Layout from "@/components/layout/Layout";
 import frontendReadColleges from "@/services/frontend/admin/college/frontendReadColleges";
 import College from "@/views/College";
 import _ from "lodash";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
@@ -80,12 +79,12 @@ export default function CollegePage() {
                         clipRule='evenodd'
                       ></path>
                     </svg>
-                    <Link
+                    <span
                       disabled
                       className='inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLGray-main  rounded-none'
                     >
                       Departments
-                    </Link>
+                    </span>
                   </div>
                 </li>
                 <li aria-current='page'>
