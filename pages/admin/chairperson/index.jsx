@@ -1,8 +1,8 @@
+import AdminLayout from "@/components/admin/AdminLayout";
 import AdminChairperson from "@/components/admin/chairperson/AdminChairperson";
 import frontendCreateChairperson from "@/services/frontend/admin/chairperson/frontendCreateChairperson";
 import frontendReadChairpersons from "@/services/frontend/admin/chairperson/frontendReadChairpersons";
 import AdminAddChairpersonForm from "@/views/admin/chairperson/AdminAddChairpersonForm";
-import AdminLayout from "@/views/admin/layout/AdminLayout";
 import ActiveFilter from "@/views/forms/ActiveFilter";
 import AddIcon from "@mui/icons-material/Add";
 import {
@@ -124,7 +124,8 @@ export default function AdminChairpersonPage() {
             justifyContent='flex-end'
             alignItems='center'
             spacing={2}
-            sx={{ width: "100%" }}>
+            sx={{ width: "100%" }}
+          >
             <Tooltip title='Add'>
               <IconButton onClick={() => openAddDialog(true)}>
                 <AddIcon />

@@ -5,6 +5,7 @@ import PeerSuggestionView from "@/components/review/suggestion/suggestion_view/P
 import useIM from "@/hooks/useIM";
 import useUser from "@/hooks/useUser";
 import { initDropdowns } from "flowbite";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import ToggleIM from "../ToggleIM";
@@ -68,12 +69,12 @@ export default function ViewIM() {
                 </button>
               </li>
               <li>
-                <a
+                <Link
                   href={`/im/${iM?.id}/versions`}
                   className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
                 >
                   View Versions
-                </a>
+                </Link>
               </li>
               <li>
                 {user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId && (
@@ -162,6 +163,40 @@ export default function ViewIM() {
         <ToggleIM className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'>
           Edit IM
         </ToggleIM>
+        {iM && (
+          <div className='my-2 space-x-1'>
+            {Boolean(iM?.SubmittedPeerReview) && (
+              <span className='bg-green-300 text-green-900 text-xs px-3 py-1 rounded-2xl'>
+                Peer
+              </span>
+            )}
+            {!Boolean(iM?.SubmittedPeerReview) && (
+              <span className='bg-red-300 text-red-600 text-xs px-3 py-1 rounded-2xl'>
+                Peer
+              </span>
+            )}
+            {Boolean(iM?.SubmittedChairpersonReview) && (
+              <span className='bg-green-300 text-green-900 text-xs px-3  py-1 rounded-2xl'>
+                Chairperson
+              </span>
+            )}
+            {!Boolean(iM?.SubmittedChairpersonReview) && (
+              <span className='bg-red-300 text-red-600 text-xs px-3 py-1 rounded-2xl'>
+                Chairperson
+              </span>
+            )}
+            {Boolean(iM?.SubmittedCoordinatorReview) && (
+              <span className='bg-green-300 text-green-900 text-xs px-3 py-1 rounded-2xl'>
+                Coordinator
+              </span>
+            )}
+            {!Boolean(iM?.SubmittedCoordinatorReview) && (
+              <span className='bg-red-300 text-red-600 text-xs px-3 py-1 rounded-2xl'>
+                Coordinator
+              </span>
+            )}
+          </div>
+        )}
 
         {iM?.owner?.userId === user?.id && (
           <>

@@ -64,7 +64,6 @@ export default function DepartmentPage() {
 
   return (
     <Layout>
-      {loading && <p>Loading...</p>}
       {!loading && (
         <div>
           {/* <div>
@@ -108,11 +107,11 @@ export default function DepartmentPage() {
                   <li className='inline-flex items-center'>
                     <button
                       type='button'
-                      href='#'
-                      className='inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue border-b-2 border-CITLOrange rounded-none'
+                      onClick={() => router.push(`/college`)}
+                      className='inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue rounded-none'
                     >
                       <span className='inline-flex items-center justify-center w-4 h-4 mr-1 text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
-                        2
+                        {router?.query?.collegeCount}
                       </span>
                       Colleges
                     </button>
@@ -133,11 +132,15 @@ export default function DepartmentPage() {
                         ></path>
                       </svg>
                       <button
-                        href='#'
-                        className='inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue border-b-2 border-CITLOrange rounded-none'
+                        onClick={() =>
+                          router.push(
+                            `/college/${router.query.id}/department?collegeCount=${router?.query?.collegeCount}`
+                          )
+                        }
+                        className='inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue rounded-none'
                       >
                         <span className='inline-flex items-center justify-center w-4 h-4 mr-1 text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
-                          2
+                          {router?.query?.departmentCount}
                         </span>
                         Departments
                       </button>
@@ -160,7 +163,7 @@ export default function DepartmentPage() {
                       </svg>
                       <span className='inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue border-b-2 border-CITLOrange rounded-none'>
                         <span className='inline-flex items-center justify-center w-4 h-4 mr-1 text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
-                          2
+                          {total}
                         </span>
                         Faculty
                       </span>

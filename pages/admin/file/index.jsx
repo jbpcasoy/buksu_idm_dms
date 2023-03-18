@@ -1,6 +1,6 @@
+import AdminLayout from "@/components/admin/AdminLayout";
 import frontendReadFiles from "@/services/frontend/admin/file/frontendReadFiles";
 import AdminFileView from "@/views/admin/file/AdminFileView";
-import AdminLayout from "@/views/admin/layout/AdminLayout";
 import ActiveFilter from "@/views/forms/ActiveFilter";
 import {
   Box,

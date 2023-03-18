@@ -1,7 +1,9 @@
+import useUser from "@/hooks/useUser";
+import AdminHeader from "@/views/admin/layout/AdminHeader";
 import { Box } from "@mui/material";
-import AdminHeader from "./AdminHeader";
 
 export default function AdminLayout({ children }) {
+  const { user, userLoading, userError } = useUser();
   return (
     <Box>
       <Box>

@@ -1,8 +1,8 @@
+import AdminLayout from "@/components/admin/AdminLayout";
 import AdminIMReviewSection from "@/components/admin/im_review/AdminIMReviewSection";
 import adminCreateIMReviewSection from "@/services/frontend/admin/im_review/adminCreateIMReviewSection";
 import adminReadIMReviewSections from "@/services/frontend/admin/im_review/adminReadIMReviewSections";
 import AddIMReviewSectionDialog from "@/views/admin/im_review_section/AddIMReviewSectionDialog";
-import AdminLayout from "@/views/admin/layout/AdminLayout";
 import { Button, Container, Stack } from "@mui/material";
 import { useEffect, useState } from "react";
 

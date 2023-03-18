@@ -14,6 +14,11 @@ export default async function createSubmittedChairpersonReview({
         data: {
           chairpersonReviewId: chairpersonReview.id,
           iMId: chairpersonReview.iMId,
+          Notification: {
+            create: {
+              Type: "SUBMITTED_CHAIRPERSON_REVIEW",
+            },
+          },
         },
       });
 

@@ -1,8 +1,8 @@
+import AdminLayout from "@/components/admin/AdminLayout";
 import AdminCoordinator from "@/components/admin/coordinator/AdminCoordinator";
 import frontendCreateCoordinator from "@/services/frontend/admin/coordinator/frontendCreateCoordinator";
 import frontendReadCoordinators from "@/services/frontend/admin/coordinator/frontendReadCoordinators";
 import AdminAddCoordinatorForm from "@/views/admin/coordinator/AdminAddCoordinatorForm";
-import AdminLayout from "@/views/admin/layout/AdminLayout";
 import ActiveFilter from "@/views/forms/ActiveFilter";
 import AddIcon from "@mui/icons-material/Add";
 import {
@@ -126,7 +126,8 @@ export default function AdminCoordinatorPage() {
             justifyContent='flex-end'
             alignItems='center'
             spacing={2}
-            sx={{ width: "100%" }}>
+            sx={{ width: "100%" }}
+          >
             <Tooltip title='Add'>
               <IconButton onClick={() => openAddDialog(true)}>
                 <AddIcon />

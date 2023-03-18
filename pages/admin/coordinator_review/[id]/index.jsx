@@ -1,7 +1,7 @@
+import AdminLayout from "@/components/admin/AdminLayout";
 import { sections } from "@/constants/questions";
 import frontendReadCoordinatorReview from "@/services/frontend/admin/coordinator_review/frontendReadCoordinatorReview";
 import frontendReadCoordinatorReviewItems from "@/services/frontend/admin/coordinator_review_item/frontendReadCoordinatorReviewItems";
-import AdminLayout from "@/views/admin/layout/AdminLayout";
 import ReviewSection from "@/views/admin/review/ReviewSection";
 import {
   Avatar,

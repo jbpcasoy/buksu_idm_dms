@@ -1,8 +1,8 @@
+import AdminLayout from "@/components/admin/AdminLayout";
 import AdminCollege from "@/components/admin/college/AdminCollege";
 import frontendCreateCollege from "@/services/frontend/admin/college/frontendCreateCollege";
 import frontendReadColleges from "@/services/frontend/admin/college/frontendReadColleges";
 import AdminAddCollegeForm from "@/views/admin/college/AdminAddCollegeForm";
-import AdminLayout from "@/views/admin/layout/AdminLayout";
 import AddIcon from "@mui/icons-material/Add";
 import {
   Box,
@@ -103,7 +103,8 @@ export default function AdminCollegePage() {
             justifyContent='flex-end'
             alignItems='center'
             spacing={2}
-            sx={{ width: "100%" }}>
+            sx={{ width: "100%" }}
+          >
             <Tooltip title='Add'>
               <IconButton onClick={() => openAddDialog(true)}>
                 <AddIcon />

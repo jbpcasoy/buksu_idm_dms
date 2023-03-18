@@ -1,8 +1,8 @@
+import AdminLayout from "@/components/admin/AdminLayout";
 import AdminFaculty from "@/components/admin/faculty/AdminFaculty";
 import frontendReadFaculties from "@/services/frontend/admin/faculty/frontendReadFaculties";
 import frontendCreateFaculty from "@/services/frontend/faculty/frontendCreateFaculty";
 import AdminAddFacultyForm from "@/views/admin/faculty/AdminAddFacultyForm";
-import AdminLayout from "@/views/admin/layout/AdminLayout";
 import AddIcon from "@mui/icons-material/Add";
 import {
   Box,
@@ -112,16 +112,16 @@ export default function AdminFacultyPage() {
     <AdminLayout>
       <Box sx={{ m: 1 }}>
         <Toolbar>
-          <Typography variant="h6">Faculties</Typography>
+          <Typography variant='h6'>Faculties</Typography>
 
           <Stack
-            direction="row"
-            justifyContent="flex-end"
-            alignItems="center"
+            direction='row'
+            justifyContent='flex-end'
+            alignItems='center'
             spacing={2}
             sx={{ width: "100%" }}
           >
-            <Tooltip title="Add">
+            <Tooltip title='Add'>
               <IconButton onClick={() => openAddDialog(true)}>
                 <AddIcon />
               </IconButton>
@@ -129,20 +129,20 @@ export default function AdminFacultyPage() {
           </Stack>
         </Toolbar>
 
-        <Stack direction="row" spacing={1} sx={{ px: 2 }}>
+        <Stack direction='row' spacing={1} sx={{ px: 2 }}>
           <TextField
-            size="small"
-            label="Name"
+            size='small'
+            label='Name'
             onChange={debouncedHandleNameChange}
           />
           <TextField
-            size="small"
-            label="Department"
+            size='small'
+            label='Department'
             onChange={debouncedHandleDepartmentChange}
           />
           <TextField
-            size="small"
-            label="College"
+            size='small'
+            label='College'
             onChange={debouncedHandleCollegeChange}
           />
         </Stack>
@@ -154,8 +154,8 @@ export default function AdminFacultyPage() {
                 <TableCell>Name</TableCell>
                 <TableCell>Department</TableCell>
                 <TableCell>College</TableCell>
-                <TableCell align="center">Active</TableCell>
-                <TableCell align="center">Actions</TableCell>
+                <TableCell align='center'>Active</TableCell>
+                <TableCell align='center'>Actions</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -168,7 +168,7 @@ export default function AdminFacultyPage() {
 
         <TablePagination
           rowsPerPageOptions={[5, 10, 25]}
-          component="div"
+          component='div'
           count={total}
           rowsPerPage={state.limit}
           page={state.page}
