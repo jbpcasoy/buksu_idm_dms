@@ -3,7 +3,6 @@ import frontendReadCollege from "@/services/frontend/admin/college/frontendReadC
 import frontendReadDepartments from "@/services/frontend/admin/department/frontendReadDepartments";
 import Department from "@/views/Department";
 import _ from "lodash";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
@@ -65,43 +64,6 @@ export default function Departments() {
   return (
     <Layout>
       <div>
-        <div className='flex flex-wrap items-center border border-slate-300  bg-CITLWhite m-2 p-3 relative rounded-lg shadow-lg overflow-hidden'>
-          <div className='px-6 py-4 md:w-10/12 sm:w-12/12'>
-            <h3 className='text-lg font-semibold text-CITLDarkBlue'>
-              Announcement
-            </h3>
-            <p className='text-gray-600 mt-2 pb-5'>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia
-              facere natus eos amet dolor quam, sit, consequatur rerum unde
-              similique provident, eaque a perspiciatis aspernatur ex odio sequi
-              corrupti quae!
-            </p>
-            <Link
-              href={`/`}
-              className='inline-flex items-center px-4 py-2 text-sm font-medium text-CITLDarkBlue bg-CITLOrange border  rounded-lg  hover:text-CITLDarkBlue hover:border-CITLOrange focus:outline-none '
-            >
-              Read more{" "}
-              <svg
-                className='w-3 h-3 ml-2'
-                fill='currentColor'
-                viewBox='0 0 20 20'
-                xmlns='http://www.w3.org/2000/svg'
-              >
-                <path
-                  fillRule='evenodd'
-                  d='M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z'
-                  clipRule='evenodd'
-                ></path>
-              </svg>
-            </Link>
-          </div>
-
-          <img
-            className='md:w-2/12 sm:w-12/12 rounded-lg object-cover relative shadow-lg'
-            src='/IMAGES/DSC_6510.jpg'
-            alt='Announcement Image'
-          />
-        </div>
         <div className='flex flex-wrap items-center border border-CITLGray-lighter bg-CITLWhite m-2 mt-5 relative rounded-lg shadow-lg overflow-hidden'>
           <div className='flex items-center bg-CITLGray-light justify-between py-3 px-3 w-full'>
             {/* 1. if nav IS active (text-CITLDarkBlue border-b-2 border-CITLOrange) if nav is NOT active (text-CITLGray-main)
