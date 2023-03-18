@@ -1,5 +1,6 @@
 import useNotifications from "@/hooks/notification/useNotifications";
 import useUser from "@/hooks/useUser";
+import Link from "next/link";
 import NotificationItem from "./NotificationItem";
 
 export default function Notifications() {
@@ -39,10 +40,13 @@ export default function Notifications() {
         </div>
         <div className='divide-y divide-gray-100 dark:divide-gray-700'>
           {notifications.map((notification) => (
-            <NotificationItem notification={notification} />
+            <NotificationItem
+              notification={notification}
+              key={notification.id}
+            />
           ))}
         </div>
-        <a
+        <Link
           href='/notification'
           className='block py-2 text-sm font-medium text-center text-gray-900 rounded-b-lg bg-CITLGray-light hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white'
         >
@@ -63,7 +67,7 @@ export default function Notifications() {
             </svg>
             View all
           </div>
-        </a>
+        </Link>
       </div>
     </div>
   );

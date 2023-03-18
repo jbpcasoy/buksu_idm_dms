@@ -8,7 +8,7 @@ export default function NotificationItemView({
   children,
 }) {
   return (
-    <a
+    <Link
       href={href}
       className='flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700'
     >
@@ -24,6 +24,6 @@ export default function NotificationItemView({
           {moment(time).fromNow()}
         </div>
       </div>
-    </a>
+    </Link>
   );
 }
