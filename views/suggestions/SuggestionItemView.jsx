@@ -15,11 +15,11 @@ export default function SuggestionItemView({
     >
       <td className='px-5 py-4 '>{value}</td>
 
-      <td className='px-1 py-4 '>{actionTaken}</td>
+      {/* <td className='px-1 py-4 '>{actionTaken}</td> */}
 
       <td className='px-1py-4 '>{pageNumber}</td>
 
-      <td className='px-1 py-4 '>{remarks}</td>
+      <td className='px-1 py-4'>{remarks}</td>
       {!viewOnly && (
         <td className='px-1 py-4'>
           <ActionTakenModal
