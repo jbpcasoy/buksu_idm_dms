@@ -1,9 +1,15 @@
 import moment from "moment";
 
-export default function NotificationItemView({ imgSrc, icon, time, children }) {
+export default function NotificationItemView({
+  href,
+  imgSrc,
+  icon,
+  time,
+  children,
+}) {
   return (
     <a
-      href='#'
+      href={href}
       className='flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700'
     >
       <div className='flex-shrink-0'>

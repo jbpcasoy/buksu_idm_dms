@@ -12,8 +12,11 @@ export default function CoordinatorReviewNotificationItem({ notification }) {
   useEffect(() => {
     console.log({ notificationData, notificationError, notificationLoading });
   }, [notificationData, notificationError, notificationLoading]);
+
+  if (!notificationData) return null;
   return (
     <NotificationItemView
+      href={`/im/${notificationData?.SubmittedCoordinatorReview?.IM?.id}`}
       imgSrc={
         notificationData?.SubmittedCoordinatorReview?.CoordinatorReview
           ?.Coordinator?.Faculty?.user?.image

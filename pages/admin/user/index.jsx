@@ -1,5 +1,5 @@
+import AdminLayout from "@/components/admin/AdminLayout";
 import frontendReadUsers from "@/services/frontend/admin/user/frontendReadUsers";
-import AdminLayout from "@/views/admin/layout/AdminLayout";
 import {
   Avatar,
   Box,
@@ -71,7 +71,8 @@ export default function AdminUser() {
               {users?.map((users) => (
                 <TableRow
                   key={users.id}
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
                   <TableCell>
                     <Avatar src={users.image} />
                   </TableCell>

@@ -1,8 +1,8 @@
+import AdminLayout from "@/components/admin/AdminLayout";
 import AdminChairpersonSuggestion from "@/components/admin/suggestion/AdminChairpersonSuggestion";
 import AdminCoordinatorSuggestion from "@/components/admin/suggestion/AdminCoordinatorSuggestion";
 import AdminPeerSuggestion from "@/components/admin/suggestion/AdminPeerSuggestion";
 import useIM from "@/hooks/useIM";
-import AdminLayout from "@/views/admin/layout/AdminLayout";
 import { Box, Grid, Toolbar } from "@mui/material";
 import { useRouter } from "next/router";
 

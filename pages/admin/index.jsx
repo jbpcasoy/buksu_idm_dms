@@ -1,4 +1,4 @@
-import AdminLayout from "@/views/admin/layout/AdminLayout";
+import AdminLayout from "@/components/admin/AdminLayout";
 import { Typography } from "@mui/material";
 
 export default function AdminHome() {

@@ -13,8 +13,10 @@ export default function PeerReviewNotificationItem({ notification }) {
     console.log({ notificationData, notificationError, notificationLoading });
   }, [notificationData, notificationError, notificationLoading]);
 
+  if (!notificationData) return null;
   return (
     <NotificationItemView
+      href={`/im/${notificationData?.SubmittedPeerReview?.IM?.id}`}
       imgSrc={
         notificationData?.SubmittedPeerReview?.PeerReview?.Faculty?.user?.image
       }

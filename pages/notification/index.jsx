@@ -1,6 +1,13 @@
 import Layout from "@/components/layout/Layout";
+import NotificationItem from "@/components/NotificationItem";
+import useNotifications from "@/hooks/notification/useNotifications";
+import useUser from "@/hooks/useUser";
 
 export default function Notifications() {
+  const { user, userError, useLoading } = useUser();
+  const { notifications, notificationsLoading, notificationsError } =
+    useNotifications({ limit: 5, page: 1, userId: user?.id });
+
   return (
     <Layout>
       <div className='border border-CITLGray-lighter rounded-lg'>
@@ -24,7 +31,10 @@ export default function Notifications() {
         </div>
 
         <div className='divide-y divide-gray-100 dark:divide-gray-700'>
-          <a
+          {notifications.map((notification) => (
+            <NotificationItem notification={notification} />
+          ))}
+          {/* <a
             href='#'
             className='flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700'
           >
@@ -216,7 +226,7 @@ export default function Notifications() {
                 3 hours ago
               </div>
             </div>
-          </a>
+          </a> */}
           <div className='flex flex-row items-center bg-CITLGray-light justify-end px-6 py-3 w-full'>
             {/* <span className='text-sm text-gray-700 dark:text-gray-400 '>
               Showing{" "}

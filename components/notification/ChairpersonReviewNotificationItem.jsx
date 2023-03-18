@@ -12,8 +12,11 @@ export default function ChairpersonReviewNotificationItem({ notification }) {
   useEffect(() => {
     console.log({ notificationData, notificationError, notificationLoading });
   }, [notificationData, notificationError, notificationLoading]);
+
+  if (!notificationData) return null;
   return (
     <NotificationItemView
+      href={`/im/${notificationData?.SubmittedChairpersonReview?.IM?.id}`}
       imgSrc={
         notificationData?.SubmittedChairpersonReview?.ChairpersonReview
           ?.Chairperson?.Faculty?.user?.image

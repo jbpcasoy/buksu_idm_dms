@@ -5,7 +5,7 @@ import NotificationItem from "./NotificationItem";
 export default function Notifications() {
   const { user, userError, useLoading } = useUser();
   const { notifications, notificationsLoading, notificationsError } =
-    useNotifications({ limit: 10, page: 1, userId: user?.id });
+    useNotifications({ limit: 5, page: 1, userId: user?.id });
 
   return (
     <div>
@@ -43,7 +43,7 @@ export default function Notifications() {
           ))}
         </div>
         <a
-          href='#'
+          href='/notification'
           className='block py-2 text-sm font-medium text-center text-gray-900 rounded-b-lg bg-CITLGray-light hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white'
         >
           <div className='inline-flex items-center '>

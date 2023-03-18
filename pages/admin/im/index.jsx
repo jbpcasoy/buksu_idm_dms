@@ -1,7 +1,7 @@
+import AdminLayout from "@/components/admin/AdminLayout";
 import IMStatuses from "@/services/constants/im_status";
 import frontendReadIms from "@/services/frontend/admin/im";
 import AdminIMView from "@/views/admin/im/AdminIMView";
-import AdminLayout from "@/views/admin/layout/AdminLayout";
 import {
   Box,
   FormControl,
