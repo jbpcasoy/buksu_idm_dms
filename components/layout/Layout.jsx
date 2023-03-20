@@ -1,8 +1,23 @@
+import useUser from "@/hooks/useUser";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 
 export default function Layout({ children, active }) {
+  const { user, userError, userLoading } = useUser();
+  const router = useRouter();
+
+  useEffect(() => {
+    console.log({ user, userError, userLoading });
+    if (userLoading || !user) return;
+
+    if (user?.LoginRole?.Role === "ADMIN") {
+      router.push("/admin");
+    }
+  }, [user, userError, userLoading]);
+
   return (
     <div>
       <Header />
