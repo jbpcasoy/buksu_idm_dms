@@ -6,8 +6,14 @@ export default async function loginRoleHandler(req, res) {
   const { role, redirect } = req.query;
   const session = await getServerSession(req, res, authOptions);
 
-  await createOrUpdateLoginRole({ userId: session?.user?.id, Role: role });
-
+  try {
+    await createOrUpdateLoginRole({ userId: session?.user?.id, Role: role });
+  } catch (err) {
+    await createOrUpdateLoginRole({
+      userId: session?.user?.id,
+      Role: "UNAUTHORIZED",
+    });
+  }
   console.log({ role, redirect });
   return res.redirect(redirect);
 }

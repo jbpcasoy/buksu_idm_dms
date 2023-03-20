@@ -14,8 +14,6 @@ export default function Home() {
       router.push("/admin");
     } else if (user?.LoginRole?.Role === "FACULTY") {
       router.push("/my_ims");
-    } else {
-      signOut();
     }
   }, [user]);
 
@@ -55,9 +53,15 @@ export default function Home() {
                     <button
                       // disabled={userLoading}
                       onClick={() => {
-                        signIn("google", {
-                          callbackUrl:
-                            "/api/login_role?role=FACULTY&redirect=/my_ims",
+                        signIn(
+                          "google",
+                          {
+                            callbackUrl:
+                              "/api/login_role?role=FACULTY&redirect=/my_ims",
+                          },
+                          { prompt: "login" }
+                        ).catch((err) => {
+                          signOut();
                         });
                       }}
                       className='w-full text-CITLDarkBlue  focus:ring-2 focus:ring-inset focus:ring-CITLDarkBlue bg-white/5 p-2 ring-1 ring-white/10 border  font-medium rounded-lg text-sm px-5 py-2.5 text-center disabled:text-CITLGray-main disabled:bg-CITLGray-lighter'
@@ -67,9 +71,15 @@ export default function Home() {
                     <button
                       // disabled={userLoading}
                       onClick={() => {
-                        signIn("google", {
-                          callbackUrl:
-                            "/api/login_role?role=ADMIN&redirect=/admin",
+                        signIn(
+                          "google",
+                          {
+                            callbackUrl:
+                              "/api/login_role?role=ADMIN&redirect=/admin",
+                          },
+                          { prompt: "login" }
+                        ).catch((err) => {
+                          signOut();
                         });
                       }}
                       className='w-full text-CITLWhite bg-CITLDarkBlue hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center disabled:text-CITLGray-main disabled:bg-CITLGray-lighter'
