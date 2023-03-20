@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE `LoginRole` MODIFY `Role` ENUM('ADMIN', 'FACULTY', 'UNAUTHORIZED') NOT NULL;

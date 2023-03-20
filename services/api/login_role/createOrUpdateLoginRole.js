@@ -42,6 +42,7 @@ async function findUser({ userId, Role }) {
             },
           },
         });
+      case "UNAUTHORIZED": // Same behavior as case "FACULTY"
       case "FACULTY":
         return prisma.user.findUniqueOrThrow({
           where: {
