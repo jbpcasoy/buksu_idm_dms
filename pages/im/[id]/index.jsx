@@ -23,140 +23,162 @@ export default function ViewIM() {
     <Layout>
       <div className='bg-white rounded-md p-4'>
         <div className='flex items-center justify-between mb-4'>
-          <h2 className='text-lg font-medium'>{iM?.title}</h2>
-          <button
-            id='dropdownDefaultButton'
-            data-dropdown-toggle='dropdown'
-            className='text-white bg-CITLDarkBlue font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center'
-            type='button'
-          >
-            Options{" "}
-            <svg
-              className='w-4 h-4 ml-2'
-              aria-hidden='true'
-              fill='none'
-              stroke='currentColor'
-              viewBox='0 0 24 24'
-              xmlns='http://www.w3.org/2000/svg'
-            >
-              <path
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                strokeWidth='2'
-                d='M19 9l-7 7-7-7'
-              ></path>
-            </svg>
-          </button>
+          <div>
+            <h2 className='text-lg font-medium'>{iM?.title}</h2>
+            <div className='flex flex-cols'>
+              <Link href='/me'>
+                <img
+                  src='/IMAGES/2x2.png'
+                  className='h-8 rounded-full sm:h-8'
+                  alt='BukSUIMD Logo'
+                ></img>
+              </Link>
+              <div className=''>
+                <h2 className='text-xs font-semibold text-CITLGray-main pl-3 -mb-1'>
+                  John Bryan Pit Acaso
+                </h2>
+                <time className='text-xs text-CITLGray-main pl-3 '>
+                  March 20,2023 | 3:00 PM
+                </time>
+              </div>
+            </div>
+          </div>
 
-          <div
-            id='dropdown'
-            className='z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700'
-          >
-            <ul
-              className='py-2 text-sm text-gray-700 dark:text-gray-200'
-              aria-labelledby='dropdownDefaultButton'
+          <div className='flex items-center justify-between'>
+            <button
+              id='dropdownDefaultButton'
+              data-dropdown-toggle='dropdown'
+              className='text-white bg-CITLDarkBlue font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center'
+              type='button'
             >
-              <li>
-                {/*  EDIT IM should be visible and accessible only for the owner of the IM
-                 */}
-                <button
-                  data-modal-target='authentication-modal'
-                  data-modal-toggle='authentication-modal'
-                  className='block text-sm  text-left px-4 py-2.5  hover:bg-gray-100 w-full'
-                  type='button'
-                >
-                  Edit IM
-                </button>
-              </li>
-              <li>
-                <Link
-                  href={`/im/${iM?.id}/versions`}
-                  className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
-                >
-                  View Versions
-                </Link>
-              </li>
-              <li>
-                {user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId && (
+              Options{" "}
+              <svg
+                className='w-4 h-4 ml-2'
+                aria-hidden='true'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'
+                xmlns='http://www.w3.org/2000/svg'
+              >
+                <path
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  strokeWidth='2'
+                  d='M19 9l-7 7-7-7'
+                ></path>
+              </svg>
+            </button>
+
+            <div
+              id='dropdown'
+              className='z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700'
+            >
+              <ul
+                className='py-2 text-sm text-gray-700 dark:text-gray-200'
+                aria-labelledby='dropdownDefaultButton'
+              >
+                <li>
+                  {/*  EDIT IM should be visible and accessible only for the owner of the IM
+                   */}
                   <button
-                    disabled={
-                      iM?.SubmittedPeerReview &&
-                      user?.ActiveFaculty?.facultyId !==
-                        iM?.SubmittedPeerReview?.PeerReview?.facultyId
-                    }
-                    title={
-                      iM?.SubmittedPeerReview &&
-                      user?.ActiveFaculty?.facultyId !==
-                        iM?.SubmittedPeerReview?.PeerReview?.facultyId
-                        ? "Other peer's review exists"
-                        : undefined
-                    }
-                    onClick={() => router.push(`/im/${iM?.id}/review/peer`)}
-                    className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter text-left w-full'
+                    data-modal-target='authentication-modal'
+                    data-modal-toggle='authentication-modal'
+                    className='block text-sm  text-left px-4 py-2.5  hover:bg-gray-100 w-full'
+                    type='button'
                   >
-                    Peer Review
+                    Edit IM
                   </button>
-                )}
-              </li>
-              <li>
-                {user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId &&
-                  user?.ActiveFaculty?.ActiveCoordinator && (
+                </li>
+                <li>
+                  <Link
+                    href={`/im/${iM?.id}/versions`}
+                    className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
+                  >
+                    View Versions
+                  </Link>
+                </li>
+                <li>
+                  {user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId && (
                     <button
-                      onClick={() =>
-                        router.push(`/im/${iM?.id}/review/coordinator`)
-                      }
                       disabled={
-                        iM?.SubmittedCoordinatorReview &&
-                        user?.ActiveFaculty?.ActiveCoordinator
-                          ?.coordinatorId !==
-                          iM?.SubmittedCoordinatorReview?.CoordinatorReview
-                            ?.coordinatorId
+                        iM?.SubmittedPeerReview &&
+                        user?.ActiveFaculty?.facultyId !==
+                          iM?.SubmittedPeerReview?.PeerReview?.facultyId
                       }
                       title={
-                        iM?.SubmittedCoordinatorReview &&
-                        user?.ActiveFaculty?.ActiveCoordinator
-                          ?.coordinatorId !==
-                          iM?.SubmittedCoordinatorReview?.CoordinatorReview
-                            ?.coordinatorId
-                          ? "Other coordinator's review exists"
+                        iM?.SubmittedPeerReview &&
+                        user?.ActiveFaculty?.facultyId !==
+                          iM?.SubmittedPeerReview?.PeerReview?.facultyId
+                          ? "Other peer's review exists"
                           : undefined
                       }
+                      onClick={() => router.push(`/im/${iM?.id}/review/peer`)}
                       className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter text-left w-full'
                     >
-                      Coordinator Review
+                      Peer Review
                     </button>
                   )}
-              </li>
-              <li>
-                {user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId &&
-                  user?.ActiveFaculty?.ActiveChairperson && (
-                    <button
-                      onClick={() =>
-                        router.push(`/im/${iM?.id}/review/chairperson`)
-                      }
-                      disabled={
-                        iM?.SubmittedChairpersonReview &&
-                        user?.ActiveFaculty?.ActiveChairperson
-                          ?.chairpersonId !==
-                          iM?.SubmittedChairpersonReview?.ChairpersonReview
-                            ?.chairpersonId
-                      }
-                      title={
-                        iM?.SubmittedChairpersonReview &&
-                        user?.ActiveFaculty?.ActiveChairperson
-                          ?.chairpersonId !==
-                          iM?.SubmittedChairpersonReview?.ChairpersonReview
-                            ?.chairpersonId
-                          ? "Other chairperson's review exists"
-                          : undefined
-                      }
-                      className='block w-full  text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter'
-                    >
-                      Chairperson Review
-                    </button>
-                  )}
-              </li>
-            </ul>
+                </li>
+                <li>
+                  {user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId &&
+                    user?.ActiveFaculty?.ActiveCoordinator && (
+                      <button
+                        onClick={() =>
+                          router.push(`/im/${iM?.id}/review/coordinator`)
+                        }
+                        disabled={
+                          iM?.SubmittedCoordinatorReview &&
+                          user?.ActiveFaculty?.ActiveCoordinator
+                            ?.coordinatorId !==
+                            iM?.SubmittedCoordinatorReview?.CoordinatorReview
+                              ?.coordinatorId
+                        }
+                        title={
+                          iM?.SubmittedCoordinatorReview &&
+                          user?.ActiveFaculty?.ActiveCoordinator
+                            ?.coordinatorId !==
+                            iM?.SubmittedCoordinatorReview?.CoordinatorReview
+                              ?.coordinatorId
+                            ? "Other coordinator's review exists"
+                            : undefined
+                        }
+                        className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter text-left w-full'
+                      >
+                        Coordinator Review
+                      </button>
+                    )}
+                </li>
+                <li>
+                  {user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId &&
+                    user?.ActiveFaculty?.ActiveChairperson && (
+                      <button
+                        onClick={() =>
+                          router.push(`/im/${iM?.id}/review/chairperson`)
+                        }
+                        disabled={
+                          iM?.SubmittedChairpersonReview &&
+                          user?.ActiveFaculty?.ActiveChairperson
+                            ?.chairpersonId !==
+                            iM?.SubmittedChairpersonReview?.ChairpersonReview
+                              ?.chairpersonId
+                        }
+                        title={
+                          iM?.SubmittedChairpersonReview &&
+                          user?.ActiveFaculty?.ActiveChairperson
+                            ?.chairpersonId !==
+                            iM?.SubmittedChairpersonReview?.ChairpersonReview
+                              ?.chairpersonId
+                            ? "Other chairperson's review exists"
+                            : undefined
+                        }
+                        className='block w-full  text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter'
+                      >
+                        Chairperson Review
+                      </button>
+                    )}
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
 
@@ -166,7 +188,7 @@ export default function ViewIM() {
         {iM && (
           <div className='my-2 space-x-1'>
             {Boolean(iM?.SubmittedPeerReview) && (
-              <span className='bg-green-300 text-green-900 text-xs px-3 py-1 rounded-2xl'>
+              <span className='bg-purple-400 text-purple-800 text-xs px-3 py-1 rounded-2xl'>
                 Peer
               </span>
             )}
@@ -176,7 +198,7 @@ export default function ViewIM() {
               </span>
             )}
             {Boolean(iM?.SubmittedChairpersonReview) && (
-              <span className='bg-green-300 text-green-900 text-xs px-3  py-1 rounded-2xl'>
+              <span className='bg-orange-300 text-orange-500 text-xs px-3  py-1 rounded-2xl'>
                 Chairperson
               </span>
             )}

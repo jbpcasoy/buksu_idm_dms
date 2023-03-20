@@ -62,7 +62,7 @@ export default function IM({
       <td className='px-6 py-4 '>{status}</td>
       <td className='px-4 py-4 flex gap-1 m-2 align-middle'>
         {peerReviewed && (
-          <span className='bg-green-300 text-green-900 text-xs px-3 py-1 rounded-2xl'>
+          <span className='bg-purple-400 text-purple-800 text-xs px-3 py-1 rounded-2xl'>
             Peer
           </span>
         )}
@@ -72,7 +72,7 @@ export default function IM({
           </span>
         )}
         {chairpersonReviewed && (
-          <span className='bg-green-300 text-green-900 text-xs px-3  py-1 rounded-2xl'>
+          <span className='bg-orange-300 text-orange-500 text-xs px-3  py-1 rounded-2xl'>
             Chairperson
           </span>
         )}

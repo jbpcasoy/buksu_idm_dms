@@ -92,9 +92,9 @@ export default function ActionTakenModal({
                 onSubmit={formik.handleSubmit}
               >
                 <div>
-                  <p>{value}</p>
-                  <p>{remarks}</p>
-                  <p>{pageNumber}</p>
+                  <p className='mb-3'>{value}</p>
+                  <p className='mb-3'>{remarks}</p>
+                  <p className='mb-3'>{pageNumber}</p>
                   <textarea
                     className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-CITLGray-main focus:border-CITLGray-main block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white ${
                       formik.touched.actionTaken && formik.errors.actionTaken
