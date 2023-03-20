@@ -49,6 +49,8 @@ model User {
   Faculty          Faculty[]
   ActiveFaculty    ActiveFaculty?
   ReadNotification ReadNotification[]
+  Admin            Admin?
+  LoginRole        LoginRole?
 }
 
 model VerificationToken {
@@ -568,5 +570,29 @@ model ReadNotification {
 
   @@unique([userId, notificationId])
   @@index([notificationId])
+  @@index([userId])
+}
+
+model Admin {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  User      User     @relation(fields: [userId], references: [id])
+  userId    String   @unique
+}
+
+enum Role {
+  ADMIN
+  FACULTY
+}
+
+model LoginRole {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  User      User     @relation(fields: [userId], references: [id])
+  userId    String   @unique
+  Role      Role
+
   @@index([userId])
 }
