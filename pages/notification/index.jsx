@@ -32,7 +32,10 @@ export default function Notifications() {
 
         <div className='divide-y divide-gray-100 dark:divide-gray-700'>
           {notifications.map((notification) => (
-            <NotificationItem notification={notification} key={id} />
+            <NotificationItem
+              notification={notification}
+              key={notification.id}
+            />
           ))}
           <div className='flex flex-row items-center bg-CITLGray-light justify-end px-6 py-3 w-full'>
             {/* <span className='text-sm text-gray-700 dark:text-gray-400 '>
