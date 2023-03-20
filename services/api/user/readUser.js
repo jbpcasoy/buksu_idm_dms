@@ -9,6 +9,7 @@ export default async function readUser(id) {
         id,
       },
       include: {
+        LoginRole: true,
         ActiveFaculty: {
           include: {
             ActiveChairperson: true,

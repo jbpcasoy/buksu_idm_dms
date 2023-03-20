@@ -12,7 +12,7 @@ export default function useUser() {
   });
   const router = useRouter();
   const [user, setUser] = useState(null);
-  const [userLoading, setUserLoading] = useState(false);
+  const [userLoading, setUserLoading] = useState(true);
   const [userError, setUserError] = useState(null);
 
   useEffect(() => {

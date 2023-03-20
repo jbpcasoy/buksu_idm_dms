@@ -41,7 +41,7 @@ export default function Home() {
                   </h3> */}
                   <div className='space-y-4'>
                     <button
-                      disabled={userLoading}
+                      // disabled={userLoading}
                       onClick={() => {
                         signIn("google", {
                           callbackUrl:
@@ -53,7 +53,7 @@ export default function Home() {
                       Login as Faculty
                     </button>
                     <button
-                      disabled={userLoading}
+                      // disabled={userLoading}
                       onClick={() => {
                         signIn("google", {
                           callbackUrl:
