@@ -25,7 +25,7 @@ export default function PeerSuggestionView({ peerReview, viewOnly = false }) {
         <PeerSuggestionItemView
           key={peerSuggestionItem.id}
           peerSuggestionItem={peerSuggestionItem}
-          viewOnly
+          viewOnly={viewOnly}
         />
       ))}
     </SuggestionView>
