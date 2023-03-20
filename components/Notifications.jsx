@@ -17,13 +17,19 @@ export default function Notifications() {
         type='button'
       >
         <svg
+          fill='none'
           className='w-6 h-6'
-          aria-hidden='true'
-          fill='currentColor'
-          viewBox='0 0 20 20'
+          stroke='currentColor'
+          stroke-width='1.5'
+          viewBox='0 0 24 24'
           xmlns='http://www.w3.org/2000/svg'
+          aria-hidden='true'
         >
-          <path d='M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z'></path>
+          <path
+            stroke-linecap='round'
+            stroke-linejoin='round'
+            d='M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0'
+          ></path>
         </svg>
         <div className='relative flex '>
           <div className='absolute inline-flex items-center justify-center w-2 h-2 text-xs font- text-white bg-red-500 border-2 border-white rounded-full -top-3 right-1 dark:border-gray-900'></div>
