@@ -1,6 +1,6 @@
+import AdminLayout from "@/components/admin/AdminLayout";
 import AdminDepartment from "@/components/admin/department/AdminDepartment";
 import frontendReadDepartments from "@/services/frontend/admin/department/frontendReadDepartments";
-import AdminLayout from "@/views/admin/layout/AdminLayout";
 import {
   Box,
   Stack,

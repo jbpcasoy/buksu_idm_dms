@@ -1,18 +1,25 @@
 import LoginButton from "@/views/LoginButton";
+import { initDropdowns } from "flowbite";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
+import { useEffect } from "react";
+import Notifications from "../Notifications";
 
 export default function Header() {
   const { data: session } = useSession();
+  useEffect(() => {
+    initDropdowns();
+  });
 
   return (
     <nav className='fixed top-0 z-50 w-full bg-CITLDarkBlue border-b border-CITLGray-main'>
-      <div className='px-3 py-3 lg:px-5 lg:pl-3'>
+      <div className='px-0 py-3 lg:px-5 lg:pl-3'>
         <div className='flex items-center justify-between'>
           <div className='flex items-center justify-start'>
             <button
               data-drawer-target='logo-sidebar'
               data-drawer-toggle='logo-sidebar'
+              data-drawer-backdrop='false'
               aria-controls='logo-sidebar'
               type='button'
               className='inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600'
@@ -35,14 +42,16 @@ export default function Header() {
             <Link href='/' className='flex ml-2 md:mr-24'>
               <img
                 src='/IMAGES/Logo.png'
-                className='h-8 sm:h-10 mr-3'
+                className='h-8 sm:h-10'
                 alt='BukSUIMD Logo'
               />
             </Link>
           </div>
 
           <div className='flex items-center'>
-            <div className='flex items-center mr-3'>
+            <div className='flex items-center mr-3 gap-3'>
+              <Notifications />
+
               <div>
                 <button
                   type='button'

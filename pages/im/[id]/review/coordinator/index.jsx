@@ -3,6 +3,7 @@ import IMInfo from "@/components/review/IMInfo";
 import Instructions from "@/components/review/Instructions";
 import ConfirmCoordinatorReview from "@/components/review/preview/ConfirmCoordinatorReview";
 import ReviewPage from "@/components/review/ReviewPage";
+import CoordinatorSuggestion from "@/components/review/suggestion/CoordinatorSuggestion";
 import { sections } from "@/constants/questions";
 import useUser from "@/hooks/useUser";
 import frontendCreateSubmittedCoordinatorReview from "@/services/api/submitted_coordinator_review/frontendCreateSubmittedCoordinatorReview";
@@ -42,6 +43,14 @@ const CoordinatorReviewPage = () => {
       onPrevious={handlePrevious}
       onSubmit={handleSubmit}
     />,
+    <CoordinatorSuggestion
+      key='suggestion'
+      coordinatorReview={coordinatorReview}
+      onFinish={() => {
+        router.push(`/im/${iM.id}`);
+      }}
+      onPrevious={handlePrevious}
+    />,
   ];
 
   function handlePrevious() {
@@ -60,25 +69,28 @@ const CoordinatorReviewPage = () => {
         console.error(err);
       })
       .finally(() => {
-        router.push(`/im/${iM.id}`);
+        handleNext();
       });
   }
 
   function generateQuestions(sections) {
     const questions = [];
     for (let section of sections) {
+      if (!section.active) continue;
       for (let question of section.questions) {
-        questions.push(
-          <CoordinatorQuestion
-            key={question.id}
-            questionId={question.id}
-            coordinatorReview={coordinatorReview}
-            title={section.title}
-            question={question.label}
-            onNext={handleNext}
-            onPrevious={handlePrevious}
-          />
-        );
+        if (question.active) {
+          questions.push(
+            <CoordinatorQuestion
+              key={question.id}
+              questionId={question.id}
+              coordinatorReview={coordinatorReview}
+              title={section.title}
+              question={question.label}
+              onNext={handleNext}
+              onPrevious={handlePrevious}
+            />
+          );
+        }
       }
     }
 

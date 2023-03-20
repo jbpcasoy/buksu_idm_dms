@@ -2703,5 +2703,121 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "c42a803e-3be9-42c3-973d-f588bad79ed3",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "8b2805ce-5003-473c-9dc3-853f687da4f1",
+    "name": "READ Notifications",
+    "url": "{{host}}/api/notification?limit=10&page=1",
+    "method": "GET",
+    "sortNum": 1680000,
+    "created": "2023-03-17T06:32:48.205Z",
+    "modified": "2023-03-17T06:34:05.006Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "limit",
+        "value": "10",
+        "isPath": false
+      },
+      {
+        "name": "page",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "253dc920-cdfa-4534-9ebf-b186900913e7",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "8b2805ce-5003-473c-9dc3-853f687da4f1",
+    "name": "READ Notification",
+    "url": "{{host}}/api/notification/clfc5bf4d0007s9fqofa47gtj",
+    "method": "GET",
+    "sortNum": 1690000,
+    "created": "2023-03-17T06:39:39.966Z",
+    "modified": "2023-03-17T06:40:05.246Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "9b7d51f8-aad0-49a6-bac5-c908b7ad4174",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "4a3fab0b-abd7-402d-a549-8dcd7d29cea1",
+    "name": "CREATE ReadNotification",
+    "url": "{{host}}/api/read_notification",
+    "method": "POST",
+    "sortNum": 1700000,
+    "created": "2023-03-17T07:13:29.149Z",
+    "modified": "2023-03-17T07:14:35.862Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"notificationId\": \"clfc5bf4d0007s9fqofa47gtj\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "489cf966-9048-420d-bc33-b3e9ddaf53f3",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "4a3fab0b-abd7-402d-a549-8dcd7d29cea1",
+    "name": "READ ReadNotifications",
+    "url": "{{host}}/api/read_notification?limit=10&page=1",
+    "method": "GET",
+    "sortNum": 1710000,
+    "created": "2023-03-17T07:25:51.336Z",
+    "modified": "2023-03-17T07:26:11.032Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "limit",
+        "value": "10",
+        "isPath": false
+      },
+      {
+        "name": "page",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "eac43c41-9854-48dc-8540-4b6049e662ab",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "4a3fab0b-abd7-402d-a549-8dcd7d29cea1",
+    "name": "READ ReadNotification",
+    "url": "{{host}}/api/read_notification/clfc7ksb50000s9lu713cgv6a",
+    "method": "GET",
+    "sortNum": 1720000,
+    "created": "2023-03-17T07:34:54.001Z",
+    "modified": "2023-03-17T07:35:18.226Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "cbdadb60-0c94-4561-b069-3215d50172b0",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "4a3fab0b-abd7-402d-a549-8dcd7d29cea1",
+    "name": "DELETE ReadNotification",
+    "url": "{{host}}/api/read_notification/clfc8cood0004s9luiwzusart",
+    "method": "DELETE",
+    "sortNum": 1730000,
+    "created": "2023-03-17T07:39:02.828Z",
+    "modified": "2023-03-17T07:40:24.318Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]

@@ -39,15 +39,16 @@ model Session {
 }
 
 model User {
-  id            String         @id @default(cuid())
-  name          String?
-  email         String?        @unique
-  emailVerified DateTime?
-  image         String?
-  accounts      Account[]
-  sessions      Session[]
-  Faculty       Faculty[]
-  ActiveFaculty ActiveFaculty?
+  id               String             @id @default(cuid())
+  name             String?
+  email            String?            @unique
+  emailVerified    DateTime?
+  image            String?
+  accounts         Account[]
+  sessions         Session[]
+  Faculty          Faculty[]
+  ActiveFaculty    ActiveFaculty?
+  ReadNotification ReadNotification[]
 }
 
 model VerificationToken {
@@ -381,6 +382,7 @@ model SubmittedPeerReview {
   PeerReview     PeerReview      @relation(fields: [peerReviewId], references: [id])
   peerReviewId   String          @unique
   PeerSuggestion PeerSuggestion?
+  Notification   Notification?
 }
 
 model ChairpersonReview {
@@ -421,6 +423,7 @@ model SubmittedChairpersonReview {
   ChairpersonReview     ChairpersonReview      @relation(fields: [chairpersonReviewId], references: [id])
   chairpersonReviewId   String                 @unique
   ChairpersonSuggestion ChairpersonSuggestion?
+  Notification          Notification?
 }
 
 model CoordinatorReview {
@@ -462,6 +465,7 @@ model SubmittedCoordinatorReview {
   CoordinatorReview     CoordinatorReview      @relation(fields: [coordinatorReviewId], references: [id])
   coordinatorReviewId   String                 @unique
   CoordinatorSuggestion CoordinatorSuggestion?
+  Notification          Notification?
 }
 
 model PeerSuggestion {
@@ -531,4 +535,38 @@ model CoordinatorSuggestionItem {
   coordinatorSuggestionId String
 
   @@index([coordinatorSuggestionId])
+}
+
+enum Type {
+  SUBMITTED_PEER_REVIEW
+  SUBMITTED_CHAIRPERSON_REVIEW
+  SUBMITTED_COORDINATOR_REVIEW
+}
+
+model Notification {
+  id                           String                      @id @default(cuid())
+  createdAt                    DateTime                    @default(now())
+  updatedAt                    DateTime                    @updatedAt
+  ReadNotification             ReadNotification[]
+  Type                         Type
+  SubmittedPeerReview          SubmittedPeerReview?        @relation(fields: [submittedPeerReviewId], references: [id])
+  submittedPeerReviewId        String?                     @unique
+  SubmittedChairpersonReview   SubmittedChairpersonReview? @relation(fields: [submittedChairpersonReviewId], references: [id])
+  submittedChairpersonReviewId String?                     @unique
+  SubmittedCoordinatorReview   SubmittedCoordinatorReview? @relation(fields: [submittedCoordinatorReviewId], references: [id])
+  submittedCoordinatorReviewId String?                     @unique
+}
+
+model ReadNotification {
+  id             String       @id @default(cuid())
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  Notification   Notification @relation(fields: [notificationId], references: [id])
+  notificationId String
+  User           User         @relation(fields: [userId], references: [id])
+  userId         String
+
+  @@unique([userId, notificationId])
+  @@index([notificationId])
+  @@index([userId])
 }

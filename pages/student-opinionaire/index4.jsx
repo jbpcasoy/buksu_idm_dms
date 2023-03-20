@@ -41,7 +41,7 @@ export default function StudentOpinionnaire() {
                           className='w-4 h-4 text-CITLDarkBlue bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue'
                         />
                         <label
-                          for='horizontal-list-radio-license'
+                          htmlFor='horizontal-list-radio-license'
                           className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main '
                         >
                           Yes{" "}
@@ -58,7 +58,7 @@ export default function StudentOpinionnaire() {
                           className='w-4 h-4 text-CITLDarkBlue bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue'
                         />
                         <label
-                          for='horizontal-list-radio-id'
+                          htmlFor='horizontal-list-radio-id'
                           className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
                         >
                           Somewhat
@@ -75,7 +75,7 @@ export default function StudentOpinionnaire() {
                           className='w-4 h-4 text-CITLDarkBlue bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue'
                         />
                         <label
-                          for='horizontal-list-radio-millitary'
+                          htmlFor='horizontal-list-radio-millitary'
                           className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
                         >
                           No
@@ -92,7 +92,7 @@ export default function StudentOpinionnaire() {
                           className='w-4 h-4 text-CITLDarkBlue bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue '
                         />
                         <label
-                          for='horizontal-list-radio-passport'
+                          htmlFor='horizontal-list-radio-passport'
                           className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
                         >
                           Not Applicable
@@ -121,7 +121,7 @@ export default function StudentOpinionnaire() {
                           className='w-4 h-4 text-CITLDarkBlue bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue'
                         />
                         <label
-                          for='horizontal-list-radio-license'
+                          htmlFor='horizontal-list-radio-license'
                           className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main '
                         >
                           Yes{" "}
@@ -138,7 +138,7 @@ export default function StudentOpinionnaire() {
                           className='w-4 h-4 text-CITLDarkBlue bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue'
                         />
                         <label
-                          for='horizontal-list-radio-id'
+                          htmlFor='horizontal-list-radio-id'
                           className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
                         >
                           Somewhat
@@ -155,7 +155,7 @@ export default function StudentOpinionnaire() {
                           className='w-4 h-4 text-CITLDarkBlue bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue'
                         />
                         <label
-                          for='horizontal-list-radio-millitary'
+                          htmlFor='horizontal-list-radio-millitary'
                           className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
                         >
                           No
@@ -172,7 +172,7 @@ export default function StudentOpinionnaire() {
                           className='w-4 h-4 text-CITLDarkBlue bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue '
                         />
                         <label
-                          for='horizontal-list-radio-passport'
+                          htmlFor='horizontal-list-radio-passport'
                           className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
                         >
                           Not Applicable
@@ -200,7 +200,7 @@ export default function StudentOpinionnaire() {
                           className='w-4 h-4 text-CITLDarkBlue bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue'
                         />
                         <label
-                          for='horizontal-list-radio-license'
+                          htmlFor='horizontal-list-radio-license'
                           className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main '
                         >
                           Yes{" "}
@@ -217,7 +217,7 @@ export default function StudentOpinionnaire() {
                           className='w-4 h-4 text-CITLDarkBlue bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue'
                         />
                         <label
-                          for='horizontal-list-radio-id'
+                          htmlFor='horizontal-list-radio-id'
                           className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
                         >
                           Somewhat
@@ -234,7 +234,7 @@ export default function StudentOpinionnaire() {
                           className='w-4 h-4 text-CITLDarkBlue bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue'
                         />
                         <label
-                          for='horizontal-list-radio-millitary'
+                          htmlFor='horizontal-list-radio-millitary'
                           className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
                         >
                           No
@@ -251,7 +251,7 @@ export default function StudentOpinionnaire() {
                           className='w-4 h-4 text-CITLDarkBlue bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue '
                         />
                         <label
-                          for='horizontal-list-radio-passport'
+                          htmlFor='horizontal-list-radio-passport'
                           className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
                         >
                           Not Applicable
@@ -275,8 +275,8 @@ export default function StudentOpinionnaire() {
                 <div className='py-5'>
                   <div className='border border-CITLGray-main rounded-lg px-3 py-5'>
                     <label
-                      for='message'
-                      class='block mb-2 mt-3 text-sm font-medium text-CITLGray-main'
+                      htmlFor='message'
+                      className='block mb-2 mt-3 text-sm font-medium text-CITLGray-main'
                     >
                       1. What I like in the module is/are:
                     </label>
@@ -284,59 +284,65 @@ export default function StudentOpinionnaire() {
                       <div className='indent-8 grid-cols-4 '>
                         <label className=' text-CITLGray-main'>a. </label>
                         <input
-                          type='text' placeholder="-"
-                          class='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
+                          type='text'
+                          placeholder='-'
+                          className='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
                         />
                       </div>
                       <div className='indent-8 grid-cols-4'>
                         <label className=' text-CITLGray-main'>b. </label>
                         <input
-                          type='text'  placeholder="-"
-                          class='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
+                          type='text'
+                          placeholder='-'
+                          className='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
                         />
                       </div>
                       <div className='indent-8 grid-cols-4'>
                         <label className=' text-CITLGray-main'>c. </label>
                         <input
-                          type='text'  placeholder="-"
-                          class='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
+                          type='text'
+                          placeholder='-'
+                          className='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
                         />
                       </div>
                     </div>
                     <label
-                      for='message'
-                      class='block mb-2 mt-3 text-sm font-medium text-CITLGray-main'
+                      htmlFor='message'
+                      className='block mb-2 mt-3 text-sm font-medium text-CITLGray-main'
                     >
                       <label
-                        for='message'
-                        class='block mb-2 mt-3 text-sm font-medium text-CITLGray-main'
+                        htmlFor='message'
+                        className='block mb-2 mt-3 text-sm font-medium text-CITLGray-main'
                       >
                         2. What I think can still be improved in the module
                         is/are:
                       </label>
                       <div>
-                      <div className='indent-8 grid-cols-4 '>
-                        <label className=' text-CITLGray-main'>a. </label>
-                        <input
-                          type='text' placeholder="-"
-                          class='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
-                        />
+                        <div className='indent-8 grid-cols-4 '>
+                          <label className=' text-CITLGray-main'>a. </label>
+                          <input
+                            type='text'
+                            placeholder='-'
+                            className='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
+                          />
+                        </div>
+                        <div className='indent-8 grid-cols-4'>
+                          <label className=' text-CITLGray-main'>b. </label>
+                          <input
+                            type='text'
+                            placeholder='-'
+                            className='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
+                          />
+                        </div>
+                        <div className='indent-8 grid-cols-4'>
+                          <label className=' text-CITLGray-main'>c. </label>
+                          <input
+                            type='text'
+                            placeholder='-'
+                            className='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
+                          />
+                        </div>
                       </div>
-                      <div className='indent-8 grid-cols-4'>
-                        <label className=' text-CITLGray-main'>b. </label>
-                        <input
-                          type='text'  placeholder="-"
-                          class='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
-                        />
-                      </div>
-                      <div className='indent-8 grid-cols-4'>
-                        <label className=' text-CITLGray-main'>c. </label>
-                        <input
-                          type='text'  placeholder="-"
-                          class='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
-                        />
-                      </div>
-                    </div>
                     </label>
                   </div>
                 </div>
@@ -344,7 +350,7 @@ export default function StudentOpinionnaire() {
                   <div>
                     <label
                       className='block mb-1 text-sm font-semibold text-CITLDarkBlue '
-                      htmlFor='title'
+                      htmlfor='title'
                     >
                       Name of Evaluator
                     </label>
@@ -359,7 +365,7 @@ export default function StudentOpinionnaire() {
                   <div>
                     <label
                       className='block mb-1 text-sm font-semibold text-CITLDarkBlue '
-                      htmlFor='title'
+                      htmlfor='title'
                     >
                       Date
                     </label>

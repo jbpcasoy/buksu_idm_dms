@@ -41,7 +41,7 @@ export default function TeacherUserEvaluation() {
                     <li className='w-full  border-gray-200 sm:border-b-0  dark:border-gray-600'>
                       <div className='flex items-center pl-3'>
                         <label
-                          for='horizontal-list-radio-license'
+                          htmlFor='horizontal-list-radio-license'
                           className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main '
                         >
                           <span className='text-CITLOrange border-2 border-CITLOrange px-3 py-2'>
@@ -54,7 +54,7 @@ export default function TeacherUserEvaluation() {
                     <li className='w-full  border-gray-200 sm:border-b-0  dark:border-gray-600'>
                       <div className='flex items-center pl-3'>
                         <label
-                          for='horizontal-list-radio-id'
+                          htmlFor='horizontal-list-radio-id'
                           className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
                         >
                           <span className='text-CITLOrange border-2 border-CITLOrange px-3 py-2'>
@@ -67,7 +67,7 @@ export default function TeacherUserEvaluation() {
                     <li className='w-full  border-gray-200 sm:border-b-0 dark:border-gray-600'>
                       <div className='flex items-center pl-3'>
                         <label
-                          for='horizontal-list-radio-millitary'
+                          htmlFor='horizontal-list-radio-millitary'
                           className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
                         >
                           <span className='text-CITLOrange border-2 border-CITLOrange px-3 py-2'>
@@ -80,7 +80,7 @@ export default function TeacherUserEvaluation() {
                     <li className='w-full sm:border-b-0 dark:border-gray-600'>
                       <div className='flex items-center pl-3'>
                         <label
-                          for='horizontal-list-radio-passport'
+                          htmlFor='horizontal-list-radio-passport'
                           className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
                         >
                           <span className='text-CITLOrange border-2 border-CITLOrange px-3 py-2'>
@@ -93,7 +93,7 @@ export default function TeacherUserEvaluation() {
                     <li className='w-full sm:border-b-0 dark:border-gray-600'>
                       <div className='flex items-center pl-3'>
                         <label
-                          for='horizontal-list-radio-passport'
+                          htmlFor='horizontal-list-radio-passport'
                           className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
                         >
                           <span className='text-CITLOrange border-2 border-CITLOrange px-3 py-2'>
@@ -126,7 +126,7 @@ export default function TeacherUserEvaluation() {
                         className='peer hidden border'
                       />
                       <label
-                        for='1'
+                        htmlFor='1'
                         className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         1
@@ -141,7 +141,7 @@ export default function TeacherUserEvaluation() {
                         className='peer hidden'
                       />
                       <label
-                        for='2'
+                        htmlFor='2'
                         className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         2
@@ -156,7 +156,7 @@ export default function TeacherUserEvaluation() {
                         className='peer hidden'
                       />
                       <label
-                        for='3'
+                        htmlFor='3'
                         className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         3
@@ -171,7 +171,7 @@ export default function TeacherUserEvaluation() {
                         className='peer hidden'
                       />
                       <label
-                        for='4'
+                        htmlFor='4'
                         className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         4
@@ -185,7 +185,7 @@ export default function TeacherUserEvaluation() {
                         className='peer hidden'
                       />
                       <label
-                        for='5'
+                        htmlFor='5'
                         className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         5
@@ -213,7 +213,7 @@ export default function TeacherUserEvaluation() {
                         className='peer hidden border'
                       />
                       <label
-                        for='1'
+                        htmlFor='1'
                         className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         1
@@ -228,7 +228,7 @@ export default function TeacherUserEvaluation() {
                         className='peer hidden'
                       />
                       <label
-                        for='2'
+                        htmlFor='2'
                         className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         2
@@ -243,7 +243,7 @@ export default function TeacherUserEvaluation() {
                         className='peer hidden'
                       />
                       <label
-                        for='3'
+                        htmlFor='3'
                         className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         3
@@ -258,7 +258,7 @@ export default function TeacherUserEvaluation() {
                         className='peer hidden'
                       />
                       <label
-                        for='4'
+                        htmlFor='4'
                         className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         4
@@ -272,7 +272,7 @@ export default function TeacherUserEvaluation() {
                         className='peer hidden'
                       />
                       <label
-                        for='5'
+                        htmlFor='5'
                         className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         5
@@ -300,7 +300,7 @@ export default function TeacherUserEvaluation() {
                         className='peer hidden border'
                       />
                       <label
-                        for='1'
+                        htmlFor='1'
                         className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         1
@@ -315,7 +315,7 @@ export default function TeacherUserEvaluation() {
                         className='peer hidden'
                       />
                       <label
-                        for='2'
+                        htmlFor='2'
                         className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         2
@@ -330,7 +330,7 @@ export default function TeacherUserEvaluation() {
                         className='peer hidden'
                       />
                       <label
-                        for='3'
+                        htmlFor='3'
                         className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         3
@@ -345,7 +345,7 @@ export default function TeacherUserEvaluation() {
                         className='peer hidden'
                       />
                       <label
-                        for='4'
+                        htmlFor='4'
                         className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         4
@@ -359,7 +359,7 @@ export default function TeacherUserEvaluation() {
                         className='peer hidden'
                       />
                       <label
-                        for='5'
+                        htmlFor='5'
                         className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         5
@@ -388,7 +388,7 @@ export default function TeacherUserEvaluation() {
                         className='peer hidden border'
                       />
                       <label
-                        for='1'
+                        htmlFor='1'
                         className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         1
@@ -403,7 +403,7 @@ export default function TeacherUserEvaluation() {
                         className='peer hidden'
                       />
                       <label
-                        for='2'
+                        htmlFor='2'
                         className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         2
@@ -418,7 +418,7 @@ export default function TeacherUserEvaluation() {
                         className='peer hidden'
                       />
                       <label
-                        for='3'
+                        htmlFor='3'
                         className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         3
@@ -433,7 +433,7 @@ export default function TeacherUserEvaluation() {
                         className='peer hidden'
                       />
                       <label
-                        for='4'
+                        htmlFor='4'
                         className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         4
@@ -447,7 +447,7 @@ export default function TeacherUserEvaluation() {
                         className='peer hidden'
                       />
                       <label
-                        for='5'
+                        htmlFor='5'
                         className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         5
@@ -476,7 +476,7 @@ export default function TeacherUserEvaluation() {
                         className='peer hidden border'
                       />
                       <label
-                        for='1'
+                        htmlFor='1'
                         className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         1
@@ -491,7 +491,7 @@ export default function TeacherUserEvaluation() {
                         className='peer hidden'
                       />
                       <label
-                        for='2'
+                        htmlFor='2'
                         className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         2
@@ -506,7 +506,7 @@ export default function TeacherUserEvaluation() {
                         className='peer hidden'
                       />
                       <label
-                        for='3'
+                        htmlFor='3'
                         className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         3
@@ -521,7 +521,7 @@ export default function TeacherUserEvaluation() {
                         className='peer hidden'
                       />
                       <label
-                        for='4'
+                        htmlFor='4'
                         className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         4
@@ -535,7 +535,7 @@ export default function TeacherUserEvaluation() {
                         className='peer hidden'
                       />
                       <label
-                        for='5'
+                        htmlFor='5'
                         className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         5

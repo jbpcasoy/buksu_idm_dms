@@ -15,7 +15,7 @@ export default function Endorsement() {
               <div className='grid gap-6 mb-6 md:grid-cols-2'>
                 <div>
                   <label
-                    for='name_of_author'
+                    htmlFor='name_of_author'
                     className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
                   >
                     Authors
@@ -33,7 +33,7 @@ export default function Endorsement() {
                 </div>
                 <div>
                   <label
-                    for='im_title'
+                    htmlFor='im_title'
                     className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
                   >
                     Title of IM
@@ -48,7 +48,7 @@ export default function Endorsement() {
                 </div>
                 <div>
                   <label
-                    for='course-code'
+                    htmlFor='course-code'
                     className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
                   >
                     Course Code and Course Descriptive Title for which this IM
@@ -64,7 +64,7 @@ export default function Endorsement() {
                 </div>
                 <div>
                   <label
-                    for='semesters'
+                    htmlFor='semesters'
                     className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
                   >
                     Select Semester & School Year
@@ -81,7 +81,7 @@ export default function Endorsement() {
                 </div>
                 <div>
                   <label
-                    for='im_type'
+                    htmlFor='im_type'
                     className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
                   >
                     Select an IM type
@@ -98,7 +98,7 @@ export default function Endorsement() {
                 </div>
                 <div>
                   <label
-                    for='college'
+                    htmlFor='college'
                     className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
                   >
                     Select College
@@ -118,7 +118,7 @@ export default function Endorsement() {
                 </div>
                 <div>
                   <label
-                    for='department'
+                    htmlFor='department'
                     className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
                   >
                     Select Departments
@@ -158,7 +158,7 @@ export default function Endorsement() {
                 </div>
                 <div>
                   <label
-                    for='name_of_author'
+                    htmlFor='name_of_author'
                     className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
                   >
                     How long do you expect to use this edition?
@@ -178,7 +178,7 @@ export default function Endorsement() {
                   <div className='flex items-center mb-4'>
                     <div className='flex-row'>
                       <label
-                        for='semesters'
+                        htmlFor='semesters'
                         className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
                       >
                         Do you have permission to print any material with prior
@@ -192,7 +192,7 @@ export default function Endorsement() {
                         className='w-4 h-4  text-CITLDarkBlue bg-CITLWhite border-CITLDarkBlue focus:ring-CITLDarkBlue '
                       />
                       <label
-                        for='default-radio-1'
+                        htmlFor='default-radio-1'
                         className='ml-2 text-sm font-medium text-gray-900 dark:text-gray-300'
                       >
                         Yes
@@ -209,7 +209,7 @@ export default function Endorsement() {
                       className='w-4 h-4 text-CITLDarkBlue bg-CITLWhite border-CITLDarkBlue focus:ring-CITLDarkBlue '
                     />
                     <label
-                      for='default-radio-2'
+                      htmlFor='default-radio-2'
                       className='ml-2 text-sm font-medium text-gray-900 dark:text-gray-300'
                     >
                       No
@@ -218,7 +218,7 @@ export default function Endorsement() {
                 </div>
                 <div>
                   <label
-                    for='name_of_author'
+                    htmlFor='name_of_author'
                     className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
                   >
                     Requested by:
@@ -243,7 +243,7 @@ export default function Endorsement() {
               <div className='flex items-center mb-4'>
                 <div className='flex-row'>
                   <label
-                    for='semesters'
+                    htmlFor='semesters'
                     className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
                   >
                     1. Will the department/program require this IM in the
@@ -257,7 +257,7 @@ export default function Endorsement() {
                     className='w-4 h-4  text-CITLDarkBlue bg-CITLWhite border-CITLDarkBlue focus:ring-CITLDarkBlue '
                   />
                   <label
-                    for='default-radio-1'
+                    htmlFor='default-radio-1'
                     className='ml-2 text-sm font-medium text-gray-900 dark:text-gray-300'
                   >
                     Yes
@@ -274,7 +274,7 @@ export default function Endorsement() {
                   className='w-4 h-4 text-CITLDarkBlue bg-CITLWhite border-CITLDarkBlue focus:ring-CITLDarkBlue '
                 />
                 <label
-                  for='default-radio-2'
+                  htmlFor='default-radio-2'
                   className='ml-2 text-sm font-medium text-gray-900 dark:text-gray-300'
                 >
                   No
@@ -285,7 +285,7 @@ export default function Endorsement() {
                 <div className='flex items-center mb-4'>
                   <div className='flex-row'>
                     <label
-                      for='semesters'
+                      htmlFor='semesters'
                       className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
                     >
                       2. Will the department/program commit to using it for the
@@ -299,7 +299,7 @@ export default function Endorsement() {
                       className='w-4 h-4  text-CITLDarkBlue bg-CITLWhite border-CITLDarkBlue focus:ring-CITLDarkBlue '
                     />
                     <label
-                      for='default-radio-1'
+                      htmlFor='default-radio-1'
                       className='ml-2 text-sm font-medium text-gray-900 dark:text-gray-300'
                     >
                       Yes
@@ -316,7 +316,7 @@ export default function Endorsement() {
                     className='w-4 h-4 text-CITLDarkBlue bg-CITLWhite border-CITLDarkBlue focus:ring-CITLDarkBlue '
                   />
                   <label
-                    for='default-radio-2'
+                    htmlFor='default-radio-2'
                     className='ml-2 text-sm font-medium text-gray-900 dark:text-gray-300'
                   >
                     No
@@ -327,7 +327,7 @@ export default function Endorsement() {
                 <div className='flex items-center mb-4'>
                   <div className='flex-row'>
                     <label
-                      for='semesters'
+                      htmlFor='semesters'
                       className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
                     >
                       3. Will the department/program promote the use of the IM
@@ -341,7 +341,7 @@ export default function Endorsement() {
                       className='w-4 h-4  text-CITLDarkBlue bg-CITLWhite border-CITLDarkBlue focus:ring-CITLDarkBlue '
                     />
                     <label
-                      for='default-radio-1'
+                      htmlFor='default-radio-1'
                       className='ml-2 text-sm font-medium text-gray-900 dark:text-gray-300'
                     >
                       Yes
@@ -358,7 +358,7 @@ export default function Endorsement() {
                     className='w-4 h-4 text-CITLDarkBlue bg-CITLWhite border-CITLDarkBlue focus:ring-CITLDarkBlue '
                   />
                   <label
-                    for='default-radio-2'
+                    htmlFor='default-radio-2'
                     className='ml-2 text-sm font-medium text-gray-900 dark:text-gray-300'
                   >
                     No
@@ -374,7 +374,7 @@ export default function Endorsement() {
             <div className='grid gap-6 mb-6 md:grid-cols-2'>
               <div>
                 <label
-                  for='name_of_author'
+                  htmlFor='name_of_author'
                   className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
                 >
                   IMD Program Coordinator
@@ -389,7 +389,7 @@ export default function Endorsement() {
               </div>
               <div>
                 <label
-                  for='name_of_author'
+                  htmlFor='name_of_author'
                   className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
                 >
                   Program Chair
@@ -416,7 +416,7 @@ export default function Endorsement() {
             <div className='grid gap-6 mb-6 md:grid-cols-2'>
               <div>
                 <label
-                  for='name_of_author'
+                  htmlFor='name_of_author'
                   className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
                 >
                   College Dean
@@ -431,7 +431,7 @@ export default function Endorsement() {
               </div>
               <div>
                 <label
-                  for='name_of_author'
+                  htmlFor='name_of_author'
                   className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
                 >
                   Date

@@ -9,6 +9,7 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
+import { useEffect, useState } from "react";
 import ReviewQuestion from "./ReviewQuestion";
 
 export default function ReviewSection({ section, reviewItems }) {
@@ -18,12 +19,33 @@ export default function ReviewSection({ section, reviewItems }) {
       color: theme.palette.common.white,
     },
   }));
+  const [questions, setQuestions] = useState([]);
 
-  function findReviewItem(questionId) {
-    return reviewItems.find(
-      (reviewItem) => reviewItem.questionId === questionId
-    );
-  }
+  useEffect(() => {
+    function findReviewItem(questionId) {
+      return reviewItems.find(
+        (reviewItem) => reviewItem.questionId === questionId
+      );
+    }
+
+    const newQuestions = [];
+    for (let question of section.questions) {
+      const reviewItem = findReviewItem(question.id);
+      if (reviewItem) {
+        newQuestions.push(
+          <ReviewQuestion
+            key={question.id}
+            question={question}
+            reviewItem={reviewItem}
+          />
+        );
+      }
+    }
+
+    setQuestions(newQuestions);
+  }, [section]);
+
+  if (questions.length < 1) return null;
 
   return (
     <TableContainer component={Paper} sx={{ mb: 1 }}>
@@ -48,15 +70,7 @@ export default function ReviewSection({ section, reviewItems }) {
             </StyledTableCell>
           </TableRow>
         </TableHead>
-        <TableBody>
-          {section.questions.map((question) => (
-            <ReviewQuestion
-              key={question.id}
-              question={question}
-              reviewItem={findReviewItem(question.id)}
-            />
-          ))}
-        </TableBody>
+        <TableBody>{questions}</TableBody>
       </Table>
     </TableContainer>
   );

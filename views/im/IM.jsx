@@ -60,7 +60,7 @@ export default function IM({
       <td className='px-6 py-4 '>{owner}</td>
 
       <td className='px-6 py-4 '>{status}</td>
-      <td className=' py-4 flex gap-1 m-2 align-middle'>
+      <td className='px-4 py-4 flex gap-1 m-2 align-middle'>
         {peerReviewed && (
           <span className='bg-green-300 text-green-900 text-xs px-3 py-1 rounded-2xl'>
             Peer
@@ -107,7 +107,7 @@ export default function IM({
       <td className='bg-white  font-medium text-slate-400  items-center justify-center px-6 py-4 '>
         <button
           onClick={onView}
-          className=' px-5 py-2.5 text-sm font-medium text-center text-white bg-CITLDarkBlue rounded-lg  hover:bg-CITLDarkBlue shadow-xl  mr-3'
+          className=' px-5 py-2.5 text-sm font-medium text-center text-white bg-CITLDarkBlue rounded-lg  hover:bg-transparent hover:text-CITLDarkBlue hover:border-CITLDarkBlue border  shadow-xl  mr-3'
         >
           View
         </button>

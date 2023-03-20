@@ -107,7 +107,7 @@ export default function CreateIM() {
             </div>
             <div>
               <label
-                for='title'
+                htmlFor='title'
                 className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
               >
                 Title
@@ -120,38 +120,44 @@ export default function CreateIM() {
                 required
                 {...formik.getFieldProps("title")}
               />
-              <label
-                for='company'
-                className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
-              >
-                Authors
-              </label>
-              <input
-                type='text'
-                id='authors'
-                className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
-                placeholder=''
-                required
-                {...formik.getFieldProps("authors")}
-              />
-              <label
-                for='type'
-                className='block mt-5 mb-2 text-sm font-medium text-gray-900 dark:text-white'
-              >
-                Type
-              </label>
-              <select
-                id='type'
-                className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
-                {...formik.getFieldProps("type")}
-              >
-                <option value='MODULE' selected>
-                  Module
-                </option>
-                <option value='COURSE_FILE'>Course File</option>
-                <option value='WORKTEXT'>Worktext</option>
-                <option value='TEXTBOOK'>Textbook</option>
-              </select>
+              <div className='grid gap-6 mb-6 md:grid-cols-2'>
+                <div>
+                  <label
+                    htmlFor='company'
+                    className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
+                  >
+                    Authors
+                  </label>
+                  <input
+                    type='text'
+                    id='authors'
+                    className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+                    placeholder=''
+                    required
+                    {...formik.getFieldProps("authors")}
+                  />
+                </div>
+                <div>
+                  <label
+                    htmlFor='type'
+                    className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
+                  >
+                    Select IM Type
+                  </label>
+                  <select
+                    id='type'
+                    className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+                    {...formik.getFieldProps("type")}
+                  >
+                    <option value='MODULE' selected>
+                      Module
+                    </option>
+                    <option value='COURSE_FILE'>Course File</option>
+                    <option value='WORKTEXT'>Worktext</option>
+                    <option value='TEXTBOOK'>Textbook</option>
+                  </select>
+                </div>
+              </div>
             </div>
 
             {/* {filePreviewUrl && (
@@ -171,7 +177,7 @@ export default function CreateIM() {
             {!filePreviewUrl && (
               <div className='flex items-center justify-center w-full mt-6 mb-6'>
                 <label
-                  for='dropzone-file'
+                  htmlFor='dropzone-file'
                   className='flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600'
                 >
                   <div className='flex flex-col items-center justify-center pt-5 pb-6'>
@@ -184,9 +190,9 @@ export default function CreateIM() {
                       xmlns='http://www.w3.org/2000/svg'
                     >
                       <path
-                        stroke-linecap='round'
-                        stroke-linejoin='round'
-                        stroke-width='2'
+                        strokeLinecap='round'
+                        strokeLinejoin='round'
+                        strokeWidth='2'
                         d='M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12'
                       ></path>
                     </svg>
@@ -220,7 +226,7 @@ export default function CreateIM() {
                   <button
                     type='button'
                     disabled={formik.isSubmitting}
-                    className='mr-4 text-white  bg-CITLOrange font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center disabled:bg-CITLGray-main'
+                    className='mr-4 text-CITLDarkBlue  bg-transparent border border-CITLDarkBlue hover:text-CITLWhite hover:bg-CITLDarkBlue font-medium rounded text-sm w-full sm:w-auto px-5 py-3 text-center disabled:bg-CITLGray-main'
                     onClick={() => {
                       setFile(null);
                     }}
@@ -229,13 +235,33 @@ export default function CreateIM() {
                   </button>
                 </>
               )}
+              
               <button
-                type='submit'
-                disabled={formik.isSubmitting}
-                className='text-white bg-CITLDarkBlue font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center disabled:bg-CITLGray-main '
+            type='submit'
+            disabled={formik.isSubmitting}
+            className='group relative inline-flex items-center overflow-hidden rounded bg-CITLOrange px-8 py-3 text-CITLDarkBlue focus:outline-none focus:ring active:bg-CITLDarkBlue'
+          >
+            <span className='absolute right-0 translate-x-full transition-transform group-hover:-translate-x-4'>
+              <svg
+                className='h-5 w-5'
+                xmlns='http://www.w3.org/2000/svg'
+                fill='none'
+                viewBox='0 0 24 24'
+                stroke='currentColor'
               >
-                Submit
-              </button>
+                <path
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  strokeWidth='2'
+                  d='M17 8l4 4m0 0l-4 4m4-4H3'
+                />
+              </svg>
+            </span>
+
+            <span className='text-sm font-medium transition-all group-hover:mr-4'>
+              Submit
+            </span>
+          </button>
             </div>
           </form>
         </div>
