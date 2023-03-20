@@ -1,13 +1,25 @@
 import useUser from "@/hooks/useUser";
-import { signIn } from "next-auth/react";
+import { signIn, signOut } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 export default function Home() {
   const { user, userError, userLoading } = useUser();
   const router = useRouter();
 
-  // TODO redirect if logged in
+  useEffect(() => {
+    if (!user) return;
+    if (user?.LoginRole?.Role === "ADMIN") {
+      router.push("/admin");
+    } else if (user?.LoginRole?.Role === "FACULTY") {
+      router.push("/my_ims");
+    } else {
+      signOut();
+    }
+  }, [user]);
+
+  if (userLoading) return null;
 
   return (
     <nav className='fixed top-0 z-50 w-full bg-CITLDarkBlue border-b border-CITLGray-main'>
