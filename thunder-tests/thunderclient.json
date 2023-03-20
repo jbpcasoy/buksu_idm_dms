@@ -335,11 +335,11 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "d12648fd-3f0e-402f-a735-8e75c368d353",
     "name": "READ Users",
-    "url": "{{host}}/api/user?limit=10&page=1",
+    "url": "{{host}}/api/user?limit=10&page=1&sortColumn=email&sortOrder=asc",
     "method": "GET",
     "sortNum": 200000,
     "created": "2023-02-26T01:21:31.374Z",
-    "modified": "2023-02-26T01:22:49.156Z",
+    "modified": "2023-03-20T08:26:25.212Z",
     "headers": [],
     "params": [
       {
@@ -350,6 +350,16 @@
       {
         "name": "page",
         "value": "1",
+        "isPath": false
+      },
+      {
+        "name": "sortColumn",
+        "value": "email",
+        "isPath": false
+      },
+      {
+        "name": "sortOrder",
+        "value": "asc",
         "isPath": false
       }
     ],

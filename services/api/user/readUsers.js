@@ -1,10 +1,20 @@
 import { PrismaClient } from ".prisma/client";
 
-export default async function readUsers({ limit, page, name }) {
+export default async function readUsers({
+  limit,
+  page,
+  name,
+  sortColumn,
+  sortOrder,
+}) {
   const prisma = new PrismaClient();
+
+  const sortFilter = {};
+  sortFilter[sortColumn] = sortOrder;
 
   try {
     const users = await prisma.user.findMany({
+      orderBy: sortFilter,
       take: limit,
       skip: (page - 1) * limit,
       where: {
