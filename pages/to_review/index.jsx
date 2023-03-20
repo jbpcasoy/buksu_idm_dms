@@ -31,9 +31,10 @@ export default function Home() {
     let subscribe = true;
     setLoading(true);
 
-    async function getReviewed(filter) {
+    async function getToReview(filter) {
       return frontendGetIMs({
-        reviewerId: user.id,
+        notOwnerId: user.ActiveFaculty.Faculty.id,
+        departmentId: user.ActiveFaculty.Faculty.departmentId,
         ...filter,
       });
     }
@@ -46,7 +47,7 @@ export default function Home() {
       status: state.status,
     };
 
-    getReviewed(filter).then((res) => {
+    getToReview(filter).then((res) => {
       setLoading(false);
       if (!subscribe) return;
 

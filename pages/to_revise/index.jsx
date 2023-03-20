@@ -31,9 +31,9 @@ export default function Home() {
     let subscribe = true;
     setLoading(true);
 
-    async function getToReview(filter) {
+    async function getToRevise(filter) {
       return frontendGetIMs({
-        notOwnerId: user.ActiveFaculty.Faculty.id,
+        ownerId: user.ActiveFaculty.Faculty.id,
         departmentId: user.ActiveFaculty.Faculty.departmentId,
         ...filter,
       });
@@ -44,10 +44,10 @@ export default function Home() {
       limit: state.limit,
       serialNumber: state.serialNumber,
       title: state.title,
-      status: state.status,
+      status: "DEPARTMENT_REVIEWED",
     };
 
-    getToReview(filter).then((res) => {
+    getToRevise(filter).then((res) => {
       setLoading(false);
       if (!subscribe) return;
 
