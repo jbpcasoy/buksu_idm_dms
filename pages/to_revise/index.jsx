@@ -33,7 +33,7 @@ export default function Home() {
 
     async function getToRevise(filter) {
       return frontendGetIMs({
-        notOwnerId: user.ActiveFaculty.Faculty.id,
+        ownerId: user.ActiveFaculty.Faculty.id,
         departmentId: user.ActiveFaculty.Faculty.departmentId,
         ...filter,
       });
