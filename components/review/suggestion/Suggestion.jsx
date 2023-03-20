@@ -62,7 +62,7 @@ export default function Suggestion({
               <tr>
                 <th
                   scope='col'
-                  className=' px-5 py-3 text-left w-3/5 text-xs font-medium text-gray-500 uppercase tracking-wider'
+                  className=' px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
                   suggestion
                 </th>
