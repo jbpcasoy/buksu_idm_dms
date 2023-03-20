@@ -15,7 +15,7 @@ export default function SuggestionItemView({
     >
       <td className='px-5 py-4 w-3/5 break-all'>{value}</td>
 
-      {/* <td className='px-1 py-4 '>{actionTaken}</td> */}
+      <td className='px-1 py-4 '>{actionTaken}</td>
 
       <td className='px-1py-4 '>{pageNumber}</td>
 

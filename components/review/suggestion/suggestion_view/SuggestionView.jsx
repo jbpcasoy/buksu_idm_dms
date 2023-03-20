@@ -16,12 +16,12 @@ export default function SuggestionView({ children, title, viewOnly = false }) {
               suggestion
             </th>
 
-            {/* <th
+            <th
               scope='col'
               className=' py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
             >
               Action Taken
-            </th> */}
+            </th>
 
             <th
               scope='col'
