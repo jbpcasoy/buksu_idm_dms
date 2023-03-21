@@ -1,14 +1,9 @@
 import AdminLayout from "@/components/admin/AdminLayout";
 import frontendReadUsers from "@/services/frontend/admin/user/frontendReadUsers";
-import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
-import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
+import Sort from "@/views/admin/Sort";
 import {
   Avatar,
   Box,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
   Stack,
   Table,
   TableBody,
@@ -18,10 +13,8 @@ import {
   TablePagination,
   TableRow,
   TextField,
-  ToggleButton,
-  ToggleButtonGroup,
   Toolbar,
-  Typography
+  Typography,
 } from "@mui/material";
 import _ from "lodash";
 import { useEffect, useState } from "react";
@@ -117,31 +110,16 @@ export default function AdminUser() {
             label='Email'
             onChange={debouncedHandleEmailChange}
           />
-          <FormControl size='small' sx={{ width: "auto" }}>
-            <InputLabel>Sort by</InputLabel>
-            <Select
-              value={state.sortColumn}
-              label='Sort by'
-              onChange={handleSortByChange}
-            >
-              <MenuItem value='name'>Name</MenuItem>
-              <MenuItem value='email'>Email</MenuItem>
-            </Select>
-          </FormControl>
-
-          <ToggleButtonGroup
-            size='small'
-            value={state.sortOrder}
-            exclusive
-            onChange={handleSortOrderChange}
-          >
-            <ToggleButton value='asc' aria-label='ascending'>
-              <ArrowUpwardIcon />
-            </ToggleButton>
-            <ToggleButton value='desc' aria-label='descending'>
-              <ArrowDownwardIcon />
-            </ToggleButton>
-          </ToggleButtonGroup>
+          <Sort
+            onChangeSortColumn={handleSortByChange}
+            onChangeSortOrder={handleSortOrderChange}
+            sortColumn={state.sortColumn}
+            sortOptions={[
+              { value: "name", label: "Name" },
+              { value: "email", label: "Email" },
+            ]}
+            sortOrder={state.sortOrder}
+          />
         </Stack>
         <TableContainer>
           <Table sx={{ minWidth: 650 }} aria-label='simple table'>
