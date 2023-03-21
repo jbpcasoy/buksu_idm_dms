@@ -3,6 +3,7 @@ import AdminFaculty from "@/components/admin/faculty/AdminFaculty";
 import frontendReadFaculties from "@/services/frontend/admin/faculty/frontendReadFaculties";
 import frontendCreateFaculty from "@/services/frontend/faculty/frontendCreateFaculty";
 import AdminAddFacultyForm from "@/views/admin/faculty/AdminAddFacultyForm";
+import Sort from "@/views/admin/Sort";
 import AddIcon from "@mui/icons-material/Add";
 import {
   Box,
@@ -33,6 +34,8 @@ export default function AdminFacultyPage() {
     name: "",
     departmentName: "",
     collegeName: "",
+    sortColumn: "user.name",
+    sortOrder: "asc",
   });
 
   useEffect(() => {
@@ -44,6 +47,8 @@ export default function AdminFacultyPage() {
       name: state.name,
       departmentName: state.departmentName,
       collegeName: state.collegeName,
+      sortColumn: state.sortColumn,
+      sortOrder: state.sortOrder,
     }).then((res) => {
       if (!subscribe) return;
 
@@ -108,6 +113,19 @@ export default function AdminFacultyPage() {
   }
   const debouncedHandleCollegeChange = _.debounce(handleCollegeNameChange, 800);
 
+  function handleSortByChange(e) {
+    setState((prev) => ({
+      ...prev,
+      sortColumn: e.target.value,
+    }));
+  }
+  function handleSortOrderChange(e, value) {
+    setState((prev) => ({
+      ...prev,
+      sortOrder: value,
+    }));
+  }
+
   return (
     <AdminLayout>
       <Box sx={{ m: 1 }}>
@@ -144,6 +162,17 @@ export default function AdminFacultyPage() {
             size='small'
             label='College'
             onChange={debouncedHandleCollegeChange}
+          />
+          <Sort
+            onChangeSortColumn={handleSortByChange}
+            onChangeSortOrder={handleSortOrderChange}
+            sortColumn={state.sortColumn}
+            sortOptions={[
+              { value: "user.name", label: "Name" },
+              { value: "department.name", label: "Department" },
+              { value: "department.college.name", label: "College" },
+            ]}
+            sortOrder={state.sortOrder}
           />
         </Stack>
         <TableContainer>
