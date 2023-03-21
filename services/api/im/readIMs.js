@@ -1,4 +1,5 @@
 const { PrismaClient } = require("@prisma/client");
+import _ from "lodash";
 
 export default async function readIMs({
   page,
@@ -10,8 +11,12 @@ export default async function readIMs({
   notOwnerId,
   departmentId,
   reviewerId,
+  sortColumn,
+  sortOrder,
 }) {
   const prisma = new PrismaClient();
+  const sortFilter = {};
+  _.set(sortFilter, sortColumn, sortOrder);
 
   try {
     const ims = await prisma.iM.findMany({
@@ -135,6 +140,7 @@ export default async function readIMs({
           },
         ],
       },
+      orderBy: sortFilter,
     });
 
     const total = await prisma.iM.count({

@@ -7,6 +7,8 @@ export default async function frontendReadIms({
   title,
   departmentName,
   status,
+  sortOrder,
+  sortColumn,
 }) {
   try {
     const ims = await axios.get("/api/im", {
@@ -17,6 +19,8 @@ export default async function frontendReadIms({
         title,
         departmentName,
         status,
+        sortOrder,
+        sortColumn,
       },
     });
 

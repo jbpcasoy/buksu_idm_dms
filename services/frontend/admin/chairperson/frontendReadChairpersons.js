@@ -7,6 +7,8 @@ export default async function frontendReadChairpersons({
   departmentName,
   collegeName,
   active,
+  sortColumn,
+  sortOrder,
 }) {
   try {
     const chairpersons = await axios.get("/api/chairperson", {
@@ -17,6 +19,8 @@ export default async function frontendReadChairpersons({
         departmentName,
         collegeName,
         active,
+        sortColumn,
+        sortOrder,
       },
     });
 
