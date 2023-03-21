@@ -3,6 +3,7 @@ import AdminCollege from "@/components/admin/college/AdminCollege";
 import frontendCreateCollege from "@/services/frontend/admin/college/frontendCreateCollege";
 import frontendReadColleges from "@/services/frontend/admin/college/frontendReadColleges";
 import AdminAddCollegeForm from "@/views/admin/college/AdminAddCollegeForm";
+import Sort from "@/views/admin/Sort";
 import AddIcon from "@mui/icons-material/Add";
 import {
   Box,
@@ -32,6 +33,8 @@ export default function AdminCollegePage() {
     limit: 5,
     page: 0,
     name: "",
+    sortOrder: "asc",
+    sortColumn: "name",
   });
   const router = useRouter();
 
@@ -46,6 +49,8 @@ export default function AdminCollegePage() {
       limit: state.limit,
       page: state.page + 1,
       name: state.name,
+      sortOrder: state.sortOrder,
+      sortColumn: state.sortColumn,
     }).then((res) => {
       if (!subscribe) return;
 
@@ -92,6 +97,19 @@ export default function AdminCollegePage() {
   }
   const debouncedHandleInputChange = _.debounce(handleInputChange, 800);
 
+  function handleSortByChange(e) {
+    setState((prev) => ({
+      ...prev,
+      sortColumn: e.target.value,
+    }));
+  }
+  function handleSortOrderChange(e, value) {
+    setState((prev) => ({
+      ...prev,
+      sortOrder: value,
+    }));
+  }
+
   return (
     <AdminLayout>
       <Box sx={{ m: 1 }}>
@@ -117,6 +135,13 @@ export default function AdminCollegePage() {
             size='small'
             label='Name'
             onChange={debouncedHandleInputChange}
+          />
+          <Sort
+            onChangeSortColumn={handleSortByChange}
+            onChangeSortOrder={handleSortOrderChange}
+            sortColumn={state.sortColumn}
+            sortOptions={[{ value: "name", label: "Name" }]}
+            sortOrder={state.sortOrder}
           />
         </Stack>
         <TableContainer>

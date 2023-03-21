@@ -1,7 +1,15 @@
 import readDepartments from "@/services/api/department/readDepartments";
 
 export default async function getDepartmentsHandler(req, res) {
-  const { limit, page, name, collegeName, collegeId } = req.query;
+  const {
+    limit,
+    page,
+    name,
+    collegeName,
+    collegeId,
+    sortColumn = "name",
+    sortOrder = "asc",
+  } = req.query;
 
   const departments = await readDepartments({
     limit: parseInt(limit),
@@ -9,6 +17,8 @@ export default async function getDepartmentsHandler(req, res) {
     name,
     collegeName,
     collegeId,
+    sortColumn,
+    sortOrder,
   });
 
   return res.status(200).json(departments);

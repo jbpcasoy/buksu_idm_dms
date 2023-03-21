@@ -3,6 +3,7 @@ import AdminChairperson from "@/components/admin/chairperson/AdminChairperson";
 import frontendCreateChairperson from "@/services/frontend/admin/chairperson/frontendCreateChairperson";
 import frontendReadChairpersons from "@/services/frontend/admin/chairperson/frontendReadChairpersons";
 import AdminAddChairpersonForm from "@/views/admin/chairperson/AdminAddChairpersonForm";
+import Sort from "@/views/admin/Sort";
 import ActiveFilter from "@/views/forms/ActiveFilter";
 import AddIcon from "@mui/icons-material/Add";
 import {
@@ -35,6 +36,8 @@ export default function AdminChairpersonPage() {
     collegeName: "",
     openAdd: false,
     active: null,
+    sortColumn: "Faculty.user.name",
+    sortOrder: "asc",
   });
 
   useEffect(() => {
@@ -47,7 +50,10 @@ export default function AdminChairpersonPage() {
       departmentName: state.departmentName,
       collegeName: state.collegeName,
       active: state.active,
+      sortColumn: state.sortColumn,
+      sortOrder: state.sortOrder,
     }).then((res) => {
+      if (!subscribe) return;
       setChairpersons(res.data);
       setTotal(res.total);
     });
@@ -113,6 +119,19 @@ export default function AdminChairpersonPage() {
     }));
   }
 
+  function handleSortByChange(e) {
+    setState((prev) => ({
+      ...prev,
+      sortColumn: e.target.value,
+    }));
+  }
+  function handleSortOrderChange(e, value) {
+    setState((prev) => ({
+      ...prev,
+      sortOrder: value,
+    }));
+  }
+
   return (
     <AdminLayout>
       <Box sx={{ m: 1 }}>
@@ -150,6 +169,18 @@ export default function AdminChairpersonPage() {
             onChange={debouncedHandleCollegeChange}
           />
           <ActiveFilter onChange={handleActiveChange} />
+
+          <Sort
+            onChangeSortColumn={handleSortByChange}
+            onChangeSortOrder={handleSortOrderChange}
+            sortColumn={state.sortColumn}
+            sortOptions={[
+              { value: "Faculty.user.name", label: "Name" },
+              { value: "Faculty.department.name", label: "Department" },
+              { value: "Faculty.department.college.name", label: "College" },
+            ]}
+            sortOrder={state.sortOrder}
+          />
         </Stack>
         <TableContainer>
           <Table>

@@ -83,7 +83,7 @@ export default function Home() {
 
   return (
     <Layout>
-      {!user?.ActiveFaculty && !userLoading && (
+      {user && !user?.ActiveFaculty && !userLoading && (
         <div className=' flex-wrap grid text-center justify-items-center  border min-h-fit border-slate-300  bg-CITLWhite m-2 p-3 rounded-lg shadow-lg overflow-hidden'>
           <div className='px-6 py-4 md:w-10/12 sm:w-12/12'>
             <h3 className='text-3xl font-bold text-CITLDarkBlue'>
