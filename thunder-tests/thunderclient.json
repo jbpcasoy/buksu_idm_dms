@@ -419,26 +419,40 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "59c3eab7-bbe9-4212-81a5-2b6a5703958d",
     "name": "READ Colleges",
-    "url": "{{host}}/api/college?limit=10&page=1&name=College",
+    "url": "{{host}}/api/college?limit=10&page=1&name=College&sortColumn=name&sortOrder=desc",
     "method": "GET",
     "sortNum": 240000,
     "created": "2023-02-26T01:21:31.379Z",
-    "modified": "2023-02-26T01:21:31.379Z",
+    "modified": "2023-03-21T00:29:44.424Z",
     "headers": [],
     "params": [
       {
         "name": "limit",
-        "value": "10"
+        "value": "10",
+        "isPath": false
       },
       {
         "name": "page",
-        "value": "1"
+        "value": "1",
+        "isPath": false
       },
       {
         "name": "name",
-        "value": "College"
+        "value": "College",
+        "isPath": false
+      },
+      {
+        "name": "sortColumn",
+        "value": "name",
+        "isPath": false
+      },
+      {
+        "name": "sortOrder",
+        "value": "desc",
+        "isPath": false
       }
-    ]
+    ],
+    "tests": []
   },
   {
     "_id": "d0314ac6-3223-4ad5-ab17-b53ad41a4b18",

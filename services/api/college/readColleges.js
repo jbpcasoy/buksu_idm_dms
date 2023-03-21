@@ -1,7 +1,15 @@
 import { PrismaClient } from "@prisma/client";
 
-export default async function readColleges({ limit, page, name }) {
+export default async function readColleges({
+  limit,
+  page,
+  name,
+  sortColumn,
+  sortOrder,
+}) {
   const prisma = new PrismaClient();
+  const sortFilter = {};
+  sortFilter[sortColumn] = sortOrder;
 
   try {
     const colleges = await prisma.college.findMany({
@@ -13,6 +21,7 @@ export default async function readColleges({ limit, page, name }) {
           // mode: "insensitive",
         },
       },
+      orderBy: sortFilter,
     });
 
     const total = await prisma.college.count({
