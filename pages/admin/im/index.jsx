@@ -1,5 +1,6 @@
 import AdminLayout from "@/components/admin/AdminLayout";
 import IMStatuses from "@/services/constants/im_status";
+import IMTypes from "@/services/constants/im_type";
 import frontendReadIms from "@/services/frontend/admin/im";
 import AdminIMView from "@/views/admin/im/AdminIMView";
 import Sort from "@/views/admin/Sort";
@@ -38,6 +39,8 @@ export default function AdminIM() {
     status: "All",
     sortColumn: "title",
     sortOrder: "asc",
+    type: "All",
+    peerReviewed: "All",
   });
 
   useEffect(() => {
@@ -50,6 +53,9 @@ export default function AdminIM() {
       title: state.title,
       departmentName: state.departmentName,
       status: state.status === "All" ? undefined : state.status,
+      type: state.type === "All" ? undefined : state.type,
+      peerReviewed:
+        state.peerReviewed === "All" ? undefined : state.peerReviewed,
       sortOrder: state.sortOrder,
       sortColumn: state.sortColumn,
     }).then((res) => {
@@ -111,6 +117,13 @@ export default function AdminIM() {
     }));
   }
 
+  function handleTypeChange(e) {
+    setState((prev) => ({
+      ...prev,
+      type: e.target.value,
+    }));
+  }
+
   function handleSortByChange(e) {
     setState((prev) => ({
       ...prev,
@@ -142,6 +155,17 @@ export default function AdminIM() {
             label='Title'
             onChange={debouncedHandleTitleChange}
           />
+          <FormControl size='small' sx={{ width: "auto" }}>
+            <InputLabel>Type</InputLabel>
+            <Select value={state.type} label='Type' onChange={handleTypeChange}>
+              <MenuItem value='All'>All</MenuItem>
+              {IMTypes.map((type) => (
+                <MenuItem value={type} key={type}>
+                  {type}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
           <TextField
             size='small'
             label='Department'
@@ -185,6 +209,7 @@ export default function AdminIM() {
               <TableRow>
                 <TableCell>Serial Number</TableCell>
                 <TableCell>Title</TableCell>
+                <TableCell>Type</TableCell>
                 <TableCell>Owner</TableCell>
                 <TableCell>Department</TableCell>
                 <TableCell>Status</TableCell>
@@ -198,6 +223,7 @@ export default function AdminIM() {
             <TableBody>
               {ims.map((im) => (
                 <AdminIMView
+                  type={im.type}
                   peerReviewed={Boolean(im.SubmittedPeerReview)}
                   coordinatorReviewed={Boolean(im.SubmittedCoordinatorReview)}
                   chairpersonReviewed={Boolean(im.SubmittedChairpersonReview)}
