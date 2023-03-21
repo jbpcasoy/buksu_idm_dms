@@ -126,10 +126,12 @@ export default async function readIMs({
               departmentId: departmentId,
             },
             ownerId: ownerId,
-            serialNumber: {
-              contains: serialNumber,
-              // mode: "insensitive",
-            },
+            serialNumber: serialNumber
+              ? {
+                  contains: serialNumber,
+                  // mode: "insensitive",
+                }
+              : undefined,
             title: {
               contains: title,
               // mode: "insensitive",
@@ -191,10 +193,12 @@ export default async function readIMs({
               departmentId: departmentId,
             },
             ownerId: ownerId,
-            serialNumber: {
-              contains: serialNumber,
-              // mode: "insensitive",
-            },
+            serialNumber: serialNumber
+              ? {
+                  contains: serialNumber,
+                  // mode: "insensitive",
+                }
+              : undefined,
             title: {
               contains: title,
               // mode: "insensitive",
