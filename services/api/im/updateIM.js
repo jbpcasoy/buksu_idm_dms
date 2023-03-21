@@ -1,6 +1,9 @@
 const { PrismaClient } = require("@prisma/client");
 
-export default async function updateIM(id, { serialNumber, title, status }) {
+export default async function updateIM(
+  id,
+  { serialNumber, title, status, type }
+) {
   const prisma = new PrismaClient();
 
   try {
@@ -12,6 +15,7 @@ export default async function updateIM(id, { serialNumber, title, status }) {
         serialNumber,
         title,
         status,
+        type,
       },
     });
     return im;
