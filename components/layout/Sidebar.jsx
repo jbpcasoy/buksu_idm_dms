@@ -152,7 +152,7 @@ export default function Sidebar() {
               </span>
             </Link>
           </li>
-          <hr class='h-px my-8 w-56 bg-CITLGray-main border-0 dark:bg-gray-700' />
+          <hr className='h-px my-8 w-56 bg-CITLGray-main border-0 dark:bg-gray-700' />
           <li>
             <Link
               href='/college'
@@ -180,7 +180,7 @@ export default function Sidebar() {
           </li>
         </ul>
         <div className='fixed bottom-0'>
-          <hr class='h-px my-4 w-56 bg-CITLGray-main border-0 dark:bg-gray-700' />
+          <hr className='h-px my-4 w-56 bg-CITLGray-main border-0 dark:bg-gray-700' />
           <p className='text-xs text-CITLGray-main tracking-tight '>
             Bukidnon State University
           </p>
@@ -188,7 +188,7 @@ export default function Sidebar() {
             Center for Innovative Teaching and Learning
           </p>
           <div className='my-4 '>
-            <ul class='mt-2 flex justify-center gap-6 md:gap-8'>
+            <ul className='mt-2 flex justify-center gap-6 md:gap-8'>
               <li>
                 <Link
                   href='https://m.me/110429694111266'
@@ -197,7 +197,7 @@ export default function Sidebar() {
                   className='text-CITLGray-main transition hover:text-gray-700/75'
                   title='Facebook'
                 >
-                  <span class='sr-only'>Messenger</span>
+                  <span className='sr-only'>Messenger</span>
 
                   <svg
                     className='h-6 w-6'
@@ -221,7 +221,7 @@ export default function Sidebar() {
                   target='_blank'
                   className='text-CITLGray-main transition hover:text-gray-700/75'
                 >
-                  <span class='sr-only'>Telephone</span>
+                  <span className='sr-only'>Telephone</span>
                   <svg
                     className='h-6 w-6'
                     fill='currentColor'
@@ -244,7 +244,7 @@ export default function Sidebar() {
                   target='_blank'
                   className='text-CITLGray-main transition hover:text-gray-700/75'
                 >
-                  <span class='sr-only'>Website</span>
+                  <span className='sr-only'>Website</span>
                   <svg
                     className='h-6 w-6'
                     fill='currentColor'
