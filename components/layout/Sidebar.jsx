@@ -30,7 +30,7 @@ export default function Sidebar() {
               >
                 <path
                   strokeLinecap='round'
-                  stroke-linejoin='round'
+                  strokeLinejoin='round'
                   d='M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 010 3.75H5.625a1.875 1.875 0 010-3.75z'
                 ></path>
               </svg>
@@ -57,7 +57,7 @@ export default function Sidebar() {
               >
                 <path
                   strokeLinecap='round'
-                  stroke-linejoin='round'
+                  strokeLinejoin='round'
                   d='M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3'
                 ></path>
               </svg>
@@ -84,12 +84,12 @@ export default function Sidebar() {
               >
                 <path
                   strokeLinecap='round'
-                  stroke-linejoin='round'
+                  strokeLinejoin='round'
                   d='M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z'
                 ></path>
                 <path
                   strokeLinecap='round'
-                  stroke-linejoin='round'
+                  strokeLinejoin='round'
                   d='M15 12a3 3 0 11-6 0 3 3 0 016 0z'
                 ></path>
               </svg>
@@ -116,7 +116,7 @@ export default function Sidebar() {
               >
                 <path
                   strokeLinecap='round'
-                  stroke-linejoin='round'
+                  strokeLinejoin='round'
                   d='M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z'
                 ></path>
               </svg>
@@ -143,7 +143,7 @@ export default function Sidebar() {
               >
                 <path
                   strokeLinecap='round'
-                  stroke-linejoin='round'
+                  strokeLinejoin='round'
                   d='M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21'
                 ></path>
               </svg>
@@ -171,7 +171,7 @@ export default function Sidebar() {
               >
                 <path
                   strokeLinecap='round'
-                  stroke-linejoin='round'
+                  strokeLinejoin='round'
                   d='M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z'
                 ></path>
               </svg>
