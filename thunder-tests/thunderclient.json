@@ -2915,5 +2915,30 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "7373f7bd-2dba-4e49-88cb-b8a0d9d2041d",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "4aac67a9-ae8f-4e3c-81a3-ff5380b80178",
+    "name": "READ SubmittedPeerSuggestions",
+    "url": "{{host}}/api/submitted_peer_suggestion?limit=10&page=1",
+    "method": "GET",
+    "sortNum": 1760000,
+    "created": "2023-03-21T08:16:32.229Z",
+    "modified": "2023-03-21T08:18:18.695Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "limit",
+        "value": "10",
+        "isPath": false
+      },
+      {
+        "name": "page",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "tests": []
   }
 ]
