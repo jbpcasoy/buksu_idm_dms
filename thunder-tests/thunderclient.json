@@ -821,11 +821,11 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "6d886ec5-bc9e-4b75-a0b7-6922e37da04c",
     "name": "READ Coordinators",
-    "url": "{{host}}/api/coordinator?limit=10&page=1",
+    "url": "{{host}}/api/coordinator?limit=10&page=1&sortColumn=Faculty.user.name&sortOrder=desc",
     "method": "GET",
     "sortNum": 460000,
     "created": "2023-02-26T01:21:31.402Z",
-    "modified": "2023-03-09T06:40:41.903Z",
+    "modified": "2023-03-21T01:09:31.612Z",
     "headers": [],
     "params": [
       {
@@ -836,6 +836,16 @@
       {
         "name": "page",
         "value": "1",
+        "isPath": false
+      },
+      {
+        "name": "sortColumn",
+        "value": "Faculty.user.name",
+        "isPath": false
+      },
+      {
+        "name": "sortOrder",
+        "value": "desc",
         "isPath": false
       }
     ],
