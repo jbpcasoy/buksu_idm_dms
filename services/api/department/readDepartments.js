@@ -6,8 +6,12 @@ export default async function readDepartments({
   name,
   collegeName,
   collegeId,
+  sortColumn,
+  sortOrder,
 }) {
   const prisma = new PrismaClient();
+  const sortFilter = {};
+  sortFilter[sortColumn] = sortOrder;
 
   try {
     const departments = await prisma.department.findMany({
@@ -35,6 +39,7 @@ export default async function readDepartments({
           },
         },
       },
+      orderBy: sortFilter,
     });
 
     const total = await prisma.department.count({
