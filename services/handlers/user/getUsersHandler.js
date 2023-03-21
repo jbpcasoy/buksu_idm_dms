@@ -5,6 +5,7 @@ export default async function getUsersHandler(req, res) {
     page,
     limit,
     name,
+    email,
     sortColumn = "name",
     sortOrder = "asc",
   } = req.query;
@@ -13,6 +14,7 @@ export default async function getUsersHandler(req, res) {
     limit: parseInt(limit),
     page: parseInt(page),
     name,
+    email,
     sortColumn,
     sortOrder,
   });

@@ -5,6 +5,7 @@ export default async function readUsers({
   limit,
   page,
   name,
+  email,
   sortColumn,
   sortOrder,
 }) {
@@ -18,6 +19,9 @@ export default async function readUsers({
       take: limit,
       skip: (page - 1) * limit,
       where: {
+        email: {
+          contains: email,
+        },
         name: {
           contains: name,
           // mode: "insensitive",
