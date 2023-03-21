@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client";
+import _ from "lodash";
 
 export default async function readDepartments({
   limit,
@@ -11,7 +12,7 @@ export default async function readDepartments({
 }) {
   const prisma = new PrismaClient();
   const sortFilter = {};
-  sortFilter[sortColumn] = sortOrder;
+  _.set(sortFilter, sortColumn, sortOrder);
 
   try {
     const departments = await prisma.department.findMany({

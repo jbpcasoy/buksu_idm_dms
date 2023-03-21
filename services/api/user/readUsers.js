@@ -1,4 +1,5 @@
 import { PrismaClient } from ".prisma/client";
+import _ from "lodash";
 
 export default async function readUsers({
   limit,
@@ -10,8 +11,7 @@ export default async function readUsers({
   const prisma = new PrismaClient();
 
   const sortFilter = {};
-  sortFilter[sortColumn] = sortOrder;
-
+  _.set(sortFilter, sortColumn, sortOrder);
   try {
     const users = await prisma.user.findMany({
       orderBy: sortFilter,

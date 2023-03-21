@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client";
+import _ from "lodash";
 
 export default async function readColleges({
   limit,
@@ -9,7 +10,7 @@ export default async function readColleges({
 }) {
   const prisma = new PrismaClient();
   const sortFilter = {};
-  sortFilter[sortColumn] = sortOrder;
+  _.set(sortFilter, sortColumn, sortOrder);
 
   try {
     const colleges = await prisma.college.findMany({
