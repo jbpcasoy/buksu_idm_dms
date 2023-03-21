@@ -19,7 +19,7 @@ import {
   TableRow,
   TextField,
   Toolbar,
-  Typography
+  Typography,
 } from "@mui/material";
 import { Stack } from "@mui/system";
 import _ from "lodash";
@@ -40,6 +40,7 @@ export default function AdminIM() {
     sortColumn: "title",
     sortOrder: "asc",
     type: "All",
+    peerReviewed: "All",
   });
 
   useEffect(() => {
@@ -53,6 +54,8 @@ export default function AdminIM() {
       departmentName: state.departmentName,
       status: state.status === "All" ? undefined : state.status,
       type: state.type === "All" ? undefined : state.type,
+      peerReviewed:
+        state.peerReviewed === "All" ? undefined : state.peerReviewed,
       sortOrder: state.sortOrder,
       sortColumn: state.sortColumn,
     }).then((res) => {
@@ -152,12 +155,6 @@ export default function AdminIM() {
             label='Title'
             onChange={debouncedHandleTitleChange}
           />
-          <TextField
-            size='small'
-            label='Department'
-            onChange={debouncedHandleDepartmentChange}
-          />
-
           <FormControl size='small' sx={{ width: "auto" }}>
             <InputLabel>Type</InputLabel>
             <Select value={state.type} label='Type' onChange={handleTypeChange}>
@@ -169,6 +166,11 @@ export default function AdminIM() {
               ))}
             </Select>
           </FormControl>
+          <TextField
+            size='small'
+            label='Department'
+            onChange={debouncedHandleDepartmentChange}
+          />
           <FormControl size='small' sx={{ width: "auto" }}>
             <InputLabel>Status</InputLabel>
             <Select
