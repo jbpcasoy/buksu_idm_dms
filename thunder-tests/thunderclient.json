@@ -746,11 +746,11 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "5e869143-5024-4c93-b955-c3eaa7b11ae4",
     "name": "READ Chairpersons",
-    "url": "{{host}}/api/chairperson?limit=10&page=1",
+    "url": "{{host}}/api/chairperson?limit=10&page=1&sortColumn=Faculty.user.name&sortOrder=desc",
     "method": "GET",
     "sortNum": 420000,
     "created": "2023-02-26T01:21:31.398Z",
-    "modified": "2023-03-09T06:16:34.771Z",
+    "modified": "2023-03-21T01:04:39.889Z",
     "headers": [],
     "params": [
       {
@@ -761,6 +761,16 @@
       {
         "name": "page",
         "value": "1",
+        "isPath": false
+      },
+      {
+        "name": "sortColumn",
+        "value": "Faculty.user.name",
+        "isPath": false
+      },
+      {
+        "name": "sortOrder",
+        "value": "desc",
         "isPath": false
       }
     ],
