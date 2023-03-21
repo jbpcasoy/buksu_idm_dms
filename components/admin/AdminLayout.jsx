@@ -15,7 +15,7 @@ export default function AdminLayout({ children }) {
     if (user?.LoginRole?.Role === "FACULTY") {
       router.push("/my_ims");
     }
-  }, [user, userError, userLoading]);
+  }, [user, userError, userLoading, router]);
 
   if (user?.LoginRole?.Role !== "ADMIN") return null;
 
