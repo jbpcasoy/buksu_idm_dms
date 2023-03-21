@@ -22,7 +22,7 @@ export default function Sidebar() {
               <svg
                 fill='none'
                 stroke='currentColor'
-                stroke-width='1.5'
+                strokeWidth='1.5'
                 className='flex-shrink-0 w-6 h-6 text-CITLWhite transition duration-75 group-hover:text-CITLGray-main'
                 viewBox='0 0 24 24'
                 xmlns='http://www.w3.org/2000/svg'
@@ -49,7 +49,7 @@ export default function Sidebar() {
               <svg
                 fill='none'
                 stroke='currentColor'
-                stroke-width='1.5'
+                strokeWidth='1.5'
                 className='flex-shrink-0 w-6 h-6 text-CITLWhite transition duration-75 group-hover:text-CITLGray-main'
                 viewBox='0 0 24 24'
                 xmlns='http://www.w3.org/2000/svg'
@@ -76,7 +76,7 @@ export default function Sidebar() {
               <svg
                 fill='none'
                 stroke='currentColor'
-                stroke-width='1.5'
+                strokeWidth='1.5'
                 className='flex-shrink-0 w-6 h-6 text-CITLWhite transition duration-75 group-hover:text-CITLGray-main'
                 viewBox='0 0 24 24'
                 xmlns='http://www.w3.org/2000/svg'
@@ -108,7 +108,7 @@ export default function Sidebar() {
               <svg
                 fill='none'
                 stroke='currentColor'
-                stroke-width='1.5'
+                strokeWidth='1.5'
                 className='flex-shrink-0 w-6 h-6 text-CITLWhite transition duration-75 group-hover:text-CITLGray-main'
                 viewBox='0 0 24 24'
                 xmlns='http://www.w3.org/2000/svg'
@@ -135,7 +135,7 @@ export default function Sidebar() {
               <svg
                 fill='none'
                 stroke='currentColor'
-                stroke-width='1.5'
+                strokeWidth='1.5'
                 className='flex-shrink-0 w-6 h-6 text-CITLWhite transition duration-75 group-hover:text-CITLGray-main'
                 viewBox='0 0 24 24'
                 xmlns='http://www.w3.org/2000/svg'
@@ -163,7 +163,7 @@ export default function Sidebar() {
               <svg
                 fill='none'
                 stroke='currentColor'
-                stroke-width='1.5'
+                strokeWidth='1.5'
                 className='flex-shrink-0 w-6 h-6 text-CITLWhite transition duration-75 group-hover:text-CITLGray-main'
                 viewBox='0 0 24 24'
                 xmlns='http://www.w3.org/2000/svg'
