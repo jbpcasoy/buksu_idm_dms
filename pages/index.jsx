@@ -15,7 +15,7 @@ export default function Home() {
     } else if (user?.LoginRole?.Role === "FACULTY") {
       router.push("/my_ims");
     }
-  }, [user]);
+  }, [user, router]);
 
   if (userLoading) return null;
 

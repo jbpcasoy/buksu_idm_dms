@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default async function frontendUpdateChairpersonSuggestionItem(
   id,
-  { value, pageNumber, remarks }
+  { value, pageNumber, actionTaken, remarks }
 ) {
   try {
     const chairpersonSuggestionItem = await axios.put(
@@ -10,6 +10,7 @@ export default async function frontendUpdateChairpersonSuggestionItem(
       {
         value,
         pageNumber,
+        actionTaken,
         remarks,
       }
     );

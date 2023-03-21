@@ -1,6 +1,9 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function Sidebar() {
+  const router = useRouter();
+
   return (
     <aside
       id='logo-sidebar'
@@ -12,7 +15,9 @@ export default function Sidebar() {
           <li>
             <Link
               href='/my_ims'
-              className='flex items-center p-2 text-base font-normal text-CITLWhite rounded-lg  hover:bg-CITLGray-main '
+              className={`flex items-center p-2 text-base font-normal text-CITLWhite rounded-lg  hover:bg-CITLGray-main ${
+                router.asPath === "/my_ims" ? "bg-CITLGray-main" : ""
+              }`}
             >
               <svg
                 fill='none'
@@ -37,7 +42,9 @@ export default function Sidebar() {
           <li>
             <Link
               href='/to_revise'
-              className='flex items-center p-2 text-base font-normal text-CITLWhite rounded-lg  hover:bg-CITLGray-main '
+              className={`flex items-center p-2 text-base font-normal text-CITLWhite rounded-lg  hover:bg-CITLGray-main ${
+                router.asPath === "/to_revise" ? "bg-CITLGray-main" : ""
+              }`}
             >
               <svg
                 fill='none'
@@ -62,7 +69,9 @@ export default function Sidebar() {
           <li>
             <Link
               href='/to_review'
-              className='flex items-center p-2 text-base font-normal text-CITLWhite rounded-lg  hover:bg-CITLGray-main '
+              className={`flex items-center p-2 text-base font-normal text-CITLWhite rounded-lg  hover:bg-CITLGray-main ${
+                router.asPath === "/to_review" ? "bg-CITLGray-main" : ""
+              }`}
             >
               <svg
                 fill='none'
@@ -92,7 +101,9 @@ export default function Sidebar() {
           <li>
             <Link
               href='/reviewed'
-              className='flex items-center p-2 text-base font-normal text-CITLWhite rounded-lg  hover:bg-CITLGray-main '
+              className={`flex items-center p-2 text-base font-normal text-CITLWhite rounded-lg  hover:bg-CITLGray-main ${
+                router.asPath === "/reviewed" ? "bg-CITLGray-main" : ""
+              }`}
             >
               <svg
                 fill='none'
@@ -117,7 +128,9 @@ export default function Sidebar() {
           <li>
             <Link
               href='/department_ims'
-              className='flex items-center p-2 text-base font-normal text-CITLWhite rounded-lg  hover:bg-CITLGray-main'
+              className={`flex items-center p-2 text-base font-normal text-CITLWhite rounded-lg  hover:bg-CITLGray-main ${
+                router.asPath === "/department_ims" ? "bg-CITLGray-main" : ""
+              }`}
             >
               <svg
                 fill='none'
@@ -143,7 +156,9 @@ export default function Sidebar() {
           <li>
             <Link
               href='/college'
-              className='flex items-center p-2 text-base font-normal text-CITLWhite rounded-lg  hover:bg-CITLGray-main'
+              className={`flex items-center p-2 text-base font-normal text-CITLWhite rounded-lg  hover:bg-CITLGray-main ${
+                router.asPath === "/college" ? "bg-CITLGray-main" : ""
+              }`}
             >
               <svg
                 fill='none'

@@ -21,11 +21,8 @@ export default function Notifications() {
               <option value='' selected>
                 Filter
               </option>
-              <option value='SUBMITTED'>Submitted</option>
-              <option value='DEPARTMENT_REVIEWED'>Department Reviewed</option>
-              <option value='DEPARTMENT_ENDORSED'>Department Endorsed</option>
-              <option value='CITL_REVIEWED'>CITL Reviewed</option>
-              <option value='CITL_ENDORSED'>CITL Endorsed</option>
+              <option value='READ'>Read</option>
+              <option value='UNREAD'>Unread</option>
             </select>
           </div>
         </div>
