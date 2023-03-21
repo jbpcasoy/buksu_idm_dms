@@ -1,5 +1,4 @@
 import ApartmentIcon from "@mui/icons-material/Apartment";
-import AssignmentIcon from "@mui/icons-material/Assignment";
 import BusinessIcon from "@mui/icons-material/Business";
 import DescriptionIcon from "@mui/icons-material/Description";
 import FileOpenIcon from "@mui/icons-material/FileOpen";
@@ -66,11 +65,12 @@ const menuItems = [
     icon: <FileOpenIcon />,
     link: "/admin/file",
   },
-  {
-    label: "IM Review",
-    icon: <AssignmentIcon />,
-    link: "/admin/im_review",
-  },
+  // Postponed idea
+  // {
+  //   label: "IM Review",
+  //   icon: <AssignmentIcon />,
+  //   link: "/admin/im_review",
+  // },
 ];
 
 export default function AdminDrawerMenu() {
