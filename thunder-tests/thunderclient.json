@@ -2896,5 +2896,24 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "a38d8b49-3403-4b57-9a9f-4cd18ddd5c67",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "4aac67a9-ae8f-4e3c-81a3-ff5380b80178",
+    "name": "CREATE SubmittedPeerSuggestion",
+    "url": "{{host}}/api/submitted_peer_suggestion",
+    "method": "POST",
+    "sortNum": 1740000,
+    "created": "2023-03-21T08:07:01.370Z",
+    "modified": "2023-03-21T08:08:03.941Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"peerSuggestionId\": \"clfaulp4l001ys9bywdaxa92r\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
