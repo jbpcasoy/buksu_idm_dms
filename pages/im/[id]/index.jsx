@@ -5,6 +5,7 @@ import PeerSuggestionView from "@/components/review/suggestion/suggestion_view/P
 import useIM from "@/hooks/useIM";
 import useUser from "@/hooks/useUser";
 import { initDropdowns, initModals } from "flowbite";
+import moment from "moment";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
@@ -29,17 +30,18 @@ export default function ViewIM() {
             <div className='flex flex-cols'>
               <Link href='/me'>
                 <img
-                  src='/IMAGES/2x2.png'
+                  src={iM?.owner?.user?.image}
                   className='h-8 rounded-full sm:h-8'
-                  alt='BukSUIMD Logo'
+                  alt='owner'
                 ></img>
               </Link>
               <div className=''>
                 <h2 className='text-xs font-semibold text-CITLGray-main pl-3 -mb-1'>
-                  John Bryan Pit Acaso
+                  {iM?.owner?.user?.name}
                 </h2>
                 <time className='text-xs text-CITLGray-main pl-3 '>
-                  March 20,2023 | 3:00 PM
+                  {iM?.createdAt &&
+                    moment(iM?.createdAt).format("MMMM D, YYYY | h:mm A")}
                 </time>
               </div>
             </div>
