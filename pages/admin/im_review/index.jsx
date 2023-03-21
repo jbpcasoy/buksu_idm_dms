@@ -7,6 +7,12 @@ import { Button, Container, Stack } from "@mui/material";
 import { useEffect, useState } from "react";
 
 export default function AdminIMReviewPage() {
+  return null;
+
+  /**
+   * This page was not yet supported, as it was too time consuming.
+   */
+
   const [state, setState] = useState({
     openAdd: false,
   });

@@ -2,6 +2,7 @@ import AdminLayout from "@/components/admin/AdminLayout";
 import IMStatuses from "@/services/constants/im_status";
 import frontendReadIms from "@/services/frontend/admin/im";
 import AdminIMView from "@/views/admin/im/AdminIMView";
+import Sort from "@/views/admin/Sort";
 import {
   Box,
   FormControl,
@@ -35,6 +36,8 @@ export default function AdminIM() {
     title: "",
     departmentName: "",
     status: "All",
+    sortColumn: "title",
+    sortOrder: "asc",
   });
 
   useEffect(() => {
@@ -47,6 +50,8 @@ export default function AdminIM() {
       title: state.title,
       departmentName: state.departmentName,
       status: state.status === "All" ? undefined : state.status,
+      sortOrder: state.sortOrder,
+      sortColumn: state.sortColumn,
     }).then((res) => {
       if (!subscribe) return;
       setIms(res.data);
@@ -106,6 +111,19 @@ export default function AdminIM() {
     }));
   }
 
+  function handleSortByChange(e) {
+    setState((prev) => ({
+      ...prev,
+      sortColumn: e.target.value,
+    }));
+  }
+  function handleSortOrderChange(e, value) {
+    setState((prev) => ({
+      ...prev,
+      sortOrder: value,
+    }));
+  }
+
   return (
     <AdminLayout>
       <Box sx={{ m: 1 }}>
@@ -144,6 +162,22 @@ export default function AdminIM() {
               ))}
             </Select>
           </FormControl>
+
+          <Sort
+            onChangeSortColumn={handleSortByChange}
+            onChangeSortOrder={handleSortOrderChange}
+            sortColumn={state.sortColumn}
+            sortOptions={[
+              { value: "serialNumber", label: "Serial Number" },
+              { value: "title", label: "Title" },
+              { value: "owner.user.name", label: "Owner" },
+              { value: "owner.department.name", label: "Department" },
+              { value: "owner.department.college.name", label: "College" },
+              { value: "status", label: "Status" },
+              { value: "createdAt", label: "Date Created" },
+            ]}
+            sortOrder={state.sortOrder}
+          />
         </Stack>
         <TableContainer>
           <Table>
