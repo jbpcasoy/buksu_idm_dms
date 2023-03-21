@@ -42,7 +42,7 @@ export default function AdminIMView({
           size='small'
           variant='contained'
           onClick={onViewChairpersonReview}
-          disabled={!coordinatorReviewed}
+          disabled={!chairpersonReviewed}
         >
           View
         </Button>
@@ -52,7 +52,7 @@ export default function AdminIMView({
           size='small'
           variant='contained'
           onClick={onViewCoordinatorReview}
-          disabled={!chairpersonReviewed}
+          disabled={!coordinatorReviewed}
         >
           View
         </Button>
