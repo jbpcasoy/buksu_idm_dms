@@ -609,11 +609,11 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "ae9316ac-3fea-4071-b9f0-8b9f170186b2",
     "name": "READ Faculties",
-    "url": "{{host}}/api/faculty?limit=10&page=1",
+    "url": "{{host}}/api/faculty?limit=10&page=1&sortColumn=user.name&sortOrder=asc",
     "method": "GET",
     "sortNum": 340000,
     "created": "2023-02-26T01:21:31.389Z",
-    "modified": "2023-03-03T03:59:09.531Z",
+    "modified": "2023-03-21T00:50:15.002Z",
     "headers": [],
     "params": [
       {
@@ -624,6 +624,16 @@
       {
         "name": "page",
         "value": "1",
+        "isPath": false
+      },
+      {
+        "name": "sortColumn",
+        "value": "user.name",
+        "isPath": false
+      },
+      {
+        "name": "sortOrder",
+        "value": "asc",
         "isPath": false
       }
     ],
