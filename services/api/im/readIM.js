@@ -9,7 +9,11 @@ export default async function readIM(id) {
         id,
       },
       include: {
-        owner: true,
+        owner: {
+          include: {
+            user: true,
+          },
+        },
         SubmittedPeerReview: {
           include: {
             PeerReview: true,
