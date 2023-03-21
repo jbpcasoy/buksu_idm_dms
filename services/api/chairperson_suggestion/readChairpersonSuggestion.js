@@ -9,6 +9,9 @@ export default async function readChairpersonSuggestion(id) {
         where: {
           id,
         },
+        include: {
+          SubmittedChairpersonReview: true,
+        },
       });
     return chairpersonSuggestion;
   } catch (error) {

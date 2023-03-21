@@ -4,7 +4,7 @@ import deleteSubmittedPeerSuggestionHandler from "@/services/handlers/submitted_
 import getSubmittedPeerSuggestionHandler from "@/services/handlers/submitted_peer_suggestion/getSubmittedPeerSuggestionHandler";
 
 export default async function handler(req, res) {
-  reqLog(req, res);
+  await reqLog(req, res);
 
   switch (req.method) {
     case "GET":

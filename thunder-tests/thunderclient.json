@@ -2968,5 +2968,24 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "c04df269-28a0-445e-aa10-6e028f040d8c",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "a9f9327f-df45-4ace-9682-9e2d33652e9b",
+    "name": "CREATE SubmittedChairperonSuggestion",
+    "url": "{{host}}/api/submitted_chairperson_suggestion",
+    "method": "POST",
+    "sortNum": 1790000,
+    "created": "2023-03-21T08:38:39.479Z",
+    "modified": "2023-03-21T08:39:24.252Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"chairpersonSuggestionId\": \"clfaujk6i0018s9byklz3tu5r\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
