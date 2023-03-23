@@ -3059,5 +3059,30 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "e4a337eb-37d7-49ba-88a0-6027ed4e0ad5",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "c589f071-f851-4cd0-a464-ce982c92b939",
+    "name": "READ SubmittedCoordinatorSuggestions",
+    "url": "{{host}}/api/submitted_coordinator_suggestion?limit=10&page=1",
+    "method": "GET",
+    "sortNum": 1840000,
+    "created": "2023-03-23T00:36:24.752Z",
+    "modified": "2023-03-23T00:37:33.058Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "limit",
+        "value": "10",
+        "isPath": false
+      },
+      {
+        "name": "page",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "tests": []
   }
 ]
