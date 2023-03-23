@@ -1,6 +1,7 @@
 import AdminLayout from "@/components/admin/AdminLayout";
 import AdminDepartment from "@/components/admin/department/AdminDepartment";
 import frontendReadDepartments from "@/services/frontend/admin/department/frontendReadDepartments";
+import Sort from "@/views/admin/Sort";
 import {
   Box,
   Stack,
@@ -26,6 +27,8 @@ export default function AdminDepartmentPage() {
     page: 0,
     name: "",
     collegeName: "",
+    sortColumn: "name",
+    sortOrder: "asc",
   });
 
   useEffect(() => {
@@ -36,6 +39,8 @@ export default function AdminDepartmentPage() {
       page: state.page + 1,
       name: state.name,
       collegeName: state.collegeName,
+      sortColumn: state.sortColumn,
+      sortOrder: state.sortOrder,
     }).then((res) => {
       if (!subscribe) return;
 
@@ -78,6 +83,19 @@ export default function AdminDepartmentPage() {
   }
   const debouncedHandleCollegeChange = _.debounce(handleCollegeNameChange, 800);
 
+  function handleSortByChange(e) {
+    setState((prev) => ({
+      ...prev,
+      sortColumn: e.target.value,
+    }));
+  }
+  function handleSortOrderChange(e, value) {
+    setState((prev) => ({
+      ...prev,
+      sortOrder: value,
+    }));
+  }
+
   return (
     <AdminLayout>
       <Box sx={{ m: 1 }}>
@@ -95,6 +113,17 @@ export default function AdminDepartmentPage() {
             size='small'
             label='College'
             onChange={debouncedHandleCollegeChange}
+          />
+
+          <Sort
+            onChangeSortColumn={handleSortByChange}
+            onChangeSortOrder={handleSortOrderChange}
+            sortColumn={state.sortColumn}
+            sortOptions={[
+              { value: "name", label: "Name" },
+              { value: "college.name", label: "College" },
+            ]}
+            sortOrder={state.sortOrder}
           />
         </Stack>
         <TableContainer>

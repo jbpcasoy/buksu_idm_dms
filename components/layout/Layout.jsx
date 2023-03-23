@@ -16,7 +16,7 @@ export default function Layout({ children, active }) {
     if (user?.LoginRole?.Role === "ADMIN") {
       router.push("/admin");
     }
-  }, [user, userError, userLoading]);
+  }, [user, userError, userLoading, router]);
 
   return (
     <div>
