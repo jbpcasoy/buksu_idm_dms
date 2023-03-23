@@ -205,7 +205,9 @@ function countQuestions(sections) {
   let total = 0;
 
   for (let section of sections) {
+    if (!section.active) continue;
     for (let question of section.questions) {
+      if (!question.active) continue;
       total += 1;
     }
   }

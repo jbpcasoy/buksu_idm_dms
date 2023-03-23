@@ -36,7 +36,7 @@ export default function ConfirmReview({ children, onSubmit, onPrevious }) {
             </span>
 
             <span className='text-sm font-medium transition-all group-hover:mr-4'>
-              Submit
+              Submit Review
             </span>
           </button>
           <button

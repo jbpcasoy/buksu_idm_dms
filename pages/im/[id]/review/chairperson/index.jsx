@@ -73,6 +73,12 @@ const ChairpersonReviewPage = () => {
       });
   }
 
+  useEffect(() => {
+    if (!iM?.SubmittedChairpersonReview) return;
+
+    setStep(countQuestions(sections) + 2);
+  }, [iM?.SubmittedChairpersonReview]);
+
   function generateQuestions(sections) {
     const questions = [];
     for (let section of sections) {
