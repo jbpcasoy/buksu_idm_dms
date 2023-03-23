@@ -3084,5 +3084,33 @@
       }
     ],
     "tests": []
+  },
+  {
+    "_id": "05fe92f3-03f0-439f-8fad-e49f4415c586",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "c589f071-f851-4cd0-a464-ce982c92b939",
+    "name": "READ SubmittedCoordinatorSuggestion",
+    "url": "{{host}}/api/submitted_coordinator_suggestion/clfkdmag30008s9fuuppa86ey",
+    "method": "GET",
+    "sortNum": 1850000,
+    "created": "2023-03-23T00:48:05.515Z",
+    "modified": "2023-03-23T00:48:37.354Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "89be6c32-9a74-400c-8b91-348f40903505",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "c589f071-f851-4cd0-a464-ce982c92b939",
+    "name": "DELETE SubmittedCoordinatorSuggestion",
+    "url": "{{host}}/api/submitted_coordinator_suggestion/clfkdmag30008s9fuuppa86ey",
+    "method": "DELETE",
+    "sortNum": 1860000,
+    "created": "2023-03-23T00:57:19.492Z",
+    "modified": "2023-03-23T00:57:32.894Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]

@@ -1,4 +1,4 @@
-import readSubmittedCoordinatorSuggestions from "./readSubmittedCoordinatorSuggestions";
+import readSubmittedCoordinatorSuggestions from "../../api/submitted_coordinator_suggestion/readSubmittedCoordinatorSuggestions";
 
 export default async function getSubmittedCoordinatorSuggestionsHandler(
   req,

@@ -1,6 +1,6 @@
 import { reqLog } from "@/services/api/logger";
-import getSubmittedCoordinatorSuggestionsHandler from "@/services/api/submitted_coordinator_suggestion/getSubmittedCoordinatorSuggestionHandler";
 import methodNaHandler from "@/services/handlers/methodNaHandler";
+import getSubmittedCoordinatorSuggestionsHandler from "@/services/handlers/submitted_coordinator_suggestion/getSubmittedCoordinatorSuggestionsHandler";
 import postSubmittedCoordinatorSuggestionHandler from "@/services/handlers/submitted_coordinator_suggestion/postSubmittedCoordinatorSuggestionHandler";
 
 export default async function handler(req, res) {
