@@ -4,19 +4,21 @@ import CoordinatorSuggestionView from "@/components/review/suggestion/suggestion
 import PeerSuggestionView from "@/components/review/suggestion/suggestion_view/PeerSuggestionView";
 import useIM from "@/hooks/useIM";
 import useUser from "@/hooks/useUser";
-import { initDropdowns } from "flowbite";
+import { initDropdowns, initModals } from "flowbite";
+import moment from "moment";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import ToggleIM from "../ToggleIM";
+import ToggleIM from "../../../components/im/ToggleIM";
 
 export default function ViewIM() {
   const router = useRouter();
   const { user } = useUser();
-  const { iM, iMError, iMLoading } = useIM(router?.query?.id);
+  const { iM, iMError, iMLoading, refreshIM } = useIM(router?.query?.id);
 
   useEffect(() => {
     initDropdowns();
+    initModals();
   });
 
   return (
@@ -28,17 +30,18 @@ export default function ViewIM() {
             <div className='flex flex-cols'>
               <Link href='/me'>
                 <img
-                  src='/IMAGES/2x2.png'
+                  src={iM?.owner?.user?.image}
                   className='h-8 rounded-full sm:h-8'
-                  alt='BukSUIMD Logo'
+                  alt='owner'
                 ></img>
               </Link>
               <div className=''>
                 <h2 className='text-xs font-semibold text-CITLGray-main pl-3 -mb-1'>
-                  John Bryan Pit Acaso
+                  {iM?.owner?.user?.name}
                 </h2>
                 <time className='text-xs text-CITLGray-main pl-3 '>
-                  March 20,2023 | 3:00 PM
+                  {iM?.createdAt &&
+                    moment(iM?.createdAt).format("MMMM D, YYYY | h:mm A")}
                 </time>
               </div>
             </div>
@@ -80,14 +83,16 @@ export default function ViewIM() {
                 <li>
                   {/*  EDIT IM should be visible and accessible only for the owner of the IM
                    */}
-                  <button
-                    data-modal-target='authentication-modal'
-                    data-modal-toggle='authentication-modal'
-                    className='block text-sm  text-left px-4 py-2.5  hover:bg-gray-100 w-full'
-                    type='button'
-                  >
-                    Edit IM
-                  </button>
+                  {iM && iM.owner.userId === user?.id && (
+                    <button
+                      data-modal-target='im-update-modal'
+                      data-modal-toggle='im-update-modal'
+                      className='block text-sm  text-left px-4 py-2.5  hover:bg-gray-100 w-full'
+                      type='button'
+                    >
+                      Edit IM
+                    </button>
+                  )}
                 </li>
                 <li>
                   <Link
@@ -182,9 +187,15 @@ export default function ViewIM() {
           </div>
         </div>
 
-        <ToggleIM className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'>
-          Edit IM
-        </ToggleIM>
+        {iM && (
+          <ToggleIM
+            className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
+            iM={iM}
+            onUpdate={refreshIM}
+          >
+            Edit IM
+          </ToggleIM>
+        )}
         {iM && (
           <div className='my-2 space-x-1'>
             {Boolean(iM?.SubmittedPeerReview) && (

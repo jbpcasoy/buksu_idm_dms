@@ -13,6 +13,7 @@ export default async function getImsHandler(req, res) {
     reviewerId,
     sortColumn = "title",
     sortOrder = "asc",
+    type,
   } = req.query;
   const ims = await readIMs({
     limit: parseInt(limit),
@@ -26,6 +27,7 @@ export default async function getImsHandler(req, res) {
     reviewerId,
     sortColumn,
     sortOrder,
+    type,
   });
 
   return res.status(200).json(ims);

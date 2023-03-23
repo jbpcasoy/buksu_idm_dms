@@ -6,7 +6,6 @@ import uploadIMFile from "@/services/frontend/im/upload/uploadIMFile";
 import { useFormik } from "formik";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 import * as Yup from "yup";
 
 export default function CreateIM() {
@@ -31,7 +30,6 @@ export default function CreateIM() {
 
       const im = await frontendCreateIM({
         title,
-        serialNumber: uuidv4(),
         authors,
         type,
       });
@@ -235,33 +233,33 @@ export default function CreateIM() {
                   </button>
                 </>
               )}
-              
-              <button
-            type='submit'
-            disabled={formik.isSubmitting}
-            className='group relative inline-flex items-center overflow-hidden rounded bg-CITLOrange px-8 py-3 text-CITLDarkBlue focus:outline-none focus:ring active:bg-CITLDarkBlue'
-          >
-            <span className='absolute right-0 translate-x-full transition-transform group-hover:-translate-x-4'>
-              <svg
-                className='h-5 w-5'
-                xmlns='http://www.w3.org/2000/svg'
-                fill='none'
-                viewBox='0 0 24 24'
-                stroke='currentColor'
-              >
-                <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  strokeWidth='2'
-                  d='M17 8l4 4m0 0l-4 4m4-4H3'
-                />
-              </svg>
-            </span>
 
-            <span className='text-sm font-medium transition-all group-hover:mr-4'>
-              Submit
-            </span>
-          </button>
+              <button
+                type='submit'
+                disabled={formik.isSubmitting}
+                className='group relative inline-flex items-center overflow-hidden rounded bg-CITLOrange px-8 py-3 text-CITLDarkBlue focus:outline-none focus:ring active:bg-CITLDarkBlue'
+              >
+                <span className='absolute right-0 translate-x-full transition-transform group-hover:-translate-x-4'>
+                  <svg
+                    className='h-5 w-5'
+                    xmlns='http://www.w3.org/2000/svg'
+                    fill='none'
+                    viewBox='0 0 24 24'
+                    stroke='currentColor'
+                  >
+                    <path
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                      strokeWidth='2'
+                      d='M17 8l4 4m0 0l-4 4m4-4H3'
+                    />
+                  </svg>
+                </span>
+
+                <span className='text-sm font-medium transition-all group-hover:mr-4'>
+                  Submit
+                </span>
+              </button>
             </div>
           </form>
         </div>

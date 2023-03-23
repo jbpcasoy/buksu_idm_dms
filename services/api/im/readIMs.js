@@ -13,6 +13,7 @@ export default async function readIMs({
   reviewerId,
   sortColumn,
   sortOrder,
+  type,
 }) {
   const prisma = new PrismaClient();
   const sortFilter = {};
@@ -125,11 +126,16 @@ export default async function readIMs({
             owner: {
               departmentId: departmentId,
             },
-            ownerId: ownerId,
-            serialNumber: {
-              contains: serialNumber,
-              // mode: "insensitive",
+            type: {
+              equals: type,
             },
+            ownerId: ownerId,
+            serialNumber: serialNumber
+              ? {
+                  contains: serialNumber,
+                  // mode: "insensitive",
+                }
+              : undefined,
             title: {
               contains: title,
               // mode: "insensitive",
@@ -190,11 +196,16 @@ export default async function readIMs({
             owner: {
               departmentId: departmentId,
             },
-            ownerId: ownerId,
-            serialNumber: {
-              contains: serialNumber,
-              // mode: "insensitive",
+            type: {
+              equals: type,
             },
+            ownerId: ownerId,
+            serialNumber: serialNumber
+              ? {
+                  contains: serialNumber,
+                  // mode: "insensitive",
+                }
+              : undefined,
             title: {
               contains: title,
               // mode: "insensitive",
