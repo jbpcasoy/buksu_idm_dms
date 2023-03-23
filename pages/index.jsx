@@ -2,11 +2,13 @@ import useUser from "@/hooks/useUser";
 import { signIn, signOut } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useSnackbar } from "notistack";
 import { useEffect } from "react";
 
 export default function Home() {
   const { user, userError, userLoading } = useUser();
   const router = useRouter();
+  const { enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
     if (!user) return;
@@ -16,6 +18,19 @@ export default function Home() {
       router.push("/my_ims");
     }
   }, [user, router]);
+
+  useEffect(() => {
+    if (!router?.query?.unauthorized) return;
+
+    enqueueSnackbar({
+      variant: "error",
+      anchorOrigin: {
+        horizontal: "center",
+        vertical: "top",
+      },
+      message: "Unauthorized",
+    });
+  }, [router?.query?.unauthorized]);
 
   if (userLoading) return null;
 
