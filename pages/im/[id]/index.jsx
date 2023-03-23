@@ -207,32 +207,48 @@ export default function ViewIM() {
         )}
         {iM && (
           <div className='my-2 space-x-1'>
-            {Boolean(iM?.SubmittedPeerReview) && (
+            {Boolean(
+              iM?.SubmittedPeerReview && iM?.SubmittedPeerSuggestion
+            ) && (
               <span className='bg-purple-400 text-purple-800 text-xs px-3 py-1 rounded-2xl'>
                 Peer
               </span>
             )}
-            {!Boolean(iM?.SubmittedPeerReview) && (
+            {!Boolean(
+              iM?.SubmittedPeerReview && iM?.SubmittedPeerSuggestion
+            ) && (
               <span className='bg-red-300 text-red-600 text-xs px-3 py-1 rounded-2xl'>
                 Peer
               </span>
             )}
-            {Boolean(iM?.SubmittedChairpersonReview) && (
+            {Boolean(
+              iM?.SubmittedChairpersonReview &&
+                iM?.SubmittedChairpersonSuggestion
+            ) && (
               <span className='bg-orange-300 text-orange-500 text-xs px-3  py-1 rounded-2xl'>
                 Chairperson
               </span>
             )}
-            {!Boolean(iM?.SubmittedChairpersonReview) && (
+            {!Boolean(
+              iM?.SubmittedChairpersonReview &&
+                iM?.SubmittedChairpersonSuggestion
+            ) && (
               <span className='bg-red-300 text-red-600 text-xs px-3 py-1 rounded-2xl'>
                 Chairperson
               </span>
             )}
-            {Boolean(iM?.SubmittedCoordinatorReview) && (
+            {Boolean(
+              iM?.SubmittedCoordinatorReview &&
+                iM?.SubmittedCoordinatorSuggestion
+            ) && (
               <span className='bg-green-300 text-green-900 text-xs px-3 py-1 rounded-2xl'>
                 Coordinator
               </span>
             )}
-            {!Boolean(iM?.SubmittedCoordinatorReview) && (
+            {!Boolean(
+              iM?.SubmittedCoordinatorReview &&
+                iM?.SubmittedCoordinatorSuggestion
+            ) && (
               <span className='bg-red-300 text-red-600 text-xs px-3 py-1 rounded-2xl'>
                 Coordinator
               </span>
