@@ -1,6 +1,6 @@
 import useNotification from "@/hooks/notification/useNotification";
-import NotificationItemView from "@/views/notification/NotificationItemView";
 import { useEffect } from "react";
+import NotificationItemBase from "./NotificationItemBase";
 
 export default function CoordinatorReviewNotificationItem({ notification }) {
   const {
@@ -16,7 +16,8 @@ export default function CoordinatorReviewNotificationItem({ notification }) {
   if (!notificationData) return null;
   return (
     <div className='bg-blue-100'>
-      <NotificationItemView
+      <NotificationItemBase
+        notificationId={notificationData?.id}
         href={`/im/${notificationData?.SubmittedCoordinatorReview?.IM?.id}`}
         imgSrc={
           notificationData?.SubmittedCoordinatorReview?.CoordinatorReview
@@ -47,7 +48,7 @@ export default function CoordinatorReviewNotificationItem({ notification }) {
         </span>
         :{" "}
         {`"On IM: ${notificationData?.SubmittedCoordinatorReview?.IM?.title}"`}
-      </NotificationItemView>
+      </NotificationItemBase>
     </div>
   );
 }

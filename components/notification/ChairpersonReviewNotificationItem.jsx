@@ -1,6 +1,6 @@
 import useNotification from "@/hooks/notification/useNotification";
-import NotificationItemView from "@/views/notification/NotificationItemView";
 import { useEffect } from "react";
+import NotificationItemBase from "./NotificationItemBase";
 
 export default function ChairpersonReviewNotificationItem({ notification }) {
   const {
@@ -15,8 +15,9 @@ export default function ChairpersonReviewNotificationItem({ notification }) {
 
   if (!notificationData) return null;
   return (
-    <div className="bg-blue-100">
-      <NotificationItemView
+    <div className='bg-blue-100'>
+      <NotificationItemBase
+        notificationId={notificationData?.id}
         href={`/im/${notificationData?.SubmittedChairpersonReview?.IM?.id}`}
         imgSrc={
           notificationData?.SubmittedChairpersonReview?.ChairpersonReview
@@ -47,7 +48,7 @@ export default function ChairpersonReviewNotificationItem({ notification }) {
         </span>
         :{" "}
         {`"On IM: ${notificationData?.SubmittedChairpersonReview?.IM?.title}"`}
-      </NotificationItemView>
+      </NotificationItemBase>
     </div>
   );
 }

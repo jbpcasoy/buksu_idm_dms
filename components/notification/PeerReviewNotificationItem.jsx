@@ -1,6 +1,6 @@
 import useNotification from "@/hooks/notification/useNotification";
 import { useEffect } from "react";
-import NotificationItemView from "../../views/notification/NotificationItemView";
+import NotificationItemBase from "./NotificationItemBase";
 
 export default function PeerReviewNotificationItem({ notification }) {
   const {
@@ -15,8 +15,9 @@ export default function PeerReviewNotificationItem({ notification }) {
 
   if (!notificationData) return null;
   return (
-    <div className="bg-blue-100">
-      <NotificationItemView
+    <div className='bg-blue-100'>
+      <NotificationItemBase
+        notificationId={notificationData?.id}
         href={`/im/${notificationData?.SubmittedPeerReview?.IM?.id}`}
         imgSrc={
           notificationData?.SubmittedPeerReview?.PeerReview?.Faculty?.user
@@ -46,7 +47,7 @@ export default function PeerReviewNotificationItem({ notification }) {
           }
         </span>
         : {`"On IM: ${notificationData?.SubmittedPeerReview?.IM?.title}"`}
-      </NotificationItemView>
+      </NotificationItemBase>
     </div>
   );
 }
