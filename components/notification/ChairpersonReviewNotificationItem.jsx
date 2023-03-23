@@ -13,9 +13,9 @@ export default function ChairpersonReviewNotificationItem({ notification }) {
     console.log({ notificationData, notificationError, notificationLoading });
   }, [notificationData, notificationError, notificationLoading]);
 
-  if (!notificationData) return null;
   return (
     <NotificationItemBase
+      loading={notificationLoading}
       notificationId={notificationData?.id}
       href={`/im/${notificationData?.SubmittedChairpersonReview?.IM?.id}`}
       imgSrc={
@@ -45,7 +45,7 @@ export default function ChairpersonReviewNotificationItem({ notification }) {
             ?.Chairperson?.Faculty?.user?.name
         }
       </span>
-      : {`"On IM: ${notificationData?.SubmittedChairpersonReview?.IM?.title}"`}
+      {` On IM: "${notificationData?.SubmittedChairpersonReview?.IM?.title}"`}
     </NotificationItemBase>
   );
 }

@@ -13,9 +13,9 @@ export default function PeerReviewNotificationItem({ notification }) {
     console.log({ notificationData, notificationError, notificationLoading });
   }, [notificationData, notificationError, notificationLoading]);
 
-  if (!notificationData) return null;
   return (
     <NotificationItemBase
+      loading={notificationLoading}
       notificationId={notificationData?.id}
       href={`/im/${notificationData?.SubmittedPeerReview?.IM?.id}`}
       imgSrc={
@@ -41,7 +41,7 @@ export default function PeerReviewNotificationItem({ notification }) {
       <span className='font-semibold text-gray-900 dark:text-white'>
         {notificationData?.SubmittedPeerReview?.PeerReview?.Faculty?.user?.name}
       </span>
-      : {`"On IM: ${notificationData?.SubmittedPeerReview?.IM?.title}"`}
+      {` On IM: "${notificationData?.SubmittedPeerReview?.IM?.title}"`}
     </NotificationItemBase>
   );
 }

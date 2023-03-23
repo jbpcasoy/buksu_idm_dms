@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 
 export default function NotificationItemBase({
+  loading,
   notificationId,
   href,
   imgSrc,
@@ -34,6 +35,7 @@ export default function NotificationItemBase({
       })
       .finally(() => router.push(href));
   }
+  if (loading) return <p>Loading...</p>;
   return (
     <div className={`${readNotification ? "bg-gray-50" : "bg-blue-100"}`}>
       <button

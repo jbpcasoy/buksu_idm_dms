@@ -13,9 +13,9 @@ export default function CoordinatorReviewNotificationItem({ notification }) {
     console.log({ notificationData, notificationError, notificationLoading });
   }, [notificationData, notificationError, notificationLoading]);
 
-  if (!notificationData) return null;
   return (
     <NotificationItemBase
+      loading={notificationLoading}
       notificationId={notificationData?.id}
       href={`/im/${notificationData?.SubmittedCoordinatorReview?.IM?.id}`}
       imgSrc={
@@ -45,7 +45,7 @@ export default function CoordinatorReviewNotificationItem({ notification }) {
             ?.Coordinator?.Faculty?.user?.name
         }
       </span>
-      : {`"On IM: ${notificationData?.SubmittedCoordinatorReview?.IM?.title}"`}
+      {` On IM: "${notificationData?.SubmittedCoordinatorReview?.IM?.title}"`}
     </NotificationItemBase>
   );
 }
