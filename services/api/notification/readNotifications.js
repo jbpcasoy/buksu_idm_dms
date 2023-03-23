@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 
-export default async function readNotifications({ limit, page, userId }) {
+export default async function readNotifications({ limit, page, userId, read }) {
+  console.log({ limit, page, userId, read });
   const prisma = new PrismaClient();
 
   try {
@@ -43,6 +44,20 @@ export default async function readNotifications({ limit, page, userId }) {
             },
           },
         ],
+        ReadNotification:
+          read === true
+            ? {
+                some: {
+                  userId,
+                },
+              }
+            : read === false
+            ? {
+                none: {
+                  userId,
+                },
+              }
+            : undefined,
       },
     });
 
@@ -83,6 +98,20 @@ export default async function readNotifications({ limit, page, userId }) {
             },
           },
         ],
+        ReadNotification:
+          read === true
+            ? {
+                some: {
+                  userId,
+                },
+              }
+            : read === false
+            ? {
+                none: {
+                  userId,
+                },
+              }
+            : undefined,
       },
     });
 

@@ -45,7 +45,7 @@ export default function Notifications() {
           Notifications
         </div>
         <div className='divide-y divide-gray-100 dark:divide-gray-700'>
-          {notifications.map((notification) => (
+          {notifications?.data?.map((notification) => (
             <NotificationItem
               notification={notification}
               key={notification.id}
