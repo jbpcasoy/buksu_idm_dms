@@ -94,7 +94,9 @@ export default function IM({
         )}
       </td>
 
-      <td className='px-6 py-4 '>{reviewedAs}</td>
+      {/* ==REMOVED THIS ALREADY BC IT DOESNT MAKE ANY SENSE, THE AUTHOR CANNOT REVIEWED ON THEIR OWN, THEY ARE NOT THE CHAIR OR COOR. EITHER==
+
+      <td className='px-6 py-4 '>{reviewedAs}</td> */}
 
       <td className='px-6 py-4 '>
         {moment(createdAt).format("M/D/YYYY, h:mm A")}
