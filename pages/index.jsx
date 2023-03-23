@@ -40,9 +40,9 @@ export default function Home() {
       >
         <div className='h-screen bg-gradient-to-t from-CITLDarkBlue'>
           <div className='h-screen flex justify-center'>
-            <div className='relative justify-center h-full max-w-md md:h-auto'>
+            <div className='relative justify-center h-full max-w-md md:h-auto mt-32 lg:mt-48 '>
               <div className='m-5 relative bg-white opacity-90 rounded-lg shadow-lg '>
-                <div className='px-6 py-12 mt-64 justify-center lg:px-8'>
+                <div className='px-6 py-12 lg:px-8 '>
                   <div className='justify-center flex mb-8'>
                     <img src='/IMAGES/CITL.png' className='h-20 ' alt='CITL' />
                   </div>
