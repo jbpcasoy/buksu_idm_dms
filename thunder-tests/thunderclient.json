@@ -3040,5 +3040,24 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "35582691-1879-4600-a216-f0c7fabad063",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "c589f071-f851-4cd0-a464-ce982c92b939",
+    "name": "CREATE SubmittedCoordinatorSuggestion",
+    "url": "{{host}}/api/submitted_coordinator_suggestion",
+    "method": "POST",
+    "sortNum": 1830000,
+    "created": "2023-03-23T00:26:33.465Z",
+    "modified": "2023-03-23T00:27:29.241Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"coordinatorSuggestionId\": \"clfaukv31001ks9by4arycybq\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
