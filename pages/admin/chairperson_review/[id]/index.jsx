@@ -1,5 +1,6 @@
 import AdminLayout from "@/components/admin/AdminLayout";
 import { sections } from "@/constants/questions";
+import useIM from "@/hooks/useIM";
 import frontendReadChairpersonReview from "@/services/frontend/admin/chairperson_review/frontendReadChairpersonReview";
 import frontendReadChairpersonReviewItems from "@/services/frontend/admin/chairperson_review_item/frontendReadChairpersonReviewItems";
 import ReviewSection from "@/views/admin/review/ReviewSection";
@@ -20,6 +21,7 @@ export default function ChairpersonReview() {
   const [chairpersonReview, setChairpersonReview] = useState();
   const [chairpersonReviewItems, setChairpersonReviewItems] = useState([]);
   const router = useRouter();
+  const { iM, iMError, iMLoading, refreshIM } = useIM(chairpersonReview?.iMId);
 
   useEffect(() => {
     if (!router.query.id) return;
@@ -87,6 +89,19 @@ export default function ChairpersonReview() {
                 reviewItems={chairpersonReviewItems}
               />
             ))}
+
+          {process.env.NODE_ENV === "production" && iM && (
+            <iframe
+              src={`https://docs.google.com/gview?url=${process.env.NEXT_PUBLIC_HOST_URL}/api/download/file/${iM?.ActiveFile?.File.fileName}&embedded=true`}
+              className='w-full h-screen'
+            />
+          )}
+          {process.env.NODE_ENV !== "production" && iM && (
+            <iframe
+              src={`${process.env.NEXT_PUBLIC_HOST_URL}/api/download/file/${iM?.ActiveFile?.File.fileName}`}
+              className='w-full h-screen'
+            />
+          )}
         </Container>
       </Box>
     </AdminLayout>
