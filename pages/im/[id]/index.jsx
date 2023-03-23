@@ -106,15 +106,18 @@ export default function ViewIM() {
                   {user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId && (
                     <button
                       disabled={
-                        iM?.SubmittedPeerReview &&
-                        user?.ActiveFaculty?.facultyId !==
-                          iM?.SubmittedPeerReview?.PeerReview?.facultyId
+                        iM?.SubmittedPeerSuggestion ||
+                        (iM?.SubmittedPeerReview &&
+                          user?.ActiveFaculty?.facultyId !==
+                            iM?.SubmittedPeerReview?.PeerReview?.facultyId)
                       }
                       title={
                         iM?.SubmittedPeerReview &&
                         user?.ActiveFaculty?.facultyId !==
                           iM?.SubmittedPeerReview?.PeerReview?.facultyId
                           ? "Other peer's review exists"
+                          : iM?.SubmittedPeerSuggestion
+                          ? "Peer review and suggestions already exists"
                           : undefined
                       }
                       onClick={() => router.push(`/im/${iM?.id}/review/peer`)}
@@ -132,11 +135,12 @@ export default function ViewIM() {
                           router.push(`/im/${iM?.id}/review/coordinator`)
                         }
                         disabled={
-                          iM?.SubmittedCoordinatorReview &&
-                          user?.ActiveFaculty?.ActiveCoordinator
-                            ?.coordinatorId !==
-                            iM?.SubmittedCoordinatorReview?.CoordinatorReview
-                              ?.coordinatorId
+                          iM?.SubmittedCoordinatorSuggestion ||
+                          (iM?.SubmittedCoordinatorReview &&
+                            user?.ActiveFaculty?.ActiveCoordinator
+                              ?.coordinatorId !==
+                              iM?.SubmittedCoordinatorReview?.CoordinatorReview
+                                ?.coordinatorId)
                         }
                         title={
                           iM?.SubmittedCoordinatorReview &&
@@ -145,6 +149,8 @@ export default function ViewIM() {
                             iM?.SubmittedCoordinatorReview?.CoordinatorReview
                               ?.coordinatorId
                             ? "Other coordinator's review exists"
+                            : iM?.SubmittedCoordinatorSuggestion
+                            ? "Coordinator review ang suggestions already exists"
                             : undefined
                         }
                         className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter text-left w-full'
@@ -161,11 +167,12 @@ export default function ViewIM() {
                           router.push(`/im/${iM?.id}/review/chairperson`)
                         }
                         disabled={
-                          iM?.SubmittedChairpersonReview &&
-                          user?.ActiveFaculty?.ActiveChairperson
-                            ?.chairpersonId !==
-                            iM?.SubmittedChairpersonReview?.ChairpersonReview
-                              ?.chairpersonId
+                          iM?.SubmittedChairpersonSuggestion ||
+                          (iM?.SubmittedChairpersonReview &&
+                            user?.ActiveFaculty?.ActiveChairperson
+                              ?.chairpersonId !==
+                              iM?.SubmittedChairpersonReview?.ChairpersonReview
+                                ?.chairpersonId)
                         }
                         title={
                           iM?.SubmittedChairpersonReview &&
@@ -174,6 +181,8 @@ export default function ViewIM() {
                             iM?.SubmittedChairpersonReview?.ChairpersonReview
                               ?.chairpersonId
                             ? "Other chairperson's review exists"
+                            : iM?.SubmittedChairpersonSuggestion
+                            ? "Chairperson review ang suggestions already exists"
                             : undefined
                         }
                         className='block w-full  text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter'
@@ -198,32 +207,48 @@ export default function ViewIM() {
         )}
         {iM && (
           <div className='my-2 space-x-1'>
-            {Boolean(iM?.SubmittedPeerReview) && (
+            {Boolean(
+              iM?.SubmittedPeerReview && iM?.SubmittedPeerSuggestion
+            ) && (
               <span className='bg-purple-400 text-purple-800 text-xs px-3 py-1 rounded-2xl'>
                 Peer
               </span>
             )}
-            {!Boolean(iM?.SubmittedPeerReview) && (
+            {!Boolean(
+              iM?.SubmittedPeerReview && iM?.SubmittedPeerSuggestion
+            ) && (
               <span className='bg-red-300 text-red-600 text-xs px-3 py-1 rounded-2xl'>
                 Peer
               </span>
             )}
-            {Boolean(iM?.SubmittedChairpersonReview) && (
+            {Boolean(
+              iM?.SubmittedChairpersonReview &&
+                iM?.SubmittedChairpersonSuggestion
+            ) && (
               <span className='bg-orange-300 text-orange-500 text-xs px-3  py-1 rounded-2xl'>
                 Chairperson
               </span>
             )}
-            {!Boolean(iM?.SubmittedChairpersonReview) && (
+            {!Boolean(
+              iM?.SubmittedChairpersonReview &&
+                iM?.SubmittedChairpersonSuggestion
+            ) && (
               <span className='bg-red-300 text-red-600 text-xs px-3 py-1 rounded-2xl'>
                 Chairperson
               </span>
             )}
-            {Boolean(iM?.SubmittedCoordinatorReview) && (
+            {Boolean(
+              iM?.SubmittedCoordinatorReview &&
+                iM?.SubmittedCoordinatorSuggestion
+            ) && (
               <span className='bg-green-300 text-green-900 text-xs px-3 py-1 rounded-2xl'>
                 Coordinator
               </span>
             )}
-            {!Boolean(iM?.SubmittedCoordinatorReview) && (
+            {!Boolean(
+              iM?.SubmittedCoordinatorReview &&
+                iM?.SubmittedCoordinatorSuggestion
+            ) && (
               <span className='bg-red-300 text-red-600 text-xs px-3 py-1 rounded-2xl'>
                 Coordinator
               </span>

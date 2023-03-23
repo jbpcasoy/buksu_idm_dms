@@ -4,7 +4,7 @@ import PeerQuestion from "@/components/review/PeerQuestion";
 import ConfirmPeerReview from "@/components/review/preview/ConfirmPeerReview";
 import ReviewPage from "@/components/review/ReviewPage";
 import PeerSuggestion from "@/components/review/suggestion/PeerSuggestion";
-import { sections } from "@/constants/questions";
+import { countQuestions, sections } from "@/constants/questions";
 import useUser from "@/hooks/useUser";
 import frontendReadIM from "@/services/frontend/im/frontendReadIM";
 import frontendCreatePeerReview from "@/services/frontend/peer_review/frontendCreatePeerReview";
@@ -72,6 +72,12 @@ const PeerReviewPage = () => {
         handleNext();
       });
   }
+
+  useEffect(() => {
+    if (!iM?.SubmittedPeerReview) return;
+
+    setStep(countQuestions(sections) + 2);
+  }, [iM?.SubmittedPeerReview]);
 
   function generateQuestions(sections) {
     const questions = [];

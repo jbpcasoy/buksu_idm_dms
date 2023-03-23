@@ -3,6 +3,7 @@ import useCoordinatorSuggestionItems from "@/hooks/useCoordinatorSuggestionItems
 import useIM from "@/hooks/useIM";
 import useSubmittedCoordinatorReview from "@/hooks/useSubmittedCoordinatorReview";
 import frontendCreateCoordinatorSuggestionItem from "@/services/frontend/coordinator_sugestion_item/frontendCreateCoordinatorSuggestionItem";
+import frontendCreateSubmittedCoordinatorSuggestion from "@/services/frontend/submitted_coordinator_suggestion/frontendCreateSubmittedCoordinatorSuggestion";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import CoordinatorSuggestionItem from "./CoordinatorSuggestionItem";
@@ -49,6 +50,12 @@ export default function CoordinatorSuggestion({
     });
   }
 
+  async function handleSubmitSuggestion() {
+    return frontendCreateSubmittedCoordinatorSuggestion({
+      coordinatorSuggestionId: coordinatorSuggestion.id,
+    });
+  }
+
   useEffect(() => {
     console.log({ coordinatorReview });
   }, [coordinatorReview]);
@@ -68,7 +75,9 @@ export default function CoordinatorSuggestion({
   return (
     <Suggestion
       handleSubmit={handleSubmit}
-      onFinish={onFinish}
+      onFinish={() => {
+        handleSubmitSuggestion().then(() => onFinish());
+      }}
       onPrevious={onPrevious}
       iM={iM}
       showChairpersonSuggestion
