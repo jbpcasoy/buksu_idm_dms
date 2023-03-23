@@ -1,5 +1,6 @@
 import AdminLayout from "@/components/admin/AdminLayout";
 import { sections } from "@/constants/questions";
+import useIM from "@/hooks/useIM";
 import frontendReadPeerReview from "@/services/frontend/admin/peer_review/adminReadPeerReview";
 import frontendReadPeerReviewItems from "@/services/frontend/admin/peer_review_item/frontendReadPeerReviewItems";
 import ReviewSection from "@/views/admin/review/ReviewSection";
@@ -20,6 +21,7 @@ export default function PeerReview() {
   const [peerReview, setPeerReview] = useState();
   const [peerReviewItems, setPeerReviewItems] = useState([]);
   const router = useRouter();
+  const { iM, iMError, iMLoading, refreshIM } = useIM(peerReview?.iMId);
 
   useEffect(() => {
     if (!router.query.id) return;
@@ -85,6 +87,19 @@ export default function PeerReview() {
                 reviewItems={peerReviewItems}
               />
             ))}
+
+          {process.env.NODE_ENV === "production" && iM && (
+            <iframe
+              src={`https://docs.google.com/gview?url=${process.env.NEXT_PUBLIC_HOST_URL}/api/download/file/${iM?.ActiveFile?.File.fileName}&embedded=true`}
+              className='w-full h-screen'
+            />
+          )}
+          {process.env.NODE_ENV !== "production" && iM && (
+            <iframe
+              src={`${process.env.NEXT_PUBLIC_HOST_URL}/api/download/file/${iM?.ActiveFile?.File.fileName}`}
+              className='w-full h-screen'
+            />
+          )}
         </Container>
       </Box>
     </AdminLayout>
