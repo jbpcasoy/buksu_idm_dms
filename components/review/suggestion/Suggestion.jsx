@@ -12,6 +12,7 @@ export default function Suggestion({
   showPeerSuggestion = false,
   showChairpersonSuggestion = false,
   showCoordinatorSuggestion = false,
+  title,
 }) {
   return (
     <div>
@@ -50,9 +51,7 @@ export default function Suggestion({
         <div className='border border-CITLGray-lighter rounded-lg mb-5 overflow-hidden'>
           <div className='bg-CITLGray-light rounded-t-lg py-3 px-3 pr-3'>
             <div className='flex justify-between text-center '>
-              <h2 className='text-center pt-2 font-semibold'>
-                Part A. Program Review
-              </h2>
+              <h2 className='text-center pt-2 font-semibold'>{title}</h2>
               <SuggestionAddModal onSubmit={handleSubmit} />
             </div>
           </div>

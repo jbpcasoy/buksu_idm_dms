@@ -82,6 +82,7 @@ export default function ChairpersonSuggestion({
       }}
       onPrevious={onPrevious}
       iM={iM}
+      title='Chairperson Suggestion'
     >
       {chairpersonSuggestionItems.map((chairpersonSuggestionItem) => (
         <ChairpersonSuggestionItem

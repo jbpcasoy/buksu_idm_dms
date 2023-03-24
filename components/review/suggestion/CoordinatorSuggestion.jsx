@@ -82,6 +82,7 @@ export default function CoordinatorSuggestion({
       iM={iM}
       showChairpersonSuggestion
       showPeerSuggestion
+      title='Coordinator Suggestion'
     >
       {coordinatorSuggestionItems.map((coordinatorSuggestionItem) => (
         <CoordinatorSuggestionItem
