@@ -1,4 +1,5 @@
 import AdminLayout from "@/components/admin/AdminLayout";
+import AdminCoordinatorSuggestion from "@/components/admin/suggestion/AdminCoordinatorSuggestion";
 import { sections } from "@/constants/questions";
 import useIM from "@/hooks/useIM";
 import frontendReadCoordinatorReview from "@/services/frontend/admin/coordinator_review/frontendReadCoordinatorReview";
@@ -89,6 +90,14 @@ export default function CoordinatorReview() {
                 reviewItems={coordinatorReviewItems}
               />
             ))}
+
+          {coordinatorReview && (
+            <Card sx={{ mb: 1 }}>
+              <AdminCoordinatorSuggestion
+                coordinatorReview={coordinatorReview}
+              />
+            </Card>
+          )}
 
           {process.env.NODE_ENV === "production" && iM && (
             <iframe

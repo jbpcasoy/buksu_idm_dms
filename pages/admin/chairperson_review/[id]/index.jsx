@@ -1,4 +1,5 @@
 import AdminLayout from "@/components/admin/AdminLayout";
+import AdminChairpersonSuggestion from "@/components/admin/suggestion/AdminChairpersonSuggestion";
 import { sections } from "@/constants/questions";
 import useIM from "@/hooks/useIM";
 import frontendReadChairpersonReview from "@/services/frontend/admin/chairperson_review/frontendReadChairpersonReview";
@@ -89,6 +90,14 @@ export default function ChairpersonReview() {
                 reviewItems={chairpersonReviewItems}
               />
             ))}
+
+          {chairpersonReview && (
+            <Card sx={{ mb: 1 }}>
+              <AdminChairpersonSuggestion
+                chairpersonReview={chairpersonReview}
+              />
+            </Card>
+          )}
 
           {process.env.NODE_ENV === "production" && iM && (
             <iframe
