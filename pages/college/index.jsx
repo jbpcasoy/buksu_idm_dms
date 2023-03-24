@@ -138,19 +138,34 @@ export default function CollegePage() {
               </tr>
             </thead>
             <tbody className='bg-white divide-gray-200 overflow-y-auto'>
-              {colleges.map((college, index) => (
-                <College
-                  onView={() =>
-                    router.push(
-                      `/college/${college.id}/department?collegeCount=${total}`
-                    )
-                  }
-                  bottomBorder={true}
-                  name={college.name}
-                  id={index}
-                  key={index}
-                />
-              ))}
+              {loading && (
+                <tr
+                  className={` bg-white text-sm text-CITLGray-main text-left p-4 animate-pulse`}
+                >
+                  <td className='px-6 py-4 '>
+                    <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                    <div class='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
+                  </td>
+
+                  <td className='bg-white  font-medium text-slate-400  items-center justify-center py-4 flex '>
+                    <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                  </td>
+                </tr>
+              )}
+              {!loading &&
+                colleges.map((college, index) => (
+                  <College
+                    onView={() =>
+                      router.push(
+                        `/college/${college.id}/department?collegeCount=${total}`
+                      )
+                    }
+                    bottomBorder={true}
+                    name={college.name}
+                    id={index}
+                    key={index}
+                  />
+                ))}
             </tbody>
           </table>
           <div className='flex flex-row items-center justify-end px-6 py-3 w-full'>
