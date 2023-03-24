@@ -1,7 +1,9 @@
 import AdminLayout from "@/components/admin/AdminLayout";
 import IMStatuses from "@/services/constants/im_status";
+import IMTypes from "@/services/constants/im_type";
 import frontendReadIms from "@/services/frontend/admin/im";
 import AdminIMView from "@/views/admin/im/AdminIMView";
+import Sort from "@/views/admin/Sort";
 import {
   Box,
   FormControl,
@@ -35,6 +37,10 @@ export default function AdminIM() {
     title: "",
     departmentName: "",
     status: "All",
+    sortColumn: "title",
+    sortOrder: "asc",
+    type: "All",
+    peerReviewed: "All",
   });
 
   useEffect(() => {
@@ -47,6 +53,11 @@ export default function AdminIM() {
       title: state.title,
       departmentName: state.departmentName,
       status: state.status === "All" ? undefined : state.status,
+      type: state.type === "All" ? undefined : state.type,
+      peerReviewed:
+        state.peerReviewed === "All" ? undefined : state.peerReviewed,
+      sortOrder: state.sortOrder,
+      sortColumn: state.sortColumn,
     }).then((res) => {
       if (!subscribe) return;
       setIms(res.data);
@@ -106,6 +117,26 @@ export default function AdminIM() {
     }));
   }
 
+  function handleTypeChange(e) {
+    setState((prev) => ({
+      ...prev,
+      type: e.target.value,
+    }));
+  }
+
+  function handleSortByChange(e) {
+    setState((prev) => ({
+      ...prev,
+      sortColumn: e.target.value,
+    }));
+  }
+  function handleSortOrderChange(e, value) {
+    setState((prev) => ({
+      ...prev,
+      sortOrder: value,
+    }));
+  }
+
   return (
     <AdminLayout>
       <Box sx={{ m: 1 }}>
@@ -124,6 +155,17 @@ export default function AdminIM() {
             label='Title'
             onChange={debouncedHandleTitleChange}
           />
+          <FormControl size='small' sx={{ width: "auto" }}>
+            <InputLabel>Type</InputLabel>
+            <Select value={state.type} label='Type' onChange={handleTypeChange}>
+              <MenuItem value='All'>All</MenuItem>
+              {IMTypes.map((type) => (
+                <MenuItem value={type} key={type}>
+                  {type}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
           <TextField
             size='small'
             label='Department'
@@ -144,6 +186,22 @@ export default function AdminIM() {
               ))}
             </Select>
           </FormControl>
+
+          <Sort
+            onChangeSortColumn={handleSortByChange}
+            onChangeSortOrder={handleSortOrderChange}
+            sortColumn={state.sortColumn}
+            sortOptions={[
+              { value: "serialNumber", label: "Serial Number" },
+              { value: "title", label: "Title" },
+              { value: "owner.user.name", label: "Owner" },
+              { value: "owner.department.name", label: "Department" },
+              { value: "owner.department.college.name", label: "College" },
+              { value: "status", label: "Status" },
+              { value: "createdAt", label: "Date Created" },
+            ]}
+            sortOrder={state.sortOrder}
+          />
         </Stack>
         <TableContainer>
           <Table>
@@ -151,6 +209,7 @@ export default function AdminIM() {
               <TableRow>
                 <TableCell>Serial Number</TableCell>
                 <TableCell>Title</TableCell>
+                <TableCell>Type</TableCell>
                 <TableCell>Owner</TableCell>
                 <TableCell>Department</TableCell>
                 <TableCell>Status</TableCell>
@@ -164,6 +223,7 @@ export default function AdminIM() {
             <TableBody>
               {ims.map((im) => (
                 <AdminIMView
+                  type={im.type}
                   peerReviewed={Boolean(im.SubmittedPeerReview)}
                   coordinatorReviewed={Boolean(im.SubmittedCoordinatorReview)}
                   chairpersonReviewed={Boolean(im.SubmittedChairpersonReview)}

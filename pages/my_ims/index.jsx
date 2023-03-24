@@ -82,7 +82,7 @@ export default function Home() {
 
   return (
     <Layout>
-      {!user?.ActiveFaculty && !userLoading && (
+      {user && !user?.ActiveFaculty && !userLoading && (
         <div className=' flex-wrap grid text-center justify-items-center  border min-h-fit border-slate-300  bg-CITLWhite m-2 p-3 rounded-lg shadow-lg overflow-hidden'>
           <div className='px-6 py-4 md:w-10/12 sm:w-12/12'>
             <h3 className='text-3xl font-bold text-CITLDarkBlue'>
@@ -206,44 +206,128 @@ export default function Home() {
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
-                  Title
+                  Title{" "}
+                  <a href='#'>
+                    <svg
+                      xmlns='http://www.w3.org/2000/svg'
+                      class='w-2 h-3 inline-flex ml-1'
+                      aria-hidden='true'
+                      fill='currentColor'
+                      viewBox='0 0 320 512'
+                    >
+                      <path d='M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z' />
+                    </svg>
+                  </a>
                 </th>
                 <th
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
                   Type
+                  <a href='#'>
+                    <svg
+                      xmlns='http://www.w3.org/2000/svg'
+                      class='w-2 h-3 inline-flex ml-1'
+                      aria-hidden='true'
+                      fill='currentColor'
+                      viewBox='0 0 320 512'
+                    >
+                      <path d='M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z' />
+                    </svg>
+                  </a>
                 </th>
                 <th
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
-                  Owner
+                  Authors
                 </th>
+                {/* <th
+                  scope='col'
+                  className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
+                >
+                  Owner
+                  <a href='#'>
+                    <svg
+                      xmlns='http://www.w3.org/2000/svg'
+                      class='w-2 h-3 inline-flex ml-1'
+                      aria-hidden='true'
+                      fill='currentColor'
+                      viewBox='0 0 320 512'
+                    >
+                      <path d='M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z' />
+                    </svg>
+                  </a>
+                </th> */}
                 <th
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
                   Status
+                  <a href='#'>
+                    <svg
+                      xmlns='http://www.w3.org/2000/svg'
+                      class='w-2 h-3 inline-flex ml-1'
+                      aria-hidden='true'
+                      fill='currentColor'
+                      viewBox='0 0 320 512'
+                    >
+                      <path d='M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z' />
+                    </svg>
+                  </a>
                 </th>
                 <th
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
-                  Review Status
+                  Review/Suggestion
+                  <a href='#'>
+                    <svg
+                      xmlns='http://www.w3.org/2000/svg'
+                      class='w-3 h-3 inline-flex ml-1'
+                      aria-hidden='true'
+                      fill='currentColor'
+                      viewBox='0 0 320 512'
+                    >
+                      <path d='M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z' />
+                    </svg>
+                  </a>
                 </th>
+                {/* 
                 <th
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
                   Reviewed As
-                </th>
+                  <a href='#'>
+                    <svg
+                      xmlns='http://www.w3.org/2000/svg'
+                      class='w-2 h-3 inline-flex ml-1'
+                      aria-hidden='true'
+                      fill='currentColor'
+                      viewBox='0 0 320 512'
+                    >
+                      <path d='M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z' />
+                    </svg>
+                  </a>
+                </th> */}
 
                 <th
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
                   Created At
+                  <a href='#'>
+                    <svg
+                      xmlns='http://www.w3.org/2000/svg'
+                      class='w-2 h-3 inline-flex ml-1'
+                      aria-hidden='true'
+                      fill='currentColor'
+                      viewBox='0 0 320 512'
+                    >
+                      <path d='M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z' />
+                    </svg>
+                  </a>
                 </th>
                 {/* <th
                   scope='col'
@@ -255,35 +339,89 @@ export default function Home() {
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
+                  Serial No.
+                </th>
+                <th
+                  scope='col'
+                  className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
+                >
                   Actions
                 </th>
               </tr>
             </thead>
             <tbody className='bg-white divide-gray-200 overflow-y-auto'>
-              {ims.map((im, index) => {
-                return (
-                  <IM
-                    // bottomBorder={index < state.ims.length - 1}
-                    im={im}
-                    peerReviewed={Boolean(im.SubmittedPeerReview)}
-                    chairpersonReviewed={Boolean(im.SubmittedChairpersonReview)}
-                    coordinatorReviewed={Boolean(im.SubmittedCoordinatorReview)}
-                    bottomBorder={true}
-                    createdAt={im.createdAt}
-                    originalFileName={im.originalFileName}
-                    fileName={im.fileName}
-                    id={im.id}
-                    serialNumber={im.serialNumber}
-                    status={im.status}
-                    title={im.title}
-                    updatedAt={im.updatedAt}
-                    onView={() => router.push(`/im/${im.id}`)}
-                    owner={im.owner.user.name}
-                    type={im.type}
-                    key={im.id}
-                  />
-                );
-              })}
+              {loading && (
+                <tr
+                  className={` bg-white text-sm text-CITLGray-main text-left p-4 animate-pulse `}
+                >
+                  <td className='px-6 py-4  '>
+                    <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                    <div class='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
+                  </td>
+
+                  <td className='px-6 py-4 '>
+                    <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                  </td>
+
+                  <td className='px-6 py-4 '>
+                    <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                  </td>
+
+                  <td className='px-6 py-4 '>
+                    <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                  </td>
+                  <td className='px-4 py-4 space-x-1'>
+                    <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                  </td>
+
+                  <td className='px-6 py-4 '>
+                    <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                  </td>
+
+                  <td className='px-6 py-4 '>
+                    <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                  </td>
+
+                  <td className='px-6 py-4 '>
+                    <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                  </td>
+                </tr>
+              )}
+              {!loading &&
+                ims.map((im, index) => {
+                  return (
+                    <IM
+                      authors={im.authors}
+                      showSerialNumber={true}
+                      // bottomBorder={index < state.ims.length - 1}
+                      im={im}
+                      peerReviewed={Boolean(
+                        im.SubmittedPeerReview && im.SubmittedPeerSuggestion
+                      )}
+                      chairpersonReviewed={Boolean(
+                        im.SubmittedChairpersonReview &&
+                          im.SubmittedChairpersonSuggestion
+                      )}
+                      coordinatorReviewed={Boolean(
+                        im.SubmittedCoordinatorReview &&
+                          im.SubmittedCoordinatorSuggestion
+                      )}
+                      bottomBorder={true}
+                      createdAt={im.createdAt}
+                      originalFileName={im.originalFileName}
+                      fileName={im.fileName}
+                      id={im.id}
+                      serialNumber={im.serialNumber}
+                      status={im.status}
+                      title={im.title}
+                      updatedAt={im.updatedAt}
+                      onView={() => router.push(`/im/${im.id}`)}
+                      owner={im.owner.user.name}
+                      type={im.type}
+                      key={im.id}
+                    />
+                  );
+                })}
             </tbody>
           </table>
 

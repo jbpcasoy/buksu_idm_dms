@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import AdminIMActionsMenu from "./AdminIMActionsMenu";
 
 export default function AdminIMView({
+  type,
   peerReviewed,
   coordinatorReviewed,
   chairpersonReviewed,
@@ -24,6 +25,7 @@ export default function AdminIMView({
     <TableRow>
       <TableCell>{serialNumber}</TableCell>
       <TableCell>{title}</TableCell>
+      <TableCell>{type}</TableCell>
       <TableCell>{owner}</TableCell>
       <TableCell>{department}</TableCell>
       <TableCell>{status}</TableCell>
@@ -42,7 +44,7 @@ export default function AdminIMView({
           size='small'
           variant='contained'
           onClick={onViewChairpersonReview}
-          disabled={!coordinatorReviewed}
+          disabled={!chairpersonReviewed}
         >
           View
         </Button>
@@ -52,7 +54,7 @@ export default function AdminIMView({
           size='small'
           variant='contained'
           onClick={onViewCoordinatorReview}
-          disabled={!chairpersonReviewed}
+          disabled={!coordinatorReviewed}
         >
           View
         </Button>

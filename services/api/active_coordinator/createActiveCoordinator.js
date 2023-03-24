@@ -1,7 +1,7 @@
-import { PrismaClient } from "@prisma/client";
+import { PRISMA_CLIENT } from "@/prisma/prisma_client";
 
 export default async function createActiveCoordinator({ coordinatorId }) {
-  const prisma = new PrismaClient();
+  const prisma = PRISMA_CLIENT;
 
   try {
     const coordinator = await findCoordinator({
@@ -26,7 +26,7 @@ export default async function createActiveCoordinator({ coordinatorId }) {
 }
 
 async function findCoordinator({ coordinatorId, departmentId }) {
-  const prisma = new PrismaClient();
+  const prisma = PRISMA_CLIENT;
 
   try {
     const coordinator = await prisma.coordinator.findFirstOrThrow({
@@ -52,7 +52,7 @@ async function findCoordinator({ coordinatorId, departmentId }) {
 }
 
 async function findActiveFaculty({ facultyId }) {
-  const prisma = new PrismaClient();
+  const prisma = PRISMA_CLIENT;
 
   try {
     const activeFaculty = await prisma.activeFaculty.findUniqueOrThrow({

@@ -3,6 +3,7 @@ import usePeerSuggestion from "@/hooks/usePeerSuggestion";
 import usePeerSuggestionItems from "@/hooks/usePeerSuggestionItems";
 import useSubmittedPeerReview from "@/hooks/useSubmittedPeerReview";
 import frontendCreatePeerSuggestionItem from "@/services/frontend/peer_suggestion_item/frontendCreatePeerSuggestionItem";
+import frontendCreateSubmittedPeerSuggestion from "@/services/frontend/submitted_peer_suggestion/frontendCreateSubmittedPeerSuggestion";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import PeerSuggestionItem from "./PeerSuggestionItem";
@@ -36,6 +37,12 @@ export default function PeerSuggestion({ peerReview, onFinish, onPrevious }) {
     });
   }
 
+  async function handleSubmitSuggestion() {
+    return frontendCreateSubmittedPeerSuggestion({
+      peerSuggestionId: peerSuggestion.id,
+    });
+  }
+
   useEffect(() => {
     console.log({ submittedPeerReview });
   }, [submittedPeerReview]);
@@ -53,9 +60,12 @@ export default function PeerSuggestion({ peerReview, onFinish, onPrevious }) {
       showChairpersonSuggestion
       showCoordinatorSuggestion
       handleSubmit={handleSubmit}
-      onFinish={onFinish}
+      onFinish={() => {
+        handleSubmitSuggestion().then(() => onFinish());
+      }}
       onPrevious={onPrevious}
       iM={iM}
+      title='Peer Suggestion'
     >
       {peerSuggestionItems.map((peerSuggestionItem) => (
         <PeerSuggestionItem

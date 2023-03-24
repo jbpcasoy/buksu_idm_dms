@@ -1,7 +1,7 @@
-import { PrismaClient } from "@prisma/client";
+import { PRISMA_CLIENT } from "@/prisma/prisma_client";
 
 export default async function readDepartmentApprovals({ limit, page }) {
-  const prisma = new PrismaClient();
+  const prisma = PRISMA_CLIENT;
 
   try {
     const departmentApprovals = await prisma.departmentApproval.findMany({

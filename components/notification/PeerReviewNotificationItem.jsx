@@ -1,6 +1,6 @@
 import useNotification from "@/hooks/notification/useNotification";
 import { useEffect } from "react";
-import NotificationItemView from "../../views/notification/NotificationItemView";
+import NotificationItemBase from "./NotificationItemBase";
 
 export default function PeerReviewNotificationItem({ notification }) {
   const {
@@ -13,16 +13,17 @@ export default function PeerReviewNotificationItem({ notification }) {
     console.log({ notificationData, notificationError, notificationLoading });
   }, [notificationData, notificationError, notificationLoading]);
 
-  if (!notificationData) return null;
   return (
-    <NotificationItemView
+    <NotificationItemBase
+      loading={notificationLoading}
+      notificationId={notificationData?.id}
       href={`/im/${notificationData?.SubmittedPeerReview?.IM?.id}`}
       imgSrc={
         notificationData?.SubmittedPeerReview?.PeerReview?.Faculty?.user?.image
       }
       time={notificationData?.createdAt}
       icon={
-        <div className='absolute flex items-center justify-center w-5 h-5 ml-6 -mt-5 bg-purple-500  border border-white rounded-full dark:border-gray-800'>
+        <div className='absolute flex items-center justify-center w-5 h-5 ml-6 -mt-5 bg-purple-400  border border-white rounded-full dark:border-gray-800'>
           <svg
             className='w-3 h-3 text-white'
             aria-hidden='true'
@@ -40,7 +41,7 @@ export default function PeerReviewNotificationItem({ notification }) {
       <span className='font-semibold text-gray-900 dark:text-white'>
         {notificationData?.SubmittedPeerReview?.PeerReview?.Faculty?.user?.name}
       </span>
-      : {`"On IM: ${notificationData?.SubmittedPeerReview?.IM?.title}"`}
-    </NotificationItemView>
+      {` On IM: "${notificationData?.SubmittedPeerReview?.IM?.title}"`}
+    </NotificationItemBase>
   );
 }

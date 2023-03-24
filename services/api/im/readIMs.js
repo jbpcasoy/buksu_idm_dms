@@ -1,4 +1,6 @@
 const { PrismaClient } = require("@prisma/client");
+import { PRISMA_CLIENT } from "@/prisma/prisma_client";
+import _ from "lodash";
 
 export default async function readIMs({
   page,
@@ -10,14 +12,22 @@ export default async function readIMs({
   notOwnerId,
   departmentId,
   reviewerId,
+  sortColumn,
+  sortOrder,
+  type,
 }) {
-  const prisma = new PrismaClient();
+  const prisma = PRISMA_CLIENT;
+  const sortFilter = {};
+  _.set(sortFilter, sortColumn, sortOrder);
 
   try {
     const ims = await prisma.iM.findMany({
       take: limit,
       skip: (page - 1) * limit,
       include: {
+        SubmittedChairpersonSuggestion: true,
+        SubmittedPeerSuggestion: true,
+        SubmittedCoordinatorSuggestion: true,
         SubmittedPeerReview: {
           select: {
             PeerReview: {
@@ -120,11 +130,16 @@ export default async function readIMs({
             owner: {
               departmentId: departmentId,
             },
-            ownerId: ownerId,
-            serialNumber: {
-              contains: serialNumber,
-              // mode: "insensitive",
+            type: {
+              equals: type,
             },
+            ownerId: ownerId,
+            serialNumber: serialNumber
+              ? {
+                  contains: serialNumber,
+                  // mode: "insensitive",
+                }
+              : undefined,
             title: {
               contains: title,
               // mode: "insensitive",
@@ -135,6 +150,7 @@ export default async function readIMs({
           },
         ],
       },
+      orderBy: sortFilter,
     });
 
     const total = await prisma.iM.count({
@@ -184,11 +200,16 @@ export default async function readIMs({
             owner: {
               departmentId: departmentId,
             },
-            ownerId: ownerId,
-            serialNumber: {
-              contains: serialNumber,
-              // mode: "insensitive",
+            type: {
+              equals: type,
             },
+            ownerId: ownerId,
+            serialNumber: serialNumber
+              ? {
+                  contains: serialNumber,
+                  // mode: "insensitive",
+                }
+              : undefined,
             title: {
               contains: title,
               // mode: "insensitive",

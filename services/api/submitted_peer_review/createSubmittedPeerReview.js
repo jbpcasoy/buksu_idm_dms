@@ -1,8 +1,8 @@
-import { PrismaClient } from "@prisma/client";
+import { PRISMA_CLIENT } from "@/prisma/prisma_client";
 import readPeerReview from "../peer_review/readPeerReview";
 
 export default async function createSubmittedPeerReview({ peerReviewId }) {
-  const prisma = new PrismaClient();
+  const prisma = PRISMA_CLIENT;
 
   try {
     const peerReview = await readPeerReview(peerReviewId);

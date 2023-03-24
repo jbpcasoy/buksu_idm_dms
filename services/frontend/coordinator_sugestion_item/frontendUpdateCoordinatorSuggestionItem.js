@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default async function frontendUpdateCoordinatorSuggestionItem(
   id,
-  { value, pageNumber, remarks }
+  { value, pageNumber, actionTaken, remarks }
 ) {
   try {
     const coordinatorSuggestionItem = await axios.put(
@@ -11,6 +11,7 @@ export default async function frontendUpdateCoordinatorSuggestionItem(
         value,
         pageNumber,
         remarks,
+        actionTaken,
       }
     );
     return coordinatorSuggestionItem.data;

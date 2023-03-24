@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import { PRISMA_CLIENT } from "@/prisma/prisma_client";
 
 export default async function readChairpersonReviewItems({
   limit,
@@ -6,7 +6,7 @@ export default async function readChairpersonReviewItems({
   questionId,
   chairpersonReviewId,
 }) {
-  const prisma = new PrismaClient();
+  const prisma = PRISMA_CLIENT;
 
   try {
     const chairpersonReviewItems = await prisma.chairpersonReviewItem.findMany({

@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import { PRISMA_CLIENT } from "@/prisma/prisma_client";
 import readDepartment from "../department/readDepartment";
 import readDepartmentApproval from "../department_approval/readDepartmentApproval";
 import readFaculty from "../faculty/readFaculty";
@@ -8,7 +8,7 @@ export default async function createPeerApproval({
   departmentApprovalId,
   facultyId,
 }) {
-  const prisma = new PrismaClient();
+  const prisma = PRISMA_CLIENT;
   // TODO find peer from same department as the IMApproval
 
   try {
@@ -30,7 +30,7 @@ export default async function createPeerApproval({
 }
 
 async function findPeer({ departmentApprovalId, facultyId }) {
-  const prisma = new PrismaClient();
+  const prisma = PRISMA_CLIENT;
   try {
     const departmentApproval = await readDepartmentApproval(
       departmentApprovalId

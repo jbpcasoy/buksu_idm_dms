@@ -1,10 +1,10 @@
-import { PrismaClient } from "@prisma/client";
+import { PRISMA_CLIENT } from "@/prisma/prisma_client";
 
 export default async function createReadNotification({
   notificationId,
   userId,
 }) {
-  const prisma = new PrismaClient();
+  const prisma = PRISMA_CLIENT;
 
   try {
     const readNotification = await prisma.readNotification.create({

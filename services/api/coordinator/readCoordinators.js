@@ -1,4 +1,5 @@
-import { PrismaClient } from "@prisma/client";
+import { PRISMA_CLIENT } from "@/prisma/prisma_client";
+import _ from "lodash";
 
 export default async function readCoordinators({
   limit,
@@ -7,8 +8,12 @@ export default async function readCoordinators({
   collegeName,
   departmentName,
   active,
+  sortColumn,
+  sortOrder,
 }) {
-  const prisma = new PrismaClient();
+  const prisma = PRISMA_CLIENT;
+  const sortFilter = {};
+  _.set(sortFilter, sortColumn, sortOrder);
 
   try {
     const coordinators = await prisma.coordinator.findMany({
@@ -71,6 +76,7 @@ export default async function readCoordinators({
               }
             : undefined,
       },
+      orderBy: sortFilter,
     });
 
     const total = await prisma.coordinator.count({

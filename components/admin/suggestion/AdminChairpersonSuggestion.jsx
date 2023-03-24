@@ -34,6 +34,7 @@ export default function AdminChairpersonSuggestion({ chairpersonReview }) {
 
   return (
     <AdminSuggestions
+      suggestionItemsLoading={chairpersonSuggestionItemsLoading}
       title='Chairperson Suggestions'
       suggestionItems={chairpersonSuggestionItems}
     />

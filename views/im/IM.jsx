@@ -3,6 +3,10 @@ import moment from "moment/moment";
 import { useEffect, useState } from "react";
 
 export default function IM({
+  authors,
+  showOwner = false,
+  showSerialNumber = false,
+  showReviewedAs = false,
   id,
   serialNumber,
   title,
@@ -26,21 +30,24 @@ export default function IM({
     if (!user || userLoading) return;
     const reviewedAsTemp = [];
     if (user.id === im.SubmittedPeerReview?.PeerReview?.Faculty?.userId) {
-      reviewedAsTemp.push("Peer");
+      if (peerReviewed) reviewedAsTemp.push("Peer");
+      else reviewedAsTemp.push("Peer (INC)");
     }
     if (
       user.id ===
       im.SubmittedCoordinatorReview?.CoordinatorReview?.Coordinator?.Faculty
         ?.userId
     ) {
-      reviewedAsTemp.push("Coordinator");
+      if (coordinatorReviewed) reviewedAsTemp.push("Coordinator");
+      else reviewedAsTemp.push("Coordinator (INC)");
     }
     if (
       user.id ===
       im.SubmittedChairpersonReview?.ChairpersonReview?.Chairperson?.Faculty
         ?.userId
     ) {
-      reviewedAsTemp.push("Chairperson");
+      if (chairpersonReviewed) reviewedAsTemp.push("Chairperson");
+      else reviewedAsTemp.push("Chairperson (INC)");
     }
     setReviewedAs(reviewedAsTemp.join(", "));
   }, [im, user]);
@@ -57,12 +64,13 @@ export default function IM({
 
       <td className='px-6 py-4 '>{type}</td>
 
-      <td className='px-6 py-4 '>{owner}</td>
+      {showOwner && <td className='px-6 py-4 '>{owner}</td>}
+      <td className='px-6 py-4 '>{authors}</td>
 
       <td className='px-6 py-4 '>{status}</td>
-      <td className='px-4 py-4 flex gap-1 m-2 align-middle'>
+      <td className='px-4 py-4 space-x-1'>
         {peerReviewed && (
-          <span className='bg-green-300 text-green-900 text-xs px-3 py-1 rounded-2xl'>
+          <span className='bg-purple-400 text-purple-800 text-xs px-3 py-1 rounded-2xl'>
             Peer
           </span>
         )}
@@ -71,8 +79,9 @@ export default function IM({
             Peer
           </span>
         )}
+
         {chairpersonReviewed && (
-          <span className='bg-green-300 text-green-900 text-xs px-3  py-1 rounded-2xl'>
+          <span className='bg-orange-300 text-orange-500 text-xs px-3  py-1 rounded-2xl'>
             Chairperson
           </span>
         )}
@@ -94,7 +103,7 @@ export default function IM({
         )}
       </td>
 
-      <td className='px-6 py-4 '>{reviewedAs}</td>
+      {showReviewedAs && <td className='px-6 py-4 '>{reviewedAs}</td>}
 
       <td className='px-6 py-4 '>
         {moment(createdAt).format("M/D/YYYY, h:mm A")}
@@ -103,6 +112,9 @@ export default function IM({
       {/* <td className='px-6 py-4 '>
         {moment(updatedAt).format("M/D/YYYY, h:mm A")}
       </td> */}
+      {showSerialNumber && (
+        <td className='px-6 py-4 truncate '>{serialNumber}</td>
+      )}
 
       <td className='bg-white  font-medium text-slate-400  items-center justify-center px-6 py-4 '>
         <button

@@ -3,6 +3,7 @@ import useChairpersonSuggestionItems from "@/hooks/useChairpersonSuggestionItems
 import useIM from "@/hooks/useIM";
 import useSubmittedChairpersonReview from "@/hooks/useSubmittedChairpersonReview";
 import frontendCreateChairpersonSuggestionItem from "@/services/frontend/chairperson_suggestion_item/frontendCreateChairpersonSuggestionItem";
+import frontendCreateSubmittedChairpersonSuggestion from "@/services/frontend/submitted_chairperson_suggestion/frontendCreateSubmittedChairpersonSuggestion";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import ChairpersonSuggestionItem from "./ChairpersonSuggestionItem";
@@ -49,6 +50,12 @@ export default function ChairpersonSuggestion({
     });
   }
 
+  async function handleSubmitSuggestion() {
+    return frontendCreateSubmittedChairpersonSuggestion({
+      chairpersonSuggestionId: chairpersonSuggestion.id,
+    });
+  }
+
   useEffect(() => {
     console.log({ chairpersonReview });
   }, [chairpersonReview]);
@@ -70,9 +77,12 @@ export default function ChairpersonSuggestion({
       showCoordinatorSuggestion
       showPeerSuggestion
       handleSubmit={handleSubmit}
-      onFinish={onFinish}
+      onFinish={() => {
+        handleSubmitSuggestion().then(() => onFinish());
+      }}
       onPrevious={onPrevious}
       iM={iM}
+      title='Chairperson Suggestion'
     >
       {chairpersonSuggestionItems.map((chairpersonSuggestionItem) => (
         <ChairpersonSuggestionItem

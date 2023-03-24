@@ -7,6 +7,8 @@ export default async function frontendReadCoordinators({
   collegeName,
   departmentName,
   active,
+  sortColumn,
+  sortOrder,
 }) {
   try {
     const coordinators = await axios.get("/api/coordinator", {
@@ -17,6 +19,8 @@ export default async function frontendReadCoordinators({
         collegeName,
         departmentName,
         active,
+        sortColumn,
+        sortOrder,
       },
     });
 

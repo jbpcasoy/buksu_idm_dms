@@ -1,6 +1,6 @@
 import useNotification from "@/hooks/notification/useNotification";
-import NotificationItemView from "@/views/notification/NotificationItemView";
 import { useEffect } from "react";
+import NotificationItemBase from "./NotificationItemBase";
 
 export default function ChairpersonReviewNotificationItem({ notification }) {
   const {
@@ -13,9 +13,10 @@ export default function ChairpersonReviewNotificationItem({ notification }) {
     console.log({ notificationData, notificationError, notificationLoading });
   }, [notificationData, notificationError, notificationLoading]);
 
-  if (!notificationData) return null;
   return (
-    <NotificationItemView
+    <NotificationItemBase
+      loading={notificationLoading}
+      notificationId={notificationData?.id}
       href={`/im/${notificationData?.SubmittedChairpersonReview?.IM?.id}`}
       imgSrc={
         notificationData?.SubmittedChairpersonReview?.ChairpersonReview
@@ -23,7 +24,7 @@ export default function ChairpersonReviewNotificationItem({ notification }) {
       }
       time={notificationData?.createdAt}
       icon={
-        <div className='absolute flex items-center justify-center w-5 h-5 ml-6 -mt-5 bg-green-300  border border-white rounded-full dark:border-gray-800'>
+        <div className='absolute flex items-center justify-center w-5 h-5 ml-6 -mt-5 bg-orange-400  border border-white rounded-full dark:border-gray-800'>
           <svg
             className='w-3 h-3 text-white'
             aria-hidden='true'
@@ -44,7 +45,7 @@ export default function ChairpersonReviewNotificationItem({ notification }) {
             ?.Chairperson?.Faculty?.user?.name
         }
       </span>
-      : {`"On IM: ${notificationData?.SubmittedChairpersonReview?.IM?.title}"`}
-    </NotificationItemView>
+      {` On IM: "${notificationData?.SubmittedChairpersonReview?.IM?.title}"`}
+    </NotificationItemBase>
   );
 }

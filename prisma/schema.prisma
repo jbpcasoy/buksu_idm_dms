@@ -49,6 +49,8 @@ model User {
   Faculty          Faculty[]
   ActiveFaculty    ActiveFaculty?
   ReadNotification ReadNotification[]
+  Admin            Admin?
+  LoginRole        LoginRole?
 }
 
 model VerificationToken {
@@ -76,28 +78,31 @@ enum IMType {
 }
 
 model IM {
-  id                         String                      @id @default(cuid())
-  serialNumber               String                      @unique
-  title                      String
+  id                             String                          @id @default(cuid())
+  serialNumber                   String?                         @unique
+  title                          String
   // dont use with sqlite
-  status                     IMStatus                    @default(SUBMITTED)
+  status                         IMStatus                        @default(SUBMITTED)
   // use with sqlite
   // status             String              @default("SUBMITTED")
-  owner                      Faculty                     @relation(fields: [ownerId], references: [id])
-  ownerId                    String
-  createdAt                  DateTime                    @default(now())
-  updatedAt                  DateTime                    @default(now())
-  File                       File[]
-  DepartmentApproval         DepartmentApproval?
-  ActiveFile                 ActiveFile?
-  authors                    String?                     @db.Text
-  PeerReview                 PeerReview[]
-  type                       IMType                      @default(MODULE)
-  SubmittedPeerReview        SubmittedPeerReview?
-  ChairpersonReview          ChairpersonReview[]
-  SubmittedChairpersonReview SubmittedChairpersonReview?
-  CoordinatorReview          CoordinatorReview[]
-  SubmittedCoordinatorReview SubmittedCoordinatorReview?
+  owner                          Faculty                         @relation(fields: [ownerId], references: [id])
+  ownerId                        String
+  createdAt                      DateTime                        @default(now())
+  updatedAt                      DateTime                        @default(now())
+  File                           File[]
+  DepartmentApproval             DepartmentApproval?
+  ActiveFile                     ActiveFile?
+  authors                        String?                         @db.Text
+  PeerReview                     PeerReview[]
+  type                           IMType                          @default(MODULE)
+  SubmittedPeerReview            SubmittedPeerReview?
+  ChairpersonReview              ChairpersonReview[]
+  SubmittedChairpersonReview     SubmittedChairpersonReview?
+  CoordinatorReview              CoordinatorReview[]
+  SubmittedCoordinatorReview     SubmittedCoordinatorReview?
+  SubmittedPeerSuggestion        SubmittedPeerSuggestion?
+  SubmittedCoordinatorSuggestion SubmittedCoordinatorSuggestion?
+  SubmittedChairpersonSuggestion SubmittedChairpersonSuggestion?
 
   @@index([ownerId])
 }
@@ -469,12 +474,13 @@ model SubmittedCoordinatorReview {
 }
 
 model PeerSuggestion {
-  id                    String               @id @default(cuid())
-  createdAt             DateTime             @default(now())
-  updatedAt             DateTime             @updatedAt
-  SubmittedPeerReview   SubmittedPeerReview  @relation(fields: [submittedPeerReviewId], references: [id])
-  submittedPeerReviewId String               @unique
-  PeerSuggestionItem    PeerSuggestionItem[]
+  id                      String                   @id @default(cuid())
+  createdAt               DateTime                 @default(now())
+  updatedAt               DateTime                 @updatedAt
+  SubmittedPeerReview     SubmittedPeerReview      @relation(fields: [submittedPeerReviewId], references: [id])
+  submittedPeerReviewId   String                   @unique
+  PeerSuggestionItem      PeerSuggestionItem[]
+  SubmittedPeerSuggestion SubmittedPeerSuggestion?
 }
 
 model PeerSuggestionItem {
@@ -492,12 +498,13 @@ model PeerSuggestionItem {
 }
 
 model ChairpersonSuggestion {
-  id                           String                      @id @default(cuid())
-  createdAt                    DateTime                    @default(now())
-  updatedAt                    DateTime                    @updatedAt
-  SubmittedChairpersonReview   SubmittedChairpersonReview  @relation(fields: [submittedChairpersonReviewId], references: [id])
-  submittedChairpersonReviewId String                      @unique
-  ChairpersonSuggestionItem    ChairpersonSuggestionItem[]
+  id                             String                          @id @default(cuid())
+  createdAt                      DateTime                        @default(now())
+  updatedAt                      DateTime                        @updatedAt
+  SubmittedChairpersonReview     SubmittedChairpersonReview      @relation(fields: [submittedChairpersonReviewId], references: [id])
+  submittedChairpersonReviewId   String                          @unique
+  ChairpersonSuggestionItem      ChairpersonSuggestionItem[]
+  SubmittedChairpersonSuggestion SubmittedChairpersonSuggestion?
 }
 
 model ChairpersonSuggestionItem {
@@ -515,12 +522,13 @@ model ChairpersonSuggestionItem {
 }
 
 model CoordinatorSuggestion {
-  id                           String                      @id @default(cuid())
-  createdAt                    DateTime                    @default(now())
-  updatedAt                    DateTime                    @updatedAt
-  SubmittedCoordinatorReview   SubmittedCoordinatorReview  @relation(fields: [submittedCoordinatorReviewId], references: [id])
-  submittedCoordinatorReviewId String                      @unique
-  CoordinatorSuggestionItem    CoordinatorSuggestionItem[]
+  id                             String                          @id @default(cuid())
+  createdAt                      DateTime                        @default(now())
+  updatedAt                      DateTime                        @updatedAt
+  SubmittedCoordinatorReview     SubmittedCoordinatorReview      @relation(fields: [submittedCoordinatorReviewId], references: [id])
+  submittedCoordinatorReviewId   String                          @unique
+  CoordinatorSuggestionItem      CoordinatorSuggestionItem[]
+  SubmittedCoordinatorSuggestion SubmittedCoordinatorSuggestion?
 }
 
 model CoordinatorSuggestionItem {
@@ -541,20 +549,29 @@ enum Type {
   SUBMITTED_PEER_REVIEW
   SUBMITTED_CHAIRPERSON_REVIEW
   SUBMITTED_COORDINATOR_REVIEW
+  SUBMITTED_PEER_SUGGESTION
+  SUBMITTED_CHAIRPERSON_SUGGESTION
+  SUBMITTED_COORDINATOR_SUGGESTION
 }
 
 model Notification {
-  id                           String                      @id @default(cuid())
-  createdAt                    DateTime                    @default(now())
-  updatedAt                    DateTime                    @updatedAt
-  ReadNotification             ReadNotification[]
-  Type                         Type
-  SubmittedPeerReview          SubmittedPeerReview?        @relation(fields: [submittedPeerReviewId], references: [id])
-  submittedPeerReviewId        String?                     @unique
-  SubmittedChairpersonReview   SubmittedChairpersonReview? @relation(fields: [submittedChairpersonReviewId], references: [id])
-  submittedChairpersonReviewId String?                     @unique
-  SubmittedCoordinatorReview   SubmittedCoordinatorReview? @relation(fields: [submittedCoordinatorReviewId], references: [id])
-  submittedCoordinatorReviewId String?                     @unique
+  id                               String                          @id @default(cuid())
+  createdAt                        DateTime                        @default(now())
+  updatedAt                        DateTime                        @updatedAt
+  ReadNotification                 ReadNotification[]
+  Type                             Type
+  SubmittedPeerReview              SubmittedPeerReview?            @relation(fields: [submittedPeerReviewId], references: [id])
+  submittedPeerReviewId            String?                         @unique
+  SubmittedChairpersonReview       SubmittedChairpersonReview?     @relation(fields: [submittedChairpersonReviewId], references: [id])
+  submittedChairpersonReviewId     String?                         @unique
+  SubmittedCoordinatorReview       SubmittedCoordinatorReview?     @relation(fields: [submittedCoordinatorReviewId], references: [id])
+  submittedCoordinatorReviewId     String?                         @unique
+  SubmittedPeerSuggestion          SubmittedPeerSuggestion?        @relation(fields: [submittedPeerSuggestionId], references: [id])
+  submittedPeerSuggestionId        String?                         @unique
+  SubmittedChairpersonSuggestion   SubmittedChairpersonSuggestion? @relation(fields: [submittedChairpersonSuggestionId], references: [id])
+  submittedChairpersonSuggestionId String?                         @unique
+  SubmittedCoordinatorSuggestion   SubmittedCoordinatorSuggestion? @relation(fields: [submittedCoordinatorSuggestionId], references: [id])
+  submittedCoordinatorSuggestionId String?                         @unique
 }
 
 model ReadNotification {
@@ -569,4 +586,62 @@ model ReadNotification {
   @@unique([userId, notificationId])
   @@index([notificationId])
   @@index([userId])
+}
+
+model Admin {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  User      User     @relation(fields: [userId], references: [id])
+  userId    String   @unique
+}
+
+enum Role {
+  ADMIN
+  FACULTY
+  UNAUTHORIZED
+}
+
+model LoginRole {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  User      User     @relation(fields: [userId], references: [id])
+  userId    String   @unique
+  Role      Role
+
+  @@index([userId])
+}
+
+model SubmittedPeerSuggestion {
+  id               String         @id @default(cuid())
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+  PeerSuggestion   PeerSuggestion @relation(fields: [peerSuggestionId], references: [id])
+  peerSuggestionId String         @unique
+  IM               IM             @relation(fields: [iMId], references: [id])
+  iMId             String         @unique
+  Notification     Notification?
+}
+
+model SubmittedCoordinatorSuggestion {
+  id                      String                @id @default(cuid())
+  createdAt               DateTime              @default(now())
+  updatedAt               DateTime              @updatedAt
+  CoordinatorSuggestion   CoordinatorSuggestion @relation(fields: [coordinatorSuggestionId], references: [id])
+  coordinatorSuggestionId String                @unique
+  IM                      IM                    @relation(fields: [iMId], references: [id])
+  iMId                    String                @unique
+  Notification            Notification?
+}
+
+model SubmittedChairpersonSuggestion {
+  id                      String                @id @default(cuid())
+  createdAt               DateTime              @default(now())
+  updatedAt               DateTime              @updatedAt
+  ChairpersonSuggestion   ChairpersonSuggestion @relation(fields: [chairpersonSuggestionId], references: [id])
+  chairpersonSuggestionId String                @unique
+  IM                      IM                    @relation(fields: [iMId], references: [id])
+  iMId                    String                @unique
+  Notification            Notification?
 }

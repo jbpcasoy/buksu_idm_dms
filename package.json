@@ -6,12 +6,14 @@
     "seed": "node prisma/seed.js"
   },
   "scripts": {
-    "dev": "npm run validate && next dev",
-    "build": "npm run validate && next build",
+    "dev": "npm run setup && next dev",
+    "build": "npm run setup && next build",
     "start": "next start",
-    "lint": "npm run validate && next lint",
+    "lint": "npm run setup && next lint",
+    "vercel-build": "prisma generate && next build",
     "validate": "node validator.js",
-    "vercel-build": "prisma generate && next build"
+    "set-admin": "node set-admin.js",
+    "setup": "npm run validate && npm run set-admin"
   },
   "dependencies": {
     "@emotion/react": "^11.10.6",
@@ -37,6 +39,7 @@
     "next": "13.1.6",
     "next-auth": "^4.19.2",
     "next-connect": "^0.13.0",
+    "notistack": "^3.0.1",
     "pino": "^8.10.0",
     "pino-pretty": "^9.2.0",
     "react": "18.2.0",

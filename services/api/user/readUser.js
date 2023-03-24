@@ -1,7 +1,7 @@
-import { PrismaClient } from ".prisma/client";
+import { PRISMA_CLIENT } from "@/prisma/prisma_client";
 
 export default async function readUser(id) {
-  const prisma = new PrismaClient();
+  const prisma = PRISMA_CLIENT;
 
   try {
     const user = await prisma.user.findUniqueOrThrow({
@@ -9,6 +9,7 @@ export default async function readUser(id) {
         id,
       },
       include: {
+        LoginRole: true,
         ActiveFaculty: {
           include: {
             ActiveChairperson: true,

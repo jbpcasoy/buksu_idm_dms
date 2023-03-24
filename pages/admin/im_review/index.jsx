@@ -4,9 +4,16 @@ import adminCreateIMReviewSection from "@/services/frontend/admin/im_review/admi
 import adminReadIMReviewSections from "@/services/frontend/admin/im_review/adminReadIMReviewSections";
 import AddIMReviewSectionDialog from "@/views/admin/im_review_section/AddIMReviewSectionDialog";
 import { Button, Container, Stack } from "@mui/material";
+import Error from "next/error";
 import { useEffect, useState } from "react";
 
 export default function AdminIMReviewPage() {
+  return <Error statusCode={404} />;
+
+  /**
+   * This page was not yet supported, as it was too time consuming.
+   */
+
   const [state, setState] = useState({
     openAdd: false,
   });

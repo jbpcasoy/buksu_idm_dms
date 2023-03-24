@@ -5,6 +5,11 @@ export default function useIM(id) {
   const [iM, setIM] = useState();
   const [iMError, setIMError] = useState();
   const [iMLoading, setIMLoading] = useState(false);
+  const [refreshFlag, setRefreshFlag] = useState(0);
+
+  function refreshIM() {
+    setRefreshFlag((prev) => prev + 1);
+  }
 
   useEffect(() => {
     if (!id) return;
@@ -26,7 +31,7 @@ export default function useIM(id) {
     return () => {
       subscribe = false;
     };
-  }, [id]);
+  }, [id, refreshFlag]);
 
-  return { iM, iMError, iMLoading };
+  return { iM, iMError, iMLoading, refreshIM };
 }

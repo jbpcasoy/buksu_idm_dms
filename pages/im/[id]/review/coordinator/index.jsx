@@ -4,7 +4,7 @@ import Instructions from "@/components/review/Instructions";
 import ConfirmCoordinatorReview from "@/components/review/preview/ConfirmCoordinatorReview";
 import ReviewPage from "@/components/review/ReviewPage";
 import CoordinatorSuggestion from "@/components/review/suggestion/CoordinatorSuggestion";
-import { sections } from "@/constants/questions";
+import { countQuestions, sections } from "@/constants/questions";
 import useUser from "@/hooks/useUser";
 import frontendCreateSubmittedCoordinatorReview from "@/services/api/submitted_coordinator_review/frontendCreateSubmittedCoordinatorReview";
 import frontendCreateCoordinatorReview from "@/services/frontend/coordinator_review/frontendCreateCoordinatorReview";
@@ -73,8 +73,15 @@ const CoordinatorReviewPage = () => {
       });
   }
 
+  useEffect(() => {
+    if (!iM?.SubmittedCoordinatorReview) return;
+
+    setStep(countQuestions(sections) + 2);
+  }, [iM?.SubmittedCoordinatorReview]);
+
   function generateQuestions(sections) {
     const questions = [];
+
     for (let section of sections) {
       if (!section.active) continue;
       for (let question of section.questions) {

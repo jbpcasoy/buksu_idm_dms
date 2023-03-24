@@ -1,4 +1,5 @@
-import { PrismaClient } from "@prisma/client";
+import { PRISMA_CLIENT } from "@/prisma/prisma_client";
+import _ from "lodash";
 
 export default async function readDepartments({
   limit,
@@ -6,8 +7,12 @@ export default async function readDepartments({
   name,
   collegeName,
   collegeId,
+  sortColumn,
+  sortOrder,
 }) {
-  const prisma = new PrismaClient();
+  const prisma = PRISMA_CLIENT;
+  const sortFilter = {};
+  _.set(sortFilter, sortColumn, sortOrder);
 
   try {
     const departments = await prisma.department.findMany({
@@ -35,6 +40,7 @@ export default async function readDepartments({
           },
         },
       },
+      orderBy: sortFilter,
     });
 
     const total = await prisma.department.count({

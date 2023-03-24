@@ -1,3 +1,5 @@
+import { PRISMA_CLIENT } from "@/prisma/prisma_client";
+
 const { PrismaClient } = require("@prisma/client");
 
 export default async function readFiles({
@@ -8,7 +10,7 @@ export default async function readFiles({
   iMSerialNumber,
   active,
 }) {
-  const prisma = new PrismaClient();
+  const prisma = PRISMA_CLIENT;
 
   try {
     const files = await prisma.file.findMany({

@@ -1,5 +1,5 @@
 import frontendReadUser from "@/services/frontend/user/frontendReadUser";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
@@ -38,6 +38,14 @@ export default function useUser() {
       isSubscribed = false;
     };
   }, [session]);
+
+  useEffect(() => {
+    if (user?.LoginRole?.Role === "UNAUTHORIZED") {
+      signOut({
+        callbackUrl: "/?unauthorized=true",
+      });
+    }
+  }, [user]);
 
   return { user, userLoading, userError };
 }

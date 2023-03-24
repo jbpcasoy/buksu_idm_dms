@@ -1,7 +1,7 @@
-import { PrismaClient } from "@prisma/client";
+import { PRISMA_CLIENT } from "@/prisma/prisma_client";
 
 export default async function readNotification(id) {
-  const prisma = new PrismaClient();
+  const prisma = PRISMA_CLIENT;
 
   try {
     const notification = await prisma.notification.findUniqueOrThrow({
@@ -52,6 +52,80 @@ export default async function readNotification(id) {
                 Faculty: {
                   include: {
                     user: true,
+                  },
+                },
+              },
+            },
+            IM: true,
+          },
+        },
+        SubmittedChairpersonSuggestion: {
+          include: {
+            ChairpersonSuggestion: {
+              include: {
+                SubmittedChairpersonReview: {
+                  include: {
+                    ChairpersonReview: {
+                      include: {
+                        Chairperson: {
+                          include: {
+                            Faculty: {
+                              include: {
+                                user: true,
+                              },
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+            IM: true,
+          },
+        },
+        SubmittedCoordinatorSuggestion: {
+          include: {
+            CoordinatorSuggestion: {
+              include: {
+                SubmittedCoordinatorReview: {
+                  include: {
+                    CoordinatorReview: {
+                      include: {
+                        Coordinator: {
+                          include: {
+                            Faculty: {
+                              include: {
+                                user: true,
+                              },
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+            IM: true,
+          },
+        },
+        SubmittedPeerSuggestion: {
+          include: {
+            PeerSuggestion: {
+              include: {
+                SubmittedPeerReview: {
+                  include: {
+                    PeerReview: {
+                      include: {
+                        Faculty: {
+                          include: {
+                            user: true,
+                          },
+                        },
+                      },
+                    },
                   },
                 },
               },

@@ -1,13 +1,38 @@
 import useUser from "@/hooks/useUser";
-import { signIn } from "next-auth/react";
+import { signIn, signOut } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useSnackbar } from "notistack";
+import { useEffect } from "react";
 
 export default function Home() {
   const { user, userError, userLoading } = useUser();
   const router = useRouter();
+  const { enqueueSnackbar } = useSnackbar();
 
-  // TODO redirect if logged in
+  useEffect(() => {
+    if (!user) return;
+    if (user?.LoginRole?.Role === "ADMIN") {
+      router.push("/admin");
+    } else if (user?.LoginRole?.Role === "FACULTY") {
+      router.push("/my_ims");
+    }
+  }, [user, router]);
+
+  useEffect(() => {
+    if (!router?.query?.unauthorized) return;
+
+    enqueueSnackbar({
+      variant: "error",
+      anchorOrigin: {
+        horizontal: "center",
+        vertical: "top",
+      },
+      message: "Unauthorized",
+    });
+  }, [router?.query?.unauthorized]);
+
+  if (userLoading) return null;
 
   return (
     <nav className='fixed top-0 z-50 w-full bg-CITLDarkBlue border-b border-CITLGray-main'>
@@ -30,9 +55,9 @@ export default function Home() {
       >
         <div className='h-screen bg-gradient-to-t from-CITLDarkBlue'>
           <div className='h-screen flex justify-center'>
-            <div className='relative justify-center h-full max-w-md md:h-auto'>
+            <div className='relative justify-center h-full max-w-md md:h-auto mt-32 lg:mt-48 '>
               <div className='m-5 relative bg-white opacity-90 rounded-lg shadow-lg '>
-                <div className='px-6 py-12 mt-64 justify-center lg:px-8'>
+                <div className='px-6 py-12 lg:px-8 '>
                   <div className='justify-center flex mb-8'>
                     <img src='/IMAGES/CITL.png' className='h-20 ' alt='CITL' />
                   </div>
@@ -41,27 +66,37 @@ export default function Home() {
                   </h3> */}
                   <div className='space-y-4'>
                     <button
-                      disabled={userLoading}
+                      // disabled={userLoading}
                       onClick={() => {
-                        signIn("google", {
-                          callbackUrl: "/my_ims",
-                          redirect: false,
+                        signIn(
+                          "google",
+                          {
+                            callbackUrl:
+                              "/api/login_role?role=FACULTY&redirect=/my_ims",
+                          },
+                          { prompt: "login" }
+                        ).catch((err) => {
+                          signOut();
                         });
                       }}
-                      type='submit'
                       className='w-full text-CITLDarkBlue  focus:ring-2 focus:ring-inset focus:ring-CITLDarkBlue bg-white/5 p-2 ring-1 ring-white/10 border  font-medium rounded-lg text-sm px-5 py-2.5 text-center disabled:text-CITLGray-main disabled:bg-CITLGray-lighter'
                     >
                       Login as Faculty
                     </button>
                     <button
-                      disabled={userLoading}
+                      // disabled={userLoading}
                       onClick={() => {
-                        signIn("google", {
-                          callbackUrl: "/admin",
-                          redirect: false,
+                        signIn(
+                          "google",
+                          {
+                            callbackUrl:
+                              "/api/login_role?role=ADMIN&redirect=/admin",
+                          },
+                          { prompt: "login" }
+                        ).catch((err) => {
+                          signOut();
                         });
                       }}
-                      type='submit'
                       className='w-full text-CITLWhite bg-CITLDarkBlue hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center disabled:text-CITLGray-main disabled:bg-CITLGray-lighter'
                     >
                       Login as Admin

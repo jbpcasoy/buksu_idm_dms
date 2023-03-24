@@ -1,18 +1,39 @@
-import { useEffect, useState } from "react";
+import frontendUpdateIM from "@/services/frontend/im/frontendUpdateIM";
+import { useFormik } from "formik";
+import { useEffect } from "react";
+import * as Yup from "yup";
 
-export default function ToggleIM({ onSubmit, defaultName }) {
-  const [state, setState] = useState({
-    name: "",
+export default function ToggleIM({ iM, onUpdate }) {
+  const formik = useFormik({
+    initialValues: {
+      title: iM.title,
+      authors: iM.authors,
+      type: iM.type,
+    },
+    validateOnMount: true,
+    validationSchema: Yup.object({
+      title: Yup.string().required("Title is required."),
+      authors: Yup.string().required("Authors is required."),
+      type: Yup.string().required(),
+    }),
+    onSubmit: async (values) => {
+      const { title, authors, type } = values;
+
+      return frontendUpdateIM(iM.id, { title, type, authors }).finally(() => {
+        onUpdate();
+      });
+    },
   });
 
   useEffect(() => {
-    setState((prev) => ({ ...prev, name: defaultName }));
-  }, [defaultName]);
+    formik.setValues({ title: iM.title, authors: iM.authors, type: iM.type });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [iM]);
 
   return (
     <div className=''>
       <div
-        id='authentication-modal'
+        id='im-update-modal'
         tabIndex='-1'
         aria-hidden='true'
         className='fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full'
@@ -22,7 +43,7 @@ export default function ToggleIM({ onSubmit, defaultName }) {
             {/* <button
               type="button"
               class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
-              data-modal-hide="authentication-modal"
+              data-modal-hide="im-update-modal"
             >
               <svg
                 aria-hidden="true"
@@ -46,30 +67,27 @@ export default function ToggleIM({ onSubmit, defaultName }) {
 
               <form
                 className='space-y-6'
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  onSubmit(state);
-                }}
+                noValidate
+                onSubmit={formik.handleSubmit}
               >
                 <div>
                   <label
-                    htmlFor='name'
+                    htmlFor='title'
                     className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
                   >
-                    Name
+                    Title
                   </label>
                   <input
+                    id='title'
                     type='text'
                     className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-CITLDarkBlue focus:border-CITLDarkBlue block w-full p-2.5 '
-                    placeholder='Name'
-                    value={state.name}
-                    onChange={(e) =>
-                      setState((prev) => {
-                        return { ...prev, name: e.target.value };
-                      })
-                    }
+                    placeholder='Title'
+                    {...formik.getFieldProps("title")}
                     required
                   />
+                  <p className='text-sm text-red-600'>
+                    {formik.touched.title && formik.errors.title}
+                  </p>
                 </div>
                 <div>
                   <label
@@ -79,12 +97,15 @@ export default function ToggleIM({ onSubmit, defaultName }) {
                     Author
                   </label>
                   <input
-                    type='author'
-                    id='author'
+                    id='authors'
                     className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-CITLDarkBlue focus:border-CITLDarkBlue block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white'
-                    placeholder='Name'
+                    placeholder='Authors'
+                    {...formik.getFieldProps("authors")}
                     required
                   />
+                  <p className='text-sm text-red-600'>
+                    {formik.touched.authors && formik.errors.authors}
+                  </p>
                 </div>
                 <div>
                   <label
@@ -96,10 +117,9 @@ export default function ToggleIM({ onSubmit, defaultName }) {
                   <select
                     id='type'
                     className='bg-gray-50 border border-gray-300 text-CITLGray-main text-sm rounded-lg focus:ring-CITLDarkBlue focus:border-CITLDarkBlue block w-full p-2.5'
+                    {...formik.getFieldProps("type")}
                   >
-                    <option value='MODULE' selected>
-                      Module
-                    </option>
+                    <option value='MODULE'>Module</option>
                     <option value='COURSE_FILE'>Course File</option>
                     <option value='WORKTEXT'>Worktext</option>
                     <option value='TEXTBOOK'>Textbook</option>
@@ -148,7 +168,14 @@ export default function ToggleIM({ onSubmit, defaultName }) {
                 </div> */}
                 <button
                   type='submit'
-                  className='w-full text-white bg-CITLDarkBlue hover:bg-transparent border hover:border-CITLDarkBlue hover:text-CITLDarkBlue focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
+                  disabled={
+                    !formik.isValid ||
+                    !formik.values.title ||
+                    !formik.values.authors ||
+                    !formik.values.type
+                  }
+                  data-modal-hide='im-update-modal'
+                  className='w-full text-white bg-CITLDarkBlue hover:bg-transparent border hover:border-CITLDarkBlue hover:text-CITLDarkBlue focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 disabled:bg-CITLGray-main'
                 >
                   Confirm changes
                 </button>

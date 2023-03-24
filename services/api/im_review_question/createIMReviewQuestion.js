@@ -1,10 +1,10 @@
-import { PrismaClient } from "@prisma/client";
+import { PRISMA_CLIENT } from "@/prisma/prisma_client";
 
 export default async function createIMReviewQuestion({
   iMReviewSectionId,
   question,
 }) {
-  const prisma = new PrismaClient();
+  const prisma = PRISMA_CLIENT;
 
   try {
     const iMReviewQuestion = await prisma.iMReviewQuestion.create({

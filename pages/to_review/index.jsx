@@ -83,7 +83,7 @@ export default function Home() {
 
   return (
     <Layout>
-      {!user?.ActiveFaculty && !userLoading && (
+      {user && !user?.ActiveFaculty && !userLoading && (
         <div className=' flex-wrap grid text-center justify-items-center  border min-h-fit border-slate-300  bg-CITLWhite m-2 p-3 rounded-lg shadow-lg overflow-hidden'>
           <div className='px-6 py-4 md:w-10/12 sm:w-12/12'>
             <h3 className='text-3xl font-bold text-CITLDarkBlue'>
@@ -162,35 +162,7 @@ export default function Home() {
                   <option value='CITL_REVIEWED'>CITL Reviewed</option>
                   <option value='CITL_ENDORSED'>CITL Endorsed</option>
                 </select>
-                <div className=''>
-                  <button
-                    data-modal-target='suggestion-modal'
-                    data-modal-toggle='suggestion-modal'
-                    className='flex gap-2 text-sm font-medium text-center px-4 py-2.5 text-CITLWhite  bg-CITLDarkBlue rounded-lg hover:bg-transparent hover:border-CITLDarkBlue border hover:text-CITLDarkBlue'
-                    type='button'
-                    onClick={() => {
-                      router.push("/im/new");
-                    }}
-                  >
-                    <svg
-                      fill='none'
-                      stroke='currentColor'
-                      strokeWidth='1.5'
-                      className='w-5 h-5'
-                      viewBox='0 0 24 24'
-                      xmlns='http://www.w3.org/2000/svg'
-                      aria-hidden='true'
-                    >
-                      <path
-                        strokeLinecap='round'
-                        strokeLinejoin='round'
-                        d='M12 6v12m6-6H6'
-                      ></path>
-                    </svg>
-                    Add IM
-                  </button>
-                </div>
-              </div>{" "}
+              </div>
             </div>
           </div>
 
@@ -225,13 +197,19 @@ export default function Home() {
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
+                  Authors
+                </th>
+                <th
+                  scope='col'
+                  className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
+                >
                   Status
                 </th>
                 <th
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
-                  Review Status
+                  Review/Suggestion
                 </th>
                 <th
                   scope='col'
@@ -261,30 +239,95 @@ export default function Home() {
               </tr>
             </thead>
             <tbody className='bg-white divide-gray-200 overflow-y-auto'>
-              {ims.map((im, index) => {
-                return (
-                  <IM
-                    // bottomBorder={index < state.ims.length - 1}
-                    im={im}
-                    peerReviewed={Boolean(im.SubmittedPeerReview)}
-                    chairpersonReviewed={Boolean(im.SubmittedChairpersonReview)}
-                    coordinatorReviewed={Boolean(im.SubmittedCoordinatorReview)}
-                    bottomBorder={true}
-                    createdAt={im.createdAt}
-                    originalFileName={im.originalFileName}
-                    fileName={im.fileName}
-                    id={im.id}
-                    serialNumber={im.serialNumber}
-                    status={im.status}
-                    title={im.title}
-                    updatedAt={im.updatedAt}
-                    onView={() => router.push(`/im/${im.id}`)}
-                    owner={im.owner.user.name}
-                    type={im.type}
-                    key={im.id}
-                  />
-                );
-              })}
+              {loading && (
+                <tr
+                  className={` bg-white text-sm text-CITLGray-main text-left p-4 animate-pulse`}
+                >
+                  {/* <td className='px-6 py-4 truncate '>{serialNumber}</td> */}
+
+                  <td className='px-6 py-4 '>
+                    <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                    <div class='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
+                  </td>
+
+                  <td className='px-6 py-4 '>
+                    <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                    <div class='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
+                  </td>
+
+                  <td className='px-6 py-4 '>
+                    <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                    <div class='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
+                  </td>
+
+                  <td className='px-6 py-4 '>
+                    <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                    <div class='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
+                  </td>
+                  <td className='px-4 py-4 space-x-1'>
+                    <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                    <div class='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
+                  </td>
+
+                  <td className='px-6 py-4 '>
+                    <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                    <div class='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
+                  </td>
+
+                  <td className='px-6 py-4 '>
+                    <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                    <div class='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
+                  </td>
+
+                  {/* <td className='px-6 py-4 '>
+        {moment(updatedAt).format("M/D/YYYY, h:mm A")}
+      </td> */}
+
+                  <td className='bg-white  font-medium text-slate-400  items-center justify-center px-6 py-4 '>
+                    <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                  </td>
+
+                  <td className='bg-white  font-medium text-slate-400  items-center justify-center px-6 py-4 '>
+                    <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                  </td>
+                </tr>
+              )}{" "}
+              {!loading &&
+                ims.map((im, index) => {
+                  return (
+                    <IM
+                      authors={im.authors}
+                      // bottomBorder={index < state.ims.length - 1}
+                      im={im}
+                      showOwner={true}
+                      showReviewedAs={true}
+                      peerReviewed={Boolean(
+                        im.SubmittedPeerReview && im.SubmittedPeerSuggestion
+                      )}
+                      chairpersonReviewed={Boolean(
+                        im.SubmittedChairpersonReview &&
+                          im.SubmittedChairpersonSuggestion
+                      )}
+                      coordinatorReviewed={Boolean(
+                        im.SubmittedCoordinatorReview &&
+                          im.SubmittedCoordinatorSuggestion
+                      )}
+                      bottomBorder={true}
+                      createdAt={im.createdAt}
+                      originalFileName={im.originalFileName}
+                      fileName={im.fileName}
+                      id={im.id}
+                      serialNumber={im.serialNumber}
+                      status={im.status}
+                      title={im.title}
+                      updatedAt={im.updatedAt}
+                      onView={() => router.push(`/im/${im.id}`)}
+                      owner={im.owner.user.name}
+                      type={im.type}
+                      key={im.id}
+                    />
+                  );
+                })}
             </tbody>
           </table>
 

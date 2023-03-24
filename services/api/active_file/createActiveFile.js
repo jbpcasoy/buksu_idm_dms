@@ -1,8 +1,8 @@
-import { PrismaClient } from "@prisma/client";
+import { PRISMA_CLIENT } from "@/prisma/prisma_client";
 import readIM from "../im/readIM";
 
 export default async function createActiveFile({ fileId, iMId }) {
-  const prisma = new PrismaClient();
+  const prisma = PRISMA_CLIENT;
 
   try {
     const file = await findFile({ fileId, iMId });
@@ -17,7 +17,7 @@ export default async function createActiveFile({ fileId, iMId }) {
 }
 
 async function findFile({ fileId, iMId }) {
-  const prisma = new PrismaClient();
+  const prisma = PRISMA_CLIENT;
 
   try {
     const iM = await readIM(iMId);
