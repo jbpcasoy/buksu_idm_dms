@@ -333,6 +333,12 @@ export default function Home() {
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
+                  Serial No.
+                </th>
+                <th
+                  scope='col'
+                  className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
+                >
                   Actions
                 </th>
               </tr>
@@ -361,6 +367,10 @@ export default function Home() {
                     <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
                   </td>
                   <td className='px-4 py-4 space-x-1'>
+                    <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                  </td>
+
+                  <td className='px-6 py-4 '>
                     <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
                   </td>
 
@@ -438,6 +448,7 @@ export default function Home() {
                 ims.map((im, index) => {
                   return (
                     <IM
+                      showSerialNumber={true}
                       // bottomBorder={index < state.ims.length - 1}
                       im={im}
                       peerReviewed={Boolean(

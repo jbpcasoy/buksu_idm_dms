@@ -1,8 +1,10 @@
+import useUser from "@/hooks/useUser";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
 export default function Sidebar() {
   const router = useRouter();
+  const { user } = useUser();
 
   return (
     <aside
@@ -141,38 +143,41 @@ export default function Sidebar() {
             </Link>
           </li>
 
-          <li>
-            <Link
-              href='/department_ims'
-              className={`flex items-center p-2 text-base font-normal text-CITLWhite rounded-lg  hover:bg-CITLGray-main ${
-                router.asPath === "/department_ims" ? "bg-CITLGray-main" : ""
-              }`}
-            >
-              <svg
-                fill='none'
-                stroke='currentColor'
-                strokeWidth='1.5'
-                className='flex-shrink-0 w-6 h-6 text-CITLWhite transition duration-75 group-hover:text-CITLGray-main'
-                viewBox='0 0 24 24'
-                xmlns='http://www.w3.org/2000/svg'
-                aria-hidden='true'
+          {(user?.ActiveFaculty?.ActiveChairperson ||
+            user?.ActiveFaculty?.ActiveCoordinator) && (
+            <li>
+              <Link
+                href='/department_ims'
+                className={`flex items-center p-2 text-base font-normal text-CITLWhite rounded-lg  hover:bg-CITLGray-main ${
+                  router.asPath === "/department_ims" ? "bg-CITLGray-main" : ""
+                }`}
               >
-                <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  d='M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21'
-                ></path>
-              </svg>
-              <div className='justify-between flex w-full items-center'>
-                <span className='flex-1 ml-3 whitespace-nowrap'>
-                  Department IM&apos;s
-                </span>
-                <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
-                  2
+                <svg
+                  fill='none'
+                  stroke='currentColor'
+                  strokeWidth='1.5'
+                  className='flex-shrink-0 w-6 h-6 text-CITLWhite transition duration-75 group-hover:text-CITLGray-main'
+                  viewBox='0 0 24 24'
+                  xmlns='http://www.w3.org/2000/svg'
+                  aria-hidden='true'
+                >
+                  <path
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    d='M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21'
+                  ></path>
+                </svg>
+                <div className='justify-between flex w-full items-center'>
+                  <span className='flex-1 ml-3 whitespace-nowrap'>
+                    Department IM&apos;s
+                  </span>
+                  <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
+                    2
+                  </div>
                 </div>
-              </div>
-            </Link>
-          </li>
+              </Link>
+            </li>
+          )}
           <hr className='h-px my-8 w-56 bg-CITLGray-main border-0 dark:bg-gray-700' />
           <li>
             <Link

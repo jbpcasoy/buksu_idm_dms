@@ -196,12 +196,6 @@ export default function Home() {
           <table className='divide-y divide-CITLGray-light mb-2'>
             <thead className='bg-CITLGray-light'>
               <tr>
-                {/* <th
-                  scope='col'
-                  className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
-                >
-                  Serial No.
-                </th> */}
                 <th
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
@@ -255,6 +249,12 @@ export default function Home() {
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
+                  Serial No.
+                </th>
+                <th
+                  scope='col'
+                  className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
+                >
                   Actions
                 </th>
               </tr>
@@ -263,6 +263,8 @@ export default function Home() {
               {ims.map((im, index) => {
                 return (
                   <IM
+                    showReviewedAs={true}
+                    showSerialNumber={true}
                     // bottomBorder={index < state.ims.length - 1}
                     im={im}
                     peerReviewed={Boolean(

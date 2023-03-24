@@ -3,6 +3,8 @@ import moment from "moment/moment";
 import { useEffect, useState } from "react";
 
 export default function IM({
+  showSerialNumber = false,
+  showReviewedAs=false,
   id,
   serialNumber,
   title,
@@ -98,9 +100,7 @@ export default function IM({
         )}
       </td>
 
-      {/* ==REMOVED THIS ALREADY BC IT DOESNT MAKE ANY SENSE, THE AUTHOR CANNOT REVIEWED ON THEIR OWN, THEY ARE NOT THE CHAIR OR COOR. EITHER==
-
-      <td className='px-6 py-4 '>{reviewedAs}</td> */}
+      {showReviewedAs && <td className='px-6 py-4 '>{reviewedAs}</td>}
 
       <td className='px-6 py-4 '>
         {moment(createdAt).format("M/D/YYYY, h:mm A")}
@@ -109,6 +109,9 @@ export default function IM({
       {/* <td className='px-6 py-4 '>
         {moment(updatedAt).format("M/D/YYYY, h:mm A")}
       </td> */}
+      {showSerialNumber && (
+        <td className='px-6 py-4 truncate '>{serialNumber}</td>
+      )}
 
       <td className='bg-white  font-medium text-slate-400  items-center justify-center px-6 py-4 '>
         <button

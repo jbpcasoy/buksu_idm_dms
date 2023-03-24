@@ -301,8 +301,8 @@ export default function Home() {
                   </td>
 
                   {/* <td className='px-6 py-4 '>
-        {moment(updatedAt).format("M/D/YYYY, h:mm A")}
-      </td> */}
+                    {moment(updatedAt).format("M/D/YYYY, h:mm A")}
+                  </td> */}
 
                   <td className='bg-white  font-medium text-slate-400  items-center justify-center px-6 py-4 '>
                     <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
@@ -313,6 +313,7 @@ export default function Home() {
                 ims.map((im, index) => {
                   return (
                     <IM
+                      showReviewedAs={true}
                       // bottomBorder={index < state.ims.length - 1}
                       im={im}
                       peerReviewed={Boolean(
