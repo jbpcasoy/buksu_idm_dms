@@ -240,6 +240,12 @@ export default function Home() {
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
+                  Authors
+                </th>
+                {/* <th
+                  scope='col'
+                  className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
+                >
                   Owner
                   <a href='#'>
                     <svg
@@ -252,7 +258,7 @@ export default function Home() {
                       <path d='M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z' />
                     </svg>
                   </a>
-                </th>
+                </th> */}
                 <th
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
@@ -287,8 +293,7 @@ export default function Home() {
                     </svg>
                   </a>
                 </th>
-                {/* ==REMOVED THIS ALREADY BC IT DOESNT MAKE ANY SENSE, THE AUTHOR CANNOT REVIEWED ON THEIR OWN, THEY ARE NOT THE CHAIR OR COOR. EITHER== 
-                
+                {/* 
                 <th
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
@@ -334,6 +339,12 @@ export default function Home() {
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
+                  Serial No.
+                </th>
+                <th
+                  scope='col'
+                  className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
+                >
                   Actions
                 </th>
               </tr>
@@ -343,8 +354,6 @@ export default function Home() {
                 <tr
                   className={` bg-white text-sm text-CITLGray-main text-left p-4 animate-pulse `}
                 >
-                  {/* <td className='px-6 py-4 truncate '>{serialNumber}</td> */}
-
                   <td className='px-6 py-4  '>
                     <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
                     <div class='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
@@ -373,72 +382,17 @@ export default function Home() {
                     <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
                   </td>
 
-                  {/* <td className='px-6 py-4 '>
-        {moment(updatedAt).format("M/D/YYYY, h:mm A")}
-      </td> */}
-
-                  <td className='bg-white  font-medium text-slate-400  items-center justify-center px-6 py-4 '>
+                  <td className='px-6 py-4 '>
                     <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
                   </td>
                 </tr>
-                // <div
-                //   role='status'
-                //   class='w-full p-4 space-y-4 border border-gray-200 divide-y divide-gray-200 rounded shadow animate-pulse dark:divide-gray-700 md:p-6 dark:border-gray-700'
-                // >
-                //   <div class='flex items-center justify-between'>
-                //     <div>
-                //       <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
-                //       <div class='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
-                //     </div>
-                //     <div>
-                //       <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
-                //       <div class='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
-                //     </div>
-                //     <div>
-                //       <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
-                //       <div class='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
-                //     </div>
-                //     <div>
-                //       <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
-                //       <div class='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
-                //     </div>
-                //     <div>
-                //       <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
-                //       <div class='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
-                //     </div>
-                //     <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-12'></div>
-                //   </div>
-                //   <div class='flex items-center justify-between pt-4'>
-                //     <div>
-                //       <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
-                //       <div class='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
-                //     </div>
-                //     <div>
-                //       <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
-                //       <div class='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
-                //     </div>
-                //     <div>
-                //       <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
-                //       <div class='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
-                //     </div>
-                //     <div>
-                //       <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
-                //       <div class='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
-                //     </div>
-                //     <div>
-                //       <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
-                //       <div class='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
-                //     </div>
-                //     <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-12'></div>
-                //   </div>
-
-                //   <span class='sr-only'>Loading...</span>
-                // </div>
               )}
               {!loading &&
                 ims.map((im, index) => {
                   return (
                     <IM
+                      authors={im.authors}
+                      showSerialNumber={true}
                       // bottomBorder={index < state.ims.length - 1}
                       im={im}
                       peerReviewed={Boolean(

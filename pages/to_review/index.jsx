@@ -162,35 +162,7 @@ export default function Home() {
                   <option value='CITL_REVIEWED'>CITL Reviewed</option>
                   <option value='CITL_ENDORSED'>CITL Endorsed</option>
                 </select>
-                <div className=''>
-                  <button
-                    data-modal-target='suggestion-modal'
-                    data-modal-toggle='suggestion-modal'
-                    className='flex gap-2 text-sm font-medium text-center px-4 py-2.5 text-CITLWhite  bg-CITLDarkBlue rounded-lg hover:bg-transparent hover:border-CITLDarkBlue border hover:text-CITLDarkBlue'
-                    type='button'
-                    onClick={() => {
-                      router.push("/im/new");
-                    }}
-                  >
-                    <svg
-                      fill='none'
-                      stroke='currentColor'
-                      strokeWidth='1.5'
-                      className='w-5 h-5'
-                      viewBox='0 0 24 24'
-                      xmlns='http://www.w3.org/2000/svg'
-                      aria-hidden='true'
-                    >
-                      <path
-                        strokeLinecap='round'
-                        strokeLinejoin='round'
-                        d='M12 6v12m6-6H6'
-                      ></path>
-                    </svg>
-                    Add IM
-                  </button>
-                </div>
-              </div>{" "}
+              </div>
             </div>
           </div>
 
@@ -220,6 +192,12 @@ export default function Home() {
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
                   Owner
+                </th>
+                <th
+                  scope='col'
+                  className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
+                >
+                  Authors
                 </th>
                 <th
                   scope='col'
@@ -308,14 +286,21 @@ export default function Home() {
                   <td className='bg-white  font-medium text-slate-400  items-center justify-center px-6 py-4 '>
                     <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
                   </td>
+
+                  <td className='bg-white  font-medium text-slate-400  items-center justify-center px-6 py-4 '>
+                    <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                  </td>
                 </tr>
               )}{" "}
               {!loading &&
                 ims.map((im, index) => {
                   return (
                     <IM
+                      authors={im.authors}
                       // bottomBorder={index < state.ims.length - 1}
                       im={im}
+                      showOwner={true}
+                      showReviewedAs={true}
                       peerReviewed={Boolean(
                         im.SubmittedPeerReview && im.SubmittedPeerSuggestion
                       )}
