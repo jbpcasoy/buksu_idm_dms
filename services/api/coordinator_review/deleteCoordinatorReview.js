@@ -1,7 +1,9 @@
+import { PRISMA_CLIENT } from "@/prisma/prisma_client";
+
 const { PrismaClient } = require("@prisma/client");
 
 export default async function deleteCoordinatorReview(id) {
-  const prisma = new PrismaClient();
+  const prisma = PRISMA_CLIENT;
 
   try {
     const coordinatorReview = await prisma.coordinatorReview.delete({

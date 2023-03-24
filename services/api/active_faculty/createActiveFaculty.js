@@ -1,11 +1,11 @@
-import { PrismaClient } from "@prisma/client";
+import { PRISMA_CLIENT } from "@/prisma/prisma_client";
 
 export default async function createActiveFaculty({
   userId,
   facultyId,
   departmentId,
 }) {
-  const prisma = new PrismaClient();
+  const prisma = PRISMA_CLIENT;
 
   try {
     const faculty = await findFaculty({
@@ -27,7 +27,7 @@ export default async function createActiveFaculty({
 }
 
 async function findFaculty({ facultyId, departmentId }) {
-  const prisma = new PrismaClient();
+  const prisma = PRISMA_CLIENT;
 
   try {
     const faculty = await prisma.faculty.findFirstOrThrow({

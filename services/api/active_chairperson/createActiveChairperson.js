@@ -1,7 +1,7 @@
-import { PrismaClient } from "@prisma/client";
+import { PRISMA_CLIENT } from "@/prisma/prisma_client";
 
 export default async function createActiveChairperson({ chairpersonId }) {
-  const prisma = new PrismaClient();
+  const prisma = PRISMA_CLIENT;
 
   try {
     const chairperson = await findChairperson({
@@ -26,7 +26,7 @@ export default async function createActiveChairperson({ chairpersonId }) {
 }
 
 async function findChairperson({ chairpersonId }) {
-  const prisma = new PrismaClient();
+  const prisma = PRISMA_CLIENT;
 
   try {
     const chairperson = await prisma.chairperson.findFirstOrThrow({
@@ -49,7 +49,7 @@ async function findChairperson({ chairpersonId }) {
 }
 
 async function findActiveFaculty({ facultyId }) {
-  const prisma = new PrismaClient();
+  const prisma = PRISMA_CLIENT;
 
   try {
     const activeFaculty = await prisma.activeFaculty.findUnique({

@@ -1,3 +1,5 @@
+import { PRISMA_CLIENT } from "@/prisma/prisma_client";
+
 const { PrismaClient } = require("@prisma/client");
 
 export default async function createFile({
@@ -6,7 +8,7 @@ export default async function createFile({
   iMId,
   googleDocsUrl,
 }) {
-  const prisma = new PrismaClient();
+  const prisma = PRISMA_CLIENT;
 
   try {
     const file = await prisma.file.create({

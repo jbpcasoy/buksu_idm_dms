@@ -1,4 +1,5 @@
 const { PrismaClient } = require("@prisma/client");
+import { PRISMA_CLIENT } from "@/prisma/prisma_client";
 import _ from "lodash";
 
 export default async function readIMs({
@@ -15,7 +16,7 @@ export default async function readIMs({
   sortOrder,
   type,
 }) {
-  const prisma = new PrismaClient();
+  const prisma = PRISMA_CLIENT;
   const sortFilter = {};
   _.set(sortFilter, sortColumn, sortOrder);
 

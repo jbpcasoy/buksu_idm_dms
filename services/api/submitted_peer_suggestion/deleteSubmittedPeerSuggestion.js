@@ -1,8 +1,8 @@
-import { PrismaClient } from "@prisma/client";
+import { PRISMA_CLIENT } from "@/prisma/prisma_client";
 
 export default async function deleteSubmittedPeerSuggestion(id) {
   try {
-    const prisma = new PrismaClient();
+    const prisma = PRISMA_CLIENT;
 
     const submittedPeerSuggestion = await prisma.submittedPeerSuggestion.delete(
       {

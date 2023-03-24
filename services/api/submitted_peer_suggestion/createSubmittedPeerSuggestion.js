@@ -1,11 +1,11 @@
-import { PrismaClient } from "@prisma/client";
+import { PRISMA_CLIENT } from "@/prisma/prisma_client";
 import readPeerSuggestion from "../peer_suggestion/readPeerSuggestion";
 
 export default async function createSubmittedPeerSuggestion({
   peerSuggestionId,
 }) {
   try {
-    const prisma = new PrismaClient();
+    const prisma = PRISMA_CLIENT;
 
     const peerSuggestion = await readPeerSuggestion(peerSuggestionId);
 

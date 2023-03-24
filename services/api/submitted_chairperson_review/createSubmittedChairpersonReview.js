@@ -1,10 +1,10 @@
-import { PrismaClient } from "@prisma/client";
+import { PRISMA_CLIENT } from "@/prisma/prisma_client";
 import readChairpersonReview from "../chairperson_review/readChairpersonReview";
 
 export default async function createSubmittedChairpersonReview({
   chairpersonReviewId,
 }) {
-  const prisma = new PrismaClient();
+  const prisma = PRISMA_CLIENT;
 
   try {
     const chairpersonReview = await readChairpersonReview(chairpersonReviewId);

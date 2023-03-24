@@ -1,7 +1,7 @@
-import { PrismaClient } from "@prisma/client";
+import { PRISMA_CLIENT } from "@/prisma/prisma_client";
 
 export default async function readIMReviewSections({ limit, page }) {
-  const prisma = new PrismaClient();
+  const prisma = PRISMA_CLIENT;
 
   const iMReviewSections = await prisma.iMReviewSection.findMany({
     take: limit,

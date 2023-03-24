@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import { PRISMA_CLIENT } from "@/prisma/prisma_client";
 import readDepartment from "../department/readDepartment";
 import readDepartmentApproval from "../department_approval/readDepartmentApproval";
 import readFaculty from "../faculty/readFaculty";
@@ -8,7 +8,7 @@ export default async function createCoordinatorApproval({
   departmentApprovalId,
   coordinatorId,
 }) {
-  const prisma = new PrismaClient();
+  const prisma = PRISMA_CLIENT;
 
   try {
     // TODO change to find department where coordinator is active coordinator
@@ -30,7 +30,7 @@ export default async function createCoordinatorApproval({
 }
 
 async function findCoordinator({ departmentApprovalId, coordinatorId }) {
-  const prisma = new PrismaClient();
+  const prisma = PRISMA_CLIENT;
   try {
     const departmentApproval = await readDepartmentApproval(
       departmentApprovalId

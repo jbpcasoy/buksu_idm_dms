@@ -1,6 +1,7 @@
 const { PrismaClient } = require("@prisma/client");
+const { PRISMA_CLIENT } = require("./prisma/prisma_client");
 
-const prisma = new PrismaClient();
+const prisma = PRISMA_CLIENT;
 
 async function createAdmin(userId) {
   try {

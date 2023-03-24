@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import { PRISMA_CLIENT } from "@/prisma/prisma_client";
 
 export default async function createPeerSuggestionItem({
   peerSuggestionId,
@@ -6,7 +6,7 @@ export default async function createPeerSuggestionItem({
   pageNumber,
   remarks,
 }) {
-  const prisma = new PrismaClient();
+  const prisma = PRISMA_CLIENT;
   try {
     const peerSuggestionItem = await prisma.peerSuggestionItem.create({
       data: {
