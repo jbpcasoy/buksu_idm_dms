@@ -1,6 +1,5 @@
 import Layout from "@/components/layout/Layout";
 import { initCarousels } from "flowbite";
-import Link from "next/link";
 import { useEffect } from "react";
 
 export default function Test() {
@@ -12,92 +11,78 @@ export default function Test() {
     <Layout>
       <div
         id='indicators-carousel'
-        class='relative w-full z-0'
+        class='relative w-full'
         data-carousel='static'
       >
         {/* <!-- Carousel wrapper --> */}
-        <div class='relative h-48 overflow-hidden rounded-lg md:h-64'>
+        <div
+          class='flex flex-wrap  border border-slate-300 m-2 p-3 relative h-56 overflow-hidden rounded-lg '
+          // style={{ backgroundImage: "url(/IMAGES/DSC_6510.jpg)" }}
+        >
           {/* <!-- Item 1 --> */}
           <div
-            class='hidden duration-700 ease-in-out'
+            class='hidden duration-700 ease-in-out bg-gradient-to-r from-CITLOrange'
             data-carousel-item='active'
           >
-            {/* <img
-              src='https://flowbite.com/docs/images/carousel/carousel-1.svg'
-              class='absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2'
-              alt='...'
-            /> */}
-            <div className=' absolute block w-full h-full'>
-              <div
-                style={{
-                  backgroundImage: "url('/IMAGES/DSC_6510.jpg')",
-                }}
-                className=' flex flex-wrap items-center border border-slate-300 h-full p-3 relative rounded-lg shadow-lg overflow-hidden'
-              >
-                <div className='md:px-6 md:py-4 w-full'>
-                  <h3 className='text-lg font-semibold text-CITLDarkBlue'>
-                    Announcement
-                  </h3>
-                  <p className='text-gray-600 mt-2 pb-5 truncate overflow-hidden '>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Quia facere natus eos amet dolor quam, sit, consequatur
-                    rerum unde similique provident, eaque a perspiciatis
-                    aspernatur ex odio sequi corrupti quae!
-                  </p>
-                  <Link
-                    href={`/`}
-                    className='inline-flex items-center px-4 py-2.5 text-sm font-medium text-CITLDarkBlue bg-CITLOrange border  rounded-lg  hover:text-CITLOrange hover:bg-transparent hover:border-CITLOrange focus:outline-none '
-                  >
-                    Read more{" "}
-                    <svg
-                      className='w-3 h-3 ml-2'
-                      fill='currentColor'
-                      viewBox='0 0 20 20'
-                      xmlns='http://www.w3.org/2000/svg'
-                    >
-                      <path
-                        fillRule='evenodd'
-                        d='M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z'
-                        clipRule='evenodd'
-                      ></path>
-                    </svg>
-                  </Link>
+            <div className='px-8 py-4 overflow-hidden grid grid-flow-col-2 h-full'>
+              <div className='md:grid md:grid-cols-3'>
+                <div className='md:col-span-2'>
+                  <div className=' grid text-left  mt-12'>
+                    <div className=''>
+                      <h3 className='text-2xl font-semibold'>Announcement</h3>
+                      <p className=''>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      </p>
+                      <button className='border rounded-md py-1 px-2.5 mt-2'>
+                        Read more
+                      </button>
+                    </div>
+                    {/* <li>
+                      <img
+                        src='/IMAGES/DSC_6510.jpg'
+                        class='flex w-64 rounded-lg m-2 object-cover relative'
+                        alt='...'
+                      />
+                    </li> */}
+                  </div>
+                </div>
+                <div
+                  className='rounded-lg bg-cover bg-center hidden md:block'
+                  style={{ backgroundImage: "url(/IMAGES/DSC_6510.jpg)" }}
+                >
+                  {/* <img
+                    src='/IMAGES/DSC_6510.jpg'
+                    class='flex w-full rounded-lg  '
+                    alt='...'
+                  /> */}
                 </div>
               </div>
             </div>
           </div>
           {/* <!-- Item 2 --> */}
-          <div class='hidden duration-700 ease-in-out' data-carousel-item>
-            <img
-              src='https://flowbite.com/docs/images/carousel/carousel-2.svg'
-              class='absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2'
-              alt='...'
-            />
-          </div>
-          {/* <!-- Item 3 --> */}
-          <div class='hidden duration-700 ease-in-out' data-carousel-item>
-            <img
-              src='https://flowbite.com/docs/images/carousel/carousel-3.svg'
-              class='absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2'
-              alt='...'
-            />
-          </div>
+          <div
+            class='hidden duration-700 ease-in-out bg-cover  bg-gradient-to-r from-CITLOrange bg-no-repeat'
+            style={{ backgroundImage: "url('/IMAGES/DSC_6510.jpg')" }}
+            data-carousel-item
+          ></div>
+          {/* <!-- Ite/m 3 --> */}
+          <div
+            class='hidden duration-700 ease-in-out bg-cover bg-gradient-to-r from-CITLOrange bg-no-repeat'
+            style={{ backgroundImage: "url('/IMAGES/DSC_6474.jpg')" }}
+            data-carousel-item
+          ></div>
           {/* <!-- Item 4 --> */}
-          <div class='hidden duration-700 ease-in-out' data-carousel-item>
-            <img
-              src='https://flowbite.com/docs/images/carousel/carousel-4.svg'
-              class='absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2'
-              alt='...'
-            />
-          </div>
+          <div
+            class='hidden duration-700 ease-in-out bg-cover  bg-gradient-to-r from-CITLOrange bg-no-repeat'
+            style={{ backgroundImage: "url('/IMAGES/DSC_6510.jpg')" }}
+            data-carousel-item
+          ></div>
           {/* <!-- Item 5 --> */}
-          <div class='hidden duration-700 ease-in-out' data-carousel-item>
-            <img
-              src='https://flowbite.com/docs/images/carousel/carousel-5.svg'
-              class='absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2'
-              alt='...'
-            />
-          </div>
+          <div
+            class='hidden duration-700 ease-in-out bg-cover bg-gradient-to-r from-CITLOrange bg-no-repeat'
+            style={{ backgroundImage: "url('/IMAGES/DSC_6474.jpg')" }}
+            data-carousel-item
+          ></div>
         </div>
         {/* <!-- Slider indicators --> */}
         <div class='absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2'>
