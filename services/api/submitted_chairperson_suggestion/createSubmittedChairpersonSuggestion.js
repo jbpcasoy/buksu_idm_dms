@@ -24,6 +24,11 @@ export default async function createSubmittedChairpersonSuggestion({
               id: chairpersonSuggestion.SubmittedChairpersonReview.iMId,
             },
           },
+          Notification: {
+            create: {
+              Type: "SUBMITTED_CHAIRPERSON_SUGGESTION",
+            },
+          },
         },
       });
     return submittedChairpersonSuggestion;
