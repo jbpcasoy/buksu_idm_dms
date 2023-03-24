@@ -24,6 +24,11 @@ export default async function createSubmittedCoordinatorSuggestion({
               id: coordinatorSuggestion.SubmittedCoordinatorReview.iMId,
             },
           },
+          Notification: {
+            create: {
+              Type: "SUBMITTED_COORDINATOR_SUGGESTION",
+            },
+          },
         },
       });
     return submittedCoordinatorSuggestion;

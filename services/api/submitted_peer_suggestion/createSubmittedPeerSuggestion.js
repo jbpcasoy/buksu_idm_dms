@@ -22,6 +22,11 @@ export default async function createSubmittedPeerSuggestion({
               id: peerSuggestion.SubmittedPeerReview.iMId,
             },
           },
+          Notification: {
+            create: {
+              Type: "SUBMITTED_PEER_SUGGESTION",
+            },
+          },
         },
       }
     );

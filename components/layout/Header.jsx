@@ -3,7 +3,7 @@ import { initDropdowns } from "flowbite";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useEffect } from "react";
-import Notifications from "../Notifications";
+import Notifications from "../notification/Notifications";
 
 export default function Header() {
   const { data: session } = useSession();

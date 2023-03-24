@@ -8,6 +8,9 @@ export default async function readNotifications({ limit, page, userId, read }) {
     const notifications = await prisma.notification.findMany({
       take: limit,
       skip: (page - 1) * limit,
+      orderBy: {
+        createdAt: "desc",
+      },
       where: {
         OR: [
           {
@@ -34,6 +37,39 @@ export default async function readNotifications({ limit, page, userId, read }) {
           },
           {
             SubmittedPeerReview: {
+              IM: {
+                owner: {
+                  userId: {
+                    contains: userId,
+                  },
+                },
+              },
+            },
+          },
+          {
+            SubmittedChairpersonSuggestion: {
+              IM: {
+                owner: {
+                  userId: {
+                    contains: userId,
+                  },
+                },
+              },
+            },
+          },
+          {
+            SubmittedCoordinatorSuggestion: {
+              IM: {
+                owner: {
+                  userId: {
+                    contains: userId,
+                  },
+                },
+              },
+            },
+          },
+          {
+            SubmittedPeerSuggestion: {
               IM: {
                 owner: {
                   userId: {
@@ -88,6 +124,39 @@ export default async function readNotifications({ limit, page, userId, read }) {
           },
           {
             SubmittedPeerReview: {
+              IM: {
+                owner: {
+                  userId: {
+                    contains: userId,
+                  },
+                },
+              },
+            },
+          },
+          {
+            SubmittedChairpersonSuggestion: {
+              IM: {
+                owner: {
+                  userId: {
+                    contains: userId,
+                  },
+                },
+              },
+            },
+          },
+          {
+            SubmittedCoordinatorSuggestion: {
+              IM: {
+                owner: {
+                  userId: {
+                    contains: userId,
+                  },
+                },
+              },
+            },
+          },
+          {
+            SubmittedPeerSuggestion: {
               IM: {
                 owner: {
                   userId: {

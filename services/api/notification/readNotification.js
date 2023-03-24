@@ -59,6 +59,80 @@ export default async function readNotification(id) {
             IM: true,
           },
         },
+        SubmittedChairpersonSuggestion: {
+          include: {
+            ChairpersonSuggestion: {
+              include: {
+                SubmittedChairpersonReview: {
+                  include: {
+                    ChairpersonReview: {
+                      include: {
+                        Chairperson: {
+                          include: {
+                            Faculty: {
+                              include: {
+                                user: true,
+                              },
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+            IM: true,
+          },
+        },
+        SubmittedCoordinatorSuggestion: {
+          include: {
+            CoordinatorSuggestion: {
+              include: {
+                SubmittedCoordinatorReview: {
+                  include: {
+                    CoordinatorReview: {
+                      include: {
+                        Coordinator: {
+                          include: {
+                            Faculty: {
+                              include: {
+                                user: true,
+                              },
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+            IM: true,
+          },
+        },
+        SubmittedPeerSuggestion: {
+          include: {
+            PeerSuggestion: {
+              include: {
+                SubmittedPeerReview: {
+                  include: {
+                    PeerReview: {
+                      include: {
+                        Faculty: {
+                          include: {
+                            user: true,
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+            IM: true,
+          },
+        },
       },
     });
     return notification;

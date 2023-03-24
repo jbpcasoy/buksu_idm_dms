@@ -1,5 +1,5 @@
 import Layout from "@/components/layout/Layout";
-import NotificationItem from "@/components/NotificationItem";
+import NotificationItem from "@/components/notification/NotificationItem";
 import useNotifications from "@/hooks/notification/useNotifications";
 import useUser from "@/hooks/useUser";
 import { useState } from "react";
@@ -28,7 +28,7 @@ export default function Notifications() {
             <select
               value={state.read}
               onChange={(e) =>
-                setState((prev) => ({ ...prev, read: e.target.value }))
+                setState((prev) => ({ ...prev, read: e.target.value, page: 1 }))
               }
               id='default'
               className='bg-CITLGray-light w-32 border-CITLGray-lighter border text-CITLGray-main rounded-lg text-sm font-medium'

@@ -549,20 +549,29 @@ enum Type {
   SUBMITTED_PEER_REVIEW
   SUBMITTED_CHAIRPERSON_REVIEW
   SUBMITTED_COORDINATOR_REVIEW
+  SUBMITTED_PEER_SUGGESTION
+  SUBMITTED_CHAIRPERSON_SUGGESTION
+  SUBMITTED_COORDINATOR_SUGGESTION
 }
 
 model Notification {
-  id                           String                      @id @default(cuid())
-  createdAt                    DateTime                    @default(now())
-  updatedAt                    DateTime                    @updatedAt
-  ReadNotification             ReadNotification[]
-  Type                         Type
-  SubmittedPeerReview          SubmittedPeerReview?        @relation(fields: [submittedPeerReviewId], references: [id])
-  submittedPeerReviewId        String?                     @unique
-  SubmittedChairpersonReview   SubmittedChairpersonReview? @relation(fields: [submittedChairpersonReviewId], references: [id])
-  submittedChairpersonReviewId String?                     @unique
-  SubmittedCoordinatorReview   SubmittedCoordinatorReview? @relation(fields: [submittedCoordinatorReviewId], references: [id])
-  submittedCoordinatorReviewId String?                     @unique
+  id                               String                          @id @default(cuid())
+  createdAt                        DateTime                        @default(now())
+  updatedAt                        DateTime                        @updatedAt
+  ReadNotification                 ReadNotification[]
+  Type                             Type
+  SubmittedPeerReview              SubmittedPeerReview?            @relation(fields: [submittedPeerReviewId], references: [id])
+  submittedPeerReviewId            String?                         @unique
+  SubmittedChairpersonReview       SubmittedChairpersonReview?     @relation(fields: [submittedChairpersonReviewId], references: [id])
+  submittedChairpersonReviewId     String?                         @unique
+  SubmittedCoordinatorReview       SubmittedCoordinatorReview?     @relation(fields: [submittedCoordinatorReviewId], references: [id])
+  submittedCoordinatorReviewId     String?                         @unique
+  SubmittedPeerSuggestion          SubmittedPeerSuggestion?        @relation(fields: [submittedPeerSuggestionId], references: [id])
+  submittedPeerSuggestionId        String?                         @unique
+  SubmittedChairpersonSuggestion   SubmittedChairpersonSuggestion? @relation(fields: [submittedChairpersonSuggestionId], references: [id])
+  submittedChairpersonSuggestionId String?                         @unique
+  SubmittedCoordinatorSuggestion   SubmittedCoordinatorSuggestion? @relation(fields: [submittedCoordinatorSuggestionId], references: [id])
+  submittedCoordinatorSuggestionId String?                         @unique
 }
 
 model ReadNotification {
@@ -612,6 +621,7 @@ model SubmittedPeerSuggestion {
   peerSuggestionId String         @unique
   IM               IM             @relation(fields: [iMId], references: [id])
   iMId             String         @unique
+  Notification     Notification?
 }
 
 model SubmittedCoordinatorSuggestion {
@@ -622,6 +632,7 @@ model SubmittedCoordinatorSuggestion {
   coordinatorSuggestionId String                @unique
   IM                      IM                    @relation(fields: [iMId], references: [id])
   iMId                    String                @unique
+  Notification            Notification?
 }
 
 model SubmittedChairpersonSuggestion {
@@ -632,4 +643,5 @@ model SubmittedChairpersonSuggestion {
   chairpersonSuggestionId String                @unique
   IM                      IM                    @relation(fields: [iMId], references: [id])
   iMId                    String                @unique
+  Notification            Notification?
 }
