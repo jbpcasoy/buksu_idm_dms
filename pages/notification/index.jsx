@@ -21,8 +21,8 @@ export default function Notifications() {
 
   return (
     <Layout>
-      <div className='border border-CITLGray-lighter rounded-lg'>
-        <div className='flex justify-between px-4 py-4 text-xl font-semibold text-left text-gray-700 rounded-t-lg bg-CITLGray-light dark:bg-gray-800 dark:text-white'>
+      <div className='flex flex-wrap items-center border border-slate-300  bg-CITLGray-light relative rounded-lg shadow-lg overflow-hidden m-2'>
+        <div className='flex w-full justify-between px-4 py-4 text-xl font-semibold text-left text-gray-700 rounded-t-lg bg-CITLGray-light dark:bg-gray-800 dark:text-white'>
           <div className='pt-2'>Notifications</div>
           <div>
             <select
@@ -40,14 +40,14 @@ export default function Notifications() {
           </div>
         </div>
 
-        <div className='divide-y divide-gray-100 dark:divide-gray-700'>
+        <div className='divide-y divide-gray-100 dark:divide-gray-700 w-full'>
           {notifications?.data?.map((notification) => (
             <NotificationItem
               notification={notification}
               key={notification.id}
             />
           ))}
-          <div className='flex flex-row items-center bg-CITLGray-light justify-end px-6 py-3 w-full'>
+          <div className='flex flex-row items-center bg-CITLGray-light justify-end  py-3 w-full'>
             {/* <span className='text-sm text-gray-700 dark:text-gray-400 '>
               Showing{" "}
               <span className='font-semibold text-gray-900 dark:text-white'></span>
@@ -57,7 +57,7 @@ export default function Notifications() {
               Entries
             </span> */}
 
-            <div className='flex flex-row items-center justify-end px-6 py-3 w-full'>
+            <div className='flex flex-row items-center justify-end py-3 w-full'>
               {!notificationsLoading && (
                 <span className='text-sm text-gray-700 dark:text-gray-400 '>
                   Showing{" "}

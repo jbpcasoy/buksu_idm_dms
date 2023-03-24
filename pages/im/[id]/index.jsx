@@ -24,10 +24,13 @@ export default function ViewIM() {
   return (
     <Layout>
       <div className='bg-white rounded-md p-4'>
-        <div className='flex items-center justify-between mb-4'>
+        <div className='flex items-center justify-between '>
           <div>
             <h2 className='text-lg font-medium'>{iM?.title}</h2>
-            <div className='flex flex-cols'>
+            <h2 className='text-xs  text-CITLGray-main'>
+              Type: <span className='text-xs font-medium '>Module</span>
+            </h2>
+            <div className='flex flex-cols mt-3'>
               <Link href='/me'>
                 <img
                   src={iM?.owner?.user?.image}
@@ -48,29 +51,31 @@ export default function ViewIM() {
           </div>
 
           <div className='flex items-center justify-between'>
-            <button
-              id='dropdownDefaultButton'
-              data-dropdown-toggle='dropdown'
-              className='text-white bg-CITLDarkBlue font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center'
-              type='button'
-            >
-              Options{" "}
-              <svg
-                className='w-4 h-4 ml-2'
-                aria-hidden='true'
-                fill='none'
-                stroke='currentColor'
-                viewBox='0 0 24 24'
-                xmlns='http://www.w3.org/2000/svg'
+            <div className='-mt-14'>
+              <button
+                id='dropdownDefaultButton'
+                data-dropdown-toggle='dropdown'
+                className='text-white bg-CITLDarkBlue font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center'
+                type='button'
               >
-                <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  strokeWidth='2'
-                  d='M19 9l-7 7-7-7'
-                ></path>
-              </svg>
-            </button>
+                Options{" "}
+                <svg
+                  className='w-4 h-4 ml-2'
+                  aria-hidden='true'
+                  fill='none'
+                  stroke='currentColor'
+                  viewBox='0 0 24 24'
+                  xmlns='http://www.w3.org/2000/svg'
+                >
+                  <path
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    strokeWidth='2'
+                    d='M19 9l-7 7-7-7'
+                  ></path>
+                </svg>
+              </button>
+            </div>
 
             <div
               id='dropdown'
