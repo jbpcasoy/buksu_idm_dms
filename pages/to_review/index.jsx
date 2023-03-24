@@ -316,6 +316,7 @@ export default function Home() {
                     <IM
                       // bottomBorder={index < state.ims.length - 1}
                       im={im}
+                      showOwner={true}
                       showReviewedAs={true}
                       peerReviewed={Boolean(
                         im.SubmittedPeerReview && im.SubmittedPeerSuggestion

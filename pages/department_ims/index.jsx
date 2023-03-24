@@ -263,6 +263,7 @@ export default function Home() {
               {ims.map((im, index) => {
                 return (
                   <IM
+                    showOwner={true}
                     showReviewedAs={true}
                     showSerialNumber={true}
                     // bottomBorder={index < state.ims.length - 1}

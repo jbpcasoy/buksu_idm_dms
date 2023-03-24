@@ -3,8 +3,9 @@ import moment from "moment/moment";
 import { useEffect, useState } from "react";
 
 export default function IM({
+  showOwner = false,
   showSerialNumber = false,
-  showReviewedAs=false,
+  showReviewedAs = false,
   id,
   serialNumber,
   title,
@@ -62,7 +63,7 @@ export default function IM({
 
       <td className='px-6 py-4 '>{type}</td>
 
-      <td className='px-6 py-4 '>{owner}</td>
+      {showOwner && <td className='px-6 py-4 '>{owner}</td>}
 
       <td className='px-6 py-4 '>{status}</td>
       <td className='px-4 py-4 space-x-1'>
