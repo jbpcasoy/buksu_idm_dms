@@ -87,7 +87,7 @@ export default function IM_Tracker() {
               <p className='mb-4 text-sm font-normal text-gray-500 dark:text-gray-400'>
                 Your IM{" "}
                 <span className='font-semibold text-green-400'>
-                  "Introduction to Computing"
+                  &quot;Introduction to Computing&quot;
                 </span>{" "}
                 was reviewed by the{" "}
                 <span className='font-semibold text-CITLDarkBlue'>
@@ -98,7 +98,7 @@ export default function IM_Tracker() {
               <p className='mb-4 text-sm font-normal text-gray-500 dark:text-gray-400'>
                 Your IM{" "}
                 <span className='font-semibold text-green-400'>
-                  "Introduction to Computing"
+                  &quot;Introduction to Computing&quot;
                 </span>{" "}
                 was reviewed by the{" "}
                 <span className='font-semibold text-CITLDarkBlue'>
@@ -109,7 +109,7 @@ export default function IM_Tracker() {
               <p className='mb-4 text-sm font-normal text-gray-500 dark:text-gray-400'>
                 Your IM{" "}
                 <span className='font-semibold text-green-400'>
-                  "Introduction to Computing"
+                  &quot;Introduction to Computing&quot;
                 </span>{" "}
                 was reviewed by the{" "}
                 <span className='font-semibold text-CITLDarkBlue'>
