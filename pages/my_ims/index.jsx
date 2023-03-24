@@ -354,8 +354,6 @@ export default function Home() {
                 <tr
                   className={` bg-white text-sm text-CITLGray-main text-left p-4 animate-pulse `}
                 >
-                  {/* <td className='px-6 py-4 truncate '>{serialNumber}</td> */}
-
                   <td className='px-6 py-4  '>
                     <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
                     <div class='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
@@ -387,68 +385,7 @@ export default function Home() {
                   <td className='px-6 py-4 '>
                     <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
                   </td>
-
-                  {/* <td className='px-6 py-4 '>
-        {moment(updatedAt).format("M/D/YYYY, h:mm A")}
-      </td> */}
-
-                  <td className='bg-white  font-medium text-slate-400  items-center justify-center px-6 py-4 '>
-                    <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
-                  </td>
                 </tr>
-                // <div
-                //   role='status'
-                //   class='w-full p-4 space-y-4 border border-gray-200 divide-y divide-gray-200 rounded shadow animate-pulse dark:divide-gray-700 md:p-6 dark:border-gray-700'
-                // >
-                //   <div class='flex items-center justify-between'>
-                //     <div>
-                //       <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
-                //       <div class='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
-                //     </div>
-                //     <div>
-                //       <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
-                //       <div class='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
-                //     </div>
-                //     <div>
-                //       <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
-                //       <div class='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
-                //     </div>
-                //     <div>
-                //       <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
-                //       <div class='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
-                //     </div>
-                //     <div>
-                //       <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
-                //       <div class='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
-                //     </div>
-                //     <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-12'></div>
-                //   </div>
-                //   <div class='flex items-center justify-between pt-4'>
-                //     <div>
-                //       <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
-                //       <div class='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
-                //     </div>
-                //     <div>
-                //       <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
-                //       <div class='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
-                //     </div>
-                //     <div>
-                //       <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
-                //       <div class='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
-                //     </div>
-                //     <div>
-                //       <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
-                //       <div class='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
-                //     </div>
-                //     <div>
-                //       <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
-                //       <div class='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
-                //     </div>
-                //     <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-12'></div>
-                //   </div>
-
-                //   <span class='sr-only'>Loading...</span>
-                // </div>
               )}
               {!loading &&
                 ims.map((im, index) => {
