@@ -1,11 +1,11 @@
-import { PrismaClient } from "@prisma/client";
+import { PRISMA_CLIENT } from "@/prisma/prisma_client";
 
 export default async function readCoordinatorSuggestionItems({
   limit,
   page,
   coordinatorSuggestionId,
 }) {
-  const prisma = new PrismaClient();
+  const prisma = PRISMA_CLIENT;
 
   try {
     const coordinatorSuggestionItems =

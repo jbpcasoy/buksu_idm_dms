@@ -1,4 +1,5 @@
 const { PrismaClient } = require("@prisma/client");
+const { PRISMA_CLIENT } = require("./prisma_client");
 
 const colleges = [
   "College of Administration",
@@ -49,7 +50,7 @@ const departments = {
   "No College": ["National Service Training Program"],
 };
 
-const prisma = new PrismaClient();
+const prisma = PRISMA_CLIENT;
 async function seedCollege(name) {
   try {
     const college = await prisma.college.create({

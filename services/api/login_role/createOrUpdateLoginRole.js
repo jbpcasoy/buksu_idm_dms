@@ -1,9 +1,9 @@
-import { PrismaClient } from "@prisma/client";
+import { PRISMA_CLIENT } from "@/prisma/prisma_client";
 
 export default async function createOrUpdateLoginRole({ userId, Role }) {
   try {
     const user = await findUser({ userId, Role });
-    const prisma = new PrismaClient();
+    const prisma = PRISMA_CLIENT;
     try {
       const loginRole = await prisma.loginRole.update({
         where: {
@@ -32,7 +32,7 @@ export default async function createOrUpdateLoginRole({ userId, Role }) {
 
 async function findUser({ userId, Role }) {
   try {
-    const prisma = new PrismaClient();
+    const prisma = PRISMA_CLIENT;
     switch (Role) {
       case "ADMIN":
         return prisma.user.findFirstOrThrow({

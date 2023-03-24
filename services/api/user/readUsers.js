@@ -1,4 +1,4 @@
-import { PrismaClient } from ".prisma/client";
+import { PRISMA_CLIENT } from "@/prisma/prisma_client";
 import _ from "lodash";
 
 export default async function readUsers({
@@ -9,7 +9,7 @@ export default async function readUsers({
   sortColumn,
   sortOrder,
 }) {
-  const prisma = new PrismaClient();
+  const prisma = PRISMA_CLIENT;
 
   const sortFilter = {};
   _.set(sortFilter, sortColumn, sortOrder);
