@@ -1,4 +1,5 @@
 import AdminLayout from "@/components/admin/AdminLayout";
+import AdminChairpersonSuggestion from "@/components/admin/suggestion/AdminChairpersonSuggestion";
 import { sections } from "@/constants/questions";
 import useIM from "@/hooks/useIM";
 import frontendReadChairpersonReview from "@/services/frontend/admin/chairperson_review/frontendReadChairpersonReview";
