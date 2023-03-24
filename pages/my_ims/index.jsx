@@ -236,6 +236,12 @@ export default function Home() {
                     </svg>
                   </a>
                 </th>
+                <th
+                  scope='col'
+                  className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
+                >
+                  Authors
+                </th>
                 {/* <th
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
@@ -448,6 +454,7 @@ export default function Home() {
                 ims.map((im, index) => {
                   return (
                     <IM
+                      authors={im.authors}
                       showSerialNumber={true}
                       // bottomBorder={index < state.ims.length - 1}
                       im={im}
