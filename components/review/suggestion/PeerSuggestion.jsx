@@ -65,6 +65,7 @@ export default function PeerSuggestion({ peerReview, onFinish, onPrevious }) {
       }}
       onPrevious={onPrevious}
       iM={iM}
+      title='Peer Suggestion'
     >
       {peerSuggestionItems.map((peerSuggestionItem) => (
         <PeerSuggestionItem
