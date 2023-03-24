@@ -233,12 +233,12 @@ export default function Home() {
                 >
                   Review Status
                 </th>
-                <th
+                {/* <th
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
                   Reviewed As
-                </th>
+                </th> */}
 
                 <th
                   scope='col'
