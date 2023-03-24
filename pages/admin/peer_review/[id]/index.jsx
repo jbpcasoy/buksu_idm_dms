@@ -1,4 +1,5 @@
 import AdminLayout from "@/components/admin/AdminLayout";
+import AdminPeerSuggestion from "@/components/admin/suggestion/AdminPeerSuggestion";
 import { sections } from "@/constants/questions";
 import useIM from "@/hooks/useIM";
 import frontendReadPeerReview from "@/services/frontend/admin/peer_review/adminReadPeerReview";
@@ -87,6 +88,12 @@ export default function PeerReview() {
                 reviewItems={peerReviewItems}
               />
             ))}
+
+          {peerReview && (
+            <Card sx={{ mb: 1 }}>
+              <AdminPeerSuggestion peerReview={peerReview} />
+            </Card>
+          )}
 
           {process.env.NODE_ENV === "production" && iM && (
             <iframe
