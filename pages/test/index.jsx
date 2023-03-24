@@ -3,7 +3,7 @@ import { initCarousels } from "flowbite";
 import Link from "next/link";
 import { useEffect } from "react";
 
-export default function test() {
+export default function Test() {
   useEffect(() => {
     initCarousels();
   });
