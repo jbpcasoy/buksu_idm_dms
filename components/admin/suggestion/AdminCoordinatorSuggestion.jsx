@@ -34,6 +34,7 @@ export default function AdminCoordinatorSuggestion({ coordinatorReview }) {
 
   return (
     <AdminSuggestions
+      suggestionItemsLoading={coordinatorSuggestionItemsLoading}
       title='Coordinator Suggestions'
       suggestionItems={coordinatorSuggestionItems}
     />

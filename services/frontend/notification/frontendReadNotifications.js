@@ -4,6 +4,7 @@ export default async function frontendReadNotifications({
   limit,
   page,
   userId,
+  read = false,
 }) {
   try {
     const notifications = await axios.get("/api/notification", {
@@ -11,6 +12,7 @@ export default async function frontendReadNotifications({
         limit,
         page,
         userId,
+        read,
       },
     });
 

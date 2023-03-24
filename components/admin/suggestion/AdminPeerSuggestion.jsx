@@ -25,6 +25,7 @@ export default function AdminPeerSuggestion({ peerReview }) {
 
   return (
     <AdminSuggestions
+      suggestionItemsLoading={peerSuggestionItemsLoading}
       title='Peer Suggestions'
       suggestionItems={peerSuggestionItems}
     />

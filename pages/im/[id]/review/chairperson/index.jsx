@@ -4,7 +4,7 @@ import Instructions from "@/components/review/Instructions";
 import ConfirmChairpersonReview from "@/components/review/preview/ConfirmChairpersonReview";
 import ReviewPage from "@/components/review/ReviewPage";
 import ChairpersonSuggestion from "@/components/review/suggestion/ChairpersonSuggestion";
-import { sections } from "@/constants/questions";
+import { countQuestions, sections } from "@/constants/questions";
 import useUser from "@/hooks/useUser";
 import frontendCreateChairpersonReview from "@/services/frontend/chairperson_review/frontendCreateChairpersonReview";
 import frontendReadChairpersonReviews from "@/services/frontend/chairperson_review/frontendReadChairpersonReview";
@@ -72,6 +72,12 @@ const ChairpersonReviewPage = () => {
         handleNext();
       });
   }
+
+  useEffect(() => {
+    if (!iM?.SubmittedChairpersonReview) return;
+
+    setStep(countQuestions(sections) + 2);
+  }, [iM?.SubmittedChairpersonReview]);
 
   function generateQuestions(sections) {
     const questions = [];

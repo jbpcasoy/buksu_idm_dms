@@ -41,7 +41,9 @@ export default function useUser() {
 
   useEffect(() => {
     if (user?.LoginRole?.Role === "UNAUTHORIZED") {
-      signOut();
+      signOut({
+        callbackUrl: "/?unauthorized=true",
+      });
     }
   }, [user]);
 

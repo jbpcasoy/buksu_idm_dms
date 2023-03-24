@@ -78,28 +78,31 @@ enum IMType {
 }
 
 model IM {
-  id                         String                      @id @default(cuid())
-  serialNumber               String?                     @unique
-  title                      String
+  id                             String                          @id @default(cuid())
+  serialNumber                   String?                         @unique
+  title                          String
   // dont use with sqlite
-  status                     IMStatus                    @default(SUBMITTED)
+  status                         IMStatus                        @default(SUBMITTED)
   // use with sqlite
   // status             String              @default("SUBMITTED")
-  owner                      Faculty                     @relation(fields: [ownerId], references: [id])
-  ownerId                    String
-  createdAt                  DateTime                    @default(now())
-  updatedAt                  DateTime                    @default(now())
-  File                       File[]
-  DepartmentApproval         DepartmentApproval?
-  ActiveFile                 ActiveFile?
-  authors                    String?                     @db.Text
-  PeerReview                 PeerReview[]
-  type                       IMType                      @default(MODULE)
-  SubmittedPeerReview        SubmittedPeerReview?
-  ChairpersonReview          ChairpersonReview[]
-  SubmittedChairpersonReview SubmittedChairpersonReview?
-  CoordinatorReview          CoordinatorReview[]
-  SubmittedCoordinatorReview SubmittedCoordinatorReview?
+  owner                          Faculty                         @relation(fields: [ownerId], references: [id])
+  ownerId                        String
+  createdAt                      DateTime                        @default(now())
+  updatedAt                      DateTime                        @default(now())
+  File                           File[]
+  DepartmentApproval             DepartmentApproval?
+  ActiveFile                     ActiveFile?
+  authors                        String?                         @db.Text
+  PeerReview                     PeerReview[]
+  type                           IMType                          @default(MODULE)
+  SubmittedPeerReview            SubmittedPeerReview?
+  ChairpersonReview              ChairpersonReview[]
+  SubmittedChairpersonReview     SubmittedChairpersonReview?
+  CoordinatorReview              CoordinatorReview[]
+  SubmittedCoordinatorReview     SubmittedCoordinatorReview?
+  SubmittedPeerSuggestion        SubmittedPeerSuggestion?
+  SubmittedCoordinatorSuggestion SubmittedCoordinatorSuggestion?
+  SubmittedChairpersonSuggestion SubmittedChairpersonSuggestion?
 
   @@index([ownerId])
 }
@@ -471,12 +474,13 @@ model SubmittedCoordinatorReview {
 }
 
 model PeerSuggestion {
-  id                    String               @id @default(cuid())
-  createdAt             DateTime             @default(now())
-  updatedAt             DateTime             @updatedAt
-  SubmittedPeerReview   SubmittedPeerReview  @relation(fields: [submittedPeerReviewId], references: [id])
-  submittedPeerReviewId String               @unique
-  PeerSuggestionItem    PeerSuggestionItem[]
+  id                      String                   @id @default(cuid())
+  createdAt               DateTime                 @default(now())
+  updatedAt               DateTime                 @updatedAt
+  SubmittedPeerReview     SubmittedPeerReview      @relation(fields: [submittedPeerReviewId], references: [id])
+  submittedPeerReviewId   String                   @unique
+  PeerSuggestionItem      PeerSuggestionItem[]
+  SubmittedPeerSuggestion SubmittedPeerSuggestion?
 }
 
 model PeerSuggestionItem {
@@ -494,12 +498,13 @@ model PeerSuggestionItem {
 }
 
 model ChairpersonSuggestion {
-  id                           String                      @id @default(cuid())
-  createdAt                    DateTime                    @default(now())
-  updatedAt                    DateTime                    @updatedAt
-  SubmittedChairpersonReview   SubmittedChairpersonReview  @relation(fields: [submittedChairpersonReviewId], references: [id])
-  submittedChairpersonReviewId String                      @unique
-  ChairpersonSuggestionItem    ChairpersonSuggestionItem[]
+  id                             String                          @id @default(cuid())
+  createdAt                      DateTime                        @default(now())
+  updatedAt                      DateTime                        @updatedAt
+  SubmittedChairpersonReview     SubmittedChairpersonReview      @relation(fields: [submittedChairpersonReviewId], references: [id])
+  submittedChairpersonReviewId   String                          @unique
+  ChairpersonSuggestionItem      ChairpersonSuggestionItem[]
+  SubmittedChairpersonSuggestion SubmittedChairpersonSuggestion?
 }
 
 model ChairpersonSuggestionItem {
@@ -517,12 +522,13 @@ model ChairpersonSuggestionItem {
 }
 
 model CoordinatorSuggestion {
-  id                           String                      @id @default(cuid())
-  createdAt                    DateTime                    @default(now())
-  updatedAt                    DateTime                    @updatedAt
-  SubmittedCoordinatorReview   SubmittedCoordinatorReview  @relation(fields: [submittedCoordinatorReviewId], references: [id])
-  submittedCoordinatorReviewId String                      @unique
-  CoordinatorSuggestionItem    CoordinatorSuggestionItem[]
+  id                             String                          @id @default(cuid())
+  createdAt                      DateTime                        @default(now())
+  updatedAt                      DateTime                        @updatedAt
+  SubmittedCoordinatorReview     SubmittedCoordinatorReview      @relation(fields: [submittedCoordinatorReviewId], references: [id])
+  submittedCoordinatorReviewId   String                          @unique
+  CoordinatorSuggestionItem      CoordinatorSuggestionItem[]
+  SubmittedCoordinatorSuggestion SubmittedCoordinatorSuggestion?
 }
 
 model CoordinatorSuggestionItem {
@@ -596,4 +602,34 @@ model LoginRole {
   Role      Role
 
   @@index([userId])
+}
+
+model SubmittedPeerSuggestion {
+  id               String         @id @default(cuid())
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+  PeerSuggestion   PeerSuggestion @relation(fields: [peerSuggestionId], references: [id])
+  peerSuggestionId String         @unique
+  IM               IM             @relation(fields: [iMId], references: [id])
+  iMId             String         @unique
+}
+
+model SubmittedCoordinatorSuggestion {
+  id                      String                @id @default(cuid())
+  createdAt               DateTime              @default(now())
+  updatedAt               DateTime              @updatedAt
+  CoordinatorSuggestion   CoordinatorSuggestion @relation(fields: [coordinatorSuggestionId], references: [id])
+  coordinatorSuggestionId String                @unique
+  IM                      IM                    @relation(fields: [iMId], references: [id])
+  iMId                    String                @unique
+}
+
+model SubmittedChairpersonSuggestion {
+  id                      String                @id @default(cuid())
+  createdAt               DateTime              @default(now())
+  updatedAt               DateTime              @updatedAt
+  ChairpersonSuggestion   ChairpersonSuggestion @relation(fields: [chairpersonSuggestionId], references: [id])
+  chairpersonSuggestionId String                @unique
+  IM                      IM                    @relation(fields: [iMId], references: [id])
+  iMId                    String                @unique
 }

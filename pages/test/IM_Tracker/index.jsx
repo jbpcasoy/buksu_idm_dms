@@ -40,7 +40,7 @@ export default function IM_Tracker() {
                   &quot;Introduction to Computing&quot;
                 </span>{" "}
                 | Authors: John Bryan Pit Acaso, John Michael Acaso, John Bryan
-                Acaso .
+                Acaso.
               </p>
 
               <a

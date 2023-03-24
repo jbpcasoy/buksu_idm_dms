@@ -8,6 +8,9 @@ export default async function readCoordinatorSuggestion(id) {
       where: {
         id,
       },
+      include: {
+        SubmittedCoordinatorReview: true,
+      },
     });
   return coordinatorSuggestion;
 }

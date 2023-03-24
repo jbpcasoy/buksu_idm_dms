@@ -4,11 +4,12 @@ import { useEffect, useState } from "react";
 export default function useNotification({ notificationId }) {
   const [notification, setNotification] = useState();
   const [notificationError, setNotificationError] = useState();
-  const [notificationLoading, setNotificationLoading] = useState(false);
+  const [notificationLoading, setNotificationLoading] = useState(true);
 
   useEffect(() => {
     if (!notificationId) return;
     let subscribe = true;
+    setNotificationLoading(true);
 
     frontendReadNotification(notificationId)
       .then((res) => {

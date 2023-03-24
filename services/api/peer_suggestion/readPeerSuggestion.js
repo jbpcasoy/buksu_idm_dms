@@ -7,6 +7,9 @@ export default async function readPeerSuggestion(id) {
       where: {
         id,
       },
+      include: {
+        SubmittedPeerReview: true,
+      },
     });
     return peerSuggestion;
   } catch (error) {

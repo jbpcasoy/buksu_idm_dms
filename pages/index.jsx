@@ -2,11 +2,13 @@ import useUser from "@/hooks/useUser";
 import { signIn, signOut } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useSnackbar } from "notistack";
 import { useEffect } from "react";
 
 export default function Home() {
   const { user, userError, userLoading } = useUser();
   const router = useRouter();
+  const { enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
     if (!user) return;
@@ -16,6 +18,19 @@ export default function Home() {
       router.push("/my_ims");
     }
   }, [user, router]);
+
+  useEffect(() => {
+    if (!router?.query?.unauthorized) return;
+
+    enqueueSnackbar({
+      variant: "error",
+      anchorOrigin: {
+        horizontal: "center",
+        vertical: "top",
+      },
+      message: "Unauthorized",
+    });
+  }, [router?.query?.unauthorized]);
 
   if (userLoading) return null;
 
@@ -40,9 +55,9 @@ export default function Home() {
       >
         <div className='h-screen bg-gradient-to-t from-CITLDarkBlue'>
           <div className='h-screen flex justify-center'>
-            <div className='relative justify-center h-full max-w-md md:h-auto'>
+            <div className='relative justify-center h-full max-w-md md:h-auto mt-32 lg:mt-48 '>
               <div className='m-5 relative bg-white opacity-90 rounded-lg shadow-lg '>
-                <div className='px-6 py-12 mt-64 justify-center lg:px-8'>
+                <div className='px-6 py-12 lg:px-8 '>
                   <div className='justify-center flex mb-8'>
                     <img src='/IMAGES/CITL.png' className='h-20 ' alt='CITL' />
                   </div>

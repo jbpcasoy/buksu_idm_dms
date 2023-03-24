@@ -266,9 +266,17 @@ export default function Home() {
                   <IM
                     // bottomBorder={index < state.ims.length - 1}
                     im={im}
-                    peerReviewed={Boolean(im.SubmittedPeerReview)}
-                    chairpersonReviewed={Boolean(im.SubmittedChairpersonReview)}
-                    coordinatorReviewed={Boolean(im.SubmittedCoordinatorReview)}
+                    peerReviewed={Boolean(
+                      im.SubmittedPeerReview && im.SubmittedPeerSuggestion
+                    )}
+                    chairpersonReviewed={Boolean(
+                      im.SubmittedChairpersonReview &&
+                        im.SubmittedChairpersonSuggestion
+                    )}
+                    coordinatorReviewed={Boolean(
+                      im.SubmittedCoordinatorReview &&
+                        im.SubmittedCoordinatorSuggestion
+                    )}
                     bottomBorder={true}
                     createdAt={im.createdAt}
                     originalFileName={im.originalFileName}

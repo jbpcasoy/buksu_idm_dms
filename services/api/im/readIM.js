@@ -9,6 +9,9 @@ export default async function readIM(id) {
         id,
       },
       include: {
+        SubmittedChairpersonSuggestion: true,
+        SubmittedCoordinatorSuggestion: true,
+        SubmittedPeerSuggestion: true,
         owner: {
           include: {
             user: true,

@@ -26,21 +26,24 @@ export default function IM({
     if (!user || userLoading) return;
     const reviewedAsTemp = [];
     if (user.id === im.SubmittedPeerReview?.PeerReview?.Faculty?.userId) {
-      reviewedAsTemp.push("Peer");
+      if (peerReviewed) reviewedAsTemp.push("Peer");
+      else reviewedAsTemp.push("Peer (INC)");
     }
     if (
       user.id ===
       im.SubmittedCoordinatorReview?.CoordinatorReview?.Coordinator?.Faculty
         ?.userId
     ) {
-      reviewedAsTemp.push("Coordinator");
+      if (coordinatorReviewed) reviewedAsTemp.push("Coordinator");
+      else reviewedAsTemp.push("Coordinator (INC)");
     }
     if (
       user.id ===
       im.SubmittedChairpersonReview?.ChairpersonReview?.Chairperson?.Faculty
         ?.userId
     ) {
-      reviewedAsTemp.push("Chairperson");
+      if (chairpersonReviewed) reviewedAsTemp.push("Chairperson");
+      else reviewedAsTemp.push("Chairperson (INC)");
     }
     setReviewedAs(reviewedAsTemp.join(", "));
   }, [im, user]);
@@ -60,7 +63,7 @@ export default function IM({
       <td className='px-6 py-4 '>{owner}</td>
 
       <td className='px-6 py-4 '>{status}</td>
-      <td className='px-4 py-4 flex gap-1 m-2 align-middle'>
+      <td className='px-4 py-4 space-x-1'>
         {peerReviewed && (
           <span className='bg-purple-400 text-purple-800 text-xs px-3 py-1 rounded-2xl'>
             Peer
@@ -71,6 +74,7 @@ export default function IM({
             Peer
           </span>
         )}
+
         {chairpersonReviewed && (
           <span className='bg-orange-300 text-orange-500 text-xs px-3  py-1 rounded-2xl'>
             Chairperson

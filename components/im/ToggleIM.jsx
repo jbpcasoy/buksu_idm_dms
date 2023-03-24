@@ -27,6 +27,7 @@ export default function ToggleIM({ iM, onUpdate }) {
 
   useEffect(() => {
     formik.setValues({ title: iM.title, authors: iM.authors, type: iM.type });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [iM]);
 
   return (
