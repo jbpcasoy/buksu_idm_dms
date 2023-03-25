@@ -1,4 +1,5 @@
 import Layout from "@/components/layout/Layout";
+import SortButton from "@/components/SortButton";
 import frontendReadCollege from "@/services/frontend/admin/college/frontendReadCollege";
 import frontendReadDepartments from "@/services/frontend/admin/department/frontendReadDepartments";
 import Department from "@/views/Department";
@@ -8,7 +9,13 @@ import { useEffect, useState } from "react";
 
 export default function Departments() {
   const [departments, setDepartments] = useState([]);
-  const [state, setState] = useState({ limit: 5, page: 1, name: "" });
+  const [state, setState] = useState({
+    limit: 5,
+    page: 1,
+    name: "",
+    sortColumn: "name",
+    sortOrder: "asc",
+  });
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
@@ -25,6 +32,8 @@ export default function Departments() {
       page: state.page,
       collegeId: college.id,
       name: state.name,
+      sortOrder: state.sortOrder,
+      sortColumn: state.sortColumn,
     }).then((res) => {
       setLoading(false);
       if (!subscribe) return;
@@ -150,7 +159,19 @@ export default function Departments() {
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
-                  Departments
+                  <SortButton
+                    label='Name'
+                    sortOrder={
+                      state.sortColumn === "name" ? state.sortOrder : undefined
+                    }
+                    setSortOrder={(order) =>
+                      setState((prev) => ({
+                        ...prev,
+                        sortColumn: "name",
+                        sortOrder: order,
+                      }))
+                    }
+                  />
                 </th>
 
                 <th

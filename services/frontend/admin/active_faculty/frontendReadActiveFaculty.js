@@ -5,6 +5,8 @@ export default async function frontendReadActiveFaculty({
   page,
   name,
   departmentId,
+  sortOrder,
+  sortColumn,
 }) {
   try {
     const activeFaculties = await axios.get("/api/active_faculty", {
@@ -13,6 +15,8 @@ export default async function frontendReadActiveFaculty({
         page,
         name,
         departmentId,
+        sortOrder,
+        sortColumn,
       },
     });
 

@@ -1,4 +1,5 @@
 import Layout from "@/components/layout/Layout";
+import SortButton from "@/components/SortButton";
 import frontendReadActiveFaculty from "@/services/frontend/admin/active_faculty/frontendReadActiveFaculty";
 import frontendReadDepartment from "@/services/frontend/department/frontendReadDepartment";
 import Faculty from "@/views/Faculty";
@@ -11,7 +12,13 @@ export default function DepartmentPage() {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
   const [activeFaculties, setActiveFaculties] = useState([]);
-  const [state, setState] = useState({ limit: 5, page: 1, name: "" });
+  const [state, setState] = useState({
+    limit: 5,
+    page: 1,
+    name: "",
+    sortOrder: "asc",
+    sortColumn: "Faculty.user.name",
+  });
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
@@ -39,6 +46,8 @@ export default function DepartmentPage() {
       page: state.page,
       departmentId: department.id,
       name: state.name,
+      sortOrder: state.sortOrder,
+      sortColumn: state.sortColumn,
     }).then((res) => {
       if (!subscribe) return;
       setActiveFaculties(res.data);
@@ -221,7 +230,21 @@ export default function DepartmentPage() {
                     scope='col'
                     className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                   >
-                    Name
+                    <SortButton
+                      label='Name'
+                      sortOrder={
+                        state.sortColumn === "Faculty.user.name"
+                          ? state.sortOrder
+                          : undefined
+                      }
+                      setSortOrder={(order) =>
+                        setState((prev) => ({
+                          ...prev,
+                          sortColumn: "Faculty.user.name",
+                          sortOrder: order,
+                        }))
+                      }
+                    />
                   </th>
 
                   <th

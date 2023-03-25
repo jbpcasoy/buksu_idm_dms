@@ -1,4 +1,5 @@
 import Layout from "@/components/layout/Layout";
+import SortButton from "@/components/SortButton";
 import useUser from "@/hooks/useUser";
 import frontendGetIMs from "@/services/frontend/im/frontendGetIMs";
 import IM from "@/views/im/IM";
@@ -16,6 +17,8 @@ export default function Home() {
     serialNumber: "",
     title: "",
     status: undefined,
+    sortColumn: "title",
+    sortOrder: "asc",
   });
 
   const { user, userLoading, userError } = useUser();
@@ -45,6 +48,8 @@ export default function Home() {
       serialNumber: state.serialNumber,
       title: state.title,
       status: "DEPARTMENT_REVIEWED",
+      sortColumn: state.sortColumn,
+      sortOrder: state.sortOrder,
     };
 
     getToRevise(filter).then((res) => {
@@ -179,19 +184,57 @@ export default function Home() {
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
-                  Title
+                  <SortButton
+                    label='Title'
+                    sortOrder={
+                      state.sortColumn === "title" ? state.sortOrder : undefined
+                    }
+                    setSortOrder={(order) =>
+                      setState((prev) => ({
+                        ...prev,
+                        sortColumn: "title",
+                        sortOrder: order,
+                      }))
+                    }
+                  />
                 </th>
                 <th
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
-                  Type
+                  <SortButton
+                    label='Type'
+                    sortOrder={
+                      state.sortColumn === "type" ? state.sortOrder : undefined
+                    }
+                    setSortOrder={(order) =>
+                      setState((prev) => ({
+                        ...prev,
+                        sortColumn: "type",
+                        sortOrder: order,
+                      }))
+                    }
+                  />
                 </th>
                 <th
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
-                  Authors
+                  <SortButton
+                    label='Authors'
+                    sortOrder={
+                      state.sortColumn === "authors"
+                        ? state.sortOrder
+                        : undefined
+                    }
+                    setSortOrder={(order) =>
+                      setState((prev) => ({
+                        ...prev,
+                        sortColumn: "authors",
+                        sortOrder: order,
+                      }))
+                    }
+                  />
                 </th>
                 {/* <th
                   scope='col'
@@ -203,7 +246,21 @@ export default function Home() {
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
-                  Status
+                  <SortButton
+                    label='Status'
+                    sortOrder={
+                      state.sortColumn === "status"
+                        ? state.sortOrder
+                        : undefined
+                    }
+                    setSortOrder={(order) =>
+                      setState((prev) => ({
+                        ...prev,
+                        sortColumn: "status",
+                        sortOrder: order,
+                      }))
+                    }
+                  />
                 </th>
                 <th
                   scope='col'
@@ -222,7 +279,21 @@ export default function Home() {
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
-                  Created At
+                  <SortButton
+                    label='Created At'
+                    sortOrder={
+                      state.sortColumn === "createdAt"
+                        ? state.sortOrder
+                        : undefined
+                    }
+                    setSortOrder={(order) =>
+                      setState((prev) => ({
+                        ...prev,
+                        sortColumn: "createdAt",
+                        sortOrder: order,
+                      }))
+                    }
+                  />
                 </th>
                 {/* <th
                   scope='col'
