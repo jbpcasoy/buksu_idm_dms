@@ -1,12 +1,18 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
+import _ from "lodash";
 
 export default async function readActiveFaculties({
   page,
   limit,
   name,
   departmentId,
+  sortOrder,
+  sortColumn,
 }) {
   const prisma = PRISMA_CLIENT;
+
+  const sortFilter = {};
+  _.set(sortFilter, sortColumn, sortOrder);
 
   try {
     const activeFaculties = await prisma.activeFaculty.findMany({
@@ -43,6 +49,7 @@ export default async function readActiveFaculties({
           },
         },
       },
+      orderBy: sortFilter,
     });
 
     const total = await prisma.activeFaculty.count({
