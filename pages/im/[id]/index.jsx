@@ -263,25 +263,28 @@ export default function ViewIM() {
 
         {iM?.owner?.userId === user?.id && (
           <>
-            {iM?.SubmittedPeerReview?.PeerReview && (
-              <PeerSuggestionView
-                peerReview={iM?.SubmittedPeerReview?.PeerReview}
-              />
-            )}
-            {iM?.SubmittedChairpersonReview?.ChairpersonReview && (
-              <ChairpersonSuggestionView
-                chairpersonReview={
-                  iM?.SubmittedChairpersonReview?.ChairpersonReview
-                }
-              />
-            )}
-            {iM?.SubmittedCoordinatorReview?.CoordinatorReview && (
-              <CoordinatorSuggestionView
-                coordinatorReview={
-                  iM?.SubmittedCoordinatorReview?.CoordinatorReview
-                }
-              />
-            )}
+            {iM?.SubmittedPeerReview?.PeerReview &&
+              iM?.SubmittedPeerSuggestion && (
+                <PeerSuggestionView
+                  peerReview={iM?.SubmittedPeerReview?.PeerReview}
+                />
+              )}
+            {iM?.SubmittedChairpersonReview?.ChairpersonReview &&
+              iM?.SubmittedChairpersonSuggestion && (
+                <ChairpersonSuggestionView
+                  chairpersonReview={
+                    iM?.SubmittedChairpersonReview?.ChairpersonReview
+                  }
+                />
+              )}
+            {iM?.SubmittedCoordinatorReview?.CoordinatorReview &&
+              iM?.SubmittedCoordinatorSuggestion && (
+                <CoordinatorSuggestionView
+                  coordinatorReview={
+                    iM?.SubmittedCoordinatorReview?.CoordinatorReview
+                  }
+                />
+              )}
           </>
         )}
 
