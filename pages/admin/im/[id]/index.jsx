@@ -3,7 +3,7 @@ import AdminChairpersonSuggestion from "@/components/admin/suggestion/AdminChair
 import AdminCoordinatorSuggestion from "@/components/admin/suggestion/AdminCoordinatorSuggestion";
 import AdminPeerSuggestion from "@/components/admin/suggestion/AdminPeerSuggestion";
 import useIM from "@/hooks/useIM";
-import { Box, Grid, Toolbar } from "@mui/material";
+import { Alert, AlertTitle, Box, Grid, Toolbar } from "@mui/material";
 import { useRouter } from "next/router";
 
 export default function AdminIMViewPage() {
@@ -19,6 +19,12 @@ export default function AdminIMViewPage() {
                 peerReview={iM?.SubmittedPeerReview?.PeerReview}
               />
             )}
+            {!iM?.SubmittedPeerReview?.PeerReview && (
+              <Alert severity='info'>
+                <AlertTitle>No Peer Suggestion</AlertTitle>
+                There are no peer suggestions yet.
+              </Alert>
+            )}
             {iM?.SubmittedChairpersonReview?.ChairpersonReview && (
               <AdminChairpersonSuggestion
                 chairpersonReview={
@@ -26,12 +32,24 @@ export default function AdminIMViewPage() {
                 }
               />
             )}
+            {!iM?.SubmittedChairpersonReview?.ChairpersonReview && (
+              <Alert severity='info'>
+                <AlertTitle>No Chairperson Suggestion</AlertTitle>
+                There are no chairperson suggestions yet.
+              </Alert>
+            )}
             {iM?.SubmittedCoordinatorReview?.CoordinatorReview && (
               <AdminCoordinatorSuggestion
                 coordinatorReview={
                   iM?.SubmittedCoordinatorReview?.CoordinatorReview
                 }
               />
+            )}
+            {!iM?.SubmittedCoordinatorReview?.CoordinatorReview && (
+              <Alert severity='info'>
+                <AlertTitle>No Coordinator Suggestion</AlertTitle>
+                There are no coordinator suggestions yet.
+              </Alert>
             )}
             <Toolbar />
           </Box>
