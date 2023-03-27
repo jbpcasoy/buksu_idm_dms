@@ -1,3 +1,4 @@
+import useSidebarCounts from "@/hooks/count/useSidebarCounts";
 import useUser from "@/hooks/useUser";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -5,6 +6,13 @@ import { useRouter } from "next/router";
 export default function Sidebar() {
   const router = useRouter();
   const { user } = useUser();
+  const {
+    myImsCount,
+    toReviseCount,
+    toReviewCount,
+    reviewedCount,
+    departmentImsCount,
+  } = useSidebarCounts();
 
   return (
     <aside
@@ -38,9 +46,11 @@ export default function Sidebar() {
               </svg>
               <div className='justify-between flex w-full items-center'>
                 <span className='ml-3'>My IM&apos;s</span>
-                <div className='inline-flex items-center justify-center w-4 h-4  text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
-                  2
-                </div>
+                {myImsCount > 0 && (
+                  <div className='inline-flex items-center justify-center w-4 h-4  text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
+                    {myImsCount}
+                  </div>
+                )}
               </div>
             </Link>
           </li>
@@ -69,9 +79,11 @@ export default function Sidebar() {
               </svg>
               <div className='justify-between flex w-full items-center'>
                 <span className='ml-3'>To Revise</span>
-                <div className='inline-flex items-center justify-center w-4 h-4  text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
-                  2
-                </div>
+                {toReviseCount > 0 && (
+                  <div className='inline-flex items-center justify-center w-4 h-4  text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
+                    {toReviseCount}
+                  </div>
+                )}
               </div>
             </Link>
           </li>
@@ -105,9 +117,11 @@ export default function Sidebar() {
               </svg>
               <div className='justify-between flex w-full items-center'>
                 <span className='ml-3'>To Review</span>
-                <div className='inline-flex items-center justify-center w-4 h-4  text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
-                  2
-                </div>
+                {toReviewCount > 0 && (
+                  <div className='inline-flex items-center justify-center w-4 h-4  text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
+                    {toReviewCount}
+                  </div>
+                )}
               </div>
             </Link>
           </li>
@@ -136,9 +150,11 @@ export default function Sidebar() {
               </svg>
               <div className='justify-between flex w-full items-center'>
                 <span className='ml-3'>Reviewed</span>
-                <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
-                  2
-                </div>
+                {reviewedCount > 0 && (
+                  <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
+                    {reviewedCount}
+                  </div>
+                )}
               </div>
             </Link>
           </li>
@@ -171,9 +187,11 @@ export default function Sidebar() {
                   <span className='flex-1 ml-3 whitespace-nowrap'>
                     Department IM&apos;s
                   </span>
-                  <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
-                    2
-                  </div>
+                  {departmentImsCount > 0 && (
+                    <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
+                      {departmentImsCount}
+                    </div>
+                  )}
                 </div>
               </Link>
             </li>

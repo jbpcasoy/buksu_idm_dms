@@ -34,9 +34,9 @@ export default function Home() {
     let subscribe = true;
     setLoading(true);
 
-    async function getReviewed(filter) {
+    async function getDepartmentIms(filter) {
       return frontendGetIMs({
-        reviewerId: user.id,
+        departmentId: user.ActiveFaculty.Faculty.departmentId,
         ...filter,
       });
     }
@@ -51,7 +51,7 @@ export default function Home() {
       sortOrder: state.sortOrder,
     };
 
-    getReviewed(filter).then((res) => {
+    getDepartmentIms(filter).then((res) => {
       setLoading(false);
       if (!subscribe) return;
 
