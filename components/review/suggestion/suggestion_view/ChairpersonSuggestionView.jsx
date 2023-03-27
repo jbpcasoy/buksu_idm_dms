@@ -32,7 +32,21 @@ export default function ChairpersonSuggestionView({
   });
 
   return (
-    <SuggestionView title={"Chairperson Suggestions"} viewOnly={viewOnly}>
+    <SuggestionView
+      title={"Chairperson Suggestions"}
+      viewOnly={viewOnly}
+      reviewerName={
+        chairpersonSuggestion?.SubmittedChairpersonReview?.ChairpersonReview
+          ?.Chairperson?.Faculty?.user?.name
+      }
+      reviewDate={
+        chairpersonSuggestion?.SubmittedChairpersonSuggestion?.createdAt
+      }
+      reviewerImage={
+        chairpersonSuggestion?.SubmittedChairpersonReview?.ChairpersonReview
+          ?.Chairperson?.Faculty?.user?.image
+      }
+    >
       {chairpersonSuggestionItems.map((chairpersonSuggestionItem) => (
         <ChairpersonSuggestionItemView
           viewOnly={viewOnly}

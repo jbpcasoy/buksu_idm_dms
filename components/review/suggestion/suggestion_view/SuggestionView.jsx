@@ -1,4 +1,13 @@
-export default function SuggestionView({ children, title, viewOnly = false }) {
+import moment from "moment";
+
+export default function SuggestionView({
+  children,
+  title,
+  viewOnly = false,
+  reviewerName,
+  reviewDate,
+  reviewerImage,
+}) {
   return (
     <div className='border border-CITLOrange rounded-lg mb-5 overflow-hidden'>
       <div className='bg-CITLGray-light rounded-t-lg py-3 px-3 pr-3'>
@@ -7,17 +16,17 @@ export default function SuggestionView({ children, title, viewOnly = false }) {
             <h2 className='pt-2 font-semibold text-CITLDarkBlue '>{title}</h2>
             <div className='flex flex-cols mt-2'>
               <img
-                src='/IMAGES/2x2.png'
+                src={reviewerImage}
                 className='h-8 rounded-full sm:h-8'
-                alt='owner'
+                alt='reviewer'
               ></img>
 
               <div className=''>
                 <h2 className='text-xs font-semibold text-CITLGray-main pl-3 -mb-1'>
-                  Glenmark Artiaga
+                  {reviewerName}
                 </h2>
                 <time className='text-xs text-CITLGray-main pl-3 '>
-                  March 23, 2023 | 9:00 AM
+                  {moment(reviewDate).format("MMMM D, YYYY | h:mm A")}
                 </time>
               </div>
             </div>

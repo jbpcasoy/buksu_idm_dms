@@ -15,6 +15,31 @@ export default async function readChairpersonSuggestions({
           contains: submittedChairpersonReviewId,
         },
       },
+      include: {
+        SubmittedChairpersonSuggestion: true,
+        SubmittedChairpersonReview: {
+          include: {
+            ChairpersonReview: {
+              select: {
+                Chairperson: {
+                  select: {
+                    Faculty: {
+                      select: {
+                        user: {
+                          select: {
+                            name: true,
+                            image: true,
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
     });
     const total = await prisma.chairpersonSuggestion.count({
       where: {
