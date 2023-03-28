@@ -99,6 +99,19 @@ export default function ViewIM() {
                     </button>
                   )}
                 </li>
+
+                <li>
+                  {/*  EDIT IM should be visible and accessible only for the owner of the IM
+                   */}
+                  {iM && iM.owner.userId === user?.id && (
+                    <Link
+                      href={`/im/${iM?.id}/new_version`}
+                      className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
+                    >
+                      Upload New Version
+                    </Link>
+                  )}
+                </li>
                 <li>
                   <Link
                     href={`/im/${iM?.id}/versions`}
