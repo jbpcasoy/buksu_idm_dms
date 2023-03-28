@@ -46,6 +46,10 @@ export default function ChairpersonSuggestionView({
         chairpersonSuggestion?.SubmittedChairpersonReview?.ChairpersonReview
           ?.Chairperson?.Faculty?.user?.image
       }
+      reviewerId={
+        chairpersonSuggestion?.SubmittedChairpersonReview?.ChairpersonReview
+          ?.Chairperson?.Faculty?.user?.id
+      }
     >
       {chairpersonSuggestionItems.map((chairpersonSuggestionItem) => (
         <ChairpersonSuggestionItemView

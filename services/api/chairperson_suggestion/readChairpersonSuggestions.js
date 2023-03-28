@@ -29,6 +29,7 @@ export default async function readChairpersonSuggestions({
                           select: {
                             name: true,
                             image: true,
+                            id: true,
                           },
                         },
                       },

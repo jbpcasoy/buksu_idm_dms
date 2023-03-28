@@ -29,6 +29,7 @@ export default async function readCoordinatorSuggestions({
                           select: {
                             name: true,
                             image: true,
+                            id: true,
                           },
                         },
                       },

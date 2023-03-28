@@ -30,6 +30,9 @@ export default function PeerSuggestionView({ peerReview, viewOnly = false }) {
         peerSuggestion?.SubmittedPeerReview?.PeerReview?.Faculty?.user?.image
       }
       reviewDate={peerSuggestion?.SubmittedPeerSuggestion?.createdAt}
+      reviewerId={
+        peerSuggestion?.SubmittedPeerReview?.PeerReview?.Faculty?.user?.id
+      }
     >
       {peerSuggestionItems.map((peerSuggestionItem) => (
         <PeerSuggestionItemView

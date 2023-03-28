@@ -28,6 +28,7 @@ export default async function readPeerSuggestions({
                       select: {
                         name: true,
                         image: true,
+                        id: true,
                       },
                     },
                   },

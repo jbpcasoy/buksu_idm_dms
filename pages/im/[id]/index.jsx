@@ -31,7 +31,7 @@ export default function ViewIM() {
               Type: <span className='text-xs font-medium '>Module</span>
             </h2>
             <div className='flex flex-cols mt-3'>
-              <Link href='/me'>
+              <Link href={`/profile/${iM?.owner?.user?.id}`}>
                 <img
                   src={iM?.owner?.user?.image}
                   className='h-8 rounded-full sm:h-8'

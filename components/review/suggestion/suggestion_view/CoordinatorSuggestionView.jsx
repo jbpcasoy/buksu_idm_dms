@@ -46,6 +46,10 @@ export default function CoordinatorSuggestionView({
         coordinatorSuggestion?.SubmittedCoordinatorReview?.CoordinatorReview
           ?.Coordinator?.Faculty?.user?.image
       }
+      reviewerId={
+        coordinatorSuggestion?.SubmittedCoordinatorReview?.CoordinatorReview
+          ?.Coordinator?.Faculty?.user?.id
+      }
     >
       {coordinatorSuggestionItems.map((coordinatorSuggestionItem) => (
         <CoordinatorSuggestionItemView
