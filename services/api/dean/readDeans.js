@@ -9,7 +9,8 @@ export default async function readDeans({ limit, page }) {
       skip: (page - 1) * limit,
     });
 
-    return deans;
+    const total = await prisma.dean.count();
+    return { data: deans, total };
   } catch (error) {
     throw error;
   }

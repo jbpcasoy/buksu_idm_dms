@@ -3233,5 +3233,33 @@
       }
     ],
     "tests": []
+  },
+  {
+    "_id": "349063dd-a355-4f4b-9cd9-911c71bf33dc",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "3a22c1c2-5c2f-49a1-83e8-a3d910c62810",
+    "name": "READ Dean",
+    "url": "{{host}}/api/dean/clfs5puek0000s9jvow51v1tn",
+    "method": "GET",
+    "sortNum": 1930000,
+    "created": "2023-03-28T11:22:50.707Z",
+    "modified": "2023-03-28T11:23:11.787Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "10ca3564-5c02-4b30-bc63-99c95a9942f1",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "3a22c1c2-5c2f-49a1-83e8-a3d910c62810",
+    "name": "DELETE Dean",
+    "url": "{{host}}/api/dean/clfs6cf6e0004s9jv990n2a9t",
+    "method": "DELETE",
+    "sortNum": 1940000,
+    "created": "2023-03-28T11:27:22.171Z",
+    "modified": "2023-03-28T11:28:16.847Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
