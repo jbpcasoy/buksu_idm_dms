@@ -326,7 +326,7 @@ model Attachment {
   originalFileName String
 }
 
-// Ideal IM review schema
+// Ideal IM review schema, postponed 
 model IMReviewSection {
   id               String             @id @default(cuid())
   createdAt        DateTime           @default(now())

@@ -1,5 +1,7 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
+import checkAndUpdateStatus from "@/services/helpers/checkAndUpdateStatus";
 import readPeerSuggestion from "../peer_suggestion/readPeerSuggestion";
+import readSubmittedPeerReview from "../submitted_peer_review/readSubmittedPeerReview";
 
 export default async function createSubmittedPeerSuggestion({
   peerSuggestionId,
@@ -30,6 +32,11 @@ export default async function createSubmittedPeerSuggestion({
         },
       }
     );
+
+    const submittedPeerReview = await readSubmittedPeerReview(
+      peerSuggestion.submittedPeerReviewId
+    );
+    await checkAndUpdateStatus(submittedPeerReview.iMId);
 
     return submittedPeerSuggestion;
   } catch (error) {

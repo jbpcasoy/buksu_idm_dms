@@ -2,7 +2,7 @@ import frontendGetIMs from "@/services/frontend/im/frontendGetIMs";
 import { useEffect, useState } from "react";
 import useUser from "../useUser";
 
-export default function useToReviewCount() {
+export default function useToEndorseCount() {
   const [count, setCount] = useState(0);
   const { user } = useUser();
 
@@ -21,7 +21,7 @@ export default function useToReviewCount() {
     const filter = {
       page: 1,
       limit: 1,
-      status: "SUBMITTED",
+      status: "DEPARTMENT_REVIEWED",
     };
 
     getToReview(filter).then((res) => {
