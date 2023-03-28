@@ -156,6 +156,7 @@ export default function Home() {
                   <option value='' selected>
                     Status
                   </option>
+                  <option value='DRAFT'>Draft</option>
                   <option value='SUBMITTED'>Submitted</option>
                   <option value='DEPARTMENT_REVIEWED'>
                     Department Reviewed

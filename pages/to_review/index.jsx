@@ -149,24 +149,6 @@ export default function Home() {
                   type='text'
                   placeholder='Title'
                 ></input>
-                <select
-                  id='default'
-                  className='bg-CITLGray-light border-CITLGray-lighter border text-CITLGray-main rounded-lg text-sm font-medium'
-                  onChange={debouncedHandleStatusChange}
-                >
-                  <option value='' selected>
-                    Status
-                  </option>
-                  <option value='SUBMITTED'>Submitted</option>
-                  <option value='DEPARTMENT_REVIEWED'>
-                    Department Reviewed
-                  </option>
-                  <option value='DEPARTMENT_ENDORSED'>
-                    Department Endorsed
-                  </option>
-                  <option value='CITL_REVIEWED'>CITL Reviewed</option>
-                  <option value='CITL_ENDORSED'>CITL Endorsed</option>
-                </select>
               </div>
             </div>
           </div>

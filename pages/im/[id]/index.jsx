@@ -253,18 +253,20 @@ export default function ViewIM() {
                     )}
                 </li>
                 <li>
-                  {iM?.status === "DEPARTMENT_REVIEWED" && (
-                    <button
-                      disabled={iM?.CoordinatorEndorsement}
-                      title={
-                        iM?.CoordinatorEndorsement && "IM was already endorsed"
-                      }
-                      onClick={handleEndorse}
-                      className='block w-full  text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter'
-                    >
-                      Endorse
-                    </button>
-                  )}
+                  {iM?.status === "DEPARTMENT_REVIEWED" &&
+                    user?.ActiveFaculty?.ActiveCoordinator(
+                      <button
+                        disabled={iM?.CoordinatorEndorsement}
+                        title={
+                          iM?.CoordinatorEndorsement &&
+                          "IM was already endorsed"
+                        }
+                        onClick={handleEndorse}
+                        className='block w-full  text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter'
+                      >
+                        Endorse
+                      </button>
+                    )}
                 </li>
               </ul>
             </div>
