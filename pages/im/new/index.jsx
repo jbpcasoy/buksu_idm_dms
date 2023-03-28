@@ -18,9 +18,11 @@ export default function CreateIM() {
       authors: "",
       type: "MODULE",
     },
+    validateOnChange: true,
+    validateOnMount: true,
     validationSchema: Yup.object({
-      title: Yup.string().required(),
-      authors: Yup.string().required(),
+      title: Yup.string().required("Title is required"),
+      authors: Yup.string().required("Authors is required"),
       type: Yup.string()
         .oneOf(["MODULE", "COURSE_FILE", "WORKTEXT", "TEXTBOOK"])
         .required(),
@@ -61,6 +63,17 @@ export default function CreateIM() {
   useEffect(() => {
     console.log({ filePreviewUrl });
   }, [filePreviewUrl]);
+
+  function handleDrop(e) {
+    e.preventDefault();
+    console.log({ e });
+    const file = e.dataTransfer.files[0];
+    setFile(file);
+  }
+
+  function handleDragOver(e) {
+    e.preventDefault();
+  }
 
   return (
     <Layout>
@@ -115,11 +128,14 @@ export default function CreateIM() {
               <input
                 type='text'
                 id='title'
-                className='bg-transparent border mb-5 border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+                className='bg-transparent border  border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
                 placeholder=''
                 required
                 {...formik.getFieldProps("title")}
               />
+              <p className='text-sm text-red-600 mb-5'>
+                {formik.touched.title && formik.errors.title}
+              </p>
               <div className='grid gap-6 mb-6 md:grid-cols-2'>
                 <div>
                   <label
@@ -136,6 +152,9 @@ export default function CreateIM() {
                     required
                     {...formik.getFieldProps("authors")}
                   />
+                  <p className='text-sm text-red-600 mb-5'>
+                    {formik.touched.authors && formik.errors.authors}
+                  </p>
                 </div>
                 <div>
                   <label
@@ -179,6 +198,8 @@ export default function CreateIM() {
                 <label
                   htmlFor='dropzone-file'
                   className='flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-transparent  dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600'
+                  onDrop={handleDrop}
+                  onDragOver={handleDragOver}
                 >
                   <div className='flex flex-col items-center justify-center pt-5 pb-6'>
                     <svg
@@ -203,7 +224,7 @@ export default function CreateIM() {
                       or drag and drop
                     </p>
                     <p className='text-xs text-gray-500 dark:text-gray-400'>
-                      PDF (MAX. 800x400px)
+                      PDF files only
                     </p>
                   </div>
                   <input
@@ -211,6 +232,7 @@ export default function CreateIM() {
                     type='file'
                     multiple={false}
                     className='hidden'
+                    accept='application/pdf'
                     onChange={(e) => setFile(e.target.files[0])}
                   />
                 </label>
@@ -238,8 +260,8 @@ export default function CreateIM() {
 
               <button
                 type='submit'
-                disabled={formik.isSubmitting}
-                className='group relative inline-flex items-center overflow-hidden rounded-md bg-CITLOrange px-8 py-3 text-CITLDarkBlue '
+                disabled={formik.isSubmitting || !file || !formik.isValid}
+                className='group relative inline-flex items-center overflow-hidden rounded-md bg-CITLOrange px-8 py-3 text-CITLDarkBlue disabled:bg-CITLGray-main'
               >
                 <span className='absolute right-0 translate-x-full transition-transform group-hover:-translate-x-4'>
                   <svg
