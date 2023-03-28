@@ -30,7 +30,7 @@ export default function Home() {
       },
       message: "Unauthorized",
     });
-  }, [router?.query?.unauthorized]);
+  }, [router?.query?.unauthorized, enqueueSnackbar]);
 
   if (userLoading) return null;
 

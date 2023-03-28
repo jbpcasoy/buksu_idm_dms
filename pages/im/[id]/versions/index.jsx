@@ -29,6 +29,7 @@ export default function IMVersions() {
           <ol className='relative border-l border-CITLOrange ml-10 '>
             {files?.data?.map((file) => (
               <VersionItem
+                key={file.id}
                 date={file.createdAt}
                 fileId={file.id}
                 fileName={file.originalFileName}
