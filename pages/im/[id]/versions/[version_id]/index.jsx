@@ -1,31 +1,25 @@
 import Layout from "@/components/layout/Layout";
 import useFile from "@/hooks/file/useFile";
-import frontendReadIM from "@/services/frontend/im/frontendReadIM";
-import IM from "@/views/im/IM";
+import useIM from "@/hooks/useIM";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 
 export default function IMVersion() {
   const router = useRouter();
-  const [iM, setIM] = useState();
   const { file, fileLoading, fileError } = useFile(router?.query?.version_id);
-
-  useEffect(() => {
-    const id = router?.query?.id;
-    if (!id) return;
-
-    frontendReadIM(id).then((res) => {
-      setIM(res);
-    });
-  }, [router?.query?.id]);
+  const { iM, iMLoading, iMError } = useIM(router?.query?.id);
 
   console.log({ router });
   return (
     <Layout>
       <div className='bg-white rounded-md p-4'>
         <div className='flex items-center justify-between mb-4'>
-          <h2 className='text-lg font-medium'>{IM?.title}</h2>
+          <div>
+            <h2 className='text-lg font-medium'>{iM?.title}</h2>
+            <h2 className='text-xs  text-CITLGray-main'>
+              Type: <span className='text-xs font-medium '>{iM?.type}</span>
+            </h2>
+          </div>
           {/* <h2 className="text-xs uppercase font-medium">
             Version 1677046830191
           </h2> */}
