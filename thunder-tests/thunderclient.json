@@ -3280,5 +3280,30 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "3b2f5bf8-fc03-4816-b6d2-bf7a1322cde1",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "647b4eb2-8c9e-4d72-98d0-11032dacd350",
+    "name": "READ ActiveDeans",
+    "url": "{{host}}/api/active_dean?limit=10&page=1",
+    "method": "GET",
+    "sortNum": 1950000,
+    "created": "2023-03-28T13:02:36.818Z",
+    "modified": "2023-03-28T13:02:59.513Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "limit",
+        "value": "10",
+        "isPath": false
+      },
+      {
+        "name": "page",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "tests": []
   }
 ]
