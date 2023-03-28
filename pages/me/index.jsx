@@ -2,11 +2,17 @@ import Layout from "@/components/layout/Layout";
 import useUser from "@/hooks/useUser";
 import ProfileFormView from "@/views/ProfileFormView";
 import axios from "axios";
+import { initModals } from "flowbite";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 export default function Me() {
   const { user, userLoading, userError } = useUser();
   const router = useRouter();
+
+  useEffect(() => {
+    initModals();
+  });
 
   return (
     <Layout>
