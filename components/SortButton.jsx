@@ -29,7 +29,7 @@ export default function SortButton({
         >
           <path
             strokeLinecap='round'
-            stroke-linejoin='round'
+            strokeLinejoin='round'
             d='M4.5 15.75l7.5-7.5 7.5 7.5'
           ></path>
         </svg>
@@ -47,7 +47,7 @@ export default function SortButton({
         >
           <path
             strokeLinecap='round'
-            stroke-linejoin='round'
+            strokeLinejoin='round'
             d='M19.5 8.25l-7.5 7.5-7.5-7.5'
           ></path>
         </svg>
