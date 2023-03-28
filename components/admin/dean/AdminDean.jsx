@@ -1,3 +1,5 @@
+import frontendCreateActiveDean from "@/services/frontend/active_admin/frontendCreateActiveDean";
+import frontendDeleteActiveDean from "@/services/frontend/active_admin/frontendDeleteActiveDean";
 import frontendDeleteDean from "@/services/frontend/dean/frontendDeleteDean";
 import AdminDeanView from "@/views/admin/dean/AdminDeanView";
 import { useState } from "react";
@@ -11,27 +13,23 @@ export default function AdminDean({ dean }) {
     });
   }
 
-  //   async function onActivate() {
-  //     try {
-  //       return frontendCreateActiveFaculty({
-  //         userId: deanData.userId,
-  //         facultyId: deanData.id,
-  //         departmentId: deanData.departmentId,
-  //       }).then((res) => {
-  //         setDeanData((prev) => ({ ...prev, ActiveFaculty: res }));
-  //       });
-  //     } catch (error) {
-  //       throw error;
-  //     }
-  //   }
+  async function onActivate() {
+    try {
+      return frontendCreateActiveDean({
+        deanId: deanData.id,
+      }).then((res) => {
+        setDeanData((prev) => ({ ...prev, ActiveDean: res }));
+      });
+    } catch (error) {
+      throw error;
+    }
+  }
 
-  //   async function onDeactivate() {
-  //     return frontendDeleteActiveFaculty(deanData.ActiveFaculty.id).then(
-  //       (res) => {
-  //         setDeanData((prev) => ({ ...prev, ActiveFaculty: null }));
-  //       }
-  //     );
-  //   }
+  async function onDeactivate() {
+    return frontendDeleteActiveDean(deanData.ActiveDean.id).then((res) => {
+      setDeanData((prev) => ({ ...prev, ActiveDean: null }));
+    });
+  }
 
   if (!deanData) {
     return null;
@@ -44,8 +42,8 @@ export default function AdminDean({ dean }) {
       collegeName={deanData?.Faculty?.department?.college?.name}
       onDelete={onDelete}
       active={Boolean(deanData?.ActiveDean)}
-      //   onActivate={onActivate}
-      //   onDeactivate={onDeactivate}
+      onActivate={onActivate}
+      onDeactivate={onDeactivate}
     />
   );
 }
