@@ -14,7 +14,7 @@ export default async function frontendCreateFile({
       googleDocsUrl,
     });
 
-    return file;
+    return file.data;
   } catch (error) {
     throw error;
   }

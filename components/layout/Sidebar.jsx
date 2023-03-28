@@ -1,3 +1,4 @@
+import useSidebarCounts from "@/hooks/count/useSidebarCounts";
 import useUser from "@/hooks/useUser";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -5,6 +6,14 @@ import { useRouter } from "next/router";
 export default function Sidebar() {
   const router = useRouter();
   const { user } = useUser();
+  const {
+    myImsCount,
+    toReviseCount,
+    toReviewCount,
+    reviewedCount,
+    departmentImsCount,
+    toEndorseCount,
+  } = useSidebarCounts();
 
   return (
     <aside
@@ -38,9 +47,11 @@ export default function Sidebar() {
               </svg>
               <div className='justify-between flex w-full items-center'>
                 <span className='ml-3'>My IM&apos;s</span>
-                <div className='inline-flex items-center justify-center w-4 h-4  text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
-                  2
-                </div>
+                {myImsCount > 0 && (
+                  <div className='inline-flex items-center justify-center w-4 h-4  text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
+                    {myImsCount}
+                  </div>
+                )}
               </div>
             </Link>
           </li>
@@ -69,9 +80,11 @@ export default function Sidebar() {
               </svg>
               <div className='justify-between flex w-full items-center'>
                 <span className='ml-3'>To Revise</span>
-                <div className='inline-flex items-center justify-center w-4 h-4  text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
-                  2
-                </div>
+                {toReviseCount > 0 && (
+                  <div className='inline-flex items-center justify-center w-4 h-4  text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
+                    {toReviseCount}
+                  </div>
+                )}
               </div>
             </Link>
           </li>
@@ -105,9 +118,11 @@ export default function Sidebar() {
               </svg>
               <div className='justify-between flex w-full items-center'>
                 <span className='ml-3'>To Review</span>
-                <div className='inline-flex items-center justify-center w-4 h-4  text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
-                  2
-                </div>
+                {toReviewCount > 0 && (
+                  <div className='inline-flex items-center justify-center w-4 h-4  text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
+                    {toReviewCount}
+                  </div>
+                )}
               </div>
             </Link>
           </li>
@@ -136,12 +151,51 @@ export default function Sidebar() {
               </svg>
               <div className='justify-between flex w-full items-center'>
                 <span className='ml-3'>Reviewed</span>
-                <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
-                  2
-                </div>
+                {reviewedCount > 0 && (
+                  <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
+                    {reviewedCount}
+                  </div>
+                )}
               </div>
             </Link>
           </li>
+
+          {user?.ActiveFaculty?.ActiveCoordinator && (
+            <li>
+              <Link
+                href='/to_endorse'
+                className={`flex items-center p-2 text-base font-normal text-CITLWhite rounded-lg  hover:bg-CITLGray-main ${
+                  router.asPath === "/to_endorse" ? "bg-CITLGray-main" : ""
+                }`}
+              >
+                <svg
+                  fill='none'
+                  stroke='currentColor'
+                  strokeWidth='1.5'
+                  className='flex-shrink-0 w-6 h-6 text-CITLWhite transition duration-75 group-hover:text-CITLGray-main'
+                  viewBox='0 0 24 24'
+                  xmlns='http://www.w3.org/2000/svg'
+                  aria-hidden='true'
+                >
+                  <path
+                    stroke-linecap='round'
+                    stroke-linejoin='round'
+                    d='M6.633 10.5c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 012.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 00.322-1.672V3a.75.75 0 01.75-.75A2.25 2.25 0 0116.5 4.5c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 01-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 00-1.423-.23H5.904M14.25 9h2.25M5.904 18.75c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 01-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 10.203 4.167 9.75 5 9.75h1.053c.472 0 .745.556.5.96a8.958 8.958 0 00-1.302 4.665c0 1.194.232 2.333.654 3.375z'
+                  ></path>
+                </svg>
+                <div className='justify-between flex w-full items-center'>
+                  <span className='flex-1 ml-3 whitespace-nowrap'>
+                    To Endorse
+                  </span>
+                  {toEndorseCount > 0 && (
+                    <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
+                      {toEndorseCount}
+                    </div>
+                  )}
+                </div>
+              </Link>
+            </li>
+          )}
 
           {(user?.ActiveFaculty?.ActiveChairperson ||
             user?.ActiveFaculty?.ActiveCoordinator) && (
@@ -171,9 +225,11 @@ export default function Sidebar() {
                   <span className='flex-1 ml-3 whitespace-nowrap'>
                     Department IM&apos;s
                   </span>
-                  <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
-                    2
-                  </div>
+                  {departmentImsCount > 0 && (
+                    <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
+                      {departmentImsCount}
+                    </div>
+                  )}
                 </div>
               </Link>
             </li>

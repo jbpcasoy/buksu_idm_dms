@@ -3,6 +3,8 @@ import moment from "moment/moment";
 import { useEffect, useState } from "react";
 
 export default function IM({
+  showStatus = false,
+  showReviewSuggestion = false,
   authors,
   showOwner = false,
   showSerialNumber = false,
@@ -67,41 +69,43 @@ export default function IM({
       {showOwner && <td className='px-6 py-4 '>{owner}</td>}
       <td className='px-6 py-4 '>{authors}</td>
 
-      <td className='px-6 py-4 '>{status}</td>
-      <td className='px-4 py-4 space-x-1'>
-        {peerReviewed && (
-          <span className='bg-purple-400 text-purple-800 text-xs px-3 py-1 rounded-2xl'>
-            Peer
-          </span>
-        )}
-        {!peerReviewed && (
-          <span className='bg-red-300 text-red-600 text-xs px-3 py-1 rounded-2xl'>
-            Peer
-          </span>
-        )}
+      {showStatus && <td className='px-6 py-4 '>{status}</td>}
+      {showReviewSuggestion && (
+        <td className='px-4 py-4 space-x-1'>
+          {peerReviewed && (
+            <span className='bg-purple-400 text-purple-800 text-xs px-3 py-1 rounded-2xl'>
+              Peer
+            </span>
+          )}
+          {!peerReviewed && (
+            <span className='bg-red-300 text-red-600 text-xs px-3 py-1 rounded-2xl'>
+              Peer
+            </span>
+          )}
 
-        {chairpersonReviewed && (
-          <span className='bg-orange-300 text-orange-500 text-xs px-3  py-1 rounded-2xl'>
-            Chairperson
-          </span>
-        )}
+          {chairpersonReviewed && (
+            <span className='bg-orange-300 text-orange-500 text-xs px-3  py-1 rounded-2xl'>
+              Chairperson
+            </span>
+          )}
 
-        {!chairpersonReviewed && (
-          <span className='bg-red-300 text-red-600 text-xs px-3 py-1 rounded-2xl'>
-            Chairperson
-          </span>
-        )}
-        {coordinatorReviewed && (
-          <span className='bg-green-300 text-green-900 text-xs px-3 py-1 rounded-2xl'>
-            Coordinator
-          </span>
-        )}
-        {!coordinatorReviewed && (
-          <span className='bg-red-300 text-red-600 text-xs px-3 py-1 rounded-2xl'>
-            Coordinator
-          </span>
-        )}
-      </td>
+          {!chairpersonReviewed && (
+            <span className='bg-red-300 text-red-600 text-xs px-3 py-1 rounded-2xl'>
+              Chairperson
+            </span>
+          )}
+          {coordinatorReviewed && (
+            <span className='bg-green-300 text-green-900 text-xs px-3 py-1 rounded-2xl'>
+              Coordinator
+            </span>
+          )}
+          {!coordinatorReviewed && (
+            <span className='bg-red-300 text-red-600 text-xs px-3 py-1 rounded-2xl'>
+              Coordinator
+            </span>
+          )}
+        </td>
+      )}
 
       {showReviewedAs && <td className='px-6 py-4 '>{reviewedAs}</td>}
 

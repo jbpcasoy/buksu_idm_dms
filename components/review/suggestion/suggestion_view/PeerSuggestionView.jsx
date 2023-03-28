@@ -20,7 +20,20 @@ export default function PeerSuggestionView({ peerReview, viewOnly = false }) {
   } = usePeerSuggestionItems({ peerSuggestionId: peerSuggestion?.id });
 
   return (
-    <SuggestionView title={"Peer Suggestions"} viewOnly={viewOnly}>
+    <SuggestionView
+      title={"Peer Suggestions"}
+      viewOnly={viewOnly}
+      reviewerName={
+        peerSuggestion?.SubmittedPeerReview?.PeerReview?.Faculty?.user?.name
+      }
+      reviewerImage={
+        peerSuggestion?.SubmittedPeerReview?.PeerReview?.Faculty?.user?.image
+      }
+      reviewDate={peerSuggestion?.SubmittedPeerSuggestion?.createdAt}
+      reviewerId={
+        peerSuggestion?.SubmittedPeerReview?.PeerReview?.Faculty?.user?.id
+      }
+    >
       {peerSuggestionItems.map((peerSuggestionItem) => (
         <PeerSuggestionItemView
           key={peerSuggestionItem.id}

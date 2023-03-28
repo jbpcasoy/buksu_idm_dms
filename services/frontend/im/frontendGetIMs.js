@@ -10,6 +10,8 @@ export default async function frontendGetIMs({
   notOwnerId,
   departmentId,
   reviewerId,
+  sortColumn,
+  sortOrder,
 }) {
   try {
     const response = await axios.get("/api/im", {
@@ -23,6 +25,8 @@ export default async function frontendGetIMs({
         notOwnerId,
         departmentId,
         reviewerId,
+        sortColumn,
+        sortOrder,
       },
     });
     return response.data;

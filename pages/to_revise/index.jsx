@@ -1,4 +1,5 @@
 import Layout from "@/components/layout/Layout";
+import SortButton from "@/components/SortButton";
 import useUser from "@/hooks/useUser";
 import frontendGetIMs from "@/services/frontend/im/frontendGetIMs";
 import IM from "@/views/im/IM";
@@ -16,6 +17,8 @@ export default function Home() {
     serialNumber: "",
     title: "",
     status: undefined,
+    sortColumn: "title",
+    sortOrder: "asc",
   });
 
   const { user, userLoading, userError } = useUser();
@@ -45,6 +48,8 @@ export default function Home() {
       serialNumber: state.serialNumber,
       title: state.title,
       status: "DEPARTMENT_REVIEWED",
+      sortColumn: state.sortColumn,
+      sortOrder: state.sortOrder,
     };
 
     getToRevise(filter).then((res) => {
@@ -179,19 +184,57 @@ export default function Home() {
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
-                  Title
+                  <SortButton
+                    label='Title'
+                    sortOrder={
+                      state.sortColumn === "title" ? state.sortOrder : undefined
+                    }
+                    setSortOrder={(order) =>
+                      setState((prev) => ({
+                        ...prev,
+                        sortColumn: "title",
+                        sortOrder: order,
+                      }))
+                    }
+                  />
                 </th>
                 <th
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
-                  Type
+                  <SortButton
+                    label='Type'
+                    sortOrder={
+                      state.sortColumn === "type" ? state.sortOrder : undefined
+                    }
+                    setSortOrder={(order) =>
+                      setState((prev) => ({
+                        ...prev,
+                        sortColumn: "type",
+                        sortOrder: order,
+                      }))
+                    }
+                  />
                 </th>
                 <th
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
-                  Authors
+                  <SortButton
+                    label='Authors'
+                    sortOrder={
+                      state.sortColumn === "authors"
+                        ? state.sortOrder
+                        : undefined
+                    }
+                    setSortOrder={(order) =>
+                      setState((prev) => ({
+                        ...prev,
+                        sortColumn: "authors",
+                        sortOrder: order,
+                      }))
+                    }
+                  />
                 </th>
                 {/* <th
                   scope='col'
@@ -199,18 +242,6 @@ export default function Home() {
                 >
                   Owner
                 </th> */}
-                <th
-                  scope='col'
-                  className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
-                >
-                  Status
-                </th>
-                <th
-                  scope='col'
-                  className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
-                >
-                  Review/Suggestion
-                </th>
                 {/* <th
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
@@ -222,7 +253,21 @@ export default function Home() {
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
-                  Created At
+                  <SortButton
+                    label='Created At'
+                    sortOrder={
+                      state.sortColumn === "createdAt"
+                        ? state.sortOrder
+                        : undefined
+                    }
+                    setSortOrder={(order) =>
+                      setState((prev) => ({
+                        ...prev,
+                        sortColumn: "createdAt",
+                        sortOrder: order,
+                      }))
+                    }
+                  />
                 </th>
                 {/* <th
                   scope='col'
@@ -260,21 +305,9 @@ export default function Home() {
 
                   <td className='px-6 py-4 '>
                     <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
-                    <div class='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
                   </td>
                   <td className='px-4 py-4 space-x-1'>
                     <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
-                    <div class='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
-                  </td>
-
-                  <td className='px-6 py-4 '>
-                    <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
-                    <div class='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
-                  </td>
-
-                  <td className='px-6 py-4 '>
-                    <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
-                    <div class='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
                   </td>
                 </tr>
               )}
@@ -282,6 +315,7 @@ export default function Home() {
                 ims.map((im, index) => {
                   return (
                     <IM
+                      authors={im.authors}
                       // bottomBorder={index < state.ims.length - 1}
                       im={im}
                       peerReviewed={Boolean(

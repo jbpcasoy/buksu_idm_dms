@@ -1,16 +1,16 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
 
-const { PrismaClient } = require("@prisma/client");
-
-export default async function readIM(id) {
+export default async function readIM(id, filter = {}) {
   const prisma = PRISMA_CLIENT;
 
   try {
-    const im = await prisma.iM.findUniqueOrThrow({
+    const im = await prisma.iM.findFirstOrThrow({
       where: {
+        ...filter,
         id,
       },
       include: {
+        CoordinatorEndorsement: true,
         SubmittedChairpersonSuggestion: true,
         SubmittedCoordinatorSuggestion: true,
         SubmittedPeerSuggestion: true,
@@ -35,7 +35,7 @@ export default async function readIM(id) {
           },
         },
         ActiveFile: {
-          select: {
+          include: {
             File: {
               select: {
                 fileName: true,

@@ -4,6 +4,7 @@ import CoordinatorSuggestionView from "@/components/review/suggestion/suggestion
 import PeerSuggestionView from "@/components/review/suggestion/suggestion_view/PeerSuggestionView";
 import useIM from "@/hooks/useIM";
 import useUser from "@/hooks/useUser";
+import frontendCreateCoordinatorEndorsement from "@/services/frontend/coordinator_endorsement/frontendCreateCoordinatorEndorsement";
 import { initDropdowns, initModals } from "flowbite";
 import moment from "moment";
 import Link from "next/link";
@@ -21,6 +22,13 @@ export default function ViewIM() {
     initModals();
   });
 
+  async function handleEndorse() {
+    return frontendCreateCoordinatorEndorsement({
+      iMId: iM.id,
+      coordinatorId: user?.ActiveFaculty?.ActiveCoordinator?.coordinatorId,
+    });
+  }
+
   return (
     <Layout>
       <div className='bg-white rounded-md p-4'>
@@ -31,7 +39,7 @@ export default function ViewIM() {
               Type: <span className='text-xs font-medium '>Module</span>
             </h2>
             <div className='flex flex-cols mt-3'>
-              <Link href='/me'>
+              <Link href={`/profile/${iM?.owner?.user?.id}`}>
                 <img
                   src={iM?.owner?.user?.image}
                   className='h-8 rounded-full sm:h-8'
@@ -99,6 +107,19 @@ export default function ViewIM() {
                     </button>
                   )}
                 </li>
+
+                <li>
+                  {/*  EDIT IM should be visible and accessible only for the owner of the IM
+                   */}
+                  {iM && iM.owner.userId === user?.id && (
+                    <Link
+                      href={`/im/${iM?.id}/new_version`}
+                      className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
+                    >
+                      Upload New Version
+                    </Link>
+                  )}
+                </li>
                 <li>
                   <Link
                     href={`/im/${iM?.id}/versions`}
@@ -108,32 +129,34 @@ export default function ViewIM() {
                   </Link>
                 </li>
                 <li>
-                  {user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId && (
-                    <button
-                      disabled={
-                        iM?.SubmittedPeerSuggestion ||
-                        (iM?.SubmittedPeerReview &&
+                  {user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId &&
+                    iM.status === "SUBMITTED" && (
+                      <button
+                        disabled={
+                          iM?.SubmittedPeerSuggestion ||
+                          (iM?.SubmittedPeerReview &&
+                            user?.ActiveFaculty?.facultyId !==
+                              iM?.SubmittedPeerReview?.PeerReview?.facultyId)
+                        }
+                        title={
+                          iM?.SubmittedPeerReview &&
                           user?.ActiveFaculty?.facultyId !==
-                            iM?.SubmittedPeerReview?.PeerReview?.facultyId)
-                      }
-                      title={
-                        iM?.SubmittedPeerReview &&
-                        user?.ActiveFaculty?.facultyId !==
-                          iM?.SubmittedPeerReview?.PeerReview?.facultyId
-                          ? "Other peer's review exists"
-                          : iM?.SubmittedPeerSuggestion
-                          ? "Peer review and suggestions already exists"
-                          : undefined
-                      }
-                      onClick={() => router.push(`/im/${iM?.id}/review/peer`)}
-                      className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter text-left w-full'
-                    >
-                      Peer Review
-                    </button>
-                  )}
+                            iM?.SubmittedPeerReview?.PeerReview?.facultyId
+                            ? "Other peer's review exists"
+                            : iM?.SubmittedPeerSuggestion
+                            ? "Peer review and suggestions already exists"
+                            : undefined
+                        }
+                        onClick={() => router.push(`/im/${iM?.id}/review/peer`)}
+                        className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter text-left w-full'
+                      >
+                        Peer Review
+                      </button>
+                    )}
                 </li>
                 <li>
                   {user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId &&
+                    iM.status === "SUBMITTED" &&
                     user?.ActiveFaculty?.ActiveCoordinator && (
                       <button
                         onClick={() =>
@@ -166,6 +189,7 @@ export default function ViewIM() {
                 </li>
                 <li>
                   {user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId &&
+                    iM.status === "SUBMITTED" &&
                     user?.ActiveFaculty?.ActiveChairperson && (
                       <button
                         onClick={() =>
@@ -195,6 +219,20 @@ export default function ViewIM() {
                         Chairperson Review
                       </button>
                     )}
+                </li>
+                <li>
+                  {iM?.status === "DEPARTMENT_REVIEWED" && (
+                    <button
+                      disabled={iM?.CoordinatorEndorsement}
+                      title={
+                        iM?.CoordinatorEndorsement && "IM was already endorsed"
+                      }
+                      onClick={handleEndorse}
+                      className='block w-full  text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter'
+                    >
+                      Endorse
+                    </button>
+                  )}
                 </li>
               </ul>
             </div>
@@ -261,27 +299,31 @@ export default function ViewIM() {
           </div>
         )}
 
-        {iM?.owner?.userId === user?.id && (
+        {(iM?.owner?.userId === user?.id ||
+          iM?.status === "DEPARTMENT_REVIEWED") && (
           <>
-            {iM?.SubmittedPeerReview?.PeerReview && (
-              <PeerSuggestionView
-                peerReview={iM?.SubmittedPeerReview?.PeerReview}
-              />
-            )}
-            {iM?.SubmittedChairpersonReview?.ChairpersonReview && (
-              <ChairpersonSuggestionView
-                chairpersonReview={
-                  iM?.SubmittedChairpersonReview?.ChairpersonReview
-                }
-              />
-            )}
-            {iM?.SubmittedCoordinatorReview?.CoordinatorReview && (
-              <CoordinatorSuggestionView
-                coordinatorReview={
-                  iM?.SubmittedCoordinatorReview?.CoordinatorReview
-                }
-              />
-            )}
+            {iM?.SubmittedPeerReview?.PeerReview &&
+              iM?.SubmittedPeerSuggestion && (
+                <PeerSuggestionView
+                  peerReview={iM?.SubmittedPeerReview?.PeerReview}
+                />
+              )}
+            {iM?.SubmittedChairpersonReview?.ChairpersonReview &&
+              iM?.SubmittedChairpersonSuggestion && (
+                <ChairpersonSuggestionView
+                  chairpersonReview={
+                    iM?.SubmittedChairpersonReview?.ChairpersonReview
+                  }
+                />
+              )}
+            {iM?.SubmittedCoordinatorReview?.CoordinatorReview &&
+              iM?.SubmittedCoordinatorSuggestion && (
+                <CoordinatorSuggestionView
+                  coordinatorReview={
+                    iM?.SubmittedCoordinatorReview?.CoordinatorReview
+                  }
+                />
+              )}
           </>
         )}
 

@@ -103,6 +103,7 @@ model IM {
   SubmittedPeerSuggestion        SubmittedPeerSuggestion?
   SubmittedCoordinatorSuggestion SubmittedCoordinatorSuggestion?
   SubmittedChairpersonSuggestion SubmittedChairpersonSuggestion?
+  CoordinatorEndorsement         CoordinatorEndorsement?
 
   @@index([ownerId])
 }
@@ -137,6 +138,8 @@ model College {
   createdAt  DateTime     @default(now())
   updatedAt  DateTime     @updatedAt
   Department Department[]
+  Dean       Dean[]
+  ActiveDean ActiveDean?
 }
 
 model Department {
@@ -168,6 +171,7 @@ model Faculty {
   Coordinator   Coordinator?
   PeerApproval  PeerApproval[]
   PeerReview    PeerReview[]
+  Dean          Dean?
 
   @@unique([userId, departmentId])
   @@index([departmentId])
@@ -185,6 +189,7 @@ model ActiveFaculty {
   departmentId      String
   ActiveCoordinator ActiveCoordinator?
   ActiveChairperson ActiveChairperson?
+  ActiveDean        ActiveDean?
 
   @@index([departmentId])
 }
@@ -201,14 +206,15 @@ model Chairperson {
 }
 
 model Coordinator {
-  id                  String                @id @default(cuid())
-  createdAt           DateTime              @default(now())
-  updatedAt           DateTime              @updatedAt
-  Faculty             Faculty               @relation(fields: [facultyId], references: [id])
-  facultyId           String                @unique
-  ActiveCoordinator   ActiveCoordinator?
-  CoordinatorApproval CoordinatorApproval[]
-  CoordinatorReview   CoordinatorReview[]
+  id                     String                   @id @default(cuid())
+  createdAt              DateTime                 @default(now())
+  updatedAt              DateTime                 @updatedAt
+  Faculty                Faculty                  @relation(fields: [facultyId], references: [id])
+  facultyId              String                   @unique
+  ActiveCoordinator      ActiveCoordinator?
+  CoordinatorApproval    CoordinatorApproval[]
+  CoordinatorReview      CoordinatorReview[]
+  CoordinatorEndorsement CoordinatorEndorsement[]
 }
 
 // model Senior {
@@ -326,7 +332,7 @@ model Attachment {
   originalFileName String
 }
 
-// Ideal IM review schema
+// Ideal IM review schema, postponed 
 model IMReviewSection {
   id               String             @id @default(cuid())
   createdAt        DateTime           @default(now())
@@ -432,13 +438,12 @@ model SubmittedChairpersonReview {
 }
 
 model CoordinatorReview {
-  id          String      @id @default(cuid())
-  createdAt   DateTime    @default(now())
-  updatedAt   DateTime    @updatedAt
-  Coordinator Coordinator @relation(fields: [coordinatorId], references: [id])
-  IM          IM          @relation(fields: [iMId], references: [id])
-
+  id                         String                      @id @default(cuid())
+  createdAt                  DateTime                    @default(now())
+  updatedAt                  DateTime                    @updatedAt
+  Coordinator                Coordinator                 @relation(fields: [coordinatorId], references: [id])
   coordinatorId              String
+  IM                         IM                          @relation(fields: [iMId], references: [id])
   iMId                       String
   CoordinatorReviewItem      CoordinatorReviewItem[]
   SubmittedCoordinatorReview SubmittedCoordinatorReview?
@@ -644,4 +649,41 @@ model SubmittedChairpersonSuggestion {
   IM                      IM                    @relation(fields: [iMId], references: [id])
   iMId                    String                @unique
   Notification            Notification?
+}
+
+model CoordinatorEndorsement {
+  id            String      @id @default(cuid())
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  IM            IM          @relation(fields: [iMId], references: [id])
+  iMId          String      @unique
+  Coordinator   Coordinator @relation(fields: [coordinatorId], references: [id])
+  coordinatorId String
+
+  @@index([coordinatorId])
+}
+
+model Dean {
+  id         String      @id @default(cuid())
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+  Faculty    Faculty     @relation(fields: [facultyId], references: [id])
+  facultyId  String      @unique
+  College    College     @relation(fields: [collegeId], references: [id])
+  collegeId  String
+  ActiveDean ActiveDean?
+
+  @@index([collegeId])
+}
+
+model ActiveDean {
+  id              String        @id @default(cuid())
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+  Dean            Dean          @relation(fields: [deanId], references: [id])
+  deanId          String        @unique
+  ActiveFaculty   ActiveFaculty @relation(fields: [activeFacultyId], references: [id])
+  activeFacultyId String        @unique
+  College         College       @relation(fields: [collegeId], references: [id])
+  collegeId       String        @unique
 }

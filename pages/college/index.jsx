@@ -1,4 +1,5 @@
 import Layout from "@/components/layout/Layout";
+import SortButton from "@/components/SortButton";
 import frontendReadColleges from "@/services/frontend/admin/college/frontendReadColleges";
 import College from "@/views/College";
 import _ from "lodash";
@@ -7,7 +8,13 @@ import { useEffect, useState } from "react";
 
 export default function CollegePage() {
   const [colleges, setColleges] = useState([]);
-  const [state, setState] = useState({ limit: 5, page: 1, name: "" });
+  const [state, setState] = useState({
+    limit: 5,
+    page: 1,
+    name: "",
+    sortColumn: "name",
+    sortOrder: "asc",
+  });
   const [loading, setLoading] = useState(true);
   const [total, setTotal] = useState(0);
   const router = useRouter();
@@ -20,6 +27,8 @@ export default function CollegePage() {
       page: state.page,
       limit: state.limit,
       name: state.name,
+      sortColumn: state.sortColumn,
+      sortOrder: state.sortOrder,
     }).then((res) => {
       setLoading(false);
       if (!subscribe) return;
@@ -126,7 +135,19 @@ export default function CollegePage() {
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
-                  Colleges
+                  <SortButton
+                    label='Name'
+                    sortOrder={
+                      state.sortColumn === "name" ? state.sortOrder : undefined
+                    }
+                    setSortOrder={(order) =>
+                      setState((prev) => ({
+                        ...prev,
+                        sortColumn: "name",
+                        sortOrder: order,
+                      }))
+                    }
+                  />
                 </th>
 
                 <th

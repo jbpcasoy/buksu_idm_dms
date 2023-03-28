@@ -31,9 +31,11 @@ export default function Notifications() {
             d='M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0'
           ></path>
         </svg>
-        <div className='relative flex '>
-          <div className='absolute inline-flex items-center justify-center w-2 h-2 text-xs font- text-white bg-red-500 border-2 border-white rounded-full -top-3 right-1 dark:border-gray-900'></div>
-        </div>
+        {notifications.total > 0 && (
+          <div className='relative flex '>
+            <div className='absolute inline-flex items-center justify-center w-2 h-2 text-xs font- text-white bg-red-500 border-2 border-white rounded-full -top-3 right-1 dark:border-gray-900'></div>
+          </div>
+        )}
       </button>
 
       <div

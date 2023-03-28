@@ -1,5 +1,7 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
+import checkAndUpdateStatus from "@/services/helpers/checkAndUpdateStatus";
 import readCoordinatorSuggestion from "../coordinator_suggestion/readCoordinatorSuggestion";
+import readSubmittedCoordinatorReview from "../submitted_coordinator_review/readSubmittedCoordinatorReview";
 
 export default async function createSubmittedCoordinatorSuggestion({
   coordinatorSuggestionId,
@@ -31,6 +33,11 @@ export default async function createSubmittedCoordinatorSuggestion({
           },
         },
       });
+
+    const submittedCoordinatorReview = await readSubmittedCoordinatorReview(
+      coordinatorSuggestion.submittedCoordinatorReviewId
+    );
+    await checkAndUpdateStatus(submittedCoordinatorReview.iMId);
     return submittedCoordinatorSuggestion;
   } catch (error) {
     throw error;

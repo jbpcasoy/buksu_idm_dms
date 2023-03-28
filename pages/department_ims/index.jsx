@@ -1,4 +1,5 @@
 import Layout from "@/components/layout/Layout";
+import SortButton from "@/components/SortButton";
 import useUser from "@/hooks/useUser";
 import frontendGetIMs from "@/services/frontend/im/frontendGetIMs";
 import IM from "@/views/im/IM";
@@ -16,6 +17,8 @@ export default function Home() {
     serialNumber: "",
     title: "",
     status: undefined,
+    sortColumn: "title",
+    sortOrder: "asc",
   });
 
   const { user, userLoading, userError } = useUser();
@@ -31,9 +34,9 @@ export default function Home() {
     let subscribe = true;
     setLoading(true);
 
-    async function getReviewed(filter) {
+    async function getDepartmentIms(filter) {
       return frontendGetIMs({
-        reviewerId: user.id,
+        departmentId: user.ActiveFaculty.Faculty.departmentId,
         ...filter,
       });
     }
@@ -44,9 +47,11 @@ export default function Home() {
       serialNumber: state.serialNumber,
       title: state.title,
       status: state.status,
+      sortColumn: state.sortColumn,
+      sortOrder: state.sortOrder,
     };
 
-    getReviewed(filter).then((res) => {
+    getDepartmentIms(filter).then((res) => {
       setLoading(false);
       if (!subscribe) return;
 
@@ -172,31 +177,97 @@ export default function Home() {
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
-                  Title
+                  <SortButton
+                    label='Title'
+                    sortOrder={
+                      state.sortColumn === "title" ? state.sortOrder : undefined
+                    }
+                    setSortOrder={(order) =>
+                      setState((prev) => ({
+                        ...prev,
+                        sortColumn: "title",
+                        sortOrder: order,
+                      }))
+                    }
+                  />
                 </th>
                 <th
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
-                  Type
+                  <SortButton
+                    label='Type'
+                    sortOrder={
+                      state.sortColumn === "type" ? state.sortOrder : undefined
+                    }
+                    setSortOrder={(order) =>
+                      setState((prev) => ({
+                        ...prev,
+                        sortColumn: "type",
+                        sortOrder: order,
+                      }))
+                    }
+                  />
                 </th>
                 <th
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
-                  Owner
+                  <SortButton
+                    label='Owner'
+                    sortOrder={
+                      state.sortColumn === "owner.user.name"
+                        ? state.sortOrder
+                        : undefined
+                    }
+                    setSortOrder={(order) =>
+                      setState((prev) => ({
+                        ...prev,
+                        sortColumn: "owner.user.name",
+                        sortOrder: order,
+                      }))
+                    }
+                  />
                 </th>
                 <th
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
-                  Authors
+                  <SortButton
+                    label='Authors'
+                    sortOrder={
+                      state.sortColumn === "authors"
+                        ? state.sortOrder
+                        : undefined
+                    }
+                    setSortOrder={(order) =>
+                      setState((prev) => ({
+                        ...prev,
+                        sortColumn: "authors",
+                        sortOrder: order,
+                      }))
+                    }
+                  />
                 </th>
                 <th
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
-                  Status
+                  <SortButton
+                    label='Status'
+                    sortOrder={
+                      state.sortColumn === "status"
+                        ? state.sortOrder
+                        : undefined
+                    }
+                    setSortOrder={(order) =>
+                      setState((prev) => ({
+                        ...prev,
+                        sortColumn: "status",
+                        sortOrder: order,
+                      }))
+                    }
+                  />
                 </th>
                 <th
                   scope='col'
@@ -215,7 +286,21 @@ export default function Home() {
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
-                  Created At
+                  <SortButton
+                    label='Created At'
+                    sortOrder={
+                      state.sortColumn === "createdAt"
+                        ? state.sortOrder
+                        : undefined
+                    }
+                    setSortOrder={(order) =>
+                      setState((prev) => ({
+                        ...prev,
+                        sortColumn: "createdAt",
+                        sortOrder: order,
+                      }))
+                    }
+                  />
                 </th>
                 {/* <th
                   scope='col'
@@ -227,7 +312,21 @@ export default function Home() {
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
-                  Serial No.
+                  <SortButton
+                    label='Serial No.'
+                    sortOrder={
+                      state.sortColumn === "serialNumber"
+                        ? state.sortOrder
+                        : undefined
+                    }
+                    setSortOrder={(order) =>
+                      setState((prev) => ({
+                        ...prev,
+                        sortColumn: "serialNumber",
+                        sortOrder: order,
+                      }))
+                    }
+                  />
                 </th>
                 <th
                   scope='col'
@@ -299,6 +398,8 @@ export default function Home() {
                 ims.map((im, index) => {
                   return (
                     <IM
+                      showStatus={true}
+                      showReviewSuggestion={true}
                       authors={im.authors}
                       showOwner={true}
                       showReviewedAs={true}

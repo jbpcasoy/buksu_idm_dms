@@ -1,8 +1,10 @@
 import Layout from "@/components/layout/Layout";
+import SortButton from "@/components/SortButton";
 import frontendReadActiveFaculty from "@/services/frontend/admin/active_faculty/frontendReadActiveFaculty";
 import frontendReadDepartment from "@/services/frontend/department/frontendReadDepartment";
 import Faculty from "@/views/Faculty";
 import _ from "lodash";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
@@ -11,7 +13,13 @@ export default function DepartmentPage() {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
   const [activeFaculties, setActiveFaculties] = useState([]);
-  const [state, setState] = useState({ limit: 5, page: 1, name: "" });
+  const [state, setState] = useState({
+    limit: 5,
+    page: 1,
+    name: "",
+    sortOrder: "asc",
+    sortColumn: "Faculty.user.name",
+  });
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
@@ -39,6 +47,8 @@ export default function DepartmentPage() {
       page: state.page,
       departmentId: department.id,
       name: state.name,
+      sortOrder: state.sortOrder,
+      sortColumn: state.sortColumn,
     }).then((res) => {
       if (!subscribe) return;
       setActiveFaculties(res.data);
@@ -53,6 +63,10 @@ export default function DepartmentPage() {
   useEffect(() => {
     console.log({ activeFaculties });
   }, [activeFaculties]);
+
+  useEffect(() => {
+    console.log({ department });
+  }, [department]);
 
   function handleNameChange(e) {
     setState((prev) => ({
@@ -176,24 +190,33 @@ export default function DepartmentPage() {
 
               <div className='flex space-between gap-6 items-center'>
                 <div className='flex -space-x-4'>
-                  <img
-                    className='w-10 h-10 border-2 border-CITLOrange rounded-full dark:border-gray-800'
-                    src={
-                      department?.ActiveChairperson?.Chairperson?.Faculty?.user
-                        ?.image
-                    }
-                    title='Chairperson'
-                    alt=''
-                  />
-                  <img
-                    className='w-10 h-10 border-2 border-CITLOrange rounded-full dark:border-gray-800'
-                    src={
-                      department?.ActiveCoordinator?.Coordinator?.Faculty?.user
-                        ?.image
-                    }
-                    title='Coordinator'
-                    alt=''
-                  />
+                  <Link
+                    href={`/profile/${department?.ActiveChairperson?.Chairperson?.Faculty?.user?.id}`}
+                  >
+                    <img
+                      className='w-10 h-10 border-2 border-CITLOrange rounded-full dark:border-gray-800'
+                      src={
+                        department?.ActiveChairperson?.Chairperson?.Faculty
+                          ?.user?.image
+                      }
+                      title='Chairperson'
+                      alt=''
+                    />
+                  </Link>
+
+                  <Link
+                    href={`/profile/${department?.ActiveCoordinator?.Coordinator?.Faculty?.user?.id}`}
+                  >
+                    <img
+                      className='w-10 h-10 border-2 border-CITLOrange rounded-full dark:border-gray-800'
+                      src={
+                        department?.ActiveCoordinator?.Coordinator?.Faculty
+                          ?.user?.image
+                      }
+                      title='Coordinator'
+                      alt=''
+                    />
+                  </Link>
                 </div>
 
                 {/* <p>{department?.name}</p> */}
@@ -221,7 +244,21 @@ export default function DepartmentPage() {
                     scope='col'
                     className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                   >
-                    Name
+                    <SortButton
+                      label='Name'
+                      sortOrder={
+                        state.sortColumn === "Faculty.user.name"
+                          ? state.sortOrder
+                          : undefined
+                      }
+                      setSortOrder={(order) =>
+                        setState((prev) => ({
+                          ...prev,
+                          sortColumn: "Faculty.user.name",
+                          sortOrder: order,
+                        }))
+                      }
+                    />
                   </th>
 
                   <th
@@ -236,7 +273,7 @@ export default function DepartmentPage() {
                 {activeFaculties.map((activeFaculty, index) => (
                   <Faculty
                     onView={() =>
-                      router.push(`/faculty/${activeFaculty.Faculty.id}`)
+                      router.push(`/profile/${activeFaculty.userId}`)
                     }
                     image={activeFaculty.Faculty.user.image}
                     bottomBorder={true}
