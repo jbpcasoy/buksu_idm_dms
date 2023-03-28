@@ -16,7 +16,6 @@ export default async function createIM({
       data: {
         serialNumber,
         title,
-        status: "SUBMITTED",
         authors,
         owner: {
           connect: {
