@@ -103,6 +103,7 @@ model IM {
   SubmittedPeerSuggestion        SubmittedPeerSuggestion?
   SubmittedCoordinatorSuggestion SubmittedCoordinatorSuggestion?
   SubmittedChairpersonSuggestion SubmittedChairpersonSuggestion?
+  CoordinatorEndorsement         CoordinatorEndorsement?
 
   @@index([ownerId])
 }
@@ -201,14 +202,15 @@ model Chairperson {
 }
 
 model Coordinator {
-  id                  String                @id @default(cuid())
-  createdAt           DateTime              @default(now())
-  updatedAt           DateTime              @updatedAt
-  Faculty             Faculty               @relation(fields: [facultyId], references: [id])
-  facultyId           String                @unique
-  ActiveCoordinator   ActiveCoordinator?
-  CoordinatorApproval CoordinatorApproval[]
-  CoordinatorReview   CoordinatorReview[]
+  id                     String                   @id @default(cuid())
+  createdAt              DateTime                 @default(now())
+  updatedAt              DateTime                 @updatedAt
+  Faculty                Faculty                  @relation(fields: [facultyId], references: [id])
+  facultyId              String                   @unique
+  ActiveCoordinator      ActiveCoordinator?
+  CoordinatorApproval    CoordinatorApproval[]
+  CoordinatorReview      CoordinatorReview[]
+  CoordinatorEndorsement CoordinatorEndorsement[]
 }
 
 // model Senior {
@@ -432,13 +434,12 @@ model SubmittedChairpersonReview {
 }
 
 model CoordinatorReview {
-  id          String      @id @default(cuid())
-  createdAt   DateTime    @default(now())
-  updatedAt   DateTime    @updatedAt
-  Coordinator Coordinator @relation(fields: [coordinatorId], references: [id])
-  IM          IM          @relation(fields: [iMId], references: [id])
-
+  id                         String                      @id @default(cuid())
+  createdAt                  DateTime                    @default(now())
+  updatedAt                  DateTime                    @updatedAt
+  Coordinator                Coordinator                 @relation(fields: [coordinatorId], references: [id])
   coordinatorId              String
+  IM                         IM                          @relation(fields: [iMId], references: [id])
   iMId                       String
   CoordinatorReviewItem      CoordinatorReviewItem[]
   SubmittedCoordinatorReview SubmittedCoordinatorReview?
@@ -644,4 +645,16 @@ model SubmittedChairpersonSuggestion {
   IM                      IM                    @relation(fields: [iMId], references: [id])
   iMId                    String                @unique
   Notification            Notification?
+}
+
+model CoordinatorEndorsement {
+  id            String      @id @default(cuid())
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  IM            IM          @relation(fields: [iMId], references: [id])
+  iMId          String      @unique
+  Coordinator   Coordinator @relation(fields: [coordinatorId], references: [id])
+  coordinatorId String
+
+  @@index([coordinatorId])
 }
