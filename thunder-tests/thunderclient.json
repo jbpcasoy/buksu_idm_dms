@@ -3261,5 +3261,77 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "00417436-42de-4121-af44-8a16e2e99a8e",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "647b4eb2-8c9e-4d72-98d0-11032dacd350",
+    "name": "CREATE ActiveDean",
+    "url": "{{host}}/api/active_dean",
+    "method": "POST",
+    "sortNum": 1940000,
+    "created": "2023-03-28T12:43:32.519Z",
+    "modified": "2023-03-28T12:44:22.390Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"deanId\": \"clfs925ah000es9jv61880hz3\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "3b2f5bf8-fc03-4816-b6d2-bf7a1322cde1",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "647b4eb2-8c9e-4d72-98d0-11032dacd350",
+    "name": "READ ActiveDeans",
+    "url": "{{host}}/api/active_dean?limit=10&page=1",
+    "method": "GET",
+    "sortNum": 1950000,
+    "created": "2023-03-28T13:02:36.818Z",
+    "modified": "2023-03-28T13:02:59.513Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "limit",
+        "value": "10",
+        "isPath": false
+      },
+      {
+        "name": "page",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "1d4a2795-5bc5-49ff-aa8b-fe1458a1844e",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "647b4eb2-8c9e-4d72-98d0-11032dacd350",
+    "name": "READ ActiveDean",
+    "url": "{{host}}/api/active_dean/clfs92g88000gs9jvvt0ld2t5",
+    "method": "GET",
+    "sortNum": 1960000,
+    "created": "2023-03-28T13:12:15.415Z",
+    "modified": "2023-03-28T13:12:43.383Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "d02dcb25-8d6d-4da9-ba0b-d45b2ac518af",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "647b4eb2-8c9e-4d72-98d0-11032dacd350",
+    "name": "DELETE ActiveDean",
+    "url": "{{host}}/api/active_dean/clfs92g88000gs9jvvt0ld2t5",
+    "method": "DELETE",
+    "sortNum": 1970000,
+    "created": "2023-03-28T13:16:26.450Z",
+    "modified": "2023-03-28T13:16:41.658Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
