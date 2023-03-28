@@ -1,9 +1,20 @@
 import Layout from "@/components/layout/Layout";
-import Link from "next/link";
+import useFiles from "@/hooks/file/useFiles";
+import VersionItem from "@/views/im/version/VersionItem";
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 export default function IMVersions() {
   const router = useRouter();
+  const [state, setState] = useState({
+    limit: 10,
+    page: 1,
+  });
+  const { files, filesLoading, filesError, filesRefresh } = useFiles({
+    iMId: router?.query?.id,
+    limit: state.limit,
+    page: state.page,
+  });
 
   return (
     <Layout>
@@ -16,136 +27,92 @@ export default function IMVersions() {
           </div>
 
           <ol className='relative border-l border-CITLOrange ml-10 '>
-            <li className='mb-10 px-5'>
-              <span className='absolute flex items-center justify-center w-6 h-6 bg-CITLOrange rounded-full -left-3 ring-8 ring-CITLGray-light '>
-                <svg
-                  aria-hidden='true'
-                  className='w-2 h-3 text-CITLWhite '
-                  fill='currentColor'
-                  viewBox='0 0 20 20'
-                  xmlns='http://www.w3.org/2000/svg'
-                >
-                  <path d='m14 7v-6.54a6.977 6.977 0 0 1 2.465 1.59l3.484 3.486a6.954 6.954 0 0 1 1.591 2.464h-6.54a1 1 0 0 1 -1-1zm8 3.485v8.515a5.006 5.006 0 0 1 -5 5h-10a5.006 5.006 0 0 1 -5-5v-14a5.006 5.006 0 0 1 5-5h4.515c.163 0 .324.013.485.024v6.976a3 3 0 0 0 3 3h6.976c.011.161.024.322.024.485zm-8 8.515a1 1 0 0 0 -1-1h-5a1 1 0 0 0 0 2h5a1 1 0 0 0 1-1zm3-4a1 1 0 0 0 -1-1h-8a1 1 0 0 0 0 2h8a1 1 0 0 0 1-1z' />
-                </svg>
-              </span>
-              <time className='mb-1 text-sm font-normal leading-none text-CITLGray-main'>
-                February 2022
-              </time>
-              <h3 className='text-lg font-semibold text-CITLDarkBlue '>
-                Instructional Material for IT
-              </h3>
-              <p className='mb-4 text-base font-normal text-CITLGray-main '>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Corrupti sint tenetur temporibus repudiandae nisi fuga nam minus
-                explicabo deleniti quaerat, voluptatem molestias animi enim
-                expedita saepe similique cum doloremque laudantium?
-              </p>
-              <Link
-                href={`/im/${router.query.id}/versions/123`}
-                className='inline-flex items-center px-4 py-2 text-sm font-medium text-CITLDarkBlue bg-CITLOrange border  rounded-lg  hover:text-CITLDarkBlue hover:border-CITLOrange focus:outline-none '
-              >
-                View{" "}
-                <svg
-                  className='w-3 h-3 ml-2'
-                  fill='currentColor'
-                  viewBox='0 0 20 20'
-                  xmlns='http://www.w3.org/2000/svg'
-                >
-                  <path
-                    fillRule='evenodd'
-                    d='M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z'
-                    clipRule='evenodd'
-                  ></path>
-                </svg>
-              </Link>
-            </li>
-            <li className='mb-10 px-5'>
-              <span className='absolute flex items-center justify-center w-6 h-6 bg-CITLOrange rounded-full -left-3 ring-8 ring-CITLGray-light'>
-                <svg
-                  aria-hidden='true'
-                  className='w-2 h-3 text-CITLWhite'
-                  fill='currentColor'
-                  viewBox='0 0 20 20'
-                  xmlns='http://www.w3.org/2000/svg'
-                >
-                  <path d='m14 7v-6.54a6.977 6.977 0 0 1 2.465 1.59l3.484 3.486a6.954 6.954 0 0 1 1.591 2.464h-6.54a1 1 0 0 1 -1-1zm8 3.485v8.515a5.006 5.006 0 0 1 -5 5h-10a5.006 5.006 0 0 1 -5-5v-14a5.006 5.006 0 0 1 5-5h4.515c.163 0 .324.013.485.024v6.976a3 3 0 0 0 3 3h6.976c.011.161.024.322.024.485zm-8 8.515a1 1 0 0 0 -1-1h-5a1 1 0 0 0 0 2h5a1 1 0 0 0 1-1zm3-4a1 1 0 0 0 -1-1h-8a1 1 0 0 0 0 2h8a1 1 0 0 0 1-1z' />
-                </svg>
-              </span>{" "}
-              <time className='mb-1 text-sm font-normal leading-none text-CITLGray-main dark:text-gray-500'>
-                March 2022
-              </time>
-              <h3 className='text-lg font-semibold text-gray-900 dark:text-white'>
-                Instructional Material for IT
-              </h3>
-              <p className=' mb-4 text-base font-normal text-CITLGray-main'>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Laboriosam voluptate quaerat nesciunt fuga dolorum reprehenderit
-                soluta possimus cumque illum corporis, distinctio, facere dicta
-                vitae officia sed? Architecto enim fugit doloribus?
-              </p>
-              <Link
-                href={`/im/${router.query.id}/versions/123`}
-                className='inline-flex items-center px-4 py-2 text-sm font-medium text-CITLDarkBlue bg-CITLOrange border  rounded-lg  hover:text-CITLDarkBlue hover:border-CITLOrange focus:outline-none '
-              >
-                View{" "}
-                <svg
-                  className='w-3 h-3 ml-2'
-                  fill='currentColor'
-                  viewBox='0 0 20 20'
-                  xmlns='http://www.w3.org/2000/svg'
-                >
-                  <path
-                    fillRule='evenodd'
-                    d='M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z'
-                    clipRule='evenodd'
-                  ></path>
-                </svg>
-              </Link>
-            </li>
-            <li className='mb-6 px-5'>
-              <span className='absolute flex items-center justify-center w-6 h-6 bg-CITLOrange rounded-full -left-3 ring-8 ring-CITLGray-light'>
-                <svg
-                  aria-hidden='true'
-                  className='w-2 h-3 text-CITLWhite'
-                  fill='currentColor'
-                  viewBox='0 0 20 20'
-                  xmlns='http://www.w3.org/2000/svg'
-                >
-                  <path d='m14 7v-6.54a6.977 6.977 0 0 1 2.465 1.59l3.484 3.486a6.954 6.954 0 0 1 1.591 2.464h-6.54a1 1 0 0 1 -1-1zm8 3.485v8.515a5.006 5.006 0 0 1 -5 5h-10a5.006 5.006 0 0 1 -5-5v-14a5.006 5.006 0 0 1 5-5h4.515c.163 0 .324.013.485.024v6.976a3 3 0 0 0 3 3h6.976c.011.161.024.322.024.485zm-8 8.515a1 1 0 0 0 -1-1h-5a1 1 0 0 0 0 2h5a1 1 0 0 0 1-1zm3-4a1 1 0 0 0 -1-1h-8a1 1 0 0 0 0 2h8a1 1 0 0 0 1-1z' />
-                </svg>
-              </span>{" "}
-              <time className='mb-1 text-sm font-normal leading-none text-CITLGray-main'>
-                April 2022
-              </time>
-              <h3 className='text-lg font-semibold text-gray-900 dark:text-white'>
-                Instructional Material for IT
-              </h3>
-              <p className=' mb-4 text-base font-normal text-CITLGray-main'>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Eligendi doloribus nam, sint nulla aperiam ratione optio veniam
-                provident expedita voluptate! Quaerat ipsum eveniet voluptates,
-                quod molestias perferendis corporis ab labore.
-              </p>
-              <Link
-                href={`/im/${router.query.id}/versions/123`}
-                className='inline-flex items-center px-4 py-2 text-sm font-medium text-CITLDarkBlue bg-CITLOrange border  rounded-lg  hover:text-CITLDarkBlue hover:border-CITLOrange focus:outline-none '
-              >
-                View{" "}
-                <svg
-                  className='w-3 h-3 ml-2'
-                  fill='currentColor'
-                  viewBox='0 0 20 20'
-                  xmlns='http://www.w3.org/2000/svg'
-                >
-                  <path
-                    fillRule='evenodd'
-                    d='M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z'
-                    clipRule='evenodd'
-                  ></path>
-                </svg>
-              </Link>
-            </li>
+            {files?.data?.map((file) => (
+              <VersionItem
+                date={file.createdAt}
+                fileId={file.id}
+                fileName={file.originalFileName}
+                iMId={router?.query?.id}
+              />
+            ))}
           </ol>
+        </div>
+
+        <div className='flex flex-row items-center justify-end px-6 py-3 w-full'>
+          {!filesLoading && (
+            <span className='text-sm text-gray-700 dark:text-gray-400 '>
+              Showing{" "}
+              <span className='font-semibold text-gray-900 dark:text-white'>
+                {state.limit * (state.page - 1) + 1 > files.total
+                  ? 0
+                  : state.limit * (state.page - 1) + 1}
+              </span>
+              {" - "}
+              <span className='font-semibold text-gray-900 dark:text-white'>
+                {state.limit * state.page > files.total
+                  ? files.total
+                  : state.limit * state.page}
+              </span>{" "}
+              of{" "}
+              <span className='font-semibold text-gray-900 dark:text-white'>
+                {files.total}
+              </span>{" "}
+              Entries
+            </span>
+          )}
+          {filesLoading && (
+            <span className='text-sm text-gray-700 dark:text-gray-400 '>
+              Loading...
+            </span>
+          )}
+          <div className='inline-flex xs:mt-0 ml-2 gap-x-1'>
+            <button
+              className='inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-gray-800 rounded-l hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white disabled:bg-CITLGray-main'
+              disabled={state.page <= 1 || filesLoading}
+              onClick={() => {
+                setState((prev) => ({ ...prev, page: prev.page - 1 }));
+              }}
+            >
+              <svg
+                aria-hidden='true'
+                className='w-5 h-5 mr-2'
+                fill='currentColor'
+                viewBox='0 0 20 20'
+                xmlns='http://www.w3.org/2000/svg'
+              >
+                <path
+                  fillRule='evenodd'
+                  d='M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z'
+                  clipRule='evenodd'
+                ></path>
+              </svg>
+              Prev
+            </button>
+            <button
+              className='inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-gray-800 border-0  rounded-r hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white disabled:bg-CITLGray-main'
+              disabled={
+                !(state.page * state.limit < files.total) || filesLoading
+              }
+              onClick={() => {
+                setState((prev) => ({ ...prev, page: prev.page + 1 }));
+              }}
+            >
+              Next
+              <svg
+                aria-hidden='true'
+                className='w-5 h-5 ml-2'
+                fill='currentColor'
+                viewBox='0 0 20 20'
+                xmlns='http://www.w3.org/2000/svg'
+              >
+                <path
+                  fillRule='evenodd'
+                  d='M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z'
+                  clipRule='evenodd'
+                ></path>
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
     </Layout>

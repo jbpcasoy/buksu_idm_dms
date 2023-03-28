@@ -1,4 +1,5 @@
 import Layout from "@/components/layout/Layout";
+import useFile from "@/hooks/file/useFile";
 import frontendReadIM from "@/services/frontend/im/frontendReadIM";
 import IM from "@/views/im/IM";
 import Link from "next/link";
@@ -8,6 +9,7 @@ import { useEffect, useState } from "react";
 export default function IMVersion() {
   const router = useRouter();
   const [iM, setIM] = useState();
+  const { file, fileLoading, fileError } = useFile(router?.query?.version_id);
 
   useEffect(() => {
     const id = router?.query?.id;
@@ -29,24 +31,26 @@ export default function IMVersion() {
           </h2> */}
           <div className='items-left'>
             <Link
-              href={`/im/${iM?.id}/versions`}
+              href={`/im/${iM?.id}`}
               className='text-CITLDarkBlue font-medium border border-CITLGray-main p-2 rounded hover:bg-CITLOrange hover:border-CITLOrange'
             >
               Current Version
             </Link>{" "}
-            <Link
-              href='/'
-              className='text-CITLDarkBlue font-medium border border-CITLGray-main p-2 rounded hover:bg-CITLOrange hover:border-CITLOrange'
-            >
-              Download
-            </Link>{" "}
           </div>
         </div>
-        {/* TODO change pdf url into dynamic */}
-        <iframe
-          src='https://docs.google.com/gview?url=https://www.africau.edu/images/default/sample.pdf&embedded=true'
-          className='w-full h-screen'
-        />
+
+        {process.env.NODE_ENV === "production" && iM && (
+          <iframe
+            src={`https://docs.google.com/gview?url=${process.env.NEXT_PUBLIC_HOST_URL}/api/download/file/${file?.fileName}&embedded=true`}
+            className='w-full h-screen'
+          />
+        )}
+        {process.env.NODE_ENV !== "production" && iM && (
+          <iframe
+            src={`${process.env.NEXT_PUBLIC_HOST_URL}/api/download/file/${file?.fileName}`}
+            className='w-full h-screen'
+          />
+        )}
       </div>
     </Layout>
   );
