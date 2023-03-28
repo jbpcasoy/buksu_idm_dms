@@ -1,10 +1,11 @@
+import UserContext from "@/contexts/UserContext";
 import useNotifications from "@/hooks/notification/useNotifications";
-import useUser from "@/hooks/useUser";
 import Link from "next/link";
+import { useContext } from "react";
 import NotificationItem from "./NotificationItem";
 
 export default function Notifications() {
-  const { user, userError, useLoading } = useUser();
+  const { user, userError, useLoading } = useContext(UserContext);
   const { notifications, notificationsLoading, notificationsError } =
     useNotifications({ limit: 5, page: 1, userId: user?.id });
 

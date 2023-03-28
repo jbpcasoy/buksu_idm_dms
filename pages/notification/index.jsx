@@ -1,11 +1,11 @@
 import Layout from "@/components/layout/Layout";
 import NotificationItem from "@/components/notification/NotificationItem";
+import UserContext from "@/contexts/UserContext";
 import useNotifications from "@/hooks/notification/useNotifications";
-import useUser from "@/hooks/useUser";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 export default function Notifications() {
-  const { user, userError, useLoading } = useUser();
+  const { user, userError, useLoading } = useContext(UserContext);
   const [state, setState] = useState({
     page: 1,
     limit: 5,

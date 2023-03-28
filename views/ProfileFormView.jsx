@@ -1,8 +1,9 @@
 import ToggleModal from "@/components/ToggleModal";
-import useUser from "@/hooks/useUser";
+import UserContext from "@/contexts/UserContext";
+import { useContext } from "react";
 
 export default function ProfileFormView({ onSubmit, defaultName }) {
-  const { user, userError, userLoading } = useUser();
+  const { user, userError, userLoading } = useContext(UserContext);
 
   return (
     <div className='pt-36'>

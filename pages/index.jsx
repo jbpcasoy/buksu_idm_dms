@@ -1,12 +1,12 @@
-import useUser from "@/hooks/useUser";
+import UserContext from "@/contexts/UserContext";
 import { signIn, signOut } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useSnackbar } from "notistack";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 
 export default function Home() {
-  const { user, userError, userLoading } = useUser();
+  const { user, userError, userLoading } = useContext(UserContext);
   const router = useRouter();
   const { enqueueSnackbar } = useSnackbar();
 

@@ -5,16 +5,16 @@ import ConfirmPeerReview from "@/components/review/preview/ConfirmPeerReview";
 import ReviewPage from "@/components/review/ReviewPage";
 import PeerSuggestion from "@/components/review/suggestion/PeerSuggestion";
 import { countQuestions, sections } from "@/constants/questions";
-import useUser from "@/hooks/useUser";
+import UserContext from "@/contexts/UserContext";
 import frontendReadIM from "@/services/frontend/im/frontendReadIM";
 import frontendCreatePeerReview from "@/services/frontend/peer_review/frontendCreatePeerReview";
 import frontendReadPeerReviews from "@/services/frontend/peer_review/frontendReadPeerReview";
 import frontendCreateSubmittedPeerReview from "@/services/frontend/submitted_peer_review/frontendCreateSubmittedPeerReview";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 const PeerReviewPage = () => {
-  const { user, userLoading, userError } = useUser();
+  const { user, userLoading, userError } = useContext(UserContext);
   const router = useRouter();
   const [iM, setIM] = useState();
   const [peerReview, setPeerReview] = useState();

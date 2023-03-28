@@ -5,16 +5,16 @@ import ConfirmCoordinatorReview from "@/components/review/preview/ConfirmCoordin
 import ReviewPage from "@/components/review/ReviewPage";
 import CoordinatorSuggestion from "@/components/review/suggestion/CoordinatorSuggestion";
 import { countQuestions, sections } from "@/constants/questions";
-import useUser from "@/hooks/useUser";
+import UserContext from "@/contexts/UserContext";
 import frontendCreateSubmittedCoordinatorReview from "@/services/api/submitted_coordinator_review/frontendCreateSubmittedCoordinatorReview";
 import frontendCreateCoordinatorReview from "@/services/frontend/coordinator_review/frontendCreateCoordinatorReview";
 import frontendReadCoordinatorReviews from "@/services/frontend/coordinator_review/frontendReadCoordinatorReviews";
 import frontendReadIM from "@/services/frontend/im/frontendReadIM";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 const CoordinatorReviewPage = () => {
-  const { user, userLoading, userError } = useUser();
+  const { user, userLoading, userError } = useContext(UserContext);
   const router = useRouter();
   const [iM, setIM] = useState();
   const [coordinatorReview, setCoordinatorReview] = useState();
