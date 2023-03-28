@@ -164,7 +164,7 @@ export default function Layout({ children, active }) {
                       xmlns='http://www.w3.org/2000/svg'
                     >
                       <path
-                        stroke-linecap='round'
+                        strokeLinecap='round'
                         stroke-linejoin='round'
                         stroke-width='2'
                         d='M15 19l-7-7 7-7'
@@ -188,7 +188,7 @@ export default function Layout({ children, active }) {
                       xmlns='http://www.w3.org/2000/svg'
                     >
                       <path
-                        stroke-linecap='round'
+                        strokeLinecap='round'
                         stroke-linejoin='round'
                         stroke-width='2'
                         d='M9 5l7 7-7 7'
