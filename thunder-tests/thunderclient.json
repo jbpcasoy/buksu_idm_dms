@@ -3261,5 +3261,24 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "00417436-42de-4121-af44-8a16e2e99a8e",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "647b4eb2-8c9e-4d72-98d0-11032dacd350",
+    "name": "CREATE ActiveDean",
+    "url": "{{host}}/api/active_dean",
+    "method": "POST",
+    "sortNum": 1940000,
+    "created": "2023-03-28T12:43:32.519Z",
+    "modified": "2023-03-28T12:44:22.390Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"deanId\": \"clfs925ah000es9jv61880hz3\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
