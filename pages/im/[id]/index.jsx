@@ -121,32 +121,34 @@ export default function ViewIM() {
                   </Link>
                 </li>
                 <li>
-                  {user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId && (
-                    <button
-                      disabled={
-                        iM?.SubmittedPeerSuggestion ||
-                        (iM?.SubmittedPeerReview &&
+                  {user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId &&
+                    iM.status === "SUBMITTED" && (
+                      <button
+                        disabled={
+                          iM?.SubmittedPeerSuggestion ||
+                          (iM?.SubmittedPeerReview &&
+                            user?.ActiveFaculty?.facultyId !==
+                              iM?.SubmittedPeerReview?.PeerReview?.facultyId)
+                        }
+                        title={
+                          iM?.SubmittedPeerReview &&
                           user?.ActiveFaculty?.facultyId !==
-                            iM?.SubmittedPeerReview?.PeerReview?.facultyId)
-                      }
-                      title={
-                        iM?.SubmittedPeerReview &&
-                        user?.ActiveFaculty?.facultyId !==
-                          iM?.SubmittedPeerReview?.PeerReview?.facultyId
-                          ? "Other peer's review exists"
-                          : iM?.SubmittedPeerSuggestion
-                          ? "Peer review and suggestions already exists"
-                          : undefined
-                      }
-                      onClick={() => router.push(`/im/${iM?.id}/review/peer`)}
-                      className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter text-left w-full'
-                    >
-                      Peer Review
-                    </button>
-                  )}
+                            iM?.SubmittedPeerReview?.PeerReview?.facultyId
+                            ? "Other peer's review exists"
+                            : iM?.SubmittedPeerSuggestion
+                            ? "Peer review and suggestions already exists"
+                            : undefined
+                        }
+                        onClick={() => router.push(`/im/${iM?.id}/review/peer`)}
+                        className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter text-left w-full'
+                      >
+                        Peer Review
+                      </button>
+                    )}
                 </li>
                 <li>
                   {user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId &&
+                    iM.status === "SUBMITTED" &&
                     user?.ActiveFaculty?.ActiveCoordinator && (
                       <button
                         onClick={() =>
@@ -179,6 +181,7 @@ export default function ViewIM() {
                 </li>
                 <li>
                   {user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId &&
+                    iM.status === "SUBMITTED" &&
                     user?.ActiveFaculty?.ActiveChairperson && (
                       <button
                         onClick={() =>
@@ -208,6 +211,13 @@ export default function ViewIM() {
                         Chairperson Review
                       </button>
                     )}
+                </li>
+                <li>
+                  {iM?.status === "DEPARTMENT_REVIEWED" && (
+                    <button className='block w-full  text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter'>
+                      Endorse
+                    </button>
+                  )}
                 </li>
               </ul>
             </div>
@@ -274,7 +284,8 @@ export default function ViewIM() {
           </div>
         )}
 
-        {iM?.owner?.userId === user?.id && (
+        {(iM?.owner?.userId === user?.id ||
+          iM?.status === "DEPARTMENT_REVIEWED") && (
           <>
             {iM?.SubmittedPeerReview?.PeerReview &&
               iM?.SubmittedPeerSuggestion && (
