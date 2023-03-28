@@ -271,7 +271,7 @@ export default function Home() {
                   <a href='#'>
                     <svg
                       xmlns='http://www.w3.org/2000/svg'
-                      class='w-2 h-3 inline-flex ml-1'
+                      className='w-2 h-3 inline-flex ml-1'
                       aria-hidden='true'
                       fill='currentColor'
                       viewBox='0 0 320 512'
@@ -315,7 +315,7 @@ export default function Home() {
                   <a href='#'>
                     <svg
                       xmlns='http://www.w3.org/2000/svg'
-                      class='w-2 h-3 inline-flex ml-1'
+                      className='w-2 h-3 inline-flex ml-1'
                       aria-hidden='true'
                       fill='currentColor'
                       viewBox='0 0 320 512'
@@ -385,35 +385,35 @@ export default function Home() {
                   className={` bg-white text-sm text-CITLGray-main text-left p-4 animate-pulse `}
                 >
                   <td className='px-6 py-4  '>
-                    <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
-                    <div class='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
+                    <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                    <div className='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
                   </td>
 
                   <td className='px-6 py-4 '>
-                    <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                    <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
                   </td>
 
                   <td className='px-6 py-4 '>
-                    <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                    <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
                   </td>
 
                   <td className='px-6 py-4 '>
-                    <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                    <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
                   </td>
                   <td className='px-4 py-4 space-x-1'>
-                    <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                    <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
                   </td>
 
                   <td className='px-6 py-4 '>
-                    <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                    <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
                   </td>
 
                   <td className='px-6 py-4 '>
-                    <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                    <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
                   </td>
 
                   <td className='px-6 py-4 '>
-                    <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                    <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
                   </td>
                 </tr>
               )}

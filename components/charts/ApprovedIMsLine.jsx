@@ -61,7 +61,7 @@ export function ApprovedIMsLine() {
           <h3 className='text-lg font-semibold mt-3'>Approved IM&apos;s</h3>
           {/* <div className='border border-CITLGray-lighter px-1 py-1 m-1 rounded-md'>
             <h3 className='text-sm text-left'>
-              <span class='inline-flex w-3 h-3 bg-blue-600 rounded-sm'></span>{" "}
+              <span className='inline-flex w-3 h-3 bg-blue-600 rounded-sm'></span>{" "}
               IM Drafts
             </h3>
           </div> */}

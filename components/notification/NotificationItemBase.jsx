@@ -40,11 +40,11 @@ export default function NotificationItemBase({
     return (
       <div
         role='status'
-        class=' p-4 border border-gray-200 rounded shadow animate-pulse md:p-2 dark:border-gray-700'
+        className=' p-4 border border-gray-200 rounded shadow animate-pulse md:p-2 dark:border-gray-700'
       >
-        <div class='flex items-center space-x-3'>
+        <div className='flex items-center space-x-3'>
           <svg
-            class='text-gray-200 w-14 h-14 dark:text-gray-700'
+            className='text-gray-200 w-14 h-14 dark:text-gray-700'
             aria-hidden='true'
             fill='currentColor'
             viewBox='0 0 20 20'
@@ -57,11 +57,11 @@ export default function NotificationItemBase({
             ></path>
           </svg>
           <div>
-            <div class='h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-64 mb-2'></div>
-            <div class='w-96 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
+            <div className='h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-64 mb-2'></div>
+            <div className='w-96 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
           </div>
         </div>
-        <span class='sr-only'>Loading...</span>
+        <span className='sr-only'>Loading...</span>
       </div>
     );
 
