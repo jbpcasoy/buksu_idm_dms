@@ -3319,5 +3319,19 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "d02dcb25-8d6d-4da9-ba0b-d45b2ac518af",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "647b4eb2-8c9e-4d72-98d0-11032dacd350",
+    "name": "DELETE ActiveDean",
+    "url": "{{host}}/api/active_dean/clfs92g88000gs9jvvt0ld2t5",
+    "method": "DELETE",
+    "sortNum": 1970000,
+    "created": "2023-03-28T13:16:26.450Z",
+    "modified": "2023-03-28T13:16:41.658Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
