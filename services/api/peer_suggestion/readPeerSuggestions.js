@@ -16,6 +16,28 @@ export default async function readPeerSuggestions({
           contains: submittedPeerReviewId,
         },
       },
+      include: {
+        SubmittedPeerSuggestion: true,
+        SubmittedPeerReview: {
+          select: {
+            PeerReview: {
+              select: {
+                Faculty: {
+                  select: {
+                    user: {
+                      select: {
+                        name: true,
+                        image: true,
+                        id: true,
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
     });
     const total = await prisma.peerSuggestion.count({
       where: {

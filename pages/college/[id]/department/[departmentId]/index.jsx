@@ -4,6 +4,7 @@ import frontendReadActiveFaculty from "@/services/frontend/admin/active_faculty/
 import frontendReadDepartment from "@/services/frontend/department/frontendReadDepartment";
 import Faculty from "@/views/Faculty";
 import _ from "lodash";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
@@ -62,6 +63,10 @@ export default function DepartmentPage() {
   useEffect(() => {
     console.log({ activeFaculties });
   }, [activeFaculties]);
+
+  useEffect(() => {
+    console.log({ department });
+  }, [department]);
 
   function handleNameChange(e) {
     setState((prev) => ({
@@ -185,24 +190,33 @@ export default function DepartmentPage() {
 
               <div className='flex space-between gap-6 items-center'>
                 <div className='flex -space-x-4'>
-                  <img
-                    className='w-10 h-10 border-2 border-CITLOrange rounded-full dark:border-gray-800'
-                    src={
-                      department?.ActiveChairperson?.Chairperson?.Faculty?.user
-                        ?.image
-                    }
-                    title='Chairperson'
-                    alt=''
-                  />
-                  <img
-                    className='w-10 h-10 border-2 border-CITLOrange rounded-full dark:border-gray-800'
-                    src={
-                      department?.ActiveCoordinator?.Coordinator?.Faculty?.user
-                        ?.image
-                    }
-                    title='Coordinator'
-                    alt=''
-                  />
+                  <Link
+                    href={`/profile/${department?.ActiveChairperson?.Chairperson?.Faculty?.user?.id}`}
+                  >
+                    <img
+                      className='w-10 h-10 border-2 border-CITLOrange rounded-full dark:border-gray-800'
+                      src={
+                        department?.ActiveChairperson?.Chairperson?.Faculty
+                          ?.user?.image
+                      }
+                      title='Chairperson'
+                      alt=''
+                    />
+                  </Link>
+
+                  <Link
+                    href={`/profile/${department?.ActiveCoordinator?.Coordinator?.Faculty?.user?.id}`}
+                  >
+                    <img
+                      className='w-10 h-10 border-2 border-CITLOrange rounded-full dark:border-gray-800'
+                      src={
+                        department?.ActiveCoordinator?.Coordinator?.Faculty
+                          ?.user?.image
+                      }
+                      title='Coordinator'
+                      alt=''
+                    />
+                  </Link>
                 </div>
 
                 {/* <p>{department?.name}</p> */}
@@ -259,7 +273,7 @@ export default function DepartmentPage() {
                 {activeFaculties.map((activeFaculty, index) => (
                   <Faculty
                     onView={() =>
-                      router.push(`/faculty/${activeFaculty.Faculty.id}`)
+                      router.push(`/profile/${activeFaculty.userId}`)
                     }
                     image={activeFaculty.Faculty.user.image}
                     bottomBorder={true}

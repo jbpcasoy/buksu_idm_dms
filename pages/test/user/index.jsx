@@ -1,6 +1,6 @@
 import Layout from "@/components/layout/Layout";
 import useUser from "@/hooks/useUser";
-import UserProfileFormView from "@/views/UserProfileFormView";
+import UserProfileView from "@/views/UserProfileView";
 import axios from "axios";
 import { useRouter } from "next/router";
 
@@ -10,7 +10,7 @@ export default function UserProfile() {
 
   return (
     <Layout>
-      <UserProfileFormView
+      <UserProfileView
         onSubmit={(profile) => {
           axios.patch(`/api/profile/${user.id}`, profile).then((res) => {
             router.reload();

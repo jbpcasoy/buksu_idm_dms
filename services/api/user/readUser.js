@@ -14,7 +14,15 @@ export default async function readUser(id) {
           include: {
             ActiveChairperson: true,
             ActiveCoordinator: true,
-            Faculty: true,
+            Faculty: {
+              include: {
+                department: {
+                  include: {
+                    college: true,
+                  },
+                },
+              },
+            },
           },
         },
       },

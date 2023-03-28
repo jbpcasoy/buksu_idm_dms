@@ -32,7 +32,25 @@ export default function CoordinatorSuggestionView({
   });
 
   return (
-    <SuggestionView title={"Coordinator Suggestions"} viewOnly={viewOnly}>
+    <SuggestionView
+      title={"Coordinator Suggestions"}
+      viewOnly={viewOnly}
+      reviewerName={
+        coordinatorSuggestion?.SubmittedCoordinatorReview?.CoordinatorReview
+          ?.Coordinator?.Faculty?.user?.name
+      }
+      reviewDate={
+        coordinatorSuggestion?.SubmittedCoordinatorSuggestion?.createdAt
+      }
+      reviewerImage={
+        coordinatorSuggestion?.SubmittedCoordinatorReview?.CoordinatorReview
+          ?.Coordinator?.Faculty?.user?.image
+      }
+      reviewerId={
+        coordinatorSuggestion?.SubmittedCoordinatorReview?.CoordinatorReview
+          ?.Coordinator?.Faculty?.user?.id
+      }
+    >
       {coordinatorSuggestionItems.map((coordinatorSuggestionItem) => (
         <CoordinatorSuggestionItemView
           viewOnly={viewOnly}
