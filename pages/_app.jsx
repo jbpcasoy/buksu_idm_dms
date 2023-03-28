@@ -11,22 +11,22 @@ export default function App({
   pageProps: { session, ...pageProps },
 }) {
   return (
-    <SessionProvider session={session}>
-      <ThemeProvider theme={theme}>
-        <SnackbarProvider
-          anchorOrigin={{
-            horizontal: "left",
-            vertical: "top",
-          }}
-          action={(key) => (
-            <IconButton color='inherit' onClick={() => closeSnackbar(key)}>
-              <CloseIcon />
-            </IconButton>
-          )}
-        >
+    <ThemeProvider theme={theme}>
+      <SnackbarProvider
+        anchorOrigin={{
+          horizontal: "left",
+          vertical: "top",
+        }}
+        action={(key) => (
+          <IconButton color='inherit' onClick={() => closeSnackbar(key)}>
+            <CloseIcon />
+          </IconButton>
+        )}
+      >
+        <SessionProvider session={session}>
           <Component {...pageProps} />
-        </SnackbarProvider>
-      </ThemeProvider>
-    </SessionProvider>
+        </SessionProvider>
+      </SnackbarProvider>
+    </ThemeProvider>
   );
 }

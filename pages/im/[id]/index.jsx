@@ -4,6 +4,7 @@ import CoordinatorSuggestionView from "@/components/review/suggestion/suggestion
 import PeerSuggestionView from "@/components/review/suggestion/suggestion_view/PeerSuggestionView";
 import useIM from "@/hooks/useIM";
 import useUser from "@/hooks/useUser";
+import frontendCreateCoordinatorEndorsement from "@/services/frontend/coordinator_endorsement/frontendCreateCoordinatorEndorsement";
 import { initDropdowns, initModals } from "flowbite";
 import moment from "moment";
 import Link from "next/link";
@@ -20,6 +21,13 @@ export default function ViewIM() {
     initDropdowns();
     initModals();
   });
+
+  async function handleEndorse() {
+    return frontendCreateCoordinatorEndorsement({
+      iMId: iM.id,
+      coordinatorId: user?.ActiveFaculty?.ActiveCoordinator?.coordinatorId,
+    });
+  }
 
   return (
     <Layout>
@@ -214,7 +222,14 @@ export default function ViewIM() {
                 </li>
                 <li>
                   {iM?.status === "DEPARTMENT_REVIEWED" && (
-                    <button className='block w-full  text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter'>
+                    <button
+                      disabled={iM?.CoordinatorEndorsement}
+                      title={
+                        iM?.CoordinatorEndorsement && "IM was already endorsed"
+                      }
+                      onClick={handleEndorse}
+                      className='block w-full  text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter'
+                    >
                       Endorse
                     </button>
                   )}
