@@ -138,7 +138,8 @@ model College {
   createdAt  DateTime     @default(now())
   updatedAt  DateTime     @updatedAt
   Department Department[]
-  Dean       Dean?
+  Dean       Dean[]
+  ActiveDean ActiveDean?
 }
 
 model Department {
@@ -669,8 +670,10 @@ model Dean {
   Faculty    Faculty     @relation(fields: [facultyId], references: [id])
   facultyId  String      @unique
   College    College     @relation(fields: [collegeId], references: [id])
-  collegeId  String      @unique
+  collegeId  String
   ActiveDean ActiveDean?
+
+  @@index([collegeId])
 }
 
 model ActiveDean {
@@ -681,4 +684,6 @@ model ActiveDean {
   deanId          String        @unique
   ActiveFaculty   ActiveFaculty @relation(fields: [activeFacultyId], references: [id])
   activeFacultyId String        @unique
+  College         College       @relation(fields: [collegeId], references: [id])
+  collegeId       String        @unique
 }

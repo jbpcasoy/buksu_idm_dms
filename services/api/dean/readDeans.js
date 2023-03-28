@@ -27,6 +27,7 @@ export default async function readDeans({ limit, page }) {
             },
           },
         },
+        ActiveDean: true,
       },
     });
 

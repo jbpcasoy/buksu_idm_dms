@@ -20,6 +20,11 @@ export default async function createActiveDean({ deanId }) {
             id: activeFaculty.id,
           },
         },
+        College: {
+          connect: {
+            id: dean.collegeId,
+          },
+        },
       },
     });
 
