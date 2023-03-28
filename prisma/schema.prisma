@@ -138,6 +138,7 @@ model College {
   createdAt  DateTime     @default(now())
   updatedAt  DateTime     @updatedAt
   Department Department[]
+  Dean       Dean?
 }
 
 model Department {
@@ -169,6 +170,7 @@ model Faculty {
   Coordinator   Coordinator?
   PeerApproval  PeerApproval[]
   PeerReview    PeerReview[]
+  Dean          Dean?
 
   @@unique([userId, departmentId])
   @@index([departmentId])
@@ -186,6 +188,7 @@ model ActiveFaculty {
   departmentId      String
   ActiveCoordinator ActiveCoordinator?
   ActiveChairperson ActiveChairperson?
+  ActiveDean        ActiveDean?
 
   @@index([departmentId])
 }
@@ -657,4 +660,25 @@ model CoordinatorEndorsement {
   coordinatorId String
 
   @@index([coordinatorId])
+}
+
+model Dean {
+  id         String      @id @default(cuid())
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+  Faculty    Faculty     @relation(fields: [facultyId], references: [id])
+  facultyId  String      @unique
+  College    College     @relation(fields: [collegeId], references: [id])
+  collegeId  String      @unique
+  ActiveDean ActiveDean?
+}
+
+model ActiveDean {
+  id              String        @id @default(cuid())
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+  Dean            Dean          @relation(fields: [deanId], references: [id])
+  deanId          String        @unique
+  ActiveFaculty   ActiveFaculty @relation(fields: [activeFacultyId], references: [id])
+  activeFacultyId String        @unique
 }

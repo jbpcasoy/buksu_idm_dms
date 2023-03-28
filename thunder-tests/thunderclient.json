@@ -3189,5 +3189,77 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "dcf793b9-5e2b-42a1-a450-d1608f0c19aa",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "3a22c1c2-5c2f-49a1-83e8-a3d910c62810",
+    "name": "CREATE Dean",
+    "url": "{{host}}/api/dean",
+    "method": "POST",
+    "sortNum": 1910000,
+    "created": "2023-03-28T08:53:31.266Z",
+    "modified": "2023-03-28T11:10:08.879Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"facultyId\": \"clfaue2d80007s9byw9i91pvc\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "8be56747-21e3-465c-9cdc-cd4af22bc374",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "3a22c1c2-5c2f-49a1-83e8-a3d910c62810",
+    "name": "READ Deans",
+    "url": "{{host}}/api/dean?limit=10&page=1",
+    "method": "GET",
+    "sortNum": 1920000,
+    "created": "2023-03-28T11:16:23.088Z",
+    "modified": "2023-03-28T11:17:05.039Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "limit",
+        "value": "10",
+        "isPath": false
+      },
+      {
+        "name": "page",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "349063dd-a355-4f4b-9cd9-911c71bf33dc",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "3a22c1c2-5c2f-49a1-83e8-a3d910c62810",
+    "name": "READ Dean",
+    "url": "{{host}}/api/dean/clfs5puek0000s9jvow51v1tn",
+    "method": "GET",
+    "sortNum": 1930000,
+    "created": "2023-03-28T11:22:50.707Z",
+    "modified": "2023-03-28T11:23:11.787Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "10ca3564-5c02-4b30-bc63-99c95a9942f1",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "3a22c1c2-5c2f-49a1-83e8-a3d910c62810",
+    "name": "DELETE Dean",
+    "url": "{{host}}/api/dean/clfs6cf6e0004s9jv990n2a9t",
+    "method": "DELETE",
+    "sortNum": 1940000,
+    "created": "2023-03-28T11:27:22.171Z",
+    "modified": "2023-03-28T11:28:16.847Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
