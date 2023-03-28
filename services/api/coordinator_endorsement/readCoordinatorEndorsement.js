@@ -9,6 +9,21 @@ export default async function readCoordinatorEndorsement(id, filter = {}) {
         ...filter,
         id,
       },
+      include: {
+        Coordinator: {
+          include: {
+            Faculty: {
+              include: {
+                department: {
+                  include: {
+                    college: true,
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
     });
 
   return coordinatorEndorsement;

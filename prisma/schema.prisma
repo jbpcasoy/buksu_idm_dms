@@ -652,26 +652,40 @@ model SubmittedChairpersonSuggestion {
 }
 
 model CoordinatorEndorsement {
-  id            String      @id @default(cuid())
-  createdAt     DateTime    @default(now())
-  updatedAt     DateTime    @updatedAt
-  IM            IM          @relation(fields: [iMId], references: [id])
-  iMId          String      @unique
-  Coordinator   Coordinator @relation(fields: [coordinatorId], references: [id])
-  coordinatorId String
+  id              String           @id @default(cuid())
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  IM              IM               @relation(fields: [iMId], references: [id])
+  iMId            String           @unique
+  Coordinator     Coordinator      @relation(fields: [coordinatorId], references: [id])
+  coordinatorId   String
+  DeanEndorsement DeanEndorsement?
 
   @@index([coordinatorId])
 }
 
+model DeanEndorsement {
+  id                       String                 @id @default(cuid())
+  createdAt                DateTime               @default(now())
+  updatedAt                DateTime               @updatedAt
+  Dean                     Dean                   @relation(fields: [deanId], references: [id])
+  deanId                   String
+  CoordinatorEndorsement   CoordinatorEndorsement @relation(fields: [coordinatorEndorsementId], references: [id])
+  coordinatorEndorsementId String                 @unique
+
+  @@index([deanId])
+}
+
 model Dean {
-  id         String      @id @default(cuid())
-  createdAt  DateTime    @default(now())
-  updatedAt  DateTime    @updatedAt
-  Faculty    Faculty     @relation(fields: [facultyId], references: [id])
-  facultyId  String      @unique
-  College    College     @relation(fields: [collegeId], references: [id])
-  collegeId  String
-  ActiveDean ActiveDean?
+  id              String            @id @default(cuid())
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+  Faculty         Faculty           @relation(fields: [facultyId], references: [id])
+  facultyId       String            @unique
+  College         College           @relation(fields: [collegeId], references: [id])
+  collegeId       String
+  ActiveDean      ActiveDean?
+  DeanEndorsement DeanEndorsement[]
 
   @@index([collegeId])
 }

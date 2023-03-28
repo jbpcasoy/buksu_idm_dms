@@ -7,6 +7,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import PersonIcon from "@mui/icons-material/Person";
 import Person2Icon from "@mui/icons-material/Person2";
 import Person4Icon from "@mui/icons-material/Person4";
+import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
 import {
   Box,
   Drawer,
@@ -54,6 +55,11 @@ const menuItems = [
     label: "Coordinators",
     icon: <Person2Icon />,
     link: "/admin/coordinator",
+  },
+  {
+    label: "Dean",
+    icon: <SupervisorAccountIcon />,
+    link: "/admin/dean",
   },
   {
     label: "IMs",
