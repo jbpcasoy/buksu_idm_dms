@@ -3189,5 +3189,24 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "dcf793b9-5e2b-42a1-a450-d1608f0c19aa",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "3a22c1c2-5c2f-49a1-83e8-a3d910c62810",
+    "name": "CREATE Dean",
+    "url": "{{host}}/api/dean",
+    "method": "POST",
+    "sortNum": 1910000,
+    "created": "2023-03-28T08:53:31.266Z",
+    "modified": "2023-03-28T11:10:08.879Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"facultyId\": \"clfaue2d80007s9byw9i91pvc\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
