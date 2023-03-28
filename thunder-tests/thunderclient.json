@@ -3208,5 +3208,30 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "8be56747-21e3-465c-9cdc-cd4af22bc374",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "3a22c1c2-5c2f-49a1-83e8-a3d910c62810",
+    "name": "READ Deans",
+    "url": "{{host}}/api/dean?limit=10&page=1",
+    "method": "GET",
+    "sortNum": 1920000,
+    "created": "2023-03-28T11:16:23.088Z",
+    "modified": "2023-03-28T11:17:05.039Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "limit",
+        "value": "10",
+        "isPath": false
+      },
+      {
+        "name": "page",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "tests": []
   }
 ]
