@@ -1,5 +1,7 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
+import checkAndUpdateStatus from "@/services/helpers/checkAndUpdateStatus";
 import readChairpersonSuggestion from "../chairperson_suggestion/readChairpersonSuggestion";
+import readSubmittedChairpersonReview from "../submitted_chairperson_review/readSubmittedChairpersonReview";
 
 export default async function createSubmittedChairpersonSuggestion({
   chairpersonSuggestionId,
@@ -31,6 +33,12 @@ export default async function createSubmittedChairpersonSuggestion({
           },
         },
       });
+
+    const submittedChairpersonReview = await readSubmittedChairpersonReview(
+      chairpersonSuggestion.submittedChairpersonReviewId
+    );
+    await checkAndUpdateStatus(submittedChairpersonReview.iMId);
+
     return submittedChairpersonSuggestion;
   } catch (error) {
     throw error;

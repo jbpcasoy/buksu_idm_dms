@@ -421,6 +421,8 @@ export default function Home() {
                 ims.map((im, index) => {
                   return (
                     <IM
+                      showStatus={true}
+                      showReviewSuggestion={true}
                       authors={im.authors}
                       showSerialNumber={true}
                       // bottomBorder={index < state.ims.length - 1}

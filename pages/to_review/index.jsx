@@ -47,7 +47,7 @@ export default function Home() {
       limit: state.limit,
       serialNumber: state.serialNumber,
       title: state.title,
-      status: state.status,
+      status: "SUBMITTED",
       sortColumn: state.sortColumn,
       sortOrder: state.sortOrder,
     };
@@ -260,26 +260,6 @@ export default function Home() {
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
-                  <SortButton
-                    label='Status'
-                    sortOrder={
-                      state.sortColumn === "status"
-                        ? state.sortOrder
-                        : undefined
-                    }
-                    setSortOrder={(order) =>
-                      setState((prev) => ({
-                        ...prev,
-                        sortColumn: "status",
-                        sortOrder: order,
-                      }))
-                    }
-                  />
-                </th>
-                <th
-                  scope='col'
-                  className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
-                >
                   Review/Suggestion
                 </th>
                 <th
@@ -359,11 +339,6 @@ export default function Home() {
                     <div class='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
                   </td>
 
-                  <td className='px-6 py-4 '>
-                    <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
-                    <div class='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
-                  </td>
-
                   {/* <td className='px-6 py-4 '>
         {moment(updatedAt).format("M/D/YYYY, h:mm A")}
       </td> */}
@@ -381,6 +356,7 @@ export default function Home() {
                 ims.map((im, index) => {
                   return (
                     <IM
+                      showReviewSuggestion={true}
                       authors={im.authors}
                       // bottomBorder={index < state.ims.length - 1}
                       im={im}
