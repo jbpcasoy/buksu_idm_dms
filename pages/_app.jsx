@@ -1,3 +1,4 @@
+import { UserContextProvider } from "@/contexts/UserContext";
 import "@/styles/globals.css";
 import theme from "@/theme";
 import CloseIcon from "@mui/icons-material/Close";
@@ -50,7 +51,9 @@ export default function App({
         )}
       >
         <SessionProvider session={session}>
-          <Component {...pageProps} />
+          <UserContextProvider>
+            <Component {...pageProps} />
+          </UserContextProvider>
         </SessionProvider>
       </SnackbarProvider>
     </ThemeProvider>

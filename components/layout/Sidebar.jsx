@@ -1,11 +1,12 @@
+import UserContext from "@/contexts/UserContext";
 import useSidebarCounts from "@/hooks/count/useSidebarCounts";
-import useUser from "@/hooks/useUser";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useContext } from "react";
 
 export default function Sidebar() {
   const router = useRouter();
-  const { user } = useUser();
+  const { user } = useContext(UserContext);
   const {
     myImsCount,
     toReviseCount,
