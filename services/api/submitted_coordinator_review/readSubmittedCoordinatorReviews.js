@@ -18,7 +18,13 @@ export default async function readSubmittedCoordinatorReviews({
           },
         },
       });
-    const total = await prisma.submittedCoordinatorReview.count();
+    const total = await prisma.submittedCoordinatorReview.count({
+      where: {
+        coordinatorReviewId: {
+          contains: coordinatorReviewId,
+        },
+      },
+    });
     return { data: submittedCoordinatorReviews, total };
   } catch (error) {
     throw error;
