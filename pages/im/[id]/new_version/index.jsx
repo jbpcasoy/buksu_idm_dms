@@ -2,8 +2,8 @@ import Layout from "@/components/layout/Layout";
 import ChairpersonSuggestionView from "@/components/review/suggestion/suggestion_view/ChairpersonSuggestionView";
 import CoordinatorSuggestionView from "@/components/review/suggestion/suggestion_view/CoordinatorSuggestionView";
 import PeerSuggestionView from "@/components/review/suggestion/suggestion_view/PeerSuggestionView";
+import UserContext from "@/contexts/UserContext";
 import useIM from "@/hooks/useIM";
-import useUser from "@/hooks/useUser";
 import frontendUpdateActiveFile from "@/services/frontend/active_file/frontendUpdateIMFile";
 import frontendCreateFile from "@/services/frontend/file/frontendCreateFile";
 import uploadIMFile from "@/services/frontend/im/upload/uploadIMFile";
@@ -11,11 +11,11 @@ import { initDropdowns, initModals } from "flowbite";
 import moment from "moment";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 export default function ViewIM() {
   const router = useRouter();
-  const { user } = useUser();
+  const { user } = useContext(UserContext);
   const { iM, iMError, iMLoading, refreshIM } = useIM(router?.query?.id);
   const [file, setFile] = useState();
   const [filePreviewUrl, setFilePreviewUrl] = useState();

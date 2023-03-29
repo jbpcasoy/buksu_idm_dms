@@ -1,13 +1,13 @@
 import Layout from "@/components/layout/Layout";
-import useUser from "@/hooks/useUser";
+import UserContext from "@/contexts/UserContext";
 import ProfileFormView from "@/views/ProfileFormView";
 import axios from "axios";
 import { initModals } from "flowbite";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 
 export default function Me() {
-  const { user, userLoading, userError } = useUser();
+  const { user, userLoading, userError } = useContext(UserContext);
   const router = useRouter();
 
   useEffect(() => {

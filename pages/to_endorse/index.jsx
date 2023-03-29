@@ -1,11 +1,11 @@
 import Layout from "@/components/layout/Layout";
 import SortButton from "@/components/SortButton";
-import useUser from "@/hooks/useUser";
+import UserContext from "@/contexts/UserContext";
 import frontendGetIMs from "@/services/frontend/im/frontendGetIMs";
 import IM from "@/views/im/IM";
 import _ from "lodash";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 export default function Home() {
   const [ims, setIms] = useState([]);
@@ -21,7 +21,7 @@ export default function Home() {
     sortOrder: "asc",
   });
 
-  const { user, userLoading, userError } = useUser();
+  const { user, userLoading, userError } = useContext(UserContext);
 
   useEffect(() => {
     console.log({ user });
@@ -149,24 +149,6 @@ export default function Home() {
                   type='text'
                   placeholder='Title'
                 ></input>
-                <select
-                  id='default'
-                  className='bg-CITLGray-light border-CITLGray-lighter border text-CITLGray-main rounded-lg text-sm font-medium'
-                  onChange={debouncedHandleStatusChange}
-                >
-                  <option value='' selected>
-                    Status
-                  </option>
-                  <option value='SUBMITTED'>Submitted</option>
-                  <option value='DEPARTMENT_REVIEWED'>
-                    Department Reviewed
-                  </option>
-                  <option value='DEPARTMENT_ENDORSED'>
-                    Department Endorsed
-                  </option>
-                  <option value='CITL_REVIEWED'>CITL Reviewed</option>
-                  <option value='CITL_ENDORSED'>CITL Endorsed</option>
-                </select>
               </div>
             </div>
           </div>

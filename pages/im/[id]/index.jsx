@@ -2,20 +2,20 @@ import Layout from "@/components/layout/Layout";
 import ChairpersonSuggestionView from "@/components/review/suggestion/suggestion_view/ChairpersonSuggestionView";
 import CoordinatorSuggestionView from "@/components/review/suggestion/suggestion_view/CoordinatorSuggestionView";
 import PeerSuggestionView from "@/components/review/suggestion/suggestion_view/PeerSuggestionView";
+import UserContext from "@/contexts/UserContext";
 import useIM from "@/hooks/useIM";
-import useUser from "@/hooks/useUser";
 import frontendCreateCoordinatorEndorsement from "@/services/frontend/coordinator_endorsement/frontendCreateCoordinatorEndorsement";
 import frontendSubmitIMForReview from "@/services/frontend/im/frontendSubmitIMForReview";
 import { initDropdowns, initModals } from "flowbite";
 import moment from "moment";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import ToggleIM from "../../../components/im/ToggleIM";
 
 export default function ViewIM() {
   const router = useRouter();
-  const { user } = useUser();
+  const { user } = useContext(UserContext);
   const { iM, iMError, iMLoading, refreshIM } = useIM(router?.query?.id);
 
   useEffect(() => {
@@ -258,18 +258,20 @@ export default function ViewIM() {
                     )}
                 </li>
                 <li>
-                  {iM?.status === "DEPARTMENT_REVIEWED" && (
-                    <button
-                      disabled={iM?.CoordinatorEndorsement}
-                      title={
-                        iM?.CoordinatorEndorsement && "IM was already endorsed"
-                      }
-                      onClick={handleEndorse}
-                      className='block w-full  text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter'
-                    >
-                      Endorse
-                    </button>
-                  )}
+                  {iM?.status === "DEPARTMENT_REVIEWED" &&
+                    user?.ActiveFaculty?.ActiveCoordinator(
+                      <button
+                        disabled={iM?.CoordinatorEndorsement}
+                        title={
+                          iM?.CoordinatorEndorsement &&
+                          "IM was already endorsed"
+                        }
+                        onClick={handleEndorse}
+                        className='block w-full  text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter'
+                      >
+                        Endorse
+                      </button>
+                    )}
                 </li>
               </ul>
             </div>

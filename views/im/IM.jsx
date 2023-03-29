@@ -1,6 +1,6 @@
-import useUser from "@/hooks/useUser";
+import UserContext from "@/contexts/UserContext";
 import moment from "moment/moment";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 export default function IM({
   showStatus = false,
@@ -26,7 +26,7 @@ export default function IM({
   im,
   type,
 }) {
-  const { user, userLoading } = useUser();
+  const { user, userLoading } = useContext(UserContext);
   const [reviewedAs, setReviewedAs] = useState("-");
   useEffect(() => {
     if (!user || userLoading) return;
