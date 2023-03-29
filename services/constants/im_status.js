@@ -1,4 +1,5 @@
 const IMStatuses = [
+  "DRAFT",
   "SUBMITTED",
   "DEPARTMENT_REVIEWED",
   "DEPARTMENT_ENDORSED",
