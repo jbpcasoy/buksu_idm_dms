@@ -327,49 +327,152 @@ export default function ViewIM() {
           </ToggleIM>
         )}
         {iM && (
-          <div className='my-2 space-x-1'>
-            {Boolean(
-              iM?.SubmittedPeerReview && iM?.SubmittedPeerSuggestion
-            ) && (
-              <span className='bg-purple-400 text-purple-800 text-xs px-3 py-1 rounded-2xl'>
+          <div className='inline-flex space-x-1 my-1'>
+            {iM?.SubmittedPeerReview && (
+              <span
+                className='inline-flex items-center bg-purple-400 text-purple-800 text-xs px-3 py-1 rounded-full'
+                title={
+                  iM?.SubmittedPeerSuggestion
+                    ? "Reviewed with Suggestions"
+                    : "Reviewed, No Suggestions"
+                }
+              >
                 Peer
+                {iM?.SubmittedPeerSuggestion && (
+                  <svg
+                    aria-hidden='true'
+                    class='w-3 h-3  text-purple-800 rounded-full ml-1'
+                    fill='currentColor'
+                    viewBox='0 0 20 20'
+                    xmlns='http://www.w3.org/2000/svg'
+                  >
+                    <path
+                      fill-rule='evenodd'
+                      d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z'
+                      clip-rule='evenodd'
+                    ></path>
+                  </svg>
+                )}
+                {!iM?.SubmittedPeerSuggestion && (
+                  <svg
+                    fill='none'
+                    class='w-3 h-3  text-purple-800 rounded-full ml-1'
+                    stroke='currentColor'
+                    stroke-width='1.5'
+                    viewBox='0 0 24 24'
+                    xmlns='http://www.w3.org/2000/svg'
+                    aria-hidden='true'
+                  >
+                    <path
+                      stroke-linecap='round'
+                      stroke-linejoin='round'
+                      d='M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
+                    ></path>
+                  </svg>
+                )}
               </span>
             )}
-            {!Boolean(
-              iM?.SubmittedPeerReview && iM?.SubmittedPeerSuggestion
-            ) && (
+            {!iM?.SubmittedPeerReview && (
               <span className='bg-red-300 text-red-600 text-xs px-3 py-1 rounded-2xl'>
                 Peer
               </span>
             )}
-            {Boolean(
-              iM?.SubmittedChairpersonReview &&
-                iM?.SubmittedChairpersonSuggestion
-            ) && (
-              <span className='bg-orange-300 text-orange-500 text-xs px-3  py-1 rounded-2xl'>
+
+            {iM?.SubmittedChairpersonReview && (
+              <span
+                className='inline-flex items-center bg-orange-300 text-orange-500 text-xs px-3  py-1 rounded-2xl'
+                title={
+                  iM?.SubmittedChairpersonSuggestion
+                    ? "Reviewed with Suggestions"
+                    : "Reviewed, No Suggestions"
+                }
+              >
                 Chairperson
+                {iM?.SubmittedChairpersonSuggestion && (
+                  <svg
+                    aria-hidden='true'
+                    class='w-3 h-3  text-orange-500 rounded-full ml-1'
+                    fill='currentColor'
+                    viewBox='0 0 20 20'
+                    xmlns='http://www.w3.org/2000/svg'
+                  >
+                    <path
+                      fill-rule='evenodd'
+                      d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z'
+                      clip-rule='evenodd'
+                    ></path>
+                  </svg>
+                )}
+                {!iM?.SubmittedChairpersonSuggestion && (
+                  <svg
+                    fill='none'
+                    class='w-3 h-3  text-orange-500 rounded-full ml-1'
+                    stroke='currentColor'
+                    stroke-width='1.5'
+                    viewBox='0 0 24 24'
+                    xmlns='http://www.w3.org/2000/svg'
+                    aria-hidden='true'
+                  >
+                    <path
+                      stroke-linecap='round'
+                      stroke-linejoin='round'
+                      d='M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
+                    ></path>
+                  </svg>
+                )}
               </span>
             )}
-            {!Boolean(
-              iM?.SubmittedChairpersonReview &&
-                iM?.SubmittedChairpersonSuggestion
-            ) && (
+
+            {!iM?.SubmittedChairpersonReview && (
               <span className='bg-red-300 text-red-600 text-xs px-3 py-1 rounded-2xl'>
                 Chairperson
               </span>
             )}
-            {Boolean(
-              iM?.SubmittedCoordinatorReview &&
-                iM?.SubmittedCoordinatorSuggestion
-            ) && (
-              <span className='bg-green-300 text-green-900 text-xs px-3 py-1 rounded-2xl'>
-                Coordinator
+            {iM?.SubmittedCoordinatorReview && (
+              <span
+                className='inline-flex items-center bg-green-300 text-green-900 text-xs px-3 py-1 rounded-2xl'
+                title={
+                  iM?.SubmittedCoordinatorSuggestion
+                    ? "Reviewed with Suggestions"
+                    : "Reviewed, No Suggestions"
+                }
+              >
+                Coordinator{" "}
+                {iM?.SubmittedCoordinatorSuggestion && (
+                  <svg
+                    aria-hidden='true'
+                    class='w-3 h-3  text-green-900 rounded-full ml-1'
+                    fill='currentColor'
+                    viewBox='0 0 20 20'
+                    xmlns='http://www.w3.org/2000/svg'
+                  >
+                    <path
+                      fill-rule='evenodd'
+                      d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z'
+                      clip-rule='evenodd'
+                    ></path>
+                  </svg>
+                )}
+                {!iM?.SubmittedCoordinatorSuggestion && (
+                  <svg
+                    fill='none'
+                    class='w-3 h-3  text-green-900 rounded-full ml-1'
+                    stroke='currentColor'
+                    stroke-width='1.5'
+                    viewBox='0 0 24 24'
+                    xmlns='http://www.w3.org/2000/svg'
+                    aria-hidden='true'
+                  >
+                    <path
+                      stroke-linecap='round'
+                      stroke-linejoin='round'
+                      d='M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
+                    ></path>
+                  </svg>
+                )}
               </span>
             )}
-            {!Boolean(
-              iM?.SubmittedCoordinatorReview &&
-                iM?.SubmittedCoordinatorSuggestion
-            ) && (
+            {!iM?.SubmittedCoordinatorReview && (
               <span className='bg-red-300 text-red-600 text-xs px-3 py-1 rounded-2xl'>
                 Coordinator
               </span>
