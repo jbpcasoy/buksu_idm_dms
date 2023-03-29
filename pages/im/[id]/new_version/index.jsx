@@ -225,7 +225,7 @@ export default function ViewIM() {
               <button
                 type='button'
                 // disabled={formik.isSubmitting}
-                className='mr-4 text-CITLDarkBlue  bg-transparent border border-CITLDarkBlue hover:text-CITLWhite hover:bg-CITLDarkBlue font-medium rounded text-sm w-full sm:w-auto px-5 py-3 text-center disabled:bg-CITLGray-main'
+                className='mr-4 text-CITLDarkBlue  bg-transparent border border-CITLDarkBlue hover:text-CITLWhite hover:bg-CITLDarkBlue font-medium rounded-md text-sm w-full sm:w-auto px-5 py-3 text-center disabled:bg-CITLGray-main'
                 onClick={() => {
                   setFile(null);
                 }}
@@ -238,7 +238,7 @@ export default function ViewIM() {
           <button
             // disabled={formik.isSubmitting}
             onClick={handleSubmit}
-            className='group relative inline-flex items-center overflow-hidden rounded bg-CITLOrange px-8 py-3 text-CITLDarkBlue focus:outline-none focus:ring active:bg-CITLDarkBlue'
+            className='group relative inline-flex items-center overflow-hidden rounded-md bg-CITLOrange px-8 py-3 text-CITLDarkBlue '
           >
             <span className='absolute right-0 translate-x-full transition-transform group-hover:-translate-x-4'>
               <svg

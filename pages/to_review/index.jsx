@@ -145,13 +145,13 @@ export default function Home() {
                 ></input> */}
                 <input
                   onChange={debouncedHandleTitleChange}
-                  className='bg-CITLGray-light w-64 border-CITLGray-lighter border text-CITLGray-main rounded-lg text-sm font-medium'
+                  className='bg-CITLGray-light w-64 border-CITLGray-lighter border text-CITLGray-main rounded-md text-sm font-medium'
                   type='text'
                   placeholder='Title'
                 ></input>
                 <select
                   id='default'
-                  className='bg-CITLGray-light border-CITLGray-lighter border text-CITLGray-main rounded-lg text-sm font-medium'
+                  className='bg-CITLGray-light border-CITLGray-lighter border text-CITLGray-main rounded-md text-sm font-medium'
                   onChange={debouncedHandleStatusChange}
                 >
                   <option value='' selected>

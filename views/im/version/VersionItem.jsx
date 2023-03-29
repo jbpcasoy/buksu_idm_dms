@@ -24,7 +24,7 @@ export default function VersionItem({ date, fileId, iMId, fileName }) {
       </p>
       <Link
         href={`/im/${iMId}/versions/${fileId}`}
-        className='inline-flex items-center px-4 py-2 text-sm font-medium text-CITLDarkBlue bg-CITLOrange border  rounded-lg  hover:text-CITLDarkBlue hover:border-CITLOrange focus:outline-none '
+        className='inline-flex items-center px-4 py-2 text-sm font-medium text-CITLDarkBlue bg-CITLOrange border  rounded-md  hover:text-CITLDarkBlue hover:border-CITLOrange focus:outline-none '
       >
         View{" "}
         <svg

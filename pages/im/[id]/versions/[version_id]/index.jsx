@@ -23,7 +23,7 @@ export default function IMVersion() {
           <div className='items-left'>
             <Link
               href={`/im/${iM?.id}`}
-              className='inline-flex items-center text-CITLWhite font-medium text-sm bg-CITLDarkBlue  p-2 rounded-md '
+              className='inline-flex items-center text-CITLWhite font-medium text-sm bg-CITLDarkBlue  px-4 py-2.5 rounded-md '
             >
               Current version
               <svg

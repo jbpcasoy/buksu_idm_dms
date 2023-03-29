@@ -223,7 +223,7 @@ export default function DepartmentPage() {
 
                 <div className='flex'>
                   <input
-                    className='w-72 py-2 pr-10 pl-4 bg-CITLGray-light border-CITLGray-lighter border text-CITLGray-main rounded-lg mr-5'
+                    className='w-72 py-2 pr-10 pl-4 bg-CITLGray-light border-CITLGray-lighter border text-CITLGray-main rounded-md mr-5'
                     type='text'
                     placeholder='Name'
                     onChange={debouncedHandleNameChange}
