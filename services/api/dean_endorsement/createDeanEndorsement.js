@@ -1,6 +1,7 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
 import readCoordinatorEndorsement from "../coordinator_endorsement/readCoordinatorEndorsement";
 import readDean from "../dean/readDean";
+import updateIM from "../im/updateIM";
 
 export default async function createDeanEndorsement({
   coordinatorEndorsementId,
@@ -35,6 +36,9 @@ export default async function createDeanEndorsement({
       },
     });
 
+    await updateIM(coordinatorEndorsement.iMId, {
+      status: "DEPARTMENT_ENDORSED",
+    });
     return deanEndorsement;
   } catch (error) {
     throw error;
