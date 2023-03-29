@@ -14,6 +14,5 @@ export default async function loginRoleHandler(req, res) {
       Role: "UNAUTHORIZED",
     });
   }
-  console.log({ role, redirect });
   return res.redirect(redirect);
 }

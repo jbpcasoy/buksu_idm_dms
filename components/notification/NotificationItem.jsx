@@ -1,11 +1,13 @@
 import ChairpersonReviewNotificationItem from "./ChairpersonReviewNotificationItem";
 import ChairpersonSuggestionNotificationItem from "./ChairpersonSuggestionNotificationItem";
+import CoordinatorEndorsementNotificationItem from "./CoordinatorEndorsementNotificationItem";
 import CoordinatorReviewNotificationItem from "./CoordinatorReviewNotificationItem";
 import CoordinatorSuggestionNotificationItem from "./CoordinatorSuggestionNotificationItem";
 import PeerReviewNotificationItem from "./PeerReviewNotificationItem";
 import PeerSuggestionNotificationItem from "./PeerSuggestionNotificationItem";
 
 export default function NotificationItem({ notification }) {
+  console.log({ notification, type: notification.Type });
   if (!notification) return null;
 
   if (notification.Type === "SUBMITTED_PEER_REVIEW") {
@@ -24,5 +26,9 @@ export default function NotificationItem({ notification }) {
     );
   } else if (notification.Type === "SUBMITTED_PEER_SUGGESTION") {
     return <PeerSuggestionNotificationItem notification={notification} />;
+  } else if (notification.Type === "COORDINATOR_ENDORSEMENT") {
+    return (
+      <CoordinatorEndorsementNotificationItem notification={notification} />
+    );
   }
 }

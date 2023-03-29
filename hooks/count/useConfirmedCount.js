@@ -7,7 +7,8 @@ export default function useConfirmedCount() {
   const { user } = useContext(UserContext);
 
   useEffect(() => {
-    if (!user || !user?.ActiveFaculty) return;
+    if (!user || !user?.ActiveFaculty || !user?.ActiveFaculty?.ActiveDean)
+      return;
     let subscribe = true;
 
     async function getConfirmedEndorsement(filter) {

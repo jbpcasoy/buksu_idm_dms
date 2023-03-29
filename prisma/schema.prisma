@@ -555,6 +555,8 @@ enum Type {
   SUBMITTED_PEER_SUGGESTION
   SUBMITTED_CHAIRPERSON_SUGGESTION
   SUBMITTED_COORDINATOR_SUGGESTION
+  COORDINATOR_ENDORSEMENT
+  DEAN_ENDORSEMENT
 }
 
 model Notification {
@@ -575,6 +577,10 @@ model Notification {
   submittedChairpersonSuggestionId String?                         @unique
   SubmittedCoordinatorSuggestion   SubmittedCoordinatorSuggestion? @relation(fields: [submittedCoordinatorSuggestionId], references: [id])
   submittedCoordinatorSuggestionId String?                         @unique
+  CoordinatorEndorsement           CoordinatorEndorsement?         @relation(fields: [coordinatorEndorsementId], references: [id])
+  coordinatorEndorsementId         String?                         @unique
+  DeanEndorsement                  DeanEndorsement?                @relation(fields: [deanEndorsementId], references: [id])
+  deanEndorsementId                String?                         @unique
 }
 
 model ReadNotification {
@@ -658,6 +664,7 @@ model CoordinatorEndorsement {
   Coordinator     Coordinator      @relation(fields: [coordinatorId], references: [id])
   coordinatorId   String
   DeanEndorsement DeanEndorsement?
+  Notification    Notification?
 
   @@index([coordinatorId])
 }
@@ -670,6 +677,7 @@ model DeanEndorsement {
   deanId                   String
   CoordinatorEndorsement   CoordinatorEndorsement @relation(fields: [coordinatorEndorsementId], references: [id])
   coordinatorEndorsementId String                 @unique
+  Notification             Notification?
 
   @@index([deanId])
 }

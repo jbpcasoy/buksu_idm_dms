@@ -20,10 +20,6 @@ export default async function getImsHandler(req, res) {
     endorsedByDean,
     endorsedByCoordinator,
   } = req.query;
-  console.log("raw:", {
-    coordinatorEndorsed,
-    deanEndorsed,
-  });
   const ims = await readIMs({
     limit: parseInt(limit),
     page: parseInt(page),

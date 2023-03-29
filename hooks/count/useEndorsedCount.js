@@ -7,7 +7,12 @@ export default function useEndorsedCount() {
   const { user } = useContext(UserContext);
 
   useEffect(() => {
-    if (!user || !user?.ActiveFaculty) return;
+    if (
+      !user ||
+      !user?.ActiveFaculty ||
+      !user?.ActiveFaculty?.ActiveCoordinator
+    )
+      return;
     let subscribe = true;
 
     async function getEndorsed(filter) {
