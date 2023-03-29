@@ -3,11 +3,11 @@ import ChairpersonSuggestionNotificationItem from "./ChairpersonSuggestionNotifi
 import CoordinatorEndorsementNotificationItem from "./CoordinatorEndorsementNotificationItem";
 import CoordinatorReviewNotificationItem from "./CoordinatorReviewNotificationItem";
 import CoordinatorSuggestionNotificationItem from "./CoordinatorSuggestionNotificationItem";
+import DeanEndorsementNotificationItem from "./DeanEndorsementNotificationItem";
 import PeerReviewNotificationItem from "./PeerReviewNotificationItem";
 import PeerSuggestionNotificationItem from "./PeerSuggestionNotificationItem";
 
 export default function NotificationItem({ notification }) {
-  console.log({ notification, type: notification.Type });
   if (!notification) return null;
 
   if (notification.Type === "SUBMITTED_PEER_REVIEW") {
@@ -30,5 +30,7 @@ export default function NotificationItem({ notification }) {
     return (
       <CoordinatorEndorsementNotificationItem notification={notification} />
     );
+  } else if (notification.Type === "DEAN_ENDORSEMENT") {
+    return <DeanEndorsementNotificationItem notification={notification} />;
   }
 }

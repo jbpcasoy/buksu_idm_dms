@@ -145,7 +145,24 @@ export default async function readNotification(id) {
               },
             },
             IM: true,
-            DeanEndorsement: true,
+          },
+        },
+        DeanEndorsement: {
+          include: {
+            CoordinatorEndorsement: {
+              include: {
+                IM: true,
+              },
+            },
+            Dean: {
+              include: {
+                Faculty: {
+                  include: {
+                    user: true,
+                  },
+                },
+              },
+            },
           },
         },
       },

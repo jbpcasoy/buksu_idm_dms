@@ -33,6 +33,11 @@ export default async function createDeanEndorsement({
             id: coordinatorEndorsement.id,
           },
         },
+        Notification: {
+          create: {
+            Type: "DEAN_ENDORSEMENT",
+          },
+        },
       },
     });
 

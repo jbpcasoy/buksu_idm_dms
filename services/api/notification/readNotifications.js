@@ -89,6 +89,19 @@ export default async function readNotifications({ limit, page, userId, read }) {
               },
             },
           },
+          {
+            DeanEndorsement: {
+              CoordinatorEndorsement: {
+                IM: {
+                  owner: {
+                    userId: {
+                      contains: userId,
+                    },
+                  },
+                },
+              },
+            },
+          },
         ],
         ReadNotification:
           read === true
@@ -171,6 +184,30 @@ export default async function readNotifications({ limit, page, userId, read }) {
                 owner: {
                   userId: {
                     contains: userId,
+                  },
+                },
+              },
+            },
+          },
+          {
+            CoordinatorEndorsement: {
+              IM: {
+                owner: {
+                  userId: {
+                    contains: userId,
+                  },
+                },
+              },
+            },
+          },
+          {
+            DeanEndorsement: {
+              CoordinatorEndorsement: {
+                IM: {
+                  owner: {
+                    userId: {
+                      contains: userId,
+                    },
                   },
                 },
               },
