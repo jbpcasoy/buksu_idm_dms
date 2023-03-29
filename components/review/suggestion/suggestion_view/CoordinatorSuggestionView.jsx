@@ -1,6 +1,7 @@
 import useCoordinatorSuggestion from "@/hooks/useCoordinatorSuggestion";
 import useCoordinatorSuggestionItems from "@/hooks/useCoordinatorSuggestionItems";
 import useSubmittedCoordinatorReview from "@/hooks/useSubmittedCoordinatorReview";
+import Empty from "@/views/Empty";
 import CoordinatorSuggestionItemView from "./CoordinatorSuggestionItemView";
 import SuggestionView from "./SuggestionView";
 
@@ -51,13 +52,45 @@ export default function CoordinatorSuggestionView({
           ?.Coordinator?.Faculty?.user?.id
       }
     >
-      {coordinatorSuggestionItems.map((coordinatorSuggestionItem) => (
-        <CoordinatorSuggestionItemView
-          viewOnly={viewOnly}
-          key={coordinatorSuggestionItem.id}
-          coordinatorSuggestionItem={coordinatorSuggestionItem}
-        />
-      ))}
+      {coordinatorSuggestionItemsLoading && (
+        <tr>
+          <td className='px-6 py-4  '>
+            <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+            <div className='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
+          </td>
+          <td className='px-6 py-4  '>
+            <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+            <div className='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
+          </td>
+          <td className='px-6 py-4  '>
+            <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-5 mb-2.5'></div>
+          </td>
+          <td className='px-6 py-4  '>
+            <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+            <div className='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
+          </td>
+          <td className='px-6 py-4  '>
+            <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-16 mb-2.5'></div>
+          </td>
+        </tr>
+      )}
+
+      {!coordinatorSuggestionItemsLoading &&
+        coordinatorSuggestionItems.length < 1 && (
+          <tr>
+            <td colSpan={5}>
+              <Empty />
+            </td>
+          </tr>
+        )}
+      {!coordinatorSuggestionItemsLoading &&
+        coordinatorSuggestionItems.map((coordinatorSuggestionItem) => (
+          <CoordinatorSuggestionItemView
+            viewOnly={viewOnly}
+            key={coordinatorSuggestionItem.id}
+            coordinatorSuggestionItem={coordinatorSuggestionItem}
+          />
+        ))}
     </SuggestionView>
   );
 }
