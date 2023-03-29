@@ -7,6 +7,9 @@ export default async function frontendReadFiles({
   originalFileName,
   iMSerialNumber,
   active,
+  iMId,
+  sortColumn,
+  sortOrder,
 }) {
   try {
     const files = await axios.get("/api/file", {
@@ -17,6 +20,9 @@ export default async function frontendReadFiles({
         originalFileName,
         iMSerialNumber,
         active,
+        iMId,
+        sortColumn,
+        sortOrder,
       },
     });
 

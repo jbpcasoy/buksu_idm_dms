@@ -8,6 +8,9 @@ export default async function getFilesHandler(req, res) {
     originalFileName,
     iMSerialNumber,
     active,
+    iMId,
+    sortColumn = "fileName",
+    sortOrder = "asc",
   } = req.query;
   const files = await readFiles({
     limit: parseInt(limit),
@@ -16,6 +19,9 @@ export default async function getFilesHandler(req, res) {
     originalFileName,
     iMSerialNumber,
     active: active ? JSON.parse(active) : undefined,
+    iMId,
+    sortColumn,
+    sortOrder,
   });
   return res.status(200).json(files);
 }

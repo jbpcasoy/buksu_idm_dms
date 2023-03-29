@@ -63,7 +63,7 @@ export function Dean() {
           </h3>
           {/* <div className='border border-CITLGray-lighter px-1 py-1 m-1 rounded-md'>
             <h3 className='text-sm text-left'>
-              <span class='inline-flex w-3 h-3 bg-blue-600 rounded-sm'></span>{" "}
+              <span className='inline-flex w-3 h-3 bg-blue-600 rounded-sm'></span>{" "}
               IM Drafts
             </h3>
           </div> */}
@@ -87,14 +87,14 @@ export function Dean() {
               fill='none'
               stroke='currentColor'
               className='w-5 h-5'
-              stroke-width='1.5'
+              strokeWidth='1.5'
               viewBox='0 0 24 24'
               xmlns='http://www.w3.org/2000/svg'
               aria-hidden='true'
             >
               <path
-                stroke-linecap='round'
-                stroke-linejoin='round'
+                strokeLinecap='round'
+                strokeLinejoin='round'
                 d='M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5'
               ></path>
             </svg>

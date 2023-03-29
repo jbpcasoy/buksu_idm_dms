@@ -1,52 +1,50 @@
 import Layout from "@/components/layout/Layout";
-import frontendReadIM from "@/services/frontend/im/frontendReadIM";
-import IM from "@/views/im/IM";
+import useFile from "@/hooks/file/useFile";
+import useIM from "@/hooks/useIM";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 
 export default function IMVersion() {
   const router = useRouter();
-  const [iM, setIM] = useState();
-
-  useEffect(() => {
-    const id = router?.query?.id;
-    if (!id) return;
-
-    frontendReadIM(id).then((res) => {
-      setIM(res);
-    });
-  }, [router?.query?.id]);
+  const { file, fileLoading, fileError } = useFile(router?.query?.version_id);
+  const { iM, iMLoading, iMError } = useIM(router?.query?.id);
 
   console.log({ router });
   return (
     <Layout>
       <div className='bg-white rounded-md p-4'>
         <div className='flex items-center justify-between mb-4'>
-          <h2 className='text-lg font-medium'>{IM?.title}</h2>
+          <div>
+            <h2 className='text-lg font-medium'>{iM?.title}</h2>
+            <h2 className='text-xs  text-CITLGray-main'>
+              Type: <span className='text-xs font-medium '>{iM?.type}</span>
+            </h2>
+          </div>
           {/* <h2 className="text-xs uppercase font-medium">
             Version 1677046830191
           </h2> */}
           <div className='items-left'>
             <Link
-              href={`/im/${iM?.id}/versions`}
+              href={`/im/${iM?.id}`}
               className='text-CITLDarkBlue font-medium border border-CITLGray-main p-2 rounded hover:bg-CITLOrange hover:border-CITLOrange'
             >
               Current Version
             </Link>{" "}
-            <Link
-              href='/'
-              className='text-CITLDarkBlue font-medium border border-CITLGray-main p-2 rounded hover:bg-CITLOrange hover:border-CITLOrange'
-            >
-              Download
-            </Link>{" "}
           </div>
         </div>
-        {/* TODO change pdf url into dynamic */}
-        <iframe
-          src='https://docs.google.com/gview?url=https://www.africau.edu/images/default/sample.pdf&embedded=true'
-          className='w-full h-screen'
-        />
+
+        {process.env.NODE_ENV === "production" && iM && (
+          <iframe
+            src={`https://docs.google.com/gview?url=${process.env.NEXT_PUBLIC_HOST_URL}/api/download/file/${file?.fileName}&embedded=true`}
+            className='w-full h-screen'
+          />
+        )}
+        {process.env.NODE_ENV !== "production" && iM && (
+          <iframe
+            src={`${process.env.NEXT_PUBLIC_HOST_URL}/api/download/file/${file?.fileName}`}
+            className='w-full h-screen'
+          />
+        )}
       </div>
     </Layout>
   );

@@ -20,16 +20,16 @@ export default function SortButton({
       {sortOrder === "asc" && (
         <svg
           fill='none'
-          class='w-4 h-3 inline-flex ml-1'
+          className='w-4 h-3 inline-flex ml-1'
           stroke='currentColor'
-          stroke-width='1.5'
+          strokeWidth='1.5'
           viewBox='0 0 24 24'
           xmlns='http://www.w3.org/2000/svg'
           aria-hidden='true'
         >
           <path
-            stroke-linecap='round'
-            stroke-linejoin='round'
+            strokeLinecap='round'
+            strokeLinejoin='round'
             d='M4.5 15.75l7.5-7.5 7.5 7.5'
           ></path>
         </svg>
@@ -38,16 +38,16 @@ export default function SortButton({
       {sortOrder === "desc" && (
         <svg
           fill='none'
-          class='w-4 h-3 inline-flex ml-1'
+          className='w-4 h-3 inline-flex ml-1'
           stroke='currentColor'
-          stroke-width='1.5'
+          strokeWidth='1.5'
           viewBox='0 0 24 24'
           xmlns='http://www.w3.org/2000/svg'
           aria-hidden='true'
         >
           <path
-            stroke-linecap='round'
-            stroke-linejoin='round'
+            strokeLinecap='round'
+            strokeLinejoin='round'
             d='M19.5 8.25l-7.5 7.5-7.5-7.5'
           ></path>
         </svg>
@@ -56,7 +56,7 @@ export default function SortButton({
       {sortOrder === undefined && (
         <svg
           xmlns='http://www.w3.org/2000/svg'
-          class='w-2 h-3 inline-flex ml-1'
+          className='w-2 h-3 inline-flex ml-1'
           aria-hidden='true'
           fill='currentColor'
           viewBox='0 0 320 512'
