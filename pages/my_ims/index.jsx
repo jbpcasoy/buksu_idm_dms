@@ -428,16 +428,19 @@ export default function Home() {
                       showSerialNumber={true}
                       // bottomBorder={index < state.ims.length - 1}
                       im={im}
-                      peerReviewed={Boolean(
-                        im.SubmittedPeerReview && im.SubmittedPeerSuggestion
-                      )}
+                      peerReviewed={Boolean(im.SubmittedPeerReview)}
                       chairpersonReviewed={Boolean(
-                        im.SubmittedChairpersonReview &&
-                          im.SubmittedChairpersonSuggestion
+                        im.SubmittedChairpersonReview
                       )}
                       coordinatorReviewed={Boolean(
-                        im.SubmittedCoordinatorReview &&
-                          im.SubmittedCoordinatorSuggestion
+                        im.SubmittedCoordinatorReview
+                      )}
+                      peerSuggested={Boolean(im.SubmittedPeerSuggestion)}
+                      chairpersonSuggested={Boolean(
+                        im.SubmittedChairpersonSuggestion
+                      )}
+                      coordinatorSuggested={Boolean(
+                        im.SubmittedCoordinatorSuggestion
                       )}
                       bottomBorder={true}
                       createdAt={im.createdAt}
