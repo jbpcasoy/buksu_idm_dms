@@ -49,7 +49,8 @@ export default function ViewIM() {
                 Type: <span className='text-xs font-medium '>{iM?.type}</span>
               </h2>
               <h2 className='text-xs  text-CITLGray-main'>
-                Status: <span className='text-xs font-medium '>Submitted</span>
+                Status:{" "}
+                <span className='text-xs font-medium '>{iM?.status}</span>
               </h2>
             </div>
             <div className='flex flex-cols mt-3'>
@@ -167,7 +168,7 @@ export default function ViewIM() {
                 </li>
                 <li>
                   {user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId &&
-                    iM.status === "SUBMITTED" && (
+                    iM?.status === "SUBMITTED" && (
                       <button
                         disabled={
                           iM?.SubmittedPeerSuggestion ||
@@ -193,7 +194,7 @@ export default function ViewIM() {
                 </li>
                 <li>
                   {user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId &&
-                    iM.status === "SUBMITTED" &&
+                    iM?.status === "SUBMITTED" &&
                     user?.ActiveFaculty?.ActiveCoordinator && (
                       <button
                         onClick={() =>
@@ -226,7 +227,7 @@ export default function ViewIM() {
                 </li>
                 <li>
                   {user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId &&
-                    iM.status === "SUBMITTED" &&
+                    iM?.status === "SUBMITTED" &&
                     user?.ActiveFaculty?.ActiveChairperson && (
                       <button
                         onClick={() =>
@@ -259,7 +260,7 @@ export default function ViewIM() {
                 </li>
                 <li>
                   {iM?.status === "DEPARTMENT_REVIEWED" &&
-                    user?.ActiveFaculty?.ActiveCoordinator(
+                    user?.ActiveFaculty?.ActiveCoordinator && (
                       <button
                         disabled={iM?.CoordinatorEndorsement}
                         title={
