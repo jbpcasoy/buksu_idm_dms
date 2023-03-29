@@ -20,14 +20,24 @@ export default function IMVersion() {
               Type: <span className='text-xs font-medium '>{iM?.type}</span>
             </h2>
           </div>
-          {/* <h2 className="text-xs uppercase font-medium">
-            Version 1677046830191
-          </h2> */}
           <div className='items-left'>
             <Link
               href={`/im/${iM?.id}`}
               className='text-CITLDarkBlue font-medium border border-CITLGray-main p-2 rounded hover:bg-CITLOrange hover:border-CITLOrange'
             >
+              <svg
+                aria-hidden='true'
+                class='w-3 h-3  text-orange-500 rounded-full ml-1'
+                fill='currentColor'
+                viewBox='0 0 20 20'
+                xmlns='http://www.w3.org/2000/svg'
+              >
+                <path
+                  fill-rule='evenodd'
+                  d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z'
+                  clip-rule='evenodd'
+                ></path>
+              </svg>
               Current Version
             </Link>{" "}
           </div>
