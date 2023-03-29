@@ -109,7 +109,7 @@ export default function Instructions({ onNext, onPrevious }) {
         <div className='flex-auto flex flex-row-reverse justify-between'>
           <button
             onClick={onNext}
-            className='group relative inline-flex items-center overflow-hidden rounded bg-CITLDarkBlue px-8 py-3 text-white focus:outline-none focus:ring active:bg-CITLDarkBlue'
+            className='group relative inline-flex items-center overflow-hidden rounded-md bg-CITLDarkBlue px-8 py-3 text-white focus:outline-none focus:ring active:bg-CITLDarkBlue'
           >
             <span className='absolute right-0 translate-x-full transition-transform group-hover:-translate-x-4'>
               <svg
@@ -134,7 +134,7 @@ export default function Instructions({ onNext, onPrevious }) {
           </button>
           <button
             onClick={onPrevious}
-            className='group relative inline-flex items-center overflow-hidden rounded border border-current px-8 py-3 text-CITLGray-main focus:outline-none focus:ring active:text-CITLGray-main'
+            className='group relative inline-flex items-center overflow-hidden rounded-md border border-current px-8 py-3 text-CITLGray-main focus:outline-none focus:ring active:text-CITLGray-main'
           >
             <span className='absolute left-0 -translate-x-full transition-transform group-hover:translate-x-4'>
               <svg

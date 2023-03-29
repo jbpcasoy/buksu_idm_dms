@@ -144,13 +144,13 @@ export default function Home() {
                 ></input> */}
                 <input
                   onChange={debouncedHandleTitleChange}
-                  className='bg-CITLGray-light w-64 border-CITLGray-lighter border text-CITLGray-main rounded-lg text-sm font-medium'
+                  className='bg-CITLGray-light w-64 border-CITLGray-lighter border text-CITLGray-main rounded-md text-sm font-medium'
                   type='text'
                   placeholder='Title'
                 ></input>
                 <select
                   id='default'
-                  className='bg-CITLGray-light border-CITLGray-lighter border text-CITLGray-main rounded-lg text-sm font-medium'
+                  className='bg-CITLGray-light border-CITLGray-lighter border text-CITLGray-main rounded-md text-sm font-medium'
                   onChange={debouncedHandleStatusChange}
                 >
                   <option value='' selected>
@@ -171,7 +171,7 @@ export default function Home() {
                   <button
                     data-modal-target='suggestion-modal'
                     data-modal-toggle='suggestion-modal'
-                    className='flex gap-2 text-sm font-medium text-center px-4 py-2.5 text-CITLWhite  bg-CITLDarkBlue rounded-lg hover:bg-transparent hover:border-CITLDarkBlue border hover:text-CITLDarkBlue'
+                    className='flex gap-2 text-sm font-medium text-center px-4 py-2.5 text-CITLWhite  bg-CITLDarkBlue rounded-md hover:bg-transparent hover:border-CITLDarkBlue border hover:text-CITLDarkBlue'
                     type='button'
                     onClick={() => {
                       router.push("/im/new");

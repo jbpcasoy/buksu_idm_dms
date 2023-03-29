@@ -42,7 +42,7 @@ export default function ActionTakenModal({
         }}
         data-modal-target={`update-suggestion-modal-${suggestionItemId}`}
         data-modal-toggle={`update-suggestion-modal-${suggestionItemId}`}
-        className='block text-sm font-medium text-center px-4 py-2 text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100'
+        className='block text-sm font-medium text-center px-4 py-2 text-gray-900 bg-white border border-gray-300 rounded-md hover:bg-gray-100'
         type='button'
       >
         Update

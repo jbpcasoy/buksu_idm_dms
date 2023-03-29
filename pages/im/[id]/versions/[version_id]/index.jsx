@@ -20,15 +20,27 @@ export default function IMVersion() {
               Type: <span className='text-xs font-medium '>{iM?.type}</span>
             </h2>
           </div>
-          {/* <h2 className="text-xs uppercase font-medium">
-            Version 1677046830191
-          </h2> */}
           <div className='items-left'>
             <Link
               href={`/im/${iM?.id}`}
-              className='text-CITLDarkBlue font-medium border border-CITLGray-main p-2 rounded hover:bg-CITLOrange hover:border-CITLOrange'
+              className='inline-flex items-center text-CITLWhite font-medium text-sm bg-CITLDarkBlue  px-4 py-2.5 rounded-md '
             >
-              Current Version
+              Current version
+              <svg
+                fill='none'
+                stroke='currentColor'
+                className='w-4 h-4 ml-2 '
+                stroke-width='1.5'
+                viewBox='0 0 24 24'
+                xmlns='http://www.w3.org/2000/svg'
+                aria-hidden='true'
+              >
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  d='M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25'
+                ></path>
+              </svg>
             </Link>{" "}
           </div>
         </div>

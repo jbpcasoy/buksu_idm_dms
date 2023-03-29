@@ -44,9 +44,14 @@ export default function ViewIM() {
         <div className='flex items-center justify-between '>
           <div>
             <h2 className='text-lg font-medium'>{iM?.title}</h2>
-            <h2 className='text-xs  text-CITLGray-main'>
-              Type: <span className='text-xs font-medium '>{iM?.type}</span>
-            </h2>
+            <div className='flex gap-3'>
+              <h2 className='text-xs  text-CITLGray-main'>
+                Type: <span className='text-xs font-medium '>{iM?.type}</span>
+              </h2>
+              <h2 className='text-xs  text-CITLGray-main'>
+                Status: <span className='text-xs font-medium '>Submitted</span>
+              </h2>
+            </div>
             <div className='flex flex-cols mt-3'>
               <Link href={`/profile/${iM?.owner?.user?.id}`}>
                 <img
@@ -72,7 +77,7 @@ export default function ViewIM() {
               <button
                 id='dropdownDefaultButton'
                 data-dropdown-toggle='dropdown'
-                className='text-white bg-CITLDarkBlue font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center'
+                className='text-white bg-CITLDarkBlue font-medium rounded-md text-sm px-4 py-2.5 text-center inline-flex items-center'
                 type='button'
               >
                 Options{" "}

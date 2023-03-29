@@ -16,7 +16,7 @@ export default function ConfirmReview({ children, onSubmit, onPrevious }) {
                 setLoading(false);
               });
             }}
-            className='group relative inline-flex items-center overflow-hidden rounded bg-CITLOrange px-8 py-3 text-CITLDarkBlue focus:outline-none focus:ring active:bg-CITLDarkBlue'
+            className='group relative inline-flex items-center overflow-hidden rounded-md bg-CITLOrange px-8 py-3 text-CITLDarkBlue focus:outline-none '
           >
             <span className='absolute right-0 translate-x-full transition-transform group-hover:-translate-x-4'>
               <svg
@@ -42,7 +42,7 @@ export default function ConfirmReview({ children, onSubmit, onPrevious }) {
           <button
             disabled={loading}
             onClick={onPrevious}
-            className='group relative inline-flex items-center overflow-hidden rounded border border-current px-8 py-3 text-CITLGray-main focus:outline-none focus:ring active:text-CITLGray-main'
+            className='group relative inline-flex items-center overflow-hidden rounded-md border border-current px-8 py-3 text-CITLGray-main focus:outline-none focus:ring active:text-CITLGray-main'
           >
             <span className='absolute left-0 -translate-x-full transition-transform group-hover:translate-x-4'>
               <svg

@@ -42,7 +42,7 @@ export default function SuggestionEditModal({
       <button
         data-modal-target={`edit-suggestion-modal-${suggestionItemId}`}
         data-modal-toggle={`edit-suggestion-modal-${suggestionItemId}`}
-        className='block text-sm font-medium text-center px-4 py-2 text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100'
+        className='block text-sm font-medium text-center px-4 py-2 text-gray-900 bg-white border border-gray-300 rounded-md hover:bg-gray-100'
         type='button'
       >
         Edit
@@ -93,7 +93,7 @@ export default function SuggestionEditModal({
               >
                 <div>
                   <textarea
-                    className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white ${
+                    className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white ${
                       formik.touched.value && formik.errors.value
                         ? "border border-red-600 focus:ring-red-500 focus:border-red-500"
                         : undefined
@@ -109,7 +109,7 @@ export default function SuggestionEditModal({
                   </p>
                   <input
                     type='number'
-                    className={`mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white ${
+                    className={`mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white ${
                       formik.touched.pageNumber && formik.errors.pageNumber
                         ? "border border-red-600 focus:ring-red-500 focus:border-red-500"
                         : undefined
@@ -121,7 +121,7 @@ export default function SuggestionEditModal({
                     {formik.touched.pageNumber && formik.errors.pageNumber}
                   </p>
                   <textarea
-                    className={`mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white  ${
+                    className={`mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white  ${
                       formik.touched.remarks && formik.errors.remarks
                         ? "border border-red-600 focus:ring-red-500 focus:border-red-500"
                         : undefined
@@ -142,7 +142,7 @@ export default function SuggestionEditModal({
                     !formik.values.value
                   }
                   data-modal-hide={`edit-suggestion-modal-${suggestionItemId}`}
-                  className='mt-2 w-full text-white enabled:bg-CITLDarkBlue  disabled:bg-CITLGray-main  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center '
+                  className='mt-2 w-full text-white enabled:bg-CITLDarkBlue  disabled:bg-CITLGray-main  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-5 py-2.5 text-center '
                 >
                   Confirm changes
                 </button>

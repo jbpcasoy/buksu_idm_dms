@@ -4,7 +4,7 @@ export default function SuggestionDeleteModal({ suggestionItemId, onAgree }) {
       <button
         data-modal-target={`delete-suggestion-modal-${suggestionItemId}`}
         data-modal-toggle={`delete-suggestion-modal-${suggestionItemId}`}
-        className='block text-sm font-medium text-center px-4 py-2 text-white bg-red-600 hover:bg-red-800 rounded-lg'
+        className='block text-sm font-medium text-center px-4 py-2 text-white bg-red-600 hover:bg-red-800 rounded-md'
         // className='block text-sm font-medium text-center px-4 py-2 text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100'
         type='button'
       >
