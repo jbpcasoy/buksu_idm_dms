@@ -58,7 +58,7 @@ export function ApprovedIMsLine() {
     <div className='bg-CITLGray-light  m-2 px-2.5  rounded-lg border border-CITLGray-lighter h-full '>
       <div className='flex justify-between w-full'>
         <div>
-          <h3 className='text-lg font-semibold mt-3'>Approved IM's</h3>
+          <h3 className='text-lg font-semibold mt-3'>Approved IM&apos;s</h3>
           {/* <div className='border border-CITLGray-lighter px-1 py-1 m-1 rounded-md'>
             <h3 className='text-sm text-left'>
               <span class='inline-flex w-3 h-3 bg-blue-600 rounded-sm'></span>{" "}

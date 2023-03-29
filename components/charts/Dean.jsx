@@ -59,7 +59,7 @@ export function Dean() {
       <div className='flex justify-between w-full'>
         <div>
           <h3 className='text-lg font-semibold mt-3'>
-            Distribution of Approved IM's
+            Distribution of Approved IM&apos;s
           </h3>
           {/* <div className='border border-CITLGray-lighter px-1 py-1 m-1 rounded-md'>
             <h3 className='text-sm text-left'>
