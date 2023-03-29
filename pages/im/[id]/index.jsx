@@ -5,6 +5,7 @@ import PeerSuggestionView from "@/components/review/suggestion/suggestion_view/P
 import useIM from "@/hooks/useIM";
 import useUser from "@/hooks/useUser";
 import frontendCreateCoordinatorEndorsement from "@/services/frontend/coordinator_endorsement/frontendCreateCoordinatorEndorsement";
+import frontendSubmitIMForReview from "@/services/frontend/im/frontendSubmitIMForReview";
 import { initDropdowns, initModals } from "flowbite";
 import moment from "moment";
 import Link from "next/link";
@@ -26,6 +27,14 @@ export default function ViewIM() {
     return frontendCreateCoordinatorEndorsement({
       iMId: iM.id,
       coordinatorId: user?.ActiveFaculty?.ActiveCoordinator?.coordinatorId,
+    }).then((res) => {
+      refreshIM();
+    });
+  }
+
+  async function handleSubmitForReview() {
+    return frontendSubmitIMForReview({ iMId: iM.id }).then((res) => {
+      refreshIM();
     });
   }
 
@@ -88,6 +97,11 @@ export default function ViewIM() {
                   ></path>
                 </svg>
               </button>
+              {iM?.status === "DRAFT" && (
+                <div className='relative flex '>
+                  <div className='absolute inline-flex items-center justify-center w-2 h-2 text-xs  bg-red-500 rounded-full -top-9 right-1 dark:border-gray-900 animate-pulse duration-75'></div>
+                </div>
+              )}
             </div>
 
             <div
@@ -113,18 +127,36 @@ export default function ViewIM() {
                   )}
                 </li>
 
-                <li>
-                  {/*  EDIT IM should be visible and accessible only for the owner of the IM
-                   */}
-                  {iM && iM.owner.userId === user?.id && (
-                    <Link
-                      href={`/im/${iM?.id}/new_version`}
-                      className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
-                    >
-                      Upload New Version
-                    </Link>
+                {iM &&
+                  iM.owner.userId === user?.id &&
+                  (iM?.status === "DRAFT" ||
+                    iM?.status === "DEPARTMENT_REVIEWED") && (
+                    <li>
+                      {/*  EDIT IM should be visible and accessible only for the owner of the IM
+                       */}
+                      {iM && iM.owner.userId === user?.id && (
+                        <Link
+                          href={`/im/${iM?.id}/new_version`}
+                          className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
+                        >
+                          Upload New Version
+                        </Link>
+                      )}
+                    </li>
                   )}
-                </li>
+                {iM &&
+                  iM.owner.userId === user?.id &&
+                  iM?.status === "DRAFT" && (
+                    <button
+                      onClick={handleSubmitForReview}
+                      className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter text-left w-full'
+                    >
+                      Submit For Review
+                      <div className='relative flex '>
+                        <div className='absolute inline-flex items-center justify-center w-2 h-2 text-xs  bg-red-500 rounded-full -top-6 right-1 dark:border-gray-900 animate-pulse duration-75'></div>
+                      </div>
+                    </button>
+                  )}
                 <li>
                   <Link
                     href={`/im/${iM?.id}/versions`}
