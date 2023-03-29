@@ -23,22 +23,24 @@ export default function IMVersion() {
           <div className='items-left'>
             <Link
               href={`/im/${iM?.id}`}
-              className='text-CITLDarkBlue font-medium border border-CITLGray-main p-2 rounded hover:bg-CITLOrange hover:border-CITLOrange'
+              className='inline-flex items-center text-CITLWhite font-medium bg-CITLDarkBlue  p-2 rounded-md '
             >
+              Current version
               <svg
-                aria-hidden='true'
-                class='w-3 h-3  text-orange-500 rounded-full ml-1'
-                fill='currentColor'
-                viewBox='0 0 20 20'
+                fill='none'
+                stroke='currentColor'
+                className='w-4 h-4 ml-2 '
+                stroke-width='1.5'
+                viewBox='0 0 24 24'
                 xmlns='http://www.w3.org/2000/svg'
+                aria-hidden='true'
               >
                 <path
-                  fill-rule='evenodd'
-                  d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z'
-                  clip-rule='evenodd'
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  d='M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25'
                 ></path>
               </svg>
-              Current Version
             </Link>{" "}
           </div>
         </div>

@@ -38,10 +38,9 @@ export default function ViewIM() {
             <h2 className='text-xs  text-CITLGray-main'>
               Type: <span className='text-xs font-medium '>{iM?.type}</span>
             </h2>
-              <h2 className='text-xs  text-CITLGray-main'>
-                Status: <span className='text-xs font-medium '>Submitted</span>
-              </h2>
-            </div>
+            <h2 className='text-xs  text-CITLGray-main'>
+              Status: <span className='text-xs font-medium '>Submitted</span>
+            </h2>
             <div className='flex flex-cols mt-3'>
               <Link href={`/profile/${iM?.owner?.user?.id}`}>
                 <img
