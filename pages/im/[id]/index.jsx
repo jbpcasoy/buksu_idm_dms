@@ -5,6 +5,7 @@ import PeerSuggestionView from "@/components/review/suggestion/suggestion_view/P
 import UserContext from "@/contexts/UserContext";
 import useIM from "@/hooks/useIM";
 import frontendCreateCoordinatorEndorsement from "@/services/frontend/coordinator_endorsement/frontendCreateCoordinatorEndorsement";
+import frontendCreateDeanEndorsement from "@/services/frontend/dean_endorsement/frontendCreateDeanEndorsement";
 import frontendSubmitIMForReview from "@/services/frontend/im/frontendSubmitIMForReview";
 import { initDropdowns, initModals } from "flowbite";
 import moment from "moment";
@@ -27,6 +28,15 @@ export default function ViewIM() {
     return frontendCreateCoordinatorEndorsement({
       iMId: iM.id,
       coordinatorId: user?.ActiveFaculty?.ActiveCoordinator?.coordinatorId,
+    }).then((res) => {
+      refreshIM();
+    });
+  }
+
+  async function handleConfirmEndorsement() {
+    return frontendCreateDeanEndorsement({
+      coordinatorEndorsementId: iM.CoordinatorEndorsement.id,
+      deanId: user?.ActiveFaculty?.ActiveDean?.deanId,
     }).then((res) => {
       refreshIM();
     });
@@ -168,7 +178,9 @@ export default function ViewIM() {
                 </li>
                 <li>
                   {user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId &&
-                    iM?.status === "SUBMITTED" && (
+                    iM?.status === "SUBMITTED" &&
+                    user?.ActiveFaculty?.Faculty?.departmentId ===
+                      iM?.owner?.departmentId && (
                       <button
                         disabled={
                           iM?.SubmittedPeerSuggestion ||
@@ -195,7 +207,9 @@ export default function ViewIM() {
                 <li>
                   {user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId &&
                     iM?.status === "SUBMITTED" &&
-                    user?.ActiveFaculty?.ActiveCoordinator && (
+                    user?.ActiveFaculty?.ActiveCoordinator &&
+                    user?.ActiveFaculty?.Faculty?.departmentId ===
+                      iM?.owner?.departmentId && (
                       <button
                         onClick={() =>
                           router.push(`/im/${iM?.id}/review/coordinator`)
@@ -228,7 +242,9 @@ export default function ViewIM() {
                 <li>
                   {user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId &&
                     iM?.status === "SUBMITTED" &&
-                    user?.ActiveFaculty?.ActiveChairperson && (
+                    user?.ActiveFaculty?.ActiveChairperson &&
+                    user?.ActiveFaculty?.Faculty?.departmentId ===
+                      iM?.owner?.departmentId && (
                       <button
                         onClick={() =>
                           router.push(`/im/${iM?.id}/review/chairperson`)
@@ -271,6 +287,28 @@ export default function ViewIM() {
                         className='block w-full  text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter'
                       >
                         Endorse
+                      </button>
+                    )}
+                </li>
+                <li>
+                  {iM?.status === "DEPARTMENT_REVIEWED" &&
+                    user?.ActiveFaculty?.ActiveDean && (
+                      <button
+                        disabled={
+                          !iM?.CoordinatorEndorsement ||
+                          iM?.CoordinatorEndorsement?.DeanEndorsement
+                        }
+                        title={
+                          !iM?.CoordinatorEndorsement
+                            ? "Pending coordinator endorsement"
+                            : iM?.CoordinatorEndorsement?.DeanEndorsement
+                            ? "Endorsement already confirmed"
+                            : ""
+                        }
+                        onClick={handleConfirmEndorsement}
+                        className='block w-full  text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter'
+                      >
+                        Confirm Endorsement
                       </button>
                     )}
                 </li>

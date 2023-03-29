@@ -34,11 +34,14 @@ export default function Home() {
     let subscribe = true;
     setLoading(true);
 
-    async function getToReview(filter) {
+    async function getEndorsed(filter) {
       return frontendGetIMs({
         notOwnerId: user.ActiveFaculty.Faculty.id,
         departmentId: user.ActiveFaculty.Faculty.departmentId,
-        coordinatorEndorsed: false,
+        status: "DEPARTMENT_REVIEWED",
+        coordinatorEndorsed: true,
+        endorsedByCoordinator:
+          user.ActiveFaculty.ActiveCoordinator.coordinatorId,
         ...filter,
       });
     }
@@ -48,12 +51,11 @@ export default function Home() {
       limit: state.limit,
       serialNumber: state.serialNumber,
       title: state.title,
-      status: "DEPARTMENT_REVIEWED",
       sortColumn: state.sortColumn,
       sortOrder: state.sortOrder,
     };
 
-    getToReview(filter).then((res) => {
+    getEndorsed(filter).then((res) => {
       setLoading(false);
       if (!subscribe) return;
 
@@ -134,7 +136,7 @@ export default function Home() {
                   <span className='inline-flex items-center justify-center w-4 h-4 mr-1 text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full'>
                     {total}
                   </span>
-                  To Endorse
+                  Endorsed
                 </button>
               </div>
               <div className=' grid grid-flow-col auto-cols-max gap-2 px-2 '>

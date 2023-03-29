@@ -15,6 +15,11 @@ export default async function readIMs({
   sortColumn,
   sortOrder,
   type,
+  coordinatorEndorsed,
+  deanEndorsed,
+  collegeId,
+  endorsedByDean,
+  endorsedByCoordinator,
 }) {
   const prisma = PRISMA_CLIENT;
   const sortFilter = {};
@@ -87,6 +92,62 @@ export default async function readIMs({
       where: {
         AND: [
           {
+            CoordinatorEndorsement:
+              coordinatorEndorsed === true
+                ? {
+                    id: {
+                      contains: "",
+                    },
+                  }
+                : coordinatorEndorsed === false
+                ? {
+                    isNot: {
+                      id: { contains: "" },
+                    },
+                  }
+                : undefined,
+          },
+          {
+            CoordinatorEndorsement: {
+              DeanEndorsement:
+                deanEndorsed === true
+                  ? {
+                      id: {
+                        contains: "",
+                      },
+                    }
+                  : deanEndorsed === false
+                  ? {
+                      isNot: {
+                        id: {
+                          contains: "",
+                        },
+                      },
+                    }
+                  : undefined,
+            },
+          },
+          {
+            CoordinatorEndorsement: {
+              DeanEndorsement: endorsedByDean
+                ? {
+                    deanId: {
+                      contains: endorsedByDean,
+                    },
+                  }
+                : undefined,
+            },
+          },
+          {
+            CoordinatorEndorsement: endorsedByCoordinator
+              ? {
+                  coordinatorId: {
+                    contains: endorsedByCoordinator,
+                  },
+                }
+              : undefined,
+          },
+          {
             ownerId: {
               not: notOwnerId,
             },
@@ -129,6 +190,9 @@ export default async function readIMs({
               : undefined,
             owner: {
               departmentId: departmentId,
+              department: {
+                collegeId: collegeId,
+              },
             },
             type: {
               equals: type,
@@ -157,6 +221,60 @@ export default async function readIMs({
       where: {
         AND: [
           {
+            CoordinatorEndorsement:
+              coordinatorEndorsed === true
+                ? {
+                    id: {},
+                  }
+                : coordinatorEndorsed === false
+                ? {
+                    isNot: {
+                      id: { contains: "" },
+                    },
+                  }
+                : undefined,
+          },
+          {
+            CoordinatorEndorsement: {
+              DeanEndorsement:
+                deanEndorsed === true
+                  ? {
+                      id: {
+                        contains: "",
+                      },
+                    }
+                  : deanEndorsed === false
+                  ? {
+                      isNot: {
+                        id: {
+                          contains: "",
+                        },
+                      },
+                    }
+                  : undefined,
+            },
+          },
+          {
+            CoordinatorEndorsement: {
+              DeanEndorsement: endorsedByDean
+                ? {
+                    deanId: {
+                      contains: endorsedByDean,
+                    },
+                  }
+                : undefined,
+            },
+          },
+          {
+            CoordinatorEndorsement: endorsedByCoordinator
+              ? {
+                  coordinatorId: {
+                    contains: endorsedByCoordinator,
+                  },
+                }
+              : undefined,
+          },
+          {
             ownerId: {
               not: notOwnerId,
             },
@@ -199,6 +317,9 @@ export default async function readIMs({
               : undefined,
             owner: {
               departmentId: departmentId,
+              department: {
+                collegeId: collegeId,
+              },
             },
             type: {
               equals: type,

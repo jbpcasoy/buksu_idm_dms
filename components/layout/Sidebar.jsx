@@ -2,7 +2,7 @@ import UserContext from "@/contexts/UserContext";
 import useSidebarCounts from "@/hooks/count/useSidebarCounts";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 export default function Sidebar() {
   const router = useRouter();
@@ -14,7 +14,15 @@ export default function Sidebar() {
     reviewedCount,
     departmentImsCount,
     toEndorseCount,
+    endorsedCount,
+    toConfirmCount,
+    confirmedCount,
+    collegeIMsCount,
   } = useSidebarCounts();
+
+  useEffect(() => {
+    console.log({ endorsedCount });
+  }, [endorsedCount]);
 
   return (
     <aside
@@ -22,8 +30,11 @@ export default function Sidebar() {
       className='fixed top-0 left-0 z-10 w-64 h-screen pt-20 transition-transform -translate-x-full bg-CITLDarkBlue border-r border-gray-200 sm:translate-x-0  dark:bg-gray-800 dark:border-gray-700'
       aria-label='Sidebar'
     >
-      <div className='h-full px-3 pb-4 overflow-y-auto bg-CITLDarkBlue dark:bg-gray-800'>
+      <div className='flex flex-col justify-between h-full px-3 pb-4 overflow-y-auto bg-CITLDarkBlue dark:bg-gray-800'>
         <ul className='space-y-2'>
+          <div className='text-sm text-center w-full text-white'>
+            DEPARTMENT
+          </div>
           <li>
             <Link
               href='/my_ims'
@@ -162,40 +173,77 @@ export default function Sidebar() {
           </li>
 
           {user?.ActiveFaculty?.ActiveCoordinator && (
-            <li>
-              <Link
-                href='/to_endorse'
-                className={`flex items-center p-2 text-base font-normal text-CITLWhite rounded-lg  hover:bg-CITLGray-main ${
-                  router.asPath === "/to_endorse" ? "bg-CITLGray-main" : ""
-                }`}
-              >
-                <svg
-                  fill='none'
-                  stroke='currentColor'
-                  strokeWidth='1.5'
-                  className='flex-shrink-0 w-6 h-6 text-CITLWhite transition duration-75 group-hover:text-CITLGray-main'
-                  viewBox='0 0 24 24'
-                  xmlns='http://www.w3.org/2000/svg'
-                  aria-hidden='true'
+            <>
+              <li>
+                <Link
+                  href='/to_endorse'
+                  className={`flex items-center p-2 text-base font-normal text-CITLWhite rounded-lg  hover:bg-CITLGray-main ${
+                    router.asPath === "/to_endorse" ? "bg-CITLGray-main" : ""
+                  }`}
                 >
-                  <path
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                    d='M6.633 10.5c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 012.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 00.322-1.672V3a.75.75 0 01.75-.75A2.25 2.25 0 0116.5 4.5c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 01-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 00-1.423-.23H5.904M14.25 9h2.25M5.904 18.75c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 01-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 10.203 4.167 9.75 5 9.75h1.053c.472 0 .745.556.5.96a8.958 8.958 0 00-1.302 4.665c0 1.194.232 2.333.654 3.375z'
-                  ></path>
-                </svg>
-                <div className='justify-between flex w-full items-center'>
-                  <span className='flex-1 ml-3 whitespace-nowrap'>
-                    To Endorse
-                  </span>
-                  {toEndorseCount > 0 && (
-                    <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLOrange '>
-                      {toEndorseCount}
-                    </div>
-                  )}
-                </div>
-              </Link>
-            </li>
+                  <svg
+                    fill='none'
+                    stroke='currentColor'
+                    strokeWidth='1.5'
+                    className='flex-shrink-0 w-6 h-6 text-CITLWhite transition duration-75 group-hover:text-CITLGray-main'
+                    viewBox='0 0 24 24'
+                    xmlns='http://www.w3.org/2000/svg'
+                    aria-hidden='true'
+                  >
+                    <path
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                      d='M6.633 10.5c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 012.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 00.322-1.672V3a.75.75 0 01.75-.75A2.25 2.25 0 0116.5 4.5c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 01-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 00-1.423-.23H5.904M14.25 9h2.25M5.904 18.75c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 01-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 10.203 4.167 9.75 5 9.75h1.053c.472 0 .745.556.5.96a8.958 8.958 0 00-1.302 4.665c0 1.194.232 2.333.654 3.375z'
+                    ></path>
+                  </svg>
+                  <div className='justify-between flex w-full items-center'>
+                    <span className='flex-1 ml-3 whitespace-nowrap'>
+                      To Endorse
+                    </span>
+                    {toEndorseCount > 0 && (
+                      <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLOrange '>
+                        {toEndorseCount}
+                      </div>
+                    )}
+                  </div>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href='/endorsed'
+                  className={`flex items-center p-2 text-base font-normal text-CITLWhite rounded-lg  hover:bg-CITLGray-main ${
+                    router.asPath === "/endorsed" ? "bg-CITLGray-main" : ""
+                  }`}
+                >
+                  <svg
+                    fill='none'
+                    stroke='currentColor'
+                    strokeWidth='1.5'
+                    className='flex-shrink-0 w-6 h-6 text-CITLWhite transition duration-75 group-hover:text-CITLGray-main'
+                    viewBox='0 0 24 24'
+                    xmlns='http://www.w3.org/2000/svg'
+                    aria-hidden='true'
+                  >
+                    <path
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                      d='M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z'
+                    />
+                  </svg>
+
+                  <div className='justify-between flex w-full items-center'>
+                    <span className='flex-1 ml-3 whitespace-nowrap'>
+                      Endorsed
+                    </span>
+                    {endorsedCount > 0 && (
+                      <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLOrange '>
+                        {endorsedCount}
+                      </div>
+                    )}
+                  </div>
+                </Link>
+              </li>
+            </>
           )}
 
           {(user?.ActiveFaculty?.ActiveChairperson ||
@@ -235,6 +283,123 @@ export default function Sidebar() {
               </Link>
             </li>
           )}
+          {user?.ActiveFaculty?.ActiveDean && (
+            <>
+              <hr className='h-px my-8 w-56 bg-CITLGray-main border-0 dark:bg-gray-700' />
+              <div className='text-sm text-center w-full text-white'>
+                COLLEGE
+              </div>
+
+              <li>
+                <Link
+                  href='/to_confirm_endorsement'
+                  className={`flex items-center p-2 text-base font-normal text-CITLWhite rounded-lg  hover:bg-CITLGray-main ${
+                    router.asPath === "/to_confirm_endorsement"
+                      ? "bg-CITLGray-main"
+                      : ""
+                  }`}
+                >
+                  <svg
+                    fill='none'
+                    stroke='currentColor'
+                    strokeWidth='1.5'
+                    className='flex-shrink-0 w-6 h-6 text-CITLWhite transition duration-75 group-hover:text-CITLGray-main'
+                    viewBox='0 0 24 24'
+                    xmlns='http://www.w3.org/2000/svg'
+                    aria-hidden='true'
+                  >
+                    <path
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                      d='M6.633 10.5c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 012.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 00.322-1.672V3a.75.75 0 01.75-.75A2.25 2.25 0 0116.5 4.5c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 01-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 00-1.423-.23H5.904M14.25 9h2.25M5.904 18.75c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 01-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 10.203 4.167 9.75 5 9.75h1.053c.472 0 .745.556.5.96a8.958 8.958 0 00-1.302 4.665c0 1.194.232 2.333.654 3.375z'
+                    ></path>
+                  </svg>
+                  <div className='justify-between flex w-full items-center'>
+                    <span className='flex-1 ml-3 whitespace-nowrap'>
+                      To Confirm
+                    </span>
+                    {toConfirmCount > 0 && (
+                      <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLOrange '>
+                        {toConfirmCount}
+                      </div>
+                    )}
+                  </div>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href='/confirmed_endorsement'
+                  className={`flex items-center p-2 text-base font-normal text-CITLWhite rounded-lg  hover:bg-CITLGray-main ${
+                    router.asPath === "/confirmed_endorsement"
+                      ? "bg-CITLGray-main"
+                      : ""
+                  }`}
+                >
+                  <svg
+                    fill='none'
+                    stroke='currentColor'
+                    strokeWidth='1.5'
+                    className='flex-shrink-0 w-6 h-6 text-CITLWhite transition duration-75 group-hover:text-CITLGray-main'
+                    viewBox='0 0 24 24'
+                    xmlns='http://www.w3.org/2000/svg'
+                    aria-hidden='true'
+                  >
+                    <path
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                      d='M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z'
+                    />
+                  </svg>
+
+                  <div className='justify-between flex w-full items-center'>
+                    <span className='flex-1 ml-3 whitespace-nowrap'>
+                      Confirmed
+                    </span>
+                    {confirmedCount > 0 && (
+                      <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLOrange '>
+                        {confirmedCount}
+                      </div>
+                    )}
+                  </div>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href='/college_ims'
+                  className={`flex items-center p-2 text-base font-normal text-CITLWhite rounded-lg  hover:bg-CITLGray-main ${
+                    router.asPath === "/college_ims" ? "bg-CITLGray-main" : ""
+                  }`}
+                >
+                  <svg
+                    fill='none'
+                    stroke='currentColor'
+                    strokeWidth='1.5'
+                    className='flex-shrink-0 w-6 h-6 text-CITLWhite transition duration-75 group-hover:text-CITLGray-main'
+                    viewBox='0 0 24 24'
+                    xmlns='http://www.w3.org/2000/svg'
+                    aria-hidden='true'
+                  >
+                    <path
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                      d='M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z'
+                    />
+                  </svg>
+
+                  <div className='justify-between flex w-full items-center'>
+                    <span className='flex-1 ml-3 whitespace-nowrap'>
+                      College IM's
+                    </span>
+                    {collegeIMsCount > 0 && (
+                      <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLOrange '>
+                        {collegeIMsCount}
+                      </div>
+                    )}
+                  </div>
+                </Link>
+              </li>
+            </>
+          )}
           <hr className='h-px my-8 w-56 bg-CITLGray-main border-0 dark:bg-gray-700' />
           <li>
             <Link
@@ -262,7 +427,7 @@ export default function Sidebar() {
             </Link>
           </li>
         </ul>
-        <div className='fixed bottom-0'>
+        <div className=''>
           <hr className='h-px my-4 w-56 bg-CITLGray-main border-0 dark:bg-gray-700' />
           <p className='text-xs text-CITLGray-main tracking-tight '>
             Bukidnon State University

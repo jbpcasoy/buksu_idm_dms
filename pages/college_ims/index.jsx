@@ -34,11 +34,9 @@ export default function Home() {
     let subscribe = true;
     setLoading(true);
 
-    async function getToReview(filter) {
+    async function getCollegeIms(filter) {
       return frontendGetIMs({
-        notOwnerId: user.ActiveFaculty.Faculty.id,
-        departmentId: user.ActiveFaculty.Faculty.departmentId,
-        coordinatorEndorsed: false,
+        collegeId: user.ActiveFaculty.Faculty.department.collegeId,
         ...filter,
       });
     }
@@ -48,12 +46,12 @@ export default function Home() {
       limit: state.limit,
       serialNumber: state.serialNumber,
       title: state.title,
-      status: "DEPARTMENT_REVIEWED",
+      status: state.status,
       sortColumn: state.sortColumn,
       sortOrder: state.sortOrder,
     };
 
-    getToReview(filter).then((res) => {
+    getCollegeIms(filter).then((res) => {
       setLoading(false);
       if (!subscribe) return;
 
@@ -129,12 +127,12 @@ export default function Home() {
               <div>
                 <button
                   type='button'
-                  className={`inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue  border-CITLOrange rounded-none border-b-2`}
+                  className={`inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue border-CITLOrange rounded-none border-b-2`}
                 >
                   <span className='inline-flex items-center justify-center w-4 h-4 mr-1 text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full'>
                     {total}
                   </span>
-                  To Endorse
+                  College IM&apos;s
                 </button>
               </div>
               <div className=' grid grid-flow-col auto-cols-max gap-2 px-2 '>
@@ -146,10 +144,29 @@ export default function Home() {
                 ></input> */}
                 <input
                   onChange={debouncedHandleTitleChange}
-                  className='bg-CITLGray-light w-64 border-CITLGray-lighter border text-CITLGray-main rounded-lg text-sm font-medium'
+                  className='bg-CITLGray-light w-64 border-CITLGray-lighter border text-CITLGray-main rounded-md text-sm font-medium'
                   type='text'
                   placeholder='Title'
                 ></input>
+                <select
+                  id='default'
+                  className='bg-CITLGray-light border-CITLGray-lighter border text-CITLGray-main rounded-md text-sm font-medium'
+                  onChange={debouncedHandleStatusChange}
+                >
+                  <option value='' selected>
+                    Status
+                  </option>
+                  <option value='DRAFT'>Draft</option>
+                  <option value='SUBMITTED'>Submitted</option>
+                  <option value='DEPARTMENT_REVIEWED'>
+                    Department Reviewed
+                  </option>
+                  <option value='DEPARTMENT_ENDORSED'>
+                    Department Endorsed
+                  </option>
+                  <option value='CITL_REVIEWED'>CITL Reviewed</option>
+                  <option value='CITL_ENDORSED'>CITL Endorsed</option>
+                </select>
               </div>
             </div>
           </div>
@@ -157,12 +174,6 @@ export default function Home() {
           <table className='divide-y divide-CITLGray-light mb-2'>
             <thead className='bg-CITLGray-light'>
               <tr>
-                {/* <th
-                  scope='col'
-                  className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
-                >
-                  Serial No.
-                </th> */}
                 <th
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
@@ -239,6 +250,38 @@ export default function Home() {
                     }
                   />
                 </th>
+                <th
+                  scope='col'
+                  className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
+                >
+                  <SortButton
+                    label='Status'
+                    sortOrder={
+                      state.sortColumn === "status"
+                        ? state.sortOrder
+                        : undefined
+                    }
+                    setSortOrder={(order) =>
+                      setState((prev) => ({
+                        ...prev,
+                        sortColumn: "status",
+                        sortOrder: order,
+                      }))
+                    }
+                  />
+                </th>
+                <th
+                  scope='col'
+                  className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
+                >
+                  Review/Suggestion
+                </th>
+                <th
+                  scope='col'
+                  className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
+                >
+                  Reviewed As
+                </th>
 
                 <th
                   scope='col'
@@ -266,6 +309,26 @@ export default function Home() {
                 >
                   Updated At
                 </th> */}
+                <th
+                  scope='col'
+                  className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
+                >
+                  <SortButton
+                    label='Serial No.'
+                    sortOrder={
+                      state.sortColumn === "serialNumber"
+                        ? state.sortOrder
+                        : undefined
+                    }
+                    setSortOrder={(order) =>
+                      setState((prev) => ({
+                        ...prev,
+                        sortColumn: "serialNumber",
+                        sortOrder: order,
+                      }))
+                    }
+                  />
+                </th>
                 <th
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
@@ -300,10 +363,28 @@ export default function Home() {
                     <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
                     <div className='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
                   </td>
+                  <td className='px-4 py-4 space-x-1'>
+                    <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                    <div className='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
+                  </td>
+
+                  <td className='px-6 py-4 '>
+                    <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                    <div className='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
+                  </td>
+
+                  <td className='px-6 py-4 '>
+                    <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                    <div className='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
+                  </td>
 
                   {/* <td className='px-6 py-4 '>
-        {moment(updatedAt).format("M/D/YYYY, h:mm A")}
-      </td> */}
+                    {moment(updatedAt).format("M/D/YYYY, h:mm A")}
+                  </td> */}
+
+                  <td className='bg-white  font-medium text-slate-400  items-center justify-center px-6 py-4 '>
+                    <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                  </td>
 
                   <td className='bg-white  font-medium text-slate-400  items-center justify-center px-6 py-4 '>
                     <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
@@ -318,10 +399,14 @@ export default function Home() {
                 ims.map((im, index) => {
                   return (
                     <IM
+                      showStatus={true}
+                      showReviewSuggestion={true}
                       authors={im.authors}
+                      showOwner={true}
+                      showReviewedAs={true}
+                      showSerialNumber={true}
                       // bottomBorder={index < state.ims.length - 1}
                       im={im}
-                      showOwner={true}
                       peerReviewed={Boolean(
                         im.SubmittedPeerReview && im.SubmittedPeerSuggestion
                       )}
