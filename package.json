@@ -10,7 +10,7 @@
     "build": "npm run setup && next build",
     "start": "next start",
     "lint": "npm run setup && next lint",
-    "vercel-build": "npm install && npm run setup && prisma generate && next build",
+    "vercel-build": "npm run setup && prisma generate && next build",
     "validate": "node validator.js",
     "set-admin": "node set-admin.js",
     "setup": "npm run validate && npm run set-admin"
