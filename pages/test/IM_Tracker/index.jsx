@@ -10,7 +10,7 @@ export default function IM_Tracker() {
           </h3>
           <ol className='relative border-l border-CITLDarkBlue dark:border-gray-700'>
             <li className='mb-10 ml-6'>
-              <span className='absolute flex items-center justify-center w-6 h-6 bg-CITLDarkBlue rounded-full -left-3 ring-8 ring-CITLGray-light'>
+              <span className='absolute flex items-center justify-center w-6 h-6 bg-CITLGray-light rounded-full -left-3 ring-8 ring-CITLGray-light'>
                 <svg
                   fill='currentColor'
                   className='w-8 h-8 text-CITLOrange dark:text-blue-300'
@@ -63,7 +63,7 @@ export default function IM_Tracker() {
               </a>
             </li>
             <li className='mb-10 ml-6'>
-              <span className='absolute flex items-center justify-center w-6 h-6 bg-CITLDarkBlue rounded-full -left-3 ring-8 ring-CITLGray-light dark:ring-gray-900 dark:bg-blue-900'>
+              <span className='absolute flex items-center justify-center w-6 h-6 bg-CITLGray-light rounded-full -left-3 ring-8 ring-CITLGray-light dark:ring-gray-900 dark:bg-blue-900'>
                 <svg
                   fill='currentColor'
                   className='w-8 h-8 text-CITLOrange dark:text-blue-300'
@@ -119,7 +119,7 @@ export default function IM_Tracker() {
               </p>
             </li>
             <li className='mb-10 ml-6'>
-              <span className='absolute flex items-center justify-center w-6 h-6 bg-CITLDarkBlue rounded-full -left-3 ring-8 ring-CITLGray-light dark:ring-gray-900 dark:bg-blue-900'>
+              <span className='absolute flex items-center justify-center w-6 h-6 bg-CITLGray-light rounded-full -left-3 ring-8 ring-CITLGray-light dark:ring-gray-900 dark:bg-blue-900'>
                 <svg
                   fill='currentColor'
                   className='w-8 h-8 text-CITLOrange dark:text-blue-300'
@@ -146,7 +146,7 @@ export default function IM_Tracker() {
               </p>
             </li>
             <li className='mb-10 ml-6'>
-              <span className='absolute flex items-center justify-center w-6 h-6 bg-CITLDarkBlue rounded-full -left-3 ring-8 ring-CITLGray-light dark:ring-gray-900 dark:bg-blue-900'>
+              <span className='absolute flex items-center justify-center w-6 h-6 bg-CITLGray-light rounded-full -left-3 ring-8 ring-CITLGray-light dark:ring-gray-900 dark:bg-blue-900'>
                 <svg
                   fill='currentColor'
                   className='w-8 h-8 text-CITLOrange dark:text-blue-300'
@@ -174,7 +174,7 @@ export default function IM_Tracker() {
               </p>
             </li>
             <li className='mb-10 ml-6'>
-              <span className='absolute flex items-center justify-center w-6 h-6 bg-CITLDarkBlue rounded-full -left-3 ring-8 ring-CITLGray-light dark:ring-gray-900 dark:bg-blue-900'>
+              <span className='absolute flex items-center justify-center w-6 h-6 bg-CITLGray-light rounded-full -left-3 ring-8 ring-CITLGray-light dark:ring-gray-900 dark:bg-blue-900'>
                 <svg
                   fill='currentColor'
                   className='w-8 h-8 text-CITLOrange dark:text-blue-300'
@@ -202,7 +202,7 @@ export default function IM_Tracker() {
               </p>
             </li>
             <li className='mb-10 ml-6'>
-              <span className='absolute flex items-center justify-center w-6 h-6 bg-CITLDarkBlue rounded-full -left-3 ring-8 ring-CITLGray-light dark:ring-gray-900 dark:bg-blue-900'>
+              <span className='absolute flex items-center justify-center w-6 h-6 bg-CITLGray-light rounded-full -left-3 ring-8 ring-CITLGray-light dark:ring-gray-900 dark:bg-blue-900'>
                 <svg
                   fill='currentColor'
                   className='w-8 h-8 text-CITLOrange dark:text-blue-300'
@@ -230,7 +230,7 @@ export default function IM_Tracker() {
               </p>
             </li>
             <li className='mb-10 ml-6'>
-              <span className='absolute flex items-center justify-center w-6 h-6 bg-CITLDarkBlue rounded-full -left-3 ring-8 ring-CITLGray-light dark:ring-gray-900 dark:bg-blue-900'>
+              <span className='absolute flex items-center justify-center w-6 h-6 bg-CITLGray-light rounded-full -left-3 ring-8 ring-CITLGray-light dark:ring-gray-900 dark:bg-blue-900'>
                 <svg
                   fill='currentColor'
                   className='w-8 h-8 text-CITLOrange dark:text-blue-300'
