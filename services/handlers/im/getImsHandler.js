@@ -19,6 +19,8 @@ export default async function getImsHandler(req, res) {
     collegeId,
     endorsedByDean,
     endorsedByCoordinator,
+    authors,
+    owner,
   } = req.query;
   const ims = await readIMs({
     limit: parseInt(limit),
@@ -40,6 +42,8 @@ export default async function getImsHandler(req, res) {
     collegeId,
     endorsedByDean,
     endorsedByCoordinator,
+    authors,
+    owner,
   });
 
   return res.status(200).json(ims);

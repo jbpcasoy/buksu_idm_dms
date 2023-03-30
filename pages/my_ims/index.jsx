@@ -1,6 +1,8 @@
+import Filter from "@/components/Filter";
 import Layout from "@/components/layout/Layout";
 import SortButton from "@/components/SortButton";
 import UserContext from "@/contexts/UserContext";
+import IMStatuses from "@/services/constants/im_status";
 import frontendGetIMs from "@/services/frontend/im/frontendGetIMs";
 import IM from "@/views/im/IM";
 import _ from "lodash";
@@ -14,9 +16,6 @@ export default function Home() {
   const [state, setState] = useState({
     page: 1,
     limit: 10,
-    serialNumber: "",
-    title: "",
-    status: undefined,
     sortColumn: "title",
     sortOrder: "asc",
   });
@@ -36,17 +35,15 @@ export default function Home() {
 
     async function getMyIMs(filter) {
       return frontendGetIMs({
-        ownerId: user.ActiveFaculty.Faculty.id,
         ...filter,
+        ownerId: user.ActiveFaculty.Faculty.id,
       });
     }
 
     const filter = {
+      ...state,
       page: state.page,
       limit: state.limit,
-      serialNumber: state.serialNumber,
-      title: state.title,
-      status: state.status,
       sortColumn: state.sortColumn,
       sortOrder: state.sortOrder,
     };
@@ -142,31 +139,6 @@ export default function Home() {
                   type='text'
                   placeholder='Serial Number'
                 ></input> */}
-                <input
-                  onChange={debouncedHandleTitleChange}
-                  className='bg-CITLGray-light w-64 border-CITLGray-lighter border text-CITLGray-main rounded-md text-sm font-medium'
-                  type='text'
-                  placeholder='Title'
-                ></input>
-                <select
-                  id='default'
-                  className='bg-CITLGray-light border-CITLGray-lighter border text-CITLGray-main rounded-md text-sm font-medium'
-                  onChange={debouncedHandleStatusChange}
-                >
-                  <option value='' selected>
-                    Status
-                  </option>
-                  <option value='DRAFT'>Draft</option>
-                  <option value='SUBMITTED'>Submitted</option>
-                  <option value='DEPARTMENT_REVIEWED'>
-                    Department Reviewed
-                  </option>
-                  <option value='DEPARTMENT_ENDORSED'>
-                    Department Endorsed
-                  </option>
-                  <option value='CITL_REVIEWED'>CITL Reviewed</option>
-                  <option value='CITL_ENDORSED'>CITL Endorsed</option>
-                </select>
                 <div className=''>
                   <button
                     data-modal-target='suggestion-modal'
@@ -198,6 +170,33 @@ export default function Home() {
               </div>{" "}
             </div>
           </div>
+          <Filter
+            filterOptions={[
+              {
+                value: "title",
+                label: "Title",
+              },
+              {
+                value: "authors",
+                label: "Authors",
+              },
+              {
+                value: "serialNumber",
+                label: "Serial No.",
+              },
+              {
+                value: "status",
+                label: "Status",
+                options: IMStatuses,
+              },
+              {
+                value: "type",
+                label: "Type",
+                options: ["MODULE", "COURSE_FILE", "WORKTEXT", "TEXTBOOK"],
+              },
+            ]}
+            onChange={(filter) => setState((prev) => ({ ...prev, ...filter }))}
+          />
 
           <table className='divide-y divide-CITLGray-light mb-2 '>
             <thead className='bg-CITLGray-light'>

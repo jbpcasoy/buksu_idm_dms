@@ -1,3 +1,4 @@
+import Filter from "@/components/Filter";
 import Layout from "@/components/layout/Layout";
 import SortButton from "@/components/SortButton";
 import UserContext from "@/contexts/UserContext";
@@ -36,19 +37,18 @@ export default function Home() {
 
     async function getToReview(filter) {
       return frontendGetIMs({
+        ...filter,
         notOwnerId: user.ActiveFaculty.Faculty.id,
         departmentId: user.ActiveFaculty.Faculty.departmentId,
         coordinatorEndorsed: false,
-        ...filter,
+        status: "DEPARTMENT_REVIEWED",
       });
     }
 
     const filter = {
+      ...state,
       page: state.page,
       limit: state.limit,
-      serialNumber: state.serialNumber,
-      title: state.title,
-      status: "DEPARTMENT_REVIEWED",
       sortColumn: state.sortColumn,
       sortOrder: state.sortOrder,
     };
@@ -144,15 +144,31 @@ export default function Home() {
                   type='text'
                   placeholder='Serial Number'
                 ></input> */}
-                <input
-                  onChange={debouncedHandleTitleChange}
-                  className='bg-CITLGray-light w-64 border-CITLGray-lighter border text-CITLGray-main rounded-lg text-sm font-medium'
-                  type='text'
-                  placeholder='Title'
-                ></input>
               </div>
             </div>
           </div>
+          <Filter
+            filterOptions={[
+              {
+                value: "title",
+                label: "Title",
+              },
+              {
+                value: "type",
+                label: "Type",
+                options: ["MODULE", "COURSE_FILE", "WORKTEXT", "TEXTBOOK"],
+              },
+              {
+                value: "owner",
+                label: "Owner",
+              },
+              {
+                value: "authors",
+                label: "Authors",
+              },
+            ]}
+            onChange={(filter) => setState((prev) => ({ ...prev, ...filter }))}
+          />
 
           <table className='divide-y divide-CITLGray-light mb-2'>
             <thead className='bg-CITLGray-light'>

@@ -1,6 +1,8 @@
+import Filter from "@/components/Filter";
 import Layout from "@/components/layout/Layout";
 import SortButton from "@/components/SortButton";
 import UserContext from "@/contexts/UserContext";
+import IMStatuses from "@/services/constants/im_status";
 import frontendGetIMs from "@/services/frontend/im/frontendGetIMs";
 import IM from "@/views/im/IM";
 import _ from "lodash";
@@ -36,17 +38,15 @@ export default function Home() {
 
     async function getDepartmentIms(filter) {
       return frontendGetIMs({
-        departmentId: user.ActiveFaculty.Faculty.departmentId,
         ...filter,
+        departmentId: user.ActiveFaculty.Faculty.departmentId,
       });
     }
 
     const filter = {
+      ...state,
       page: state.page,
       limit: state.limit,
-      serialNumber: state.serialNumber,
-      title: state.title,
-      status: state.status,
       sortColumn: state.sortColumn,
       sortOrder: state.sortOrder,
     };
@@ -170,6 +170,33 @@ export default function Home() {
               </div>
             </div>
           </div>
+          <Filter
+            filterOptions={[
+              {
+                value: "title",
+                label: "Title",
+              },
+              {
+                value: "type",
+                label: "Type",
+                options: ["MODULE", "COURSE_FILE", "WORKTEXT", "TEXTBOOK"],
+              },
+              {
+                value: "owner",
+                label: "Owner",
+              },
+              {
+                value: "authors",
+                label: "Authors",
+              },
+              {
+                value: "status",
+                label: "Status",
+                options: IMStatuses,
+              },
+            ]}
+            onChange={(filter) => setState((prev) => ({ ...prev, ...filter }))}
+          />
 
           <table className='divide-y divide-CITLGray-light mb-2'>
             <thead className='bg-CITLGray-light'>

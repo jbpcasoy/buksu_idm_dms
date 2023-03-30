@@ -20,6 +20,8 @@ export default async function readIMs({
   collegeId,
   endorsedByDean,
   endorsedByCoordinator,
+  authors,
+  owner,
 }) {
   const prisma = PRISMA_CLIENT;
   const sortFilter = {};
@@ -189,6 +191,9 @@ export default async function readIMs({
                 ]
               : undefined,
             owner: {
+              user: {
+                name: { contains: owner },
+              },
               departmentId: departmentId,
               department: {
                 collegeId: collegeId,
@@ -211,6 +216,9 @@ export default async function readIMs({
             status: {
               equals: status,
             },
+            authors: {
+              contains: authors,
+            },
           },
         ],
       },
@@ -224,7 +232,9 @@ export default async function readIMs({
             CoordinatorEndorsement:
               coordinatorEndorsed === true
                 ? {
-                    id: {},
+                    id: {
+                      contains: "",
+                    },
                   }
                 : coordinatorEndorsed === false
                 ? {
@@ -316,6 +326,9 @@ export default async function readIMs({
                 ]
               : undefined,
             owner: {
+              user: {
+                name: { contains: owner },
+              },
               departmentId: departmentId,
               department: {
                 collegeId: collegeId,
@@ -337,6 +350,9 @@ export default async function readIMs({
             },
             status: {
               equals: status,
+            },
+            authors: {
+              contains: authors,
             },
           },
         ],
