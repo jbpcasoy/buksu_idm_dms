@@ -49,7 +49,7 @@ export default function Sidebar() {
               <div className='justify-between flex w-full items-center'>
                 <span className='ml-3'>My IM&apos;s</span>
                 {myImsCount > 0 && (
-                  <div className='inline-flex items-center justify-center w-4 h-4  text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
+                  <div className='inline-flex items-center justify-center w-4 h-4  text-xs font-semibold text-CITLOrange '>
                     {myImsCount}
                   </div>
                 )}
@@ -82,7 +82,7 @@ export default function Sidebar() {
               <div className='justify-between flex w-full items-center'>
                 <span className='ml-3'>To Revise</span>
                 {toReviseCount > 0 && (
-                  <div className='inline-flex items-center justify-center w-4 h-4  text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
+                  <div className='inline-flex items-center justify-center w-4 h-4  text-xs font-semibold text-CITLOrange '>
                     {toReviseCount}
                   </div>
                 )}
@@ -120,7 +120,7 @@ export default function Sidebar() {
               <div className='justify-between flex w-full items-center'>
                 <span className='ml-3'>To Review</span>
                 {toReviewCount > 0 && (
-                  <div className='inline-flex items-center justify-center w-4 h-4  text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
+                  <div className='inline-flex items-center justify-center w-4 h-4  text-xs font-semibold text-CITLOrange '>
                     {toReviewCount}
                   </div>
                 )}
@@ -153,7 +153,7 @@ export default function Sidebar() {
               <div className='justify-between flex w-full items-center'>
                 <span className='ml-3'>Reviewed</span>
                 {reviewedCount > 0 && (
-                  <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
+                  <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLOrange '>
                     {reviewedCount}
                   </div>
                 )}
@@ -189,7 +189,7 @@ export default function Sidebar() {
                     To Endorse
                   </span>
                   {toEndorseCount > 0 && (
-                    <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
+                    <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLOrange '>
                       {toEndorseCount}
                     </div>
                   )}
@@ -227,7 +227,7 @@ export default function Sidebar() {
                     Department IM&apos;s
                   </span>
                   {departmentImsCount > 0 && (
-                    <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
+                    <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLOrange '>
                       {departmentImsCount}
                     </div>
                   )}
