@@ -280,29 +280,29 @@ export default function StudentOpinionnaire() {
                     >
                       1. What I like in the module is/are:
                     </label>
-                    <div>
-                      <div className='indent-8 grid-cols-4 '>
+                    <div className='lg:indent-0 md:indent-0  w-full p-2 ml-2 '>
+                      <div className='lg:indent-5 md:indent-0 inline-flex items-center w-full'>
                         <label className=' text-CITLGray-main'>a. </label>
                         <input
                           type='text'
                           placeholder='-'
-                          className='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
+                          className='w-full text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
                         />
                       </div>
-                      <div className='indent-8 grid-cols-4'>
+                      <div className='lg:indent-5 md:indent-0 inline-flex items-center w-full'>
                         <label className=' text-CITLGray-main'>b. </label>
                         <input
                           type='text'
                           placeholder='-'
-                          className='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
+                          className='w-full  text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
                         />
                       </div>
-                      <div className='indent-8 grid-cols-4'>
+                      <div className='lg:indent-5 md:indent-0 inline-flex items-center w-full'>
                         <label className=' text-CITLGray-main'>c. </label>
                         <input
                           type='text'
                           placeholder='-'
-                          className='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
+                          className='w-full text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
                         />
                       </div>
                     </div>
@@ -312,42 +312,42 @@ export default function StudentOpinionnaire() {
                     >
                       <label
                         htmlFor='message'
-                        className='block mb-2 mt-3 text-sm font-medium text-CITLGray-main'
+                        className=' mb-2 mt-3 text-sm font-medium text-CITLGray-main'
                       >
                         2. What I think can still be improved in the module
                         is/are:
                       </label>
-                      <div>
-                        <div className='indent-8 grid-cols-4 '>
-                          <label className=' text-CITLGray-main'>a. </label>
+                      <div className='lg:indent-0 md:indent-0  w-full p-2 ml-2 '>
+                        <div className='lg:indent-5 md:indent-0 inline-flex items-center w-full'>
+                          <label className=' text-CITLGray-main '>a. </label>
                           <input
                             type='text'
                             placeholder='-'
-                            className='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
+                            className='w-full text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
                           />
                         </div>
-                        <div className='indent-8 grid-cols-4'>
+                        <div className='lg:indent-5 md:indent-0 inline-flex items-center w-full'>
                           <label className=' text-CITLGray-main'>b. </label>
                           <input
                             type='text'
                             placeholder='-'
-                            className='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
+                            className='w-full  text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
                           />
                         </div>
-                        <div className='indent-8 grid-cols-4'>
+                        <div className='lg:indent-5 md:indent-0 inline-flex items-center w-full'>
                           <label className=' text-CITLGray-main'>c. </label>
                           <input
                             type='text'
                             placeholder='-'
-                            className='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
+                            className='w-full text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
                           />
                         </div>
                       </div>
                     </label>
                   </div>
                 </div>
-                <div className='grid grid-cols-2 gap-6 mt-6'>
-                  <div>
+                <div className=' lg:grid-cols-2 gap-6  md:grid-rows-2 mb-3'>
+                  <div className='mb-3'>
                     <label
                       className='block mb-1 text-sm font-semibold text-CITLDarkBlue '
                       htmlfor='title'
@@ -380,17 +380,17 @@ export default function StudentOpinionnaire() {
                 </div>
               </div>
 
-              <div className='flex mt-4'>
+              <div className='flex '>
                 <Link
-                  href='/student-opinionaire/index3'
-                  className='text-base  flex justify-center px-4 py-2 rounded font-bold cursor-pointer shadow-xl hover:border-CITLOrange hover:text-CITLOrange bg-gray-100 text-CITLGray-main border border-CITLGray-main'
+                  href='/test/student-opinionaire/index3'
+                  className='text-base  flex justify-center px-4 py-2 rounded-md font-bold cursor-pointer shadow-xl hover:border-CITLOrange hover:text-CITLOrange bg-gray-100 text-CITLGray-main border border-CITLGray-main'
                 >
                   Previous
                 </Link>
                 <div className='flex-auto flex flex-row-reverse'>
                   <Link
-                    href='/student-opinionaire'
-                    className='text-base  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer shadow-xl hover:bg-CITLOrange   bg-CITLDarkBlue text-CITLWhite'
+                    href='/test/student-opinionaire'
+                    className='text-base  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded-md font-bold cursor-pointer shadow-xl hover:bg-CITLOrange   bg-CITLDarkBlue text-CITLWhite'
                   >
                     Next
                   </Link>
