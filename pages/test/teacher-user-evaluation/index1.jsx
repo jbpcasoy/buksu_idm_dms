@@ -37,72 +37,74 @@ export default function TeacherUserEvaluation() {
                     Please do not leave any item blank.
                   </p>
 
-                  <ul className='items-center w-full text-sm font-medium   rounded-lg sm:flex  dark:text-CITLDarkBlue mt-2'>
-                    <li className='w-full  border-gray-200 sm:border-b-0  dark:border-gray-600'>
-                      <div className='flex items-center pl-3'>
-                        <label
-                          htmlFor='horizontal-list-radio-license'
-                          className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main '
-                        >
-                          <span className='text-CITLOrange border-2 border-CITLOrange px-3 py-2'>
-                            1
-                          </span>{" "}
-                          Not Adequate
-                        </label>
-                      </div>
-                    </li>
-                    <li className='w-full  border-gray-200 sm:border-b-0  dark:border-gray-600'>
-                      <div className='flex items-center pl-3'>
-                        <label
-                          htmlFor='horizontal-list-radio-id'
-                          className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
-                        >
-                          <span className='text-CITLOrange border-2 border-CITLOrange px-3 py-2'>
-                            2
-                          </span>{" "}
-                          Slightly Adequate
-                        </label>
-                      </div>
-                    </li>
-                    <li className='w-full  border-gray-200 sm:border-b-0 dark:border-gray-600'>
-                      <div className='flex items-center pl-3'>
-                        <label
-                          htmlFor='horizontal-list-radio-millitary'
-                          className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
-                        >
-                          <span className='text-CITLOrange border-2 border-CITLOrange px-3 py-2'>
-                            3
-                          </span>{" "}
-                          Adequate
-                        </label>
-                      </div>
-                    </li>
-                    <li className='w-full sm:border-b-0 dark:border-gray-600'>
-                      <div className='flex items-center pl-3'>
-                        <label
-                          htmlFor='horizontal-list-radio-passport'
-                          className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
-                        >
-                          <span className='text-CITLOrange border-2 border-CITLOrange px-3 py-2'>
-                            4
-                          </span>{" "}
-                          Very Adequate
-                        </label>
-                      </div>
-                    </li>
-                    <li className='w-full sm:border-b-0 dark:border-gray-600'>
-                      <div className='flex items-center pl-3'>
-                        <label
-                          htmlFor='horizontal-list-radio-passport'
-                          className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
-                        >
-                          <span className='text-CITLOrange border-2 border-CITLOrange px-3 py-2'>
-                            5
-                          </span>{" "}
-                          Highly Adequate
-                        </label>
-                      </div>
-                    </li>
+                  <ul className=' items-center w-full text-sm font-medium  rounded-lg  mt-2'>
+                    <div className='lg:flex'>
+                      <li className='w-full  border-gray-200 sm:border-b-0'>
+                        <div className='inline-flex items-center pl-3'>
+                          <label
+                            htmlFor='horizontal-list-radio-license'
+                            className='w-full py-3 ml-2 text-CITLGray-main '
+                          >
+                            <span className='text-CITLOrange border-2 mr-2 border-CITLOrange px-4 py-2.5'>
+                              1{""}
+                            </span>{" "}
+                            Not Adequate
+                          </label>
+                        </div>
+                      </li>
+                      <li className='w-full  border-gray-200 sm:border-b-0'>
+                        <div className='flex items-center pl-3'>
+                          <label
+                            htmlFor='horizontal-list-radio-id'
+                            className='w-full py-3 ml-2 text-CITLGray-main'
+                          >
+                            <span className='text-CITLOrange border-2 mr-2 border-CITLOrange px-4 py-2.5'>
+                              2
+                            </span>{" "}
+                            Slightly Adequate
+                          </label>
+                        </div>
+                      </li>
+                      <li className='w-full  border-gray-200 sm:border-b-0'>
+                        <div className='flex items-center pl-3'>
+                          <label
+                            htmlFor='horizontal-list-radio-millitary'
+                            className='w-full py-3 ml-2 text-CITLGray-main'
+                          >
+                            <span className='text-CITLOrange border-2 mr-2 border-CITLOrange px-4 py-2.5'>
+                              3
+                            </span>{" "}
+                            Adequate
+                          </label>
+                        </div>
+                      </li>
+                      <li className='w-full sm:border-b-0 '>
+                        <div className='flex items-center pl-3'>
+                          <label
+                            htmlFor='horizontal-list-radio-passport'
+                            className='w-full py-3 ml-2  text-CITLGray-main'
+                          >
+                            <span className='text-CITLOrange border-2 mr-2 border-CITLOrange px-4 py-2.5'>
+                              4
+                            </span>{" "}
+                            Very Adequate
+                          </label>
+                        </div>
+                      </li>
+                      <li className='w-full sm:border-b-0 '>
+                        <div className='flex items-center pl-3'>
+                          <label
+                            htmlFor='horizontal-list-radio-passport'
+                            className='w-full py-3 ml-2  text-CITLGray-main'
+                          >
+                            <span className='text-CITLOrange border-2 mr-2 border-CITLOrange px-4 py-2.5'>
+                              5
+                            </span>{" "}
+                            Highly Adequate
+                          </label>
+                        </div>
+                      </li>
+                    </div>
                   </ul>
                 </div>
               </div>
@@ -547,7 +549,7 @@ export default function TeacherUserEvaluation() {
               <div className='flex mt-4'>
                 <div className='flex-auto flex flex-row-reverse'>
                   <Link
-                    href='/teacher-user-evaluation/index2'
+                    href='/test/teacher-user-evaluation/index2'
                     className='text-base  ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer shadow-xl hover:bg-CITLOrange bg-CITLDarkBlue text-CITLWhite  '
                   >
                     Next
