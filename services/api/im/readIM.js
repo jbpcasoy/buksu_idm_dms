@@ -10,7 +10,11 @@ export default async function readIM(id, filter = {}) {
         id,
       },
       include: {
-        CoordinatorEndorsement: true,
+        CoordinatorEndorsement: {
+          include: {
+            DeanEndorsement: true,
+          },
+        },
         SubmittedChairpersonSuggestion: true,
         SubmittedCoordinatorSuggestion: true,
         SubmittedPeerSuggestion: true,

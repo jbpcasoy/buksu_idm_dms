@@ -1,3 +1,4 @@
+import Filter from "@/components/Filter";
 import Layout from "@/components/layout/Layout";
 import SortButton from "@/components/SortButton";
 import UserContext from "@/contexts/UserContext";
@@ -36,18 +37,18 @@ export default function Home() {
 
     async function getToReview(filter) {
       return frontendGetIMs({
+        ...filter,
         notOwnerId: user.ActiveFaculty.Faculty.id,
         departmentId: user.ActiveFaculty.Faculty.departmentId,
-        ...filter,
+        coordinatorEndorsed: false,
+        status: "DEPARTMENT_REVIEWED",
       });
     }
 
     const filter = {
+      ...state,
       page: state.page,
       limit: state.limit,
-      serialNumber: state.serialNumber,
-      title: state.title,
-      status: "DEPARTMENT_REVIEWED",
       sortColumn: state.sortColumn,
       sortOrder: state.sortOrder,
     };
@@ -133,7 +134,7 @@ export default function Home() {
                   <span className='inline-flex items-center justify-center w-4 h-4 mr-1 text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full'>
                     {total}
                   </span>
-                  To Review
+                  To Endorse
                 </button>
               </div>
               <div className=' grid grid-flow-col auto-cols-max gap-2 px-2 '>
@@ -143,15 +144,31 @@ export default function Home() {
                   type='text'
                   placeholder='Serial Number'
                 ></input> */}
-                <input
-                  onChange={debouncedHandleTitleChange}
-                  className='bg-CITLGray-light w-64 border-CITLGray-lighter border text-CITLGray-main rounded-lg text-sm font-medium'
-                  type='text'
-                  placeholder='Title'
-                ></input>
               </div>
             </div>
           </div>
+          <Filter
+            filterOptions={[
+              {
+                value: "title",
+                label: "Title",
+              },
+              {
+                value: "type",
+                label: "Type",
+                options: ["MODULE", "COURSE_FILE", "WORKTEXT", "TEXTBOOK"],
+              },
+              {
+                value: "owner",
+                label: "Owner",
+              },
+              {
+                value: "authors",
+                label: "Authors",
+              },
+            ]}
+            onChange={(filter) => setState((prev) => ({ ...prev, ...filter }))}
+          />
 
           <table className='divide-y divide-CITLGray-light mb-2'>
             <thead className='bg-CITLGray-light'>
@@ -321,16 +338,19 @@ export default function Home() {
                       // bottomBorder={index < state.ims.length - 1}
                       im={im}
                       showOwner={true}
-                      peerReviewed={Boolean(
-                        im.SubmittedPeerReview && im.SubmittedPeerSuggestion
-                      )}
+                      peerReviewed={Boolean(im.SubmittedPeerReview)}
                       chairpersonReviewed={Boolean(
-                        im.SubmittedChairpersonReview &&
-                          im.SubmittedChairpersonSuggestion
+                        im.SubmittedChairpersonReview
                       )}
                       coordinatorReviewed={Boolean(
-                        im.SubmittedCoordinatorReview &&
-                          im.SubmittedCoordinatorSuggestion
+                        im.SubmittedCoordinatorReview
+                      )}
+                      peerSuggested={Boolean(im.SubmittedPeerSuggestion)}
+                      chairpersonSuggested={Boolean(
+                        im.SubmittedChairpersonSuggestion
+                      )}
+                      coordinatorSuggested={Boolean(
+                        im.SubmittedCoordinatorSuggestion
                       )}
                       bottomBorder={true}
                       createdAt={im.createdAt}
