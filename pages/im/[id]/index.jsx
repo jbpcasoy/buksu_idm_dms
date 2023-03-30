@@ -54,7 +54,7 @@ export default function ViewIM() {
         <div className='flex items-center justify-between '>
           <div>
             <h2 className='text-lg font-medium'>{iM?.title}</h2>
-            <div className='flex gap-3'>
+            <div className='lg:flex sm:flex-rows-2 gap-3'>
               <h2 className='text-xs  text-CITLGray-main'>
                 Type: <span className='text-xs font-medium '>{iM?.type}</span>
               </h2>

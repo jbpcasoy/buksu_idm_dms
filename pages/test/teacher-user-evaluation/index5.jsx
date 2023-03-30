@@ -284,111 +284,128 @@ export default function TeacherUserEvaluation() {
                 </div>
               </div>
 
-              <div>
-                <div className='border border-CITLGray-main rounded-lg px-3 py-8'>
+              <div className='py-5'>
+                <div className='border border-CITLGray-main rounded-lg px-3 py-5'>
                   <h3 className=' font-semibold text-lg text-CITLGray-main'>
                     B. Directions:
                   </h3>
                   <p className='text-sm font-normal text-CITLGray-main'>
                     Please provide comments and suggestions for each area below:
                   </p>
-
                   <label
                     htmlFor='message'
-                    className='block mb-2 mt-3 text-md font-semibold text-CITLGray-main'
+                    className='block mb-2 mt-3 text-sm font-medium text-CITLGray-main'
                   >
                     1. Strengths:
                   </label>
-                  <div>
-                    <div className='indent-8 grid-cols-4 '>
+                  <div className='lg:indent-0 md:indent-0  w-full p-2 ml-2 '>
+                    <div className='lg:indent-5 md:indent-0 inline-flex items-center w-full'>
                       <label className=' text-CITLGray-main'>a. </label>
                       <input
                         type='text'
                         placeholder='-'
-                        className='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
+                        className='w-full text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
                       />
                     </div>
-                    <div className='indent-8 grid-cols-4'>
+                    <div className='lg:indent-5 md:indent-0 inline-flex items-center w-full'>
                       <label className=' text-CITLGray-main'>b. </label>
                       <input
                         type='text'
                         placeholder='-'
-                        className='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
+                        className='w-full  text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
+                      />
+                    </div>
+                    <div className='lg:indent-5 md:indent-0 inline-flex items-center w-full'>
+                      <label className=' text-CITLGray-main'>c. </label>
+                      <input
+                        type='text'
+                        placeholder='-'
+                        className='w-full text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
                       />
                     </div>
                   </div>
-
                   <label
                     htmlFor='message'
-                    className='block mb-2 mt-3  text-md font-semibold text-CITLGray-main'
+                    className='block mb-2 mt-3 text-sm font-medium text-CITLGray-main'
                   >
-                    2. Weaknesses:
+                    <label
+                      htmlFor='message'
+                      className=' mb-2 mt-3 text-sm font-medium text-CITLGray-main'
+                    >
+                      2. Weaknesses:
+                    </label>
+                    <div className='lg:indent-0 md:indent-0  w-full p-2 ml-2 '>
+                      <div className='lg:indent-5 md:indent-0 inline-flex items-center w-full'>
+                        <label className=' text-CITLGray-main '>a. </label>
+                        <input
+                          type='text'
+                          placeholder='-'
+                          className='w-full text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
+                        />
+                      </div>
+                      <div className='lg:indent-5 md:indent-0 inline-flex items-center w-full'>
+                        <label className=' text-CITLGray-main'>b. </label>
+                        <input
+                          type='text'
+                          placeholder='-'
+                          className='w-full  text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
+                        />
+                      </div>
+                      <div className='lg:indent-5 md:indent-0 inline-flex items-center w-full'>
+                        <label className=' text-CITLGray-main'>c. </label>
+                        <input
+                          type='text'
+                          placeholder='-'
+                          className='w-full text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
+                        />
+                      </div>
+                    </div>
                   </label>
-                  <div>
-                    <div className='indent-8 grid-cols-4 '>
-                      <label className=' text-CITLGray-main'>a. </label>
-                      <input
-                        type='text'
-                        placeholder='-'
-                        className='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
-                      />
-                    </div>
-                    <div className='indent-8 grid-cols-4'>
-                      <label className=' text-CITLGray-main'>b. </label>
-                      <input
-                        type='text'
-                        placeholder='-'
-                        className='w-96 p-2 ml-2 text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
-                      />
-                    </div>
-                  </div>
                 </div>
               </div>
-              <div className='py-5'>
-                <div className='grid grid-cols-2 gap-6 mt-6'>
-                  <div>
-                    <label
-                      className='block mb-1 text-sm font-semibold text-CITLDarkBlue '
-                      htmlfor='title'
-                    >
-                      Name of Evaluator
-                    </label>
-                    <input
-                      className='border  border-gray-400 bg-CITLGray-light focus:ring-CITLOrange focus:border-CITLOrange p-2 w-full rounded-md'
-                      type='text'
-                      id='title'
-                      placeholder='John Doe'
-                    />
-                  </div>
-                  {/* IMPLEMENT Date Picker here */}
-                  <div>
-                    <label
-                      className='block mb-1 text-sm font-semibold text-CITLDarkBlue '
-                      htmlfor='title'
-                    >
-                      Date
-                    </label>
-                    <input
-                      className='border  border-gray-400 bg-CITLGray-light focus:ring-CITLOrange focus:border-CITLOrange p-2 w-full rounded-md'
-                      type='text'
-                      id='title'
-                    />
-                  </div>
-
-                  {/* ADD Evaluators Signature here. Already installed the signature pad. */}
+              <div className=' lg:grid-cols-2 gap-6  md:grid-rows-2 mb-3'>
+                <div className='mb-3'>
+                  <label
+                    className='block mb-1 text-sm font-semibold text-CITLDarkBlue '
+                    htmlfor='title'
+                  >
+                    Name of Evaluator
+                  </label>
+                  <input
+                    className='border  border-gray-400 bg-CITLGray-light focus:ring-CITLOrange focus:border-CITLOrange p-2 w-full rounded-md'
+                    type='text'
+                    id='title'
+                    placeholder='John Doe'
+                  />
                 </div>
+                {/* IMPLEMENT Date Picker here */}
+                <div>
+                  <label
+                    className='block mb-1 text-sm font-semibold text-CITLDarkBlue '
+                    htmlfor='title'
+                  >
+                    Date
+                  </label>
+                  <input
+                    className='border  border-gray-400 bg-CITLGray-light focus:ring-CITLOrange focus:border-CITLOrange p-2 w-full rounded-md'
+                    type='text'
+                    id='title'
+                  />
+                </div>
+
+                {/* ADD Evaluators Signature here. Already installed the signature pad. */}
               </div>
               <div className='flex mt-4'>
                 <Link
-                  href='/teacher-user-evaluation/index4'
-                  className='text-base  flex justify-center px-4 py-2 rounded font-bold cursor-pointer shadow-xl hover:border-CITLOrange hover:text-CITLOrange bg-gray-100 text-CITLGray-main border border-CITLGray-main'
+                  href='/test/teacher-user-evaluation/index4'
+                  className='text-base  flex justify-center px-4 py-2 rounded-md font-bold cursor-pointer shadow-xl hover:border-CITLOrange hover:text-CITLOrange bg-gray-100 text-CITLGray-main border border-CITLGray-main'
                 >
                   Previous
                 </Link>
                 <div className='flex-auto flex flex-row-reverse'>
                   <Link
-                    href='/teacher-user-evaluation/index5'
-                    className='text-base  ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer shadow-xl hover:bg-CITLOrange bg-CITLDarkBlue text-CITLWhite  '
+                    href='/test/teacher-user-evaluation/index5'
+                    className='text-base  ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded-md font-bold cursor-pointer shadow-xl hover:bg-CITLOrange bg-CITLDarkBlue text-CITLWhite  '
                   >
                     Next
                   </Link>

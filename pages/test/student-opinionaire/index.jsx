@@ -514,8 +514,8 @@ export default function StudentOpinionnaire() {
               <div className='flex mt-4'>
                 <div className='flex-auto flex flex-row-reverse'>
                   <Link
-                    href='/student-opinionaire/index2'
-                    className='text-base  ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer shadow-xl hover:bg-CITLOrange bg-CITLDarkBlue text-CITLWhite  '
+                    href='/test/student-opinionaire/index2'
+                    className='text-base  ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded-md font-bold cursor-pointer shadow-xl hover:bg-CITLOrange bg-CITLDarkBlue text-CITLWhite  '
                   >
                     Next
                   </Link>

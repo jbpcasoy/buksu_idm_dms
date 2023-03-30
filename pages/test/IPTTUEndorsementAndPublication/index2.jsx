@@ -99,7 +99,7 @@ export default function Endorsement() {
             <div className=' flex justify-end'>
               <button
                 type='submit'
-                className='text-white bg-CITLDarkBlue hover:bg-CITLOrange  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center'
+                className='text-white bg-CITLDarkBlue hover:bg-CITLOrange  font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center'
               >
                 Submit
               </button>
