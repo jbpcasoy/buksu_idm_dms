@@ -4,6 +4,7 @@ export default function Filter({ filterOptions = [], onChange }) {
   const [filter, setFilter] = useState({});
   useEffect(() => {
     onChange(filter);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filter]);
 
   return (
@@ -52,7 +53,7 @@ function FilterInput({ filterOptions, onAdd }) {
       (filter) => filter.value === state.filterColumn
     );
     setCurrentFilterOption(filterOption);
-  }, [state]);
+  }, [state, filterOptions]);
 
   return (
     <div className='flex'>
@@ -69,7 +70,9 @@ function FilterInput({ filterOptions, onAdd }) {
         }
       >
         {filterOptions.map((filterOption) => (
-          <option value={filterOption.value}>{filterOption.label}</option>
+          <option key={filterOption.value} value={filterOption.value}>
+            {filterOption.label}
+          </option>
         ))}
       </select>
       {!currentFilterOption?.options && (
@@ -143,7 +146,9 @@ function FilterItem({ filterOptions, filterColumn, value, onDelete }) {
         disabled
       >
         {filterOptions.map((filterOption) => (
-          <option value={filterOption.value}>{filterOption.label}</option>
+          <option key={filterOption.value} value={filterOption.value}>
+            {filterOption.label}
+          </option>
         ))}
       </select>
       <input
