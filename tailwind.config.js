@@ -18,6 +18,7 @@ module.exports = {
         CITLOrange: "#F2C050",
         CITLWhite: "#FFFFFF",
         // CITLGray: "#717883",
+
         CITLGray: {
           main: "#717883",
           light: "#f0f1f2",

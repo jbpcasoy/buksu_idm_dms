@@ -1,11 +1,13 @@
+import Filter from "@/components/Filter";
 import Layout from "@/components/layout/Layout";
 import SortButton from "@/components/SortButton";
-import useUser from "@/hooks/useUser";
+import UserContext from "@/contexts/UserContext";
+import IMStatuses from "@/services/constants/im_status";
 import frontendGetIMs from "@/services/frontend/im/frontendGetIMs";
 import IM from "@/views/im/IM";
 import _ from "lodash";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 export default function Home() {
   const [ims, setIms] = useState([]);
@@ -21,7 +23,7 @@ export default function Home() {
     sortOrder: "asc",
   });
 
-  const { user, userLoading, userError } = useUser();
+  const { user, userLoading, userError } = useContext(UserContext);
 
   useEffect(() => {
     console.log({ user });
@@ -36,17 +38,15 @@ export default function Home() {
 
     async function getDepartmentIms(filter) {
       return frontendGetIMs({
-        departmentId: user.ActiveFaculty.Faculty.departmentId,
         ...filter,
+        departmentId: user.ActiveFaculty.Faculty.departmentId,
       });
     }
 
     const filter = {
+      ...state,
       page: state.page,
       limit: state.limit,
-      serialNumber: state.serialNumber,
-      title: state.title,
-      status: state.status,
       sortColumn: state.sortColumn,
       sortOrder: state.sortOrder,
     };
@@ -144,18 +144,19 @@ export default function Home() {
                 ></input> */}
                 <input
                   onChange={debouncedHandleTitleChange}
-                  className='bg-CITLGray-light w-64 border-CITLGray-lighter border text-CITLGray-main rounded-lg text-sm font-medium'
+                  className='bg-CITLGray-light w-64 border-CITLGray-lighter border text-CITLGray-main rounded-md text-sm font-medium'
                   type='text'
                   placeholder='Title'
                 ></input>
                 <select
                   id='default'
-                  className='bg-CITLGray-light border-CITLGray-lighter border text-CITLGray-main rounded-lg text-sm font-medium'
+                  className='bg-CITLGray-light border-CITLGray-lighter border text-CITLGray-main rounded-md text-sm font-medium'
                   onChange={debouncedHandleStatusChange}
                 >
                   <option value='' selected>
                     Status
                   </option>
+                  <option value='DRAFT'>Draft</option>
                   <option value='SUBMITTED'>Submitted</option>
                   <option value='DEPARTMENT_REVIEWED'>
                     Department Reviewed
@@ -169,6 +170,33 @@ export default function Home() {
               </div>
             </div>
           </div>
+          <Filter
+            filterOptions={[
+              {
+                value: "title",
+                label: "Title",
+              },
+              {
+                value: "type",
+                label: "Type",
+                options: ["MODULE", "COURSE_FILE", "WORKTEXT", "TEXTBOOK"],
+              },
+              {
+                value: "owner",
+                label: "Owner",
+              },
+              {
+                value: "authors",
+                label: "Authors",
+              },
+              {
+                value: "status",
+                label: "Status",
+                options: IMStatuses,
+              },
+            ]}
+            onChange={(filter) => setState((prev) => ({ ...prev, ...filter }))}
+          />
 
           <table className='divide-y divide-CITLGray-light mb-2'>
             <thead className='bg-CITLGray-light'>
@@ -344,37 +372,37 @@ export default function Home() {
                   {/* <td className='px-6 py-4 truncate '>{serialNumber}</td> */}
 
                   <td className='px-6 py-4 '>
-                    <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
-                    <div class='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
+                    <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                    <div className='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
                   </td>
 
                   <td className='px-6 py-4 '>
-                    <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
-                    <div class='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
+                    <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                    <div className='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
                   </td>
 
                   <td className='px-6 py-4 '>
-                    <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
-                    <div class='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
+                    <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                    <div className='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
                   </td>
 
                   <td className='px-6 py-4 '>
-                    <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
-                    <div class='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
+                    <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                    <div className='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
                   </td>
                   <td className='px-4 py-4 space-x-1'>
-                    <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
-                    <div class='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
+                    <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                    <div className='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
                   </td>
 
                   <td className='px-6 py-4 '>
-                    <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
-                    <div class='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
+                    <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                    <div className='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
                   </td>
 
                   <td className='px-6 py-4 '>
-                    <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
-                    <div class='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
+                    <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                    <div className='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
                   </td>
 
                   {/* <td className='px-6 py-4 '>
@@ -382,15 +410,15 @@ export default function Home() {
                   </td> */}
 
                   <td className='bg-white  font-medium text-slate-400  items-center justify-center px-6 py-4 '>
-                    <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                    <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
                   </td>
 
                   <td className='bg-white  font-medium text-slate-400  items-center justify-center px-6 py-4 '>
-                    <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                    <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
                   </td>
 
                   <td className='bg-white  font-medium text-slate-400  items-center justify-center px-6 py-4 '>
-                    <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                    <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
                   </td>
                 </tr>
               )}{" "}
@@ -406,16 +434,19 @@ export default function Home() {
                       showSerialNumber={true}
                       // bottomBorder={index < state.ims.length - 1}
                       im={im}
-                      peerReviewed={Boolean(
-                        im.SubmittedPeerReview && im.SubmittedPeerSuggestion
-                      )}
+                      peerReviewed={Boolean(im.SubmittedPeerReview)}
                       chairpersonReviewed={Boolean(
-                        im.SubmittedChairpersonReview &&
-                          im.SubmittedChairpersonSuggestion
+                        im.SubmittedChairpersonReview
                       )}
                       coordinatorReviewed={Boolean(
-                        im.SubmittedCoordinatorReview &&
-                          im.SubmittedCoordinatorSuggestion
+                        im.SubmittedCoordinatorReview
+                      )}
+                      peerSuggested={Boolean(im.SubmittedPeerSuggestion)}
+                      chairpersonSuggested={Boolean(
+                        im.SubmittedChairpersonSuggestion
+                      )}
+                      coordinatorSuggested={Boolean(
+                        im.SubmittedCoordinatorSuggestion
                       )}
                       bottomBorder={true}
                       createdAt={im.createdAt}

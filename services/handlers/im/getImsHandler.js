@@ -14,6 +14,13 @@ export default async function getImsHandler(req, res) {
     sortColumn = "title",
     sortOrder = "asc",
     type,
+    coordinatorEndorsed,
+    deanEndorsed,
+    collegeId,
+    endorsedByDean,
+    endorsedByCoordinator,
+    authors,
+    owner,
   } = req.query;
   const ims = await readIMs({
     limit: parseInt(limit),
@@ -28,6 +35,15 @@ export default async function getImsHandler(req, res) {
     sortColumn,
     sortOrder,
     type,
+    coordinatorEndorsed: coordinatorEndorsed
+      ? JSON.parse(coordinatorEndorsed)
+      : undefined,
+    deanEndorsed: deanEndorsed ? JSON.parse(deanEndorsed) : undefined,
+    collegeId,
+    endorsedByDean,
+    endorsedByCoordinator,
+    authors,
+    owner,
   });
 
   return res.status(200).json(ims);

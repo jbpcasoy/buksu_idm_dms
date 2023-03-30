@@ -2,19 +2,21 @@ import Layout from "@/components/layout/Layout";
 import ChairpersonSuggestionView from "@/components/review/suggestion/suggestion_view/ChairpersonSuggestionView";
 import CoordinatorSuggestionView from "@/components/review/suggestion/suggestion_view/CoordinatorSuggestionView";
 import PeerSuggestionView from "@/components/review/suggestion/suggestion_view/PeerSuggestionView";
+import UserContext from "@/contexts/UserContext";
 import useIM from "@/hooks/useIM";
-import useUser from "@/hooks/useUser";
 import frontendCreateCoordinatorEndorsement from "@/services/frontend/coordinator_endorsement/frontendCreateCoordinatorEndorsement";
+import frontendCreateDeanEndorsement from "@/services/frontend/dean_endorsement/frontendCreateDeanEndorsement";
+import frontendSubmitIMForReview from "@/services/frontend/im/frontendSubmitIMForReview";
 import { initDropdowns, initModals } from "flowbite";
 import moment from "moment";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import ToggleIM from "../../../components/im/ToggleIM";
 
 export default function ViewIM() {
   const router = useRouter();
-  const { user } = useUser();
+  const { user } = useContext(UserContext);
   const { iM, iMError, iMLoading, refreshIM } = useIM(router?.query?.id);
 
   useEffect(() => {
@@ -26,6 +28,23 @@ export default function ViewIM() {
     return frontendCreateCoordinatorEndorsement({
       iMId: iM.id,
       coordinatorId: user?.ActiveFaculty?.ActiveCoordinator?.coordinatorId,
+    }).then((res) => {
+      refreshIM();
+    });
+  }
+
+  async function handleConfirmEndorsement() {
+    return frontendCreateDeanEndorsement({
+      coordinatorEndorsementId: iM.CoordinatorEndorsement.id,
+      deanId: user?.ActiveFaculty?.ActiveDean?.deanId,
+    }).then((res) => {
+      refreshIM();
+    });
+  }
+
+  async function handleSubmitForReview() {
+    return frontendSubmitIMForReview({ iMId: iM.id }).then((res) => {
+      refreshIM();
     });
   }
 
@@ -35,9 +54,15 @@ export default function ViewIM() {
         <div className='flex items-center justify-between '>
           <div>
             <h2 className='text-lg font-medium'>{iM?.title}</h2>
-            <h2 className='text-xs  text-CITLGray-main'>
-              Type: <span className='text-xs font-medium '>Module</span>
-            </h2>
+            <div className='lg:flex sm:flex-rows-2 gap-3'>
+              <h2 className='text-xs  text-CITLGray-main'>
+                Type: <span className='text-xs font-medium '>{iM?.type}</span>
+              </h2>
+              <h2 className='text-xs  text-CITLGray-main'>
+                Status:{" "}
+                <span className='text-xs font-medium '>{iM?.status}</span>
+              </h2>
+            </div>
             <div className='flex flex-cols mt-3'>
               <Link href={`/profile/${iM?.owner?.user?.id}`}>
                 <img
@@ -63,7 +88,7 @@ export default function ViewIM() {
               <button
                 id='dropdownDefaultButton'
                 data-dropdown-toggle='dropdown'
-                className='text-white bg-CITLDarkBlue font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center'
+                className='text-white bg-CITLDarkBlue font-medium rounded-md text-sm px-4 py-2.5 text-center inline-flex items-center'
                 type='button'
               >
                 Options{" "}
@@ -83,6 +108,11 @@ export default function ViewIM() {
                   ></path>
                 </svg>
               </button>
+              {iM?.status === "DRAFT" && (
+                <div className='relative flex '>
+                  <div className='absolute inline-flex items-center justify-center w-2 h-2 text-xs  bg-red-500 rounded-full -top-9 right-1 dark:border-gray-900 animate-pulse duration-75'></div>
+                </div>
+              )}
             </div>
 
             <div
@@ -108,18 +138,36 @@ export default function ViewIM() {
                   )}
                 </li>
 
-                <li>
-                  {/*  EDIT IM should be visible and accessible only for the owner of the IM
-                   */}
-                  {iM && iM.owner.userId === user?.id && (
-                    <Link
-                      href={`/im/${iM?.id}/new_version`}
-                      className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
-                    >
-                      Upload New Version
-                    </Link>
+                {iM &&
+                  iM.owner.userId === user?.id &&
+                  (iM?.status === "DRAFT" ||
+                    iM?.status === "DEPARTMENT_REVIEWED") && (
+                    <li>
+                      {/*  EDIT IM should be visible and accessible only for the owner of the IM
+                       */}
+                      {iM && iM.owner.userId === user?.id && (
+                        <Link
+                          href={`/im/${iM?.id}/new_version`}
+                          className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
+                        >
+                          Upload New Version
+                        </Link>
+                      )}
+                    </li>
                   )}
-                </li>
+                {iM &&
+                  iM.owner.userId === user?.id &&
+                  iM?.status === "DRAFT" && (
+                    <button
+                      onClick={handleSubmitForReview}
+                      className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter text-left w-full'
+                    >
+                      Submit For Review
+                      <div className='relative flex '>
+                        <div className='absolute inline-flex items-center justify-center w-2 h-2 text-xs  bg-red-500 rounded-full -top-6 right-1 dark:border-gray-900 animate-pulse duration-75'></div>
+                      </div>
+                    </button>
+                  )}
                 <li>
                   <Link
                     href={`/im/${iM?.id}/versions`}
@@ -130,7 +178,9 @@ export default function ViewIM() {
                 </li>
                 <li>
                   {user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId &&
-                    iM.status === "SUBMITTED" && (
+                    iM?.status === "SUBMITTED" &&
+                    user?.ActiveFaculty?.Faculty?.departmentId ===
+                      iM?.owner?.departmentId && (
                       <button
                         disabled={
                           iM?.SubmittedPeerSuggestion ||
@@ -156,8 +206,10 @@ export default function ViewIM() {
                 </li>
                 <li>
                   {user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId &&
-                    iM.status === "SUBMITTED" &&
-                    user?.ActiveFaculty?.ActiveCoordinator && (
+                    iM?.status === "SUBMITTED" &&
+                    user?.ActiveFaculty?.ActiveCoordinator &&
+                    user?.ActiveFaculty?.Faculty?.departmentId ===
+                      iM?.owner?.departmentId && (
                       <button
                         onClick={() =>
                           router.push(`/im/${iM?.id}/review/coordinator`)
@@ -189,8 +241,10 @@ export default function ViewIM() {
                 </li>
                 <li>
                   {user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId &&
-                    iM.status === "SUBMITTED" &&
-                    user?.ActiveFaculty?.ActiveChairperson && (
+                    iM?.status === "SUBMITTED" &&
+                    user?.ActiveFaculty?.ActiveChairperson &&
+                    user?.ActiveFaculty?.Faculty?.departmentId ===
+                      iM?.owner?.departmentId && (
                       <button
                         onClick={() =>
                           router.push(`/im/${iM?.id}/review/chairperson`)
@@ -221,18 +275,42 @@ export default function ViewIM() {
                     )}
                 </li>
                 <li>
-                  {iM?.status === "DEPARTMENT_REVIEWED" && (
-                    <button
-                      disabled={iM?.CoordinatorEndorsement}
-                      title={
-                        iM?.CoordinatorEndorsement && "IM was already endorsed"
-                      }
-                      onClick={handleEndorse}
-                      className='block w-full  text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter'
-                    >
-                      Endorse
-                    </button>
-                  )}
+                  {iM?.status === "DEPARTMENT_REVIEWED" &&
+                    user?.ActiveFaculty?.ActiveCoordinator && (
+                      <button
+                        disabled={iM?.CoordinatorEndorsement}
+                        title={
+                          iM?.CoordinatorEndorsement &&
+                          "IM was already endorsed"
+                        }
+                        onClick={handleEndorse}
+                        className='block w-full  text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter'
+                      >
+                        Endorse
+                      </button>
+                    )}
+                </li>
+                <li>
+                  {iM?.status === "DEPARTMENT_REVIEWED" &&
+                    user?.ActiveFaculty?.ActiveDean && (
+                      <button
+                        disabled={
+                          !iM?.CoordinatorEndorsement ||
+                          iM?.CoordinatorEndorsement?.DeanEndorsement
+                        }
+                        title={
+                          !iM?.CoordinatorEndorsement
+                            ? "Pending coordinator endorsement"
+                            : iM?.CoordinatorEndorsement?.DeanEndorsement
+                            ? "Endorsement already confirmed"
+                            : ""
+                        }
+                        onClick={handleConfirmEndorsement}
+                        className='block w-full  text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter'
+                      >
+                        Confirm Endorsement
+                      </button>
+                    )}
                 </li>
               </ul>
             </div>
@@ -249,49 +327,152 @@ export default function ViewIM() {
           </ToggleIM>
         )}
         {iM && (
-          <div className='my-2 space-x-1'>
-            {Boolean(
-              iM?.SubmittedPeerReview && iM?.SubmittedPeerSuggestion
-            ) && (
-              <span className='bg-purple-400 text-purple-800 text-xs px-3 py-1 rounded-2xl'>
+          <div className='inline-flex space-x-1 my-1'>
+            {iM?.SubmittedPeerReview && (
+              <span
+                className='inline-flex items-center bg-purple-400 text-purple-800 text-xs px-3 py-1 rounded-full'
+                title={
+                  iM?.SubmittedPeerSuggestion
+                    ? "Reviewed with Suggestions"
+                    : "Reviewed, No Suggestions"
+                }
+              >
                 Peer
+                {iM?.SubmittedPeerSuggestion && (
+                  <svg
+                    aria-hidden='true'
+                    class='w-3 h-3  text-purple-800 rounded-full ml-1'
+                    fill='currentColor'
+                    viewBox='0 0 20 20'
+                    xmlns='http://www.w3.org/2000/svg'
+                  >
+                    <path
+                      fill-rule='evenodd'
+                      d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z'
+                      clip-rule='evenodd'
+                    ></path>
+                  </svg>
+                )}
+                {!iM?.SubmittedPeerSuggestion && (
+                  <svg
+                    fill='none'
+                    class='w-3 h-3  text-purple-800 rounded-full ml-1'
+                    stroke='currentColor'
+                    stroke-width='1.5'
+                    viewBox='0 0 24 24'
+                    xmlns='http://www.w3.org/2000/svg'
+                    aria-hidden='true'
+                  >
+                    <path
+                      stroke-linecap='round'
+                      stroke-linejoin='round'
+                      d='M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
+                    ></path>
+                  </svg>
+                )}
               </span>
             )}
-            {!Boolean(
-              iM?.SubmittedPeerReview && iM?.SubmittedPeerSuggestion
-            ) && (
+            {!iM?.SubmittedPeerReview && (
               <span className='bg-red-300 text-red-600 text-xs px-3 py-1 rounded-2xl'>
                 Peer
               </span>
             )}
-            {Boolean(
-              iM?.SubmittedChairpersonReview &&
-                iM?.SubmittedChairpersonSuggestion
-            ) && (
-              <span className='bg-orange-300 text-orange-500 text-xs px-3  py-1 rounded-2xl'>
+
+            {iM?.SubmittedChairpersonReview && (
+              <span
+                className='inline-flex items-center bg-orange-300 text-orange-500 text-xs px-3  py-1 rounded-2xl'
+                title={
+                  iM?.SubmittedChairpersonSuggestion
+                    ? "Reviewed with Suggestions"
+                    : "Reviewed, No Suggestions"
+                }
+              >
                 Chairperson
+                {iM?.SubmittedChairpersonSuggestion && (
+                  <svg
+                    aria-hidden='true'
+                    class='w-3 h-3  text-orange-500 rounded-full ml-1'
+                    fill='currentColor'
+                    viewBox='0 0 20 20'
+                    xmlns='http://www.w3.org/2000/svg'
+                  >
+                    <path
+                      fill-rule='evenodd'
+                      d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z'
+                      clip-rule='evenodd'
+                    ></path>
+                  </svg>
+                )}
+                {!iM?.SubmittedChairpersonSuggestion && (
+                  <svg
+                    fill='none'
+                    class='w-3 h-3  text-orange-500 rounded-full ml-1'
+                    stroke='currentColor'
+                    stroke-width='1.5'
+                    viewBox='0 0 24 24'
+                    xmlns='http://www.w3.org/2000/svg'
+                    aria-hidden='true'
+                  >
+                    <path
+                      stroke-linecap='round'
+                      stroke-linejoin='round'
+                      d='M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
+                    ></path>
+                  </svg>
+                )}
               </span>
             )}
-            {!Boolean(
-              iM?.SubmittedChairpersonReview &&
-                iM?.SubmittedChairpersonSuggestion
-            ) && (
+
+            {!iM?.SubmittedChairpersonReview && (
               <span className='bg-red-300 text-red-600 text-xs px-3 py-1 rounded-2xl'>
                 Chairperson
               </span>
             )}
-            {Boolean(
-              iM?.SubmittedCoordinatorReview &&
-                iM?.SubmittedCoordinatorSuggestion
-            ) && (
-              <span className='bg-green-300 text-green-900 text-xs px-3 py-1 rounded-2xl'>
-                Coordinator
+            {iM?.SubmittedCoordinatorReview && (
+              <span
+                className='inline-flex items-center bg-green-300 text-green-900 text-xs px-3 py-1 rounded-2xl'
+                title={
+                  iM?.SubmittedCoordinatorSuggestion
+                    ? "Reviewed with Suggestions"
+                    : "Reviewed, No Suggestions"
+                }
+              >
+                Coordinator{" "}
+                {iM?.SubmittedCoordinatorSuggestion && (
+                  <svg
+                    aria-hidden='true'
+                    class='w-3 h-3  text-green-900 rounded-full ml-1'
+                    fill='currentColor'
+                    viewBox='0 0 20 20'
+                    xmlns='http://www.w3.org/2000/svg'
+                  >
+                    <path
+                      fill-rule='evenodd'
+                      d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z'
+                      clip-rule='evenodd'
+                    ></path>
+                  </svg>
+                )}
+                {!iM?.SubmittedCoordinatorSuggestion && (
+                  <svg
+                    fill='none'
+                    class='w-3 h-3  text-green-900 rounded-full ml-1'
+                    stroke='currentColor'
+                    stroke-width='1.5'
+                    viewBox='0 0 24 24'
+                    xmlns='http://www.w3.org/2000/svg'
+                    aria-hidden='true'
+                  >
+                    <path
+                      stroke-linecap='round'
+                      stroke-linejoin='round'
+                      d='M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
+                    ></path>
+                  </svg>
+                )}
               </span>
             )}
-            {!Boolean(
-              iM?.SubmittedCoordinatorReview &&
-                iM?.SubmittedCoordinatorSuggestion
-            ) && (
+            {!iM?.SubmittedCoordinatorReview && (
               <span className='bg-red-300 text-red-600 text-xs px-3 py-1 rounded-2xl'>
                 Coordinator
               </span>

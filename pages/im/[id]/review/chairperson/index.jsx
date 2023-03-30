@@ -5,16 +5,16 @@ import ConfirmChairpersonReview from "@/components/review/preview/ConfirmChairpe
 import ReviewPage from "@/components/review/ReviewPage";
 import ChairpersonSuggestion from "@/components/review/suggestion/ChairpersonSuggestion";
 import { countQuestions, sections } from "@/constants/questions";
-import useUser from "@/hooks/useUser";
+import UserContext from "@/contexts/UserContext";
 import frontendCreateChairpersonReview from "@/services/frontend/chairperson_review/frontendCreateChairpersonReview";
 import frontendReadChairpersonReviews from "@/services/frontend/chairperson_review/frontendReadChairpersonReview";
 import frontendReadIM from "@/services/frontend/im/frontendReadIM";
 import frontendCreateSubmittedChairpersonReview from "@/services/frontend/submitted_chairperson_review/frontendCreateSubmittedChairpersonReview";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 const ChairpersonReviewPage = () => {
-  const { user, userLoading, userError } = useUser();
+  const { user, userLoading, userError } = useContext(UserContext);
   const router = useRouter();
   const [iM, setIM] = useState();
   const [chairpersonReview, setChairpersonReview] = useState();

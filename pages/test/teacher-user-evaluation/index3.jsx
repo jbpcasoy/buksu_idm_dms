@@ -639,15 +639,15 @@ export default function TeacherUserEvaluation() {
 
               <div className='flex mt-4'>
                 <Link
-                  href='/teacher-user-evaluation/index2'
-                  className='text-base  flex justify-center px-4 py-2 rounded font-bold cursor-pointer shadow-xl hover:border-CITLOrange hover:text-CITLOrange bg-gray-100 text-CITLGray-main border border-CITLGray-main'
+                  href='/test/teacher-user-evaluation/index2'
+                  className='text-base  flex justify-center px-4 py-2 rounded-md font-bold cursor-pointer shadow-xl hover:border-CITLOrange hover:text-CITLOrange bg-gray-100 text-CITLGray-main border border-CITLGray-main'
                 >
                   Previous
                 </Link>
                 <div className='flex-auto flex flex-row-reverse'>
                   <Link
-                    href='/teacher-user-evaluation/index4'
-                    className='text-base  ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer shadow-xl hover:bg-CITLOrange bg-CITLDarkBlue text-CITLWhite  '
+                    href='/test/teacher-user-evaluation/index4'
+                    className='text-base  ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded-md font-bold cursor-pointer shadow-xl hover:bg-CITLOrange bg-CITLDarkBlue text-CITLWhite  '
                   >
                     Next
                   </Link>

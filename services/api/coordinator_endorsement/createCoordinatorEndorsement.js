@@ -26,6 +26,11 @@ export default async function createCoordinatorEndorsement({
             id: coordinator.id,
           },
         },
+        Notification: {
+          create: {
+            Type: "COORDINATOR_ENDORSEMENT",
+          },
+        },
       },
     });
 

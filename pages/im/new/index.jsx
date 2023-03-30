@@ -18,9 +18,11 @@ export default function CreateIM() {
       authors: "",
       type: "MODULE",
     },
+    validateOnChange: true,
+    validateOnMount: true,
     validationSchema: Yup.object({
-      title: Yup.string().required(),
-      authors: Yup.string().required(),
+      title: Yup.string().required("Title is required"),
+      authors: Yup.string().required("Authors is required"),
       type: Yup.string()
         .oneOf(["MODULE", "COURSE_FILE", "WORKTEXT", "TEXTBOOK"])
         .required(),
@@ -62,11 +64,24 @@ export default function CreateIM() {
     console.log({ filePreviewUrl });
   }, [filePreviewUrl]);
 
+  function handleDrop(e) {
+    e.preventDefault();
+    console.log({ e });
+    const file = e.dataTransfer.files[0];
+    setFile(file);
+  }
+
+  function handleDragOver(e) {
+    e.preventDefault();
+  }
+
   return (
     <Layout>
-      <div className=' items-center border border-CITLGray-lighter  bg-CITLDark m-2 mt-5 p-3 relative rounded-lg shadow-lg overflow-hidden'>
+      <div className=' items-center border border-CITLGray-lighter  bg-CITLGray-light m-2 mt-5 p-3 relative rounded-lg shadow-lg overflow-hidden'>
         <div className='px-6 py-4 md:w-full '>
-          <h2 className='text-CITLDarkBlue font-bold text-xl '>Create IM</h2>
+          <h2 className='text-CITLDarkBlue font-bold text-xl '>
+            Create New IM
+          </h2>
 
           <form noValidate onSubmit={formik.handleSubmit}>
             <div className='grid gap-6 mb-6 md:grid-cols-2 mt-8'>
@@ -113,11 +128,14 @@ export default function CreateIM() {
               <input
                 type='text'
                 id='title'
-                className='bg-gray-50 border mb-5 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+                className='bg-transparent border  border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
                 placeholder=''
                 required
                 {...formik.getFieldProps("title")}
               />
+              <p className='text-sm text-red-600 mb-5'>
+                {formik.touched.title && formik.errors.title}
+              </p>
               <div className='grid gap-6 mb-6 md:grid-cols-2'>
                 <div>
                   <label
@@ -129,11 +147,14 @@ export default function CreateIM() {
                   <input
                     type='text'
                     id='authors'
-                    className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+                    className='bg-transparent border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
                     placeholder=''
                     required
                     {...formik.getFieldProps("authors")}
                   />
+                  <p className='text-sm text-red-600 mb-5'>
+                    {formik.touched.authors && formik.errors.authors}
+                  </p>
                 </div>
                 <div>
                   <label
@@ -144,7 +165,7 @@ export default function CreateIM() {
                   </label>
                   <select
                     id='type'
-                    className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+                    className='bg-transparent  border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
                     {...formik.getFieldProps("type")}
                   >
                     <option value='MODULE' selected>
@@ -176,7 +197,9 @@ export default function CreateIM() {
               <div className='flex items-center justify-center w-full mt-6 mb-6'>
                 <label
                   htmlFor='dropzone-file'
-                  className='flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600'
+                  className='flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-transparent  dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600'
+                  onDrop={handleDrop}
+                  onDragOver={handleDragOver}
                 >
                   <div className='flex flex-col items-center justify-center pt-5 pb-6'>
                     <svg
@@ -201,7 +224,7 @@ export default function CreateIM() {
                       or drag and drop
                     </p>
                     <p className='text-xs text-gray-500 dark:text-gray-400'>
-                      PDF (MAX. 800x400px)
+                      PDF files only
                     </p>
                   </div>
                   <input
@@ -209,6 +232,7 @@ export default function CreateIM() {
                     type='file'
                     multiple={false}
                     className='hidden'
+                    accept='application/pdf'
                     onChange={(e) => setFile(e.target.files[0])}
                   />
                 </label>
@@ -224,7 +248,7 @@ export default function CreateIM() {
                   <button
                     type='button'
                     disabled={formik.isSubmitting}
-                    className='mr-4 text-CITLDarkBlue  bg-transparent border border-CITLDarkBlue hover:text-CITLWhite hover:bg-CITLDarkBlue font-medium rounded text-sm w-full sm:w-auto px-5 py-3 text-center disabled:bg-CITLGray-main'
+                    className='mr-4 text-CITLDarkBlue  bg-transparent border border-CITLDarkBlue hover:text-CITLWhite hover:bg-CITLDarkBlue font-medium rounded-md text-sm w-full sm:w-auto px-5 py-3 text-center disabled:bg-CITLGray-main'
                     onClick={() => {
                       setFile(null);
                     }}
@@ -236,8 +260,8 @@ export default function CreateIM() {
 
               <button
                 type='submit'
-                disabled={formik.isSubmitting}
-                className='group relative inline-flex items-center overflow-hidden rounded bg-CITLOrange px-8 py-3 text-CITLDarkBlue focus:outline-none focus:ring active:bg-CITLDarkBlue'
+                disabled={formik.isSubmitting || !file || !formik.isValid}
+                className='group relative inline-flex items-center overflow-hidden rounded-md bg-CITLOrange px-8 py-3 text-CITLDarkBlue disabled:bg-CITLGray-main'
               >
                 <span className='absolute right-0 translate-x-full transition-transform group-hover:-translate-x-4'>
                   <svg

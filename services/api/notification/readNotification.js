@@ -133,6 +133,38 @@ export default async function readNotification(id) {
             IM: true,
           },
         },
+        CoordinatorEndorsement: {
+          include: {
+            Coordinator: {
+              include: {
+                Faculty: {
+                  include: {
+                    user: true,
+                  },
+                },
+              },
+            },
+            IM: true,
+          },
+        },
+        DeanEndorsement: {
+          include: {
+            CoordinatorEndorsement: {
+              include: {
+                IM: true,
+              },
+            },
+            Dean: {
+              include: {
+                Faculty: {
+                  include: {
+                    user: true,
+                  },
+                },
+              },
+            },
+          },
+        },
       },
     });
     return notification;

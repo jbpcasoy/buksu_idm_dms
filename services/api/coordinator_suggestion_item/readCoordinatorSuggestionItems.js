@@ -18,7 +18,13 @@ export default async function readCoordinatorSuggestionItems({
           },
         },
       });
-    const total = await prisma.coordinatorSuggestionItem.count();
+    const total = await prisma.coordinatorSuggestionItem.count({
+      where: {
+        coordinatorSuggestionId: {
+          contains: coordinatorSuggestionId,
+        },
+      },
+    });
     return { data: coordinatorSuggestionItems, total };
   } catch (error) {
     throw error;

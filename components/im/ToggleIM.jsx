@@ -80,7 +80,7 @@ export default function ToggleIM({ iM, onUpdate }) {
                   <input
                     id='title'
                     type='text'
-                    className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-CITLDarkBlue focus:border-CITLDarkBlue block w-full p-2.5 '
+                    className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-CITLDarkBlue focus:border-CITLDarkBlue block w-full p-2.5 '
                     placeholder='Title'
                     {...formik.getFieldProps("title")}
                     required
@@ -98,7 +98,7 @@ export default function ToggleIM({ iM, onUpdate }) {
                   </label>
                   <input
                     id='authors'
-                    className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-CITLDarkBlue focus:border-CITLDarkBlue block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white'
+                    className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-CITLDarkBlue focus:border-CITLDarkBlue block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white'
                     placeholder='Authors'
                     {...formik.getFieldProps("authors")}
                     required
@@ -116,7 +116,7 @@ export default function ToggleIM({ iM, onUpdate }) {
                   </label>
                   <select
                     id='type'
-                    className='bg-gray-50 border border-gray-300 text-CITLGray-main text-sm rounded-lg focus:ring-CITLDarkBlue focus:border-CITLDarkBlue block w-full p-2.5'
+                    className='bg-gray-50 border border-gray-300 text-CITLGray-main text-sm rounded-md focus:ring-CITLDarkBlue focus:border-CITLDarkBlue block w-full p-2.5'
                     {...formik.getFieldProps("type")}
                   >
                     <option value='MODULE'>Module</option>
@@ -175,7 +175,7 @@ export default function ToggleIM({ iM, onUpdate }) {
                     !formik.values.type
                   }
                   data-modal-hide='im-update-modal'
-                  className='w-full text-white bg-CITLDarkBlue hover:bg-transparent border hover:border-CITLDarkBlue hover:text-CITLDarkBlue focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 disabled:bg-CITLGray-main'
+                  className='w-full text-white bg-CITLDarkBlue hover:bg-transparent border hover:border-CITLDarkBlue hover:text-CITLDarkBlue focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 disabled:bg-CITLGray-main'
                 >
                   Confirm changes
                 </button>

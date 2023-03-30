@@ -121,7 +121,7 @@ export default function CollegePage() {
 
             <div className='flex'>
               <input
-                className='w-72 py-2 pr-10 pl-4 bg-CITLGray-light border-CITLGray-lighter border text-CITLGray-main rounded-lg mr-5'
+                className='w-72 py-2 pr-10 pl-4 bg-CITLGray-light border-CITLGray-lighter border text-CITLGray-main rounded-md mr-5'
                 type='text'
                 placeholder='Name'
                 onChange={debouncedHandleNameChange}
@@ -164,12 +164,12 @@ export default function CollegePage() {
                   className={` bg-white text-sm text-CITLGray-main text-left p-4 animate-pulse`}
                 >
                   <td className='px-6 py-4 '>
-                    <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
-                    <div class='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
+                    <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                    <div className='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
                   </td>
 
                   <td className='bg-white  font-medium text-slate-400  items-center justify-center py-4 flex '>
-                    <div class='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                    <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
                   </td>
                 </tr>
               )}

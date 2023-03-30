@@ -12,6 +12,7 @@ export default async function readUser(id) {
         LoginRole: true,
         ActiveFaculty: {
           include: {
+            ActiveDean: true,
             ActiveChairperson: true,
             ActiveCoordinator: true,
             Faculty: {

@@ -1,7 +1,6 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
 
 export default async function readNotifications({ limit, page, userId, read }) {
-  console.log({ limit, page, userId, read });
   const prisma = PRISMA_CLIENT;
 
   try {
@@ -74,6 +73,30 @@ export default async function readNotifications({ limit, page, userId, read }) {
                 owner: {
                   userId: {
                     contains: userId,
+                  },
+                },
+              },
+            },
+          },
+          {
+            CoordinatorEndorsement: {
+              IM: {
+                owner: {
+                  userId: {
+                    contains: userId,
+                  },
+                },
+              },
+            },
+          },
+          {
+            DeanEndorsement: {
+              CoordinatorEndorsement: {
+                IM: {
+                  owner: {
+                    userId: {
+                      contains: userId,
+                    },
                   },
                 },
               },
@@ -161,6 +184,30 @@ export default async function readNotifications({ limit, page, userId, read }) {
                 owner: {
                   userId: {
                     contains: userId,
+                  },
+                },
+              },
+            },
+          },
+          {
+            CoordinatorEndorsement: {
+              IM: {
+                owner: {
+                  userId: {
+                    contains: userId,
+                  },
+                },
+              },
+            },
+          },
+          {
+            DeanEndorsement: {
+              CoordinatorEndorsement: {
+                IM: {
+                  owner: {
+                    userId: {
+                      contains: userId,
+                    },
                   },
                 },
               },

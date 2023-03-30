@@ -22,7 +22,16 @@ export default async function readPeerReviews({
       },
     });
 
-    const total = await prisma.peerReview.count();
+    const total = await prisma.peerReview.count({
+      where: {
+        facultyId: {
+          contains: facultyId,
+        },
+        iMId: {
+          contains: iMId,
+        },
+      },
+    });
     return { data: peerReviews, total };
   } catch (error) {
     throw error;

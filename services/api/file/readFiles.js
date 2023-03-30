@@ -1,4 +1,5 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
+import _ from "lodash";
 
 const { PrismaClient } = require("@prisma/client");
 
@@ -9,8 +10,14 @@ export default async function readFiles({
   originalFileName,
   iMSerialNumber,
   active,
+  iMId,
+  sortColumn,
+  sortOrder,
 }) {
   const prisma = PRISMA_CLIENT;
+
+  const sortFilter = {};
+  _.set(sortFilter, sortColumn, sortOrder);
 
   try {
     const files = await prisma.file.findMany({
@@ -31,6 +38,9 @@ export default async function readFiles({
           serialNumber: {
             contains: iMSerialNumber,
           },
+          id: {
+            contains: iMId,
+          },
         },
         ActiveFile:
           active === true
@@ -43,6 +53,8 @@ export default async function readFiles({
               }
             : undefined,
       },
+
+      orderBy: sortFilter,
     });
 
     const total = await prisma.file.count({
@@ -56,6 +68,9 @@ export default async function readFiles({
         iM: {
           serialNumber: {
             contains: iMSerialNumber,
+          },
+          id: {
+            contains: iMId,
           },
         },
         ActiveFile:

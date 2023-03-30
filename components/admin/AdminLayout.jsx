@@ -1,11 +1,11 @@
-import useUser from "@/hooks/useUser";
+import UserContext from "@/contexts/UserContext";
 import AdminHeader from "@/views/admin/layout/AdminHeader";
 import { Box } from "@mui/material";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 
 export default function AdminLayout({ children }) {
-  const { user, userError, userLoading } = useUser();
+  const { user, userError, userLoading } = useContext(UserContext);
   const router = useRouter();
 
   useEffect(() => {

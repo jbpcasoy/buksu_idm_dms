@@ -10,7 +10,7 @@ export default function Endorsement() {
             Publication
           </h2>
           <p className='mb-8 text-sm'>for IPTTU Endorsement and Publication</p>
-          <div className='border border-CITLOrange rounded-xl py-5 px-5 mb-5'>
+          <div className='border border-CITLOrange rounded-lg py-5 px-5 mb-5'>
             <form>
               <div className='grid gap-6 mb-6 md:grid-cols-2'>
                 <div>
@@ -23,7 +23,7 @@ export default function Endorsement() {
                   <input
                     type='text'
                     id='name_of_author'
-                    className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-CITLOrange focus:border-CITLOrange block w-full p-2.5 '
+                    className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-CITLOrange focus:border-CITLOrange block w-full p-2.5 '
                     placeholder='John Doe'
                     required
                   />
@@ -41,7 +41,7 @@ export default function Endorsement() {
                   <input
                     type='text'
                     id='im_title'
-                    className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-CITLOrange focus:border-CITLOrange block w-full p-2.5 '
+                    className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-CITLOrange focus:border-CITLOrange block w-full p-2.5 '
                     placeholder='Introduction to...'
                     required
                   />
@@ -57,7 +57,7 @@ export default function Endorsement() {
                   <input
                     type='text'
                     id='course-code'
-                    className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-CITLOrange focus:border-CITLOrange block w-full p-2.5 '
+                    className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-CITLOrange focus:border-CITLOrange block w-full p-2.5 '
                     placeholder='IT112'
                     required
                   />
@@ -71,7 +71,7 @@ export default function Endorsement() {
                   </label>
                   <select
                     id='semesters'
-                    className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-CITLOrange focus:border-CITLOrange block w-full p-2.5 '
+                    className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-CITLOrange focus:border-CITLOrange block w-full p-2.5 '
                   >
                     <option selected>Summer</option>
                     <option>First semester only</option>
@@ -88,7 +88,7 @@ export default function Endorsement() {
                   </label>
                   <select
                     id='im_type'
-                    className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-CITLOrange focus:border-CITLOrange block w-full p-2.5 '
+                    className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-CITLOrange focus:border-CITLOrange block w-full p-2.5 '
                   >
                     <option selected>Module</option>
                     <option>Course File</option>
@@ -105,7 +105,7 @@ export default function Endorsement() {
                   </label>
                   <select
                     id='college'
-                    className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-CITLOrange focus:border-CITLOrange block w-full p-2.5 '
+                    className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-CITLOrange focus:border-CITLOrange block w-full p-2.5 '
                   >
                     <option selected>College of Administration</option>
                     <option>College of Arts and Sciences</option>
@@ -125,7 +125,7 @@ export default function Endorsement() {
                   </label>
                   <select
                     id='department'
-                    className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-CITLOrange focus:border-CITLOrange block w-full p-2.5 '
+                    className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-CITLOrange focus:border-CITLOrange block w-full p-2.5 '
                   >
                     <option selected>College of Administration</option>
                     <option>Public Admnistration</option>
@@ -166,7 +166,7 @@ export default function Endorsement() {
                   <input
                     type='text'
                     id='name_of_author'
-                    className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-CITLOrange focus:border-CITLOrange block w-full p-2.5 '
+                    className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-CITLOrange focus:border-CITLOrange block w-full p-2.5 '
                     placeholder='No. of Semesters'
                     required
                   />
@@ -226,7 +226,7 @@ export default function Endorsement() {
                   <input
                     type='text'
                     id='name_of_author'
-                    className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-CITLOrange focus:border-CITLOrange block w-full p-2.5 '
+                    className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-CITLOrange focus:border-CITLOrange block w-full p-2.5 '
                     placeholder='Name of Requestor'
                     required
                   />
@@ -382,7 +382,7 @@ export default function Endorsement() {
                 <input
                   type='text'
                   id='name_of_author'
-                  className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-CITLOrange focus:border-CITLOrange block w-full p-2.5 '
+                  className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-CITLOrange focus:border-CITLOrange block w-full p-2.5 '
                   placeholder='John Doe'
                   required
                 />
@@ -397,7 +397,7 @@ export default function Endorsement() {
                 <input
                   type='text'
                   id='name_of_author'
-                  className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-CITLOrange focus:border-CITLOrange block w-full p-2.5 '
+                  className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-CITLOrange focus:border-CITLOrange block w-full p-2.5 '
                   placeholder='John Doe'
                   required
                 />
@@ -424,7 +424,7 @@ export default function Endorsement() {
                 <input
                   type='text'
                   id='name_of_author'
-                  className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-CITLOrange focus:border-CITLOrange block w-full p-2.5 '
+                  className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-CITLOrange focus:border-CITLOrange block w-full p-2.5 '
                   placeholder='John Doe'
                   required
                 />
@@ -439,7 +439,7 @@ export default function Endorsement() {
                 <input
                   type='text'
                   id='name_of_author'
-                  className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-CITLOrange focus:border-CITLOrange block w-full p-2.5 '
+                  className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-CITLOrange focus:border-CITLOrange block w-full p-2.5 '
                   placeholder='MM/DD/YYYY'
                   required
                 />
@@ -450,7 +450,7 @@ export default function Endorsement() {
           <div className=' flex justify-end'>
             <button
               type='submit'
-              className='text-white bg-CITLDarkBlue hover:bg-CITLOrange  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center'
+              className='text-white bg-CITLDarkBlue hover:bg-CITLOrange  font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center'
             >
               Submit
             </button>

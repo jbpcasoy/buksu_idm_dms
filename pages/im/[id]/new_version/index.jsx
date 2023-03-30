@@ -2,8 +2,8 @@ import Layout from "@/components/layout/Layout";
 import ChairpersonSuggestionView from "@/components/review/suggestion/suggestion_view/ChairpersonSuggestionView";
 import CoordinatorSuggestionView from "@/components/review/suggestion/suggestion_view/CoordinatorSuggestionView";
 import PeerSuggestionView from "@/components/review/suggestion/suggestion_view/PeerSuggestionView";
+import UserContext from "@/contexts/UserContext";
 import useIM from "@/hooks/useIM";
-import useUser from "@/hooks/useUser";
 import frontendUpdateActiveFile from "@/services/frontend/active_file/frontendUpdateIMFile";
 import frontendCreateFile from "@/services/frontend/file/frontendCreateFile";
 import uploadIMFile from "@/services/frontend/im/upload/uploadIMFile";
@@ -11,11 +11,11 @@ import { initDropdowns, initModals } from "flowbite";
 import moment from "moment";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 export default function ViewIM() {
   const router = useRouter();
-  const { user } = useUser();
+  const { user } = useContext(UserContext);
   const { iM, iMError, iMLoading, refreshIM } = useIM(router?.query?.id);
   const [file, setFile] = useState();
   const [filePreviewUrl, setFilePreviewUrl] = useState();
@@ -173,7 +173,7 @@ export default function ViewIM() {
           <div className='flex items-center justify-center w-full mt-6 mb-6'>
             <label
               htmlFor='dropzone-file'
-              className='flex flex-col items-center justify-center w-full h-full border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600'
+              className='flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-transparent  dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600'
               onDrop={handleDrop}
               onDragOver={handleDragOver}
             >
@@ -225,7 +225,7 @@ export default function ViewIM() {
               <button
                 type='button'
                 // disabled={formik.isSubmitting}
-                className='mr-4 text-CITLDarkBlue  bg-transparent border border-CITLDarkBlue hover:text-CITLWhite hover:bg-CITLDarkBlue font-medium rounded text-sm w-full sm:w-auto px-5 py-3 text-center disabled:bg-CITLGray-main'
+                className='mr-4 text-CITLDarkBlue  bg-transparent border border-CITLDarkBlue hover:text-CITLWhite hover:bg-CITLDarkBlue font-medium rounded-md text-sm w-full sm:w-auto px-5 py-3 text-center disabled:bg-CITLGray-main'
                 onClick={() => {
                   setFile(null);
                 }}
@@ -238,7 +238,7 @@ export default function ViewIM() {
           <button
             // disabled={formik.isSubmitting}
             onClick={handleSubmit}
-            className='group relative inline-flex items-center overflow-hidden rounded bg-CITLOrange px-8 py-3 text-CITLDarkBlue focus:outline-none focus:ring active:bg-CITLDarkBlue'
+            className='group relative inline-flex items-center overflow-hidden rounded-md bg-CITLOrange px-8 py-3 text-CITLDarkBlue '
           >
             <span className='absolute right-0 translate-x-full transition-transform group-hover:-translate-x-4'>
               <svg
