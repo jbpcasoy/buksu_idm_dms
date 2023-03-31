@@ -3405,5 +3405,24 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "9a76b0f7-bb7b-4b07-8a80-0a5264f10696",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "9e82185a-70f7-429c-abf7-7b424c4b7230",
+    "name": "CREATE IMDCoordinator",
+    "url": "{{host}}/api/imd_coordinator",
+    "method": "POST",
+    "sortNum": 2020000,
+    "created": "2023-03-31T01:29:27.207Z",
+    "modified": "2023-03-31T01:30:10.949Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"userId\": \"clfaud2o00000s9byinuf3183\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
