@@ -1,7 +1,13 @@
 import readIMDCoordinators from "@/services/api/imd_coordinator/readIMDCoordinators";
 
 export default async function getIMDCoordinatorsHandler(req, res) {
-  const { limit, page, name, sortColumn, sortOrder } = req.query;
+  const {
+    limit,
+    page,
+    name,
+    sortColumn = "User.name",
+    sortOrder = "asc",
+  } = req.query;
 
   const iMDCoordinator = await readIMDCoordinators({
     limit: parseInt(limit),

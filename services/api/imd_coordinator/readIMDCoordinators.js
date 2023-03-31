@@ -18,6 +18,7 @@ export default async function readIMDCoordinators({
       skip: (page - 1) * limit,
       include: {
         User: true,
+        ActiveIMDCoordinator: true,
       },
       where: {
         User: {
