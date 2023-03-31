@@ -8,7 +8,7 @@ export default function Filter({ filterOptions = [], onChange }) {
   }, [filter]);
 
   return (
-    <div class=''>
+    <div class='grid grid-cols-5 gap-3 ml-5'>
       {Object.keys(filter).map((filterColumn) => {
         if (!filter[filterColumn]) return;
         return (
