@@ -3665,5 +3665,19 @@
       }
     ],
     "tests": []
+  },
+  {
+    "_id": "68497aff-9f4d-498e-812d-d454044dea64",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "f32f71c2-6854-4f90-bb7c-bbe9240ceffc",
+    "name": "READ ActiveCITLDirector",
+    "url": "{{host}}/api/active_citl_director/clfw3tary000qs9ak8uy97wu4",
+    "method": "GET",
+    "sortNum": 2150000,
+    "created": "2023-03-31T05:45:33.807Z",
+    "modified": "2023-03-31T05:45:56.212Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
