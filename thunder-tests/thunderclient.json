@@ -3477,5 +3477,24 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "5764937a-3799-4a2f-972d-0307d72ba78e",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "27af31d9-1cc3-4842-ac78-49b2e5377a6e",
+    "name": "CREATE ActiveIMDCoordinator",
+    "url": "{{host}}/api/active_imd_coordinator",
+    "method": "POST",
+    "sortNum": 2050000,
+    "created": "2023-03-31T02:03:09.956Z",
+    "modified": "2023-03-31T02:03:57.545Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"iMDCoordinatorId\": \"clfvwi8oc0004s9nf1c5qvh6b\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
