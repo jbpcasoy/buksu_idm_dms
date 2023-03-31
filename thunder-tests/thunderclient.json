@@ -3535,5 +3535,19 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "6ef2e7cf-f12b-4cd7-924e-0bcadd2a5285",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "27af31d9-1cc3-4842-ac78-49b2e5377a6e",
+    "name": "DELETE ActiveIMDCoordinator",
+    "url": "{{host}}/api/active_imd_coordinator/clfvwif0j0006s9nfv15b5akp",
+    "method": "DELETE",
+    "sortNum": 2080000,
+    "created": "2023-03-31T02:28:35.730Z",
+    "modified": "2023-03-31T02:28:54.419Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
