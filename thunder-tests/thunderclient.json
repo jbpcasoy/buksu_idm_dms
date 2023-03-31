@@ -3568,5 +3568,30 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "83808db3-a455-4d1a-9dd7-bfb654ab8610",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "0d82efe8-41a8-4d80-950c-2b67c48c590a",
+    "name": "READ CITLDirectors",
+    "url": "{{host}}/api/citl_director?limit=10&page=1",
+    "method": "GET",
+    "sortNum": 2100000,
+    "created": "2023-03-31T03:51:44.573Z",
+    "modified": "2023-03-31T03:52:01.796Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "limit",
+        "value": "10",
+        "isPath": false
+      },
+      {
+        "name": "page",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "tests": []
   }
 ]
