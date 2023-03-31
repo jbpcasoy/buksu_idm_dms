@@ -3549,5 +3549,24 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "dc9dcdde-1834-437d-b5dd-8d32adacb5c8",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "0d82efe8-41a8-4d80-950c-2b67c48c590a",
+    "name": "CREATE CITLDirector",
+    "url": "{{host}}/api/citl_director",
+    "method": "POST",
+    "sortNum": 2090000,
+    "created": "2023-03-31T03:45:55.131Z",
+    "modified": "2023-03-31T03:46:42.067Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"userId\": \"clfaud2o00000s9byinuf3183\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
