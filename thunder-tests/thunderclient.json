@@ -3496,5 +3496,30 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "6c2b39e9-80ce-4370-a5a0-e8821a672e56",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "27af31d9-1cc3-4842-ac78-49b2e5377a6e",
+    "name": "READ ActiveIMDCoordinators",
+    "url": "{{host}}/api/active_imd_coordinator?limit=10&page=1",
+    "method": "GET",
+    "sortNum": 2060000,
+    "created": "2023-03-31T02:14:41.579Z",
+    "modified": "2023-03-31T02:15:04.728Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "limit",
+        "value": "10",
+        "isPath": false
+      },
+      {
+        "name": "page",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "tests": []
   }
 ]
