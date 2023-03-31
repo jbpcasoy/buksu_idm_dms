@@ -1,12 +1,8 @@
-import readActiveIMDCoordinators from "@/services/api/active_imd_coordinator/readActiveIMDCoordinators";
+import readActiveIMDCoordinator from "@/services/api/active_imd_coordinator/readActiveIMDCoordinator";
 
 export default async function getActiveIMDCoordinatorHandler(req, res) {
-  const { limit, page } = req.query;
+  const { id } = req.query;
 
-  const activeIMDCoordinators = await readActiveIMDCoordinators({
-    limit: parseInt(limit),
-    page: parseInt(page),
-  });
-
-  return res.status(200).json(activeIMDCoordinators);
+  const activeIMDCoordinator = await readActiveIMDCoordinator(id);
+  return res.status(200).json(activeIMDCoordinator);
 }
