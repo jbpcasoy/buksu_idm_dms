@@ -3424,5 +3424,30 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "b0d2b651-60ad-4152-808d-f26c3b91388c",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "9e82185a-70f7-429c-abf7-7b424c4b7230",
+    "name": "READ IMDCoordinator",
+    "url": "{{host}}/api/imd_coordinator?limit=10&page=1",
+    "method": "GET",
+    "sortNum": 2030000,
+    "created": "2023-03-31T01:37:11.544Z",
+    "modified": "2023-03-31T01:37:29.449Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "limit",
+        "value": "10",
+        "isPath": false
+      },
+      {
+        "name": "page",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "tests": []
   }
 ]
