@@ -3607,5 +3607,19 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "d78da99c-4e0c-4f84-aa82-ec1dabf61355",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "0d82efe8-41a8-4d80-950c-2b67c48c590a",
+    "name": "DELETE CITLDirector",
+    "url": "{{host}}/api/citl_director/clfw06kg4000ks9aktg4m00zu",
+    "method": "DELETE",
+    "sortNum": 2120000,
+    "created": "2023-03-31T05:13:40.300Z",
+    "modified": "2023-03-31T05:13:57.453Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
