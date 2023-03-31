@@ -65,6 +65,196 @@ export default function Sidebar() {
             </Link>
           </li>
 
+          {user?.IMDCoordinator?.ActiveIMDCoordinator && (
+            <>
+              <hr className='h-px my-8 w-56 bg-CITLGray-main border-0 dark:bg-gray-700' />
+              <div className='text-sm text-center w-full text-white'>
+                UNIVERSITY
+                <br />
+                IMD COORDINATOR
+              </div>
+              <li>
+                <Link
+                  href='/imd_coordinator/to_review'
+                  className={`flex items-center p-2 text-base font-normal text-CITLWhite rounded-lg hover:bg-CITLGray-main ${
+                    router.asPath === "/imd_coordinator/to_review"
+                      ? "bg-CITLGray-main"
+                      : ""
+                  }`}
+                >
+                  <svg
+                    fill='none'
+                    stroke='currentColor'
+                    strokeWidth='1.5'
+                    className='flex-shrink-0 w-6 h-6 text-CITLWhite transition duration-75 group-hover:text-CITLGray-main'
+                    viewBox='0 0 24 24'
+                    xmlns='http://www.w3.org/2000/svg'
+                    aria-hidden='true'
+                  >
+                    <path
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                      d='M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z'
+                    ></path>
+                    <path
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                      d='M15 12a3 3 0 11-6 0 3 3 0 016 0z'
+                    ></path>
+                  </svg>
+                  <div className='justify-between flex w-full items-center'>
+                    <span className='ml-3'>To Review</span>
+                    {toReviewCount > 0 && (
+                      <div className='inline-flex items-center justify-center w-4 h-4  text-xs font-semibold text-CITLOrange '>
+                        {toReviewCount}
+                      </div>
+                    )}
+                  </div>
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  href='/reviewed'
+                  className={`flex items-center p-2 text-base font-normal text-CITLWhite rounded-lg  hover:bg-CITLGray-main ${
+                    router.asPath === "/reviewed" ? "bg-CITLGray-main" : ""
+                  }`}
+                >
+                  <svg
+                    fill='none'
+                    stroke='currentColor'
+                    strokeWidth='1.5'
+                    className='flex-shrink-0 w-6 h-6 text-CITLWhite transition duration-75 group-hover:text-CITLGray-main'
+                    viewBox='0 0 24 24'
+                    xmlns='http://www.w3.org/2000/svg'
+                    aria-hidden='true'
+                  >
+                    <path
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                      d='M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z'
+                    ></path>
+                  </svg>
+                  <div className='justify-between flex w-full items-center'>
+                    <span className='ml-3'>Reviewed</span>
+                    {reviewedCount > 0 && (
+                      <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLOrange '>
+                        {reviewedCount}
+                      </div>
+                    )}
+                  </div>
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  href='/to_endorse'
+                  className={`flex items-center p-2 text-base font-normal text-CITLWhite rounded-lg  hover:bg-CITLGray-main ${
+                    router.asPath === "/to_endorse" ? "bg-CITLGray-main" : ""
+                  }`}
+                >
+                  <svg
+                    fill='none'
+                    stroke='currentColor'
+                    strokeWidth='1.5'
+                    className='flex-shrink-0 w-6 h-6 text-CITLWhite transition duration-75 group-hover:text-CITLGray-main'
+                    viewBox='0 0 24 24'
+                    xmlns='http://www.w3.org/2000/svg'
+                    aria-hidden='true'
+                  >
+                    <path
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                      d='M6.633 10.5c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 012.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 00.322-1.672V3a.75.75 0 01.75-.75A2.25 2.25 0 0116.5 4.5c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 01-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 00-1.423-.23H5.904M14.25 9h2.25M5.904 18.75c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 01-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 10.203 4.167 9.75 5 9.75h1.053c.472 0 .745.556.5.96a8.958 8.958 0 00-1.302 4.665c0 1.194.232 2.333.654 3.375z'
+                    ></path>
+                  </svg>
+                  <div className='justify-between flex w-full items-center'>
+                    <span className='flex-1 ml-3 whitespace-nowrap'>
+                      To Endorse
+                    </span>
+                    {toEndorseCount > 0 && (
+                      <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLOrange '>
+                        {toEndorseCount}
+                      </div>
+                    )}
+                  </div>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href='/endorsed'
+                  className={`flex items-center p-2 text-base font-normal text-CITLWhite rounded-lg  hover:bg-CITLGray-main ${
+                    router.asPath === "/endorsed" ? "bg-CITLGray-main" : ""
+                  }`}
+                >
+                  <svg
+                    fill='none'
+                    stroke='currentColor'
+                    strokeWidth='1.5'
+                    className='flex-shrink-0 w-6 h-6 text-CITLWhite transition duration-75 group-hover:text-CITLGray-main'
+                    viewBox='0 0 24 24'
+                    xmlns='http://www.w3.org/2000/svg'
+                    aria-hidden='true'
+                  >
+                    <path
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                      d='M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z'
+                    />
+                  </svg>
+
+                  <div className='justify-between flex w-full items-center'>
+                    <span className='flex-1 ml-3 whitespace-nowrap'>
+                      Endorsed
+                    </span>
+                    {endorsedCount > 0 && (
+                      <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLOrange '>
+                        {endorsedCount}
+                      </div>
+                    )}
+                  </div>
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  href='/department_ims'
+                  className={`flex items-center p-2 text-base font-normal text-CITLWhite rounded-lg  hover:bg-CITLGray-main ${
+                    router.asPath === "/department_ims"
+                      ? "bg-CITLGray-main"
+                      : ""
+                  }`}
+                >
+                  <svg
+                    fill='none'
+                    stroke='currentColor'
+                    strokeWidth='1.5'
+                    className='flex-shrink-0 w-6 h-6 text-CITLWhite transition duration-75 group-hover:text-CITLGray-main'
+                    viewBox='0 0 24 24'
+                    xmlns='http://www.w3.org/2000/svg'
+                    aria-hidden='true'
+                  >
+                    <path
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                      d='M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21'
+                    ></path>
+                  </svg>
+                  <div className='justify-between flex w-full items-center'>
+                    <span className='flex-1 ml-3 whitespace-nowrap'>
+                      IM&apos;s
+                    </span>
+                    {departmentImsCount > 0 && (
+                      <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLOrange '>
+                        {departmentImsCount}
+                      </div>
+                    )}
+                  </div>
+                </Link>
+              </li>
+            </>
+          )}
+
           {user?.ActiveFaculty && (
             <>
               <hr className='h-px my-8 w-56 bg-CITLGray-main border-0 dark:bg-gray-700' />
