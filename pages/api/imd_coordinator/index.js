@@ -1,5 +1,5 @@
 import { reqLog } from "@/services/api/logger";
-import getIMDCoordinatorHandler from "@/services/handlers/imd_coordinator/getIMDCoordinatorHandler";
+import getIMDCoordinatorsHandler from "@/services/handlers/imd_coordinator/getIMDCoordinatorsHandler";
 import postIMDCoordinatorHandler from "@/services/handlers/imd_coordinator/postIMDCoordinatorHandler";
 import methodNaHandler from "@/services/handlers/methodNaHandler";
 
@@ -10,7 +10,7 @@ export default async function handler(req, res) {
     case "POST":
       return postIMDCoordinatorHandler(req, res);
     case "GET":
-      return getIMDCoordinatorHandler(req, res);
+      return getIMDCoordinatorsHandler(req, res);
     default:
       return methodNaHandler(req, res);
   }

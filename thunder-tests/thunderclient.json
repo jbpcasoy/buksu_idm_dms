@@ -3429,7 +3429,7 @@
     "_id": "b0d2b651-60ad-4152-808d-f26c3b91388c",
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "9e82185a-70f7-429c-abf7-7b424c4b7230",
-    "name": "READ IMDCoordinator",
+    "name": "READ IMDCoordinators",
     "url": "{{host}}/api/imd_coordinator?limit=10&page=1",
     "method": "GET",
     "sortNum": 2030000,
@@ -3448,6 +3448,34 @@
         "isPath": false
       }
     ],
+    "tests": []
+  },
+  {
+    "_id": "cbfa6134-330e-4df5-95f8-4fc55f2464b0",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "9e82185a-70f7-429c-abf7-7b424c4b7230",
+    "name": "READ IMDCoordinator",
+    "url": "{{host}}/api/imd_coordinator/clfvvazd90000s9nfopm5uf9t",
+    "method": "GET",
+    "sortNum": 2040000,
+    "created": "2023-03-31T01:49:35.683Z",
+    "modified": "2023-03-31T01:49:58.536Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "ce4a652b-2ab7-4e54-8db0-f8b534c55d5d",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "9e82185a-70f7-429c-abf7-7b424c4b7230",
+    "name": "DELETE IMDCoordinator",
+    "url": "{{host}}/api/imd_coordinator/clfvvazd90000s9nfopm5uf9t",
+    "method": "DELETE",
+    "sortNum": 2050000,
+    "created": "2023-03-31T01:50:45.413Z",
+    "modified": "2023-03-31T01:51:00.773Z",
+    "headers": [],
+    "params": [],
     "tests": []
   }
 ]

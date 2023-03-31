@@ -1,12 +1,8 @@
 import readIMDCoordinator from "@/services/api/imd_coordinator/readIMDCoordinator";
 
 export default async function getIMDCoordinatorHandler(req, res) {
-  const { limit, page } = req.query;
+  const { id } = req.query;
 
-  const iMDCoordinator = await readIMDCoordinator({
-    limit: parseInt(limit),
-    page: parseInt(page),
-  });
-
+  const iMDCoordinator = await readIMDCoordinator(id);
   return res.status(200).json(iMDCoordinator);
 }
