@@ -10,8 +10,16 @@ export default async function createIMDCoordinatorSuggestion({
     const iMDCoordinatorSuggestion =
       await prisma.iMDCoordinatorSuggestion.create({
         data: {
-          iMDCoordinatorId,
-          iMId,
+          IMDCoordinator: {
+            connect: {
+              id: iMDCoordinatorId,
+            },
+          },
+          IM: {
+            connect: {
+              id: iMId,
+            },
+          },
         },
       });
 

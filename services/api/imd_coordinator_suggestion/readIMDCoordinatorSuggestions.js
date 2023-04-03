@@ -16,7 +16,11 @@ export default async function readIMDCoordinatorSuggestions({
           iMId,
         },
       });
-    const total = await prisma.iMDCoordinatorSuggestion.count();
+    const total = await prisma.iMDCoordinatorSuggestion.count({
+      where: {
+        iMId,
+      },
+    });
 
     return { data: iMDCoordinatorSuggestions, total };
   } catch (error) {
