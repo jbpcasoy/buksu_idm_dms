@@ -205,9 +205,9 @@ export default function ViewIM() {
                     )}
                 </li>
                 <li>
-                  {user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId &&
+                  {(user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId ||
+                    user?.ActiveFaculty?.ActiveCoordinator) &&
                     iM?.status === "SUBMITTED" &&
-                    user?.ActiveFaculty?.ActiveCoordinator &&
                     user?.ActiveFaculty?.Faculty?.departmentId ===
                       iM?.owner?.departmentId && (
                       <button
@@ -240,9 +240,9 @@ export default function ViewIM() {
                     )}
                 </li>
                 <li>
-                  {user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId &&
+                  {(user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId || 
+                    user?.ActiveFaculty?.ActiveChairperson ) &&
                     iM?.status === "SUBMITTED" &&
-                    user?.ActiveFaculty?.ActiveChairperson &&
                     user?.ActiveFaculty?.Faculty?.departmentId ===
                       iM?.owner?.departmentId && (
                       <button

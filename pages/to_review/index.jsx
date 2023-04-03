@@ -38,7 +38,11 @@ export default function Home() {
     async function getToReview(filter) {
       return frontendGetIMs({
         ...filter,
-        notOwnerId: user.ActiveFaculty.Faculty.id,
+        notOwnerId:
+          user?.ActiveFaculty?.ActiveChairperson ||
+          user?.ActiveFaculty?.ActiveCoordinator
+            ? undefined
+            : user.ActiveFaculty.Faculty.id,
         departmentId: user.ActiveFaculty.Faculty.departmentId,
         status: "SUBMITTED",
       });

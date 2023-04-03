@@ -56,11 +56,6 @@ export default function Sidebar() {
               </svg>
               <div className='justify-between flex w-full items-center'>
                 <span className='ml-3'>Home</span>
-                {myImsCount > 0 && (
-                  <div className='inline-flex items-center justify-center w-4 h-4  text-xs font-semibold text-CITLOrange '>
-                    {myImsCount}
-                  </div>
-                )}
               </div>
             </Link>
           </li>

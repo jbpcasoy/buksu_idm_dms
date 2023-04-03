@@ -28,11 +28,11 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "bd1fca66-edfe-47f2-8d18-0d6c8e254442",
     "name": "READ IMs",
-    "url": "{{host}}/api/im?page=1&limit=10&sortColumn=title&sortOrder=desc&status=DEPARTMENT_REVIEWED",
+    "url": "{{host}}/api/im?page=1&limit=10&sortColumn=title&sortOrder=desc&status=DEPARTMENT_ENDORSED",
     "method": "GET",
     "sortNum": 20000,
     "created": "2023-02-26T01:21:31.356Z",
-    "modified": "2023-03-28T06:50:04.689Z",
+    "modified": "2023-04-03T01:38:09.072Z",
     "headers": [],
     "params": [
       {
@@ -75,7 +75,7 @@
       },
       {
         "name": "status",
-        "value": "DEPARTMENT_REVIEWED",
+        "value": "DEPARTMENT_ENDORSED",
         "isPath": false
       }
     ],
@@ -3692,6 +3692,25 @@
     "modified": "2023-03-31T05:51:09.585Z",
     "headers": [],
     "params": [],
+    "tests": []
+  },
+  {
+    "_id": "c6557ed6-2b87-4a8d-a510-1d296e58b1e8",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "f44c83ad-40e7-4a75-aec9-9eca246130a5",
+    "name": "CREATE IMDCoordinatorSuggestion",
+    "url": "{{host}}/api/imd_coordinator_suggestion",
+    "method": "POST",
+    "sortNum": 2170000,
+    "created": "2023-04-03T01:38:49.493Z",
+    "modified": "2023-04-03T01:40:15.904Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"iMId\": \"clg051inc000qs9r4v86mhywl\",\n  \"iMDCoordinatorId\": \"clg04zkjr000ms9r4l6zd874u\"\n}",
+      "form": []
+    },
     "tests": []
   }
 ]
