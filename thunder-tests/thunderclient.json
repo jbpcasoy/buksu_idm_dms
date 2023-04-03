@@ -4058,5 +4058,19 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "2558cbc4-2b70-4b12-835a-0f3a5129c56a",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "91cc04de-eadf-42a5-9c31-d3c40cadd75b",
+    "name": "DELETE CITLDirectorEndorsement",
+    "url": "{{host}}/api/citl_director_endorsement/clg0pljnr000cs94m07a009kc",
+    "method": "DELETE",
+    "sortNum": 2380000,
+    "created": "2023-04-03T11:06:58.213Z",
+    "modified": "2023-04-03T11:07:31.388Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
