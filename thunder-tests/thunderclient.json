@@ -4000,5 +4000,24 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "02c814e6-fb4c-437d-a4ac-caf9049305bd",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "91cc04de-eadf-42a5-9c31-d3c40cadd75b",
+    "name": "CREATE CITLDirectorEndorsement",
+    "url": "{{host}}/api/citl_director_endorsement",
+    "method": "POST",
+    "sortNum": 2350000,
+    "created": "2023-04-03T10:48:22.740Z",
+    "modified": "2023-04-03T10:49:16.878Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"iMDCoordinatorEndorsementId\": \"clg0plcza000as94m744n43um\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
