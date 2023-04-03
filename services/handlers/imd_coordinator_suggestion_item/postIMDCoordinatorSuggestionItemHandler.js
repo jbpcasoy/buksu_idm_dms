@@ -1,4 +1,4 @@
-import createIMDCoordinatorSuggestionItem from "@/services/api/imd_coordinator_item/createIMDCoordinatorSuggestionItem";
+import createIMDCoordinatorSuggestionItem from "@/services/api/imd_coordinator_suggestion_item/createIMDCoordinatorSuggestionItem";
 
 export default async function postIMDCoordinatorSuggestionItemHandler(
   req,

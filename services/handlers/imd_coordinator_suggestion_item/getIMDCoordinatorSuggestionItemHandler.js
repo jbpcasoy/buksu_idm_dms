@@ -1,13 +1,10 @@
-import readIMDCoordinatorSuggestionItems from "@/services/api/imd_coordinator_suggestion_item/readIMDCoordinatorSuggestionItems";
+import readIMDCoordinatorSuggestionItem from "@/services/api/imd_coordinator_suggestion_item/readIMDCoordinatorSuggestionItem";
 
-export default async function getIMDCoordinatorSuggestionItemsHandler(
-  req,
-  res
-) {
-  const { limit, page } = req.query;
+export default async function getIMDCoordinatorSuggestionItemHandler(req, res) {
+  const { id } = req.query;
 
-  const iMDCoordinatorSuggestionItems = await readIMDCoordinatorSuggestionItems(
-    { limit: parseInt(limit), page: parseInt(page) }
+  const iMDCoordinatorSuggestionItem = await readIMDCoordinatorSuggestionItem(
+    id
   );
-  return res.status(200).json(iMDCoordinatorSuggestionItems);
+  return res.status(200).json(iMDCoordinatorSuggestionItem);
 }

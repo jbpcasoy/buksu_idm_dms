@@ -1,6 +1,6 @@
 import { reqLog } from "@/services/api/logger";
-import getIMDCoordinatorSuggestionItemsHandler from "@/services/handlers/imd_coordinator_suggestion_item/getIMDCoordinatorSuggestionItemHandler";
-import postIMDCoordinatorSuggestionItemHandler from "@/services/handlers/im_coordinator_suggestion_item/postIMDCoordinatorSuggestionItemHandler";
+import getIMDCoordinatorSuggestionItemsHandler from "@/services/handlers/imd_coordinator_suggestion_item/getIMDCoordinatorSuggestionItemsHandler";
+import postIMDCoordinatorSuggestionItemHandler from "@/services/handlers/imd_coordinator_suggestion_item/postIMDCoordinatorSuggestionItemHandler";
 import methodNaHandler from "@/services/handlers/methodNaHandler";
 
 export default async function handler(req, res) {
