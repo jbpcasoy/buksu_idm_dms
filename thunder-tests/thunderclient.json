@@ -3751,5 +3751,19 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "2e3748b5-4008-4902-93e9-36a8a90e693a",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "f44c83ad-40e7-4a75-aec9-9eca246130a5",
+    "name": "DELETE IMDCoordinatorSuggestion",
+    "url": "{{host}}/api/imd_coordinator_suggestion/clg05zhqs004fs9r4s5uo9m28",
+    "method": "DELETE",
+    "sortNum": 2210000,
+    "created": "2023-04-03T02:00:07.574Z",
+    "modified": "2023-04-03T02:00:22.237Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
