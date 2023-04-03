@@ -777,22 +777,25 @@ model IMDCoordinatorSuggestionItem {
 }
 
 model SubmittedIMDCoordinatorSuggestion {
-  id                         String                   @id @default(cuid())
-  createdAt                  DateTime                 @default(now())
-  updatedAt                  DateTime                 @updatedAt
-  IMDCoordinatorSuggestion   IMDCoordinatorSuggestion @relation(fields: [iMDCoordinatorSuggestionId], references: [id])
-  iMDCoordinatorSuggestionId String                   @unique
+  id                         String                     @id @default(cuid())
+  createdAt                  DateTime                   @default(now())
+  updatedAt                  DateTime                   @updatedAt
+  IMDCoordinatorSuggestion   IMDCoordinatorSuggestion   @relation(fields: [iMDCoordinatorSuggestionId], references: [id])
+  iMDCoordinatorSuggestionId String                     @unique
+  IMDCoordinatorEndorsement  IMDCoordinatorEndorsement?
 }
 
 model IMDCoordinatorEndorsement {
-  id                      String                   @id @default(cuid())
-  createdAt               DateTime                 @default(now())
-  updatedAt               DateTime                 @updatedAt
-  IM                      IM                       @relation(fields: [iMId], references: [id])
-  iMId                    String                   @unique
-  IMDCoordinator          IMDCoordinator           @relation(fields: [iMDCoordinatorId], references: [id])
-  iMDCoordinatorId        String                   @unique
-  CITLDirectorEndorsement CITLDirectorEndorsement?
+  id                                  String                            @id @default(cuid())
+  createdAt                           DateTime                          @default(now())
+  updatedAt                           DateTime                          @updatedAt
+  IM                                  IM                                @relation(fields: [iMId], references: [id])
+  iMId                                String                            @unique
+  IMDCoordinator                      IMDCoordinator                    @relation(fields: [iMDCoordinatorId], references: [id])
+  iMDCoordinatorId                    String                            @unique
+  SubmittedIMDCoordinatorSuggestion   SubmittedIMDCoordinatorSuggestion @relation(fields: [submittedIMDCoordinatorSuggestionId], references: [id])
+  submittedIMDCoordinatorSuggestionId String                            @unique
+  CITLDirectorEndorsement             CITLDirectorEndorsement?
 
   @@index([iMId])
   @@index([iMDCoordinatorId])
