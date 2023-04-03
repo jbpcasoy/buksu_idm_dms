@@ -20,6 +20,7 @@ export default function Sidebar() {
     collegeIMsCount,
     cITLToReviewCount,
     cITLReviewedCount,
+    imsCount,
   } = useSidebarCounts();
 
   return (
@@ -241,12 +242,9 @@ export default function Sidebar() {
 
               <li>
                 <Link
-                  href='#'
-                  // href='/department_ims'
+                  href='/ims'
                   className={`flex items-center p-2 text-base font-normal text-CITLWhite rounded-lg  hover:bg-CITLGray-main ${
-                    router.asPath === "/department_ims"
-                      ? "bg-CITLGray-main"
-                      : ""
+                    router.asPath === "/ims" ? "bg-CITLGray-main" : ""
                   }`}
                 >
                   <svg
@@ -268,11 +266,11 @@ export default function Sidebar() {
                     <span className='flex-1 ml-3 whitespace-nowrap'>
                       IM&apos;s
                     </span>
-                    {/* {departmentImsCount > 0 && ( */}
-                    <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLOrange '>
-                      {/* {departmentImsCount} */} NaN
-                    </div>
-                    {/* )} */}
+                    {imsCount > 0 && (
+                      <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLOrange '>
+                        {imsCount}
+                      </div>
+                    )}
                   </div>
                 </Link>
               </li>
