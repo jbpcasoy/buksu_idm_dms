@@ -50,7 +50,7 @@ export default function CoordinatorReviewNotificationItem({ notification }) {
             ?.Coordinator?.Faculty?.user?.name
         }
       </span>
-      {` On IM: "${notificationData?.SubmittedCoordinatorReview?.IM?.title}"`}
+      {` on IM: "${notificationData?.SubmittedCoordinatorReview?.IM?.title}"`}
     </NotificationItemBase>
   );
 }

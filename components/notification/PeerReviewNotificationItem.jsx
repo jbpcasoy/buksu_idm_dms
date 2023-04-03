@@ -46,7 +46,7 @@ export default function PeerReviewNotificationItem({ notification }) {
       <span className='font-semibold text-gray-900 dark:text-white'>
         {notificationData?.SubmittedPeerReview?.PeerReview?.Faculty?.user?.name}
       </span>
-      {` On IM: "${notificationData?.SubmittedPeerReview?.IM?.title}"`}
+      {` on IM: "${notificationData?.SubmittedPeerReview?.IM?.title}"`}
     </NotificationItemBase>
   );
 }

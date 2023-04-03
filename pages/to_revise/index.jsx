@@ -136,27 +136,30 @@ export default function Home() {
                   To Revise
                 </button>
               </div>
+              <Filter
+                filterOptions={[
+                  {
+                    value: "title",
+                    label: "Title",
+                  },
+                  {
+                    value: "type",
+                    label: "Type",
+                    options: ["MODULE", "COURSE_FILE", "WORKTEXT", "TEXTBOOK"],
+                  },
+                  {
+                    value: "authors",
+                    label: "Authors",
+                  },
+                ]}
+                onChange={(filter) =>
+                  setState((prev) => ({ ...prev, ...filter }))
+                }
+              />
+
               <div className=' grid grid-flow-col auto-cols-max gap-2 px-2 '></div>
             </div>
           </div>
-          <Filter
-            filterOptions={[
-              {
-                value: "title",
-                label: "Title",
-              },
-              {
-                value: "type",
-                label: "Type",
-                options: ["MODULE", "COURSE_FILE", "WORKTEXT", "TEXTBOOK"],
-              },
-              {
-                value: "authors",
-                label: "Authors",
-              },
-            ]}
-            onChange={(filter) => setState((prev) => ({ ...prev, ...filter }))}
-          />
 
           <table className='divide-y divide-CITLGray-light mb-2'>
             <thead className='bg-CITLGray-light'>

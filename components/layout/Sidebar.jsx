@@ -32,9 +32,7 @@ export default function Sidebar() {
     >
       <div className='flex flex-col justify-between h-full px-3 pb-4 overflow-y-auto bg-CITLDarkBlue dark:bg-gray-800'>
         <ul className='space-y-2'>
-          <div className='text-sm text-center w-full text-white'>
-            DEPARTMENT
-          </div>
+          <div className='text-sm text-left w-full text-white'>DEPARTMENT</div>
           <li>
             <Link
               href='/my_ims'

@@ -54,7 +54,7 @@ export default function CoordinatorSuggestionNotificationItem({
             ?.CoordinatorReview?.Coordinator?.Faculty?.user?.name
         }
       </span>
-      {` On IM: "${notificationData?.SubmittedCoordinatorSuggestion?.IM?.title}"`}
+      {` on IM: "${notificationData?.SubmittedCoordinatorSuggestion?.IM?.title}"`}
     </NotificationItemBase>
   );
 }
