@@ -23,6 +23,7 @@ export default async function readIMs({
   authors,
   owner,
   iMDCoordinatorReviewerId,
+  toRevise,
 }) {
   const prisma = PRISMA_CLIENT;
   const sortFilter = {};
@@ -221,9 +222,15 @@ export default async function readIMs({
               contains: title,
               // mode: "insensitive",
             },
-            status: {
-              equals: status,
-            },
+            status: toRevise
+              ? {
+                  in: status
+                    ? ["CITL_REVIEWED", "DEPARTMENT_REVIEWED", status]
+                    : ["CITL_REVIEWED", "DEPARTMENT_REVIEWED"],
+                }
+              : {
+                  equals: status,
+                },
             authors: {
               contains: authors,
             },
@@ -363,9 +370,15 @@ export default async function readIMs({
               contains: title,
               // mode: "insensitive",
             },
-            status: {
-              equals: status,
-            },
+            status: toRevise
+              ? {
+                  in: status
+                    ? ["CITL_REVIEWED", "DEPARTMENT_REVIEWED", status]
+                    : ["CITL_REVIEWED", "DEPARTMENT_REVIEWED"],
+                }
+              : {
+                  equals: status,
+                },
             authors: {
               contains: authors,
             },
