@@ -1,11 +1,8 @@
-import readCITLDirectorEndorsements from "@/services/api/citl_director_endorsement/readCITLDirectorEndorsements";
+import readCITLDirectorEndorsement from "@/services/api/citl_director_endorsement/readCITLDirectorEndorsement";
 
 export default async function getCITLDirectorEndorsementHandler(req, res) {
-  const { limit, page } = req.query;
+  const { id } = req.query;
 
-  const cITLDirectorEndorsements = await readCITLDirectorEndorsements({
-    limit: parseInt(limit),
-    page: parseInt(page),
-  });
-  return res.status(200).json(cITLDirectorEndorsements);
+  const cITLDirectorEndorsement = await readCITLDirectorEndorsement(id);
+  return res.status(200).json(cITLDirectorEndorsement);
 }

@@ -1,5 +1,5 @@
 import { reqLog } from "@/services/api/logger";
-import getCITLDirectorEndorsementHandler from "@/services/handlers/citl_director_endorsement/getCITLDirectorEndorsementHandler";
+import getCITLDirectorEndorsementsHandler from "@/services/handlers/citl_director_endorsement/getCITLDirectorEndorsementsHandler";
 import postCITLDirectorEndorsementHandler from "@/services/handlers/citl_director_endorsement/postCITLDirectorEndorsementHandler";
 import methodNaHandler from "@/services/handlers/methodNaHandler";
 
@@ -10,7 +10,7 @@ export default async function handler(req, res) {
     case "POST":
       return postCITLDirectorEndorsementHandler(req, res);
     case "GET":
-      return getCITLDirectorEndorsementHandler(req, res);
+      return getCITLDirectorEndorsementsHandler(req, res);
     default:
       return methodNaHandler(req, res);
   }
