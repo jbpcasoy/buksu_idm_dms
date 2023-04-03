@@ -766,6 +766,10 @@ model IMDCoordinatorSuggestionItem {
   id                         String                   @id @default(cuid())
   createdAt                  DateTime                 @default(now())
   updatedAt                  DateTime                 @updatedAt
+  value                      String                   @db.Text
+  actionTaken                String?                  @db.Text
+  pageNumber                 Int
+  remarks                    String?                  @db.Text
   IMDCoordinatorSuggestion   IMDCoordinatorSuggestion @relation(fields: [iMDCoordinatorSuggestionId], references: [id])
   iMDCoordinatorSuggestionId String
 

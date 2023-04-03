@@ -3765,5 +3765,24 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "565be16b-f3b7-4a52-9aa0-e4912e00a519",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "8c7db9af-43f6-4495-9028-4dd97791ebb2",
+    "name": "CREATE IMDCoordinatorSuggestionItem",
+    "url": "{{host}}/api/imd_coordinator_suggestion_item",
+    "method": "POST",
+    "sortNum": 10000,
+    "created": "2023-04-03T02:43:03.705Z",
+    "modified": "2023-04-03T02:46:20.590Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"value\": \"Bad title\",\n  \"actionTaken\": \"\",\n  \"pageNumber\": 1,\n  \"remarks\": \"Revise\",\n  \"iMDCoordinatorSuggestionId\": \"clg08ca550001s9lficlz6sfv\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
