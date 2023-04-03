@@ -13,6 +13,9 @@ export default async function readSubmittedIMDCoordinatorSuggestion(
           ...filter,
           id,
         },
+        include: {
+          IMDCoordinatorSuggestion: true,
+        },
       });
 
     return submittedIMDCoordinatorSuggestion;

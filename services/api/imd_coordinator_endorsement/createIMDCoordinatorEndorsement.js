@@ -1,18 +1,13 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
-import readIM from "../im/readIM";
-import readIMDCoordinator from "../imd_coordinator/readIMDCoordinator";
 import readSubmittedIMDCoordinatorSuggestion from "../submitted_imd_coordinator_suggestion/readSubmittedIMDCoordinatorSuggestion";
 
 export default async function createIMDCoordinatorEndorsement({
-  iMId,
   iMDCoordinatorId,
   submittedIMDCoordinatorSuggestionId,
 }) {
   const prisma = PRISMA_CLIENT;
 
   try {
-    const iM = await readIM(iMId);
-    const iMDCoordinator = await readIMDCoordinator(iMDCoordinatorId);
     const submittedIMDCoordinatorSuggestion =
       await readSubmittedIMDCoordinatorSuggestion(
         submittedIMDCoordinatorSuggestionId
@@ -23,12 +18,13 @@ export default async function createIMDCoordinatorEndorsement({
         data: {
           IM: {
             connect: {
-              id: iM.id,
+              id: submittedIMDCoordinatorSuggestion.IMDCoordinatorSuggestion
+                .iMId,
             },
           },
           IMDCoordinator: {
             connect: {
-              id: iMDCoordinator.id,
+              id: iMDCoordinatorId,
             },
           },
           SubmittedIMDCoordinatorSuggestion: {

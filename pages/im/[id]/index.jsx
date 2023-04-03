@@ -7,6 +7,7 @@ import useIM from "@/hooks/useIM";
 import frontendCreateCoordinatorEndorsement from "@/services/frontend/coordinator_endorsement/frontendCreateCoordinatorEndorsement";
 import frontendCreateDeanEndorsement from "@/services/frontend/dean_endorsement/frontendCreateDeanEndorsement";
 import frontendSubmitIMForReview from "@/services/frontend/im/frontendSubmitIMForReview";
+import frontendCreateIMDCoordinatorEndorsement from "@/services/frontend/imd_coordinator_endorsement/frontendCreateIMDCoordinatorEndorsement";
 import { initDropdowns, initModals } from "flowbite";
 import moment from "moment";
 import Link from "next/link";
@@ -28,6 +29,15 @@ export default function ViewIM() {
     return frontendCreateCoordinatorEndorsement({
       iMId: iM.id,
       coordinatorId: user?.ActiveFaculty?.ActiveCoordinator?.coordinatorId,
+    }).then((res) => {
+      refreshIM();
+    });
+  }
+
+  async function handleIMDCoordinatorEndorse() {
+    return frontendCreateIMDCoordinatorEndorsement({
+      submittedIMDCoordinatorSuggestionId:
+        iM.IMDCoordinatorSuggestion.submittedIMDCoordinatorSuggestionId,
     }).then((res) => {
       refreshIM();
     });
@@ -141,7 +151,8 @@ export default function ViewIM() {
                 {iM &&
                   iM.owner.userId === user?.id &&
                   (iM?.status === "DRAFT" ||
-                    iM?.status === "DEPARTMENT_REVIEWED") && (
+                    iM?.status === "DEPARTMENT_REVIEWED" ||
+                    iM?.status === "CITL_REVIEWED") && (
                     <li>
                       {/*  EDIT IM should be visible and accessible only for the owner of the IM
                        */}
@@ -274,6 +285,7 @@ export default function ViewIM() {
                       </button>
                     )}
                 </li>
+                {/* NOTE: for chairperson */}
                 <li>
                   {iM?.status === "DEPARTMENT_REVIEWED" &&
                     user?.ActiveFaculty?.ActiveCoordinator && (
@@ -284,6 +296,23 @@ export default function ViewIM() {
                           "IM was already endorsed"
                         }
                         onClick={handleEndorse}
+                        className='block w-full  text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter'
+                      >
+                        Endorse
+                      </button>
+                    )}
+                </li>
+                {/* NOTE: for imd coordinator */}
+                <li>
+                  {iM?.status === "CITL_REVIEWED" &&
+                    user?.IMDCoordinator?.ActiveIMDCoordinator && (
+                      <button
+                        disabled={iM?.IMDCoordinatorEndorsement}
+                        title={
+                          iM?.IMDCoordinatorEndorsement &&
+                          "IM was already endorsed"
+                        }
+                        onClick={handleIMDCoordinatorEndorse}
                         className='block w-full  text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter'
                       >
                         Endorse
@@ -505,7 +534,11 @@ export default function ViewIM() {
         )}
 
         {(iM?.owner?.userId === user?.id ||
-          iM?.status === "DEPARTMENT_REVIEWED") && (
+          user?.ActiveFaculty?.ActiveChairperson ||
+          user?.ActiveFaculty?.ActiveCoordinator ||
+          iM?.SubmittedPeerReview?.PeerReview?.facultyId ===
+            user?.ActiveFaculty?.facultyId ||
+          user?.IMDCoordinator?.ActiveIMDCoordinator) && (
           <>
             {iM?.SubmittedPeerReview?.PeerReview &&
               iM?.SubmittedPeerSuggestion && (

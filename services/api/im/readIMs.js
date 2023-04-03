@@ -24,6 +24,8 @@ export default async function readIMs({
   owner,
   iMDCoordinatorReviewerId,
   toRevise,
+  iMDCoordinatorEndorsed,
+  endorsedByIMDCoordinator,
 }) {
   const prisma = PRISMA_CLIENT;
   const sortFilter = {};
@@ -112,6 +114,22 @@ export default async function readIMs({
                 : undefined,
           },
           {
+            IMDCoordinatorEndorsement:
+              iMDCoordinatorEndorsed === true
+                ? {
+                    id: {
+                      contains: "",
+                    },
+                  }
+                : iMDCoordinatorEndorsed === false
+                ? {
+                    isNot: {
+                      id: { contains: "" },
+                    },
+                  }
+                : undefined,
+          },
+          {
             CoordinatorEndorsement: {
               DeanEndorsement:
                 deanEndorsed === true
@@ -147,6 +165,15 @@ export default async function readIMs({
               ? {
                   coordinatorId: {
                     contains: endorsedByCoordinator,
+                  },
+                }
+              : undefined,
+          },
+          {
+            IMDCoordinatorEndorsement: endorsedByIMDCoordinator
+              ? {
+                  iMDCoordinatorId: {
+                    contains: endorsedByIMDCoordinator,
                   },
                 }
               : undefined,
@@ -252,6 +279,22 @@ export default async function readIMs({
                     },
                   }
                 : coordinatorEndorsed === false
+                ? {
+                    isNot: {
+                      id: { contains: "" },
+                    },
+                  }
+                : undefined,
+          },
+          {
+            IMDCoordinatorEndorsement:
+              iMDCoordinatorEndorsed === true
+                ? {
+                    id: {
+                      contains: "",
+                    },
+                  }
+                : iMDCoordinatorEndorsed === false
                 ? {
                     isNot: {
                       id: { contains: "" },

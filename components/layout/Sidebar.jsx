@@ -2,7 +2,7 @@ import UserContext from "@/contexts/UserContext";
 import useSidebarCounts from "@/hooks/count/useSidebarCounts";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 export default function Sidebar() {
   const router = useRouter();
@@ -21,7 +21,13 @@ export default function Sidebar() {
     cITLToReviewCount,
     cITLReviewedCount,
     imsCount,
+    cITLToEndorseCount,
+    cITLEndorsedCount,
   } = useSidebarCounts();
+
+  useEffect(() => {
+    console.log({ cITLEndorsedCount });
+  }, [cITLEndorsedCount]);
 
   return (
     <aside
@@ -170,10 +176,11 @@ export default function Sidebar() {
 
               <li>
                 <Link
-                  href='#'
-                  // href='/to_endorse'
+                  href='/imd_coordinator/to_endorse'
                   className={`flex items-center p-2 text-base font-normal text-CITLWhite rounded-lg  hover:bg-CITLGray-main ${
-                    router.asPath === "/to_endorse" ? "bg-CITLGray-main" : ""
+                    router.asPath === "/imd_coordinator/to_endorse"
+                      ? "bg-CITLGray-main"
+                      : ""
                   }`}
                 >
                   <svg
@@ -195,20 +202,21 @@ export default function Sidebar() {
                     <span className='flex-1 ml-3 whitespace-nowrap'>
                       To Endorse
                     </span>
-                    {/* {toEndorseCount > 0 && ( */}
-                    <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLOrange '>
-                      {/* {toEndorseCount} */} NaN
-                    </div>
-                    {/* )} */}
+                    {cITLToEndorseCount > 0 && (
+                      <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLOrange '>
+                        {cITLToEndorseCount}
+                      </div>
+                    )}
                   </div>
                 </Link>
               </li>
               <li>
                 <Link
-                  href='#'
-                  // href='/endorsed'
+                  href='/imd_coordinator/endorsed'
                   className={`flex items-center p-2 text-base font-normal text-CITLWhite rounded-lg  hover:bg-CITLGray-main ${
-                    router.asPath === "/endorsed" ? "bg-CITLGray-main" : ""
+                    router.asPath === "/imd_coordinator/endorsed"
+                      ? "bg-CITLGray-main"
+                      : ""
                   }`}
                 >
                   <svg
@@ -231,11 +239,11 @@ export default function Sidebar() {
                     <span className='flex-1 ml-3 whitespace-nowrap'>
                       Endorsed
                     </span>
-                    {/* {endorsedCount > 0 && ( */}
-                    <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLOrange '>
-                      {/* {endorsedCount} */} NaN
-                    </div>
-                    {/* )} */}
+                    {cITLEndorsedCount > 0 && (
+                      <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLOrange '>
+                        {cITLEndorsedCount}
+                      </div>
+                    )}
                   </div>
                 </Link>
               </li>
