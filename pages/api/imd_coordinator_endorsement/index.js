@@ -1,5 +1,6 @@
 import { reqLog } from "@/services/api/logger";
-import postIMDCoordinatorEndorsementHandler from "@/services/handlers/imd_coordinator_endorsement";
+import getIMDCoordinatorEndorsementsHandler from "@/services/handlers/imd_coordinator_endorsement/getIMDCoordinatorEndorsementsHandler";
+import postIMDCoordinatorEndorsementHandler from "@/services/handlers/imd_coordinator_endorsement/postIMDCoordinatorEndorsementHandler";
 import methodNaHandler from "@/services/handlers/methodNaHandler";
 
 export default async function handler(req, res) {
@@ -8,6 +9,8 @@ export default async function handler(req, res) {
   switch (req.method) {
     case "POST":
       return postIMDCoordinatorEndorsementHandler(req, res);
+    case "GET":
+      return getIMDCoordinatorEndorsementsHandler(req, res);
     default:
       return methodNaHandler(req, res);
   }
