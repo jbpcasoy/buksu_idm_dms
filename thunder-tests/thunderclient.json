@@ -3972,5 +3972,19 @@
       }
     ],
     "tests": []
+  },
+  {
+    "_id": "06ca807a-928b-4cf2-9c33-e98eba7e486a",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "066fd0d7-1b35-486c-b7a5-91b976672f72",
+    "name": "READ IMDCoordinatorEndorsement",
+    "url": "{{host}}/api/imd_coordinator_endorsement/clg0lbadp0006s94myhsoxuec",
+    "method": "GET",
+    "sortNum": 2330000,
+    "created": "2023-04-03T10:28:15.596Z",
+    "modified": "2023-04-03T10:28:39.678Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
