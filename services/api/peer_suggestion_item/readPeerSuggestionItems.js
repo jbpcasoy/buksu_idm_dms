@@ -9,7 +9,7 @@ export default async function readPeerSuggestionItems({
   try {
     const peerSuggestionItems = await prisma.peerSuggestionItem.findMany({
       take: limit,
-      skip: page ? (page - 1) * limit : undefined,
+      skip: limit && page ? (page - 1) * limit : undefined,
       where: {
         peerSuggestionId: { contains: peerSuggestionId },
       },

@@ -3,6 +3,7 @@ import { PRISMA_CLIENT } from "@/prisma/prisma_client";
 export default async function readIMDCoordinatorSuggestionItems({
   limit,
   page,
+  iMDCoordinatorSuggestionId,
 }) {
   const prisma = PRISMA_CLIENT;
 
@@ -10,7 +11,10 @@ export default async function readIMDCoordinatorSuggestionItems({
     const iMDCoordinatorSuggestionItems =
       await prisma.iMDCoordinatorSuggestionItem.findMany({
         take: limit,
-        skip: (page - 1) * limit,
+        skip: page && limit ? (page - 1) * limit : undefined,
+        where: {
+          iMDCoordinatorSuggestionId,
+        },
       });
     const total = await prisma.iMDCoordinatorSuggestionItem.count();
 

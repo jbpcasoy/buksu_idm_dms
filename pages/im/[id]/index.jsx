@@ -240,8 +240,8 @@ export default function ViewIM() {
                     )}
                 </li>
                 <li>
-                  {(user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId || 
-                    user?.ActiveFaculty?.ActiveChairperson ) &&
+                  {(user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId ||
+                    user?.ActiveFaculty?.ActiveChairperson) &&
                     iM?.status === "SUBMITTED" &&
                     user?.ActiveFaculty?.Faculty?.departmentId ===
                       iM?.owner?.departmentId && (
@@ -309,6 +309,30 @@ export default function ViewIM() {
                         className='block w-full  text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter'
                       >
                         Confirm Endorsement
+                      </button>
+                    )}
+                </li>
+
+                <li>
+                  {user?.IMDCoordinator?.ActiveIMDCoordinator &&
+                    iM?.status === "DEPARTMENT_ENDORSED" && (
+                      <button
+                        onClick={() =>
+                          router.push(`/im/${iM?.id}/review/imd_coordinator`)
+                        }
+                        disabled={
+                          iM?.IMDCoordinatorSuggestion
+                            ?.SubmittedIMDCoordinatorSuggestion
+                        }
+                        title={
+                          iM?.IMDCoordinatorSuggestion
+                            ?.SubmittedIMDCoordinatorSuggestion
+                            ? "Suggestions are already submitted"
+                            : undefined
+                        }
+                        className='block w-full  text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter'
+                      >
+                        IMD Coordinator Review
                       </button>
                     )}
                 </li>

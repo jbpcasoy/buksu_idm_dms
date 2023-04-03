@@ -11,7 +11,7 @@ export default async function readCoordinatorSuggestionItems({
     const coordinatorSuggestionItems =
       await prisma.coordinatorSuggestionItem.findMany({
         take: limit,
-        skip: page ? (page - 1) * limit : undefined,
+        skip: limit && page ? (page - 1) * limit : undefined,
         where: {
           coordinatorSuggestionId: {
             contains: coordinatorSuggestionId,

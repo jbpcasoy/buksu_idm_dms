@@ -38,6 +38,11 @@ export default async function readIM(id, filter = {}) {
             CoordinatorReview: true,
           },
         },
+        IMDCoordinatorSuggestion: {
+          include: {
+            SubmittedIMDCoordinatorSuggestion: true,
+          },
+        },
         ActiveFile: {
           include: {
             File: {

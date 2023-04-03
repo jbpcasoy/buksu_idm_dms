@@ -4,10 +4,14 @@ export default async function getIMDCoordinatorSuggestionItemsHandler(
   req,
   res
 ) {
-  const { limit, page } = req.query;
+  const { limit, page, iMDCoordinatorSuggestionId } = req.query;
 
   const iMDCoordinatorSuggestionItems = await readIMDCoordinatorSuggestionItems(
-    { limit: parseInt(limit), page: parseInt(page) }
+    {
+      limit: limit ? parseInt(limit) : undefined,
+      page: page ? parseInt(page) : undefined,
+      iMDCoordinatorSuggestionId,
+    }
   );
   return res.status(200).json(iMDCoordinatorSuggestionItems);
 }
