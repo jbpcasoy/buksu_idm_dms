@@ -58,7 +58,7 @@ export default function Sidebar() {
               <div className='justify-between flex w-full items-center'>
                 <span className='ml-3'>My IM&apos;s</span>
                 {myImsCount > 0 && (
-                  <div className='inline-flex items-center justify-center w-4 h-4  text-xs font-semibold text-CITLOrange '>
+                  <div className='inline-flex items-center justify-center w-4 h-4  bg-CITLOrange rounded-full text-xs font-semibold text-CITLDarkBlue '>
                     {myImsCount}
                   </div>
                 )}
@@ -91,7 +91,7 @@ export default function Sidebar() {
               <div className='justify-between flex w-full items-center'>
                 <span className='ml-3'>To Revise</span>
                 {toReviseCount > 0 && (
-                  <div className='inline-flex items-center justify-center w-4 h-4  text-xs font-semibold text-CITLOrange '>
+                  <div className='inline-flex items-center justify-center w-4 h-4  bg-CITLOrange rounded-full text-xs font-semibold text-CITLDarkBlue  '>
                     {toReviseCount}
                   </div>
                 )}
@@ -129,7 +129,7 @@ export default function Sidebar() {
               <div className='justify-between flex w-full items-center'>
                 <span className='ml-3'>To Review</span>
                 {toReviewCount > 0 && (
-                  <div className='inline-flex items-center justify-center w-4 h-4  text-xs font-semibold text-CITLOrange '>
+                  <div className='inline-flex items-center justify-center w-4 h-4 bg-CITLOrange rounded-full text-xs font-semibold text-CITLDarkBlue '>
                     {toReviewCount}
                   </div>
                 )}
@@ -162,7 +162,7 @@ export default function Sidebar() {
               <div className='justify-between flex w-full items-center'>
                 <span className='ml-3'>Reviewed</span>
                 {reviewedCount > 0 && (
-                  <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLOrange '>
+                  <div className='inline-flex items-center justify-center w-4 h-4  bg-CITLOrange rounded-full text-xs font-semibold text-CITLDarkBlue  '>
                     {reviewedCount}
                   </div>
                 )}
@@ -199,7 +199,7 @@ export default function Sidebar() {
                       To Endorse
                     </span>
                     {toEndorseCount > 0 && (
-                      <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLOrange '>
+                      <div className='inline-flex items-center justify-center w-4 h-4  bg-CITLOrange rounded-full text-xs font-semibold text-CITLDarkBlue '>
                         {toEndorseCount}
                       </div>
                     )}
@@ -234,7 +234,7 @@ export default function Sidebar() {
                       Endorsed
                     </span>
                     {endorsedCount > 0 && (
-                      <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLOrange '>
+                      <div className='inline-flex items-center justify-center w-4 h-4  bg-CITLOrange rounded-full text-xs font-semibold text-CITLDarkBlue '>
                         {endorsedCount}
                       </div>
                     )}
@@ -273,7 +273,7 @@ export default function Sidebar() {
                     Department IM&apos;s
                   </span>
                   {departmentImsCount > 0 && (
-                    <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLOrange '>
+                    <div className='inline-flex items-center justify-center w-4 h-4  bg-CITLOrange rounded-full text-xs font-semibold text-CITLDarkBlue '>
                       {departmentImsCount}
                     </div>
                   )}
@@ -317,7 +317,7 @@ export default function Sidebar() {
                       To Confirm
                     </span>
                     {toConfirmCount > 0 && (
-                      <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLOrange '>
+                      <div className='inline-flex items-center justify-center w-4 h-4  bg-CITLOrange rounded-full text-xs font-semibold text-CITLDarkBlue '>
                         {toConfirmCount}
                       </div>
                     )}
