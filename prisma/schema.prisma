@@ -105,7 +105,7 @@ model IM {
   SubmittedChairpersonSuggestion SubmittedChairpersonSuggestion?
   CoordinatorEndorsement         CoordinatorEndorsement?
   IMDCoordinatorSuggestion       IMDCoordinatorSuggestion?
-  IMDCoordinatorEndorsement      IMDCoordinatorEndorsement[]
+  IMDCoordinatorEndorsement      IMDCoordinatorEndorsement?
 
   @@index([ownerId])
 }
@@ -713,14 +713,14 @@ model ActiveDean {
 }
 
 model IMDCoordinator {
-  id                        String                      @id @default(cuid())
-  createdAt                 DateTime                    @default(now())
-  updatedAt                 DateTime                    @updatedAt
-  User                      User                        @relation(fields: [userId], references: [id])
-  userId                    String                      @unique
+  id                        String                     @id @default(cuid())
+  createdAt                 DateTime                   @default(now())
+  updatedAt                 DateTime                   @updatedAt
+  User                      User                       @relation(fields: [userId], references: [id])
+  userId                    String                     @unique
   ActiveIMDCoordinator      ActiveIMDCoordinator?
   IMDCoordinatorSuggestion  IMDCoordinatorSuggestion[]
-  IMDCoordinatorEndorsement IMDCoordinatorEndorsement[]
+  IMDCoordinatorEndorsement IMDCoordinatorEndorsement?
 }
 
 model ActiveIMDCoordinator {
@@ -789,9 +789,9 @@ model IMDCoordinatorEndorsement {
   createdAt               DateTime                 @default(now())
   updatedAt               DateTime                 @updatedAt
   IM                      IM                       @relation(fields: [iMId], references: [id])
-  iMId                    String
+  iMId                    String                   @unique
   IMDCoordinator          IMDCoordinator           @relation(fields: [iMDCoordinatorId], references: [id])
-  iMDCoordinatorId        String
+  iMDCoordinatorId        String                   @unique
   CITLDirectorEndorsement CITLDirectorEndorsement?
 
   @@index([iMId])
