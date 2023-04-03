@@ -3914,5 +3914,19 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "c0310324-a7f5-476d-865b-1e856ce83587",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "b24f3da0-25fe-43af-ba87-13db10010dc0",
+    "name": "DELETE SubmittedCoordinatorSuggestion",
+    "url": "{{host}}/api/submitted_imd_coordinator_suggestion/clg0axuky0001s9avzuetuy3r",
+    "method": "DELETE",
+    "sortNum": 2300000,
+    "created": "2023-04-03T05:30:58.098Z",
+    "modified": "2023-04-03T05:31:21.330Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
