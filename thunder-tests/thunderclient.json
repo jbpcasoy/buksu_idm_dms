@@ -3823,5 +3823,24 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "be93d27e-0a60-4b4f-8b79-7ca841f1bb94",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "8c7db9af-43f6-4495-9028-4dd97791ebb2",
+    "name": "UPDATE IMDCoorinatorSuggestionItem",
+    "url": "{{host}}/api/imd_coordinator_suggestion_item/clg08ch5p0003s9lf415hfvv6",
+    "method": "PUT",
+    "sortNum": 2250000,
+    "created": "2023-04-03T03:27:30.294Z",
+    "modified": "2023-04-03T03:28:38.635Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"value\": \"Bad title Updated\",\n  \"actionTaken\": \"Updated\",\n  \"pageNumber\": 2,\n  \"remarks\": \"Revise Updated\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]

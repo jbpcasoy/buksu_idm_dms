@@ -1,5 +1,6 @@
 import { reqLog } from "@/services/api/logger";
 import getIMDCoordinatorSuggestionItemHandler from "@/services/handlers/imd_coordinator_suggestion_item/getIMDCoordinatorSuggestionItemHandler";
+import putIMDCoordinatorSuggestionItemHandler from "@/services/handlers/imd_coordinator_suggestion_item/putIMDCoordinatorSuggestionItemHandler";
 import methodNaHandler from "@/services/handlers/methodNaHandler";
 
 export default async function handler(req, res) {
@@ -7,6 +8,8 @@ export default async function handler(req, res) {
   switch (req.method) {
     case "GET":
       return getIMDCoordinatorSuggestionItemHandler(req, res);
+    case "PUT":
+      return putIMDCoordinatorSuggestionItemHandler(req, res);
     default:
       return methodNaHandler(req, res);
   }
