@@ -3737,5 +3737,19 @@
       }
     ],
     "tests": []
+  },
+  {
+    "_id": "c45e8096-dfcd-4db8-9071-9735d727370d",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "f44c83ad-40e7-4a75-aec9-9eca246130a5",
+    "name": "READ IMDCoordinatorSuggestion",
+    "url": "{{host}}/api/imd_coordinator_suggestion/clg05zhqs004fs9r4s5uo9m28",
+    "method": "GET",
+    "sortNum": 2200000,
+    "created": "2023-04-03T01:54:53.127Z",
+    "modified": "2023-04-03T01:55:14.494Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
