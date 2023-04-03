@@ -10,5 +10,6 @@ export default async function postSubmittedIMDCoordinatorSuggestionHandler(
     await createSubmittedIMDCoordinatorSuggestion({
       iMDCoordinatorSuggestionId,
     });
+
   return res.status(201).json(submittedIMDCoordinatorSuggestion);
 }

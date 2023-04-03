@@ -2,7 +2,7 @@ import UserContext from "@/contexts/UserContext";
 import useSidebarCounts from "@/hooks/count/useSidebarCounts";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 
 export default function Sidebar() {
   const router = useRouter();
@@ -18,11 +18,9 @@ export default function Sidebar() {
     toConfirmCount,
     confirmedCount,
     collegeIMsCount,
+    cITLToReviewCount,
+    cITLReviewedCount,
   } = useSidebarCounts();
-
-  useEffect(() => {
-    console.log({ endorsedCount });
-  }, [endorsedCount]);
 
   return (
     <aside
@@ -125,9 +123,9 @@ export default function Sidebar() {
                   </svg>
                   <div className='justify-between flex w-full items-center'>
                     <span className='ml-3'>To Review</span>
-                    {toReviewCount > 0 && (
+                    {cITLToReviewCount > 0 && (
                       <div className='inline-flex items-center justify-center w-4 h-4  text-xs font-semibold text-CITLOrange '>
-                        {toReviewCount}
+                        {cITLToReviewCount}
                       </div>
                     )}
                   </div>
@@ -136,9 +134,11 @@ export default function Sidebar() {
 
               <li>
                 <Link
-                  href='/reviewed'
+                  href='/imd_coordinator/reviewed'
                   className={`flex items-center p-2 text-base font-normal text-CITLWhite rounded-lg  hover:bg-CITLGray-main ${
-                    router.asPath === "/reviewed" ? "bg-CITLGray-main" : ""
+                    router.asPath === "/imd_coordinator/reviewed"
+                      ? "bg-CITLGray-main"
+                      : ""
                   }`}
                 >
                   <svg
@@ -158,9 +158,9 @@ export default function Sidebar() {
                   </svg>
                   <div className='justify-between flex w-full items-center'>
                     <span className='ml-3'>Reviewed</span>
-                    {reviewedCount > 0 && (
+                    {cITLReviewedCount > 0 && (
                       <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLOrange '>
-                        {reviewedCount}
+                        {cITLReviewedCount}
                       </div>
                     )}
                   </div>
@@ -169,7 +169,8 @@ export default function Sidebar() {
 
               <li>
                 <Link
-                  href='/to_endorse'
+                  href='#'
+                  // href='/to_endorse'
                   className={`flex items-center p-2 text-base font-normal text-CITLWhite rounded-lg  hover:bg-CITLGray-main ${
                     router.asPath === "/to_endorse" ? "bg-CITLGray-main" : ""
                   }`}
@@ -193,17 +194,18 @@ export default function Sidebar() {
                     <span className='flex-1 ml-3 whitespace-nowrap'>
                       To Endorse
                     </span>
-                    {toEndorseCount > 0 && (
-                      <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLOrange '>
-                        {toEndorseCount}
-                      </div>
-                    )}
+                    {/* {toEndorseCount > 0 && ( */}
+                    <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLOrange '>
+                      {/* {toEndorseCount} */} NaN
+                    </div>
+                    {/* )} */}
                   </div>
                 </Link>
               </li>
               <li>
                 <Link
-                  href='/endorsed'
+                  href='#'
+                  // href='/endorsed'
                   className={`flex items-center p-2 text-base font-normal text-CITLWhite rounded-lg  hover:bg-CITLGray-main ${
                     router.asPath === "/endorsed" ? "bg-CITLGray-main" : ""
                   }`}
@@ -228,18 +230,19 @@ export default function Sidebar() {
                     <span className='flex-1 ml-3 whitespace-nowrap'>
                       Endorsed
                     </span>
-                    {endorsedCount > 0 && (
-                      <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLOrange '>
-                        {endorsedCount}
-                      </div>
-                    )}
+                    {/* {endorsedCount > 0 && ( */}
+                    <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLOrange '>
+                      {/* {endorsedCount} */} NaN
+                    </div>
+                    {/* )} */}
                   </div>
                 </Link>
               </li>
 
               <li>
                 <Link
-                  href='/department_ims'
+                  href='#'
+                  // href='/department_ims'
                   className={`flex items-center p-2 text-base font-normal text-CITLWhite rounded-lg  hover:bg-CITLGray-main ${
                     router.asPath === "/department_ims"
                       ? "bg-CITLGray-main"
@@ -265,11 +268,11 @@ export default function Sidebar() {
                     <span className='flex-1 ml-3 whitespace-nowrap'>
                       IM&apos;s
                     </span>
-                    {departmentImsCount > 0 && (
-                      <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLOrange '>
-                        {departmentImsCount}
-                      </div>
-                    )}
+                    {/* {departmentImsCount > 0 && ( */}
+                    <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLOrange '>
+                      {/* {departmentImsCount} */} NaN
+                    </div>
+                    {/* )} */}
                   </div>
                 </Link>
               </li>

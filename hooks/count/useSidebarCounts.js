@@ -1,3 +1,5 @@
+import useCITLReviewedCount from "./useCITLReviewedCount";
+import useCITLToReviewCount from "./useCITLToReviewCount";
 import useCollegeImsCount from "./useCollegeImsCount";
 import useConfirmedCount from "./useConfirmedCount";
 import useDepartmentImsCount from "./useDepartmentImsCount";
@@ -20,6 +22,8 @@ export default function useSidebarCounts() {
   const { count: toConfirmCount } = useToConfirmCount();
   const { count: confirmedCount } = useConfirmedCount();
   const { count: collegeIMsCount } = useCollegeImsCount();
+  const { count: cITLToReviewCount } = useCITLToReviewCount();
+  const { count: cITLReviewedCount } = useCITLReviewedCount();
 
   return {
     myImsCount,
@@ -32,5 +36,7 @@ export default function useSidebarCounts() {
     toConfirmCount,
     confirmedCount,
     collegeIMsCount,
+    cITLToReviewCount,
+    cITLReviewedCount,
   };
 }

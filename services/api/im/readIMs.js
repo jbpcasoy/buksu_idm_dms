@@ -22,6 +22,7 @@ export default async function readIMs({
   endorsedByCoordinator,
   authors,
   owner,
+  iMDCoordinatorReviewerId,
 }) {
   const prisma = PRISMA_CLIENT;
   const sortFilter = {};
@@ -190,6 +191,13 @@ export default async function readIMs({
                   },
                 ]
               : undefined,
+            IMDCoordinatorSuggestion: iMDCoordinatorReviewerId
+              ? {
+                  IMDCoordinator: {
+                    userId: iMDCoordinatorReviewerId,
+                  },
+                }
+              : undefined,
             owner: {
               user: {
                 name: { contains: owner },
@@ -324,6 +332,13 @@ export default async function readIMs({
                     },
                   },
                 ]
+              : undefined,
+            IMDCoordinatorSuggestion: iMDCoordinatorReviewerId
+              ? {
+                  IMDCoordinator: {
+                    userId: iMDCoordinatorReviewerId,
+                  },
+                }
               : undefined,
             owner: {
               user: {
