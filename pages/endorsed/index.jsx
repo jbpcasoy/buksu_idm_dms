@@ -2,7 +2,6 @@ import Filter from "@/components/Filter";
 import Layout from "@/components/layout/Layout";
 import SortButton from "@/components/SortButton";
 import UserContext from "@/contexts/UserContext";
-import IMStatuses from "@/services/constants/im_status";
 import frontendGetIMs from "@/services/frontend/im/frontendGetIMs";
 import IM from "@/views/im/IM";
 import _ from "lodash";
@@ -100,21 +99,6 @@ export default function Home() {
               You are currently not an active faculty, please contact
               administrator.
             </p>
-            {/* <button className="items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-CITLDarkBlue rounded-lg ">
-            Read more
-            <svg
-              className="w-3 h-3 ml-2"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
-                clipRule="evenodd"
-              ></path>
-            </svg>
-          </button> */}
           </div>
           <img
             className=' md:w-2/12 sm:w-12/12 rounded-lg '
@@ -126,7 +110,7 @@ export default function Home() {
       {user?.ActiveFaculty && (
         <div className=' grid grid-flow-row items-center border border-CITLGray-lighter bg-CITLWhite m-2 mt-5 relative rounded-lg shadow-lg overflow-x-auto'>
           <div className=' bg-CITLGray-light py-3 px-3 pr-3'>
-            <div className='w-full justify-between grid grid-flow-col auto-cols-max'>
+            <div className='w-full grid grid-flow-col'>
               <div>
                 <button
                   type='button'
@@ -138,53 +122,36 @@ export default function Home() {
                   Endorsed
                 </button>
               </div>
-              <div className=' grid grid-flow-col auto-cols-max gap-2 px-2 '>
-                {/* <input
-                  onChange={debouncedHandleSerialNumberChange}
-                  className='bg-CITLGray-light w-32 border-CITLGray-lighter border text-CITLGray-main rounded-lg text-sm font-medium'
-                  type='text'
-                  placeholder='Serial Number'
-                ></input> */}
-              </div>
+              <Filter
+                filterOptions={[
+                  {
+                    value: "title",
+                    label: "Title",
+                  },
+                  {
+                    value: "type",
+                    label: "Type",
+                    options: ["MODULE", "COURSE_FILE", "WORKTEXT", "TEXTBOOK"],
+                  },
+                  {
+                    value: "owner",
+                    label: "Owner",
+                  },
+                  {
+                    value: "authors",
+                    label: "Authors",
+                  },
+                ]}
+                onChange={(filter) =>
+                  setState((prev) => ({ ...prev, ...filter }))
+                }
+              />
             </div>
           </div>
-          <Filter
-            filterOptions={[
-              {
-                value: "title",
-                label: "Title",
-              },
-              {
-                value: "type",
-                label: "Type",
-                options: ["MODULE", "COURSE_FILE", "WORKTEXT", "TEXTBOOK"],
-              },
-              {
-                value: "status",
-                label: "Status",
-                options: IMStatuses,
-              },
-              {
-                value: "owner",
-                label: "Owner",
-              },
-              {
-                value: "authors",
-                label: "Authors",
-              },
-            ]}
-            onChange={(filter) => setState((prev) => ({ ...prev, ...filter }))}
-          />
 
           <table className='divide-y divide-CITLGray-light mb-2'>
             <thead className='bg-CITLGray-light'>
               <tr>
-                {/* <th
-                  scope='col'
-                  className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
-                >
-                  Serial No.
-                </th> */}
                 <th
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
@@ -288,27 +255,20 @@ export default function Home() {
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
                   <SortButton
-                    label='Created At'
+                    label='Date'
                     sortOrder={
-                      state.sortColumn === "createdAt"
-                        ? state.sortOrder
-                        : undefined
+                      state.sortColumn === "date" ? state.sortOrder : undefined
                     }
                     setSortOrder={(order) =>
                       setState((prev) => ({
                         ...prev,
-                        sortColumn: "createdAt",
+                        sortColumn: "date",
                         sortOrder: order,
                       }))
                     }
                   />
                 </th>
-                {/* <th
-                  scope='col'
-                  className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
-                >
-                  Updated At
-                </th> */}
+
                 <th
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
@@ -322,8 +282,6 @@ export default function Home() {
                 <tr
                   className={` bg-white text-sm text-CITLGray-main text-left p-4 animate-pulse`}
                 >
-                  {/* <td className='px-6 py-4 truncate '>{serialNumber}</td> */}
-
                   <td className='px-6 py-4 '>
                     <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
                     <div className='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
@@ -380,7 +338,7 @@ export default function Home() {
                         im.SubmittedCoordinatorSuggestion
                       )}
                       bottomBorder={true}
-                      createdAt={im.createdAt}
+                      date={im.date}
                       originalFileName={im.originalFileName}
                       fileName={im.fileName}
                       id={im.id}
