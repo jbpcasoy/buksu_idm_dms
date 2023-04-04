@@ -1,12 +1,14 @@
 import Layout from "@/components/layout/Layout";
 import ChairpersonSuggestionView from "@/components/review/suggestion/suggestion_view/ChairpersonSuggestionView";
 import CoordinatorSuggestionView from "@/components/review/suggestion/suggestion_view/CoordinatorSuggestionView";
+import IMDCoordinatorSuggestionView from "@/components/review/suggestion/suggestion_view/IMDCoordinatorSuggestionView";
 import PeerSuggestionView from "@/components/review/suggestion/suggestion_view/PeerSuggestionView";
 import UserContext from "@/contexts/UserContext";
 import useIM from "@/hooks/useIM";
 import frontendCreateCoordinatorEndorsement from "@/services/frontend/coordinator_endorsement/frontendCreateCoordinatorEndorsement";
 import frontendCreateDeanEndorsement from "@/services/frontend/dean_endorsement/frontendCreateDeanEndorsement";
 import frontendSubmitIMForReview from "@/services/frontend/im/frontendSubmitIMForReview";
+import frontendCreateIMDCoordinatorEndorsement from "@/services/frontend/imd_coordinator_endorsement/frontendCreateIMDCoordinatorEndorsement";
 import { initDropdowns, initModals } from "flowbite";
 import moment from "moment";
 import Link from "next/link";
@@ -28,6 +30,15 @@ export default function ViewIM() {
     return frontendCreateCoordinatorEndorsement({
       iMId: iM.id,
       coordinatorId: user?.ActiveFaculty?.ActiveCoordinator?.coordinatorId,
+    }).then((res) => {
+      refreshIM();
+    });
+  }
+
+  async function handleIMDCoordinatorEndorse() {
+    return frontendCreateIMDCoordinatorEndorsement({
+      submittedIMDCoordinatorSuggestionId:
+        iM.IMDCoordinatorSuggestion.submittedIMDCoordinatorSuggestionId,
     }).then((res) => {
       refreshIM();
     });
@@ -141,7 +152,8 @@ export default function ViewIM() {
                 {iM &&
                   iM.owner.userId === user?.id &&
                   (iM?.status === "DRAFT" ||
-                    iM?.status === "DEPARTMENT_REVIEWED") && (
+                    iM?.status === "DEPARTMENT_REVIEWED" ||
+                    iM?.status === "CITL_REVIEWED") && (
                     <li>
                       {/*  EDIT IM should be visible and accessible only for the owner of the IM
                        */}
@@ -205,9 +217,9 @@ export default function ViewIM() {
                     )}
                 </li>
                 <li>
-                  {user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId &&
+                  {(user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId ||
+                    user?.ActiveFaculty?.ActiveCoordinator) &&
                     iM?.status === "SUBMITTED" &&
-                    user?.ActiveFaculty?.ActiveCoordinator &&
                     user?.ActiveFaculty?.Faculty?.departmentId ===
                       iM?.owner?.departmentId && (
                       <button
@@ -240,9 +252,9 @@ export default function ViewIM() {
                     )}
                 </li>
                 <li>
-                  {user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId &&
+                  {(user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId ||
+                    user?.ActiveFaculty?.ActiveChairperson) &&
                     iM?.status === "SUBMITTED" &&
-                    user?.ActiveFaculty?.ActiveChairperson &&
                     user?.ActiveFaculty?.Faculty?.departmentId ===
                       iM?.owner?.departmentId && (
                       <button
@@ -274,6 +286,7 @@ export default function ViewIM() {
                       </button>
                     )}
                 </li>
+                {/* NOTE: for chairperson */}
                 <li>
                   {iM?.status === "DEPARTMENT_REVIEWED" &&
                     user?.ActiveFaculty?.ActiveCoordinator && (
@@ -284,6 +297,23 @@ export default function ViewIM() {
                           "IM was already endorsed"
                         }
                         onClick={handleEndorse}
+                        className='block w-full  text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter'
+                      >
+                        Endorse
+                      </button>
+                    )}
+                </li>
+                {/* NOTE: for imd coordinator */}
+                <li>
+                  {iM?.status === "CITL_REVIEWED" &&
+                    user?.IMDCoordinator?.ActiveIMDCoordinator && (
+                      <button
+                        disabled={iM?.IMDCoordinatorEndorsement}
+                        title={
+                          iM?.IMDCoordinatorEndorsement &&
+                          "IM was already endorsed"
+                        }
+                        onClick={handleIMDCoordinatorEndorse}
                         className='block w-full  text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter'
                       >
                         Endorse
@@ -309,6 +339,30 @@ export default function ViewIM() {
                         className='block w-full  text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter'
                       >
                         Confirm Endorsement
+                      </button>
+                    )}
+                </li>
+
+                <li>
+                  {user?.IMDCoordinator?.ActiveIMDCoordinator &&
+                    iM?.status === "DEPARTMENT_ENDORSED" && (
+                      <button
+                        onClick={() =>
+                          router.push(`/im/${iM?.id}/review/imd_coordinator`)
+                        }
+                        disabled={
+                          iM?.IMDCoordinatorSuggestion
+                            ?.SubmittedIMDCoordinatorSuggestion
+                        }
+                        title={
+                          iM?.IMDCoordinatorSuggestion
+                            ?.SubmittedIMDCoordinatorSuggestion
+                            ? "Suggestions are already submitted"
+                            : undefined
+                        }
+                        className='block w-full  text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter'
+                      >
+                        IMD Coordinator Review
                       </button>
                     )}
                 </li>
@@ -481,12 +535,17 @@ export default function ViewIM() {
         )}
 
         {(iM?.owner?.userId === user?.id ||
-          iM?.status === "DEPARTMENT_REVIEWED") && (
+          user?.ActiveFaculty?.ActiveChairperson ||
+          user?.ActiveFaculty?.ActiveCoordinator ||
+          iM?.SubmittedPeerReview?.PeerReview?.facultyId ===
+            user?.ActiveFaculty?.facultyId ||
+          user?.IMDCoordinator?.ActiveIMDCoordinator) && (
           <>
             {iM?.SubmittedPeerReview?.PeerReview &&
               iM?.SubmittedPeerSuggestion && (
                 <PeerSuggestionView
                   peerReview={iM?.SubmittedPeerReview?.PeerReview}
+                  viewOnly={iM?.owner?.userId !== user?.id}
                 />
               )}
             {iM?.SubmittedChairpersonReview?.ChairpersonReview &&
@@ -495,6 +554,7 @@ export default function ViewIM() {
                   chairpersonReview={
                     iM?.SubmittedChairpersonReview?.ChairpersonReview
                   }
+                  viewOnly={iM?.owner?.userId !== user?.id}
                 />
               )}
             {iM?.SubmittedCoordinatorReview?.CoordinatorReview &&
@@ -503,8 +563,16 @@ export default function ViewIM() {
                   coordinatorReview={
                     iM?.SubmittedCoordinatorReview?.CoordinatorReview
                   }
+                  viewOnly={iM?.owner?.userId !== user?.id}
                 />
               )}
+            {iM?.IMDCoordinatorSuggestion
+              ?.SubmittedIMDCoordinatorSuggestion && (
+              <IMDCoordinatorSuggestionView
+                IMDCoordinatorReview={iM?.IMDCoordinatorSuggestion}
+                viewOnly={iM?.owner?.userId !== user?.id}
+              />
+            )}
           </>
         )}
 

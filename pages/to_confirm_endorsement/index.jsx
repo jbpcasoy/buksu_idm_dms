@@ -38,7 +38,6 @@ export default function Home() {
     async function getToConfirmEndorsement(filter) {
       return frontendGetIMs({
         ...filter,
-        notOwnerId: user.ActiveFaculty.Faculty.id,
         departmentId: user.ActiveFaculty.Faculty.departmentId,
         status: "DEPARTMENT_REVIEWED",
         coordinatorEndorsed: true,

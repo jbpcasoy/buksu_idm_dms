@@ -15,6 +15,11 @@ export default async function getUserByEmail(email) {
             ActiveCoordinator: true,
           },
         },
+        IMDCoordinator: {
+          include: {
+            ActiveIMDCoordinator: true,
+          },
+        },
       },
     });
 

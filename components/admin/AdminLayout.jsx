@@ -13,7 +13,7 @@ export default function AdminLayout({ children }) {
     if (userLoading || !user) return;
 
     if (user?.LoginRole?.Role === "FACULTY") {
-      router.push("/my_ims");
+      router.push("/home");
     }
   }, [user, userError, userLoading, router]);
 

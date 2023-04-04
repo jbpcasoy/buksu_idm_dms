@@ -15,7 +15,7 @@ export default function Home() {
     if (user?.LoginRole?.Role === "ADMIN") {
       router.push("/admin");
     } else if (user?.LoginRole?.Role === "FACULTY") {
-      router.push("/my_ims");
+      router.push("/home");
     }
   }, [user, router]);
 
@@ -72,7 +72,7 @@ export default function Home() {
                           "google",
                           {
                             callbackUrl:
-                              "/api/login_role?role=FACULTY&redirect=/my_ims",
+                              "/api/login_role?role=FACULTY&redirect=/home",
                           },
                           { prompt: "login" }
                         ).catch((err) => {

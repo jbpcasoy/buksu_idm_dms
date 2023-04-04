@@ -12,7 +12,11 @@ export default function useToReviewCount() {
 
     async function getToReview(filter) {
       return frontendGetIMs({
-        notOwnerId: user.ActiveFaculty.Faculty.id,
+        notOwnerId:
+          user?.ActiveFaculty?.ActiveChairperson ||
+          user?.ActiveFaculty?.ActiveCoordinator
+            ? undefined
+            : user.ActiveFaculty.Faculty.id,
         departmentId: user.ActiveFaculty.Faculty.departmentId,
         ...filter,
       });
