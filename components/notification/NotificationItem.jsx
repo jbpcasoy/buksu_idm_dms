@@ -1,9 +1,12 @@
 import ChairpersonReviewNotificationItem from "./ChairpersonReviewNotificationItem";
 import ChairpersonSuggestionNotificationItem from "./ChairpersonSuggestionNotificationItem";
+import CITLDirectorEndorsementNotificationItem from "./CITLDirectorEndorsementNotificationItem";
 import CoordinatorEndorsementNotificationItem from "./CoordinatorEndorsementNotificationItem";
 import CoordinatorReviewNotificationItem from "./CoordinatorReviewNotificationItem";
 import CoordinatorSuggestionNotificationItem from "./CoordinatorSuggestionNotificationItem";
 import DeanEndorsementNotificationItem from "./DeanEndorsementNotificationItem";
+import IMDCoordinatorEndorsementNotificationItem from "./IMDCoordinatorEndorsementNotificationItem";
+import IMDCoordinatorSuggestionNotificationItem from "./IMDCoordinatorSuggestionNotificationItem";
 import PeerReviewNotificationItem from "./PeerReviewNotificationItem";
 import PeerSuggestionNotificationItem from "./PeerSuggestionNotificationItem";
 
@@ -32,5 +35,17 @@ export default function NotificationItem({ notification }) {
     );
   } else if (notification.Type === "DEAN_ENDORSEMENT") {
     return <DeanEndorsementNotificationItem notification={notification} />;
+  } else if (notification.Type === "SUBMITTED_IMD_COORDINATOR_SUGGESTION") {
+    return (
+      <IMDCoordinatorSuggestionNotificationItem notification={notification} />
+    );
+  } else if (notification.Type === "IMD_COORDINATOR_ENDORSEMENT") {
+    return (
+      <IMDCoordinatorEndorsementNotificationItem notification={notification} />
+    );
+  } else if (notification.Type === "CITL_DIRECTOR_ENDORSEMENT") {
+    return (
+      <CITLDirectorEndorsementNotificationItem notification={notification} />
+    );
   }
 }

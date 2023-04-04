@@ -25,6 +25,11 @@ export default async function createCITLDirectorEndorsement({
               id: cITLDirectorId,
             },
           },
+          Notification: {
+            create: {
+              Type: "CITL_DIRECTOR_ENDORSEMENT",
+            },
+          },
         },
       }
     );

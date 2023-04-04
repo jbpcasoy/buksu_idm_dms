@@ -15,6 +15,11 @@ export default async function createSubmittedIMDCoordinatorSuggestion({
       await prisma.submittedIMDCoordinatorSuggestion.create({
         data: {
           iMDCoordinatorSuggestionId: iMDCoordinatorSuggestion.id,
+          Notification: {
+            create: {
+              Type: "SUBMITTED_IMD_COORDINATOR_SUGGESTION",
+            },
+          },
         },
       });
 
