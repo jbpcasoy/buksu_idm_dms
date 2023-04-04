@@ -56,8 +56,8 @@ export default function Sidebar() {
                 aria-hidden='true'
               >
                 <path
-                  stroke-linecap='round'
-                  stroke-linejoin='round'
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
                   d='M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25'
                 ></path>
               </svg>
@@ -773,16 +773,16 @@ export default function Sidebar() {
                       stroke='#717883'
                       stroke-width='1.5'
                       stroke-miterlimit='10'
-                      stroke-linecap='round'
-                      stroke-linejoin='round'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
                     ></path>
                     <path
                       d='m11.3 9.2-3.8 4.5 3.7-.9 1.5.9 3.8-4.5-3.5.9-1.7-.9Z'
                       stroke='#717883'
                       stroke-width='1.5'
                       stroke-miterlimit='10'
-                      stroke-linecap='round'
-                      stroke-linejoin='round'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
                     ></path>
                   </svg>
                 </Link>
@@ -808,22 +808,22 @@ export default function Sidebar() {
                       d='M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10Z'
                       stroke='#717883'
                       stroke-width='1.5'
-                      stroke-linecap='round'
-                      stroke-linejoin='round'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
                     ></path>
                     <path
                       d='M8 3h1a28.424 28.424 0 0 0 0 18H8M15 3a28.424 28.424 0 0 1 0 18'
                       stroke='#717883'
                       stroke-width='1.5'
-                      stroke-linecap='round'
-                      stroke-linejoin='round'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
                     ></path>
                     <path
                       d='M3 16v-1a28.424 28.424 0 0 0 18 0v1M3 9a28.424 28.424 0 0 1 18 0'
                       stroke='#717883'
                       stroke-width='1.5'
-                      stroke-linecap='round'
-                      stroke-linejoin='round'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
                     ></path>
                   </svg>
                 </Link>
