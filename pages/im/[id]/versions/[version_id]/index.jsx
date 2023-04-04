@@ -30,7 +30,7 @@ export default function IMVersion() {
                 fill='none'
                 stroke='currentColor'
                 className='w-4 h-4 ml-2 '
-                stroke-width='1.5'
+                strokeWidth='1.5'
                 viewBox='0 0 24 24'
                 xmlns='http://www.w3.org/2000/svg'
                 aria-hidden='true'
