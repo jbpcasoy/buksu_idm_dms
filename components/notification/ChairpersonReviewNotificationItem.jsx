@@ -2,7 +2,10 @@ import useNotification from "@/hooks/notification/useNotification";
 import { useEffect } from "react";
 import NotificationItemBase from "./NotificationItemBase";
 
-export default function ChairpersonReviewNotificationItem({ notification }) {
+export default function ChairpersonReviewNotificationItem({
+  notification,
+  refreshNotifications,
+}) {
   const {
     notification: notificationData,
     notificationError,
@@ -15,6 +18,7 @@ export default function ChairpersonReviewNotificationItem({ notification }) {
 
   return (
     <NotificationItemBase
+      refreshNotifications={refreshNotifications}
       loading={notificationLoading}
       notificationId={notificationData?.id}
       href={`/im/${notificationData?.SubmittedChairpersonReview?.IM?.id}`}

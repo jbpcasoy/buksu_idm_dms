@@ -4,6 +4,7 @@ import NotificationItemBase from "./NotificationItemBase";
 
 export default function ChairpersonSuggestionNotificationItem({
   notification,
+  refreshNotifications,
 }) {
   const {
     notification: notificationData,
@@ -17,6 +18,7 @@ export default function ChairpersonSuggestionNotificationItem({
 
   return (
     <NotificationItemBase
+      refreshNotifications={refreshNotifications}
       loading={notificationLoading}
       notificationId={notificationData?.id}
       href={`/im/${notificationData?.SubmittedChairpersonSuggestion?.IM?.id}`}

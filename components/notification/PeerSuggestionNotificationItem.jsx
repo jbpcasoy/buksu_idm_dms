@@ -2,7 +2,10 @@ import useNotification from "@/hooks/notification/useNotification";
 import { useEffect } from "react";
 import NotificationItemBase from "./NotificationItemBase";
 
-export default function PeerSuggestionNotificationItem({ notification }) {
+export default function PeerSuggestionNotificationItem({
+  notification,
+  refreshNotifications,
+}) {
   const {
     notification: notificationData,
     notificationError,
@@ -15,6 +18,7 @@ export default function PeerSuggestionNotificationItem({ notification }) {
 
   return (
     <NotificationItemBase
+      refreshNotifications={refreshNotifications}
       loading={notificationLoading}
       notificationId={notificationData?.id}
       href={`/im/${notificationData?.SubmittedPeerSuggestion?.IM?.id}`}

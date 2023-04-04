@@ -12,6 +12,7 @@ export default function NotificationItemBase({
   icon,
   time,
   children,
+  refreshNotifications,
 }) {
   const router = useRouter();
 
@@ -33,7 +34,10 @@ export default function NotificationItemBase({
       .catch((err) => {
         console.log(err);
       })
-      .finally(() => router.push(href));
+      .finally(() => {
+        router.push(href);
+        refreshNotifications();
+      });
   }
 
   if (loading)

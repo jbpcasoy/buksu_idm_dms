@@ -4,6 +4,7 @@ import NotificationItemBase from "./NotificationItemBase";
 
 export default function CoordinatorEndorsementNotificationItem({
   notification,
+  refreshNotifications,
 }) {
   const {
     notification: notificationData,
@@ -17,6 +18,7 @@ export default function CoordinatorEndorsementNotificationItem({
 
   return (
     <NotificationItemBase
+      refreshNotifications={refreshNotifications}
       loading={notificationLoading}
       notificationId={notificationData?.id}
       href={`/im/${notificationData?.CoordinatorEndorsement?.iMId}`}

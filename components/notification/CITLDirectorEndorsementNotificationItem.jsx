@@ -4,6 +4,7 @@ import NotificationItemBase from "./NotificationItemBase";
 
 export default function CITLDirectorEndorsementNotificationItem({
   notification,
+  refreshNotifications,
 }) {
   const {
     notification: notificationData,
@@ -21,6 +22,7 @@ export default function CITLDirectorEndorsementNotificationItem({
 
   return (
     <NotificationItemBase
+      refreshNotifications={refreshNotifications}
       loading={notificationLoading}
       notificationId={notificationData?.id}
       href={`/im/${notificationData?.CITLDirectorEndorsement?.IMDCoordinatorEndorsement?.IM?.id}`}

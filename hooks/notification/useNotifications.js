@@ -5,6 +5,11 @@ export default function useNotifications({ limit, page, userId, read }) {
   const [notifications, setNotifications] = useState([]);
   const [notificationsError, setNotificationsError] = useState();
   const [notificationsLoading, setNotificationsLoading] = useState(true);
+  const [refreshFlag, setRefreshFlag] = useState(0);
+
+  function refreshNotifications() {
+    setRefreshFlag((prev) => prev + 1);
+  }
 
   useEffect(() => {
     if (!limit || !page || !userId) return;
@@ -26,11 +31,12 @@ export default function useNotifications({ limit, page, userId, read }) {
     return () => {
       subscribe = false;
     };
-  }, [limit, page, userId, read]);
+  }, [limit, page, userId, read, refreshFlag]);
 
   return {
     notifications,
     notificationsError,
     notificationsLoading,
+    refreshNotifications,
   };
 }
