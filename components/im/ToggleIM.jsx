@@ -1,6 +1,5 @@
 import frontendUpdateIM from "@/services/frontend/im/frontendUpdateIM";
 import { useFormik } from "formik";
-import { useEffect } from "react";
 import * as Yup from "yup";
 
 export default function ToggleIM({ iM, onUpdate }) {
@@ -10,7 +9,7 @@ export default function ToggleIM({ iM, onUpdate }) {
       authors: iM.authors,
       type: iM.type,
     },
-    validateOnMount: true,
+    // validateOnMount: true,
     validationSchema: Yup.object({
       title: Yup.string().required("Title is required."),
       authors: Yup.string().required("Authors is required."),
@@ -25,10 +24,11 @@ export default function ToggleIM({ iM, onUpdate }) {
     },
   });
 
-  useEffect(() => {
-    formik.setValues({ title: iM.title, authors: iM.authors, type: iM.type });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [iM]);
+  // useEffect(() => {
+  //   console.log({ iM });
+  //   formik.setValues({ title: iM.title, authors: iM.authors, type: iM.type });
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [iM]);
 
   return (
     <div className=''>

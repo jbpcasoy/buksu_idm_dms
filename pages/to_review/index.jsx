@@ -295,11 +295,6 @@ export default function Home() {
                     <div className='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
                   </td>
 
-                  <td className='px-6 py-4 '>
-                    <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
-                    <div className='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
-                  </td>
-
                   {/* <td className='px-6 py-4 '>
         {moment(updatedAt).format("M/D/YYYY, h:mm A")}
       </td> */}
@@ -322,7 +317,7 @@ export default function Home() {
                       // bottomBorder={index < state.ims.length - 1}
                       im={im}
                       showOwner={true}
-                      showReviewedAs={true}
+                      showReviewedAs={false}
                       peerReviewed={Boolean(im.SubmittedPeerReview)}
                       chairpersonReviewed={Boolean(
                         im.SubmittedChairpersonReview

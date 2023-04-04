@@ -102,6 +102,43 @@ export default async function readNotifications({ limit, page, userId, read }) {
               },
             },
           },
+          {
+            SubmittedIMDCoordinatorSuggestion: {
+              IMDCoordinatorSuggestion: {
+                IM: {
+                  owner: {
+                    userId: {
+                      contains: userId,
+                    },
+                  },
+                },
+              },
+            },
+          },
+          {
+            IMDCoordinatorEndorsement: {
+              IM: {
+                owner: {
+                  userId: {
+                    contains: userId,
+                  },
+                },
+              },
+            },
+          },
+          {
+            CITLDirectorEndorsement: {
+              IMDCoordinatorEndorsement: {
+                IM: {
+                  owner: {
+                    userId: {
+                      contains: userId,
+                    },
+                  },
+                },
+              },
+            },
+          },
         ],
         ReadNotification:
           read === true
@@ -203,6 +240,43 @@ export default async function readNotifications({ limit, page, userId, read }) {
           {
             DeanEndorsement: {
               CoordinatorEndorsement: {
+                IM: {
+                  owner: {
+                    userId: {
+                      contains: userId,
+                    },
+                  },
+                },
+              },
+            },
+          },
+          {
+            SubmittedIMDCoordinatorSuggestion: {
+              IMDCoordinatorSuggestion: {
+                IM: {
+                  owner: {
+                    userId: {
+                      contains: userId,
+                    },
+                  },
+                },
+              },
+            },
+          },
+          {
+            IMDCoordinatorEndorsement: {
+              IM: {
+                owner: {
+                  userId: {
+                    contains: userId,
+                  },
+                },
+              },
+            },
+          },
+          {
+            CITLDirectorEndorsement: {
+              IMDCoordinatorEndorsement: {
                 IM: {
                   owner: {
                     userId: {

@@ -32,6 +32,11 @@ export default async function createIMDCoordinatorEndorsement({
               id: submittedIMDCoordinatorSuggestion.id,
             },
           },
+          Notification: {
+            create: {
+              Type: "IMD_COORDINATOR_ENDORSEMENT",
+            },
+          },
         },
       });
 

@@ -2,7 +2,7 @@ import useNotification from "@/hooks/notification/useNotification";
 import { useEffect } from "react";
 import NotificationItemBase from "./NotificationItemBase";
 
-export default function ChairpersonSuggestionNotificationItem({
+export default function IMDCoordinatorEndorsementNotificationItem({
   notification,
   refreshNotifications,
 }) {
@@ -13,7 +13,11 @@ export default function ChairpersonSuggestionNotificationItem({
   } = useNotification({ notificationId: notification?.id });
 
   useEffect(() => {
-    console.log({ notificationData, notificationError, notificationLoading });
+    console.log("IMDCoordinatorSuggestionNotificationItem", {
+      notificationData,
+      notificationError,
+      notificationLoading,
+    });
   }, [notificationData, notificationError, notificationLoading]);
 
   return (
@@ -21,11 +25,9 @@ export default function ChairpersonSuggestionNotificationItem({
       refreshNotifications={refreshNotifications}
       loading={notificationLoading}
       notificationId={notificationData?.id}
-      href={`/im/${notificationData?.SubmittedChairpersonSuggestion?.IM?.id}`}
+      href={`/im/${notificationData?.IMDCoordinatorEndorsement?.IM?.id}`}
       imgSrc={
-        notificationData?.SubmittedChairpersonSuggestion?.ChairpersonSuggestion
-          ?.SubmittedChairpersonReview?.ChairpersonReview?.Chairperson?.Faculty
-          ?.user?.image
+        notificationData?.IMDCoordinatorEndorsement?.IMDCoordinator?.User?.image
       }
       time={notificationData?.createdAt}
       icon={
@@ -48,15 +50,14 @@ export default function ChairpersonSuggestionNotificationItem({
         </div>
       }
     >
-      New Chairperson Suggestion from{" "}
+      New IMD Coordinator Endorsement from{" "}
       <span className='font-semibold text-gray-900 dark:text-white'>
         {
-          notificationData?.SubmittedChairpersonSuggestion
-            ?.ChairpersonSuggestion?.SubmittedChairpersonReview
-            ?.ChairpersonReview?.Chairperson?.Faculty?.user?.name
+          notificationData?.IMDCoordinatorEndorsement?.IMDCoordinator?.User
+            ?.name
         }
       </span>
-      {` on IM: "${notificationData?.SubmittedChairpersonSuggestion?.IM?.title}"`}
+      {` on IM: "${notificationData?.IMDCoordinatorEndorsement?.IM?.title}"`}
     </NotificationItemBase>
   );
 }
