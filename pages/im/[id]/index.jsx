@@ -579,7 +579,7 @@ export default function ViewIM() {
               iM?.SubmittedPeerSuggestion && (
                 <PeerSuggestionView
                   peerReview={iM?.SubmittedPeerReview?.PeerReview}
-                  viewOnly={iM?.owner?.userId !== user?.id}
+                  viewOnly={true}
                 />
               )}
             {iM?.SubmittedChairpersonReview?.ChairpersonReview &&
@@ -588,7 +588,7 @@ export default function ViewIM() {
                   chairpersonReview={
                     iM?.SubmittedChairpersonReview?.ChairpersonReview
                   }
-                  viewOnly={iM?.owner?.userId !== user?.id}
+                  viewOnly={true}
                 />
               )}
             {iM?.SubmittedCoordinatorReview?.CoordinatorReview &&
@@ -597,14 +597,14 @@ export default function ViewIM() {
                   coordinatorReview={
                     iM?.SubmittedCoordinatorReview?.CoordinatorReview
                   }
-                  viewOnly={iM?.owner?.userId !== user?.id}
+                  viewOnly={true}
                 />
               )}
             {iM?.IMDCoordinatorSuggestion
               ?.SubmittedIMDCoordinatorSuggestion && (
               <IMDCoordinatorSuggestionView
                 IMDCoordinatorReview={iM?.IMDCoordinatorSuggestion}
-                viewOnly={iM?.owner?.userId !== user?.id}
+                viewOnly={true}
               />
             )}
           </>
