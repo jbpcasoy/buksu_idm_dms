@@ -11,7 +11,7 @@ export default async function readChairpersonSuggestionItems({
     const chairpersonSuggestionItems =
       await prisma.chairpersonSuggestionItem.findMany({
         take: limit,
-        skip: page ? (page - 1) * limit : undefined,
+        skip: limit && page ? (page - 1) * limit : undefined,
         where: {
           chairpersonSuggestionId: {
             contains: chairpersonSuggestionId,

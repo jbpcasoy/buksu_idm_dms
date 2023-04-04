@@ -22,6 +22,10 @@ export default async function readIMs({
   endorsedByCoordinator,
   authors,
   owner,
+  iMDCoordinatorReviewerId,
+  toRevise,
+  iMDCoordinatorEndorsed,
+  endorsedByIMDCoordinator,
 }) {
   const prisma = PRISMA_CLIENT;
   const sortFilter = {};
@@ -110,6 +114,22 @@ export default async function readIMs({
                 : undefined,
           },
           {
+            IMDCoordinatorEndorsement:
+              iMDCoordinatorEndorsed === true
+                ? {
+                    id: {
+                      contains: "",
+                    },
+                  }
+                : iMDCoordinatorEndorsed === false
+                ? {
+                    isNot: {
+                      id: { contains: "" },
+                    },
+                  }
+                : undefined,
+          },
+          {
             CoordinatorEndorsement: {
               DeanEndorsement:
                 deanEndorsed === true
@@ -145,6 +165,15 @@ export default async function readIMs({
               ? {
                   coordinatorId: {
                     contains: endorsedByCoordinator,
+                  },
+                }
+              : undefined,
+          },
+          {
+            IMDCoordinatorEndorsement: endorsedByIMDCoordinator
+              ? {
+                  iMDCoordinatorId: {
+                    contains: endorsedByIMDCoordinator,
                   },
                 }
               : undefined,
@@ -190,6 +219,13 @@ export default async function readIMs({
                   },
                 ]
               : undefined,
+            IMDCoordinatorSuggestion: iMDCoordinatorReviewerId
+              ? {
+                  IMDCoordinator: {
+                    userId: iMDCoordinatorReviewerId,
+                  },
+                }
+              : undefined,
             owner: {
               user: {
                 name: { contains: owner },
@@ -213,9 +249,15 @@ export default async function readIMs({
               contains: title,
               // mode: "insensitive",
             },
-            status: {
-              equals: status,
-            },
+            status: toRevise
+              ? {
+                  in: status
+                    ? ["CITL_REVIEWED", "DEPARTMENT_REVIEWED", status]
+                    : ["CITL_REVIEWED", "DEPARTMENT_REVIEWED"],
+                }
+              : {
+                  equals: status,
+                },
             authors: {
               contains: authors,
             },
@@ -237,6 +279,22 @@ export default async function readIMs({
                     },
                   }
                 : coordinatorEndorsed === false
+                ? {
+                    isNot: {
+                      id: { contains: "" },
+                    },
+                  }
+                : undefined,
+          },
+          {
+            IMDCoordinatorEndorsement:
+              iMDCoordinatorEndorsed === true
+                ? {
+                    id: {
+                      contains: "",
+                    },
+                  }
+                : iMDCoordinatorEndorsed === false
                 ? {
                     isNot: {
                       id: { contains: "" },
@@ -325,6 +383,13 @@ export default async function readIMs({
                   },
                 ]
               : undefined,
+            IMDCoordinatorSuggestion: iMDCoordinatorReviewerId
+              ? {
+                  IMDCoordinator: {
+                    userId: iMDCoordinatorReviewerId,
+                  },
+                }
+              : undefined,
             owner: {
               user: {
                 name: { contains: owner },
@@ -348,9 +413,15 @@ export default async function readIMs({
               contains: title,
               // mode: "insensitive",
             },
-            status: {
-              equals: status,
-            },
+            status: toRevise
+              ? {
+                  in: status
+                    ? ["CITL_REVIEWED", "DEPARTMENT_REVIEWED", status]
+                    : ["CITL_REVIEWED", "DEPARTMENT_REVIEWED"],
+                }
+              : {
+                  equals: status,
+                },
             authors: {
               contains: authors,
             },
