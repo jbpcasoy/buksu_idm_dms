@@ -278,18 +278,6 @@ export default function Home() {
                     }
                   />
                 </th>
-                <th
-                  scope='col'
-                  className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
-                >
-                  Review/Suggestion
-                </th>
-                <th
-                  scope='col'
-                  className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
-                >
-                  Reviewed As
-                </th>
 
                 <th
                   scope='col'
@@ -358,20 +346,6 @@ export default function Home() {
 
                   <td className='px-6 py-4 '>
                     <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
-                    <div className='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
-                  </td>
-
-                  <td className='px-6 py-4 '>
-                    <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
-                    <div className='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
-                  </td>
-
-                  {/* <td className='px-6 py-4 '>
-                    {moment(updatedAt).format("M/D/YYYY, h:mm A")}
-                  </td> */}
-
-                  <td className='bg-white  font-medium text-slate-400  items-center justify-center px-6 py-4 '>
-                    <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
                   </td>
 
                   <td className='bg-white  font-medium text-slate-400  items-center justify-center px-6 py-4 '>
@@ -384,10 +358,10 @@ export default function Home() {
                   return (
                     <IM
                       showStatus={true}
-                      showReviewSuggestion={true}
+                      showReviewSuggestion={false}
                       authors={im.authors}
                       showOwner={true}
-                      showReviewedAs={true}
+                      showReviewedAs={false}
                       // bottomBorder={index < state.ims.length - 1}
                       im={im}
                       peerReviewed={Boolean(im.SubmittedPeerReview)}

@@ -375,19 +375,6 @@ export default async function readIMs({
                 }
               : undefined,
           },
-
-          // {
-          //   IMDCoordinatorEndorsement: endorsedByCITLDirector
-          //     ? {
-          //         // iMDCoordinatorId: {
-          //         //   contains: endorsedByIMDCoordinator,
-          //         // },
-          //         CITLDirectorEndorsement: {
-
-          //         }
-          //       }
-          //     : undefined,
-          // },
           {
             IMDCoordinatorEndorsement:
               CITLDirectorEndorsed === true

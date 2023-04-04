@@ -35,10 +35,9 @@ export default function Home() {
     let subscribe = true;
     setLoading(true);
 
-    async function getToReview(filter) {
+    async function getToEndorse(filter) {
       return frontendGetIMs({
         ...filter,
-        notOwnerId: user.ActiveFaculty.Faculty.id,
         departmentId: user.ActiveFaculty.Faculty.departmentId,
         coordinatorEndorsed: false,
         status: "DEPARTMENT_REVIEWED",
@@ -53,7 +52,7 @@ export default function Home() {
       sortOrder: state.sortOrder,
     };
 
-    getToReview(filter).then((res) => {
+    getToEndorse(filter).then((res) => {
       setLoading(false);
       if (!subscribe) return;
 
