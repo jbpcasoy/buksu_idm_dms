@@ -26,6 +26,8 @@ export default async function readIMs({
   toRevise,
   iMDCoordinatorEndorsed,
   endorsedByIMDCoordinator,
+  CITLDirectorEndorsed,
+  endorsedByCITLDirector,
 }) {
   const prisma = PRISMA_CLIENT;
   const sortFilter = {};
@@ -177,6 +179,28 @@ export default async function readIMs({
                   },
                 }
               : undefined,
+          },
+          {
+            IMDCoordinatorEndorsement:
+              CITLDirectorEndorsed === true
+                ? {
+                    CITLDirectorEndorsement: {
+                      id: {
+                        contains: "",
+                      },
+                    },
+                  }
+                : CITLDirectorEndorsed === false
+                ? {
+                    CITLDirectorEndorsement: {
+                      isNot: {
+                        id: {
+                          contains: "",
+                        },
+                      },
+                    },
+                  }
+                : undefined,
           },
           {
             ownerId: {
@@ -341,6 +365,50 @@ export default async function readIMs({
                   },
                 }
               : undefined,
+          },
+          {
+            IMDCoordinatorEndorsement: endorsedByIMDCoordinator
+              ? {
+                  iMDCoordinatorId: {
+                    contains: endorsedByIMDCoordinator,
+                  },
+                }
+              : undefined,
+          },
+
+          // {
+          //   IMDCoordinatorEndorsement: endorsedByCITLDirector
+          //     ? {
+          //         // iMDCoordinatorId: {
+          //         //   contains: endorsedByIMDCoordinator,
+          //         // },
+          //         CITLDirectorEndorsement: {
+
+          //         }
+          //       }
+          //     : undefined,
+          // },
+          {
+            IMDCoordinatorEndorsement:
+              CITLDirectorEndorsed === true
+                ? {
+                    CITLDirectorEndorsement: {
+                      id: {
+                        contains: "",
+                      },
+                    },
+                  }
+                : CITLDirectorEndorsed === false
+                ? {
+                    CITLDirectorEndorsement: {
+                      isNot: {
+                        id: {
+                          contains: "",
+                        },
+                      },
+                    },
+                  }
+                : undefined,
           },
           {
             ownerId: {

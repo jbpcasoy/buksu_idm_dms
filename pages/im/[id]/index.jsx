@@ -5,6 +5,7 @@ import IMDCoordinatorSuggestionView from "@/components/review/suggestion/suggest
 import PeerSuggestionView from "@/components/review/suggestion/suggestion_view/PeerSuggestionView";
 import UserContext from "@/contexts/UserContext";
 import useIM from "@/hooks/useIM";
+import frontendCreateCITLDirectorEndorsement from "@/services/frontend/citl_director_endorsement/frontendCreateCITLDirectorEndorsement";
 import frontendCreateCoordinatorEndorsement from "@/services/frontend/coordinator_endorsement/frontendCreateCoordinatorEndorsement";
 import frontendCreateDeanEndorsement from "@/services/frontend/dean_endorsement/frontendCreateDeanEndorsement";
 import frontendSubmitIMForReview from "@/services/frontend/im/frontendSubmitIMForReview";
@@ -38,7 +39,7 @@ export default function ViewIM() {
   async function handleIMDCoordinatorEndorse() {
     return frontendCreateIMDCoordinatorEndorsement({
       submittedIMDCoordinatorSuggestionId:
-        iM.IMDCoordinatorSuggestion.submittedIMDCoordinatorSuggestionId,
+        iM.IMDCoordinatorSuggestion.SubmittedIMDCoordinatorSuggestion.id,
     }).then((res) => {
       refreshIM();
     });
@@ -48,6 +49,14 @@ export default function ViewIM() {
     return frontendCreateDeanEndorsement({
       coordinatorEndorsementId: iM.CoordinatorEndorsement.id,
       deanId: user?.ActiveFaculty?.ActiveDean?.deanId,
+    }).then((res) => {
+      refreshIM();
+    });
+  }
+
+  async function handleCITLDirectorConfirmEndorsement() {
+    return frontendCreateCITLDirectorEndorsement({
+      iMDCoordinatorEndorsementId: iM.IMDCoordinatorEndorsement.id,
     }).then((res) => {
       refreshIM();
     });
@@ -320,6 +329,7 @@ export default function ViewIM() {
                       </button>
                     )}
                 </li>
+                {/* NOTE: for dean */}
                 <li>
                   {iM?.status === "DEPARTMENT_REVIEWED" &&
                     user?.ActiveFaculty?.ActiveDean && (
@@ -336,6 +346,30 @@ export default function ViewIM() {
                             : ""
                         }
                         onClick={handleConfirmEndorsement}
+                        className='block w-full  text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter'
+                      >
+                        Confirm Endorsement
+                      </button>
+                    )}
+                </li>
+                {/* NOTE: for citl director */}
+                <li>
+                  {iM?.status === "CITL_REVIEWED" &&
+                    user?.CITLDirector?.ActiveCITLDirector && (
+                      <button
+                        disabled={
+                          !iM?.IMDCoordinatorEndorsement ||
+                          iM?.IMDCoordinatorEndorsement?.CITLDirectorEndorsement
+                        }
+                        title={
+                          !iM?.IMDCoordinatorEndorsement
+                            ? "Pending IMD coordinator endorsement"
+                            : iM?.IMDCoordinatorEndorsement
+                                ?.CITLDirectorEndorsement
+                            ? "Endorsement already confirmed"
+                            : ""
+                        }
+                        onClick={handleCITLDirectorConfirmEndorsement}
                         className='block w-full  text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter'
                       >
                         Confirm Endorsement

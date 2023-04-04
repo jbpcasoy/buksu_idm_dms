@@ -732,12 +732,13 @@ model ActiveIMDCoordinator {
 }
 
 model CITLDirector {
-  id                 String              @id @default(cuid())
-  createdAt          DateTime            @default(now())
-  updatedAt          DateTime            @updatedAt
-  User               User                @relation(fields: [userId], references: [id])
-  userId             String              @unique
-  ActiveCITLDirector ActiveCITLDirector?
+  id                      String                    @id @default(cuid())
+  createdAt               DateTime                  @default(now())
+  updatedAt               DateTime                  @updatedAt
+  User                    User                      @relation(fields: [userId], references: [id])
+  userId                  String                    @unique
+  ActiveCITLDirector      ActiveCITLDirector?
+  CITLDirectorEndorsement CITLDirectorEndorsement[]
 }
 
 model ActiveCITLDirector {
@@ -804,6 +805,10 @@ model CITLDirectorEndorsement {
   id                          String                    @id @default(cuid())
   createdAt                   DateTime                  @default(now())
   updatedAt                   DateTime                  @updatedAt
+  CITLDirector                CITLDirector              @relation(fields: [cITLDirectorId], references: [id])
+  cITLDirectorId              String
   IMDCoordinatorEndorsement   IMDCoordinatorEndorsement @relation(fields: [iMDCoordinatorEndorsementId], references: [id])
   iMDCoordinatorEndorsementId String                    @unique
+
+  @@index([cITLDirectorId])
 }

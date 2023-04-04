@@ -1,5 +1,7 @@
+import useCITLConfirmedCount from "./useCITLConfirmedCount";
 import useCITLEndorsedCount from "./useCITLEndorsedCount";
 import useCITLReviewedCount from "./useCITLReviewedCount";
+import useCITLToConfirmCount from "./useCITLToConfirmCount";
 import useCITLToEndorseCount from "./useCITLToEndorseCount";
 import useCITLToReviewCount from "./useCITLToReviewCount";
 import useCollegeImsCount from "./useCollegeImsCount";
@@ -29,6 +31,8 @@ export default function useSidebarCounts() {
   const { count: cITLReviewedCount } = useCITLReviewedCount();
   const { count: cITLToEndorseCount } = useCITLToEndorseCount();
   const { count: cITLEndorsedCount } = useCITLEndorsedCount();
+  const { count: cITLToConfirmCount } = useCITLToConfirmCount();
+  const { count: cITLConfirmedCount } = useCITLConfirmedCount();
   const { count: imsCount } = useImsCount();
 
   return {
@@ -47,5 +51,7 @@ export default function useSidebarCounts() {
     imsCount,
     cITLToEndorseCount,
     cITLEndorsedCount,
+    cITLToConfirmCount,
+    cITLConfirmedCount,
   };
 }

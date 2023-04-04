@@ -10,7 +10,7 @@ export default async function postIMDCoordinatorEndorsementHandler(req, res) {
   const user = await getUserByEmail(session?.user?.email);
 
   const iMDCoordinatorEndorsement = await createIMDCoordinatorEndorsement({
-    iMDCoordinatorId: user.IMDCoordinator.id,
+    iMDCoordinatorId: user.IMDCoordinator.ActiveIMDCoordinator.iMDCoordinatorId,
     submittedIMDCoordinatorSuggestionId,
   });
   return res.status(201).json(iMDCoordinatorEndorsement);
