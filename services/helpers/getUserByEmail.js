@@ -15,6 +15,11 @@ export default async function getUserByEmail(email) {
             ActiveCoordinator: true,
           },
         },
+        CITLDirector: {
+          include: {
+            ActiveCITLDirector: true,
+          },
+        },
         IMDCoordinator: {
           include: {
             ActiveIMDCoordinator: true,

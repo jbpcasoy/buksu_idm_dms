@@ -2,6 +2,7 @@ import Filter from "@/components/Filter";
 import Layout from "@/components/layout/Layout";
 import SortButton from "@/components/SortButton";
 import UserContext from "@/contexts/UserContext";
+import IMStatuses from "@/services/constants/im_status";
 import frontendGetIMs from "@/services/frontend/im/frontendGetIMs";
 import IM from "@/views/im/IM";
 import _ from "lodash";
@@ -38,7 +39,6 @@ export default function Home() {
     async function getEndorsed(filter) {
       return frontendGetIMs({
         ...filter,
-        status: "CITL_REVIEWED",
         iMDCoordinatorEndorsed: true,
         endorsedByIMDCoordinator: user.IMDCoordinator.id,
       });
@@ -158,6 +158,11 @@ export default function Home() {
                 options: ["MODULE", "COURSE_FILE", "WORKTEXT", "TEXTBOOK"],
               },
               {
+                value: "status",
+                label: "Status",
+                options: IMStatuses,
+              },
+              {
                 value: "owner",
                 label: "Owner",
               },
@@ -260,6 +265,27 @@ export default function Home() {
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
                   <SortButton
+                    label='Status'
+                    sortOrder={
+                      state.sortColumn === "status"
+                        ? state.sortOrder
+                        : undefined
+                    }
+                    setSortOrder={(order) =>
+                      setState((prev) => ({
+                        ...prev,
+                        sortColumn: "status",
+                        sortOrder: order,
+                      }))
+                    }
+                  />
+                </th>
+
+                <th
+                  scope='col'
+                  className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
+                >
+                  <SortButton
                     label='Created At'
                     sortOrder={
                       state.sortColumn === "createdAt"
@@ -316,9 +342,9 @@ export default function Home() {
                     <div className='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
                   </td>
 
-                  {/* <td className='px-6 py-4 '>
-        {moment(updatedAt).format("M/D/YYYY, h:mm A")}
-      </td> */}
+                  <td className='bg-white  font-medium text-slate-400  items-center justify-center px-6 py-4 '>
+                    <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                  </td>
 
                   <td className='bg-white  font-medium text-slate-400  items-center justify-center px-6 py-4 '>
                     <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
@@ -334,6 +360,7 @@ export default function Home() {
                   return (
                     <IM
                       authors={im.authors}
+                      showStatus={true}
                       // bottomBorder={index < state.ims.length - 1}
                       im={im}
                       showOwner={true}

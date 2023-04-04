@@ -38,9 +38,7 @@ export default function Home() {
     async function getEndorsed(filter) {
       return frontendGetIMs({
         ...filter,
-        notOwnerId: user.ActiveFaculty.Faculty.id,
         departmentId: user.ActiveFaculty.Faculty.departmentId,
-        status: "DEPARTMENT_REVIEWED",
         coordinatorEndorsed: true,
         endorsedByCoordinator:
           user.ActiveFaculty.ActiveCoordinator.coordinatorId,
@@ -236,6 +234,27 @@ export default function Home() {
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
                   <SortButton
+                    label='Status'
+                    sortOrder={
+                      state.sortColumn === "status"
+                        ? state.sortOrder
+                        : undefined
+                    }
+                    setSortOrder={(order) =>
+                      setState((prev) => ({
+                        ...prev,
+                        sortColumn: "status",
+                        sortOrder: order,
+                      }))
+                    }
+                  />
+                </th>
+
+                <th
+                  scope='col'
+                  className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
+                >
+                  <SortButton
                     label='Date'
                     sortOrder={
                       state.sortColumn === "date" ? state.sortOrder : undefined
@@ -290,6 +309,10 @@ export default function Home() {
                   <td className='bg-white  font-medium text-slate-400  items-center justify-center px-6 py-4 '>
                     <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
                   </td>
+
+                  <td className='bg-white  font-medium text-slate-400  items-center justify-center px-6 py-4 '>
+                    <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                  </td>
                 </tr>
               )}{" "}
               {!loading &&
@@ -297,7 +320,7 @@ export default function Home() {
                   return (
                     <IM
                       authors={im.authors}
-                      // bottomBorder={index < state.ims.length - 1}
+                      showStatus={true}
                       im={im}
                       showOwner={true}
                       peerReviewed={Boolean(im.SubmittedPeerReview)}
