@@ -35,12 +35,12 @@ export default function Home() {
     let subscribe = true;
     setLoading(true);
 
-    async function getToEndorse(filter) {
+    async function getToReview(filter) {
       return frontendGetIMs({
         ...filter,
-        departmentId: user.ActiveFaculty.Faculty.departmentId,
-        coordinatorEndorsed: false,
-        status: "DEPARTMENT_REVIEWED",
+        iMDCoordinatorEndorsed: true,
+        CITLDirectorEndorsed: false,
+        status: "CITL_REVIEWED",
       });
     }
 
@@ -52,7 +52,7 @@ export default function Home() {
       sortOrder: state.sortOrder,
     };
 
-    getToEndorse(filter).then((res) => {
+    getToReview(filter).then((res) => {
       setLoading(false);
       if (!subscribe) return;
 

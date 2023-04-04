@@ -13,7 +13,6 @@ export default function useCITLEndorsedCount() {
     async function getEndorsed(filter) {
       return frontendGetIMs({
         ...filter,
-        status: "CITL_REVIEWED",
         iMDCoordinatorEndorsed: true,
         endorsedByIMDCoordinator: user.IMDCoordinator.id,
       });

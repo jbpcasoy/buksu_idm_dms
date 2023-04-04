@@ -2,26 +2,21 @@ import UserContext from "@/contexts/UserContext";
 import frontendGetIMs from "@/services/frontend/im/frontendGetIMs";
 import { useContext, useEffect, useState } from "react";
 
-export default function useEndorsedCount() {
+export default function useCITLConfirmedCount() {
   const [count, setCount] = useState(0);
   const { user } = useContext(UserContext);
 
   useEffect(() => {
-    if (
-      !user ||
-      !user?.ActiveFaculty ||
-      !user?.ActiveFaculty?.ActiveCoordinator
-    )
+    if (!user || !user?.CITLDirector || !user?.CITLDirector?.ActiveCITLDirector)
       return;
     let subscribe = true;
 
     async function getEndorsed(filter) {
       return frontendGetIMs({
-        departmentId: user.ActiveFaculty.Faculty.departmentId,
-        coordinatorEndorsed: true,
-        endorsedByCoordinator:
-          user.ActiveFaculty.ActiveCoordinator.coordinatorId,
         ...filter,
+        status: "CITL_ENDORSED",
+        CITLDirectorEndorsed: true,
+        endorsedByCITLDirector: user.CITLDirector.id,
       });
     }
 

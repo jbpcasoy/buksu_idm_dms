@@ -25,6 +25,8 @@ export default async function getImsHandler(req, res) {
     toRevise,
     iMDCoordinatorEndorsed,
     endorsedByIMDCoordinator,
+    CITLDirectorEndorsed,
+    endorsedByCITLDirector,
   } = req.query;
   const ims = await readIMs({
     limit: parseInt(limit),
@@ -54,6 +56,10 @@ export default async function getImsHandler(req, res) {
       ? JSON.parse(iMDCoordinatorEndorsed)
       : undefined,
     endorsedByIMDCoordinator,
+    CITLDirectorEndorsed: CITLDirectorEndorsed
+      ? JSON.parse(CITLDirectorEndorsed)
+      : undefined,
+    endorsedByCITLDirector,
   });
 
   return res.status(200).json(ims);

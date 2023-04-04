@@ -2,26 +2,20 @@ import UserContext from "@/contexts/UserContext";
 import frontendGetIMs from "@/services/frontend/im/frontendGetIMs";
 import { useContext, useEffect, useState } from "react";
 
-export default function useEndorsedCount() {
+export default function useCITLToConfirmCount() {
   const [count, setCount] = useState(0);
   const { user } = useContext(UserContext);
 
   useEffect(() => {
-    if (
-      !user ||
-      !user?.ActiveFaculty ||
-      !user?.ActiveFaculty?.ActiveCoordinator
-    )
-      return;
+    if (!user || !user?.ActiveFaculty) return;
     let subscribe = true;
 
-    async function getEndorsed(filter) {
+    async function getToReview(filter) {
       return frontendGetIMs({
-        departmentId: user.ActiveFaculty.Faculty.departmentId,
-        coordinatorEndorsed: true,
-        endorsedByCoordinator:
-          user.ActiveFaculty.ActiveCoordinator.coordinatorId,
         ...filter,
+        iMDCoordinatorEndorsed: true,
+        CITLDirectorEndorsed: false,
+        status: "CITL_REVIEWED",
       });
     }
 
@@ -30,7 +24,7 @@ export default function useEndorsedCount() {
       limit: 1,
     };
 
-    getEndorsed(filter).then((res) => {
+    getToReview(filter).then((res) => {
       if (!subscribe) return;
 
       setCount(res.total);
