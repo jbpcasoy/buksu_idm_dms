@@ -94,7 +94,7 @@ export default function Sidebar() {
           {user?.IMDCoordinator?.ActiveIMDCoordinator && (
             <>
               <hr className='h-px my-8 w-56 bg-CITLGray-main border-0 dark:bg-gray-700' />
-              <div className='text-sm text-center w-full text-white'>
+              <div className='text-sm  w-full text-white'>
                 UNIVERSITY
                 <br />
                 IMD COORDINATOR
@@ -166,7 +166,7 @@ export default function Sidebar() {
                   <div className='justify-between flex w-full items-center'>
                     <span className='ml-3'>Reviewed</span>
                     {cITLReviewedCount > 0 && (
-                      <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLOrange '>
+                      <div className='inline-flex items-center justify-center w-4 h-4  bg-CITLOrange rounded-full text-xs font-semibold text-CITLDarkBlue '>
                         {cITLReviewedCount}
                       </div>
                     )}
@@ -202,9 +202,9 @@ export default function Sidebar() {
                     <span className='flex-1 ml-3 whitespace-nowrap'>
                       To Endorse
                     </span>
-                    {cITLToEndorseCount > 0 && (
-                      <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLOrange '>
-                        {cITLToEndorseCount}
+                    {toEndorseCount > 0 && (
+                      <div className='inline-flex items-center justify-center w-4 h-4  bg-CITLOrange rounded-full text-xs font-semibold text-CITLDarkBlue '>
+                        {toEndorseCount}
                       </div>
                     )}
                   </div>
@@ -240,7 +240,7 @@ export default function Sidebar() {
                       Endorsed
                     </span>
                     {cITLEndorsedCount > 0 && (
-                      <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLOrange '>
+                      <div className='inline-flex items-center justify-center w-4 h-4  bg-CITLOrange rounded-full text-xs font-semibold text-CITLDarkBlue '>
                         {cITLEndorsedCount}
                       </div>
                     )}
@@ -275,7 +275,7 @@ export default function Sidebar() {
                       IM&apos;s
                     </span>
                     {imsCount > 0 && (
-                      <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLOrange '>
+                      <div className='inline-flex items-center justify-center w-4 h-4  bg-CITLOrange rounded-full text-xs font-semibold text-CITLDarkBlue '>
                         {imsCount}
                       </div>
                     )}
@@ -288,9 +288,7 @@ export default function Sidebar() {
           {user?.ActiveFaculty && (
             <>
               <hr className='h-px my-8 w-56 bg-CITLGray-main border-0 dark:bg-gray-700' />
-              <div className='text-sm text-center w-full text-white'>
-                DEPARTMENT
-              </div>
+              <div className='text-sm w-full text-white'>DEPARTMENT</div>
               <li>
                 <Link
                   href='/my_ims'
@@ -420,7 +418,7 @@ export default function Sidebar() {
                   <div className='justify-between flex w-full items-center'>
                     <span className='ml-3'>Reviewed</span>
                     {reviewedCount > 0 && (
-                      <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLOrange '>
+                      <div className='inline-flex items-center justify-center w-4 h-4  bg-CITLOrange rounded-full text-xs font-semibold text-CITLDarkBlue '>
                         {reviewedCount}
                       </div>
                     )}
@@ -459,7 +457,7 @@ export default function Sidebar() {
                           To Endorse
                         </span>
                         {toEndorseCount > 0 && (
-                          <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLOrange '>
+                          <div className='inline-flex items-center justify-center w-4 h-4  bg-CITLOrange rounded-full text-xs font-semibold text-CITLDarkBlue '>
                             {toEndorseCount}
                           </div>
                         )}
@@ -494,7 +492,7 @@ export default function Sidebar() {
                           Endorsed
                         </span>
                         {endorsedCount > 0 && (
-                          <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLOrange '>
+                          <div className='inline-flex items-center justify-center w-4 h-4  bg-CITLOrange rounded-full text-xs font-semibold text-CITLDarkBlue '>
                             {endorsedCount}
                           </div>
                         )}
@@ -535,7 +533,7 @@ export default function Sidebar() {
                         Department IM&apos;s
                       </span>
                       {departmentImsCount > 0 && (
-                        <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLOrange '>
+                        <div className='inline-flex items-center justify-center w-4 h-4  bg-CITLOrange rounded-full text-xs font-semibold text-CITLDarkBlue '>
                           {departmentImsCount}
                         </div>
                       )}
@@ -548,9 +546,7 @@ export default function Sidebar() {
           {user?.ActiveFaculty?.ActiveDean && (
             <>
               <hr className='h-px my-8 w-56 bg-CITLGray-main border-0 dark:bg-gray-700' />
-              <div className='text-sm text-center w-full text-white'>
-                COLLEGE
-              </div>
+              <div className='text-sm w-full text-white'>COLLEGE</div>
 
               <li>
                 <Link
@@ -581,7 +577,7 @@ export default function Sidebar() {
                       To Confirm
                     </span>
                     {toConfirmCount > 0 && (
-                      <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLOrange '>
+                      <div className='inline-flex items-center justify-center w-4 h-4  bg-CITLOrange rounded-full text-xs font-semibold text-CITLDarkBlue '>
                         {toConfirmCount}
                       </div>
                     )}
@@ -618,7 +614,7 @@ export default function Sidebar() {
                       Confirmed
                     </span>
                     {confirmedCount > 0 && (
-                      <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLOrange '>
+                      <div className='inline-flex items-center justify-center w-4 h-4  bg-CITLOrange rounded-full text-xs font-semibold text-CITLDarkBlue '>
                         {confirmedCount}
                       </div>
                     )}
@@ -653,7 +649,7 @@ export default function Sidebar() {
                       College IM&apos;s
                     </span>
                     {collegeIMsCount > 0 && (
-                      <div className='inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-CITLOrange '>
+                      <div className='inline-flex items-center justify-center w-4 h-4  bg-CITLOrange rounded-full text-xs font-semibold text-CITLDarkBlue '>
                         {collegeIMsCount}
                       </div>
                     )}
@@ -679,63 +675,100 @@ export default function Sidebar() {
                   rel='noreferrer'
                   target='_blank'
                   className='text-CITLGray-main transition hover:text-gray-700/75'
-                  title='Facebook'
+                  title='Messenger'
                 >
                   <span className='sr-only'>Messenger</span>
 
                   <svg
-                    className='h-6 w-6'
-                    fill='currentColor'
+                    xmlns='http://www.w3.org/2000/svg'
+                    width='24'
+                    height='24'
                     viewBox='0 0 24 24'
-                    aria-hidden='true'
+                    fill='none'
                   >
                     <path
-                      fillRule='evenodd'
-                      d='M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z'
-                      clipRule='evenodd'
-                    />
+                      d='M5.7 18.4V22L9 20.1c.9.3 1.9.4 3 .4 5.5 0 10-4.1 10-9.3C22 6.1 17.5 2 12 2S2 6.1 2 11.3c0 2.9 1.4 5.4 3.7 7.1Z'
+                      stroke='#717883'
+                      stroke-width='1.5'
+                      stroke-miterlimit='10'
+                      stroke-linecap='round'
+                      stroke-linejoin='round'
+                    ></path>
+                    <path
+                      d='m11.3 9.2-3.8 4.5 3.7-.9 1.5.9 3.8-4.5-3.5.9-1.7-.9Z'
+                      stroke='#717883'
+                      stroke-width='1.5'
+                      stroke-miterlimit='10'
+                      stroke-linecap='round'
+                      stroke-linejoin='round'
+                    ></path>
                   </svg>
                 </Link>
               </li>
 
               <li>
                 <Link
-                  href='/'
+                  href='https://buksu.edu.ph/'
                   rel='noreferrer'
                   target='_blank'
                   className='text-CITLGray-main transition hover:text-gray-700/75'
-                >
-                  <span className='sr-only'>Telephone</span>
-                  <svg
-                    className='h-6 w-6'
-                    fill='currentColor'
-                    viewBox='0 0 24 24'
-                    aria-hidden='true'
-                  >
-                    <path
-                      fillRule='evenodd'
-                      d='M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z'
-                      clipRule='evenodd'
-                    />
-                  </svg>
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  href='/'
-                  rel='noreferrer'
-                  target='_blank'
-                  className='text-CITLGray-main transition hover:text-gray-700/75'
+                  title='Website'
                 >
                   <span className='sr-only'>Website</span>
                   <svg
-                    className='h-6 w-6'
-                    fill='currentColor'
+                    xmlns='http://www.w3.org/2000/svg'
+                    width='24'
+                    height='24'
                     viewBox='0 0 24 24'
-                    aria-hidden='true'
+                    fill='none'
                   >
-                    <path d='M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84' />
+                    <path
+                      d='M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10Z'
+                      stroke='#717883'
+                      stroke-width='1.5'
+                      stroke-linecap='round'
+                      stroke-linejoin='round'
+                    ></path>
+                    <path
+                      d='M8 3h1a28.424 28.424 0 0 0 0 18H8M15 3a28.424 28.424 0 0 1 0 18'
+                      stroke='#717883'
+                      stroke-width='1.5'
+                      stroke-linecap='round'
+                      stroke-linejoin='round'
+                    ></path>
+                    <path
+                      d='M3 16v-1a28.424 28.424 0 0 0 18 0v1M3 9a28.424 28.424 0 0 1 18 0'
+                      stroke='#717883'
+                      stroke-width='1.5'
+                      stroke-linecap='round'
+                      stroke-linejoin='round'
+                    ></path>
+                  </svg>
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  href='/'
+                  rel='noreferrer'
+                  target='_blank'
+                  className='text-CITLGray-main transition hover:text-gray-700/75'
+                  title='Local 139'
+                >
+                  <span className='sr-only'>Local</span>
+                  <svg
+                    xmlns='http://www.w3.org/2000/svg'
+                    width='24'
+                    height='24'
+                    viewBox='0 0 24 24'
+                    fill='none'
+                  >
+                    <path
+                      d='M21.97 18.33c0 .36-.08.73-.25 1.09-.17.36-.39.7-.68 1.02-.49.54-1.03.93-1.64 1.18-.6.25-1.25.38-1.95.38-1.02 0-2.11-.24-3.26-.73s-2.3-1.15-3.44-1.98a28.75 28.75 0 0 1-3.28-2.8 28.414 28.414 0 0 1-2.79-3.27c-.82-1.14-1.48-2.28-1.96-3.41C2.24 8.67 2 7.58 2 6.54c0-.68.12-1.33.36-1.93.24-.61.62-1.17 1.15-1.67C4.15 2.31 4.85 2 5.59 2c.28 0 .56.06.81.18.26.12.49.3.67.56l2.32 3.27c.18.25.31.48.4.7.09.21.14.42.14.61 0 .24-.07.48-.21.71-.13.23-.32.47-.56.71l-.76.79c-.11.11-.16.24-.16.4 0 .08.01.15.03.23.03.08.06.14.08.2.18.33.49.76.93 1.28.45.52.93 1.05 1.45 1.58.54.53 1.06 1.02 1.59 1.47.52.44.95.74 1.29.92.05.02.11.05.18.08.08.03.16.04.25.04.17 0 .3-.06.41-.17l.76-.75c.25-.25.49-.44.72-.56.23-.14.46-.21.71-.21.19 0 .39.04.61.13.22.09.45.22.7.39l3.31 2.35c.26.18.44.39.55.64.1.25.16.5.16.78Z'
+                      stroke='#717883'
+                      stroke-width='1.5'
+                      stroke-miterlimit='10'
+                    ></path>
                   </svg>
                 </Link>
               </li>

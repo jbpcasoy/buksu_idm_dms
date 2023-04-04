@@ -54,7 +54,7 @@ export default function ChairpersonSuggestionNotificationItem({
             ?.ChairpersonReview?.Chairperson?.Faculty?.user?.name
         }
       </span>
-      {` On IM: "${notificationData?.SubmittedChairpersonSuggestion?.IM?.title}"`}
+      {` on IM: "${notificationData?.SubmittedChairpersonSuggestion?.IM?.title}"`}
     </NotificationItemBase>
   );
 }

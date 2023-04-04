@@ -6,9 +6,9 @@ export default function ProfileFormView({ onSubmit, defaultName }) {
   const { user, userError, userLoading } = useContext(UserContext);
 
   return (
-    <div className='pt-36'>
+    <div className='m-2 lg:pt-20'>
       <div className='w-full mx-auto max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700'>
-        <div className='flex justify-end px-4 pt-10'>
+        <div className='flex justify-center px-4 pt-10'>
           {/* <button
           id="dropdownButton"
           data-dropdown-toggle="dropdown"

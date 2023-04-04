@@ -47,7 +47,7 @@ export default function CoordinatorEndorsementNotificationItem({
             ?.name
         }
       </span>
-      {` On IM: "${notificationData?.CoordinatorEndorsement?.IM?.title}"`}
+      {` on IM: "${notificationData?.CoordinatorEndorsement?.IM?.title}"`}
     </NotificationItemBase>
   );
 }

@@ -14,7 +14,7 @@ export default function ToggleModal({ onSubmit, defaultName }) {
       <button
         data-modal-target='authentication-modal'
         data-modal-toggle='authentication-modal'
-        className='block text-sm font-medium text-center px-4 py-2 text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100'
+        className='block text-sm font-medium text-center px-4 py-2 text-gray-900 bg-white border border-gray-300 rounded-md'
         type='button'
       >
         Edit Profile
@@ -69,7 +69,7 @@ export default function ToggleModal({ onSubmit, defaultName }) {
                   </label>
                   <input
                     type='text'
-                    className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white'
+                    className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white'
                     placeholder='Name'
                     value={state.name}
                     onChange={(e) =>
@@ -139,7 +139,7 @@ export default function ToggleModal({ onSubmit, defaultName }) {
                 </div> */}
                 <button
                   type='submit'
-                  className='w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
+                  className='w-full text-white bg-CITLDarkBlue  font-medium rounded-md text-sm px-5 py-2.5 text-center '
                 >
                   Confirm changes
                 </button>

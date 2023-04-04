@@ -50,7 +50,7 @@ export default function PeerSuggestionNotificationItem({ notification }) {
             ?.SubmittedPeerReview?.PeerReview?.Faculty?.user?.name
         }
       </span>
-      {` On IM: "${notificationData?.SubmittedPeerSuggestion?.IM?.title}"`}
+      {` on IM: "${notificationData?.SubmittedPeerSuggestion?.IM?.title}"`}
     </NotificationItemBase>
   );
 }

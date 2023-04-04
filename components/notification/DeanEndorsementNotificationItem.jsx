@@ -39,7 +39,7 @@ export default function DeanEndorsementNotificationItem({ notification }) {
       <span className='font-semibold text-gray-900 dark:text-white'>
         {notificationData?.DeanEndorsement?.Dean?.Faculty?.user?.name}
       </span>
-      {` On IM: "${notificationData?.DeanEndorsement?.CoordinatorEndorsement?.IM?.title}"`}
+      {` on IM: "${notificationData?.DeanEndorsement?.CoordinatorEndorsement?.IM?.title}"`}
     </NotificationItemBase>
   );
 }
