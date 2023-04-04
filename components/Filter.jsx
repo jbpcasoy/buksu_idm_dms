@@ -8,7 +8,7 @@ export default function Filter({ filterOptions = [], onChange }) {
   }, [filter]);
 
   return (
-    <div class='grid grid-cols-5 gap-3 ml-5'>
+    <div class='grid grid-cols-3 gap-1 '>
       {Object.keys(filter).map((filterColumn) => {
         if (!filter[filterColumn]) return;
         return (
@@ -59,7 +59,7 @@ function FilterInput({ filterOptions, onAdd }) {
     <div className='flex'>
       <select
         id='default'
-        className='bg-CITLGray-light border-CITLGray-lighter border text-CITLGray-main rounded-l-md text-sm font-medium'
+        className='bg-CITLGray-light border-CITLGray-lighter border text-CITLGray-main rounded-l-md text-sm font-medium w-28'
         value={state.filterColumn}
         onChange={(e) =>
           setState((prev) => ({
@@ -78,7 +78,7 @@ function FilterInput({ filterOptions, onAdd }) {
       {!currentFilterOption?.options && (
         <input
           type='text'
-          className='bg-CITLGray-light border-CITLGray-lighter border border-l-0 text-CITLGray-main  text-sm font-medium'
+          className='bg-CITLGray-light border-CITLGray-lighter border border-l-0 text-CITLGray-main  text-sm font-medium w-28'
           placeholder='Filter'
           value={state.value}
           onChange={(e) =>
@@ -89,7 +89,7 @@ function FilterInput({ filterOptions, onAdd }) {
       {currentFilterOption?.options && (
         <select
           id='default'
-          className='bg-CITLGray-light border-CITLGray-lighter border text-CITLGray-main  text-sm font-medium'
+          className='bg-CITLGray-light border-CITLGray-lighter border text-CITLGray-main  text-sm font-medium w-28'
           value={state.value}
           onChange={(e) =>
             setState((prev) => ({ ...prev, value: e.target.value }))
@@ -141,7 +141,7 @@ function FilterItem({ filterOptions, filterColumn, value, onDelete }) {
     <div className='flex'>
       <select
         id='default'
-        className='bg-CITLGray-light border-CITLGray-lighter border text-CITLGray-main rounded-l-md text-sm font-medium'
+        className='bg-CITLGray-light border-CITLGray-lighter border text-CITLGray-main rounded-l-md text-sm font-medium w-28'
         value={filterColumn}
         disabled
       >
@@ -153,7 +153,7 @@ function FilterItem({ filterOptions, filterColumn, value, onDelete }) {
       </select>
       <input
         type='text'
-        className='bg-CITLGray-light border-CITLGray-lighter border border-l-0 text-CITLGray-lighter  text-sm font-medium'
+        className='bg-CITLGray-light border-CITLGray-lighter border border-l-0 text-CITLGray-lighter  text-sm font-medium w-28'
         placeholder='Filter'
         value={value}
         disabled

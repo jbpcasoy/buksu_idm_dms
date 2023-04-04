@@ -61,19 +61,19 @@ export default function IM({
     <tr
       className={` bg-white ${
         bottomBorder ? "border-b dark:border-CITLGray-light" : ""
-      } text-sm text-CITLGray-main text-left p-4 `}
+      } text-xs font-normal text-CITLGray-main text-left p-4 `}
     >
-      <td className='px-6 py-4 '>{title}</td>
+      <td className='px-6 py-4 w-32'>{title}</td>
 
       <td className='px-6 py-4 '>{type}</td>
 
-      {showOwner && <td className='px-6 py-4 '>{owner}</td>}
-      <td className='px-6 py-4 '>{authors}</td>
+      {showOwner && <td className='px-6 py-4'>{owner}</td>}
+      <td className='px-6 py-4 w-32 '>{authors}</td>
 
       {showStatus && <td className='px-6 py-4 '>{status}</td>}
       {showReviewSuggestion && (
-        <td className='px-4 py-4 space-x-1'>
-          <div className='inline-flex  space-x-1'>
+        <td className='px-4 py-4 space-y-1 '>
+          <div className='grid grid-flow-row space-y-1 w-32'>
             {peerReviewed && (
               <span
                 className='inline-flex items-center bg-purple-400 text-purple-800 text-xs px-3 py-1 rounded-full'
@@ -227,18 +227,16 @@ export default function IM({
         </td>
       )}
 
-      {showReviewedAs && <td className='px-6 py-4 '>{reviewedAs}</td>}
+      {showReviewedAs && <td className='px-6 py-4 w-32 '>{reviewedAs}</td>}
 
-      <td className='px-6 py-4 '>
+      <td className='px-6 py-4  '>
         {moment(createdAt).format("M/D/YYYY, h:mm A")}
       </td>
 
       {/* <td className='px-6 py-4 '>
         {moment(updatedAt).format("M/D/YYYY, h:mm A")}
       </td> */}
-      {showSerialNumber && (
-        <td className='px-6 py-4 truncate '>{serialNumber}</td>
-      )}
+      {showSerialNumber && <td className='px-6 py-4 w-36 '>{serialNumber}</td>}
 
       <td className='bg-white  font-medium text-slate-400  items-center justify-center px-6 py-4 '>
         <button
