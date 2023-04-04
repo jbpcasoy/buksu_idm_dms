@@ -6,8 +6,12 @@ import NotificationItem from "./NotificationItem";
 
 export default function Notifications() {
   const { user, userError, useLoading } = useContext(UserContext);
-  const { notifications, notificationsLoading, notificationsError } =
-    useNotifications({ limit: 5, page: 1, userId: user?.id });
+  const {
+    notifications,
+    notificationsLoading,
+    notificationsError,
+    refreshNotifications,
+  } = useNotifications({ limit: 5, page: 1, userId: user?.id });
 
   return (
     <div>
@@ -50,6 +54,7 @@ export default function Notifications() {
         <div className='divide-y divide-gray-100 dark:divide-gray-700'>
           {notifications?.data?.map((notification) => (
             <NotificationItem
+              refreshNotifications={refreshNotifications}
               notification={notification}
               key={notification.id}
             />

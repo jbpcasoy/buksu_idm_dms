@@ -9,6 +9,16 @@ export default async function readUser(id) {
         id,
       },
       include: {
+        CITLDirector: {
+          include: {
+            ActiveCITLDirector: true,
+          },
+        },
+        IMDCoordinator: {
+          include: {
+            ActiveIMDCoordinator: true,
+          },
+        },
         LoginRole: true,
         ActiveFaculty: {
           include: {

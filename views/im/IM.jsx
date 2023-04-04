@@ -61,19 +61,19 @@ export default function IM({
     <tr
       className={` bg-white ${
         bottomBorder ? "border-b dark:border-CITLGray-light" : ""
-      } text-sm text-CITLGray-main text-left p-4 `}
+      } text-xs font-normal text-CITLGray-main text-left p-4 `}
     >
-      <td className='px-6 py-4 '>{title}</td>
+      <td className='px-6 py-4 w-32'>{title}</td>
 
       <td className='px-6 py-4 '>{type}</td>
 
-      {showOwner && <td className='px-6 py-4 '>{owner}</td>}
-      <td className='px-6 py-4 '>{authors}</td>
+      {showOwner && <td className='px-6 py-4'>{owner}</td>}
+      <td className='px-6 py-4 w-32 '>{authors}</td>
 
       {showStatus && <td className='px-6 py-4 '>{status}</td>}
       {showReviewSuggestion && (
-        <td className='px-4 py-4 space-x-1'>
-          <div className='inline-flex  space-x-1'>
+        <td className='px-4 py-4 space-y-1 '>
+          <div className='grid grid-flow-row space-y-1 w-32'>
             {peerReviewed && (
               <span
                 className='inline-flex items-center bg-purple-400 text-purple-800 text-xs px-3 py-1 rounded-full'
@@ -104,14 +104,14 @@ export default function IM({
                     fill='none'
                     class='w-3 h-3  text-purple-800 rounded-full ml-1'
                     stroke='currentColor'
-                    stroke-width='1.5'
+                    strokeWidth='1.5'
                     viewBox='0 0 24 24'
                     xmlns='http://www.w3.org/2000/svg'
                     aria-hidden='true'
                   >
                     <path
-                      stroke-linecap='round'
-                      stroke-linejoin='round'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
                       d='M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
                     ></path>
                   </svg>
@@ -154,14 +154,14 @@ export default function IM({
                     fill='none'
                     class='w-3 h-3  text-orange-500 rounded-full ml-1'
                     stroke='currentColor'
-                    stroke-width='1.5'
+                    strokeWidth='1.5'
                     viewBox='0 0 24 24'
                     xmlns='http://www.w3.org/2000/svg'
                     aria-hidden='true'
                   >
                     <path
-                      stroke-linecap='round'
-                      stroke-linejoin='round'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
                       d='M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
                     ></path>
                   </svg>
@@ -204,14 +204,14 @@ export default function IM({
                     fill='none'
                     class='w-3 h-3  text-green-900 rounded-full ml-1'
                     stroke='currentColor'
-                    stroke-width='1.5'
+                    strokeWidth='1.5'
                     viewBox='0 0 24 24'
                     xmlns='http://www.w3.org/2000/svg'
                     aria-hidden='true'
                   >
                     <path
-                      stroke-linecap='round'
-                      stroke-linejoin='round'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
                       d='M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
                     ></path>
                   </svg>
@@ -227,18 +227,16 @@ export default function IM({
         </td>
       )}
 
-      {showReviewedAs && <td className='px-6 py-4 '>{reviewedAs}</td>}
+      {showReviewedAs && <td className='px-6 py-4 w-32 '>{reviewedAs}</td>}
 
-      <td className='px-6 py-4 '>
+      <td className='px-6 py-4  '>
         {moment(createdAt).format("M/D/YYYY, h:mm A")}
       </td>
 
       {/* <td className='px-6 py-4 '>
         {moment(updatedAt).format("M/D/YYYY, h:mm A")}
       </td> */}
-      {showSerialNumber && (
-        <td className='px-6 py-4 truncate '>{serialNumber}</td>
-      )}
+      {showSerialNumber && <td className='px-6 py-4 w-36 '>{serialNumber}</td>}
 
       <td className='bg-white  font-medium text-slate-400  items-center justify-center px-6 py-4 '>
         <button

@@ -51,6 +51,8 @@ model User {
   ReadNotification ReadNotification[]
   Admin            Admin?
   LoginRole        LoginRole?
+  IMDCoordinator   IMDCoordinator?
+  CITLDirector     CITLDirector?
 }
 
 model VerificationToken {
@@ -102,6 +104,8 @@ model IM {
   SubmittedCoordinatorSuggestion SubmittedCoordinatorSuggestion?
   SubmittedChairpersonSuggestion SubmittedChairpersonSuggestion?
   CoordinatorEndorsement         CoordinatorEndorsement?
+  IMDCoordinatorSuggestion       IMDCoordinatorSuggestion?
+  IMDCoordinatorEndorsement      IMDCoordinatorEndorsement?
 
   @@index([ownerId])
 }
@@ -557,30 +561,39 @@ enum Type {
   SUBMITTED_COORDINATOR_SUGGESTION
   COORDINATOR_ENDORSEMENT
   DEAN_ENDORSEMENT
+  SUBMITTED_IMD_COORDINATOR_SUGGESTION
+  IMD_COORDINATOR_ENDORSEMENT
+  CITL_DIRECTOR_ENDORSEMENT
 }
 
 model Notification {
-  id                               String                          @id @default(cuid())
-  createdAt                        DateTime                        @default(now())
-  updatedAt                        DateTime                        @updatedAt
-  ReadNotification                 ReadNotification[]
-  Type                             Type
-  SubmittedPeerReview              SubmittedPeerReview?            @relation(fields: [submittedPeerReviewId], references: [id])
-  submittedPeerReviewId            String?                         @unique
-  SubmittedChairpersonReview       SubmittedChairpersonReview?     @relation(fields: [submittedChairpersonReviewId], references: [id])
-  submittedChairpersonReviewId     String?                         @unique
-  SubmittedCoordinatorReview       SubmittedCoordinatorReview?     @relation(fields: [submittedCoordinatorReviewId], references: [id])
-  submittedCoordinatorReviewId     String?                         @unique
-  SubmittedPeerSuggestion          SubmittedPeerSuggestion?        @relation(fields: [submittedPeerSuggestionId], references: [id])
-  submittedPeerSuggestionId        String?                         @unique
-  SubmittedChairpersonSuggestion   SubmittedChairpersonSuggestion? @relation(fields: [submittedChairpersonSuggestionId], references: [id])
-  submittedChairpersonSuggestionId String?                         @unique
-  SubmittedCoordinatorSuggestion   SubmittedCoordinatorSuggestion? @relation(fields: [submittedCoordinatorSuggestionId], references: [id])
-  submittedCoordinatorSuggestionId String?                         @unique
-  CoordinatorEndorsement           CoordinatorEndorsement?         @relation(fields: [coordinatorEndorsementId], references: [id])
-  coordinatorEndorsementId         String?                         @unique
-  DeanEndorsement                  DeanEndorsement?                @relation(fields: [deanEndorsementId], references: [id])
-  deanEndorsementId                String?                         @unique
+  id                                  String                             @id @default(cuid())
+  createdAt                           DateTime                           @default(now())
+  updatedAt                           DateTime                           @updatedAt
+  ReadNotification                    ReadNotification[]
+  Type                                Type
+  SubmittedPeerReview                 SubmittedPeerReview?               @relation(fields: [submittedPeerReviewId], references: [id])
+  submittedPeerReviewId               String?                            @unique
+  SubmittedChairpersonReview          SubmittedChairpersonReview?        @relation(fields: [submittedChairpersonReviewId], references: [id])
+  submittedChairpersonReviewId        String?                            @unique
+  SubmittedCoordinatorReview          SubmittedCoordinatorReview?        @relation(fields: [submittedCoordinatorReviewId], references: [id])
+  submittedCoordinatorReviewId        String?                            @unique
+  SubmittedPeerSuggestion             SubmittedPeerSuggestion?           @relation(fields: [submittedPeerSuggestionId], references: [id])
+  submittedPeerSuggestionId           String?                            @unique
+  SubmittedChairpersonSuggestion      SubmittedChairpersonSuggestion?    @relation(fields: [submittedChairpersonSuggestionId], references: [id])
+  submittedChairpersonSuggestionId    String?                            @unique
+  SubmittedCoordinatorSuggestion      SubmittedCoordinatorSuggestion?    @relation(fields: [submittedCoordinatorSuggestionId], references: [id])
+  submittedCoordinatorSuggestionId    String?                            @unique
+  CoordinatorEndorsement              CoordinatorEndorsement?            @relation(fields: [coordinatorEndorsementId], references: [id])
+  coordinatorEndorsementId            String?                            @unique
+  DeanEndorsement                     DeanEndorsement?                   @relation(fields: [deanEndorsementId], references: [id])
+  deanEndorsementId                   String?                            @unique
+  SubmittedIMDCoordinatorSuggestion   SubmittedIMDCoordinatorSuggestion? @relation(fields: [submittedIMDCoordinatorSuggestionId], references: [id])
+  submittedIMDCoordinatorSuggestionId String?                            @unique
+  IMDCoordinatorEndorsement           IMDCoordinatorEndorsement?         @relation(fields: [iMDCoordinatorEndorsementId], references: [id])
+  iMDCoordinatorEndorsementId         String?                            @unique
+  CITLDirectorEndorsement             CITLDirectorEndorsement?           @relation(fields: [cITLDirectorEndorsementId], references: [id])
+  cITLDirectorEndorsementId           String?                            @unique
 }
 
 model ReadNotification {
@@ -706,4 +719,108 @@ model ActiveDean {
   activeFacultyId String        @unique
   College         College       @relation(fields: [collegeId], references: [id])
   collegeId       String        @unique
+}
+
+model IMDCoordinator {
+  id                        String                      @id @default(cuid())
+  createdAt                 DateTime                    @default(now())
+  updatedAt                 DateTime                    @updatedAt
+  User                      User                        @relation(fields: [userId], references: [id])
+  userId                    String                      @unique
+  ActiveIMDCoordinator      ActiveIMDCoordinator?
+  IMDCoordinatorSuggestion  IMDCoordinatorSuggestion[]
+  IMDCoordinatorEndorsement IMDCoordinatorEndorsement[]
+}
+
+model ActiveIMDCoordinator {
+  id               String         @id @default(cuid())
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+  IMDCoordinator   IMDCoordinator @relation(fields: [iMDCoordinatorId], references: [id])
+  iMDCoordinatorId String         @unique
+}
+
+model CITLDirector {
+  id                      String                    @id @default(cuid())
+  createdAt               DateTime                  @default(now())
+  updatedAt               DateTime                  @updatedAt
+  User                    User                      @relation(fields: [userId], references: [id])
+  userId                  String                    @unique
+  ActiveCITLDirector      ActiveCITLDirector?
+  CITLDirectorEndorsement CITLDirectorEndorsement[]
+}
+
+model ActiveCITLDirector {
+  id             String       @id @default(cuid())
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  CITLDirector   CITLDirector @relation(fields: [cITLDirectorId], references: [id])
+  cITLDirectorId String       @unique
+}
+
+model IMDCoordinatorSuggestion {
+  id                                String                             @id @default(cuid())
+  createdAt                         DateTime                           @default(now())
+  updatedAt                         DateTime                           @updatedAt
+  IM                                IM                                 @relation(fields: [iMId], references: [id])
+  iMId                              String                             @unique
+  IMDCoordinator                    IMDCoordinator                     @relation(fields: [iMDCoordinatorId], references: [id])
+  iMDCoordinatorId                  String
+  IMDCoordinatorSuggestionItem      IMDCoordinatorSuggestionItem[]
+  SubmittedIMDCoordinatorSuggestion SubmittedIMDCoordinatorSuggestion?
+
+  @@index([iMDCoordinatorId])
+}
+
+model IMDCoordinatorSuggestionItem {
+  id                         String                   @id @default(cuid())
+  createdAt                  DateTime                 @default(now())
+  updatedAt                  DateTime                 @updatedAt
+  value                      String                   @db.Text
+  actionTaken                String?                  @db.Text
+  pageNumber                 Int
+  remarks                    String?                  @db.Text
+  IMDCoordinatorSuggestion   IMDCoordinatorSuggestion @relation(fields: [iMDCoordinatorSuggestionId], references: [id])
+  iMDCoordinatorSuggestionId String
+
+  @@index([iMDCoordinatorSuggestionId])
+}
+
+model SubmittedIMDCoordinatorSuggestion {
+  id                         String                     @id @default(cuid())
+  createdAt                  DateTime                   @default(now())
+  updatedAt                  DateTime                   @updatedAt
+  IMDCoordinatorSuggestion   IMDCoordinatorSuggestion   @relation(fields: [iMDCoordinatorSuggestionId], references: [id])
+  iMDCoordinatorSuggestionId String                     @unique
+  IMDCoordinatorEndorsement  IMDCoordinatorEndorsement?
+  Notification               Notification?
+}
+
+model IMDCoordinatorEndorsement {
+  id                                  String                            @id @default(cuid())
+  createdAt                           DateTime                          @default(now())
+  updatedAt                           DateTime                          @updatedAt
+  IM                                  IM                                @relation(fields: [iMId], references: [id])
+  iMId                                String                            @unique
+  IMDCoordinator                      IMDCoordinator                    @relation(fields: [iMDCoordinatorId], references: [id])
+  iMDCoordinatorId                    String
+  SubmittedIMDCoordinatorSuggestion   SubmittedIMDCoordinatorSuggestion @relation(fields: [submittedIMDCoordinatorSuggestionId], references: [id])
+  submittedIMDCoordinatorSuggestionId String                            @unique
+  CITLDirectorEndorsement             CITLDirectorEndorsement?
+  Notification                        Notification?
+
+  @@index([iMDCoordinatorId])
+}
+
+model CITLDirectorEndorsement {
+  id                          String                    @id @default(cuid())
+  createdAt                   DateTime                  @default(now())
+  updatedAt                   DateTime                  @updatedAt
+  CITLDirector                CITLDirector              @relation(fields: [cITLDirectorId], references: [id])
+  cITLDirectorId              String
+  IMDCoordinatorEndorsement   IMDCoordinatorEndorsement @relation(fields: [iMDCoordinatorEndorsementId], references: [id])
+  iMDCoordinatorEndorsementId String                    @unique
+  Notification                Notification?
+
+  @@index([cITLDirectorId])
 }

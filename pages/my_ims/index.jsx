@@ -94,21 +94,6 @@ export default function Home() {
               You are currently not an active faculty, please contact
               administrator.
             </p>
-            {/* <button className="items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-CITLDarkBlue rounded-lg ">
-            Read more
-            <svg
-              className="w-3 h-3 ml-2"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
-                clipRule="evenodd"
-              ></path>
-            </svg>
-          </button> */}
           </div>
           <img
             className=' md:w-2/12 sm:w-12/12 rounded-lg '
@@ -120,7 +105,7 @@ export default function Home() {
       {user?.ActiveFaculty && (
         <div className=' grid grid-flow-row items-center border border-CITLGray-lighter bg-CITLWhite m-2 mt-5 relative rounded-lg shadow-lg overflow-x-auto'>
           <div className=' bg-CITLGray-light py-3 px-3 pr-3'>
-            <div className='w-full justify-between grid grid-flow-col auto-cols-max'>
+            <div className='w-full  grid grid-flow-col '>
               <div>
                 <button
                   type='button'
@@ -132,13 +117,36 @@ export default function Home() {
                   <span>My IM&apos;s</span>
                 </button>
               </div>
-              <div className=' grid grid-flow-col auto-cols-max gap-2 px-2 '>
-                {/* <input
-                  onChange={debouncedHandleSerialNumberChange}
-                  className='bg-CITLGray-light w-32 border-CITLGray-lighter border text-CITLGray-main rounded-lg text-sm font-medium'
-                  type='text'
-                  placeholder='Serial Number'
-                ></input> */}
+              <Filter
+                filterOptions={[
+                  {
+                    value: "title",
+                    label: "Title",
+                  },
+                  {
+                    value: "authors",
+                    label: "Authors",
+                  },
+                  {
+                    value: "serialNumber",
+                    label: "Serial No.",
+                  },
+                  {
+                    value: "status",
+                    label: "Status",
+                    options: IMStatuses,
+                  },
+                  {
+                    value: "type",
+                    label: "Type",
+                    options: ["MODULE", "COURSE_FILE", "WORKTEXT", "TEXTBOOK"],
+                  },
+                ]}
+                onChange={(filter) =>
+                  setState((prev) => ({ ...prev, ...filter }))
+                }
+              />
+              <div className=' flex justify-end px-2 '>
                 <div className=''>
                   <button
                     data-modal-target='suggestion-modal'
@@ -170,43 +178,10 @@ export default function Home() {
               </div>{" "}
             </div>
           </div>
-          <Filter
-            filterOptions={[
-              {
-                value: "title",
-                label: "Title",
-              },
-              {
-                value: "authors",
-                label: "Authors",
-              },
-              {
-                value: "serialNumber",
-                label: "Serial No.",
-              },
-              {
-                value: "status",
-                label: "Status",
-                options: IMStatuses,
-              },
-              {
-                value: "type",
-                label: "Type",
-                options: ["MODULE", "COURSE_FILE", "WORKTEXT", "TEXTBOOK"],
-              },
-            ]}
-            onChange={(filter) => setState((prev) => ({ ...prev, ...filter }))}
-          />
 
           <table className='divide-y divide-CITLGray-light mb-2 '>
             <thead className='bg-CITLGray-light'>
               <tr>
-                {/* <th
-                  scope='col'
-                  className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
-                >
-                  Serial No.
-                </th> */}
                 <th
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
@@ -263,23 +238,7 @@ export default function Home() {
                     }
                   />
                 </th>
-                {/* <th
-                  scope='col'
-                  className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
-                >
-                  Owner
-                  <a href='#'>
-                    <svg
-                      xmlns='http://www.w3.org/2000/svg'
-                      className='w-2 h-3 inline-flex ml-1'
-                      aria-hidden='true'
-                      fill='currentColor'
-                      viewBox='0 0 320 512'
-                    >
-                      <path d='M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z' />
-                    </svg>
-                  </a>
-                </th> */}
+
                 <th
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
@@ -304,56 +263,31 @@ export default function Home() {
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
-                  Review/Suggestion
+                  Review
                 </th>
-                {/* 
-                <th
-                  scope='col'
-                  className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
-                >
-                  Reviewed As
-                  <a href='#'>
-                    <svg
-                      xmlns='http://www.w3.org/2000/svg'
-                      className='w-2 h-3 inline-flex ml-1'
-                      aria-hidden='true'
-                      fill='currentColor'
-                      viewBox='0 0 320 512'
-                    >
-                      <path d='M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z' />
-                    </svg>
-                  </a>
-                </th> */}
 
                 <th
                   scope='col'
-                  className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
+                  className='px-6 py-3 text-left w-42 text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
                   <SortButton
-                    label='Created At'
+                    label='Date'
                     sortOrder={
-                      state.sortColumn === "createdAt"
-                        ? state.sortOrder
-                        : undefined
+                      state.sortColumn === "date" ? state.sortOrder : undefined
                     }
                     setSortOrder={(order) =>
                       setState((prev) => ({
                         ...prev,
-                        sortColumn: "createdAt",
+                        sortColumn: "date",
                         sortOrder: order,
                       }))
                     }
                   />
                 </th>
-                {/* <th
-                  scope='col'
-                  className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
-                >
-                  Updated At
-                </th> */}
+
                 <th
                   scope='col'
-                  className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
+                  className='px-6 py-3 text-left w-48 text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
                   <SortButton
                     label='Serial No.'
@@ -442,7 +376,7 @@ export default function Home() {
                         im.SubmittedCoordinatorSuggestion
                       )}
                       bottomBorder={true}
-                      createdAt={im.createdAt}
+                      date={im.date}
                       originalFileName={im.originalFileName}
                       fileName={im.fileName}
                       id={im.id}

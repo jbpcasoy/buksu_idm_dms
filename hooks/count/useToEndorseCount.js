@@ -10,9 +10,8 @@ export default function useToEndorseCount() {
     if (!user || !user?.ActiveFaculty) return;
     let subscribe = true;
 
-    async function getToReview(filter) {
+    async function getToEndorse(filter) {
       return frontendGetIMs({
-        notOwnerId: user.ActiveFaculty.Faculty.id,
         departmentId: user.ActiveFaculty.Faculty.departmentId,
         coordinatorEndorsed: false,
         ...filter,
@@ -25,7 +24,7 @@ export default function useToEndorseCount() {
       status: "DEPARTMENT_REVIEWED",
     };
 
-    getToReview(filter).then((res) => {
+    getToEndorse(filter).then((res) => {
       if (!subscribe) return;
 
       setCount(res.total);

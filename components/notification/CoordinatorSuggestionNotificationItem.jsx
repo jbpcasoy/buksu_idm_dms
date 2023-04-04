@@ -4,6 +4,7 @@ import NotificationItemBase from "./NotificationItemBase";
 
 export default function CoordinatorSuggestionNotificationItem({
   notification,
+  refreshNotifications,
 }) {
   const {
     notification: notificationData,
@@ -17,6 +18,7 @@ export default function CoordinatorSuggestionNotificationItem({
 
   return (
     <NotificationItemBase
+      refreshNotifications={refreshNotifications}
       loading={notificationLoading}
       notificationId={notificationData?.id}
       href={`/im/${notificationData?.SubmittedCoordinatorSuggestion?.IM?.id}`}
@@ -32,14 +34,14 @@ export default function CoordinatorSuggestionNotificationItem({
             fill='none'
             className='w-3 h-3 text-white'
             stroke='currentColor'
-            stroke-width='1.5'
+            strokeWidth='1.5'
             viewBox='0 0 24 24'
             xmlns='http://www.w3.org/2000/svg'
             aria-hidden='true'
           >
             <path
-              stroke-linecap='round'
-              stroke-linejoin='round'
+              strokeLinecap='round'
+              strokeLinejoin='round'
               d='M4.5 12.75l6 6 9-13.5'
             ></path>
           </svg>
@@ -54,7 +56,7 @@ export default function CoordinatorSuggestionNotificationItem({
             ?.CoordinatorReview?.Coordinator?.Faculty?.user?.name
         }
       </span>
-      {` On IM: "${notificationData?.SubmittedCoordinatorSuggestion?.IM?.title}"`}
+      {` on IM: "${notificationData?.SubmittedCoordinatorSuggestion?.IM?.title}"`}
     </NotificationItemBase>
   );
 }

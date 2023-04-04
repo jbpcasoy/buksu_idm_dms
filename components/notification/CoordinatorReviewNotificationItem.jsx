@@ -2,7 +2,10 @@ import useNotification from "@/hooks/notification/useNotification";
 import { useEffect } from "react";
 import NotificationItemBase from "./NotificationItemBase";
 
-export default function CoordinatorReviewNotificationItem({ notification }) {
+export default function CoordinatorReviewNotificationItem({
+  notification,
+  refreshNotifications,
+}) {
   const {
     notification: notificationData,
     notificationError,
@@ -15,6 +18,7 @@ export default function CoordinatorReviewNotificationItem({ notification }) {
 
   return (
     <NotificationItemBase
+      refreshNotifications={refreshNotifications}
       loading={notificationLoading}
       notificationId={notificationData?.id}
       href={`/im/${notificationData?.SubmittedCoordinatorReview?.IM?.id}`}
@@ -29,14 +33,14 @@ export default function CoordinatorReviewNotificationItem({ notification }) {
             fill='none'
             className='w-3 h-3 text-white'
             stroke='currentColor'
-            stroke-width='1.5'
+            strokeWidth='1.5'
             viewBox='0 0 24 24'
             xmlns='http://www.w3.org/2000/svg'
             aria-hidden='true'
           >
             <path
-              stroke-linecap='round'
-              stroke-linejoin='round'
+              strokeLinecap='round'
+              strokeLinejoin='round'
               d='M4.5 12.75l6 6 9-13.5'
             ></path>
           </svg>
@@ -50,7 +54,7 @@ export default function CoordinatorReviewNotificationItem({ notification }) {
             ?.Coordinator?.Faculty?.user?.name
         }
       </span>
-      {` On IM: "${notificationData?.SubmittedCoordinatorReview?.IM?.title}"`}
+      {` on IM: "${notificationData?.SubmittedCoordinatorReview?.IM?.title}"`}
     </NotificationItemBase>
   );
 }

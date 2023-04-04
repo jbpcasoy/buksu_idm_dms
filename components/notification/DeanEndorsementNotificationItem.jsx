@@ -2,7 +2,10 @@ import useNotification from "@/hooks/notification/useNotification";
 import { useEffect } from "react";
 import NotificationItemBase from "./NotificationItemBase";
 
-export default function DeanEndorsementNotificationItem({ notification }) {
+export default function DeanEndorsementNotificationItem({
+  notification,
+  refreshNotifications,
+}) {
   const {
     notification: notificationData,
     notificationError,
@@ -15,6 +18,7 @@ export default function DeanEndorsementNotificationItem({ notification }) {
 
   return (
     <NotificationItemBase
+      refreshNotifications={refreshNotifications}
       loading={notificationLoading}
       notificationId={notificationData?.id}
       href={`/im/${notificationData?.DeanEndorsement?.CoordinatorEndorsement?.iMId}`}
@@ -39,7 +43,7 @@ export default function DeanEndorsementNotificationItem({ notification }) {
       <span className='font-semibold text-gray-900 dark:text-white'>
         {notificationData?.DeanEndorsement?.Dean?.Faculty?.user?.name}
       </span>
-      {` On IM: "${notificationData?.DeanEndorsement?.CoordinatorEndorsement?.IM?.title}"`}
+      {` on IM: "${notificationData?.DeanEndorsement?.CoordinatorEndorsement?.IM?.title}"`}
     </NotificationItemBase>
   );
 }

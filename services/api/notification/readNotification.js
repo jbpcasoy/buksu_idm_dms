@@ -165,6 +165,44 @@ export default async function readNotification(id) {
             },
           },
         },
+        SubmittedIMDCoordinatorSuggestion: {
+          include: {
+            IMDCoordinatorSuggestion: {
+              include: {
+                IM: true,
+                IMDCoordinator: {
+                  include: {
+                    User: true,
+                  },
+                },
+              },
+            },
+          },
+        },
+        IMDCoordinatorEndorsement: {
+          include: {
+            IM: true,
+            IMDCoordinator: {
+              include: {
+                User: true,
+              },
+            },
+          },
+        },
+        CITLDirectorEndorsement: {
+          include: {
+            IMDCoordinatorEndorsement: {
+              include: {
+                IM: true,
+                IMDCoordinator: {
+                  include: {
+                    User: true,
+                  },
+                },
+              },
+            },
+          },
+        },
       },
     });
     return notification;
