@@ -1,6 +1,7 @@
 import AdminLayout from "@/components/admin/AdminLayout";
 import AdminChairpersonSuggestion from "@/components/admin/suggestion/AdminChairpersonSuggestion";
 import AdminCoordinatorSuggestion from "@/components/admin/suggestion/AdminCoordinatorSuggestion";
+import AdminIMDCoordinatorSuggestion from "@/components/admin/suggestion/AdminIMDCoordinatorSuggestion";
 import AdminPeerSuggestion from "@/components/admin/suggestion/AdminPeerSuggestion";
 import useIM from "@/hooks/useIM";
 import { Alert, AlertTitle, Box, Grid, Toolbar } from "@mui/material";
@@ -9,6 +10,7 @@ import { useRouter } from "next/router";
 export default function AdminIMViewPage() {
   const router = useRouter();
   const { iM, iMError, iMLoading } = useIM(router?.query?.id);
+
   return (
     <AdminLayout>
       <Grid container>
@@ -48,6 +50,17 @@ export default function AdminIMViewPage() {
             {!iM?.SubmittedCoordinatorReview?.CoordinatorReview && (
               <Alert severity='info'>
                 <AlertTitle>No Coordinator Suggestion</AlertTitle>
+                There are no coordinator suggestions yet.
+              </Alert>
+            )}
+            {iM?.IMDCoordinatorSuggestion
+              ?.SubmittedIMDCoordinatorSuggestion && (
+              <AdminIMDCoordinatorSuggestion iMId={iM?.id} />
+            )}
+            {!iM?.IMDCoordinatorSuggestion
+              ?.SubmittedIMDCoordinatorSuggestion && (
+              <Alert severity='info'>
+                <AlertTitle>No IMD Coordinator Suggestion</AlertTitle>
                 There are no coordinator suggestions yet.
               </Alert>
             )}
