@@ -106,6 +106,7 @@ model IM {
   CoordinatorEndorsement         CoordinatorEndorsement?
   IMDCoordinatorSuggestion       IMDCoordinatorSuggestion?
   IMDCoordinatorEndorsement      IMDCoordinatorEndorsement?
+  IMEvent                        IMEvent[]
 
   @@index([ownerId])
 }
@@ -120,6 +121,7 @@ model File {
   iMId             String
   googleDocsUrl    String?
   ActiveFile       ActiveFile?
+  IMEvent          IMEvent[]
 
   @@index([iMId])
 }
@@ -396,6 +398,7 @@ model SubmittedPeerReview {
   peerReviewId   String          @unique
   PeerSuggestion PeerSuggestion?
   Notification   Notification?
+  IMEvent        IMEvent[]
 }
 
 model ChairpersonReview {
@@ -437,6 +440,7 @@ model SubmittedChairpersonReview {
   chairpersonReviewId   String                 @unique
   ChairpersonSuggestion ChairpersonSuggestion?
   Notification          Notification?
+  IMEvent               IMEvent[]
 }
 
 model CoordinatorReview {
@@ -478,6 +482,7 @@ model SubmittedCoordinatorReview {
   coordinatorReviewId   String                 @unique
   CoordinatorSuggestion CoordinatorSuggestion?
   Notification          Notification?
+  IMEvent               IMEvent[]
 }
 
 model PeerSuggestion {
@@ -644,6 +649,7 @@ model SubmittedPeerSuggestion {
   IM               IM             @relation(fields: [iMId], references: [id])
   iMId             String         @unique
   Notification     Notification?
+  IMEvent          IMEvent[]
 }
 
 model SubmittedCoordinatorSuggestion {
@@ -655,6 +661,7 @@ model SubmittedCoordinatorSuggestion {
   IM                      IM                    @relation(fields: [iMId], references: [id])
   iMId                    String                @unique
   Notification            Notification?
+  IMEvent                 IMEvent[]
 }
 
 model SubmittedChairpersonSuggestion {
@@ -678,6 +685,7 @@ model CoordinatorEndorsement {
   coordinatorId   String
   DeanEndorsement DeanEndorsement?
   Notification    Notification?
+  IMEvent         IMEvent[]
 
   @@index([coordinatorId])
 }
@@ -691,6 +699,7 @@ model DeanEndorsement {
   CoordinatorEndorsement   CoordinatorEndorsement @relation(fields: [coordinatorEndorsementId], references: [id])
   coordinatorEndorsementId String                 @unique
   Notification             Notification?
+  IMEvent                  IMEvent[]
 
   @@index([deanId])
 }
@@ -794,6 +803,7 @@ model SubmittedIMDCoordinatorSuggestion {
   iMDCoordinatorSuggestionId String                     @unique
   IMDCoordinatorEndorsement  IMDCoordinatorEndorsement?
   Notification               Notification?
+  IMEvent                    IMEvent[]
 }
 
 model IMDCoordinatorEndorsement {
@@ -808,6 +818,7 @@ model IMDCoordinatorEndorsement {
   submittedIMDCoordinatorSuggestionId String                            @unique
   CITLDirectorEndorsement             CITLDirectorEndorsement?
   Notification                        Notification?
+  IMEvent                             IMEvent[]
 
   @@index([iMDCoordinatorId])
 }
@@ -821,6 +832,68 @@ model CITLDirectorEndorsement {
   IMDCoordinatorEndorsement   IMDCoordinatorEndorsement @relation(fields: [iMDCoordinatorEndorsementId], references: [id])
   iMDCoordinatorEndorsementId String                    @unique
   Notification                Notification?
+  IMEvent                     IMEvent[]
 
   @@index([cITLDirectorId])
+}
+
+enum IMEventType {
+  IM_CREATED
+  IM_UPDATED
+  NEW_VERSION
+  SUBMITTED_PEER_REVIEW
+  SUBMITTED_PEER_SUGGESTION
+  SUBMITTED_COORDINATOR_REVIEW
+  SUBMITTED_COORDINATOR_SUGGESTION
+  SUBMITTED_CHAIRPERSON_REVIEW
+  SUBMITTED_CHAIRPERSON_SUGGESTION
+  SUBMITTED_COORDINATOR_ENDORSEMENT
+  DEAN_ENDORSEMENT
+  SUBMITTED_IMD_COORDINATOR_SUGGESTION
+  IMD_COORDINATOR_ENDORSEMENT
+  CITL_DIRECTOR_ENDORSEMENT
+}
+
+model IMEvent {
+  id                                  String                             @id @default(cuid())
+  createdAt                           DateTime                           @default(now())
+  updatedAt                           DateTime                           @updatedAt
+  IMEventType                         IMEventType
+  IM                                  IM?                                @relation(fields: [iMId], references: [id])
+  iMId                                String?
+  File                                File?                              @relation(fields: [fileId], references: [id])
+  fileId                              String?
+  SubmittedPeerReview                 SubmittedPeerReview?               @relation(fields: [submittedPeerReviewId], references: [id])
+  submittedPeerReviewId               String?
+  SubmittedPeerSuggestion             SubmittedPeerSuggestion?           @relation(fields: [submittedPeerSuggestionId], references: [id])
+  submittedPeerSuggestionId           String?
+  SubmittedCoordinatorReview          SubmittedCoordinatorReview?        @relation(fields: [submittedCoordinatorReviewId], references: [id])
+  submittedCoordinatorReviewId        String?
+  SubmittedCoordinatorSuggestion      SubmittedCoordinatorSuggestion?    @relation(fields: [submittedCoordinatorSuggestionId], references: [id])
+  submittedCoordinatorSuggestionId    String?
+  SubmittedChairpersonReview          SubmittedChairpersonReview?        @relation(fields: [submittedChairpersonReviewId], references: [id])
+  submittedChairpersonReviewId        String?
+  CoordinatorEndorsement              CoordinatorEndorsement?            @relation(fields: [coordinatorEndorsementId], references: [id])
+  coordinatorEndorsementId            String?
+  DeanEndorsement                     DeanEndorsement?                   @relation(fields: [deanEndorsementId], references: [id])
+  deanEndorsementId                   String?
+  SubmittedIMDCoordinatorSuggestion   SubmittedIMDCoordinatorSuggestion? @relation(fields: [submittedIMDCoordinatorSuggestionId], references: [id])
+  submittedIMDCoordinatorSuggestionId String?
+  IMDCoordinatorEndorsement           IMDCoordinatorEndorsement?         @relation(fields: [iMDCoordinatorEndorsementId], references: [id])
+  iMDCoordinatorEndorsementId         String?
+  CITLDirectorEndorsement             CITLDirectorEndorsement?           @relation(fields: [cITLDirectorEndorsementId], references: [id])
+  cITLDirectorEndorsementId           String?
+
+  @@index([iMId])
+  @@index([fileId])
+  @@index([submittedPeerReviewId])
+  @@index([submittedPeerSuggestionId])
+  @@index([submittedCoordinatorReviewId])
+  @@index([submittedCoordinatorSuggestionId])
+  @@index([submittedChairpersonReviewId])
+  @@index([coordinatorEndorsementId])
+  @@index([deanEndorsementId])
+  @@index([iMDCoordinatorEndorsementId])
+  @@index([submittedIMDCoordinatorSuggestionId])
+  @@index([cITLDirectorEndorsementId])
 }
