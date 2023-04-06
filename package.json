@@ -6,7 +6,7 @@
     "seed": "node prisma/seed.js"
   },
   "scripts": {
-    "dev": "npm run setup && next dev",
+    "dev": "npm run setup && next lint && next dev",
     "build": "npm run setup && next build",
     "start": "next start",
     "lint": "npm run setup && next lint",
