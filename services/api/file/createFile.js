@@ -17,6 +17,11 @@ export default async function createFile({
         fileName,
         iMId,
         googleDocsUrl,
+        IMEvent: {
+          create: {
+            IMEventType: "NEW_VERSION",
+          },
+        },
       },
     });
     return file;

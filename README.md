@@ -61,6 +61,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 - [Prisma](https://www.prisma.io) - Database ORM
 - [Postgres](https://www.postgresql.org/) - Database
 - [NextAuth](https://next-auth.js.org/) - Authentication
+- [CASL] (https://casl.js.org/v6/en) - Role Based Access Control
 
 ## Environment Variables (.env)
 

@@ -295,10 +295,6 @@ export default function Home() {
                     <div className='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
                   </td>
 
-                  {/* <td className='px-6 py-4 '>
-        {moment(updatedAt).format("M/D/YYYY, h:mm A")}
-      </td> */}
-
                   <td className='bg-white  font-medium text-slate-400  items-center justify-center px-6 py-4 '>
                     <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
                   </td>
@@ -341,6 +337,7 @@ export default function Home() {
                       status={im.status}
                       title={im.title}
                       updatedAt={im.updatedAt}
+                      createdAt={im.createdAt}
                       onView={() => router.push(`/im/${im.id}`)}
                       owner={im.owner.user.name}
                       type={im.type}

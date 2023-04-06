@@ -31,6 +31,11 @@ export default async function createSubmittedCoordinatorSuggestion({
               Type: "SUBMITTED_COORDINATOR_SUGGESTION",
             },
           },
+          IMEvent: {
+            create: {
+              IMEventType: "SUBMITTED_COORDINATOR_SUGGESTION",
+            },
+          },
         },
       });
 
