@@ -383,6 +383,7 @@ export default function Home() {
                       status={im.status}
                       title={im.title}
                       updatedAt={im.updatedAt}
+                      createdAt={im.createdAt}
                       onView={() => router.push(`/im/${im.id}`)}
                       owner={im.owner.user.name}
                       type={im.type}

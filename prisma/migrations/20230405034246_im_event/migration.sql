@@ -1,0 +1,33 @@
+-- CreateTable
+CREATE TABLE `IMEvent` (
+    `id` VARCHAR(191) NOT NULL,
+    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `updatedAt` DATETIME(3) NOT NULL,
+    `IMEventType` ENUM('IM_CREATED', 'IM_UPDATED', 'NEW_VERSION', 'SUBMITTED_PEER_REVIEW', 'SUBMITTED_PEER_SUGGESTION', 'SUBMITTED_COORDINATOR_REVIEW', 'SUBMITTED_COORDINATOR_SUGGESTION', 'SUBMITTED_CHAIRPERSON_REVIEW', 'SUBMITTED_CHAIRPERSON_SUGGESTION', 'SUBMITTED_COORDINATOR_ENDORSEMENT', 'DEAN_ENDORSEMENT', 'SUBMITTED_IMD_COORDINATOR_SUGGESTION', 'IMD_COORDINATOR_ENDORSEMENT', 'CITL_DIRECTOR_ENDORSEMENT') NOT NULL,
+    `iMId` VARCHAR(191) NULL,
+    `fileId` VARCHAR(191) NULL,
+    `submittedPeerReviewId` VARCHAR(191) NULL,
+    `submittedPeerSuggestionId` VARCHAR(191) NULL,
+    `submittedCoordinatorReviewId` VARCHAR(191) NULL,
+    `submittedCoordinatorSuggestionId` VARCHAR(191) NULL,
+    `submittedChairpersonReviewId` VARCHAR(191) NULL,
+    `coordinatorEndorsementId` VARCHAR(191) NULL,
+    `deanEndorsementId` VARCHAR(191) NULL,
+    `submittedIMDCoordinatorSuggestionId` VARCHAR(191) NULL,
+    `iMDCoordinatorEndorsementId` VARCHAR(191) NULL,
+    `cITLDirectorEndorsementId` VARCHAR(191) NULL,
+
+    INDEX `IMEvent_iMId_idx`(`iMId`),
+    INDEX `IMEvent_fileId_idx`(`fileId`),
+    INDEX `IMEvent_submittedPeerReviewId_idx`(`submittedPeerReviewId`),
+    INDEX `IMEvent_submittedPeerSuggestionId_idx`(`submittedPeerSuggestionId`),
+    INDEX `IMEvent_submittedCoordinatorReviewId_idx`(`submittedCoordinatorReviewId`),
+    INDEX `IMEvent_submittedCoordinatorSuggestionId_idx`(`submittedCoordinatorSuggestionId`),
+    INDEX `IMEvent_submittedChairpersonReviewId_idx`(`submittedChairpersonReviewId`),
+    INDEX `IMEvent_coordinatorEndorsementId_idx`(`coordinatorEndorsementId`),
+    INDEX `IMEvent_deanEndorsementId_idx`(`deanEndorsementId`),
+    INDEX `IMEvent_iMDCoordinatorEndorsementId_idx`(`iMDCoordinatorEndorsementId`),
+    INDEX `IMEvent_submittedIMDCoordinatorSuggestionId_idx`(`submittedIMDCoordinatorSuggestionId`),
+    INDEX `IMEvent_cITLDirectorEndorsementId_idx`(`cITLDirectorEndorsementId`),
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;

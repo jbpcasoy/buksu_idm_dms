@@ -18,6 +18,11 @@ export default async function createSubmittedCoordinatorReview({
             Type: "SUBMITTED_COORDINATOR_REVIEW",
           },
         },
+        IMEvent: {
+          create: {
+            IMEventType: "SUBMITTED_COORDINATOR_REVIEW",
+          },
+        },
       },
     });
 
