@@ -15,7 +15,7 @@ export default function useCITLToConfirmCount() {
         ...filter,
         iMDCoordinatorEndorsed: true,
         CITLDirectorEndorsed: false,
-        status: "CITL_REVIEWED",
+        status: "CITL_REVISED",
       });
     }
 

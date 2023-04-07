@@ -40,7 +40,7 @@ export default function Home() {
         ...filter,
         iMDCoordinatorEndorsed: true,
         CITLDirectorEndorsed: false,
-        status: "CITL_REVIEWED",
+        status: "CITL_REVISED",
       });
     }
 

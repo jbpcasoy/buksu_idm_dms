@@ -10,7 +10,7 @@ export default async function createCoordinatorEndorsement({
 
   try {
     const iM = await readIM(iMId, {
-      status: "DEPARTMENT_REVIEWED",
+      status: "DEPARTMENT_REVISED",
     });
     const coordinator = await readCoordinator(coordinatorId);
 

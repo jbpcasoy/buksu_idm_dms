@@ -21,7 +21,7 @@ export default function useToEndorseCount() {
     const filter = {
       page: 1,
       limit: 1,
-      status: "DEPARTMENT_REVIEWED",
+      status: "DEPARTMENT_REVISED",
     };
 
     getToEndorse(filter).then((res) => {

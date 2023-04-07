@@ -39,7 +39,7 @@ export default function Home() {
       return frontendGetIMs({
         ...filter,
         departmentId: user.ActiveFaculty.Faculty.departmentId,
-        status: "DEPARTMENT_REVIEWED",
+        status: "DEPARTMENT_REVISED",
         coordinatorEndorsed: true,
         deanEndorsed: false,
       });
