@@ -14,6 +14,7 @@ export default function useToReviseCount() {
       return frontendGetIMs({
         ownerId: user.ActiveFaculty.Faculty.id,
         departmentId: user.ActiveFaculty.Faculty.departmentId,
+        toRevise: true,
         ...filter,
       });
     }
@@ -21,7 +22,6 @@ export default function useToReviseCount() {
     const filter = {
       page: 1,
       limit: 1,
-      status: "DEPARTMENT_REVIEWED",
     };
 
     getToRevise(filter).then((res) => {

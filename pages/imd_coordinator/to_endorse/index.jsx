@@ -39,7 +39,7 @@ export default function Home() {
       return frontendGetIMs({
         ...filter,
         iMDCoordinatorEndorsed: false,
-        status: "CITL_REVIEWED",
+        status: "CITL_REVISED",
       });
     }
 

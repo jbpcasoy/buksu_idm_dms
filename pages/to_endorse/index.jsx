@@ -40,7 +40,7 @@ export default function Home() {
         ...filter,
         departmentId: user.ActiveFaculty.Faculty.departmentId,
         coordinatorEndorsed: false,
-        status: "DEPARTMENT_REVIEWED",
+        status: "DEPARTMENT_REVISED",
       });
     }
 
