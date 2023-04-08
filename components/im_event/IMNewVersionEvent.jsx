@@ -28,7 +28,7 @@ export default function IMNewVersionEvent({ iMEvent }) {
         {moment(iMEvent.createdAt).format("LLL")}
       </time>
       <p className='mb-4 text-sm font-normal text-gray-500 dark:text-gray-400'>
-        You uploaded a new version{" "}
+        New version was uploaded for{" "}
         <span className='font-semibold text-green-400'>
           &quot;{iMEvent?.File?.originalFileName}&quot;
         </span>{" "}

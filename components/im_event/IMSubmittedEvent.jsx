@@ -28,11 +28,11 @@ export default function IMSubmittedEvent({ iMEvent }) {
         {moment(iMEvent.createdAt).format("LLL")}
       </time>
       <p className='mb-4 text-sm font-normal text-gray-500 dark:text-gray-400'>
-        You submitted IM{" "}
+        IM{" "}
         <span className='font-semibold text-green-400'>
           &quot;{iMEvent?.IM?.title}&quot;
         </span>{" "}
-        for review.
+        was submitted for review.
       </p>
 
       <a
