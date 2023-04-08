@@ -1,6 +1,7 @@
 import Layout from "@/components/layout/Layout";
 import useFile from "@/hooks/file/useFile";
 import useIM from "@/hooks/useIM";
+import moment from "moment";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -15,10 +16,39 @@ export default function IMVersion() {
       <div className='bg-white rounded-md p-4'>
         <div className='flex items-center justify-between mb-4'>
           <div>
-            <h2 className='text-lg font-medium'>{iM?.title}</h2>
-            <h2 className='text-xs  text-CITLGray-main'>
-              Type: <span className='text-xs font-medium '>{iM?.type}</span>
-            </h2>
+            <div>
+              <span className='text-lg font-medium'>{iM?.title} | </span>
+              <span>{file?.id}</span>
+            </div>
+            <div className='lg:flex sm:flex-rows-2 gap-3'>
+              <h2 className='text-xs  text-CITLGray-main'>
+                Filename:{" "}
+                <span className='text-xs font-medium '>
+                  {file?.originalFileName}
+                </span>
+              </h2>
+              <h2 className='text-xs  text-CITLGray-main'>
+                Type: <span className='text-xs font-medium '>{iM?.type}</span>
+              </h2>
+            </div>
+            <div className='flex flex-cols mt-3'>
+              <Link href={`/profile/${iM?.owner?.user?.id}`}>
+                <img
+                  src={iM?.owner?.user?.image}
+                  className='h-8 rounded-full sm:h-8'
+                  alt='owner'
+                ></img>
+              </Link>
+              <div className=''>
+                <h2 className='text-xs font-semibold text-CITLGray-main pl-3 -mb-1'>
+                  {iM?.owner?.user?.name}
+                </h2>
+                <time className='text-xs text-CITLGray-main pl-3 '>
+                  {iM?.createdAt &&
+                    moment(file?.createdAt).format("MMMM D, YYYY | h:mm A")}
+                </time>
+              </div>
+            </div>
           </div>
           <div className='items-left'>
             <Link

@@ -28,7 +28,7 @@ export default function IMCreatedEvent({ iMEvent }) {
         {moment(iMEvent.createdAt).format("LLL")}
       </time>
       <p className='mb-4 text-sm font-normal text-gray-500 dark:text-gray-400'>
-        You uploaded an IM{" "}
+        Uploaded an IM{" "}
         <span className='font-semibold text-green-400'>
           &quot;{iMEvent?.IM?.title}&quot;
         </span>{" "}

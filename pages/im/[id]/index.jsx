@@ -221,25 +221,28 @@ export default function ViewIM() {
                       </div>
                     </button>
                   )}
-                <li>
-                  <Link
-                    href={`/im/${iM?.id}/versions`}
-                    className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
-                  >
-                    View Versions
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href={`/im/${iM?.id}/track`}
-                    className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
-                  >
-                    Track
-                  </Link>
-                </li>
+                {user?.ActiveFaculty?.facultyId === iM?.ownerId && (
+                  <li>
+                    <Link
+                      href={`/im/${iM?.id}/versions`}
+                      className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
+                    >
+                      View Versions
+                    </Link>
+                  </li>
+                )}
+                {user?.ActiveFaculty?.facultyId === iM?.ownerId && (
+                  <li>
+                    <Link
+                      href={`/im/${iM?.id}/track`}
+                      className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
+                    >
+                      Track
+                    </Link>
+                  </li>
+                )}
                 <li>
                   {user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId &&
-                    iM?.status === "SUBMITTED" &&
                     user?.ActiveFaculty?.Faculty?.departmentId ===
                       iM?.owner?.departmentId && (
                       <button
@@ -268,7 +271,7 @@ export default function ViewIM() {
                 <li>
                   {(user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId ||
                     user?.ActiveFaculty?.ActiveCoordinator) &&
-                    iM?.status === "SUBMITTED" &&
+                    user?.ActiveFaculty?.ActiveCoordinator &&
                     user?.ActiveFaculty?.Faculty?.departmentId ===
                       iM?.owner?.departmentId && (
                       <button
@@ -303,7 +306,7 @@ export default function ViewIM() {
                 <li>
                   {(user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId ||
                     user?.ActiveFaculty?.ActiveChairperson) &&
-                    iM?.status === "SUBMITTED" &&
+                    user?.ActiveFaculty?.ActiveChairperson &&
                     user?.ActiveFaculty?.Faculty?.departmentId ===
                       iM?.owner?.departmentId && (
                       <button

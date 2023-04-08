@@ -25,7 +25,7 @@ export default function IMIMDCoordinatorEndorsementEvent({ iMEvent }) {
         {moment(iMEvent.createdAt).format("LLL")}
       </time>
       <p className='mb-4 text-sm font-normal text-gray-500 dark:text-gray-400'>
-        Your IM{" "}
+        IM{" "}
         <span className='font-semibold text-green-400'>
           &quot;{iMEvent?.IMDCoordinatorEndorsement?.IM?.title}&quot;
         </span>{" "}
