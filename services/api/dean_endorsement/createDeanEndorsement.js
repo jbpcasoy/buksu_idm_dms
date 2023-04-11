@@ -38,6 +38,11 @@ export default async function createDeanEndorsement({
             Type: "DEAN_ENDORSEMENT",
           },
         },
+        IMEvent: {
+          create: {
+            IMEventType: "DEAN_ENDORSEMENT",
+          },
+        },
       },
     });
 

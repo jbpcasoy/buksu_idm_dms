@@ -8,6 +8,15 @@ export default async function readFaculty(id) {
       where: {
         id,
       },
+      include: {
+        user: true,
+        ActiveFaculty: true,
+        department: {
+          include: {
+            college: true,
+          },
+        },
+      },
     });
 
     return faculty;

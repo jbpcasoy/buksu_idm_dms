@@ -1,6 +1,6 @@
 import Layout from "@/components/layout/Layout";
 import SortButton from "@/components/SortButton";
-import frontendReadActiveFaculty from "@/services/frontend/admin/active_faculty/frontendReadActiveFaculty";
+import frontendReadActiveFaculties from "@/services/frontend/admin/active_faculty/frontendReadActiveFaculties";
 import frontendReadDepartment from "@/services/frontend/department/frontendReadDepartment";
 import Faculty from "@/views/Faculty";
 import _ from "lodash";
@@ -42,7 +42,7 @@ export default function DepartmentPage() {
     if (!department) return;
     let subscribe = true;
 
-    frontendReadActiveFaculty({
+    frontendReadActiveFaculties({
       limit: state.limit,
       page: state.page,
       departmentId: department.id,

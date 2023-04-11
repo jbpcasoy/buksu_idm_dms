@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export default async function frontendReadActiveFaculty({
+export default async function frontendReadActiveFaculties({
   limit,
   page,
   name,

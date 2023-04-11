@@ -24,6 +24,11 @@ export default async function createSubmittedPeerReview({ peerReviewId }) {
             Type: "SUBMITTED_PEER_REVIEW",
           },
         },
+        IMEvent: {
+          create: {
+            IMEventType: "SUBMITTED_PEER_REVIEW",
+          },
+        },
       },
     });
     return submittedPeerReview;

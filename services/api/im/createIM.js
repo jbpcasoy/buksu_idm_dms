@@ -23,6 +23,11 @@ export default async function createIM({
           },
         },
         type,
+        IMEvent: {
+          create: {
+            IMEventType: "IM_CREATED",
+          },
+        },
       },
     });
     return im;
