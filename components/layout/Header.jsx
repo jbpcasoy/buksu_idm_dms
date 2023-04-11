@@ -12,7 +12,7 @@ export default function Header() {
   });
 
   return (
-    <nav className='fixed top-0 z-50 w-full bg-CITLDarkBlue border-b border-CITLGray-main'>
+    <nav className='fixed top-0 z-70 w-full bg-CITLDarkBlue border-b border-CITLGray-main'>
       <div className='px-2 py-3 lg:px-5 lg:pl-3'>
         <div className='flex items-center justify-between'>
           <div className='flex items-center justify-start'>
@@ -39,7 +39,7 @@ export default function Header() {
                 ></path>
               </svg>
             </button>
-            <Link href='/' className='flex ml-2 md:mr-24'>
+            <Link href='/' className='flex ml-1 md:mr-24'>
               <img
                 src='/IMAGES/Logo.png'
                 className='h-8 sm:h-10'
@@ -49,7 +49,7 @@ export default function Header() {
           </div>
 
           <div className='flex items-center'>
-            <div className='flex items-center mr-3 gap-3'>
+            <div className='flex items-center ml-1  gap-3'>
               <Notifications />
 
               <div>

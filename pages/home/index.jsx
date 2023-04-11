@@ -1,4 +1,5 @@
 import Layout from "@/components/layout/Layout";
+import ContactModal from "../ContactModal";
 
 export default function index() {
   return (
@@ -7,7 +8,7 @@ export default function index() {
         <div className='p-4 '>
           <div className='mt-12 lg:mt-20'>
             <section className=" dark:bg-gray-900 bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')] dark:bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern-dark.svg')] ">
-              <div className='py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 z-0 relative'>
+              <div className='py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 z-50 relative'>
                 <h1 className='mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white'>
                   Educate. Innovate. Lead.
                 </h1>
@@ -15,46 +16,7 @@ export default function index() {
                   BukSUIMD the official Document Management System of the Center
                   for Innovative Teaching and Learning.
                 </p>
-                <div
-                  id='alert-2'
-                  className='inline-flex items-center p-4 mb-4 text-orange-400 rounded-lg bg-orange-100 dark:bg-gray-800 dark:text-red-400'
-                  role='alert'
-                >
-                  <svg
-                    xmlns='http://www.w3.org/2000/svg'
-                    width='32'
-                    className='flex-shrink-0'
-                    height='32'
-                    viewBox='0 0 24 24'
-                    fill='none'
-                  >
-                    <path
-                      d='M12 9v5M12 21.41H5.94c-3.47 0-4.92-2.48-3.24-5.51l3.12-5.62L8.76 5c1.78-3.21 4.7-3.21 6.48 0l2.94 5.29 3.12 5.62c1.68 3.03.22 5.51-3.24 5.51H12v-.01Z'
-                      stroke='#FF8A65'
-                      stroke-width='1.5'
-                      stroke-linecap='round'
-                      stroke-linejoin='round'
-                    ></path>
-                    <path
-                      d='M11.995 17h.009'
-                      stroke='#FF8A65'
-                      stroke-width='2'
-                      stroke-linecap='round'
-                      stroke-linejoin='round'
-                    ></path>
-                  </svg>
-
-                  <div className='ml-3 text-sm font-medium'>
-                    Your account is not yet added as faculty. Please{" "}
-                    <a
-                      href='#'
-                      className='font-medium underline hover:no-underline'
-                    >
-                      contact
-                    </a>{" "}
-                    the administrator for activation.
-                  </div>
-                </div>
+                <ContactModal />
               </div>
               {/* <div className='bg-gradient-to-b from-gray-300 to-transparent dark:from-blue-900 w-full h-full absolute top-0 left-0 z-0'></div> */}
             </section>
@@ -135,7 +97,7 @@ export default function index() {
                   Tutorial
                 </a>
                 <h2 className='text-gray-900 dark:text-white text-3xl font-extrabold mb-2'>
-                  Don't know how to track your IMs?
+                  Don&apos;t know how to track your IMs?
                 </h2>
                 <p className='text-lg font-normal text-gray-500 dark:text-gray-400 mb-4'>
                   Static websites are now used to bootstrap lots of websites and
