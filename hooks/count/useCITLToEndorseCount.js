@@ -13,7 +13,7 @@ export default function useCITLToEndorseCount() {
     async function getToReview(filter) {
       return frontendGetIMs({
         ...filter,
-        status: "CITL_REVIEWED",
+        status: "CITL_REVISED",
         iMDCoordinatorEndorsed: false,
       });
     }

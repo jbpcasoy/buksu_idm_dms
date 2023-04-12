@@ -30,6 +30,11 @@ export default async function createCITLDirectorEndorsement({
               Type: "CITL_DIRECTOR_ENDORSEMENT",
             },
           },
+          IMEvent: {
+            create: {
+              IMEventType: "CITL_DIRECTOR_ENDORSEMENT",
+            },
+          },
         },
       }
     );

@@ -40,7 +40,7 @@ export default function Home() {
         ...filter,
         departmentId: user.ActiveFaculty.Faculty.departmentId,
         coordinatorEndorsed: false,
-        status: "DEPARTMENT_REVIEWED",
+        status: "DEPARTMENT_REVISED",
       });
     }
 
@@ -320,6 +320,7 @@ export default function Home() {
                       status={im.status}
                       title={im.title}
                       updatedAt={im.updatedAt}
+                      createdAt={im.createdAt}
                       onView={() => router.push(`/im/${im.id}`)}
                       owner={im.owner.user.name}
                       type={im.type}

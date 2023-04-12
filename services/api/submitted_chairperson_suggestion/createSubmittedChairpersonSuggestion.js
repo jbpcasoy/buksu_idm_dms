@@ -31,6 +31,11 @@ export default async function createSubmittedChairpersonSuggestion({
               Type: "SUBMITTED_CHAIRPERSON_SUGGESTION",
             },
           },
+          IMEvent: {
+            create: {
+              IMEventType: "SUBMITTED_CHAIRPERSON_SUGGESTION",
+            },
+          },
         },
       });
 

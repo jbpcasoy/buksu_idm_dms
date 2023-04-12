@@ -53,6 +53,8 @@ export default function CoordinatorSuggestion({
   async function handleSubmitSuggestion() {
     return frontendCreateSubmittedCoordinatorSuggestion({
       coordinatorSuggestionId: coordinatorSuggestion.id,
+    }).catch((err) => {
+      console.error(err);
     });
   }
 

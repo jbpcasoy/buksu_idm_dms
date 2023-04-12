@@ -29,6 +29,11 @@ export default async function createSubmittedPeerSuggestion({
               Type: "SUBMITTED_PEER_SUGGESTION",
             },
           },
+          IMEvent: {
+            create: {
+              IMEventType: "SUBMITTED_PEER_SUGGESTION",
+            },
+          },
         },
       }
     );

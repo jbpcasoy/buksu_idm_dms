@@ -48,6 +48,8 @@ export default function IMDCoordinatorSuggestion({
   async function handleSubmitSuggestion() {
     return frontendCreateSubmittedIMDCoordinatorSuggestion({
       iMDCoordinatorSuggestionId: iMDCoordinatorSuggestion.id,
+    }).catch((err) => {
+      console.error(err);
     });
   }
 

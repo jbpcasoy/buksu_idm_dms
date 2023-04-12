@@ -37,6 +37,11 @@ export default async function createIMDCoordinatorEndorsement({
               Type: "IMD_COORDINATOR_ENDORSEMENT",
             },
           },
+          IMEvent: {
+            create: {
+              IMEventType: "IMD_COORDINATOR_ENDORSEMENT",
+            },
+          },
         },
       });
 

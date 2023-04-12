@@ -1,4 +1,4 @@
-import frontendReadActiveFaculty from "@/services/frontend/admin/active_faculty/frontendReadActiveFaculty";
+import frontendReadActiveFaculties from "@/services/frontend/admin/active_faculty/frontendReadActiveFaculties";
 import {
   Autocomplete,
   Avatar,
@@ -16,7 +16,7 @@ export default function ActiveFacultySelectField({ onChange, ...props }) {
   useEffect(() => {
     console.log({ input });
 
-    frontendReadActiveFaculty({
+    frontendReadActiveFaculties({
       limit: 10,
       page: 1,
       name: input,
