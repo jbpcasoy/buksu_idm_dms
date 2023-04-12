@@ -110,7 +110,7 @@ export default function DepartmentPage() {
             </p>
           </div> */}
 
-          <div className='flex flex-wrap items-center border border-CITLGray-lighter bg-CITLWhite m-2 mt-5 relative rounded-lg shadow-lg overflow-hidden'>
+          <div className='grid grid-flow-row items-center border border-CITLGray-lighter bg-CITLWhite m-2 mt-5 relative rounded-lg shadow-lg overflow-x-auto'>
             <div className='flex items-center bg-CITLGray-light justify-between py-3 px-3 w-full'>
               {/* 1. if nav IS active (text-CITLDarkBlue border-b-2 border-CITLOrange) if nav is NOT active (text-CITLGray-main)
                 2. if nav IS active Badge should be active as well. Otherwise, it should be hidden.

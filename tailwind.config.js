@@ -26,6 +26,10 @@ module.exports = {
         },
         // "CITLGray-lighter": "#606772",
       },
+      zIndex: {
+        60: "60",
+        70: "70",
+      },
     },
   },
   plugins: [require("@tailwindcss/typography"), require("flowbite/plugin")],

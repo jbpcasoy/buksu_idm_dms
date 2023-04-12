@@ -225,7 +225,7 @@ export default function ViewIM() {
               <button
                 type='button'
                 // disabled={formik.isSubmitting}
-                className='mr-4 text-CITLDarkBlue  bg-transparent border border-CITLDarkBlue hover:text-CITLWhite hover:bg-CITLDarkBlue font-medium rounded-md text-sm w-full sm:w-auto px-5 py-3 text-center disabled:bg-CITLGray-main'
+                className='mr-4 text-CITLDarkBlue  bg-transparent border border-CITLDarkBlue hover:text-CITLWhite hover:bg-CITLDarkBlue font-medium rounded-md text-sm sm:w-auto px-5 py-3 text-center disabled:bg-CITLGray-main'
                 onClick={() => {
                   setFile(null);
                 }}
