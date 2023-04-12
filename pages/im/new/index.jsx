@@ -78,7 +78,7 @@ export default function CreateIM() {
   return (
     <Layout>
       <div className=' items-center border border-CITLGray-lighter  bg-CITLGray-light m-2 mt-5 p-3 relative rounded-lg shadow-lg overflow-hidden'>
-        <div className='px-6 py-4 md:w-full '>
+        <div className='px-2 py-4 md:w-full '>
           <h2 className='text-CITLDarkBlue font-bold text-xl '>
             Create New IM
           </h2>
@@ -248,7 +248,7 @@ export default function CreateIM() {
                   <button
                     type='button'
                     disabled={formik.isSubmitting}
-                    className='mr-4 text-CITLDarkBlue  bg-transparent border border-CITLDarkBlue hover:text-CITLWhite hover:bg-CITLDarkBlue font-medium rounded-md text-sm w-full sm:w-auto px-5 py-3 text-center disabled:bg-CITLGray-main disabled:border-transparent'
+                    className='mr-3 text-CITLDarkBlue  bg-transparent border border-CITLDarkBlue hover:text-CITLWhite hover:bg-CITLDarkBlue font-medium rounded-md text-sm sm:w-auto px-5 py-3 text-center disabled:bg-CITLGray-main disabled:border-transparent'
                     onClick={() => {
                       setFile(null);
                     }}
@@ -261,7 +261,7 @@ export default function CreateIM() {
               <button
                 type='submit'
                 disabled={formik.isSubmitting || !file || !formik.isValid}
-                className='group relative inline-flex items-center overflow-hidden rounded-md bg-CITLOrange px-8 py-3 text-CITLDarkBlue disabled:bg-CITLGray-main'
+                className='group relative inline-flex items-center overflow-hidden rounded-md bg-CITLOrange px-5 py-3 text-CITLDarkBlue disabled:bg-CITLGray-main'
               >
                 <span className='absolute right-0 translate-x-full transition-transform group-hover:-translate-x-4'>
                   <svg
