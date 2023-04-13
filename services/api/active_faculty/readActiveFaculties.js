@@ -1,4 +1,5 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
+import { accessibleBy } from "@casl/prisma";
 import _ from "lodash";
 
 export default async function readActiveFaculties({
@@ -8,28 +9,36 @@ export default async function readActiveFaculties({
   departmentId,
   sortOrder,
   sortColumn,
+  ability,
 }) {
   const prisma = PRISMA_CLIENT;
 
   const sortFilter = {};
   _.set(sortFilter, sortColumn, sortOrder);
 
+  const accessibility = accessibleBy(ability).ActiveFaculty;
+
   try {
     const activeFaculties = await prisma.activeFaculty.findMany({
       take: limit,
       skip: (page - 1) * limit,
       where: {
-        departmentId: {
-          contains: departmentId,
-        },
-        Faculty: {
-          user: {
-            name: {
-              contains: name,
-              // mode: "insensitive",
+        AND: [
+          accessibility,
+          {
+            departmentId: {
+              contains: departmentId,
+            },
+            Faculty: {
+              user: {
+                name: {
+                  contains: name,
+                  // mode: "insensitive",
+                },
+              },
             },
           },
-        },
+        ],
       },
       include: {
         Faculty: {
@@ -54,17 +63,22 @@ export default async function readActiveFaculties({
 
     const total = await prisma.activeFaculty.count({
       where: {
-        departmentId: {
-          contains: departmentId,
-        },
-        Faculty: {
-          user: {
-            name: {
-              contains: name,
-              // mode: "insensitive",
+        AND: [
+          accessibility,
+          {
+            departmentId: {
+              contains: departmentId,
+            },
+            Faculty: {
+              user: {
+                name: {
+                  contains: name,
+                  // mode: "insensitive",
+                },
+              },
             },
           },
-        },
+        ],
       },
     });
 

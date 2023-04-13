@@ -16,9 +16,7 @@ export default function AdminFaculty({ faculty }) {
   async function onActivate() {
     try {
       return frontendCreateActiveFaculty({
-        userId: facultyData.userId,
         facultyId: facultyData.id,
-        departmentId: facultyData.departmentId,
       }).then((res) => {
         setFacultyData((prev) => ({ ...prev, ActiveFaculty: res }));
       });

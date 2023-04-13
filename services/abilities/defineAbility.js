@@ -8,5 +8,7 @@ export default async function userAbility(user) {
     can("manage", "all");
   }
 
+  can("read", "ActiveFaculty");
+
   return build();
 }
