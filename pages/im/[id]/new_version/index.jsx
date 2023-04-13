@@ -28,7 +28,6 @@ export default function ViewIM() {
       fileName: res.filename,
     });
     await frontendUpdateActiveFile(iM.ActiveFile.id, {
-      iMId: iM.id,
       fileId: createdFile.id,
     }).then((res) => {
       router.push(`/im/${router.query.id}`);

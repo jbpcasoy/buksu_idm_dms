@@ -15,7 +15,6 @@ export default async function getActiveFacultiesHandler(req, res) {
 
     const user = await getServerUser(req, res);
 
-    // TODO continue, allow read for all users and add casl security
     const activeFaculties = await readActiveFaculties({
       page: parseInt(page),
       limit: parseInt(limit),

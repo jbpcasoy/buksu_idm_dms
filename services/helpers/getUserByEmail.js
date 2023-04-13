@@ -13,6 +13,7 @@ export default async function getUserByEmail(email) {
           include: {
             ActiveChairperson: true,
             ActiveCoordinator: true,
+            ActiveDean: true,
           },
         },
         CITLDirector: {

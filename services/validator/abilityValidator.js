@@ -10,6 +10,12 @@ export default async function abilityValidator({
   fields,
   type,
 }) {
+  console.log({
+    action,
+    subject,
+    fields,
+    type,
+  });
   try {
     const user = await getServerUser(req, res);
     const ability = await userAbility(user);

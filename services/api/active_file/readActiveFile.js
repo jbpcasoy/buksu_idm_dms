@@ -1,12 +1,23 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
+import { accessibleBy } from "@casl/prisma";
 
-export default async function readActiveFile(id) {
+export default async function readActiveFile({ id, ability, filter = {} }) {
   const prisma = PRISMA_CLIENT;
+  const accessibility = accessibleBy(ability).ActiveFile;
 
   try {
-    const activeFile = await prisma.activeFile.findUniqueOrThrow({
+    const activeFile = await prisma.activeFile.findFirst({
       where: {
-        id,
+        AND: [
+          accessibility,
+          {
+            ...filter,
+            id,
+          },
+        ],
+      },
+      include: {
+        IM: true,
       },
     });
     return activeFile;
