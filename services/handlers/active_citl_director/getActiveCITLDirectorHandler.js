@@ -7,7 +7,6 @@ export default async function getActiveCITLDirectorHandler(req, res) {
     const { id } = req.query;
     const user = await getServerUser(req, res);
 
-    // TODO change code to use ability
     const activeCITLDirector = await readActiveCITLDirector({
       id,
       ability: await userAbility(user),

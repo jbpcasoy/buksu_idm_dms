@@ -1,5 +1,5 @@
 import { reqLog } from "@/services/api/logger";
-import getActiveCoordinators from "@/services/handlers/active_coordinator/getActiveCoordinators";
+import getActiveCoordinatorsHandler from "@/services/handlers/active_coordinator/getActiveCoordinatorsHandler";
 import postActiveCoordinatorHandler from "@/services/handlers/active_coordinator/postActiveCoordinatorHandler";
 import methodNaHandler from "@/services/handlers/methodNaHandler";
 
@@ -10,7 +10,7 @@ export default async function handler(req, res) {
     case "POST":
       return postActiveCoordinatorHandler(req, res);
     case "GET":
-      return getActiveCoordinators(req, res);
+      return getActiveCoordinatorsHandler(req, res);
     default:
       return methodNaHandler(req, res);
   }
