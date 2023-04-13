@@ -8,7 +8,7 @@ import abilityValidator from "@/services/validator/abilityValidator";
 export default async function deleteActiveChairpersonHandler(req, res) {
   const { id } = req.query;
 
-  async function findSubject({ id, ability }) {
+  async function findSubject({ id }) {
     const user = await getServerUser(req, res);
     try {
       const subject = await readActiveChairperson({
