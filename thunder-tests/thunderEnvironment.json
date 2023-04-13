@@ -13,7 +13,15 @@
       },
       {
         "name": "Cookie",
-        "value": "next-auth.csrf-token=e8b7c02ed6e6ea12505f702d24076ba59f05f481d2eb7f5805ec58ba3b3bfa48|f0117305b7fddd97831a089a9cbc8b3b33100453883d3252e52a1efea2159a13; next-auth.callback-url=http://localhost:3000/im/clfc4xhpn0002s9c7e89y9d65; next-auth.session-token=eff31835-a8f9-4678-a8b3-e0357504e317"
+        "value": "next-auth.session-token=44081cfa-58ff-4c30-bb0f-58e467d146a5; next-auth.callback-url=http://localhost:3000; next-auth.csrf-token=0301c7b8a9151d4b330f92646387b7629117f9ba48edd37c67d69af3e3f70af6|9b4a8e04940d3e72b467f538344e199f28cf484782eb41cff3b80e7e7903e5a8"
+      },
+      {
+        "name": "AdminCookie",
+        "value": "next-auth.session-token=d885df2b-99b9-41ae-92eb-fe3467eeb113; next-auth.callback-url=http://localhost:3000; next-auth.csrf-token=0e10d5cbbbe72099af192e4952dc121dc75a4fba6c7ad216b9173a4d4517d56c|f7a61cafdb8984cf5f8473539ee19f7aeea6d5d346fd496d99959860cc7c15cd"
+      },
+      {
+        "name": "FacultyCookie",
+        "value": "next-auth.session-token=45204d45-ca05-451c-944c-4a583e26c0e5; next-auth.callback-url=http://localhost:3000; next-auth.csrf-token=f89a0a5eb56aeaa647654a2b605c75e5d3b1b2342affbc29d3f83f53fecd4aa4|560b74560a55c2af6f53ea5c9c2c5cfedb62980b7493f7674cf682a0e552bb6c"
       }
     ]
   }

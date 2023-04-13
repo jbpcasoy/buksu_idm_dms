@@ -4,7 +4,7 @@ export default async function getUserByEmail(email) {
   const prisma = PRISMA_CLIENT;
 
   try {
-    const user = await prisma.user.findUniqueOrThrow({
+    const user = await prisma.user.findUnique({
       where: {
         email,
       },
@@ -25,6 +25,8 @@ export default async function getUserByEmail(email) {
             ActiveIMDCoordinator: true,
           },
         },
+        LoginRole: true,
+        Admin: true,
       },
     });
 
