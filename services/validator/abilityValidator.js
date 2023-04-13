@@ -1,15 +1,15 @@
 import userAbility from "@/services/abilities/defineAbility";
 import getServerUser from "@/services/helpers/getServerUser";
 
-export default async function abilityValidator(
+export default async function abilityValidator({
   req,
   res,
   next,
   action,
   subject,
   fields,
-  type
-) {
+  type,
+}) {
   try {
     const user = await getServerUser(req, res);
     const ability = await userAbility(user);

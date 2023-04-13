@@ -354,8 +354,13 @@
     "method": "GET",
     "sortNum": 200000,
     "created": "2023-02-26T01:21:31.374Z",
-    "modified": "2023-03-21T00:58:05.507Z",
-    "headers": [],
+    "modified": "2023-04-13T02:32:23.718Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}"
+      }
+    ],
     "params": [
       {
         "name": "limit",
@@ -988,7 +993,7 @@
     "method": "GET",
     "sortNum": 620000,
     "created": "2023-02-26T01:21:31.419Z",
-    "modified": "2023-04-13T00:51:00.386Z",
+    "modified": "2023-04-13T01:35:37.731Z",
     "headers": [
       {
         "name": "Cookie",
@@ -1002,7 +1007,8 @@
       },
       {
         "name": "Cookie",
-        "value": "{{AdminCookie}}"
+        "value": "{{AdminCookie}}",
+        "isDisabled": true
       }
     ],
     "params": [
@@ -1053,11 +1059,11 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "7e87e215-cc38-4b2d-bd3b-e056796b38c4",
     "name": "DELETE ActiveChairperson",
-    "url": "{{host}}/api/active_chairperson/cle6t6ukk000ms9ggwxp0w7n0",
+    "url": "{{host}}/api/active_chairperson/clgdg6h1y000xs9r7yhjgb1at",
     "method": "DELETE",
     "sortNum": 640000,
     "created": "2023-02-26T01:21:31.421Z",
-    "modified": "2023-04-13T00:21:25.062Z",
+    "modified": "2023-04-13T02:16:38.303Z",
     "headers": [
       {
         "name": "Cookie",
@@ -3688,12 +3694,27 @@
     "method": "POST",
     "sortNum": 2130000,
     "created": "2023-03-31T05:26:18.214Z",
-    "modified": "2023-03-31T05:28:01.469Z",
-    "headers": [],
+    "modified": "2023-04-13T01:11:17.403Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}"
+      }
+    ],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"cITLDirectorId\": \"clfw3ruxl000os9aknx35pgla\"\n}",
+      "raw": "{\n  \"cITLDirectorId\": \"clgdg0zmb000qs9r7szepmqth\"\n}",
       "form": []
     },
     "tests": []
@@ -3707,8 +3728,24 @@
     "method": "GET",
     "sortNum": 2140000,
     "created": "2023-03-31T05:38:09.812Z",
-    "modified": "2023-03-31T05:39:17.464Z",
-    "headers": [],
+    "modified": "2023-04-13T02:31:15.656Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}",
+        "isDisabled": true
+      }
+    ],
     "params": [
       {
         "name": "limit",
@@ -3728,12 +3765,27 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "f32f71c2-6854-4f90-bb7c-bbe9240ceffc",
     "name": "READ ActiveCITLDirector",
-    "url": "{{host}}/api/active_citl_director/clfw3tary000qs9ak8uy97wu4",
+    "url": "{{host}}/api/active_citl_director/clgehwmhf000as9xtbqeey9v0",
     "method": "GET",
     "sortNum": 2150000,
     "created": "2023-03-31T05:45:33.807Z",
-    "modified": "2023-03-31T05:45:56.212Z",
-    "headers": [],
+    "modified": "2023-04-13T02:25:31.005Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}"
+      }
+    ],
     "params": [],
     "tests": []
   },
@@ -3742,12 +3794,27 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "f32f71c2-6854-4f90-bb7c-bbe9240ceffc",
     "name": "DELETE ActiveCITLDirector",
-    "url": "{{host}}/api/active_citl_director/clfw3tary000qs9ak8uy97wu4",
+    "url": "{{host}}/api/active_citl_director/clgefeem90008s9xtk0mc0y5h",
     "method": "DELETE",
     "sortNum": 2160000,
     "created": "2023-03-31T05:50:58.890Z",
-    "modified": "2023-03-31T05:51:09.585Z",
-    "headers": [],
+    "modified": "2023-04-13T01:55:48.492Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}"
+      }
+    ],
     "params": [],
     "tests": []
   },

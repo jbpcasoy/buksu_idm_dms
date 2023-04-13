@@ -2,10 +2,10 @@ import createActiveChairperson from "@/services/api/active_chairperson/createAct
 import abilityValidator from "@/services/validator/abilityValidator";
 
 export default async function postActiveChairpersonHandler(req, res) {
-  return abilityValidator(
+  return abilityValidator({
     req,
     res,
-    async (req, res) => {
+    next: async (req, res) => {
       const { chairpersonId } = req.body;
 
       const chairperson = await createActiveChairperson({
@@ -14,9 +14,9 @@ export default async function postActiveChairpersonHandler(req, res) {
 
       return res.status(201).json(chairperson);
     },
-    "create",
-    "ActiveChairperson",
-    undefined,
-    "ActiveChairperson"
-  );
+    action: "create",
+    subject: "ActiveChairperson",
+    fields: undefined,
+    type: "ActiveChairperson",
+  });
 }
