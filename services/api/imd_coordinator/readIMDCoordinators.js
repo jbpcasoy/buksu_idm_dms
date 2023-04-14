@@ -1,4 +1,5 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
+import { accessibleBy } from "@casl/prisma";
 import _ from "lodash";
 
 export default async function readIMDCoordinators({
@@ -7,10 +8,13 @@ export default async function readIMDCoordinators({
   name,
   sortColumn,
   sortOrder,
+  ability,
 }) {
   const prisma = PRISMA_CLIENT;
   const sortFilter = {};
   _.set(sortFilter, sortColumn, sortOrder);
+
+  const accessibility = accessibleBy(ability).IMDCoordinator;
 
   try {
     const iMDCoordinators = await prisma.iMDCoordinator.findMany({
@@ -21,22 +25,32 @@ export default async function readIMDCoordinators({
         ActiveIMDCoordinator: true,
       },
       where: {
-        User: {
-          name: {
-            contains: name,
+        AND: [
+          accessibility,
+          {
+            User: {
+              name: {
+                contains: name,
+              },
+            },
           },
-        },
+        ],
       },
       orderBy: sortFilter,
     });
 
     const total = await prisma.iMDCoordinator.count({
       where: {
-        User: {
-          name: {
-            contains: name,
+        AND: [
+          accessibility,
+          {
+            User: {
+              name: {
+                contains: name,
+              },
+            },
           },
-        },
+        ],
       },
     });
 
