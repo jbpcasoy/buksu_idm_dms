@@ -9,12 +9,12 @@ export default function StudentOpinionnaire() {
           <div className='w-full '>
             <div className='p-4 '>
               <div className='flex mt-10'>
-                <div className='w-full border-t-4 transition duration-500 ease-in-out border-CITLOrange'>
-                  <div className='top-0 mt-2 text-xs font-medium uppercase text-CITLOrange'>
+                <div className='w-9/12 border-t-4 transition duration-500 ease-in-out border-CITLOrange'>
+                  <div className=' top-0 mt-2 text-xs font-medium uppercase text-CITLOrange'>
                     step 4 of 4
                   </div>
                 </div>
-                {/* <div className='w-3/12 border-t-4 ml-2 transition duration-500 ease-in-out border-CITLGray-lighter'></div> */}
+                <div className='w-3/12 border-t-4 ml-2 transition duration-500 ease-in-out border-CITLGray-lighter'></div>
               </div>
             </div>
 
@@ -27,7 +27,7 @@ export default function StudentOpinionnaire() {
               <div className='py-5'>
                 <div className='border border-CITLGray-main rounded-lg px-3 py-5'>
                   <h3 className=' font-semibold text-lg text-CITLGray-main'>
-                    16. The module allows for flexible learning.
+                    11. The module leads me to develop critical thinking skills.
                   </h3>
 
                   <ul className='items-center w-full text-sm font-medium   rounded-lg sm:flex  dark:text-CITLDarkBlue mt-2'>
@@ -106,8 +106,7 @@ export default function StudentOpinionnaire() {
               <div className='py-5'>
                 <div className='border border-CITLGray-main rounded-lg px-3 py-5'>
                   <h3 className=' font-semibold text-lg text-CITLGray-main'>
-                    17. The module allows me to synthesize or summarize my
-                    learnings in every lesson/unit.
+                    12. The activities reflect real-life experiences.
                   </h3>
 
                   <ul className='items-center w-full text-sm font-medium   rounded-lg sm:flex  dark:text-CITLDarkBlue mt-2'>
@@ -186,7 +185,8 @@ export default function StudentOpinionnaire() {
               <div className='py-5'>
                 <div className='border border-CITLGray-main rounded-lg px-3 py-5'>
                   <h3 className=' font-semibold text-lg text-CITLGray-main'>
-                    18. The module allows me to do independent learning.
+                    13. The module contains activities/tasks that are
+                    appropriate to the course.
                   </h3>
 
                   <ul className='items-center w-full text-sm font-medium   rounded-lg sm:flex  dark:text-CITLDarkBlue mt-2'>
@@ -262,137 +262,216 @@ export default function StudentOpinionnaire() {
                 </div>
               </div>
 
-              <div>
-                <div className='border border-CITLOrange rounded-lg px-3 py-8'>
+              <div className='py-5'>
+                <div className='border border-CITLGray-main rounded-lg px-3 py-5'>
                   <h3 className=' font-semibold text-lg text-CITLGray-main'>
-                    B. Directions:
+                    14. The sequencing of activities in every lesson/unit
+                    encourages me to perform them since they start from easy to
+                    difficult ones.
                   </h3>
-                  <p className='text-sm font-normal text-CITLGray-main'>
-                    Please provide any comment or suggestion regarding the
-                    module by completing the statements below:
-                  </p>
-                </div>
-                <div className='py-5'>
-                  <div className='border border-CITLGray-main rounded-lg px-3 py-5'>
-                    <label
-                      htmlFor='message'
-                      className='block mb-2 mt-3 text-sm font-medium text-CITLGray-main'
-                    >
-                      1. What I like in the module is/are:
-                    </label>
-                    <div className='lg:indent-0 md:indent-0  w-full p-2 ml-2 '>
-                      <div className='lg:indent-5 md:indent-0 inline-flex items-center w-full'>
-                        <label className=' text-CITLGray-main'>a. </label>
-                        <input
-                          type='text'
-                          placeholder='-'
-                          className='w-full text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
-                        />
-                      </div>
-                      <div className='lg:indent-5 md:indent-0 inline-flex items-center w-full'>
-                        <label className=' text-CITLGray-main'>b. </label>
-                        <input
-                          type='text'
-                          placeholder='-'
-                          className='w-full  text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
-                        />
-                      </div>
-                      <div className='lg:indent-5 md:indent-0 inline-flex items-center w-full'>
-                        <label className=' text-CITLGray-main'>c. </label>
-                        <input
-                          type='text'
-                          placeholder='-'
-                          className='w-full text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
-                        />
-                      </div>
-                    </div>
-                    <label
-                      htmlFor='message'
-                      className='block mb-2 mt-3 text-sm font-medium text-CITLGray-main'
-                    >
-                      <label
-                        htmlFor='message'
-                        className=' mb-2 mt-3 text-sm font-medium text-CITLGray-main'
-                      >
-                        2. What I think can still be improved in the module
-                        is/are:
-                      </label>
-                      <div className='lg:indent-0 md:indent-0  w-full p-2 ml-2 '>
-                        <div className='lg:indent-5 md:indent-0 inline-flex items-center w-full'>
-                          <label className=' text-CITLGray-main '>a. </label>
-                          <input
-                            type='text'
-                            placeholder='-'
-                            className='w-full text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
-                          />
-                        </div>
-                        <div className='lg:indent-5 md:indent-0 inline-flex items-center w-full'>
-                          <label className=' text-CITLGray-main'>b. </label>
-                          <input
-                            type='text'
-                            placeholder='-'
-                            className='w-full  text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
-                          />
-                        </div>
-                        <div className='lg:indent-5 md:indent-0 inline-flex items-center w-full'>
-                          <label className=' text-CITLGray-main'>c. </label>
-                          <input
-                            type='text'
-                            placeholder='-'
-                            className='w-full text-sm border-0 border-b-2 bg-CITLGray-light  outline-none opacity-50 focus:ring-0'
-                          />
-                        </div>
-                      </div>
-                    </label>
-                  </div>
-                </div>
-                <div className=' lg:grid-cols-2 gap-6  md:grid-rows-2 mb-3'>
-                  <div className='mb-3'>
-                    <label
-                      className='block mb-1 text-sm font-semibold text-CITLDarkBlue '
-                      htmlfor='title'
-                    >
-                      Name of Evaluator
-                    </label>
-                    <input
-                      className='border  border-gray-400 bg-CITLGray-light focus:ring-CITLOrange focus:border-CITLOrange p-2 w-full rounded-md'
-                      type='text'
-                      id='title'
-                      placeholder='John Doe'
-                    />
-                  </div>
-                  {/* IMPLEMENT Date Picker here */}
-                  <div>
-                    <label
-                      className='block mb-1 text-sm font-semibold text-CITLDarkBlue '
-                      htmlfor='title'
-                    >
-                      Date
-                    </label>
-                    <input
-                      className='border  border-gray-400 bg-CITLGray-light focus:ring-CITLOrange focus:border-CITLOrange p-2 w-full rounded-md'
-                      type='text'
-                      id='title'
-                    />
-                  </div>
 
-                  {/* ADD Evaluators Signature here. Already installed the signature pad. */}
+                  <ul className='items-center w-full text-sm font-medium   rounded-lg sm:flex  dark:text-CITLDarkBlue mt-2'>
+                    <li className='w-full  border-gray-200 sm:border-b-0  dark:border-gray-600'>
+                      <div className='flex items-center pl-3'>
+                        <input
+                          id='horizontal-list-radio-license'
+                          type='radio'
+                          value=''
+                          name='list-radio'
+                          className='w-4 h-4 text-CITLDarkBlue bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue'
+                        />
+                        <label
+                          htmlFor='horizontal-list-radio-license'
+                          className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main '
+                        >
+                          Yes{" "}
+                        </label>
+                      </div>
+                    </li>
+                    <li className='w-full  border-gray-200 sm:border-b-0  dark:border-gray-600'>
+                      <div className='flex items-center pl-3'>
+                        <input
+                          id='horizontal-list-radio-id'
+                          type='radio'
+                          value=''
+                          name='list-radio'
+                          className='w-4 h-4 text-CITLDarkBlue bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue'
+                        />
+                        <label
+                          htmlFor='horizontal-list-radio-id'
+                          className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
+                        >
+                          Somewhat
+                        </label>
+                      </div>
+                    </li>
+                    <li className='w-full  border-gray-200 sm:border-b-0 dark:border-gray-600'>
+                      <div className='flex items-center pl-3'>
+                        <input
+                          id='horizontal-list-radio-millitary'
+                          type='radio'
+                          value=''
+                          name='list-radio'
+                          className='w-4 h-4 text-CITLDarkBlue bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue'
+                        />
+                        <label
+                          htmlFor='horizontal-list-radio-millitary'
+                          className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
+                        >
+                          No
+                        </label>
+                      </div>
+                    </li>
+                    <li className='w-full sm:border-b-0 dark:border-gray-600'>
+                      <div className='flex items-center pl-3'>
+                        <input
+                          id='horizontal-list-radio-passport'
+                          type='radio'
+                          value=''
+                          name='list-radio'
+                          className='w-4 h-4 text-CITLDarkBlue bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue '
+                        />
+                        <label
+                          htmlFor='horizontal-list-radio-passport'
+                          className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
+                        >
+                          Not Applicable
+                        </label>
+                      </div>
+                    </li>
+                  </ul>
                 </div>
               </div>
 
-              <div className='flex '>
+              <div className='py-5'>
+                <div className='border border-CITLGray-main rounded-lg px-3 py-5'>
+                  <h3 className=' font-semibold text-lg text-CITLGray-main'>
+                    15. The activities are varied.
+                  </h3>
+
+                  <ul className='items-center w-full text-sm font-medium   rounded-lg sm:flex  dark:text-CITLDarkBlue mt-2'>
+                    <li className='w-full  border-gray-200 sm:border-b-0  dark:border-gray-600'>
+                      <div className='flex items-center pl-3'>
+                        <input
+                          id='horizontal-list-radio-license'
+                          type='radio'
+                          value=''
+                          name='list-radio'
+                          className='w-4 h-4 text-CITLDarkBlue bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue'
+                        />
+                        <label
+                          htmlFor='horizontal-list-radio-license'
+                          className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main '
+                        >
+                          Yes{" "}
+                        </label>
+                      </div>
+                    </li>
+                    <li className='w-full  border-gray-200 sm:border-b-0  dark:border-gray-600'>
+                      <div className='flex items-center pl-3'>
+                        <input
+                          id='horizontal-list-radio-id'
+                          type='radio'
+                          value=''
+                          name='list-radio'
+                          className='w-4 h-4 text-CITLDarkBlue bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue'
+                        />
+                        <label
+                          htmlFor='horizontal-list-radio-id'
+                          className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
+                        >
+                          Somewhat
+                        </label>
+                      </div>
+                    </li>
+                    <li className='w-full  border-gray-200 sm:border-b-0 dark:border-gray-600'>
+                      <div className='flex items-center pl-3'>
+                        <input
+                          id='horizontal-list-radio-millitary'
+                          type='radio'
+                          value=''
+                          name='list-radio'
+                          className='w-4 h-4 text-CITLDarkBlue bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue'
+                        />
+                        <label
+                          htmlFor='horizontal-list-radio-millitary'
+                          className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
+                        >
+                          No
+                        </label>
+                      </div>
+                    </li>
+                    <li className='w-full sm:border-b-0 dark:border-gray-600'>
+                      <div className='flex items-center pl-3'>
+                        <input
+                          id='horizontal-list-radio-passport'
+                          type='radio'
+                          value=''
+                          name='list-radio'
+                          className='w-4 h-4 text-CITLDarkBlue bg-CITLGray-light border-CITLDarkBlue focus:ring-CITLDarkBlue '
+                        />
+                        <label
+                          htmlFor='horizontal-list-radio-passport'
+                          className='w-full py-3 ml-2 text-sm font-medium text-CITLGray-main'
+                        >
+                          Not Applicable
+                        </label>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div className='flex mt-4'>
                 <Link
-                  href='/test/student-opinionaire/index3'
-                  className='text-base  flex justify-center px-4 py-2 rounded-md font-bold cursor-pointer shadow-xl hover:border-CITLOrange hover:text-CITLOrange bg-gray-100 text-CITLGray-main border border-CITLGray-main'
+                  href='/test/student-opinionnaire/index2'
+                  className='group relative inline-flex items-center overflow-hidden rounded-md border border-current px-8 py-3 text-CITLGray-main focus:outline-none focus:ring active:text-CITLGray-main'
                 >
-                  Previous
+                  <span className='absolute left-0 -translate-x-full transition-transform group-hover:translate-x-4'>
+                    <svg
+                      className='h-5 w-5 rotate-180'
+                      xmlns='http://www.w3.org/2000/svg'
+                      fill='none'
+                      viewBox='0 0 24 24'
+                      stroke='currentColor'
+                    >
+                      <path
+                        strokeLinecap='round'
+                        strokeLinejoin='round'
+                        strokeWidth='2'
+                        d='M17 8l4 4m0 0l-4 4m4-4H3'
+                      />
+                    </svg>
+                  </span>
+
+                  <span className='text-sm font-medium transition-all group-hover:ml-4'>
+                    Previous
+                  </span>
                 </Link>
                 <div className='flex-auto flex flex-row-reverse'>
                   <Link
-                    href='/test/student-opinionaire'
-                    className='text-base  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded-md font-bold cursor-pointer shadow-xl hover:bg-CITLOrange   bg-CITLDarkBlue text-CITLWhite'
+                    href='/test/student-opinionnaire/index4'
+                    className='group relative inline-flex items-center overflow-hidden rounded-md bg-CITLDarkBlue px-8 py-3 text-white focus:outline-none focus:ring active:bg-CITLDarkBlue'
                   >
-                    Next
+                    <span className='absolute right-0 translate-x-full transition-transform group-hover:-translate-x-4'>
+                      <svg
+                        className='h-5 w-5'
+                        xmlns='http://www.w3.org/2000/svg'
+                        fill='none'
+                        viewBox='0 0 24 24'
+                        stroke='currentColor'
+                      >
+                        <path
+                          strokeLinecap='round'
+                          strokeLinejoin='round'
+                          strokeWidth='2'
+                          d='M17 8l4 4m0 0l-4 4m4-4H3'
+                        />
+                      </svg>
+                    </span>
+
+                    <span className='text-sm font-medium transition-all group-hover:mr-4'>
+                      Next
+                    </span>
                   </Link>
                 </div>
               </div>

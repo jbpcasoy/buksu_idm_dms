@@ -116,10 +116,7 @@ export default function TeacherUserEvaluation() {
                     course.
                   </h3>
 
-                  <div
-                    className='grid w-[18rem] grid-cols-5  rounded-xl py-3'
-                    x-data='app'
-                  >
+                  <div className='flex rounded-xl space-x-1 pt-2' x-data='app'>
                     <div>
                       <input
                         type='radio'
@@ -129,7 +126,7 @@ export default function TeacherUserEvaluation() {
                       />
                       <label
                         htmlFor='1'
-                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
+                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-sm  text-CITLOrange p-1 w-10 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         1
                       </label>
@@ -144,7 +141,7 @@ export default function TeacherUserEvaluation() {
                       />
                       <label
                         htmlFor='2'
-                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
+                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-sm  text-CITLOrange p-1 w-10 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         2
                       </label>
@@ -159,7 +156,7 @@ export default function TeacherUserEvaluation() {
                       />
                       <label
                         htmlFor='3'
-                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
+                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-sm  text-CITLOrange p-1 w-10 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         3
                       </label>
@@ -174,7 +171,7 @@ export default function TeacherUserEvaluation() {
                       />
                       <label
                         htmlFor='4'
-                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
+                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-sm  text-CITLOrange p-1 w-10 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         4
                       </label>
@@ -188,7 +185,7 @@ export default function TeacherUserEvaluation() {
                       />
                       <label
                         htmlFor='5'
-                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
+                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-sm text-CITLOrange p-1 w-10 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         5
                       </label>
@@ -203,10 +200,7 @@ export default function TeacherUserEvaluation() {
                     2. The module’s topics/concepts are informative.
                   </h3>
 
-                  <div
-                    className='grid w-[18rem] grid-cols-5  rounded-xl py-3'
-                    x-data='app'
-                  >
+                  <div className='flex rounded-xl space-x-1 pt-2' x-data='app'>
                     <div>
                       <input
                         type='radio'
@@ -216,7 +210,7 @@ export default function TeacherUserEvaluation() {
                       />
                       <label
                         htmlFor='1'
-                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
+                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-sm  text-CITLOrange p-1 w-10 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         1
                       </label>
@@ -231,7 +225,7 @@ export default function TeacherUserEvaluation() {
                       />
                       <label
                         htmlFor='2'
-                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
+                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-sm  text-CITLOrange p-1 w-10 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         2
                       </label>
@@ -246,7 +240,7 @@ export default function TeacherUserEvaluation() {
                       />
                       <label
                         htmlFor='3'
-                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
+                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-sm  text-CITLOrange p-1 w-10 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         3
                       </label>
@@ -261,7 +255,7 @@ export default function TeacherUserEvaluation() {
                       />
                       <label
                         htmlFor='4'
-                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
+                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-sm  text-CITLOrange p-1 w-10 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         4
                       </label>
@@ -275,7 +269,7 @@ export default function TeacherUserEvaluation() {
                       />
                       <label
                         htmlFor='5'
-                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
+                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-sm  text-CITLOrange p-1 w-10 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         5
                       </label>
@@ -290,10 +284,7 @@ export default function TeacherUserEvaluation() {
                     3. The presented topics/concepts are sufficient.
                   </h3>
 
-                  <div
-                    className='grid w-[18rem] grid-cols-5  rounded-xl py-3'
-                    x-data='app'
-                  >
+                  <div className='flex rounded-xl space-x-1 pt-2' x-data='app'>
                     <div>
                       <input
                         type='radio'
@@ -303,7 +294,7 @@ export default function TeacherUserEvaluation() {
                       />
                       <label
                         htmlFor='1'
-                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
+                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-sm text-CITLOrange p-1 w-10 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         1
                       </label>
@@ -318,7 +309,7 @@ export default function TeacherUserEvaluation() {
                       />
                       <label
                         htmlFor='2'
-                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
+                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-sm  text-CITLOrange p-1 w-10 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         2
                       </label>
@@ -333,7 +324,7 @@ export default function TeacherUserEvaluation() {
                       />
                       <label
                         htmlFor='3'
-                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
+                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-sm  text-CITLOrange p-1 w-10 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         3
                       </label>
@@ -348,7 +339,7 @@ export default function TeacherUserEvaluation() {
                       />
                       <label
                         htmlFor='4'
-                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
+                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-sm  text-CITLOrange p-1 w-10 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         4
                       </label>
@@ -362,7 +353,7 @@ export default function TeacherUserEvaluation() {
                       />
                       <label
                         htmlFor='5'
-                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
+                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-sm  text-CITLOrange p-1 w-10 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         5
                       </label>
@@ -378,10 +369,7 @@ export default function TeacherUserEvaluation() {
                     understanding of the lesson.
                   </h3>
 
-                  <div
-                    className='grid w-[18rem] grid-cols-5  rounded-xl py-3'
-                    x-data='app'
-                  >
+                  <div className='flex rounded-xl space-x-1 pt-2' x-data='app'>
                     <div>
                       <input
                         type='radio'
@@ -391,7 +379,7 @@ export default function TeacherUserEvaluation() {
                       />
                       <label
                         htmlFor='1'
-                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
+                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-sm  text-CITLOrange p-1 w-10 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         1
                       </label>
@@ -406,7 +394,7 @@ export default function TeacherUserEvaluation() {
                       />
                       <label
                         htmlFor='2'
-                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
+                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-sm  text-CITLOrange p-1 w-10 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         2
                       </label>
@@ -421,7 +409,7 @@ export default function TeacherUserEvaluation() {
                       />
                       <label
                         htmlFor='3'
-                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
+                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-sm  text-CITLOrange p-1 w-10 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         3
                       </label>
@@ -436,7 +424,7 @@ export default function TeacherUserEvaluation() {
                       />
                       <label
                         htmlFor='4'
-                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
+                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-sm  text-CITLOrange p-1 w-10 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         4
                       </label>
@@ -450,7 +438,7 @@ export default function TeacherUserEvaluation() {
                       />
                       <label
                         htmlFor='5'
-                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
+                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-sm  text-CITLOrange p-1 w-10 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         5
                       </label>
@@ -458,7 +446,6 @@ export default function TeacherUserEvaluation() {
                   </div>
                 </div>
               </div>
-
               <div className='py-5'>
                 <div className='border border-CITLGray-main rounded-lg px-3 py-5'>
                   <h3 className=' font-semibold text-lg text-CITLGray-main'>
@@ -466,10 +453,7 @@ export default function TeacherUserEvaluation() {
                     easy to follow.{" "}
                   </h3>
 
-                  <div
-                    className='grid w-[18rem] grid-cols-5  rounded-xl py-3'
-                    x-data='app'
-                  >
+                  <div className='flex rounded-xl space-x-1 pt-2' x-data='app'>
                     <div>
                       <input
                         type='radio'
@@ -479,7 +463,7 @@ export default function TeacherUserEvaluation() {
                       />
                       <label
                         htmlFor='1'
-                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
+                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-sm  text-CITLOrange p-1 w-10 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         1
                       </label>
@@ -494,7 +478,7 @@ export default function TeacherUserEvaluation() {
                       />
                       <label
                         htmlFor='2'
-                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
+                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-sm  text-CITLOrange p-1 w-10 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         2
                       </label>
@@ -509,7 +493,7 @@ export default function TeacherUserEvaluation() {
                       />
                       <label
                         htmlFor='3'
-                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
+                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-sm  text-CITLOrange p-1 w-10 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         3
                       </label>
@@ -524,7 +508,7 @@ export default function TeacherUserEvaluation() {
                       />
                       <label
                         htmlFor='4'
-                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
+                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-sm  text-CITLOrange p-1 w-10 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         4
                       </label>
@@ -538,7 +522,7 @@ export default function TeacherUserEvaluation() {
                       />
                       <label
                         htmlFor='5'
-                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-lg  text-CITLOrange p-1 w-12 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
+                        className='block cursor-pointer select-none border-4 border-CITLOrange font-bold text-sm  text-CITLOrange p-1 w-10 text-center peer-checked:bg-CITLOrange peer-checked:font-bold peer-checked:text-white'
                       >
                         5
                       </label>
@@ -546,13 +530,33 @@ export default function TeacherUserEvaluation() {
                   </div>
                 </div>
               </div>
+
               <div className='flex mt-4'>
                 <div className='flex-auto flex flex-row-reverse'>
                   <Link
                     href='/test/teacher-user-evaluation/index2'
-                    className='text-base  ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer shadow-xl hover:bg-CITLOrange bg-CITLDarkBlue text-CITLWhite  '
+                    className='group relative inline-flex items-center overflow-hidden rounded-md bg-CITLDarkBlue px-8 py-3 text-white focus:outline-none focus:ring active:bg-CITLDarkBlue'
                   >
-                    Next
+                    <span className='absolute right-0 translate-x-full transition-transform group-hover:-translate-x-4'>
+                      <svg
+                        className='h-5 w-5'
+                        xmlns='http://www.w3.org/2000/svg'
+                        fill='none'
+                        viewBox='0 0 24 24'
+                        stroke='currentColor'
+                      >
+                        <path
+                          strokeLinecap='round'
+                          strokeLinejoin='round'
+                          strokeWidth='2'
+                          d='M17 8l4 4m0 0l-4 4m4-4H3'
+                        />
+                      </svg>
+                    </span>
+
+                    <span className='text-sm font-medium transition-all group-hover:mr-4'>
+                      Next
+                    </span>
                   </Link>
                 </div>
               </div>
