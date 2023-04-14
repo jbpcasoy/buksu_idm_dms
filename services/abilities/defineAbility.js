@@ -70,5 +70,8 @@ export default async function userAbility(user) {
     },
   });
 
+  // College
+  can("read", "College");
+
   return build();
 }

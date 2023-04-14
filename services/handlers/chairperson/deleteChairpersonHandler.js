@@ -1,5 +1,4 @@
 import userAbility from "@/services/abilities/defineAbility";
-import readActiveChairperson from "@/services/api/active_chairperson/readActiveChairperson";
 import deleteChairperson from "@/services/api/chairperson/deleteChairperson";
 import readChairperson from "@/services/api/chairperson/readChairperson";
 import getServerUser from "@/services/helpers/getServerUser";
