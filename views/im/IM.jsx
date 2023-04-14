@@ -16,7 +16,7 @@ export default function IM({
   originalFileName,
   fileName,
   owner,
-  createdAt,
+  date,
   updatedAt,
   onView,
   peerReviewed = false,
@@ -227,11 +227,7 @@ export default function IM({
         </td>
       )}
 
-      {showReviewedAs && <td className='px-6 py-4 w-32 '>{reviewedAs}</td>}
-
-      <td className='px-6 py-4  '>
-        {moment(createdAt).format("M/D/YYYY, h:mm A")}
-      </td>
+      <td className='px-6 py-4  '>{moment(date).format("M/D/YYYY, h:mm A")}</td>
 
       {/* <td className='px-6 py-4 '>
         {moment(updatedAt).format("M/D/YYYY, h:mm A")}
