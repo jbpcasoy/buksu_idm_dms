@@ -784,12 +784,30 @@
     "method": "POST",
     "sortNum": 330000,
     "created": "2023-02-26T01:21:31.388Z",
-    "modified": "2023-02-26T01:21:31.388Z",
-    "headers": [],
+    "modified": "2023-04-14T03:18:15.017Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}"
+      }
+    ],
+    "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"userId\": \"cle871stg0000s9g2h2oo9giu\",\n    \"departmentId\": \"cle87l2ho0004s9pev4iekj8v\"\n}"
-    }
+      "raw": "{\n    \"userId\": \"cle871stg0000s9g2h2oo9giu\",\n    \"departmentId\": \"cle87l2ho0004s9pev4iekj8v\"\n}",
+      "form": []
+    },
+    "tests": []
   },
   {
     "_id": "955a1ff8-5e72-4884-a5c6-1c4e981c5fd6",
@@ -800,8 +818,23 @@
     "method": "GET",
     "sortNum": 340000,
     "created": "2023-02-26T01:21:31.389Z",
-    "modified": "2023-03-21T00:50:15.002Z",
-    "headers": [],
+    "modified": "2023-04-14T03:45:25.779Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}"
+      }
+    ],
     "params": [
       {
         "name": "limit",
@@ -831,24 +864,58 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "ae9316ac-3fea-4071-b9f0-8b9f170186b2",
     "name": "DELETE Faculty",
-    "url": "{{host}}/api/faculty/cle5chbbu0007s9qeoer0lhj6",
+    "url": "{{host}}/api/faculty/clgdfytx0000bs9r7d866tba3",
     "method": "DELETE",
     "sortNum": 350000,
     "created": "2023-02-26T01:21:31.390Z",
-    "modified": "2023-02-26T01:21:31.390Z",
-    "headers": []
+    "modified": "2023-04-14T03:41:57.432Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}"
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "tests": []
   },
   {
     "_id": "eccb559d-4723-428f-b16f-fbd153ecf3f9",
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "ae9316ac-3fea-4071-b9f0-8b9f170186b2",
     "name": "GET Faculty",
-    "url": "{{host}}/api/faculty/cle58gg1i0000s92i44u9jszz",
+    "url": "{{host}}/api/faculty/clgdfytx0000bs9r7d866tba3",
     "method": "GET",
     "sortNum": 360000,
     "created": "2023-02-26T01:21:31.392Z",
-    "modified": "2023-02-26T01:21:31.392Z",
-    "headers": []
+    "modified": "2023-04-14T03:23:28.795Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}"
+      }
+    ],
+    "params": [],
+    "tests": []
   },
   {
     "_id": "bac0993d-3fa4-45bb-8abd-fb73bd4eb854",
