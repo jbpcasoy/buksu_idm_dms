@@ -3673,12 +3673,27 @@
     "method": "POST",
     "sortNum": 1910000,
     "created": "2023-03-28T08:53:31.266Z",
-    "modified": "2023-03-28T11:10:08.879Z",
-    "headers": [],
+    "modified": "2023-04-14T02:21:50.223Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}"
+      }
+    ],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"facultyId\": \"clfaue2d80007s9byw9i91pvc\"\n}",
+      "raw": "{\n  \"facultyId\": \"clgdfytx0000bs9r7d866tba3\"\n}",
       "form": []
     },
     "tests": []
@@ -3692,8 +3707,23 @@
     "method": "GET",
     "sortNum": 1920000,
     "created": "2023-03-28T11:16:23.088Z",
-    "modified": "2023-03-28T11:17:05.039Z",
-    "headers": [],
+    "modified": "2023-04-14T02:34:39.406Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}"
+      }
+    ],
     "params": [
       {
         "name": "limit",
@@ -3713,12 +3743,27 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "3a22c1c2-5c2f-49a1-83e8-a3d910c62810",
     "name": "READ Dean",
-    "url": "{{host}}/api/dean/clfs5puek0000s9jvow51v1tn",
+    "url": "{{host}}/api/dean/clges5uf30024s9xtrjlg3qjl",
     "method": "GET",
     "sortNum": 1930000,
     "created": "2023-03-28T11:22:50.707Z",
-    "modified": "2023-03-28T11:23:11.787Z",
-    "headers": [],
+    "modified": "2023-04-14T02:25:50.841Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}"
+      }
+    ],
     "params": [],
     "tests": []
   },
@@ -3727,12 +3772,28 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "3a22c1c2-5c2f-49a1-83e8-a3d910c62810",
     "name": "DELETE Dean",
-    "url": "{{host}}/api/dean/clfs6cf6e0004s9jv990n2a9t",
+    "url": "{{host}}/api/dean/clges5uf30024s9xtrjlg3qjl",
     "method": "DELETE",
     "sortNum": 1940000,
     "created": "2023-03-28T11:27:22.171Z",
-    "modified": "2023-03-28T11:28:16.847Z",
-    "headers": [],
+    "modified": "2023-04-14T02:28:55.787Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}",
+        "isDisabled": true
+      }
+    ],
     "params": [],
     "tests": []
   },
