@@ -5,9 +5,11 @@ export default async function userAbility(user) {
   console.log({ user: JSON.stringify(user) });
   const { can, cannot, build } = new AbilityBuilder(createPrismaAbility);
 
+  // Global
   if (user?.Admin && user?.LoginRole?.Role === "ADMIN") {
     can("manage", "all");
   }
+  // can("read", "all");
 
   // ActiveFaculty
   can("read", "ActiveFaculty");
