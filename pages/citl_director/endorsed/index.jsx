@@ -125,7 +125,7 @@ export default function Home() {
       {user?.ActiveFaculty && (
         <div className=' grid grid-flow-row items-center border border-CITLGray-lighter bg-CITLWhite m-2 mt-5 relative rounded-lg shadow-lg overflow-x-auto'>
           <div className=' bg-CITLGray-light py-3 px-3 pr-3'>
-            <div className='w-full justify-between grid grid-flow-col auto-cols-max'>
+            <div className='w-full grid grid-flow-col'>
               <div>
                 <button
                   type='button'
@@ -137,6 +137,35 @@ export default function Home() {
                   Endorsed
                 </button>
               </div>
+              <Filter
+                filterOptions={[
+                  {
+                    value: "title",
+                    label: "Title",
+                  },
+                  {
+                    value: "type",
+                    label: "Type",
+                    options: ["MODULE", "COURSE_FILE", "WORKTEXT", "TEXTBOOK"],
+                  },
+                  {
+                    value: "status",
+                    label: "Status",
+                    options: IMStatuses,
+                  },
+                  {
+                    value: "owner",
+                    label: "Owner",
+                  },
+                  {
+                    value: "authors",
+                    label: "Authors",
+                  },
+                ]}
+                onChange={(filter) =>
+                  setState((prev) => ({ ...prev, ...filter }))
+                }
+              />
               <div className=' grid grid-flow-col auto-cols-max gap-2 px-2 '>
                 {/* <input
                   onChange={debouncedHandleSerialNumberChange}
@@ -147,33 +176,6 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <Filter
-            filterOptions={[
-              {
-                value: "title",
-                label: "Title",
-              },
-              {
-                value: "type",
-                label: "Type",
-                options: ["MODULE", "COURSE_FILE", "WORKTEXT", "TEXTBOOK"],
-              },
-              {
-                value: "status",
-                label: "Status",
-                options: IMStatuses,
-              },
-              {
-                value: "owner",
-                label: "Owner",
-              },
-              {
-                value: "authors",
-                label: "Authors",
-              },
-            ]}
-            onChange={(filter) => setState((prev) => ({ ...prev, ...filter }))}
-          />
 
           <table className='divide-y divide-CITLGray-light mb-2'>
             <thead className='bg-CITLGray-light'>
@@ -286,16 +288,14 @@ export default function Home() {
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
                   <SortButton
-                    label='Created At'
+                    label='date'
                     sortOrder={
-                      state.sortColumn === "createdAt"
-                        ? state.sortOrder
-                        : undefined
+                      state.sortColumn === "date" ? state.sortOrder : undefined
                     }
                     setSortOrder={(order) =>
                       setState((prev) => ({
                         ...prev,
-                        sortColumn: "createdAt",
+                        sortColumn: "date",
                         sortOrder: order,
                       }))
                     }
@@ -379,7 +379,7 @@ export default function Home() {
                         im.SubmittedCoordinatorSuggestion
                       )}
                       bottomBorder={true}
-                      createdAt={im.createdAt}
+                      date={im.date}
                       originalFileName={im.originalFileName}
                       fileName={im.fileName}
                       id={im.id}
