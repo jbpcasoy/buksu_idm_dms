@@ -1,23 +1,14 @@
-import UserContext from "@/contexts/UserContext";
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
+import { getServerSession } from "next-auth";
 import { signIn, signOut } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useSnackbar } from "notistack";
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 
 export default function Home() {
-  const { user, userError, userLoading } = useContext(UserContext);
   const router = useRouter();
   const { enqueueSnackbar } = useSnackbar();
-
-  useEffect(() => {
-    if (!user) return;
-    if (user?.LoginRole?.Role === "ADMIN") {
-      router.push("/admin");
-    } else if (user?.LoginRole?.Role === "FACULTY") {
-      router.push("/home");
-    }
-  }, [user, router]);
 
   useEffect(() => {
     if (!router?.query?.unauthorized) return;
@@ -28,11 +19,46 @@ export default function Home() {
         horizontal: "center",
         vertical: "top",
       },
+      preventDuplicate: true,
       message: "Unauthorized",
     });
   }, [router?.query?.unauthorized, enqueueSnackbar]);
 
-  if (userLoading) return null;
+  useEffect(() => {
+    const error = router?.query?.error;
+    if (!error) return;
+
+    enqueueSnackbar({
+      variant: "error",
+      anchorOrigin: {
+        horizontal: "center",
+        vertical: "top",
+      },
+      preventDuplicate: true,
+      message:
+        error === "OAuthSignin"
+          ? "Error in constructing an authorization URL"
+          : error === "OAuthCallback"
+          ? "Error in handling the response from an OAuth provider"
+          : error === "OAuthCreateAccount"
+          ? " Could not create OAuth provider user in the database"
+          : error === "EmailCreateAccount"
+          ? "Could not create email provider user in the database"
+          : error === "Callback"
+          ? "Error in the OAuth callback handler route"
+          : error === "OAuthAccountNotLinked"
+          ? "Email on the account is already linked, but not with this OAuth account"
+          : error === "EmailSignin"
+          ? "Sending the e-mail with the verification token failed"
+          : error === "CredentialsSignin"
+          ? "Invalid Credentials"
+          : error === "SessionRequired"
+          ? "Unauthenticated"
+          : error === "Default"
+          ? "Something went wrong"
+          : "Something went wrong",
+    });
+  }, [router?.query?.error, enqueueSnackbar]);
 
   return (
     <nav className='fixed top-0 z-50 w-full bg-CITLDarkBlue border-b border-CITLGray-main'>
@@ -61,12 +87,8 @@ export default function Home() {
                   <div className='justify-center flex mb-8'>
                     <img src='/IMAGES/CITL.png' className='h-20 ' alt='CITL' />
                   </div>
-                  {/* <h3 className='mb-8 text-xl font-medium break-words leading-normal text-gray-900 '>
-                    Welcome to Center for Innovative Teaching and Learning.
-                  </h3> */}
                   <div className='space-y-4'>
                     <button
-                      // disabled={userLoading}
                       onClick={() => {
                         signIn(
                           "google",
@@ -84,7 +106,6 @@ export default function Home() {
                       Login as Faculty
                     </button>
                     <button
-                      // disabled={userLoading}
                       onClick={() => {
                         signIn(
                           "google",
@@ -110,4 +131,20 @@ export default function Home() {
       </div>
     </nav>
   );
+}
+
+export async function getServerSideProps(context) {
+  const { req, res } = context;
+  const session = await getServerSession(req, res, authOptions);
+
+  // If the user is already logged in, redirect.
+  // Note: Make sure not to redirect to the same page
+  // To avoid an infinite loop!
+  if (session) {
+    return { redirect: { destination: "/home" } };
+  }
+
+  return {
+    props: {},
+  };
 }

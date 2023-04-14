@@ -1,3 +1,4 @@
+import { reqLog } from "@/services/api/logger";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
@@ -13,6 +14,9 @@ export const authOptions = {
     }),
     // ...add more providers here
   ],
+  pages: {
+    signIn: "/",
+  },
   callbacks: {
     session: async ({ session, token, user }) => {
       if (session?.user) {
@@ -22,4 +26,8 @@ export const authOptions = {
     },
   },
 };
-export default NextAuth(authOptions);
+
+export default async function handler(req, res) {
+  await reqLog(req, res);
+  return await NextAuth(req, res, authOptions);
+}

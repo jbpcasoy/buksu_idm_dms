@@ -4,13 +4,10 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 export default function useUser() {
-  const { data: session } = useSession({
-    required: true,
-    onUnauthenticated: () => {
-      if (router.asPath !== "/") router.push("/");
-    },
-  });
   const router = useRouter();
+  const { data: session } = useSession({
+    required: router.route === "/" ? false : true,
+  });
   const [user, setUser] = useState(null);
   const [userLoading, setUserLoading] = useState(false);
   const [userError, setUserError] = useState(null);
