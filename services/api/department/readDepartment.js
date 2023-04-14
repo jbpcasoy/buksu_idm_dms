@@ -1,10 +1,12 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
+import { accessibleBy } from "@casl/prisma";
 
-export default async function readDepartment(id) {
+export default async function readDepartment({ id, ability, filter = {} }) {
   const prisma = PRISMA_CLIENT;
+  const accessibility = accessibleBy(ability).Department;
 
   try {
-    const department = await prisma.department.findUniqueOrThrow({
+    const department = await prisma.department.findFirst({
       include: {
         ActiveChairperson: {
           select: {
@@ -34,7 +36,13 @@ export default async function readDepartment(id) {
         },
       },
       where: {
-        id,
+        AND: [
+          accessibility,
+          {
+            ...filter,
+            id,
+          },
+        ],
       },
     });
 

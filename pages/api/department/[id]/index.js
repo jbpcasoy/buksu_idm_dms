@@ -1,4 +1,4 @@
-import deleteDepartmentHandler from "@/services/api/department/deleteDepartmentHandler";
+import deleteDepartmentHandler from "@/services/handlers/department/deleteDepartmentHandler";
 import { reqLog } from "@/services/api/logger";
 import getDepartmentHandler from "@/services/handlers/department/getDepartmentHandler";
 import putDepartmentHandler from "@/services/handlers/department/putDepartmentHandler";

@@ -1,4 +1,5 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
+import { accessibleBy } from "@casl/prisma";
 import _ from "lodash";
 
 export default async function readDepartments({
@@ -9,10 +10,12 @@ export default async function readDepartments({
   collegeId,
   sortColumn,
   sortOrder,
+  ability,
 }) {
   const prisma = PRISMA_CLIENT;
   const sortFilter = {};
   _.set(sortFilter, sortColumn, sortOrder);
+  const accessibility = accessibleBy(ability).Department;
 
   try {
     const departments = await prisma.department.findMany({
@@ -26,38 +29,48 @@ export default async function readDepartments({
         },
       },
       where: {
-        name: {
-          contains: name,
-          // mode: "insensitive",
-        },
-        college: {
-          id: {
-            contains: collegeId,
+        AND: [
+          accessibility,
+          {
+            name: {
+              contains: name,
+              // mode: "insensitive",
+            },
+            college: {
+              id: {
+                contains: collegeId,
+              },
+              name: {
+                contains: collegeName,
+                // mode: "insensitive",
+              },
+            },
           },
-          name: {
-            contains: collegeName,
-            // mode: "insensitive",
-          },
-        },
+        ],
       },
       orderBy: sortFilter,
     });
 
     const total = await prisma.department.count({
       where: {
-        name: {
-          contains: name,
-          // mode: "insensitive",
-        },
-        college: {
-          id: {
-            contains: collegeId,
+        AND: [
+          accessibility,
+          {
+            name: {
+              contains: name,
+              // mode: "insensitive",
+            },
+            college: {
+              id: {
+                contains: collegeId,
+              },
+              name: {
+                contains: collegeName,
+                // mode: "insensitive",
+              },
+            },
           },
-          name: {
-            contains: collegeName,
-            // mode: "insensitive",
-          },
-        },
+        ],
       },
     });
 

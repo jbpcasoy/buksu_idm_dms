@@ -1,14 +1,12 @@
 import userAbility from "@/services/abilities/defineAbility";
+import deleteDepartment from "@/services/api/department/deleteDepartment";
 import readDepartment from "@/services/api/department/readDepartment";
-import updateDocument from "@/services/api/department/updateDocument";
 import getServerUser from "@/services/helpers/getServerUser";
 import statusError from "@/services/helpers/throwError";
 import abilityValidator from "@/services/validator/abilityValidator";
-import { subject } from "@casl/ability";
 
-export default async function putDepartmentHandler(req, res) {
+export default async function deleteDepartmentHandler(req, res) {
   const { id } = req.query;
-  const { name } = req.body;
 
   async function findSubject({ id }) {
     const user = await getServerUser(req, res);
@@ -19,6 +17,7 @@ export default async function putDepartmentHandler(req, res) {
       });
       return subject;
     } catch (error) {
+      console.log(error);
       throw statusError({
         statusCode: 403,
         message: "Unauthorized, cannot delete Department",
@@ -27,20 +26,16 @@ export default async function putDepartmentHandler(req, res) {
   }
 
   try {
-    const user = await getServerUser(req, res);
-    const department = await findSubject({ id });
     return abilityValidator({
       req,
       res,
       next: async (req, res) => {
-        const department = await updateDocument(id, {
-          name,
-        });
+        const department = await deleteDepartment(id);
 
         return res.status(200).json(department);
       },
-      action: "update",
-      subject: subject("Department", department),
+      action: "delete",
+      subject: await findSubject({ id }),
       fields: undefined,
       type: "Department",
     });

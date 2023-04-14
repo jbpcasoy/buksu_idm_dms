@@ -607,8 +607,23 @@
     "method": "POST",
     "sortNum": 280000,
     "created": "2023-02-26T01:21:31.383Z",
-    "modified": "2023-03-08T05:15:34.522Z",
-    "headers": [],
+    "modified": "2023-04-14T02:43:38.730Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}"
+      }
+    ],
     "params": [],
     "body": {
       "type": "json",
@@ -626,8 +641,23 @@
     "method": "GET",
     "sortNum": 290000,
     "created": "2023-02-26T01:21:31.384Z",
-    "modified": "2023-03-21T00:54:42.125Z",
-    "headers": [],
+    "modified": "2023-04-14T03:11:59.142Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}"
+      }
+    ],
     "params": [
       {
         "name": "limit",
@@ -657,40 +687,93 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "21b0ff05-c476-4619-a541-247a075614b2",
     "name": "READ Department",
-    "url": "{{host}}/api/department/cle4z7ocj0001s9rtaapx7a9c",
+    "url": "{{host}}/api/department/clgdc4b51000hs9dbvwiev03u",
     "method": "GET",
     "sortNum": 300000,
     "created": "2023-02-26T01:21:31.385Z",
-    "modified": "2023-02-26T01:21:31.385Z",
-    "headers": []
+    "modified": "2023-04-14T02:55:19.881Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}"
+      }
+    ],
+    "params": [],
+    "tests": []
   },
   {
     "_id": "0cde271e-6800-4563-8dc1-333c11a9db01",
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "21b0ff05-c476-4619-a541-247a075614b2",
     "name": "UPDATE Department",
-    "url": "{{host}}/api/department/cle4z7ocj0001s9rtaapx7a9c",
+    "url": "{{host}}/api/department/clgdc4b7x000ls9dbr4hs24jg",
     "method": "PUT",
     "sortNum": 310000,
     "created": "2023-02-26T01:21:31.386Z",
-    "modified": "2023-02-26T01:21:31.386Z",
-    "headers": [],
+    "modified": "2023-04-14T03:06:28.581Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}"
+      }
+    ],
+    "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"name\": \"Bachelor of Science in Information Technology Updated\"\n}"
-    }
+      "raw": "{\n    \"name\": \"Development Communication Updated\"\n}",
+      "form": []
+    },
+    "tests": []
   },
   {
     "_id": "c205f0df-1804-4757-91c8-cd6e92de7195",
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "21b0ff05-c476-4619-a541-247a075614b2",
     "name": "DELETE Department",
-    "url": "{{host}}/api/department/cle4z7ocj0001s9rtaapx7a9c",
+    "url": "{{host}}/api/department/clgdc4b51000hs9dbvwiev03u",
     "method": "DELETE",
     "sortNum": 320000,
     "created": "2023-02-26T01:21:31.387Z",
-    "modified": "2023-02-26T01:21:31.387Z",
-    "headers": []
+    "modified": "2023-04-14T03:00:17.415Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "tests": []
   },
   {
     "_id": "b16d5ca0-ce9a-4dfd-9bf7-88dca39654a7",
