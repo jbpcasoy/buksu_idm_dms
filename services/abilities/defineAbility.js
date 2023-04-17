@@ -15,60 +15,72 @@ export default async function userAbility(user) {
   can("read", "ActiveFaculty");
 
   // ActiveFile
-  can("connectToActiveFile", "IM", {
-    ownerId: {
-      equals: user?.ActiveFaculty?.facultyId,
-    },
-  });
-  can("connectToActiveFile", "File", {
-    iM: {
-      is: {
-        ownerId: {
-          equals: user?.ActiveFaculty?.facultyId,
+  if (user?.ActiveFaculty) {
+    can("connectToActiveFile", "IM", {
+      ownerId: {
+        equals: user.ActiveFaculty.facultyId,
+      },
+    });
+    can("connectToActiveFile", "File", {
+      iM: {
+        is: {
+          ownerId: {
+            equals: user.ActiveFaculty.facultyId,
+          },
         },
       },
-    },
-  });
-  can("delete", "ActiveFile", {
-    IM: {
-      is: {
-        ownerId: {
-          equals: user?.ActiveFaculty?.facultyId,
+    });
+    can("delete", "ActiveFile", {
+      IM: {
+        is: {
+          ownerId: {
+            equals: user.ActiveFaculty.facultyId,
+          },
         },
       },
-    },
-  });
-  can("read", "ActiveFile", {
-    IM: {
-      owner: {
-        departmentId: {
-          equals: user?.ActiveFaculty?.departmentId,
-        },
-      },
-    },
-  });
-  can("read", "ActiveFile", {
-    IM: {
-      is: {
-        owner: {
-          department: {
-            collegeId: {
-              equals: user?.ActiveFaculty?.ActiveDean?.collegeId,
+    });
+    can("read", "ActiveFile", {
+      IM: {
+        is: {
+          owner: {
+            is: {
+              departmentId: {
+                equals: user.ActiveFaculty.departmentId,
+              },
             },
           },
         },
       },
-    },
-  });
-  can("update", "ActiveFile", ["fileId"], {
-    IM: {
-      is: {
-        ownerId: {
-          equals: user?.ActiveFaculty?.facultyId,
+    });
+    can("update", "ActiveFile", ["fileId"], {
+      IM: {
+        is: {
+          ownerId: {
+            equals: user?.ActiveFaculty?.facultyId,
+          },
         },
       },
-    },
-  });
+    });
+  }
+  if (user?.ActiveFaculty?.ActiveDean) {
+    can("read", "ActiveFile", {
+      IM: {
+        is: {
+          owner: {
+            is: {
+              department: {
+                is: {
+                  collegeId: {
+                    equals: user.ActiveFaculty.ActiveDean.collegeId,
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    });
+  }
 
   // College
   can("read", "College");
@@ -76,7 +88,31 @@ export default async function userAbility(user) {
   // Department
   can("read", "Department");
 
-  can("connectToChairpersonReview", "IM");
+  if (user?.ActiveFaculty?.ActiveChairperson) {
+    can("connectToChairpersonReview", "IM", {
+      owner: {
+        is: {
+          department: {
+            is: {
+              ActiveChairperson: {
+                is: {
+                  chairpersonId: {
+                    equals: user.ActiveFaculty.ActiveChairperson.chairpersonId,
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    });
+
+    can("read", "ChairpersonReview", {
+      chairpersonId: {
+        equals: user.ActiveFaculty.ActiveChairperson.chairpersonId,
+      },
+    });
+  }
 
   return build();
 }

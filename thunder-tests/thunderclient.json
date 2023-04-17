@@ -2488,16 +2488,16 @@
     "method": "POST",
     "sortNum": 1180000,
     "created": "2023-03-08T06:50:19.370Z",
-    "modified": "2023-04-17T05:08:41.529Z",
+    "modified": "2023-04-17T05:19:34.061Z",
     "headers": [
       {
         "name": "Cookie",
-        "value": "{{Cookie}}",
-        "isDisabled": true
+        "value": "{{Cookie}}"
       },
       {
         "name": "Cookie",
-        "value": "{{FacultyCookie}}"
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
       }
     ],
     "params": [],
@@ -2538,12 +2538,27 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "816fa3f5-537a-448b-a3e0-bff5d11d1b75",
     "name": "READ ChairpersonReview",
-    "url": "{{host}}/api/chairperson_review/clezbq5m70001s9ntao2okviw",
+    "url": "{{host}}/api/chairperson_review/clgkb2i80001ps9r7xgfjkedz",
     "method": "GET",
     "sortNum": 1200000,
     "created": "2023-03-08T07:07:15.137Z",
-    "modified": "2023-03-08T07:07:38.491Z",
-    "headers": [],
+    "modified": "2023-04-17T05:30:59.316Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}"
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}",
+        "isDisabled": true
+      }
+    ],
     "params": [],
     "tests": []
   },
