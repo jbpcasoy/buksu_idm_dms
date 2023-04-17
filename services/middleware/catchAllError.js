@@ -7,7 +7,7 @@ export default async function catchAllError(req, res, next) {
   } catch (error) {
     console.error(error);
     return res
-      .status(error?.statusCode ?? 500)
+      .status(error?.code === "P2025" ? 404 : error?.statusCode ?? 500)
       .json({ message: error?.message ?? "Something went wrong" });
   }
 }
