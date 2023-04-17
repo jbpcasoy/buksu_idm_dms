@@ -6,7 +6,7 @@ export default async function readCITLDirector({ id, ability, filter = {} }) {
   const accessibility = accessibleBy(ability).CITLDirector;
 
   try {
-    const cITLDirector = await prisma.cITLDirector.findFirst({
+    const cITLDirector = await prisma.cITLDirector.findFirstOrThrow({
       where: { AND: [accessibility, { ...filter, id }] },
     });
     return cITLDirector;

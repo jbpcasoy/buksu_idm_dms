@@ -10,7 +10,7 @@ export default async function readActiveCoordinator({
   const accessibility = accessibleBy(ability).ActiveCoordinator;
 
   try {
-    const activeCoordinator = prisma.activeCoordinator.findFirst({
+    const activeCoordinator = prisma.activeCoordinator.findFirstOrThrow({
       where: {
         AND: [
           accessibility,

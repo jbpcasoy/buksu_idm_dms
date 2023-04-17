@@ -6,7 +6,7 @@ export default async function readCoordinator({ id, ability, filter = {} }) {
   const accessibility = accessibleBy(ability).Coordinator;
 
   try {
-    const coordinator = prisma.coordinator.findFirst({
+    const coordinator = prisma.coordinator.findFirstOrThrow({
       where: {
         AND: [
           accessibility,

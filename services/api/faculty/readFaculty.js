@@ -6,7 +6,7 @@ export default async function readFaculty({ id, ability, filter = {} }) {
   const accessibility = accessibleBy(ability).Faculty;
 
   try {
-    const faculty = await prisma.faculty.findFirst({
+    const faculty = await prisma.faculty.findFirstOrThrow({
       where: {
         AND: [
           accessibility,

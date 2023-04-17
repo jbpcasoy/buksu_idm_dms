@@ -6,7 +6,7 @@ export default async function readActiveFile({ id, ability, filter = {} }) {
   const accessibility = accessibleBy(ability).ActiveFile;
 
   try {
-    const activeFile = await prisma.activeFile.findFirst({
+    const activeFile = await prisma.activeFile.findFirstOrThrow({
       where: {
         AND: [
           accessibility,

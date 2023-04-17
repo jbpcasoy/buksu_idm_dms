@@ -6,7 +6,7 @@ export default async function readDepartment({ id, ability, filter = {} }) {
   const accessibility = accessibleBy(ability).Department;
 
   try {
-    const department = await prisma.department.findFirst({
+    const department = await prisma.department.findFirstOrThrow({
       include: {
         ActiveChairperson: {
           select: {

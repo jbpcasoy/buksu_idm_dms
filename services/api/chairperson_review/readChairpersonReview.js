@@ -17,7 +17,7 @@ export default async function readChairpersonReview({
   );
 
   try {
-    const chairpersonReview = await prisma.chairpersonReview.findFirst({
+    const chairpersonReview = await prisma.chairpersonReview.findFirstOrThrow({
       where: {
         AND: [accessibility, { ...filter, id }],
       },
