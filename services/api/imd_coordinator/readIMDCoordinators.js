@@ -16,46 +16,42 @@ export default async function readIMDCoordinators({
 
   const accessibility = accessibleBy(ability).IMDCoordinator;
 
-  try {
-    const iMDCoordinators = await prisma.iMDCoordinator.findMany({
-      take: limit,
-      skip: (page - 1) * limit,
-      include: {
-        User: true,
-        ActiveIMDCoordinator: true,
-      },
-      where: {
-        AND: [
-          accessibility,
-          {
-            User: {
-              name: {
-                contains: name,
-              },
+  const iMDCoordinators = await prisma.iMDCoordinator.findMany({
+    take: limit,
+    skip: (page - 1) * limit,
+    include: {
+      User: true,
+      ActiveIMDCoordinator: true,
+    },
+    where: {
+      AND: [
+        accessibility,
+        {
+          User: {
+            name: {
+              contains: name,
             },
           },
-        ],
-      },
-      orderBy: sortFilter,
-    });
+        },
+      ],
+    },
+    orderBy: sortFilter,
+  });
 
-    const total = await prisma.iMDCoordinator.count({
-      where: {
-        AND: [
-          accessibility,
-          {
-            User: {
-              name: {
-                contains: name,
-              },
+  const total = await prisma.iMDCoordinator.count({
+    where: {
+      AND: [
+        accessibility,
+        {
+          User: {
+            name: {
+              contains: name,
             },
           },
-        ],
-      },
-    });
+        },
+      ],
+    },
+  });
 
-    return { data: iMDCoordinators, total };
-  } catch (error) {
-    throw error;
-  }
+  return { data: iMDCoordinators, total };
 }

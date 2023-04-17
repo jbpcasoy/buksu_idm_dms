@@ -8,32 +8,28 @@ export default async function readPeerReviews({
 }) {
   const prisma = PRISMA_CLIENT;
 
-  try {
-    const peerReviews = await prisma.peerReview.findMany({
-      take: limit,
-      skip: (page - 1) * limit,
-      where: {
-        facultyId: {
-          contains: facultyId,
-        },
-        iMId: {
-          contains: iMId,
-        },
+  const peerReviews = await prisma.peerReview.findMany({
+    take: limit,
+    skip: (page - 1) * limit,
+    where: {
+      facultyId: {
+        contains: facultyId,
       },
-    });
+      iMId: {
+        contains: iMId,
+      },
+    },
+  });
 
-    const total = await prisma.peerReview.count({
-      where: {
-        facultyId: {
-          contains: facultyId,
-        },
-        iMId: {
-          contains: iMId,
-        },
+  const total = await prisma.peerReview.count({
+    where: {
+      facultyId: {
+        contains: facultyId,
       },
-    });
-    return { data: peerReviews, total };
-  } catch (error) {
-    throw error;
-  }
+      iMId: {
+        contains: iMId,
+      },
+    },
+  });
+  return { data: peerReviews, total };
 }

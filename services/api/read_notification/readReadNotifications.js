@@ -7,25 +7,21 @@ export default async function readReadNotifications({
 }) {
   const prisma = PRISMA_CLIENT;
 
-  try {
-    const readNotifications = await prisma.readNotification.findMany({
-      take: limit,
-      skip: (page - 1) * limit,
-      where: {
-        notificationId: {
-          contains: notificationId,
-        },
+  const readNotifications = await prisma.readNotification.findMany({
+    take: limit,
+    skip: (page - 1) * limit,
+    where: {
+      notificationId: {
+        contains: notificationId,
       },
-    });
-    const total = await prisma.readNotification.count({
-      where: {
-        notificationId: {
-          contains: notificationId,
-        },
+    },
+  });
+  const total = await prisma.readNotification.count({
+    where: {
+      notificationId: {
+        contains: notificationId,
       },
-    });
-    return { data: readNotifications, total };
-  } catch (error) {
-    throw error;
-  }
+    },
+  });
+  return { data: readNotifications, total };
 }

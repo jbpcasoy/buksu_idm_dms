@@ -3,14 +3,10 @@ import { PRISMA_CLIENT } from "@/prisma/prisma_client";
 export default async function deleteChairpersonReviewItem(id) {
   const prisma = PRISMA_CLIENT;
 
-  try {
-    const chairpersonReviewItem = await prisma.chairpersonReviewItem.delete({
-      where: {
-        id,
-      },
-    });
-    return chairpersonReviewItem;
-  } catch (error) {
-    throw error;
-  }
+  const chairpersonReviewItem = await prisma.chairpersonReviewItem.delete({
+    where: {
+      id,
+    },
+  });
+  return chairpersonReviewItem;
 }

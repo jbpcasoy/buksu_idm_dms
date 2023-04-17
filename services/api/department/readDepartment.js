@@ -5,49 +5,45 @@ export default async function readDepartment({ id, ability, filter = {} }) {
   const prisma = PRISMA_CLIENT;
   const accessibility = accessibleBy(ability).Department;
 
-  try {
-    const department = await prisma.department.findFirstOrThrow({
-      include: {
-        ActiveChairperson: {
-          select: {
-            Chairperson: {
-              select: {
-                Faculty: {
-                  select: {
-                    user: true,
-                  },
-                },
-              },
-            },
-          },
-        },
-        ActiveCoordinator: {
-          select: {
-            Coordinator: {
-              select: {
-                Faculty: {
-                  select: {
-                    user: true,
-                  },
+  const department = await prisma.department.findFirstOrThrow({
+    include: {
+      ActiveChairperson: {
+        select: {
+          Chairperson: {
+            select: {
+              Faculty: {
+                select: {
+                  user: true,
                 },
               },
             },
           },
         },
       },
-      where: {
-        AND: [
-          accessibility,
-          {
-            ...filter,
-            id,
+      ActiveCoordinator: {
+        select: {
+          Coordinator: {
+            select: {
+              Faculty: {
+                select: {
+                  user: true,
+                },
+              },
+            },
           },
-        ],
+        },
       },
-    });
+    },
+    where: {
+      AND: [
+        accessibility,
+        {
+          ...filter,
+          id,
+        },
+      ],
+    },
+  });
 
-    return department;
-  } catch (error) {
-    throw error;
-  }
+  return department;
 }

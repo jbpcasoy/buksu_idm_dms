@@ -6,46 +6,42 @@ import readSubmittedChairpersonReview from "../submitted_chairperson_review/read
 export default async function createSubmittedChairpersonSuggestion({
   chairpersonSuggestionId,
 }) {
-  try {
-    const prisma = PRISMA_CLIENT;
+  const prisma = PRISMA_CLIENT;
 
-    const chairpersonSuggestion = await readChairpersonSuggestion(
-      chairpersonSuggestionId
-    );
+  const chairpersonSuggestion = await readChairpersonSuggestion(
+    chairpersonSuggestionId
+  );
 
-    const submittedChairpersonSuggestion =
-      await prisma.submittedChairpersonSuggestion.create({
-        data: {
-          ChairpersonSuggestion: {
-            connect: {
-              id: chairpersonSuggestion.id,
-            },
-          },
-          IM: {
-            connect: {
-              id: chairpersonSuggestion.SubmittedChairpersonReview.iMId,
-            },
-          },
-          Notification: {
-            create: {
-              Type: "SUBMITTED_CHAIRPERSON_SUGGESTION",
-            },
-          },
-          IMEvent: {
-            create: {
-              IMEventType: "SUBMITTED_CHAIRPERSON_SUGGESTION",
-            },
+  const submittedChairpersonSuggestion =
+    await prisma.submittedChairpersonSuggestion.create({
+      data: {
+        ChairpersonSuggestion: {
+          connect: {
+            id: chairpersonSuggestion.id,
           },
         },
-      });
+        IM: {
+          connect: {
+            id: chairpersonSuggestion.SubmittedChairpersonReview.iMId,
+          },
+        },
+        Notification: {
+          create: {
+            Type: "SUBMITTED_CHAIRPERSON_SUGGESTION",
+          },
+        },
+        IMEvent: {
+          create: {
+            IMEventType: "SUBMITTED_CHAIRPERSON_SUGGESTION",
+          },
+        },
+      },
+    });
 
-    const submittedChairpersonReview = await readSubmittedChairpersonReview(
-      chairpersonSuggestion.submittedChairpersonReviewId
-    );
-    await checkAndUpdateStatus(submittedChairpersonReview.iMId);
+  const submittedChairpersonReview = await readSubmittedChairpersonReview(
+    chairpersonSuggestion.submittedChairpersonReviewId
+  );
+  await checkAndUpdateStatus(submittedChairpersonReview.iMId);
 
-    return submittedChairpersonSuggestion;
-  } catch (error) {
-    throw error;
-  }
+  return submittedChairpersonSuggestion;
 }

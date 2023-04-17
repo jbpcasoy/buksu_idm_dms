@@ -8,32 +8,28 @@ export default async function readPeerReviewItems({
 }) {
   const prisma = PRISMA_CLIENT;
 
-  try {
-    const peerReviewItems = await prisma.peerReviewItem.findMany({
-      take: limit,
-      skip: limit && page ? (page - 1) * limit : undefined,
-      where: {
-        questionId: {
-          contains: questionId,
-        },
-        peerReviewId: {
-          contains: peerReviewId,
-        },
+  const peerReviewItems = await prisma.peerReviewItem.findMany({
+    take: limit,
+    skip: limit && page ? (page - 1) * limit : undefined,
+    where: {
+      questionId: {
+        contains: questionId,
       },
-    });
-    const total = await prisma.peerReviewItem.count({
-      where: {
-        questionId: {
-          contains: questionId,
-        },
-        peerReviewId: {
-          contains: peerReviewId,
-        },
+      peerReviewId: {
+        contains: peerReviewId,
       },
-    });
+    },
+  });
+  const total = await prisma.peerReviewItem.count({
+    where: {
+      questionId: {
+        contains: questionId,
+      },
+      peerReviewId: {
+        contains: peerReviewId,
+      },
+    },
+  });
 
-    return { data: peerReviewItems, total };
-  } catch (error) {
-    throw error;
-  }
+  return { data: peerReviewItems, total };
 }

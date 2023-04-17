@@ -4,17 +4,13 @@ export default async function readSubmittedChairpersonSuggestions({
   limit,
   page,
 }) {
-  try {
-    const prisma = PRISMA_CLIENT;
+  const prisma = PRISMA_CLIENT;
 
-    const submittedChairpersonSuggestion =
-      await prisma.submittedChairpersonSuggestion.findMany({
-        take: limit,
-        skip: (page - 1) * limit,
-      });
-    const total = await prisma.submittedChairpersonSuggestion.count();
-    return { data: submittedChairpersonSuggestion, total };
-  } catch (error) {
-    throw error;
-  }
+  const submittedChairpersonSuggestion =
+    await prisma.submittedChairpersonSuggestion.findMany({
+      take: limit,
+      skip: (page - 1) * limit,
+    });
+  const total = await prisma.submittedChairpersonSuggestion.count();
+  return { data: submittedChairpersonSuggestion, total };
 }

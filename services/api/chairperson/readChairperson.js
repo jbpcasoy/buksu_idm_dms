@@ -5,21 +5,17 @@ export default async function readChairperson({ id, ability, filter = {} }) {
   const prisma = PRISMA_CLIENT;
   const accessibility = accessibleBy(ability).Chairperson;
 
-  try {
-    const chairperson = await prisma.chairperson.findFirstOrThrow({
-      where: {
-        AND: [
-          accessibility,
-          {
-            ...filter,
-            id,
-          },
-        ],
-      },
-    });
+  const chairperson = await prisma.chairperson.findFirstOrThrow({
+    where: {
+      AND: [
+        accessibility,
+        {
+          ...filter,
+          id,
+        },
+      ],
+    },
+  });
 
-    return chairperson;
-  } catch (error) {
-    throw error;
-  }
+  return chairperson;
 }

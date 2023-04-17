@@ -5,21 +5,17 @@ export default async function readIMDCoordinator({ id, ability, filter = {} }) {
   const prisma = PRISMA_CLIENT;
   const accessibility = accessibleBy(ability).IMDCoordinator;
 
-  try {
-    const iMDCoordinator = await prisma.iMDCoordinator.findFirstOrThrow({
-      where: {
-        AND: [
-          accessibility,
-          {
-            ...filter,
-            id,
-          },
-        ],
-      },
-    });
+  const iMDCoordinator = await prisma.iMDCoordinator.findFirstOrThrow({
+    where: {
+      AND: [
+        accessibility,
+        {
+          ...filter,
+          id,
+        },
+      ],
+    },
+  });
 
-    return iMDCoordinator;
-  } catch (error) {
-    throw error;
-  }
+  return iMDCoordinator;
 }

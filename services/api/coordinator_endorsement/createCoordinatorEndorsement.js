@@ -8,39 +8,35 @@ export default async function createCoordinatorEndorsement({
 }) {
   const prisma = PRISMA_CLIENT;
 
-  try {
-    const iM = await readIM(iMId, {
-      status: "DEPARTMENT_REVISED",
-    });
-    const coordinator = await readCoordinator(coordinatorId);
+  const iM = await readIM(iMId, {
+    status: "DEPARTMENT_REVISED",
+  });
+  const coordinator = await readCoordinator(coordinatorId);
 
-    const coordinatorEndorsement = await prisma.coordinatorEndorsement.create({
-      data: {
-        IM: {
-          connect: {
-            id: iM.id,
-          },
-        },
-        Coordinator: {
-          connect: {
-            id: coordinator.id,
-          },
-        },
-        Notification: {
-          create: {
-            Type: "COORDINATOR_ENDORSEMENT",
-          },
-        },
-        IMEvent: {
-          create: {
-            IMEventType: "COORDINATOR_ENDORSEMENT",
-          },
+  const coordinatorEndorsement = await prisma.coordinatorEndorsement.create({
+    data: {
+      IM: {
+        connect: {
+          id: iM.id,
         },
       },
-    });
+      Coordinator: {
+        connect: {
+          id: coordinator.id,
+        },
+      },
+      Notification: {
+        create: {
+          Type: "COORDINATOR_ENDORSEMENT",
+        },
+      },
+      IMEvent: {
+        create: {
+          IMEventType: "COORDINATOR_ENDORSEMENT",
+        },
+      },
+    },
+  });
 
-    return coordinatorEndorsement;
-  } catch (error) {
-    throw error;
-  }
+  return coordinatorEndorsement;
 }

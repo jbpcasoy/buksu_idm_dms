@@ -13,33 +13,30 @@ export default async function readUsers({
 
   const sortFilter = {};
   _.set(sortFilter, sortColumn, sortOrder);
-  try {
-    const users = await prisma.user.findMany({
-      orderBy: sortFilter,
-      take: limit,
-      skip: (page - 1) * limit,
-      where: {
-        email: {
-          contains: email,
-        },
-        name: {
-          contains: name,
-          // mode: "insensitive",
-        },
-      },
-    });
 
-    const total = await prisma.user.count({
-      where: {
-        name: {
-          contains: name,
-          // mode: "insensitive",
-        },
+  const users = await prisma.user.findMany({
+    orderBy: sortFilter,
+    take: limit,
+    skip: (page - 1) * limit,
+    where: {
+      email: {
+        contains: email,
       },
-    });
+      name: {
+        contains: name,
+        // mode: "insensitive",
+      },
+    },
+  });
 
-    return { data: users, total };
-  } catch (error) {
-    throw error;
-  }
+  const total = await prisma.user.count({
+    where: {
+      name: {
+        contains: name,
+        // mode: "insensitive",
+      },
+    },
+  });
+
+  return { data: users, total };
 }

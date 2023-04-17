@@ -7,27 +7,23 @@ export default async function readSubmittedChairpersonReviews({
 }) {
   const prisma = PRISMA_CLIENT;
 
-  try {
-    const submittedChairpersonReviews =
-      await prisma.submittedChairpersonReview.findMany({
-        take: limit,
-        skip: (page - 1) * limit,
-        where: {
-          chairpersonReviewId: {
-            contains: chairpersonReviewId,
-          },
-        },
-      });
-    const total = await prisma.submittedChairpersonReview.count({
+  const submittedChairpersonReviews =
+    await prisma.submittedChairpersonReview.findMany({
+      take: limit,
+      skip: (page - 1) * limit,
       where: {
         chairpersonReviewId: {
           contains: chairpersonReviewId,
         },
       },
     });
+  const total = await prisma.submittedChairpersonReview.count({
+    where: {
+      chairpersonReviewId: {
+        contains: chairpersonReviewId,
+      },
+    },
+  });
 
-    return { data: submittedChairpersonReviews, total };
-  } catch (error) {
-    throw error;
-  }
+  return { data: submittedChairpersonReviews, total };
 }

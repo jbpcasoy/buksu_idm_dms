@@ -17,7 +17,6 @@ export default async function deleteDepartmentHandler(req, res) {
     return subject;
   }
 
-  try {
     return abilityValidator({
       req,
       res,
@@ -31,9 +30,5 @@ export default async function deleteDepartmentHandler(req, res) {
       fields: undefined,
       type: "Department",
     });
-  } catch (error) {
-    return res
-      .status(error?.statusCode ?? 500)
-      .json({ message: error?.message });
-  }
+
 }

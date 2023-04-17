@@ -7,18 +7,14 @@ export default async function handler(req, res) {
   return catchAllError(req, res, async (req, res) => {
     await reqLog(req, res);
 
-    try {
-      if (process.env.STORAGE === "cloud") {
-        return cloudDownloadFileHandler(req, res);
-      } else if (process.env.STORAGE === "local") {
-        return localDownloadFileHandler(req, res);
-      } else {
-        throw new Error(
-          `env variable STORAGE ${process.env.STORAGE} is not supported`
-        );
-      }
-    } catch (error) {
-      throw error;
+    if (process.env.STORAGE === "cloud") {
+      return cloudDownloadFileHandler(req, res);
+    } else if (process.env.STORAGE === "local") {
+      return localDownloadFileHandler(req, res);
+    } else {
+      throw new Error(
+        `env variable STORAGE ${process.env.STORAGE} is not supported`
+      );
     }
   });
 }

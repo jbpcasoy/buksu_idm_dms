@@ -5,20 +5,16 @@ export default async function readCoordinator({ id, ability, filter = {} }) {
   const prisma = PRISMA_CLIENT;
   const accessibility = accessibleBy(ability).Coordinator;
 
-  try {
-    const coordinator = prisma.coordinator.findFirstOrThrow({
-      where: {
-        AND: [
-          accessibility,
-          {
-            ...filter,
-            id,
-          },
-        ],
-      },
-    });
-    return coordinator;
-  } catch (error) {
-    throw error;
-  }
+  const coordinator = prisma.coordinator.findFirstOrThrow({
+    where: {
+      AND: [
+        accessibility,
+        {
+          ...filter,
+          id,
+        },
+      ],
+    },
+  });
+  return coordinator;
 }

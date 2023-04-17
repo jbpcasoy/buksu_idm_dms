@@ -7,20 +7,16 @@ export default async function createPeerReviewItem({
 }) {
   const prisma = PRISMA_CLIENT;
 
-  try {
-    const peerReviewItem = await prisma.peerReviewItem.create({
-      data: {
-        questionId,
-        answer,
-        PeerReview: {
-          connect: {
-            id: peerReviewId,
-          },
+  const peerReviewItem = await prisma.peerReviewItem.create({
+    data: {
+      questionId,
+      answer,
+      PeerReview: {
+        connect: {
+          id: peerReviewId,
         },
       },
-    });
-    return peerReviewItem;
-  } catch (error) {
-    throw error;
-  }
+    },
+  });
+  return peerReviewItem;
 }

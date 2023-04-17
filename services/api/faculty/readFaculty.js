@@ -5,30 +5,26 @@ export default async function readFaculty({ id, ability, filter = {} }) {
   const prisma = PRISMA_CLIENT;
   const accessibility = accessibleBy(ability).Faculty;
 
-  try {
-    const faculty = await prisma.faculty.findFirstOrThrow({
-      where: {
-        AND: [
-          accessibility,
-          {
-            ...filter,
-            id,
-          },
-        ],
-      },
-      include: {
-        user: true,
-        ActiveFaculty: true,
-        department: {
-          include: {
-            college: true,
-          },
+  const faculty = await prisma.faculty.findFirstOrThrow({
+    where: {
+      AND: [
+        accessibility,
+        {
+          ...filter,
+          id,
+        },
+      ],
+    },
+    include: {
+      user: true,
+      ActiveFaculty: true,
+      department: {
+        include: {
+          college: true,
         },
       },
-    });
+    },
+  });
 
-    return faculty;
-  } catch (error) {
-    throw error;
-  }
+  return faculty;
 }

@@ -17,22 +17,16 @@ export default async function deleteIMDCoordinatorHandler(req, res) {
     return subject;
   }
 
-  try {
-    return abilityValidator({
-      req,
-      res,
-      next: async (req, res) => {
-        const iMDCoordinator = await deleteIMDCoordinator(id);
-        return res.status(200).json(iMDCoordinator);
-      },
-      action: "delete",
-      subject: await findSubject({ id }),
-      fields: undefined,
-      type: "IMDCoordinator",
-    });
-  } catch (error) {
-    return res
-      .status(error?.statusCode ?? 500)
-      .json({ message: error?.message });
-  }
+  return abilityValidator({
+    req,
+    res,
+    next: async (req, res) => {
+      const iMDCoordinator = await deleteIMDCoordinator(id);
+      return res.status(200).json(iMDCoordinator);
+    },
+    action: "delete",
+    subject: await findSubject({ id }),
+    fields: undefined,
+    type: "IMDCoordinator",
+  });
 }

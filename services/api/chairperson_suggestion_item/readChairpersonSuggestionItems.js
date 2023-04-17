@@ -7,27 +7,23 @@ export default async function readChairpersonSuggestionItems({
 }) {
   const prisma = PRISMA_CLIENT;
 
-  try {
-    const chairpersonSuggestionItems =
-      await prisma.chairpersonSuggestionItem.findMany({
-        take: limit,
-        skip: limit && page ? (page - 1) * limit : undefined,
-        where: {
-          chairpersonSuggestionId: {
-            contains: chairpersonSuggestionId,
-          },
-        },
-      });
-
-    const total = await prisma.chairpersonSuggestionItem.count({
+  const chairpersonSuggestionItems =
+    await prisma.chairpersonSuggestionItem.findMany({
+      take: limit,
+      skip: limit && page ? (page - 1) * limit : undefined,
       where: {
         chairpersonSuggestionId: {
           contains: chairpersonSuggestionId,
         },
       },
     });
-    return { data: chairpersonSuggestionItems, total };
-  } catch (error) {
-    throw error;
-  }
+
+  const total = await prisma.chairpersonSuggestionItem.count({
+    where: {
+      chairpersonSuggestionId: {
+        contains: chairpersonSuggestionId,
+      },
+    },
+  });
+  return { data: chairpersonSuggestionItems, total };
 }

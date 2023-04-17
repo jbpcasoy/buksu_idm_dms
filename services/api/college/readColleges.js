@@ -15,35 +15,31 @@ export default async function readColleges({
   _.set(sortFilter, sortColumn, sortOrder);
   const accessibility = accessibleBy(ability).College;
 
-  try {
-    const colleges = await prisma.college.findMany({
-      skip: (page - 1) * limit,
-      take: limit,
-      where: {
-        AND: [
-          accessibility,
-          {
-            name: {
-              contains: name,
-              // mode: "insensitive",
-            },
+  const colleges = await prisma.college.findMany({
+    skip: (page - 1) * limit,
+    take: limit,
+    where: {
+      AND: [
+        accessibility,
+        {
+          name: {
+            contains: name,
+            // mode: "insensitive",
           },
-        ],
-      },
-      orderBy: sortFilter,
-    });
-
-    const total = await prisma.college.count({
-      where: {
-        name: {
-          contains: name,
-          // mode: "insensitive",
         },
-      },
-    });
+      ],
+    },
+    orderBy: sortFilter,
+  });
 
-    return { data: colleges, total };
-  } catch (error) {
-    throw error;
-  }
+  const total = await prisma.college.count({
+    where: {
+      name: {
+        contains: name,
+        // mode: "insensitive",
+      },
+    },
+  });
+
+  return { data: colleges, total };
 }

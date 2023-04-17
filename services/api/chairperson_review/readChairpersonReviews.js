@@ -8,24 +8,20 @@ export default async function readChairpersonReviews({
 }) {
   const prisma = PRISMA_CLIENT;
 
-  try {
-    const chairpersonReviews = await prisma.chairpersonReview.findMany({
-      take: limit,
-      skip: (page - 1) * limit,
-      where: {
-        chairpersonId,
-        iMId,
-      },
-    });
-    const total = await prisma.chairpersonReview.count({
-      where: {
-        chairpersonId,
-        iMId,
-      },
-    });
+  const chairpersonReviews = await prisma.chairpersonReview.findMany({
+    take: limit,
+    skip: (page - 1) * limit,
+    where: {
+      chairpersonId,
+      iMId,
+    },
+  });
+  const total = await prisma.chairpersonReview.count({
+    where: {
+      chairpersonId,
+      iMId,
+    },
+  });
 
-    return { data: chairpersonReviews, total };
-  } catch (error) {
-    throw error;
-  }
+  return { data: chairpersonReviews, total };
 }

@@ -18,22 +18,16 @@ export default async function deleteCITLDirectorHandler(req, res) {
     return subject;
   }
 
-  try {
-    return abilityValidator({
-      req,
-      res,
-      next: async (req, res) => {
-        const cITLDirector = await deleteCITLDirector(id);
-        return res.status(200).json(cITLDirector);
-      },
-      action: "delete",
-      subject: await findSubject({ id }),
-      fields: undefined,
-      type: "CITLDirector",
-    });
-  } catch (error) {
-    return res
-      .status(error?.statusCode ?? 500)
-      .json({ message: error?.message });
-  }
+  return abilityValidator({
+    req,
+    res,
+    next: async (req, res) => {
+      const cITLDirector = await deleteCITLDirector(id);
+      return res.status(200).json(cITLDirector);
+    },
+    action: "delete",
+    subject: await findSubject({ id }),
+    fields: undefined,
+    type: "CITLDirector",
+  });
 }

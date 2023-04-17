@@ -18,22 +18,16 @@ export default async function deleteChairpersonHandler(req, res) {
     return subject;
   }
 
-  try {
-    return abilityValidator({
-      req,
-      res,
-      next: async (req, res) => {
-        const chairperson = await deleteChairperson(id);
-        return res.status(200).json(chairperson);
-      },
-      action: "delete",
-      subject: await findSubject({ id }),
-      fields: undefined,
-      type: "Chairperson",
-    });
-  } catch (error) {
-    return res
-      .status(error?.statusCode ?? 500)
-      .json({ message: error?.message });
-  }
+  return abilityValidator({
+    req,
+    res,
+    next: async (req, res) => {
+      const chairperson = await deleteChairperson(id);
+      return res.status(200).json(chairperson);
+    },
+    action: "delete",
+    subject: await findSubject({ id }),
+    fields: undefined,
+    type: "Chairperson",
+  });
 }

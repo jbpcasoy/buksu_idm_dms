@@ -24,46 +24,40 @@ export default async function putActiveFileHandler(req, res) {
     return subject;
   }
 
-  try {
-    const user = await getServerUser(req, res);
-    const activeFile = await findSubject({ id });
-    return abilityValidator({
-      req,
-      res,
-      next: async (req, res) => {
-        return abilityValidator({
-          req,
-          res,
-          next: async (req, res) => {
-            const fields = permittedFieldsOf(
-              await userAbility(user),
-              "update",
-              activeFile,
-              {
-                fieldsFrom: (rule) => rule.fields,
-              }
-            );
+  const user = await getServerUser(req, res);
+  const activeFile = await findSubject({ id });
+  return abilityValidator({
+    req,
+    res,
+    next: async (req, res) => {
+      return abilityValidator({
+        req,
+        res,
+        next: async (req, res) => {
+          const fields = permittedFieldsOf(
+            await userAbility(user),
+            "update",
+            activeFile,
+            {
+              fieldsFrom: (rule) => rule.fields,
+            }
+          );
 
-            const updatedActiveFile = await updateActiveFile(id, {
-              ..._.pick({ fileId }, fields),
-            });
+          const updatedActiveFile = await updateActiveFile(id, {
+            ..._.pick({ fileId }, fields),
+          });
 
-            return res.status(200).json(updatedActiveFile);
-          },
-          action: "connectToActiveFile",
-          subject: subject("File", file),
-          fields: undefined,
-          type: "File",
-        });
-      },
-      action: "update",
-      subject: subject("ActiveFile", activeFile),
-      fields: undefined,
-      type: "ActiveFile",
-    });
-  } catch (error) {
-    return res
-      .status(error?.statusCode ?? 500)
-      .json({ message: error?.message });
-  }
+          return res.status(200).json(updatedActiveFile);
+        },
+        action: "connectToActiveFile",
+        subject: subject("File", file),
+        fields: undefined,
+        type: "File",
+      });
+    },
+    action: "update",
+    subject: subject("ActiveFile", activeFile),
+    fields: undefined,
+    type: "ActiveFile",
+  });
 }

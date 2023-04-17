@@ -7,26 +7,22 @@ export default async function readSubmittedCoordinatorReviews({
 }) {
   const prisma = PRISMA_CLIENT;
 
-  try {
-    const submittedCoordinatorReviews =
-      await prisma.submittedCoordinatorReview.findMany({
-        take: limit,
-        skip: (page - 1) * limit,
-        where: {
-          coordinatorReviewId: {
-            contains: coordinatorReviewId,
-          },
-        },
-      });
-    const total = await prisma.submittedCoordinatorReview.count({
+  const submittedCoordinatorReviews =
+    await prisma.submittedCoordinatorReview.findMany({
+      take: limit,
+      skip: (page - 1) * limit,
       where: {
         coordinatorReviewId: {
           contains: coordinatorReviewId,
         },
       },
     });
-    return { data: submittedCoordinatorReviews, total };
-  } catch (error) {
-    throw error;
-  }
+  const total = await prisma.submittedCoordinatorReview.count({
+    where: {
+      coordinatorReviewId: {
+        contains: coordinatorReviewId,
+      },
+    },
+  });
+  return { data: submittedCoordinatorReviews, total };
 }

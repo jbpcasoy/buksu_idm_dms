@@ -7,26 +7,22 @@ export default async function readCoordinatorSuggestionItems({
 }) {
   const prisma = PRISMA_CLIENT;
 
-  try {
-    const coordinatorSuggestionItems =
-      await prisma.coordinatorSuggestionItem.findMany({
-        take: limit,
-        skip: limit && page ? (page - 1) * limit : undefined,
-        where: {
-          coordinatorSuggestionId: {
-            contains: coordinatorSuggestionId,
-          },
-        },
-      });
-    const total = await prisma.coordinatorSuggestionItem.count({
+  const coordinatorSuggestionItems =
+    await prisma.coordinatorSuggestionItem.findMany({
+      take: limit,
+      skip: limit && page ? (page - 1) * limit : undefined,
       where: {
         coordinatorSuggestionId: {
           contains: coordinatorSuggestionId,
         },
       },
     });
-    return { data: coordinatorSuggestionItems, total };
-  } catch (error) {
-    throw error;
-  }
+  const total = await prisma.coordinatorSuggestionItem.count({
+    where: {
+      coordinatorSuggestionId: {
+        contains: coordinatorSuggestionId,
+      },
+    },
+  });
+  return { data: coordinatorSuggestionItems, total };
 }

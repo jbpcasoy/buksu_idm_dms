@@ -6,21 +6,17 @@ export default async function updateCoordinatorSuggestionItem(
 ) {
   const prisma = PRISMA_CLIENT;
 
-  try {
-    const coordinatorSuggestionItem =
-      await prisma.coordinatorSuggestionItem.update({
-        where: {
-          id,
-        },
-        data: {
-          actionTaken,
-          pageNumber,
-          remarks,
-          value,
-        },
-      });
-    return coordinatorSuggestionItem;
-  } catch (error) {
-    throw error;
-  }
+  const coordinatorSuggestionItem =
+    await prisma.coordinatorSuggestionItem.update({
+      where: {
+        id,
+      },
+      data: {
+        actionTaken,
+        pageNumber,
+        remarks,
+        value,
+      },
+    });
+  return coordinatorSuggestionItem;
 }

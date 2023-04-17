@@ -6,21 +6,17 @@ export default async function updatePeerSuggestionItem(
 ) {
   const prisma = PRISMA_CLIENT;
 
-  try {
-    const peerSuggestionItem = await prisma.peerSuggestionItem.update({
-      where: {
-        id,
-      },
-      data: {
-        value,
-        actionTaken,
-        pageNumber,
-        remarks,
-      },
-    });
+  const peerSuggestionItem = await prisma.peerSuggestionItem.update({
+    where: {
+      id,
+    },
+    data: {
+      value,
+      actionTaken,
+      pageNumber,
+      remarks,
+    },
+  });
 
-    return peerSuggestionItem;
-  } catch (error) {
-    throw error;
-  }
+  return peerSuggestionItem;
 }

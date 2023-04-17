@@ -18,23 +18,17 @@ export default async function deleteCollegeHandler(req, res) {
     return subject;
   }
 
-  try {
-    return abilityValidator({
-      req,
-      res,
-      next: async (req, res) => {
-        const college = await deleteCollege(id);
+  return abilityValidator({
+    req,
+    res,
+    next: async (req, res) => {
+      const college = await deleteCollege(id);
 
-        res.status(200).json(college);
-      },
-      action: "delete",
-      subject: await findSubject({ id }),
-      fields: undefined,
-      type: "College",
-    });
-  } catch (error) {
-    return res
-      .status(error?.statusCode ?? 500)
-      .json({ message: error?.message });
-  }
+      res.status(200).json(college);
+    },
+    action: "delete",
+    subject: await findSubject({ id }),
+    fields: undefined,
+    type: "College",
+  });
 }

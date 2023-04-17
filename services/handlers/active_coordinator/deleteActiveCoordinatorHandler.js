@@ -18,22 +18,16 @@ export default async function deleteActiveCoordinatorHandler(req, res) {
     return subject;
   }
 
-  try {
-    return abilityValidator({
-      req,
-      res,
-      next: async (req, res) => {
-        const activeCoordinator = await deleteActiveCoordinator(id);
-        return res.status(200).json(activeCoordinator);
-      },
-      action: "delete",
-      subject: await findSubject({ id }),
-      fields: undefined,
-      type: "ActiveCoordinator",
-    });
-  } catch (error) {
-    return res
-      .status(error?.statusCode ?? 500)
-      .json({ message: error?.message });
-  }
+  return abilityValidator({
+    req,
+    res,
+    next: async (req, res) => {
+      const activeCoordinator = await deleteActiveCoordinator(id);
+      return res.status(200).json(activeCoordinator);
+    },
+    action: "delete",
+    subject: await findSubject({ id }),
+    fields: undefined,
+    type: "ActiveCoordinator",
+  });
 }

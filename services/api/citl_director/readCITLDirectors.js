@@ -16,44 +16,40 @@ export default async function readCITLDirectors({
 
   const accessibility = accessibleBy(ability).CITLDirector;
 
-  try {
-    const cITLDirectors = await prisma.cITLDirector.findMany({
-      take: limit,
-      skip: (page - 1) * limit,
-      include: {
-        User: true,
-        ActiveCITLDirector: true,
-      },
-      where: {
-        AND: [
-          accessibility,
-          {
-            User: {
-              name: {
-                contains: name,
-              },
+  const cITLDirectors = await prisma.cITLDirector.findMany({
+    take: limit,
+    skip: (page - 1) * limit,
+    include: {
+      User: true,
+      ActiveCITLDirector: true,
+    },
+    where: {
+      AND: [
+        accessibility,
+        {
+          User: {
+            name: {
+              contains: name,
             },
           },
-        ],
-      },
-      orderBy: sortFilter,
-    });
-    const total = await prisma.cITLDirector.count({
-      where: {
-        AND: [
-          accessibility,
-          {
-            User: {
-              name: {
-                contains: name,
-              },
+        },
+      ],
+    },
+    orderBy: sortFilter,
+  });
+  const total = await prisma.cITLDirector.count({
+    where: {
+      AND: [
+        accessibility,
+        {
+          User: {
+            name: {
+              contains: name,
             },
           },
-        ],
-      },
-    });
-    return { data: cITLDirectors, total };
-  } catch (error) {
-    throw error;
-  }
+        },
+      ],
+    },
+  });
+  return { data: cITLDirectors, total };
 }

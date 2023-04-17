@@ -6,15 +6,11 @@ export default async function readSubmittedIMDCoordinatorSuggestions({
 }) {
   const prisma = PRISMA_CLIENT;
 
-  try {
-    const submittedIMDCoordinatorSuggestions =
-      await prisma.submittedIMDCoordinatorSuggestion.findMany({
-        take: limit,
-        skip: (page - 1) * limit,
-      });
-    const total = await prisma.submittedIMDCoordinatorSuggestion.count();
-    return { data: submittedIMDCoordinatorSuggestions, total };
-  } catch (error) {
-    throw error;
-  }
+  const submittedIMDCoordinatorSuggestions =
+    await prisma.submittedIMDCoordinatorSuggestion.findMany({
+      take: limit,
+      skip: (page - 1) * limit,
+    });
+  const total = await prisma.submittedIMDCoordinatorSuggestion.count();
+  return { data: submittedIMDCoordinatorSuggestions, total };
 }

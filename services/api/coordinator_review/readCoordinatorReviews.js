@@ -8,28 +8,24 @@ export default async function readCoordinatorReviews({
 }) {
   const prisma = PRISMA_CLIENT;
 
-  try {
-    const coordinatorReviews = await prisma.coordinatorReview.findMany({
-      take: limit,
-      skip: (page - 1) * limit,
-      where: {
-        coordinatorId: {
-          contains: coordinatorId,
-        },
-        iMId: { contains: iMId },
+  const coordinatorReviews = await prisma.coordinatorReview.findMany({
+    take: limit,
+    skip: (page - 1) * limit,
+    where: {
+      coordinatorId: {
+        contains: coordinatorId,
       },
-    });
-    const total = await prisma.coordinatorReview.count({
-      where: {
-        coordinatorId: {
-          contains: coordinatorId,
-        },
-        iMId: { contains: iMId },
+      iMId: { contains: iMId },
+    },
+  });
+  const total = await prisma.coordinatorReview.count({
+    where: {
+      coordinatorId: {
+        contains: coordinatorId,
       },
-    });
+      iMId: { contains: iMId },
+    },
+  });
 
-    return { data: coordinatorReviews, total };
-  } catch (error) {
-    throw error;
-  }
+  return { data: coordinatorReviews, total };
 }

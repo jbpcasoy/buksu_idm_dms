@@ -5,25 +5,21 @@ import userAbility from "@/services/abilities/defineAbility";
 export default async function createActiveFaculty({ facultyId, ability }) {
   const prisma = PRISMA_CLIENT;
 
-  try {
-    const faculty = await readFaculty({ id: facultyId, ability });
+  const faculty = await readFaculty({ id: facultyId, ability });
 
-    const activeFaculty = await prisma.activeFaculty.create({
-      data: {
-        Department: {
-          connect: {
-            id: faculty.departmentId,
-          },
-        },
-        Faculty: { connect: { id: faculty.id } },
-        User: {
-          connect: { id: faculty.userId },
+  const activeFaculty = await prisma.activeFaculty.create({
+    data: {
+      Department: {
+        connect: {
+          id: faculty.departmentId,
         },
       },
-    });
+      Faculty: { connect: { id: faculty.id } },
+      User: {
+        connect: { id: faculty.userId },
+      },
+    },
+  });
 
-    return activeFaculty;
-  } catch (error) {
-    throw error;
-  }
+  return activeFaculty;
 }

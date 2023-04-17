@@ -19,23 +19,17 @@ export default async function deleteActiveFileHandler(req, res) {
     return subject;
   }
 
-  try {
-    const activeFile = await findSubject({ id });
-    return abilityValidator({
-      req,
-      res,
-      next: async (req, res) => {
-        const activeHandler = await deleteActiveFile(id);
-        return res.status(200).json(activeHandler);
-      },
-      action: "delete",
-      subject: subject("ActiveFile", activeFile),
-      fields: undefined,
-      type: "ActiveFile",
-    });
-  } catch (error) {
-    return res
-      .status(error?.statusCode ?? 500)
-      .json({ message: error?.message });
-  }
+  const activeFile = await findSubject({ id });
+  return abilityValidator({
+    req,
+    res,
+    next: async (req, res) => {
+      const activeHandler = await deleteActiveFile(id);
+      return res.status(200).json(activeHandler);
+    },
+    action: "delete",
+    subject: subject("ActiveFile", activeFile),
+    fields: undefined,
+    type: "ActiveFile",
+  });
 }

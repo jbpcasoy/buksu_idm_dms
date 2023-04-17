@@ -5,19 +5,15 @@ export default async function createCoordinatorSuggestion({
 }) {
   const prisma = PRISMA_CLIENT;
 
-  try {
-    const coordinatorSuggestion = await prisma.coordinatorSuggestion.create({
-      data: {
-        SubmittedCoordinatorReview: {
-          connect: {
-            id: submittedCoordinatorReviewId,
-          },
+  const coordinatorSuggestion = await prisma.coordinatorSuggestion.create({
+    data: {
+      SubmittedCoordinatorReview: {
+        connect: {
+          id: submittedCoordinatorReviewId,
         },
       },
-    });
+    },
+  });
 
-    return coordinatorSuggestion;
-  } catch (error) {
-    throw error;
-  }
+  return coordinatorSuggestion;
 }

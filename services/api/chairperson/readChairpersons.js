@@ -19,116 +19,112 @@ export default async function readChairpersons({
 
   const accessibility = accessibleBy(ability).Chairperson;
 
-  try {
-    const chairpersons = await prisma.chairperson.findMany({
-      take: limit,
-      skip: (page - 1) * limit,
-      include: {
-        Faculty: {
-          select: {
-            departmentId: true,
-            user: {
-              select: {
-                name: true,
-                image: true,
-              },
+  const chairpersons = await prisma.chairperson.findMany({
+    take: limit,
+    skip: (page - 1) * limit,
+    include: {
+      Faculty: {
+        select: {
+          departmentId: true,
+          user: {
+            select: {
+              name: true,
+              image: true,
             },
-            department: {
-              select: {
-                name: true,
-                college: {
-                  select: {
-                    name: true,
-                  },
+          },
+          department: {
+            select: {
+              name: true,
+              college: {
+                select: {
+                  name: true,
                 },
               },
             },
           },
         },
-        ActiveChairperson: true,
       },
-      where: {
-        AND: [
-          accessibility,
-          {
-            Faculty: {
-              user: {
-                name: {
-                  contains: name,
-                  // mode: "insensitive",
-                },
+      ActiveChairperson: true,
+    },
+    where: {
+      AND: [
+        accessibility,
+        {
+          Faculty: {
+            user: {
+              name: {
+                contains: name,
+                // mode: "insensitive",
               },
-              department: {
+            },
+            department: {
+              name: {
+                contains: departmentName,
+                // mode: "insensitive",
+              },
+              college: {
                 name: {
-                  contains: departmentName,
+                  contains: collegeName,
                   // mode: "insensitive",
-                },
-                college: {
-                  name: {
-                    contains: collegeName,
-                    // mode: "insensitive",
-                  },
                 },
               },
             },
-            ActiveChairperson:
-              active === true
-                ? {
-                    isNot: null,
-                  }
-                : active === false
-                ? {
-                    is: null,
-                  }
-                : undefined,
           },
-        ],
-      },
-      orderBy: sortFilter,
-    });
+          ActiveChairperson:
+            active === true
+              ? {
+                  isNot: null,
+                }
+              : active === false
+              ? {
+                  is: null,
+                }
+              : undefined,
+        },
+      ],
+    },
+    orderBy: sortFilter,
+  });
 
-    const total = await prisma.chairperson.count({
-      where: {
-        AND: [
-          accessibility,
-          {
-            Faculty: {
-              user: {
-                name: {
-                  contains: name,
-                  // mode: "insensitive",
-                },
+  const total = await prisma.chairperson.count({
+    where: {
+      AND: [
+        accessibility,
+        {
+          Faculty: {
+            user: {
+              name: {
+                contains: name,
+                // mode: "insensitive",
               },
-              department: {
+            },
+            department: {
+              name: {
+                contains: departmentName,
+                // mode: "insensitive",
+              },
+              college: {
                 name: {
-                  contains: departmentName,
+                  contains: collegeName,
                   // mode: "insensitive",
-                },
-                college: {
-                  name: {
-                    contains: collegeName,
-                    // mode: "insensitive",
-                  },
                 },
               },
             },
-            ActiveChairperson:
-              active === true
-                ? {
-                    isNot: null,
-                  }
-                : active === false
-                ? {
-                    is: null,
-                  }
-                : undefined,
           },
-        ],
-      },
-    });
+          ActiveChairperson:
+            active === true
+              ? {
+                  isNot: null,
+                }
+              : active === false
+              ? {
+                  is: null,
+                }
+              : undefined,
+        },
+      ],
+    },
+  });
 
-    return { data: chairpersons, total };
-  } catch (error) {
-    throw error;
-  }
+  return { data: chairpersons, total };
 }

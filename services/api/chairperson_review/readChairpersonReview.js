@@ -16,26 +16,22 @@ export default async function readChairpersonReview({
     })
   );
 
-  try {
-    const chairpersonReview = await prisma.chairpersonReview.findFirstOrThrow({
-      where: {
-        AND: [accessibility, { ...filter, id }],
-      },
-      include: {
-        IM: true,
-        Chairperson: {
-          select: {
-            Faculty: {
-              include: {
-                user: true,
-              },
+  const chairpersonReview = await prisma.chairpersonReview.findFirstOrThrow({
+    where: {
+      AND: [accessibility, { ...filter, id }],
+    },
+    include: {
+      IM: true,
+      Chairperson: {
+        select: {
+          Faculty: {
+            include: {
+              user: true,
             },
           },
         },
       },
-    });
-    return chairpersonReview;
-  } catch (error) {
-    throw error;
-  }
+    },
+  });
+  return chairpersonReview;
 }

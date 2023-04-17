@@ -10,20 +10,16 @@ export default async function readActiveChairperson({
 
   const accessibility = accessibleBy(ability).ActiveChairperson;
 
-  try {
-    const activeChairperson = await prisma.activeChairperson.findFirstOrThrow({
-      where: {
-        AND: [
-          accessibility,
-          {
-            ...filter,
-            id,
-          },
-        ],
-      },
-    });
-    return activeChairperson;
-  } catch (error) {
-    throw error;
-  }
+  const activeChairperson = await prisma.activeChairperson.findFirstOrThrow({
+    where: {
+      AND: [
+        accessibility,
+        {
+          ...filter,
+          id,
+        },
+      ],
+    },
+  });
+  return activeChairperson;
 }

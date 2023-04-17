@@ -20,27 +20,21 @@ export default async function putCollegeHandler(req, res) {
     return subject;
   }
 
-  try {
-    const user = await getServerUser(req, res);
-    const college = await findSubject({ id });
-    return abilityValidator({
-      req,
-      res,
-      next: async (req, res) => {
-        const college = await updateCollege(id, {
-          name,
-        });
+  const user = await getServerUser(req, res);
+  const college = await findSubject({ id });
+  return abilityValidator({
+    req,
+    res,
+    next: async (req, res) => {
+      const college = await updateCollege(id, {
+        name,
+      });
 
-        return res.status(200).json(college);
-      },
-      action: "update",
-      subject: subject("College", college),
-      fields: undefined,
-      type: "College",
-    });
-  } catch (error) {
-    return res
-      .status(error?.statusCode ?? 500)
-      .json({ message: error?.message });
-  }
+      return res.status(200).json(college);
+    },
+    action: "update",
+    subject: subject("College", college),
+    fields: undefined,
+    type: "College",
+  });
 }

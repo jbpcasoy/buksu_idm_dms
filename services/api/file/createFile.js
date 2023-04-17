@@ -10,22 +10,18 @@ export default async function createFile({
 }) {
   const prisma = PRISMA_CLIENT;
 
-  try {
-    const file = await prisma.file.create({
-      data: {
-        originalFileName,
-        fileName,
-        iMId,
-        googleDocsUrl,
-        IMEvent: {
-          create: {
-            IMEventType: "NEW_VERSION",
-          },
+  const file = await prisma.file.create({
+    data: {
+      originalFileName,
+      fileName,
+      iMId,
+      googleDocsUrl,
+      IMEvent: {
+        create: {
+          IMEventType: "NEW_VERSION",
         },
       },
-    });
-    return file;
-  } catch (error) {
-    throw error;
-  }
+    },
+  });
+  return file;
 }

@@ -18,117 +18,113 @@ export default async function readCoordinators({
   _.set(sortFilter, sortColumn, sortOrder);
   const accessibility = accessibleBy(ability).Coordinator;
 
-  try {
-    const coordinators = await prisma.coordinator.findMany({
-      take: limit,
-      skip: (page - 1) * limit,
-      include: {
-        ActiveCoordinator: true,
-        Faculty: {
-          select: {
-            id: true,
-            user: {
-              select: {
-                name: true,
-                image: true,
-              },
+  const coordinators = await prisma.coordinator.findMany({
+    take: limit,
+    skip: (page - 1) * limit,
+    include: {
+      ActiveCoordinator: true,
+      Faculty: {
+        select: {
+          id: true,
+          user: {
+            select: {
+              name: true,
+              image: true,
             },
-            department: {
-              select: {
-                id: true,
-                name: true,
-                college: {
-                  select: {
-                    name: true,
-                  },
+          },
+          department: {
+            select: {
+              id: true,
+              name: true,
+              college: {
+                select: {
+                  name: true,
                 },
               },
             },
           },
         },
       },
-      where: {
-        AND: [
-          accessibility,
-          {
-            Faculty: {
-              user: {
-                name: {
-                  contains: name,
-                  // mode: "insensitive",
-                },
+    },
+    where: {
+      AND: [
+        accessibility,
+        {
+          Faculty: {
+            user: {
+              name: {
+                contains: name,
+                // mode: "insensitive",
               },
-              department: {
+            },
+            department: {
+              name: {
+                contains: departmentName,
+                // mode: "insensitive",
+              },
+              college: {
                 name: {
-                  contains: departmentName,
+                  contains: collegeName,
                   // mode: "insensitive",
-                },
-                college: {
-                  name: {
-                    contains: collegeName,
-                    // mode: "insensitive",
-                  },
                 },
               },
             },
-            ActiveCoordinator:
-              active === true
-                ? {
-                    isNot: null,
-                  }
-                : active === false
-                ? {
-                    is: null,
-                  }
-                : undefined,
           },
-        ],
-      },
-      orderBy: sortFilter,
-    });
+          ActiveCoordinator:
+            active === true
+              ? {
+                  isNot: null,
+                }
+              : active === false
+              ? {
+                  is: null,
+                }
+              : undefined,
+        },
+      ],
+    },
+    orderBy: sortFilter,
+  });
 
-    const total = await prisma.coordinator.count({
-      where: {
-        AND: [
-          accessibility,
-          {
-            Faculty: {
-              user: {
-                name: {
-                  contains: name,
-                  // mode: "insensitive",
-                },
+  const total = await prisma.coordinator.count({
+    where: {
+      AND: [
+        accessibility,
+        {
+          Faculty: {
+            user: {
+              name: {
+                contains: name,
+                // mode: "insensitive",
               },
-              department: {
+            },
+            department: {
+              name: {
+                contains: departmentName,
+                // mode: "insensitive",
+              },
+              college: {
                 name: {
-                  contains: departmentName,
+                  contains: collegeName,
                   // mode: "insensitive",
-                },
-                college: {
-                  name: {
-                    contains: collegeName,
-                    // mode: "insensitive",
-                  },
                 },
               },
             },
-            ActiveCoordinator:
-              active === true
-                ? {
-                    isNot: null,
-                  }
-                : active === false
-                ? {
-                    is: null,
-                  }
-                : undefined,
           },
-        ],
-      },
-    });
+          ActiveCoordinator:
+            active === true
+              ? {
+                  isNot: null,
+                }
+              : active === false
+              ? {
+                  is: null,
+                }
+              : undefined,
+        },
+      ],
+    },
+  });
 
-    return { data: coordinators, total };
-  } catch (error) {
-    throw error;
-  }
+  return { data: coordinators, total };
 }

@@ -7,19 +7,15 @@ export default async function readIMDCoordinatorSuggestionItems({
 }) {
   const prisma = PRISMA_CLIENT;
 
-  try {
-    const iMDCoordinatorSuggestionItems =
-      await prisma.iMDCoordinatorSuggestionItem.findMany({
-        take: limit,
-        skip: page && limit ? (page - 1) * limit : undefined,
-        where: {
-          iMDCoordinatorSuggestionId,
-        },
-      });
-    const total = await prisma.iMDCoordinatorSuggestionItem.count();
+  const iMDCoordinatorSuggestionItems =
+    await prisma.iMDCoordinatorSuggestionItem.findMany({
+      take: limit,
+      skip: page && limit ? (page - 1) * limit : undefined,
+      where: {
+        iMDCoordinatorSuggestionId,
+      },
+    });
+  const total = await prisma.iMDCoordinatorSuggestionItem.count();
 
-    return { data: iMDCoordinatorSuggestionItems, total };
-  } catch (error) {
-    throw error;
-  }
+  return { data: iMDCoordinatorSuggestionItems, total };
 }

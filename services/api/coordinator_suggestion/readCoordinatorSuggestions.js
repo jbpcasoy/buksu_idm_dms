@@ -6,31 +6,30 @@ export default async function readCoordinatorSuggestions({
   submittedCoordinatorReviewId,
 }) {
   const prisma = PRISMA_CLIENT;
-  try {
-    const coordinatorSuggestions = await prisma.coordinatorSuggestion.findMany({
-      take: limit,
-      skip: (page - 1) * limit,
-      where: {
-        submittedCoordinatorReviewId: {
-          contains: submittedCoordinatorReviewId,
-        },
+
+  const coordinatorSuggestions = await prisma.coordinatorSuggestion.findMany({
+    take: limit,
+    skip: (page - 1) * limit,
+    where: {
+      submittedCoordinatorReviewId: {
+        contains: submittedCoordinatorReviewId,
       },
-      include: {
-        SubmittedCoordinatorSuggestion: true,
-        SubmittedCoordinatorReview: {
-          include: {
-            CoordinatorReview: {
-              select: {
-                Coordinator: {
-                  select: {
-                    Faculty: {
-                      select: {
-                        user: {
-                          select: {
-                            name: true,
-                            image: true,
-                            id: true,
-                          },
+    },
+    include: {
+      SubmittedCoordinatorSuggestion: true,
+      SubmittedCoordinatorReview: {
+        include: {
+          CoordinatorReview: {
+            select: {
+              Coordinator: {
+                select: {
+                  Faculty: {
+                    select: {
+                      user: {
+                        select: {
+                          name: true,
+                          image: true,
+                          id: true,
                         },
                       },
                     },
@@ -41,16 +40,14 @@ export default async function readCoordinatorSuggestions({
           },
         },
       },
-    });
-    const total = await prisma.coordinatorSuggestion.count({
-      where: {
-        submittedCoordinatorReviewId: {
-          contains: submittedCoordinatorReviewId,
-        },
+    },
+  });
+  const total = await prisma.coordinatorSuggestion.count({
+    where: {
+      submittedCoordinatorReviewId: {
+        contains: submittedCoordinatorReviewId,
       },
-    });
-    return { data: coordinatorSuggestions, total };
-  } catch (error) {
-    throw error;
-  }
+    },
+  });
+  return { data: coordinatorSuggestions, total };
 }

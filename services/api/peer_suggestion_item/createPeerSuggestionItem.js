@@ -7,21 +7,18 @@ export default async function createPeerSuggestionItem({
   remarks,
 }) {
   const prisma = PRISMA_CLIENT;
-  try {
-    const peerSuggestionItem = await prisma.peerSuggestionItem.create({
-      data: {
-        pageNumber,
-        value,
-        PeerSuggestion: {
-          connect: {
-            id: peerSuggestionId,
-          },
+
+  const peerSuggestionItem = await prisma.peerSuggestionItem.create({
+    data: {
+      pageNumber,
+      value,
+      PeerSuggestion: {
+        connect: {
+          id: peerSuggestionId,
         },
-        remarks,
       },
-    });
-    return peerSuggestionItem;
-  } catch (error) {
-    throw error;
-  }
+      remarks,
+    },
+  });
+  return peerSuggestionItem;
 }

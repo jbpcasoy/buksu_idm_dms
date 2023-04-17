@@ -11,22 +11,16 @@ export default async function readActiveCITLDirector({
 
   const accessibility = accessibleBy(ability).ActiveCITLDirector;
 
-  try {
-    const activeCITLDirector = await prisma.activeCITLDirector.findFirstOrThrow(
-      {
-        where: {
-          AND: [
-            accessibility,
-            {
-              ...filter,
-              id,
-            },
-          ],
+  const activeCITLDirector = await prisma.activeCITLDirector.findFirstOrThrow({
+    where: {
+      AND: [
+        accessibility,
+        {
+          ...filter,
+          id,
         },
-      }
-    );
-    return activeCITLDirector;
-  } catch (error) {
-    throw error;
-  }
+      ],
+    },
+  });
+  return activeCITLDirector;
 }

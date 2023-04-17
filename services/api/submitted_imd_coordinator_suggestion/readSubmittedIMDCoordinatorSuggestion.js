@@ -6,20 +6,16 @@ export default async function readSubmittedIMDCoordinatorSuggestion(
 ) {
   const prisma = PRISMA_CLIENT;
 
-  try {
-    const submittedIMDCoordinatorSuggestion =
-      await prisma.submittedIMDCoordinatorSuggestion.findFirstOrThrow({
-        where: {
-          ...filter,
-          id,
-        },
-        include: {
-          IMDCoordinatorSuggestion: true,
-        },
-      });
+  const submittedIMDCoordinatorSuggestion =
+    await prisma.submittedIMDCoordinatorSuggestion.findFirstOrThrow({
+      where: {
+        ...filter,
+        id,
+      },
+      include: {
+        IMDCoordinatorSuggestion: true,
+      },
+    });
 
-    return submittedIMDCoordinatorSuggestion;
-  } catch (error) {
-    throw error;
-  }
+  return submittedIMDCoordinatorSuggestion;
 }

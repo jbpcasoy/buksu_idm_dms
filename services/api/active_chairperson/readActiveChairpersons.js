@@ -5,23 +5,19 @@ export default async function readActiveChairpersons({ limit, page, ability }) {
   const prisma = PRISMA_CLIENT;
   const accessibility = accessibleBy(ability).ActiveChairperson;
 
-  try {
-    const activeChairpersons = await prisma.activeChairperson.findMany({
-      take: limit,
-      skip: (page - 1) * limit,
-      where: {
-        AND: [accessibility],
-      },
-    });
+  const activeChairpersons = await prisma.activeChairperson.findMany({
+    take: limit,
+    skip: (page - 1) * limit,
+    where: {
+      AND: [accessibility],
+    },
+  });
 
-    const total = await prisma.activeChairperson.count({
-      where: {
-        AND: [accessibility],
-      },
-    });
+  const total = await prisma.activeChairperson.count({
+    where: {
+      AND: [accessibility],
+    },
+  });
 
-    return { data: activeChairpersons, total };
-  } catch (error) {
-    throw error;
-  }
+  return { data: activeChairpersons, total };
 }

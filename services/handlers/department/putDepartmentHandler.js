@@ -20,27 +20,21 @@ export default async function putDepartmentHandler(req, res) {
     return subject;
   }
 
-  try {
-    const user = await getServerUser(req, res);
-    const department = await findSubject({ id });
-    return abilityValidator({
-      req,
-      res,
-      next: async (req, res) => {
-        const department = await updateDocument(id, {
-          name,
-        });
+  const user = await getServerUser(req, res);
+  const department = await findSubject({ id });
+  return abilityValidator({
+    req,
+    res,
+    next: async (req, res) => {
+      const department = await updateDocument(id, {
+        name,
+      });
 
-        return res.status(200).json(department);
-      },
-      action: "update",
-      subject: subject("Department", department),
-      fields: undefined,
-      type: "Department",
-    });
-  } catch (error) {
-    return res
-      .status(error?.statusCode ?? 500)
-      .json({ message: error?.message });
-  }
+      return res.status(200).json(department);
+    },
+    action: "update",
+    subject: subject("Department", department),
+    fields: undefined,
+    type: "Department",
+  });
 }

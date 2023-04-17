@@ -9,7 +9,6 @@ export default async function readActiveCoordinator({
   const prisma = PRISMA_CLIENT;
   const accessibility = accessibleBy(ability).ActiveCoordinator;
 
-  try {
     const activeCoordinator = prisma.activeCoordinator.findFirstOrThrow({
       where: {
         AND: [
@@ -23,7 +22,5 @@ export default async function readActiveCoordinator({
     });
 
     return activeCoordinator;
-  } catch (error) {
-    throw error;
-  }
+
 }

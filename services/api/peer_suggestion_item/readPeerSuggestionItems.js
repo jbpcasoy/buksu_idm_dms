@@ -6,23 +6,20 @@ export default async function readPeerSuggestionItems({
   peerSuggestionId,
 }) {
   const prisma = PRISMA_CLIENT;
-  try {
-    const peerSuggestionItems = await prisma.peerSuggestionItem.findMany({
-      take: limit,
-      skip: limit && page ? (page - 1) * limit : undefined,
-      where: {
-        peerSuggestionId: { contains: peerSuggestionId },
-      },
-    });
 
-    const total = await prisma.peerSuggestionItem.count({
-      where: {
-        peerSuggestionId: { contains: peerSuggestionId },
-      },
-    });
+  const peerSuggestionItems = await prisma.peerSuggestionItem.findMany({
+    take: limit,
+    skip: limit && page ? (page - 1) * limit : undefined,
+    where: {
+      peerSuggestionId: { contains: peerSuggestionId },
+    },
+  });
 
-    return { data: peerSuggestionItems, total };
-  } catch (error) {
-    throw error;
-  }
+  const total = await prisma.peerSuggestionItem.count({
+    where: {
+      peerSuggestionId: { contains: peerSuggestionId },
+    },
+  });
+
+  return { data: peerSuggestionItems, total };
 }

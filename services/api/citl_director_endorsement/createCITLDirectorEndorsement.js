@@ -8,42 +8,36 @@ export default async function createCITLDirectorEndorsement({
 }) {
   const prisma = PRISMA_CLIENT;
 
-  try {
-    const iMDCoordinatorEndorsement = await readIMDCoordinatorEndorsement(
-      iMDCoordinatorEndorsementId
-    );
-    const cITLDirectorEndorsement = await prisma.cITLDirectorEndorsement.create(
-      {
-        data: {
-          IMDCoordinatorEndorsement: {
-            connect: {
-              id: iMDCoordinatorEndorsementId,
-            },
-          },
-          CITLDirector: {
-            connect: {
-              id: cITLDirectorId,
-            },
-          },
-          Notification: {
-            create: {
-              Type: "CITL_DIRECTOR_ENDORSEMENT",
-            },
-          },
-          IMEvent: {
-            create: {
-              IMEventType: "CITL_DIRECTOR_ENDORSEMENT",
-            },
-          },
+  const iMDCoordinatorEndorsement = await readIMDCoordinatorEndorsement(
+    iMDCoordinatorEndorsementId
+  );
+  const cITLDirectorEndorsement = await prisma.cITLDirectorEndorsement.create({
+    data: {
+      IMDCoordinatorEndorsement: {
+        connect: {
+          id: iMDCoordinatorEndorsementId,
         },
-      }
-    );
+      },
+      CITLDirector: {
+        connect: {
+          id: cITLDirectorId,
+        },
+      },
+      Notification: {
+        create: {
+          Type: "CITL_DIRECTOR_ENDORSEMENT",
+        },
+      },
+      IMEvent: {
+        create: {
+          IMEventType: "CITL_DIRECTOR_ENDORSEMENT",
+        },
+      },
+    },
+  });
 
-    await updateIM(iMDCoordinatorEndorsement.iMId, {
-      status: "CITL_ENDORSED",
-    });
-    return cITLDirectorEndorsement;
-  } catch (error) {
-    throw error;
-  }
+  await updateIM(iMDCoordinatorEndorsement.iMId, {
+    status: "CITL_ENDORSED",
+  });
+  return cITLDirectorEndorsement;
 }
