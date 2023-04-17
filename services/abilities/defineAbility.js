@@ -76,5 +76,7 @@ export default async function userAbility(user) {
   // Department
   can("read", "Department");
 
+  can("connectToChairpersonReview", "IM");
+
   return build();
 }

@@ -1,18 +1,27 @@
-import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import createChairpersonReview from "@/services/api/chairperson_review/createChairpersonReview";
-import getUserByEmail from "@/services/helpers/getUserByEmail";
-import { getServerSession } from "next-auth";
+import readIM from "@/services/api/im/readIM";
+import getServerUser from "@/services/helpers/getServerUser";
+import abilityValidator from "@/services/validator/abilityValidator";
+import { subject } from "@casl/ability";
 
 export default async function postChairpersonReviewHandler(req, res) {
   const { iMId } = req.body;
-  const session = await getServerSession(req, res, authOptions);
 
-  const user = await getUserByEmail(session?.user?.email);
-
-  // TODO ensure that user does not own im
-  const chairpersonReview = await createChairpersonReview({
-    chairpersonId: user.ActiveFaculty.ActiveChairperson.chairpersonId,
-    iMId,
+  const user = await getServerUser(req, res);
+  const iM = await readIM(iMId);
+  return abilityValidator({
+    req,
+    res,
+    next: async (req, res) => {
+      const chairpersonReview = await createChairpersonReview({
+        chairpersonId: user.ActiveFaculty.ActiveChairperson.chairpersonId,
+        iMId,
+      });
+      return res.status(201).json(chairpersonReview);
+    },
+    action: "connectToChairpersonReview",
+    subject: "IM",
+    fields: undefined,
+    type: subject("IM", iM),
   });
-  return res.status(201).json(chairpersonReview);
 }
