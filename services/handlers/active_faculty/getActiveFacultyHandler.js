@@ -10,6 +10,6 @@ export default async function getActiveFacultyHandler(req, res) {
     id,
     ability: await userAbility(user),
   });
-  console.log({ activeFaculty });
+
   return res.status(200).json(activeFaculty);
 }

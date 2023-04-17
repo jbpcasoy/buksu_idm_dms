@@ -8,13 +8,6 @@ export default async function readChairpersonReview({
 }) {
   const prisma = PRISMA_CLIENT;
   const accessibility = accessibleBy(ability).ChairpersonReview;
-  console.log(
-    JSON.stringify({
-      where: {
-        AND: [accessibility, { ...filter, id }],
-      },
-    })
-  );
 
   const chairpersonReview = await prisma.chairpersonReview.findFirstOrThrow({
     where: {
