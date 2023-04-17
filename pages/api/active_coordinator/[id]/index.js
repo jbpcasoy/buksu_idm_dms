@@ -4,14 +4,16 @@ import getActiveCoordinatorHandler from "@/services/handlers/active_coordinator/
 import methodNaHandler from "@/services/handlers/methodNaHandler";
 
 export default async function handler(req, res) {
-  await reqLog(req, res);
+  return catchAllError(req, res, async (req, res) => {
+    await reqLog(req, res);
 
-  switch (req.method) {
-    case "GET":
-      return getActiveCoordinatorHandler(req, res);
-    case "DELETE":
-      return deleteActiveCoordinatorHandler(req, res);
-    default:
-      return methodNaHandler(req, res);
-  }
+    switch (req.method) {
+      case "GET":
+        return getActiveCoordinatorHandler(req, res);
+      case "DELETE":
+        return deleteActiveCoordinatorHandler(req, res);
+      default:
+        return methodNaHandler(req, res);
+    }
+  });
 }

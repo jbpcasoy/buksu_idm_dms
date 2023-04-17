@@ -3,6 +3,7 @@ import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import prisma from "../../../../lib/prismadb";
+import catchAllError from "@/services/middleware/catchAllError";
 
 export const authOptions = {
   adapter: PrismaAdapter(prisma),
@@ -28,6 +29,8 @@ export const authOptions = {
 };
 
 export default async function handler(req, res) {
-  await reqLog(req, res);
-  return await NextAuth(req, res, authOptions);
+  return catchAllError(req, res, async (req, res) => {
+    await reqLog(req, res);
+    return await NextAuth(req, res, authOptions);
+  });
 }

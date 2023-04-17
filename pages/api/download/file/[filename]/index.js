@@ -1,23 +1,26 @@
 import firebaseDownloadFile from "@/services/api/download/file/firebaseDownloadFile";
 import localDownloadFile from "@/services/api/download/file/localDownloadFile";
 import { reqLog } from "@/services/api/logger";
+import catchAllError from "@/services/middleware/catchAllError";
 
 export default async function handler(req, res) {
-  await reqLog(req, res);
+  return catchAllError(req, res, async (req, res) => {
+    await reqLog(req, res);
 
-  try {
-    if (process.env.STORAGE === "cloud") {
-      return cloudDownloadFileHandler(req, res);
-    } else if (process.env.STORAGE === "local") {
-      return localDownloadFileHandler(req, res);
-    } else {
-      throw new Error(
-        `env variable STORAGE ${process.env.STORAGE} is not supported`
-      );
+    try {
+      if (process.env.STORAGE === "cloud") {
+        return cloudDownloadFileHandler(req, res);
+      } else if (process.env.STORAGE === "local") {
+        return localDownloadFileHandler(req, res);
+      } else {
+        throw new Error(
+          `env variable STORAGE ${process.env.STORAGE} is not supported`
+        );
+      }
+    } catch (error) {
+      throw error;
     }
-  } catch (error) {
-    throw error;
-  }
+  });
 }
 
 async function cloudDownloadFileHandler(req, res) {
