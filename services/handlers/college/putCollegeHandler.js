@@ -12,18 +12,12 @@ export default async function putCollegeHandler(req, res) {
 
   async function findSubject({ id }) {
     const user = await getServerUser(req, res);
-    try {
-      const subject = await readCollege({
-        id,
-        ability: await userAbility(user),
-      });
-      return subject;
-    } catch (error) {
-      throw statusError({
-        statusCode: 403,
-        message: "Unauthorized, cannot delete College",
-      });
-    }
+
+    const subject = await readCollege({
+      id,
+      ability: await userAbility(user),
+    });
+    return subject;
   }
 
   try {

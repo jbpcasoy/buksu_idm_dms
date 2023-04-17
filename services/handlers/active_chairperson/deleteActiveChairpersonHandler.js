@@ -10,18 +10,12 @@ export default async function deleteActiveChairpersonHandler(req, res) {
 
   async function findSubject({ id }) {
     const user = await getServerUser(req, res);
-    try {
-      const subject = await readActiveChairperson({
-        id,
-        ability: await userAbility(user),
-      });
-      return subject;
-    } catch (error) {
-      throw statusError({
-        statusCode: 403,
-        message: "Unauthorized, cannot delete ActiveChairperson",
-      });
-    }
+
+    const subject = await readActiveChairperson({
+      id,
+      ability: await userAbility(user),
+    });
+    return subject;
   }
 
   try {

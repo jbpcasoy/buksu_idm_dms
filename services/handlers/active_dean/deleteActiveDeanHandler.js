@@ -10,19 +10,12 @@ export default async function deleteActiveDeanHandler(req, res) {
 
   async function findSubject({ id }) {
     const user = await getServerUser(req, res);
-    try {
-      const subject = await readActiveDean({
-        id,
-        ability: await userAbility(user),
-      });
-      return subject;
-    } catch (error) {
-      console.log(error);
-      throw statusError({
-        statusCode: 403,
-        message: "Unauthorized, cannot delete ActiveDean",
-      });
-    }
+
+    const subject = await readActiveDean({
+      id,
+      ability: await userAbility(user),
+    });
+    return subject;
   }
 
   try {

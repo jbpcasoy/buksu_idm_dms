@@ -10,19 +10,12 @@ export default async function deleteCITLDirectorHandler(req, res) {
 
   async function findSubject({ id }) {
     const user = await getServerUser(req, res);
-    try {
-      const subject = await readCITLDirector({
-        id,
-        ability: await userAbility(user),
-      });
-      return subject;
-    } catch (error) {
-      console.log(error);
-      throw statusError({
-        statusCode: 403,
-        message: "Unauthorized, cannot delete CITLDirector",
-      });
-    }
+
+    const subject = await readCITLDirector({
+      id,
+      ability: await userAbility(user),
+    });
+    return subject;
   }
 
   try {
