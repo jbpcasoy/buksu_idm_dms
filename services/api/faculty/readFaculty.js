@@ -3,7 +3,7 @@ import { accessibleBy } from "@casl/prisma";
 
 export default async function readFaculty({ id, ability, filter = {} }) {
   const prisma = PRISMA_CLIENT;
-  const accessibility = accessibleBy(ability).Department;
+  const accessibility = accessibleBy(ability).Faculty;
 
   try {
     const faculty = await prisma.faculty.findFirst({

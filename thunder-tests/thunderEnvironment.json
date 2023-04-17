@@ -13,15 +13,15 @@
       },
       {
         "name": "Cookie",
-        "value": "next-auth.csrf-token=cc2d4a5fac87a6d3b9f5a73f3b3641af33a88cb715ac2267d34b9c956742f19b|0950aac11b2404753ff528ceb00057cb685b446a3dca36667b1ff1c25d4d8b7b; next-auth.callback-url=http://localhost:3000/api/login_role?role=FACULTY&redirect=/home; next-auth.session-token=5dc631a5-00a6-40c5-8483-f70426d13632"
+        "value": "next-auth.csrf-token=cc2d4a5fac87a6d3b9f5a73f3b3641af33a88cb715ac2267d34b9c956742f19b|0950aac11b2404753ff528ceb00057cb685b446a3dca36667b1ff1c25d4d8b7b; next-auth.callback-url=http://localhost:3000/api/login_role?role=FACULTY&redirect=/home; next-auth.session-token=becdee86-f6f3-458c-82c7-4220793de362"
       },
       {
         "name": "AdminCookie",
-        "value": "next-auth.csrf-token=0e10d5cbbbe72099af192e4952dc121dc75a4fba6c7ad216b9173a4d4517d56c|f7a61cafdb8984cf5f8473539ee19f7aeea6d5d346fd496d99959860cc7c15cd; next-auth.callback-url=http://localhost:3000/api/login_role?role=ADMIN&redirect=/admin; next-auth.session-token=ad2f7911-4250-4268-b906-df7ac65cd71d"
+        "value": "next-auth.csrf-token=b749e7ac84bf10b5fda6a27f45a165cb1064b80d2cc88283511202992596368b|ed900329069b54adfda5d4a0337ad8922b5399cbab1d8391e15afd929ec81d23; next-auth.callback-url=http://localhost:3000/api/login_role?role=ADMIN&redirect=/admin; next-auth.session-token=3cdec105-4c29-406b-a038-6d141b657592"
       },
       {
         "name": "FacultyCookie",
-        "value": "next-auth.session-token=45204d45-ca05-451c-944c-4a583e26c0e5; next-auth.callback-url=http://localhost:3000; next-auth.csrf-token=f89a0a5eb56aeaa647654a2b605c75e5d3b1b2342affbc29d3f83f53fecd4aa4|560b74560a55c2af6f53ea5c9c2c5cfedb62980b7493f7674cf682a0e552bb6c"
+        "value": "next-auth.csrf-token=6347fbb33cfa305560fed7c3413cbd635053b52e5c0b793d97b440566073807c|53eb3c8bb4a054bf3a30dc0bb00c599c4001b39384d1b82c54707d626888318b; next-auth.callback-url=http://localhost:3000/api/login_role?role=FACULTY&redirect=/home; next-auth.session-token=e988af93-2dc8-4f9b-ac99-5fb94cc9f460"
       }
     ]
   }
