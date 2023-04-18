@@ -1,19 +1,27 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
+import { accessibleBy } from "@casl/prisma";
 
 export default async function readChairpersonSuggestions({
   limit,
   page,
   submittedChairpersonReviewId,
+  ability,
 }) {
   const prisma = PRISMA_CLIENT;
+  const accessibility = accessibleBy(ability).ChairpersonSuggestion;
 
   const chairpersonSuggestions = await prisma.chairpersonSuggestion.findMany({
     take: limit,
     skip: (page - 1) * limit,
     where: {
-      submittedChairpersonReviewId: {
-        contains: submittedChairpersonReviewId,
-      },
+      AND: [
+        accessibility,
+        {
+          submittedChairpersonReviewId: {
+            contains: submittedChairpersonReviewId,
+          },
+        },
+      ],
     },
     include: {
       SubmittedChairpersonSuggestion: true,
@@ -44,9 +52,14 @@ export default async function readChairpersonSuggestions({
   });
   const total = await prisma.chairpersonSuggestion.count({
     where: {
-      submittedChairpersonReviewId: {
-        contains: submittedChairpersonReviewId,
-      },
+      AND: [
+        accessibility,
+        {
+          submittedChairpersonReviewId: {
+            contains: submittedChairpersonReviewId,
+          },
+        },
+      ],
     },
   });
 
