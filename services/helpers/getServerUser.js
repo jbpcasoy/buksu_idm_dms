@@ -14,7 +14,9 @@ export default async function getServerUser(req, res) {
       });
     }
 
-    const user = await getUserByEmail(session?.user?.email);
+    // removed due to slow response
+    // const user = await getUserByEmail(session?.user?.email);
+    const user = session.user;
 
     return user;
   } catch (error) {
