@@ -20,6 +20,9 @@ export default async function readSubmittedChairpersonReview({
           },
         ],
       },
+      include: {
+        ChairpersonReview: true,
+      },
     });
   return submittedChairpersonReview;
 }
