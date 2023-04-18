@@ -1,16 +1,27 @@
-import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import createCoordinatorReview from "@/services/api/coordinator_review/createCoordinatorReview";
-import getUserByEmail from "@/services/helpers/getUserByEmail";
-import { getServerSession } from "next-auth";
+import readIM from "@/services/api/im/readIM";
+import getServerUser from "@/services/helpers/getServerUser";
+import abilityValidator from "@/services/validator/abilityValidator";
+import { subject } from "@casl/ability";
 
 export default async function postCoordinatorReviewHandler(req, res) {
   const { iMId } = req.body;
-  const session = await getServerSession(req, res, authOptions);
-  const user = await getUserByEmail(session?.user?.email);
 
-  const coordinatorReview = await createCoordinatorReview({
-    iMId,
-    coordinatorId: user.ActiveFaculty.ActiveCoordinator.coordinatorId,
+  const user = await getServerUser(req, res);
+  const iM = await readIM(iMId);
+  return abilityValidator({
+    req,
+    res,
+    next: async (req, res) => {
+      const coordinatorReview = await createCoordinatorReview({
+        iMId,
+        coordinatorId: user.ActiveFaculty.ActiveCoordinator.coordinatorId,
+      });
+      return res.status(201).json(coordinatorReview);
+    },
+    action: "connectToCoordinatorReview",
+    subject: subject("IM", iM),
+    fields: undefined,
+    type: "IM",
   });
-  return res.status(201).json(coordinatorReview);
 }

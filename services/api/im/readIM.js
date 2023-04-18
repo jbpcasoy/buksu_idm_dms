@@ -25,6 +25,12 @@ export default async function readIM(id, filter = {}) {
       owner: {
         include: {
           user: true,
+          department: {
+            include: {
+              ActiveChairperson: true,
+              ActiveCoordinator: true,
+            },
+          },
         },
       },
       SubmittedPeerReview: {

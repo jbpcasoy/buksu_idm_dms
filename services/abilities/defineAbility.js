@@ -323,5 +323,26 @@ export default async function userAbility(user) {
     });
   }
 
+  // CoordinatorReview
+  if (user?.ActiveFaculty?.ActiveCoordinator) {
+    can("connectToCoordinatorReview", "IM", {
+      owner: {
+        is: {
+          department: {
+            is: {
+              ActiveCoordinator: {
+                is: {
+                  coordinatorId: {
+                    equals: user.ActiveFaculty.ActiveCoordinator.coordinatorId,
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    });
+  }
+
   return build();
 }
