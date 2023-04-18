@@ -5,12 +5,14 @@ import readSubmittedChairpersonReview from "../submitted_chairperson_review/read
 
 export default async function createSubmittedChairpersonSuggestion({
   chairpersonSuggestionId,
+  ability,
 }) {
   const prisma = PRISMA_CLIENT;
 
-  const chairpersonSuggestion = await readChairpersonSuggestion(
-    chairpersonSuggestionId
-  );
+  const chairpersonSuggestion = await readChairpersonSuggestion({
+    id: chairpersonSuggestionId,
+    ability,
+  });
 
   const submittedChairpersonSuggestion =
     await prisma.submittedChairpersonSuggestion.create({
@@ -38,9 +40,10 @@ export default async function createSubmittedChairpersonSuggestion({
       },
     });
 
-  const submittedChairpersonReview = await readSubmittedChairpersonReview(
-    chairpersonSuggestion.submittedChairpersonReviewId
-  );
+  const submittedChairpersonReview = await readSubmittedChairpersonReview({
+    id: chairpersonSuggestion.submittedChairpersonReviewId,
+    ability,
+  });
   await checkAndUpdateStatus(submittedChairpersonReview.iMId);
 
   return submittedChairpersonSuggestion;

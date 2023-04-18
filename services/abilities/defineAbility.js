@@ -177,10 +177,29 @@ export default async function userAbility(user) {
 
     can("read", "ChairpersonSuggestion", {
       SubmittedChairpersonReview: {
-        ChairpersonReview: {
-          is: {
-            chairpersonId: {
-              equals: user.ActiveFaculty.ActiveChairperson.chairpersonId,
+        is: {
+          ChairpersonReview: {
+            is: {
+              chairpersonId: {
+                equals: user.ActiveFaculty.ActiveChairperson.chairpersonId,
+              },
+            },
+          },
+        },
+      },
+    });
+  }
+
+  // SubmittedChairpersonReview
+  if (user?.ActiveFaculty?.ActiveChairperson) {
+    can("connectToSubmittedChairpersonSuggestion", "ChairpersonSuggestion", {
+      SubmittedChairpersonReview: {
+        is: {
+          ChairpersonReview: {
+            is: {
+              chairpersonId: {
+                equals: user.ActiveFaculty.ActiveChairperson.chairpersonId,
+              },
             },
           },
         },

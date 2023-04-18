@@ -3297,16 +3297,16 @@
     "method": "GET",
     "sortNum": 1520000,
     "created": "2023-03-13T07:54:31.014Z",
-    "modified": "2023-04-18T06:12:18.736Z",
+    "modified": "2023-04-18T06:34:25.884Z",
     "headers": [
       {
         "name": "Cookie",
-        "value": "{{Cookie}}"
+        "value": "{{Cookie}}",
+        "isDisabled": true
       },
       {
         "name": "Cookie",
-        "value": "{{FacultyCookie}}",
-        "isDisabled": true
+        "value": "{{FacultyCookie}}"
       },
       {
         "name": "Cookie",
@@ -3837,12 +3837,27 @@
     "method": "POST",
     "sortNum": 1790000,
     "created": "2023-03-21T08:38:39.479Z",
-    "modified": "2023-03-21T08:39:24.252Z",
-    "headers": [],
+    "modified": "2023-04-18T06:53:47.499Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}"
+      }
+    ],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"chairpersonSuggestionId\": \"clfaujk6i0018s9byklz3tu5r\"\n}",
+      "raw": "{\n  \"chairpersonSuggestionId\": \"clglvam0h0034s9zhe7agzgn0\"\n}",
       "form": []
     },
     "tests": []
