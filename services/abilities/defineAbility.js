@@ -190,6 +190,24 @@ export default async function userAbility(user) {
     });
   }
 
+  // ChairpersonSuggestionItem
+
+  if (user?.ActiveFaculty?.ActiveChairperson) {
+    can("connectToChairpersonSuggestionItem", "ChairpersonSuggestion", {
+      SubmittedChairpersonReview: {
+        is: {
+          ChairpersonReview: {
+            is: {
+              chairpersonId: {
+                equals: user.ActiveFaculty.ActiveChairperson.chairpersonId,
+              },
+            },
+          },
+        },
+      },
+    });
+  }
+
   // SubmittedChairpersonReview
   if (user?.ActiveFaculty?.ActiveChairperson) {
     can("connectToSubmittedChairpersonSuggestion", "ChairpersonSuggestion", {

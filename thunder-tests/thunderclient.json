@@ -3395,12 +3395,28 @@
     "method": "POST",
     "sortNum": 1550000,
     "created": "2023-03-14T00:25:27.670Z",
-    "modified": "2023-03-14T00:28:11.275Z",
-    "headers": [],
+    "modified": "2023-04-18T08:42:11.497Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}",
+        "isDisabled": true
+      }
+    ],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"chairpersonSuggestionId\": \"clf7ikgfb000ws9274bputt9i\",\n  \"value\": \"Bad title\",\n  \"pageNumber\": 1,\n  \"remarks\":\"\"\n}",
+      "raw": "{\n  \"chairpersonSuggestionId\": \"clglvam0h0034s9zhe7agzgn0\",\n  \"value\": \"Bad title\",\n  \"pageNumber\": 1,\n  \"remarks\":\"\"\n}",
       "form": []
     },
     "tests": []
