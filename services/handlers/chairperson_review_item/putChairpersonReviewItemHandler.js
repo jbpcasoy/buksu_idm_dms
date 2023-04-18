@@ -10,6 +10,7 @@ import _ from "lodash";
 export default async function putChairpersonReviewItemHandler(req, res) {
   const { answer } = req.body;
   const { id } = req.query;
+
   const user = await getServerUser(req, res);
   const ability = await userAbility(user);
   async function findSubject({ id }) {
