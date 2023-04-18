@@ -144,5 +144,14 @@ export default async function userAbility(user) {
     }
   }
 
+  // SubmittedChairpersonReview
+  if (user?.ActiveFaculty?.ActiveChairperson) {
+    can("connectToSubmittedChairpersonReview", "ChairpersonReview", {
+      chairpersonId: {
+        equals: user.ActiveFaculty.ActiveChairperson.chairpersonId,
+      },
+    });
+  }
+
   return build();
 }
