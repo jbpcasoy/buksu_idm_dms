@@ -3498,12 +3498,27 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "ab920acd-b282-45eb-98a9-e854efbf9d2e",
     "name": "DELETE ChairpersonSuggestionItem",
-    "url": "{{host}}/api/chairperson_suggestion_item/clf7ilt3r000ys9273u7r6mu4",
+    "url": "{{host}}/api/chairperson_suggestion_item/clgm0niwj004gs9zhtjyl3670",
     "method": "DELETE",
     "sortNum": 1575000,
     "created": "2023-03-14T00:55:25.928Z",
-    "modified": "2023-03-14T00:55:56.101Z",
-    "headers": [],
+    "modified": "2023-04-18T11:08:30.598Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}"
+      }
+    ],
     "params": [],
     "tests": []
   },

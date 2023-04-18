@@ -224,6 +224,24 @@ export default async function userAbility(user) {
         },
       },
     });
+
+    can("delete", "ChairpersonSuggestionItem", {
+      ChairpersonSuggestion: {
+        is: {
+          SubmittedChairpersonReview: {
+            is: {
+              ChairpersonReview: {
+                is: {
+                  chairpersonId: {
+                    equals: user.ActiveFaculty.ActiveChairperson.chairpersonId,
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    });
   }
 
   // SubmittedChairpersonReview
