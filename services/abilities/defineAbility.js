@@ -151,6 +151,16 @@ export default async function userAbility(user) {
         equals: user.ActiveFaculty.ActiveChairperson.chairpersonId,
       },
     });
+
+    can("read", "SubmittedChairpersonReview", {
+      ChairpersonReview: {
+        is: {
+          chairpersonId: {
+            equals: user.ActiveFaculty.ActiveChairperson.chairpersonId,
+          },
+        },
+      },
+    });
   }
 
   return build();
