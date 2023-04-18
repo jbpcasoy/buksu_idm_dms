@@ -2781,8 +2781,23 @@
     "method": "GET",
     "sortNum": 1280000,
     "created": "2023-03-08T08:40:39.713Z",
-    "modified": "2023-03-08T08:41:08.873Z",
-    "headers": [],
+    "modified": "2023-04-18T05:22:31.495Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}"
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}",
+        "isDisabled": true
+      }
+    ],
     "params": [
       {
         "name": "limit",
