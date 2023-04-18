@@ -3395,12 +3395,11 @@
     "method": "POST",
     "sortNum": 1550000,
     "created": "2023-03-14T00:25:27.670Z",
-    "modified": "2023-04-18T08:42:11.497Z",
+    "modified": "2023-04-18T08:47:29.667Z",
     "headers": [
       {
         "name": "Cookie",
-        "value": "{{Cookie}}",
-        "isDisabled": true
+        "value": "{{Cookie}}"
       },
       {
         "name": "Cookie",
