@@ -2488,7 +2488,7 @@
     "method": "POST",
     "sortNum": 1180000,
     "created": "2023-03-08T06:50:19.370Z",
-    "modified": "2023-04-17T05:19:34.061Z",
+    "modified": "2023-04-18T02:01:39.644Z",
     "headers": [
       {
         "name": "Cookie",
@@ -2517,7 +2517,7 @@
     "method": "GET",
     "sortNum": 1190000,
     "created": "2023-03-08T07:01:10.815Z",
-    "modified": "2023-04-18T00:26:44.371Z",
+    "modified": "2023-04-18T02:01:20.758Z",
     "headers": [
       {
         "name": "Cookie",
@@ -2526,12 +2526,12 @@
       },
       {
         "name": "Cookie",
-        "value": "{{FacultyCookie}}",
-        "isDisabled": true
+        "value": "{{FacultyCookie}}"
       },
       {
         "name": "Cookie",
-        "value": "{{AdminCookie}}"
+        "value": "{{AdminCookie}}",
+        "isDisabled": true
       }
     ],
     "params": [
@@ -2616,7 +2616,7 @@
     "method": "POST",
     "sortNum": 1220000,
     "created": "2023-03-08T07:33:25.885Z",
-    "modified": "2023-04-18T00:30:09.313Z",
+    "modified": "2023-04-18T02:01:55.904Z",
     "headers": [
       {
         "name": "Cookie",
@@ -2625,18 +2625,18 @@
       },
       {
         "name": "Cookie",
-        "value": "{{FacultyCookie}}",
-        "isDisabled": true
+        "value": "{{FacultyCookie}}"
       },
       {
         "name": "Cookie",
-        "value": "{{AdminCookie}}"
+        "value": "{{AdminCookie}}",
+        "isDisabled": true
       }
     ],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"questionId\": \"76d47fd0-35a0-4db3-8dc6-75bf5aed53b6\",\n  \"answer\": \"NAA\",\n  \"chairpersonReviewId\": \"clgkjrmnz0003s9zheqwwqnfc\"\n}",
+      "raw": "{\n  \"questionId\": \"76d47fd0-35a0-4db3-8dc6-75bf5aed53b6\",\n  \"answer\": \"NAA\",\n  \"chairpersonReviewId\": \"clgkk54tt0009s9zhj49d6ghf\"\n}",
       "form": []
     },
     "tests": []
@@ -2671,11 +2671,11 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "12a4571b-7e4d-458b-86bd-06986c1a44f7",
     "name": "READ ChairpersonReviewItem",
-    "url": "{{host}}/api/chairperson_review_item/clglin708000ws9zht6h2emhm",
+    "url": "{{host}}/api/chairperson_review_item/clglixmd4000ys9zhqgj5en2n",
     "method": "GET",
     "sortNum": 1240000,
     "created": "2023-03-08T07:48:51.662Z",
-    "modified": "2023-04-18T00:41:10.906Z",
+    "modified": "2023-04-18T02:56:26.166Z",
     "headers": [
       {
         "name": "Cookie",
@@ -2684,12 +2684,12 @@
       },
       {
         "name": "Cookie",
-        "value": "{{Cookie}}",
-        "isDisabled": true
+        "value": "{{Cookie}}"
       },
       {
         "name": "Cookie",
-        "value": "{{AdminCookie}}"
+        "value": "{{AdminCookie}}",
+        "isDisabled": true
       }
     ],
     "params": [],
@@ -5224,6 +5224,40 @@
     "body": {
       "type": "json",
       "raw": "{\n  \"fileId\": \"clget8sgv003bs9xt3uehtkoy\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "d43bfb17-382e-4d50-9b8d-aac6685193a1",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "12a4571b-7e4d-458b-86bd-06986c1a44f7",
+    "name": "PUT ChairpersonReviewItem",
+    "url": "{{host}}/api/chairperson_review_item/clglixmd4000ys9zhqgj5en2n",
+    "method": "PUT",
+    "sortNum": 2420000,
+    "created": "2023-04-18T01:31:44.020Z",
+    "modified": "2023-04-18T02:50:39.539Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}"
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"answer\": \"NAA\"\n}",
       "form": []
     },
     "tests": []

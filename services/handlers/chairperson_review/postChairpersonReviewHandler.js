@@ -20,8 +20,8 @@ export default async function postChairpersonReviewHandler(req, res) {
       return res.status(201).json(chairpersonReview);
     },
     action: "connectToChairpersonReview",
-    subject: "IM",
+    subject: subject("IM", iM),
     fields: undefined,
-    type: subject("IM", iM),
+    type: "IM",
   });
 }

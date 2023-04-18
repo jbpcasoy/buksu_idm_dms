@@ -20,7 +20,6 @@ export default async function putCollegeHandler(req, res) {
     return subject;
   }
 
-  const user = await getServerUser(req, res);
   const college = await findSubject({ id });
   return abilityValidator({
     req,

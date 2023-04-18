@@ -131,6 +131,16 @@ export default async function userAbility(user) {
           },
         },
       });
+
+      can("update", "ChairpersonReviewItem", ["answer"], {
+        ChairpersonReview: {
+          is: {
+            chairpersonId: {
+              equals: user.ActiveFaculty.ActiveChairperson.chairpersonId,
+            },
+          },
+        },
+      });
     }
   }
 
