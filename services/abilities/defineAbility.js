@@ -112,6 +112,12 @@ export default async function userAbility(user) {
         equals: user.ActiveFaculty.ActiveChairperson.chairpersonId,
       },
     });
+
+    can("connectToChairpersonReviewItem", "ChairpersonReview", {
+      chairpersonId: {
+        equals: user.ActiveFaculty.ActiveChairperson.chairpersonId,
+      },
+    });
   }
 
   return build();
