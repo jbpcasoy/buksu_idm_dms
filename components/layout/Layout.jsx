@@ -33,7 +33,7 @@ export default function Layout({ children, active }) {
               <div
                 id='indicators-carousel'
                 className='relative w-full z-0'
-                data-carousel='static'
+                data-carousel='slide'
               >
                 {/* <!-- Carousel wrapper --> */}
                 <div
