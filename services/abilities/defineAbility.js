@@ -174,6 +174,18 @@ export default async function userAbility(user) {
         },
       },
     });
+
+    can("read", "ChairpersonSuggestion", {
+      SubmittedChairpersonReview: {
+        ChairpersonReview: {
+          is: {
+            chairpersonId: {
+              equals: user.ActiveFaculty.ActiveChairperson.chairpersonId,
+            },
+          },
+        },
+      },
+    });
   }
 
   return build();
