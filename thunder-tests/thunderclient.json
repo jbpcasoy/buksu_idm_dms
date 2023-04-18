@@ -2938,7 +2938,7 @@
     "method": "GET",
     "sortNum": 1330000,
     "created": "2023-03-09T07:03:25.641Z",
-    "modified": "2023-04-18T14:58:11.288Z",
+    "modified": "2023-04-18T15:03:20.453Z",
     "headers": [
       {
         "name": "Cookie",
@@ -2947,8 +2947,7 @@
       },
       {
         "name": "Cookie",
-        "value": "{{FacultyCookie}}",
-        "isDisabled": true
+        "value": "{{FacultyCookie}}"
       },
       {
         "name": "Cookie",
@@ -2964,12 +2963,27 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "a68310ae-b337-433a-bef9-8b925530efdc",
     "name": "DELETE CoordinatorReview",
-    "url": "{{host}}/api/coordinator_review/clf0r3eqs000gs905q27cq46j",
+    "url": "{{host}}/api/coordinator_review/clgmdsahx000gs9eyee1pcfmc",
     "method": "DELETE",
     "sortNum": 1340000,
     "created": "2023-03-09T07:09:07.445Z",
-    "modified": "2023-03-09T07:09:23.930Z",
-    "headers": [],
+    "modified": "2023-04-18T15:05:22.040Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}"
+      }
+    ],
     "params": [],
     "tests": []
   },
