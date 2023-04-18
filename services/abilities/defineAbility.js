@@ -88,6 +88,7 @@ export default async function userAbility(user) {
   // Department
   can("read", "Department");
 
+  // ChairpersonReview
   if (user?.ActiveFaculty?.ActiveChairperson) {
     can("connectToChairpersonReview", "IM", {
       owner: {
@@ -113,11 +114,24 @@ export default async function userAbility(user) {
       },
     });
 
-    can("connectToChairpersonReviewItem", "ChairpersonReview", {
-      chairpersonId: {
-        equals: user.ActiveFaculty.ActiveChairperson.chairpersonId,
-      },
-    });
+    // ChairpersonReviewItem
+    if (user?.ActiveFaculty?.ActiveChairperson) {
+      can("connectToChairpersonReviewItem", "ChairpersonReview", {
+        chairpersonId: {
+          equals: user.ActiveFaculty.ActiveChairperson.chairpersonId,
+        },
+      });
+
+      can("read", "ChairpersonReviewItem", {
+        ChairpersonReview: {
+          is: {
+            chairpersonId: {
+              equals: user.ActiveFaculty.ActiveChairperson.chairpersonId,
+            },
+          },
+        },
+      });
+    }
   }
 
   return build();
