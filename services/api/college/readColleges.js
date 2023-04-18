@@ -34,10 +34,15 @@ export default async function readColleges({
 
   const total = await prisma.college.count({
     where: {
-      name: {
-        contains: name,
-        // mode: "insensitive",
-      },
+      AND: [
+        accessibility,
+        {
+          name: {
+            contains: name,
+            // mode: "insensitive",
+          },
+        },
+      ],
     },
   });
 
