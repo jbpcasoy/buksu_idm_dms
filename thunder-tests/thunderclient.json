@@ -2831,12 +2831,27 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "06eb4a00-c0cd-41f2-b5f6-a5c96efd214e",
     "name": "DELETE SubmittedChairpersonReview",
-    "url": "{{host}}/api/submitted_chairperson_review/clezfiwdu0001s9hm7lhvn96e",
+    "url": "{{host}}/api/submitted_chairperson_review/clglqg33g001hs9zhguqf56yu",
     "method": "DELETE",
     "sortNum": 1300000,
     "created": "2023-03-08T08:57:08.903Z",
-    "modified": "2023-03-08T08:57:34.305Z",
-    "headers": [],
+    "modified": "2023-04-18T05:14:48.735Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}"
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}",
+        "isDisabled": true
+      }
+    ],
     "params": [],
     "tests": []
   },
