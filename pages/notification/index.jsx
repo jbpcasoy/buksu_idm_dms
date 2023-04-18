@@ -57,7 +57,7 @@ export default function Notifications() {
               Entries
             </span> */}
 
-            <div className='flex flex-row items-center justify-end py-3 w-full'>
+            <div className='flex flex-row items-center justify-end py-3 w-full mx-5 '>
               {!notificationsLoading && (
                 <span className='text-sm text-gray-700 dark:text-gray-400 '>
                   Showing{" "}
