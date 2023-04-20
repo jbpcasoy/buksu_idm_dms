@@ -30,5 +30,3 @@ export default async function postChairpersonReviewItemHandler(req, res) {
     type: "ChairpersonReview",
   });
 }
-
-// TODO test post request
