@@ -132,6 +132,16 @@ export default async function userAbility(user) {
         },
       });
 
+      can("delete", "ChairpersonReviewItem", {
+        ChairpersonReview: {
+          is: {
+            chairpersonId: {
+              equals: user.ActiveFaculty.ActiveChairperson.chairpersonId,
+            },
+          },
+        },
+      });
+
       can("update", "ChairpersonReviewItem", ["answer"], {
         ChairpersonReview: {
           is: {
@@ -359,6 +369,16 @@ export default async function userAbility(user) {
     });
 
     can("read", "CoordinatorReviewItem", {
+      CoordinatorReview: {
+        is: {
+          coordinatorId: {
+            equals: user.ActiveFaculty.ActiveCoordinator.coordinatorId,
+          },
+        },
+      },
+    });
+
+    can("delete", "CoordinatorReviewItem", {
       CoordinatorReview: {
         is: {
           coordinatorId: {

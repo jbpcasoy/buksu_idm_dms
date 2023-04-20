@@ -15,6 +15,9 @@ export default async function readCoordinatorReviewItem({ id, ability }) {
           },
         ],
       },
+      include: {
+        CoordinatorReview: true,
+      },
     });
 
   return coordinatorReviewItem;
