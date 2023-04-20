@@ -1,12 +1,19 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
+import { accessibleBy } from "@casl/prisma";
 
-export default async function readCoordinatorReviewItem(id) {
+export default async function readCoordinatorReviewItem({ id, ability }) {
   const prisma = PRISMA_CLIENT;
+  const accessibility = accessibleBy(ability).CoordinatorReviewItem;
 
   const coordinatorReviewItem =
-    await prisma.coordinatorReviewItem.findUniqueOrThrow({
+    await prisma.coordinatorReviewItem.findFirstOrThrow({
       where: {
-        id,
+        AND: [
+          accessibility,
+          {
+            id,
+          },
+        ],
       },
     });
 

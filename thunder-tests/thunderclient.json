@@ -2615,7 +2615,7 @@
     "method": "POST",
     "sortNum": 1220000,
     "created": "2023-03-08T07:33:25.885Z",
-    "modified": "2023-04-18T02:01:55.904Z",
+    "modified": "2023-04-20T07:43:55.597Z",
     "headers": [
       {
         "name": "Cookie",
@@ -3066,12 +3066,27 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "97334de5-c0ce-404e-babd-5bd5dc3cecbd",
     "name": "READ CoordinatorReviewItem",
-    "url": "{{host}}/api/coordinator_review_item/clf0sixc30003s945hq5hxfzx",
+    "url": "{{host}}/api/coordinator_review_item/clgodxwl60000s9xzd08p5c32",
     "method": "GET",
     "sortNum": 1370000,
     "created": "2023-03-09T07:48:09.552Z",
-    "modified": "2023-03-09T07:48:36.778Z",
-    "headers": [],
+    "modified": "2023-04-20T07:44:59.657Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}"
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}",
+        "isDisabled": true
+      }
+    ],
     "params": [],
     "tests": []
   },
