@@ -5631,5 +5631,39 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "bc98c6a2-7a86-4f12-8ebb-17b8fe503904",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "97334de5-c0ce-404e-babd-5bd5dc3cecbd",
+    "name": "UPDATE CoordinatorReviewItem",
+    "url": "{{host}}/api/coordinator_review_item/clgouafzg0012s9xzy8691vrc",
+    "method": "PUT",
+    "sortNum": 2430000,
+    "created": "2023-04-20T08:07:35.558Z",
+    "modified": "2023-04-20T08:31:17.139Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}"
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"answer\": \"NAA\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
