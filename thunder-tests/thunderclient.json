@@ -2521,12 +2521,28 @@
     "method": "POST",
     "sortNum": 1140000,
     "created": "2023-03-08T05:05:06.827Z",
-    "modified": "2023-03-08T05:08:23.991Z",
-    "headers": [],
+    "modified": "2023-04-24T06:58:49.372Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}",
+        "isDisabled": true
+      }
+    ],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"peerReviewId\": \"clez7w2tt0001s90fzoyyltrk\"\n}",
+      "raw": "{\n  \"peerReviewId\": \"clgub0pyf002rs9ci6qw8onyb\"\n}",
       "form": []
     },
     "tests": []

@@ -1,10 +1,13 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
 import readPeerReview from "../peer_review/readPeerReview";
 
-export default async function createSubmittedPeerReview({ peerReviewId }) {
+export default async function createSubmittedPeerReview({
+  peerReviewId,
+  ability,
+}) {
   const prisma = PRISMA_CLIENT;
 
-  const peerReview = await readPeerReview(peerReviewId);
+  const peerReview = await readPeerReview({ id: peerReviewId, ability });
 
   const submittedPeerReview = await prisma.submittedPeerReview.create({
     data: {

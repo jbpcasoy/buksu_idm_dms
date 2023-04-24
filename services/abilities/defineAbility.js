@@ -624,5 +624,24 @@ export default async function userAbility(user) {
     });
   }
 
+  // SubmittedPeerReview
+  if (user?.ActiveFaculty) {
+    can("connectToSubmittedPeerReview", "PeerReview", {
+      facultyId: {
+        equals: user.ActiveFaculty.facultyId,
+      },
+    });
+
+    can("read", "SubmittedPeerReview", {
+      PeerReview: {
+        is: {
+          facultyId: {
+            equals: user.ActiveFaculty.facultyId,
+          },
+        },
+      },
+    });
+  }
+
   return build();
 }
