@@ -15,6 +15,9 @@ export default async function readPeerReviewItem({ id, ability, filter = {} }) {
         },
       ],
     },
+    include: {
+      PeerReview: true,
+    },
   });
 
   return peerReviewItem;

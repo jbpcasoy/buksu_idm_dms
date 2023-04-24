@@ -2360,16 +2360,16 @@
     "method": "POST",
     "sortNum": 1090000,
     "created": "2023-03-07T05:31:43.373Z",
-    "modified": "2023-04-24T06:17:59.351Z",
+    "modified": "2023-04-24T06:32:07.576Z",
     "headers": [
       {
         "name": "Cookie",
-        "value": "{{Cookie}}",
-        "isDisabled": true
+        "value": "{{Cookie}}"
       },
       {
         "name": "Cookie",
-        "value": "{{FacultyCookie}}"
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
       }
     ],
     "params": [],
@@ -2458,12 +2458,27 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "f2ba22cf-9ed6-4991-9c0b-01ab9b6f260c",
     "name": "DELETE PeerReviewItem",
-    "url": "{{host}}/api/peer_review_item/clexti5cl0007s92uewvvfbjk",
+    "url": "{{host}}/api/peer_review_item/clgugpjn8007ss9ci7fg3st2k",
     "method": "DELETE",
     "sortNum": 1130000,
     "created": "2023-03-07T05:55:38.889Z",
-    "modified": "2023-03-07T05:57:08.444Z",
-    "headers": [],
+    "modified": "2023-04-24T06:33:53.554Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}"
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}",
+        "isDisabled": true
+      }
+    ],
     "params": [],
     "tests": []
   },
