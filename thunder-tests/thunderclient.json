@@ -3221,12 +3221,27 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "327637e1-b39d-480c-ac73-f1814c515440",
     "name": "DELETE SubmittedCoordinatorReview",
-    "url": "{{host}}/api/submitted_coordinator_review/clf0u894a0001s9b55pkceu2s",
+    "url": "{{host}}/api/submitted_coordinator_review/clgu3je310001s9cibq57xwwq",
     "method": "DELETE",
     "sortNum": 1420000,
     "created": "2023-03-09T08:42:02.968Z",
-    "modified": "2023-03-09T08:42:16.606Z",
-    "headers": [],
+    "modified": "2023-04-24T00:48:43.918Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}"
+      }
+    ],
     "params": [],
     "tests": []
   },
