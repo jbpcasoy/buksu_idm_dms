@@ -406,6 +406,16 @@ export default async function userAbility(user) {
         equals: user.ActiveFaculty.ActiveCoordinator.coordinatorId,
       },
     });
+
+    can("read", "SubmittedCoordinatorReview", {
+      CoordinatorReview: {
+        is: {
+          coordinatorId: {
+            equals: user.ActiveFaculty.ActiveCoordinator.coordinatorId,
+          },
+        },
+      },
+    });
   }
 
   return build();

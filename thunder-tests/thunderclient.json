@@ -3196,7 +3196,7 @@
     "method": "GET",
     "sortNum": 1410000,
     "created": "2023-03-09T08:36:43.123Z",
-    "modified": "2023-04-24T00:37:34.449Z",
+    "modified": "2023-04-24T00:42:25.964Z",
     "headers": [
       {
         "name": "Cookie",
@@ -3209,7 +3209,8 @@
       },
       {
         "name": "Cookie",
-        "value": "{{AdminCookie}}"
+        "value": "{{AdminCookie}}",
+        "isDisabled": true
       }
     ],
     "params": [],
