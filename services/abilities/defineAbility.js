@@ -835,11 +835,11 @@ export default async function userAbility(user) {
       },
     });
 
-    // can("read", "CoordinatorEndorsement", {
-    //   coordinatorId: {
-    //     equals: user.ActiveFaculty.ActiveCoordinator.coordinatorId,
-    //   },
-    // });
+    can("read", "CoordinatorEndorsement", {
+      coordinatorId: {
+        equals: user.ActiveFaculty.ActiveCoordinator.coordinatorId,
+      },
+    });
   }
 
   return build();
