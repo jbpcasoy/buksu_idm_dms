@@ -201,7 +201,6 @@ export default async function userAbility(user) {
   }
 
   // ChairpersonSuggestionItem
-
   if (user?.ActiveFaculty?.ActiveChairperson) {
     can("connectToChairpersonSuggestionItem", "ChairpersonSuggestion", {
       SubmittedChairpersonReview: {
@@ -520,6 +519,26 @@ export default async function userAbility(user) {
         },
       }
     );
+  }
+
+  if (user?.ActiveFaculty) {
+    can("update", "CoordinatorSuggestionItem", ["actionTaken"], {
+      CoordinatorSuggestion: {
+        is: {
+          SubmittedCoordinatorReview: {
+            is: {
+              IM: {
+                is: {
+                  ownerId: {
+                    equals: user.ActiveFaculty.facultyId,
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    });
   }
 
   // SubmittedCoordinatorSuggestion
