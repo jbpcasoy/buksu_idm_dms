@@ -3436,12 +3436,27 @@
     "method": "POST",
     "sortNum": 1430000,
     "created": "2023-03-13T06:30:21.997Z",
-    "modified": "2023-03-13T06:33:36.237Z",
-    "headers": [],
+    "modified": "2023-04-24T07:26:54.292Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}"
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}",
+        "isDisabled": true
+      }
+    ],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"submittedPeerReviewId\": \"clf0i3t28004cs9hbm1z03ho2\"\n}",
+      "raw": "{\n  \"submittedPeerReviewId\": \"clgui9h2n008ms9ciahns0d8o\"\n}",
       "form": []
     },
     "tests": []

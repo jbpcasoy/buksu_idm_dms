@@ -20,6 +20,9 @@ export default async function readSubmittedPeerReview({
           },
         ],
       },
+      include: {
+        PeerReview: true,
+      },
     }
   );
   return submittedPeerReview;
