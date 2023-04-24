@@ -5,12 +5,14 @@ import readSubmittedCoordinatorReview from "../submitted_coordinator_review/read
 
 export default async function createSubmittedCoordinatorSuggestion({
   coordinatorSuggestionId,
+  ability,
 }) {
   const prisma = PRISMA_CLIENT;
 
-  const coordinatorSuggestion = await readCoordinatorSuggestion(
-    coordinatorSuggestionId
-  );
+  const coordinatorSuggestion = await readCoordinatorSuggestion({
+    id: coordinatorSuggestionId,
+    ability,
+  });
 
   const submittedCoordinatorSuggestion =
     await prisma.submittedCoordinatorSuggestion.create({
@@ -38,9 +40,10 @@ export default async function createSubmittedCoordinatorSuggestion({
       },
     });
 
-  const submittedCoordinatorReview = await readSubmittedCoordinatorReview(
-    coordinatorSuggestion.submittedCoordinatorReviewId
-  );
+  const submittedCoordinatorReview = await readSubmittedCoordinatorReview({
+    id: coordinatorSuggestion.submittedCoordinatorReviewId,
+    ability,
+  });
   await checkAndUpdateStatus(submittedCoordinatorReview.iMId);
   return submittedCoordinatorSuggestion;
 }

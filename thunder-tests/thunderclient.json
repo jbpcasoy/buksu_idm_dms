@@ -3837,11 +3837,11 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "0da99ad0-5045-4ae3-b0ff-9326023ccf1a",
     "name": "READ CoordinatorSuggestion",
-    "url": "{{host}}/api/coordinator_suggestion/clgu588g90016s9cid6stcfsi",
+    "url": "{{host}}/api/coordinator_suggestion/clgu69lef001cs9cid8ntsfm2",
     "method": "GET",
     "sortNum": 1610000,
     "created": "2023-03-14T01:32:57.315Z",
-    "modified": "2023-04-24T01:32:31.897Z",
+    "modified": "2023-04-24T05:30:13.784Z",
     "headers": [
       {
         "name": "Cookie",
@@ -4253,7 +4253,7 @@
     "method": "POST",
     "sortNum": 1790000,
     "created": "2023-03-21T08:38:39.479Z",
-    "modified": "2023-04-18T06:53:47.499Z",
+    "modified": "2023-04-24T05:41:20.153Z",
     "headers": [
       {
         "name": "Cookie",
@@ -4262,12 +4262,12 @@
       },
       {
         "name": "Cookie",
-        "value": "{{FacultyCookie}}",
-        "isDisabled": true
+        "value": "{{FacultyCookie}}"
       },
       {
         "name": "Cookie",
-        "value": "{{AdminCookie}}"
+        "value": "{{AdminCookie}}",
+        "isDisabled": true
       }
     ],
     "params": [],
@@ -4352,15 +4352,16 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "a9f9327f-df45-4ace-9682-9e2d33652e9b",
     "name": "DELETE SubmittedChairpersonSuggestion",
-    "url": "{{host}}/api/submitted_chairperson_suggestion/clglxv9od003ws9zhpw8fogvg",
+    "url": "{{host}}/api/submitted_chairperson_suggestion/clgly5nes0042s9zhin29h8if",
     "method": "DELETE",
     "sortNum": 1820000,
     "created": "2023-03-21T08:58:40.967Z",
-    "modified": "2023-04-18T07:25:18.455Z",
+    "modified": "2023-04-24T05:41:09.865Z",
     "headers": [
       {
         "name": "Cookie",
-        "value": "{{Cookie}}"
+        "value": "{{Cookie}}",
+        "isDisabled": true
       },
       {
         "name": "Cookie",
@@ -4369,8 +4370,7 @@
       },
       {
         "name": "Cookie",
-        "value": "{{AdminCookie}}",
-        "isDisabled": true
+        "value": "{{AdminCookie}}"
       }
     ],
     "params": [],
@@ -4385,12 +4385,27 @@
     "method": "POST",
     "sortNum": 1830000,
     "created": "2023-03-23T00:26:33.465Z",
-    "modified": "2023-03-23T00:27:29.241Z",
-    "headers": [],
+    "modified": "2023-04-24T05:52:35.845Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}"
+      }
+    ],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"coordinatorSuggestionId\": \"clfaukv31001ks9by4arycybq\"\n}",
+      "raw": "{\n  \"coordinatorSuggestionId\": \"clgu69lef001cs9cid8ntsfm2\"\n}",
       "form": []
     },
     "tests": []
@@ -4425,11 +4440,11 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "c589f071-f851-4cd0-a464-ce982c92b939",
     "name": "READ SubmittedCoordinatorSuggestion",
-    "url": "{{host}}/api/submitted_coordinator_suggestion/clfkdmag30008s9fuuppa86ey",
+    "url": "{{host}}/api/submitted_coordinator_suggestion/clguf1wkm005ys9ci5rvjigb4",
     "method": "GET",
     "sortNum": 1850000,
     "created": "2023-03-23T00:48:05.515Z",
-    "modified": "2023-03-23T00:48:37.354Z",
+    "modified": "2023-04-24T05:52:05.909Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -4439,11 +4454,11 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "c589f071-f851-4cd0-a464-ce982c92b939",
     "name": "DELETE SubmittedCoordinatorSuggestion",
-    "url": "{{host}}/api/submitted_coordinator_suggestion/clfkdmag30008s9fuuppa86ey",
+    "url": "{{host}}/api/submitted_coordinator_suggestion/clguf1wkm005ys9ci5rvjigb4",
     "method": "DELETE",
     "sortNum": 1860000,
     "created": "2023-03-23T00:57:19.492Z",
-    "modified": "2023-03-23T00:57:32.894Z",
+    "modified": "2023-04-24T05:52:23.355Z",
     "headers": [],
     "params": [],
     "tests": []

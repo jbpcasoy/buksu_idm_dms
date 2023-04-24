@@ -298,7 +298,7 @@ export default async function userAbility(user) {
     });
   }
 
-  // SubmittedChairpersonReview
+  // SubmittedChairpersonSuggestion
   if (user?.ActiveFaculty?.ActiveChairperson) {
     can("connectToSubmittedChairpersonSuggestion", "ChairpersonSuggestion", {
       SubmittedChairpersonReview: {
@@ -520,6 +520,41 @@ export default async function userAbility(user) {
         },
       }
     );
+  }
+
+  // SubmittedCoordinatorSuggestion
+  if (user?.ActiveFaculty?.ActiveCoordinator) {
+    can("connectToSubmittedCoordinatorSuggestion", "CoordinatorSuggestion", {
+      SubmittedCoordinatorReview: {
+        is: {
+          CoordinatorReview: {
+            is: {
+              coordinatorId: {
+                equals: user.ActiveFaculty.ActiveCoordinator.coordinatorId,
+              },
+            },
+          },
+        },
+      },
+    });
+
+    can("read", "SubmittedCoordinatorSuggestion", {
+      CoordinatorSuggestion: {
+        is: {
+          SubmittedCoordinatorReview: {
+            is: {
+              CoordinatorReview: {
+                is: {
+                  coordinatorId: {
+                    equals: user.ActiveFaculty.ActiveCoordinator.coordinatorId,
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    });
   }
 
   // PeerReview
