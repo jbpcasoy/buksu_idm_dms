@@ -612,6 +612,16 @@ export default async function userAbility(user) {
         },
       },
     });
+
+    can("update", "PeerReviewItem", ["answer"], {
+      PeerReview: {
+        is: {
+          facultyId: {
+            equals: user.ActiveFaculty.facultyId,
+          },
+        },
+      },
+    });
   }
 
   return build();

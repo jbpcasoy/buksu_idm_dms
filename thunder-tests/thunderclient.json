@@ -2389,12 +2389,11 @@
     "method": "GET",
     "sortNum": 1100000,
     "created": "2023-03-07T05:41:16.332Z",
-    "modified": "2023-04-24T06:41:37.204Z",
+    "modified": "2023-04-24T06:48:24.686Z",
     "headers": [
       {
         "name": "Cookie",
-        "value": "{{Cookie}}",
-        "isDisabled": true
+        "value": "{{Cookie}}"
       },
       {
         "name": "Cookie",
@@ -2403,7 +2402,8 @@
       },
       {
         "name": "Cookie",
-        "value": "{{AdminCookie}}"
+        "value": "{{AdminCookie}}",
+        "isDisabled": true
       }
     ],
     "params": [
@@ -2454,12 +2454,27 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "f2ba22cf-9ed6-4991-9c0b-01ab9b6f260c",
     "name": "UPDATE PeerReviewItem",
-    "url": "{{host}}/api/peer_review_item/clextgb980003s92uddbgsvqv",
+    "url": "{{host}}/api/peer_review_item/clgugulsk007us9ci8nozanxh",
     "method": "PUT",
     "sortNum": 1120000,
     "created": "2023-03-07T05:51:35.075Z",
-    "modified": "2023-03-07T05:52:21.364Z",
-    "headers": [],
+    "modified": "2023-04-24T06:49:14.898Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}"
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}",
+        "isDisabled": true
+      }
+    ],
     "params": [],
     "body": {
       "type": "json",
