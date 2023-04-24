@@ -112,9 +112,9 @@ export default function Home() {
               <div>
                 <button
                   type='button'
-                  className={`inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue border-CITLOrange rounded-none border-b-2`}
+                  className={`inline-flex items-center mr-3 px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue border-CITLOrange rounded-none border-b-2`}
                 >
-                  <span className='inline-flex items-center justify-center w-4 h-4 mr-1 text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full'>
+                  <span className='inline-flex items-center justify-center px-1 mr-1 bg-CITLOrange rounded-full text-xs font-semibold text-CITLWhite '>
                     {total}
                   </span>
                   Reviewed
