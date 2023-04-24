@@ -1,19 +1,27 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
+import { accessibleBy } from "@casl/prisma";
 
 export default async function readPeerSuggestions({
   limit,
   page,
   submittedPeerReviewId,
+  ability,
 }) {
   const prisma = PRISMA_CLIENT;
+  const accessibility = accessibleBy(ability).PeerSuggestion;
 
   const peerSuggestions = await prisma.peerSuggestion.findMany({
     take: limit,
     skip: limit && page ? (page - 1) * limit : undefined,
     where: {
-      submittedPeerReviewId: {
-        contains: submittedPeerReviewId,
-      },
+      AND: [
+        accessibility,
+        {
+          submittedPeerReviewId: {
+            contains: submittedPeerReviewId,
+          },
+        },
+      ],
     },
     include: {
       SubmittedPeerSuggestion: true,
@@ -40,9 +48,14 @@ export default async function readPeerSuggestions({
   });
   const total = await prisma.peerSuggestion.count({
     where: {
-      submittedPeerReviewId: {
-        contains: submittedPeerReviewId,
-      },
+      AND: [
+        accessibility,
+        {
+          submittedPeerReviewId: {
+            contains: submittedPeerReviewId,
+          },
+        },
+      ],
     },
   });
 
