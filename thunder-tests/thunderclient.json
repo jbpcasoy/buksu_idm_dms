@@ -2228,12 +2228,11 @@
     "method": "POST",
     "sortNum": 1040000,
     "created": "2023-03-07T01:20:33.484Z",
-    "modified": "2023-04-24T03:36:24.954Z",
+    "modified": "2023-04-24T03:41:19.846Z",
     "headers": [
       {
         "name": "Cookie",
-        "value": "{{Cookie}}",
-        "isDisabled": true
+        "value": "{{Cookie}}"
       },
       {
         "name": "Cookie",
@@ -2242,7 +2241,8 @@
       },
       {
         "name": "Cookie",
-        "value": "{{AdminCookie}}"
+        "value": "{{AdminCookie}}",
+        "isDisabled": true
       }
     ],
     "params": [],
@@ -2283,12 +2283,27 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "70001f34-a1c2-45b8-980c-d64f3240a73a",
     "name": "READ PeerReview",
-    "url": "{{host}}/api/peer_review/clexkheze0001s91033q6nuxy",
+    "url": "{{host}}/api/peer_review/clguak2p1002ns9ciqga9h5lj",
     "method": "GET",
     "sortNum": 1060000,
     "created": "2023-03-07T01:39:51.055Z",
-    "modified": "2023-03-07T01:40:03.781Z",
-    "headers": [],
+    "modified": "2023-04-24T03:46:03.608Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}"
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}",
+        "isDisabled": true
+      }
+    ],
     "params": [],
     "tests": []
   },
