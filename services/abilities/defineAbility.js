@@ -478,6 +478,24 @@ export default async function userAbility(user) {
         },
       },
     });
+
+    can("delete", "CoordinatorSuggestionItem", {
+      CoordinatorSuggestion: {
+        is: {
+          SubmittedCoordinatorReview: {
+            is: {
+              CoordinatorReview: {
+                is: {
+                  coordinatorId: {
+                    equals: user.ActiveFaculty.ActiveCoordinator.coordinatorId,
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    });
   }
 
   return build();
