@@ -3142,16 +3142,16 @@
     "method": "POST",
     "sortNum": 1390000,
     "created": "2023-03-09T08:16:53.943Z",
-    "modified": "2023-04-24T00:30:41.462Z",
+    "modified": "2023-04-24T00:55:00.752Z",
     "headers": [
       {
         "name": "Cookie",
-        "value": "{{Cookie}}"
+        "value": "{{Cookie}}",
+        "isDisabled": true
       },
       {
         "name": "Cookie",
-        "value": "{{FacultyCookie}}",
-        "isDisabled": true
+        "value": "{{FacultyCookie}}"
       }
     ],
     "params": [],
@@ -3171,8 +3171,23 @@
     "method": "GET",
     "sortNum": 1400000,
     "created": "2023-03-09T08:27:51.828Z",
-    "modified": "2023-03-09T08:29:02.197Z",
-    "headers": [],
+    "modified": "2023-04-24T00:55:43.437Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}"
+      }
+    ],
     "params": [
       {
         "name": "limit",
