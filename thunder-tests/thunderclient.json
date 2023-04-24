@@ -4911,12 +4911,27 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "67ff3a1f-f37a-47bc-bf88-b78d550cea25",
     "name": "DELETE Endorsement",
-    "url": "{{host}}/api/coordinator_endorsement/clgurr1i4001is96q6o45jr2p",
+    "url": "{{host}}/api/coordinator_endorsement/clgursewc001us96qq5dbr7ao",
     "method": "DELETE",
     "sortNum": 1900000,
     "created": "2023-03-28T07:11:20.006Z",
-    "modified": "2023-04-24T11:43:33.450Z",
-    "headers": [],
+    "modified": "2023-04-24T11:59:55.167Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}"
+      }
+    ],
     "params": [],
     "tests": []
   },
