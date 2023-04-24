@@ -1,5 +1,6 @@
 import UserContext from "@/contexts/UserContext";
 import useSidebarCounts from "@/hooks/count/useSidebarCounts";
+import { initDrawers } from "flowbite";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useContext, useEffect } from "react";
@@ -30,6 +31,10 @@ export default function Sidebar() {
   useEffect(() => {
     console.log({ cITLEndorsedCount });
   }, [cITLEndorsedCount]);
+
+  useEffect(() => {
+    initDrawers();
+  });
 
   return (
     <aside
