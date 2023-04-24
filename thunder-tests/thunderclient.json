@@ -3520,12 +3520,27 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "df6d868b-52c7-418b-9748-750d72da79a0",
     "name": "DELETE PeerSuggestion",
-    "url": "{{host}}/api/peer_suggestion/clf6ga00l0004s98ivpu7e6y0",
+    "url": "{{host}}/api/peer_suggestion/clguil0q2008ss9cidivm7dhx",
     "method": "DELETE",
     "sortNum": 1460000,
     "created": "2023-03-13T06:50:28.170Z",
-    "modified": "2023-03-13T06:50:41.516Z",
-    "headers": [],
+    "modified": "2023-04-24T07:35:47.346Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}"
+      }
+    ],
     "params": [],
     "tests": []
   },
