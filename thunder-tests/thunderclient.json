@@ -3863,12 +3863,27 @@
     "method": "POST",
     "sortNum": 1630000,
     "created": "2023-03-14T02:13:15.356Z",
-    "modified": "2023-03-14T02:19:18.044Z",
-    "headers": [],
+    "modified": "2023-04-24T01:59:03.033Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}"
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}",
+        "isDisabled": true
+      }
+    ],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"coordinatorSuggestionId\": \"clf7mezca0000s9i207fl6wvv\",\n  \"value\": \"Bad title\",\n  \"pageNumber\": 1,\n  \"remarks\":\"remarks\"\n}",
+      "raw": "{\n  \"coordinatorSuggestionId\": \"clgu69lef001cs9cid8ntsfm2\",\n  \"value\": \"Bad title\",\n  \"pageNumber\": 1,\n  \"remarks\":\"remarks\"\n}",
       "form": []
     },
     "tests": []
