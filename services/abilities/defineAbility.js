@@ -779,5 +779,40 @@ export default async function userAbility(user) {
     });
   }
 
+  // SubmittedPeerSuggestion
+  if (user?.ActiveFaculty) {
+    can("connectToSubmittedPeerSuggestion", "PeerSuggestion", {
+      SubmittedPeerReview: {
+        is: {
+          PeerReview: {
+            is: {
+              facultyId: {
+                equals: user.ActiveFaculty.facultyId,
+              },
+            },
+          },
+        },
+      },
+    });
+
+    can("read", "SubmittedPeerSuggestion", {
+      PeerSuggestion: {
+        is: {
+          SubmittedPeerReview: {
+            is: {
+              PeerReview: {
+                is: {
+                  facultyId: {
+                    equals: user.ActiveFaculty.facultyId,
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    });
+  }
+
   return build();
 }

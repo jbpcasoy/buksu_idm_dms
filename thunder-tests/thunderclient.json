@@ -4431,12 +4431,27 @@
     "method": "POST",
     "sortNum": 1740000,
     "created": "2023-03-21T08:07:01.370Z",
-    "modified": "2023-03-21T08:08:03.941Z",
-    "headers": [],
+    "modified": "2023-04-24T08:52:34.923Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}"
+      }
+    ],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"peerSuggestionId\": \"clfaulp4l001ys9bywdaxa92r\"\n}",
+      "raw": "{\n  \"peerSuggestionId\": \"clguj2q7b0096s9cipna3gbde\"\n}",
       "form": []
     },
     "tests": []

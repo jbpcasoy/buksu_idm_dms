@@ -5,10 +5,14 @@ import readSubmittedPeerReview from "../submitted_peer_review/readSubmittedPeerR
 
 export default async function createSubmittedPeerSuggestion({
   peerSuggestionId,
+  ability,
 }) {
   const prisma = PRISMA_CLIENT;
 
-  const peerSuggestion = await readPeerSuggestion(peerSuggestionId);
+  const peerSuggestion = await readPeerSuggestion({
+    id: peerSuggestionId,
+    ability,
+  });
 
   const submittedPeerSuggestion = await prisma.submittedPeerSuggestion.create({
     data: {
@@ -35,9 +39,10 @@ export default async function createSubmittedPeerSuggestion({
     },
   });
 
-  const submittedPeerReview = await readSubmittedPeerReview(
-    peerSuggestion.submittedPeerReviewId
-  );
+  const submittedPeerReview = await readSubmittedPeerReview({
+    id: peerSuggestion.submittedPeerReviewId,
+    ability,
+  });
   await checkAndUpdateStatus(submittedPeerReview.iMId);
 
   return submittedPeerSuggestion;
