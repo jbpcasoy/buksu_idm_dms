@@ -2331,12 +2331,27 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "70001f34-a1c2-45b8-980c-d64f3240a73a",
     "name": "DELETE PeerReview",
-    "url": "{{host}}/api/peer_review/clguabuvm002js9ciubk54ls5",
+    "url": "{{host}}/api/peer_review/clguak2p1002ns9ciqga9h5lj",
     "method": "DELETE",
     "sortNum": 1080000,
     "created": "2023-03-07T01:57:50.831Z",
-    "modified": "2023-04-24T03:37:54.711Z",
-    "headers": [],
+    "modified": "2023-04-24T03:50:52.809Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}"
+      }
+    ],
     "params": [],
     "tests": []
   },
