@@ -496,6 +496,30 @@ export default async function userAbility(user) {
         },
       },
     });
+
+    can(
+      "update",
+      "CoordinatorSuggestionItem",
+      ["value", "pageNumber", "remarks"],
+      {
+        CoordinatorSuggestion: {
+          is: {
+            SubmittedCoordinatorReview: {
+              is: {
+                CoordinatorReview: {
+                  is: {
+                    coordinatorId: {
+                      equals:
+                        user.ActiveFaculty.ActiveCoordinator.coordinatorId,
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      }
+    );
   }
 
   return build();
