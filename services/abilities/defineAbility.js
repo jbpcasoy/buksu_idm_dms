@@ -399,5 +399,14 @@ export default async function userAbility(user) {
     });
   }
 
+  // SubmittedCoordinatorReview
+  if (user?.ActiveFaculty?.ActiveCoordinator) {
+    can("connectToSubmittedCoordinatorReview", "CoordinatorReview", {
+      coordinatorId: {
+        equals: user.ActiveFaculty.ActiveCoordinator.coordinatorId,
+      },
+    });
+  }
+
   return build();
 }

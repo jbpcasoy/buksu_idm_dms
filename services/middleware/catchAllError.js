@@ -8,7 +8,7 @@ export default async function catchAllError(req, res, next) {
     const result = await next(req, res);
     return result;
   } catch (error) {
-    console.error({ error, string: JSON.stringify(error) });
+    console.error({ error });
 
     if (error instanceof Prisma.PrismaClientKnownRequestError) {
       const { statusCode, message } = formatPrismaError(error);

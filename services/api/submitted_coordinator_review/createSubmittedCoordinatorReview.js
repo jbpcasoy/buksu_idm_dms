@@ -3,10 +3,14 @@ import readCoordinatorReview from "../coordinator_review/readCoordinatorReview";
 
 export default async function createSubmittedCoordinatorReview({
   coordinatorReviewId,
+  ability,
 }) {
   const prisma = PRISMA_CLIENT;
 
-  const coordinatorReview = await readCoordinatorReview(coordinatorReviewId);
+  const coordinatorReview = await readCoordinatorReview({
+    coordinatorReviewId,
+    ability,
+  });
 
   const submittedCoordinatorReview =
     await prisma.submittedCoordinatorReview.create({
