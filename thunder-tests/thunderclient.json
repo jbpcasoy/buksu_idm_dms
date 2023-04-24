@@ -4431,12 +4431,11 @@
     "method": "POST",
     "sortNum": 1740000,
     "created": "2023-03-21T08:07:01.370Z",
-    "modified": "2023-04-24T08:52:34.923Z",
+    "modified": "2023-04-24T09:03:35.643Z",
     "headers": [
       {
         "name": "Cookie",
-        "value": "{{Cookie}}",
-        "isDisabled": true
+        "value": "{{Cookie}}"
       },
       {
         "name": "Cookie",
@@ -4445,7 +4444,8 @@
       },
       {
         "name": "Cookie",
-        "value": "{{AdminCookie}}"
+        "value": "{{AdminCookie}}",
+        "isDisabled": true
       }
     ],
     "params": [],
@@ -4465,8 +4465,23 @@
     "method": "GET",
     "sortNum": 1760000,
     "created": "2023-03-21T08:16:32.229Z",
-    "modified": "2023-03-21T08:18:18.695Z",
-    "headers": [],
+    "modified": "2023-04-24T10:10:36.358Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}"
+      }
+    ],
     "params": [
       {
         "name": "limit",
@@ -4515,12 +4530,27 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "4aac67a9-ae8f-4e3c-81a3-ff5380b80178",
     "name": "SubmittedPeerSuggestion",
-    "url": "{{host}}/api/submitted_peer_suggestion/clfhz45ge0000s9fuho4z11ho",
+    "url": "{{host}}/api/submitted_peer_suggestion/clgum2ivy00a2s9cia466hds4",
     "method": "DELETE",
     "sortNum": 1780000,
     "created": "2023-03-21T08:28:29.378Z",
-    "modified": "2023-03-21T08:28:43.406Z",
-    "headers": [],
+    "modified": "2023-04-24T10:06:09.906Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}"
+      }
+    ],
     "params": [],
     "tests": []
   },
