@@ -4440,12 +4440,27 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "c589f071-f851-4cd0-a464-ce982c92b939",
     "name": "READ SubmittedCoordinatorSuggestion",
-    "url": "{{host}}/api/submitted_coordinator_suggestion/clguf1wkm005ys9ci5rvjigb4",
+    "url": "{{host}}/api/submitted_coordinator_suggestion/clguf8p49006gs9ci5gp3yh1d",
     "method": "GET",
     "sortNum": 1850000,
     "created": "2023-03-23T00:48:05.515Z",
-    "modified": "2023-04-24T05:52:05.909Z",
-    "headers": [],
+    "modified": "2023-04-24T05:58:18.406Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}"
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}",
+        "isDisabled": true
+      }
+    ],
     "params": [],
     "tests": []
   },
