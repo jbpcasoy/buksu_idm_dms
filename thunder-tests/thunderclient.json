@@ -2262,8 +2262,23 @@
     "method": "GET",
     "sortNum": 1050000,
     "created": "2023-03-07T01:29:33.019Z",
-    "modified": "2023-03-07T01:29:51.861Z",
-    "headers": [],
+    "modified": "2023-04-24T03:55:01.801Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}"
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}",
+        "isDisabled": true
+      }
+    ],
     "params": [
       {
         "name": "limit",
@@ -2305,25 +2320,6 @@
       }
     ],
     "params": [],
-    "tests": []
-  },
-  {
-    "_id": "e878cceb-d8fe-4dbf-af66-d3abef97f458",
-    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
-    "containerId": "70001f34-a1c2-45b8-980c-d64f3240a73a",
-    "name": "UPDATE PeerReview",
-    "url": "{{host}}/api/peer_review/clexkheze0001s91033q6nuxy",
-    "method": "PUT",
-    "sortNum": 1070000,
-    "created": "2023-03-07T01:53:10.478Z",
-    "modified": "2023-03-07T01:54:07.669Z",
-    "headers": [],
-    "params": [],
-    "body": {
-      "type": "json",
-      "raw": "{\n  \"submitted\": true\n}",
-      "form": []
-    },
     "tests": []
   },
   {
