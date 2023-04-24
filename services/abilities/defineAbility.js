@@ -10,6 +10,7 @@ export default async function userAbility(user) {
     can("manage", "all");
   }
   // can("read", "all");
+  can("read", "Coordinator");
 
   // ActiveFaculty
   can("read", "ActiveFaculty");
@@ -812,6 +813,33 @@ export default async function userAbility(user) {
         },
       },
     });
+  }
+
+  // CoordinatorEndorsement
+  if (user?.ActiveFaculty?.ActiveCoordinator) {
+    can("connectToCoordinatorEndorsement", "IM", {
+      owner: {
+        is: {
+          department: {
+            is: {
+              ActiveCoordinator: {
+                is: {
+                  coordinatorId: {
+                    equals: user.ActiveFaculty.ActiveCoordinator.coordinatorId,
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    });
+
+    // can("read", "CoordinatorEndorsement", {
+    //   coordinatorId: {
+    //     equals: user.ActiveFaculty.ActiveCoordinator.coordinatorId,
+    //   },
+    // });
   }
 
   return build();

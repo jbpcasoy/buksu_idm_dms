@@ -4827,12 +4827,27 @@
     "method": "POST",
     "sortNum": 1870000,
     "created": "2023-03-28T06:49:02.342Z",
-    "modified": "2023-03-28T06:51:10.725Z",
-    "headers": [],
+    "modified": "2023-04-24T11:44:28.473Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}"
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}",
+        "isDisabled": true
+      }
+    ],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"iMId\": \"clfrkq32f008ss96ccni7hh6k\",\n  \"coordinatorId\": \"clfaufa5p000fs9bymtsm1jai\"\n}",
+      "raw": "{\n  \"iMId\": \"clgkb0mjl001as9r7bigar4za\"\n}",
       "form": []
     },
     "tests": []
@@ -4881,11 +4896,11 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "67ff3a1f-f37a-47bc-bf88-b78d550cea25",
     "name": "DELETE Endorsement",
-    "url": "{{host}}/api/coordinator_endorsement/clfrx8dq8000ks9ca9wobta6c",
+    "url": "{{host}}/api/coordinator_endorsement/clgurr1i4001is96q6o45jr2p",
     "method": "DELETE",
     "sortNum": 1900000,
     "created": "2023-03-28T07:11:20.006Z",
-    "modified": "2023-03-28T07:13:18.485Z",
+    "modified": "2023-04-24T11:43:33.450Z",
     "headers": [],
     "params": [],
     "tests": []

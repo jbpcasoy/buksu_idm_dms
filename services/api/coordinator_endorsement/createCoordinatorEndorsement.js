@@ -5,13 +5,14 @@ import readIM from "../im/readIM";
 export default async function createCoordinatorEndorsement({
   iMId,
   coordinatorId,
+  ability,
 }) {
   const prisma = PRISMA_CLIENT;
 
   const iM = await readIM(iMId, {
     status: "DEPARTMENT_REVISED",
   });
-  const coordinator = await readCoordinator(coordinatorId);
+  const coordinator = await readCoordinator({ id: coordinatorId, ability });
 
   const coordinatorEndorsement = await prisma.coordinatorEndorsement.create({
     data: {

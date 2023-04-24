@@ -9,7 +9,6 @@ export default async function frontendCreateCoordinatorEndorsement({
       "/api/coordinator_endorsement",
       {
         iMId,
-        coordinatorId,
       }
     );
     return coordinatorEndorsement.data;

@@ -34,7 +34,6 @@ export default function ViewIM() {
   async function handleEndorse() {
     return frontendCreateCoordinatorEndorsement({
       iMId: iM.id,
-      coordinatorId: user?.ActiveFaculty?.ActiveCoordinator?.coordinatorId,
     }).then((res) => {
       refreshIM();
     });
