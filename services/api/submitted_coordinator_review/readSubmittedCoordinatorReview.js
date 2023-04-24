@@ -15,6 +15,9 @@ export default async function readSubmittedCoordinatorReview({ id, ability }) {
           },
         ],
       },
+      include: {
+        CoordinatorReview: true,
+      },
     });
   return submittedCoordinatorReview;
 }

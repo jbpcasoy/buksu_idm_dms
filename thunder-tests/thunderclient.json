@@ -3731,12 +3731,27 @@
     "method": "POST",
     "sortNum": 1590000,
     "created": "2023-03-14T01:10:34.655Z",
-    "modified": "2023-03-14T01:11:48.287Z",
-    "headers": [],
+    "modified": "2023-04-24T01:08:15.771Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}"
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}",
+        "isDisabled": true
+      }
+    ],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"submittedCoordinatorReviewId\": \"clf1unody005ts9c9ayagavu3\"\n}",
+      "raw": "{\n  \"submittedCoordinatorReviewId\": \"clgu4m5ip000hs9ci9cl3ch19\"\n}",
       "form": []
     },
     "tests": []
@@ -3785,11 +3800,11 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "0da99ad0-5045-4ae3-b0ff-9326023ccf1a",
     "name": "DELETE CoordinatorSuggestion",
-    "url": "{{host}}/api/coordinator_suggestion/clf7k795m0000s9q8smgae6ls",
+    "url": "{{host}}/api/coordinator_suggestion/clgu520t9000ys9ciz15l2i1k",
     "method": "DELETE",
     "sortNum": 1620000,
     "created": "2023-03-14T01:39:25.194Z",
-    "modified": "2023-03-14T01:39:45.890Z",
+    "modified": "2023-04-24T01:07:53.293Z",
     "headers": [],
     "params": [],
     "tests": []
