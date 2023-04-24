@@ -2410,12 +2410,27 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "f2ba22cf-9ed6-4991-9c0b-01ab9b6f260c",
     "name": "READ PeerReviewItem",
-    "url": "{{host}}/api/peer_review_item/clextgb980003s92uddbgsvqv",
+    "url": "{{host}}/api/peer_review_item/clgug44c9007gs9cirr4r8hk0",
     "method": "GET",
     "sortNum": 1110000,
     "created": "2023-03-07T05:46:41.344Z",
-    "modified": "2023-03-07T05:47:03.898Z",
-    "headers": [],
+    "modified": "2023-04-24T06:26:44.479Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}"
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}",
+        "isDisabled": true
+      }
+    ],
     "params": [],
     "tests": []
   },

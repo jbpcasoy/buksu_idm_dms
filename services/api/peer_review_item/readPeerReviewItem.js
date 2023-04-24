@@ -1,11 +1,19 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
+import { accessibleBy } from "@casl/prisma";
 
-export default async function readPeerReviewItem(id) {
+export default async function readPeerReviewItem({ id, ability, filter = {} }) {
   const prisma = PRISMA_CLIENT;
+  const accessibility = accessibleBy(ability).PeerReviewItem;
 
-  const peerReviewItem = await prisma.peerReviewItem.findUniqueOrThrow({
+  const peerReviewItem = await prisma.peerReviewItem.findFirstOrThrow({
     where: {
-      id,
+      AND: [
+        accessibility,
+        {
+          ...filter,
+          id,
+        },
+      ],
     },
   });
 

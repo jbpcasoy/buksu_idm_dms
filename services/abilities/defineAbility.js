@@ -592,6 +592,16 @@ export default async function userAbility(user) {
         equals: user.ActiveFaculty.facultyId,
       },
     });
+
+    can("read", "PeerReviewItem", {
+      PeerReview: {
+        is: {
+          facultyId: {
+            equals: user.ActiveFaculty.facultyId,
+          },
+        },
+      },
+    });
   }
 
   return build();
