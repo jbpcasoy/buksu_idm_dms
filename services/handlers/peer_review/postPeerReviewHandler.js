@@ -1,18 +1,33 @@
-import { authOptions } from "@/pages/api/auth/[...nextauth]";
+import userAbility from "@/services/abilities/defineAbility";
+import readIM from "@/services/api/im/readIM";
 import createPeerReview from "@/services/api/peer_review/createPeerReview";
-import getUserByEmail from "@/services/helpers/getUserByEmail";
-import { getServerSession } from "next-auth";
+import getServerUser from "@/services/helpers/getServerUser";
+import abilityValidator from "@/services/validator/abilityValidator";
+import { subject } from "@casl/ability";
 
 export default async function postPeerReviewHandler(req, res) {
   const { iMId } = req.body;
-  const session = await getServerSession(req, res, authOptions);
 
-  const user = await getUserByEmail(session?.user?.email);
+  const user = await getServerUser(req, res);
+  const iM = await readIM(iMId);
 
-  // TODO ensure that user does not own im
-  const peerReview = await createPeerReview({
-    facultyId: user.ActiveFaculty.facultyId,
-    iMId,
+  console.log({
+    activeFacultyDepartment: user?.ActiveFaculty?.departmentId,
+    iMOwnerDepartment: iM?.owner?.departmentId,
   });
-  return res.status(201).json(peerReview);
+  return abilityValidator({
+    req,
+    res,
+    next: async (req, res) => {
+      const peerReview = await createPeerReview({
+        facultyId: user.ActiveFaculty.facultyId,
+        iMId,
+      });
+      return res.status(201).json(peerReview);
+    },
+    action: "connectToPeerReview",
+    subject: subject("IM", iM),
+    fields: undefined,
+    type: "IM",
+  });
 }

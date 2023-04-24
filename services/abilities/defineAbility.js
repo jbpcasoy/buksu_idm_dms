@@ -522,5 +522,27 @@ export default async function userAbility(user) {
     );
   }
 
+  // PeerReview
+  if (user?.ActiveFaculty) {
+    can("connectToPeerReview", "IM", {
+      owner: {
+        is: {
+          AND: [
+            {
+              departmentId: {
+                equals: user.ActiveFaculty.departmentId,
+              },
+            },
+            {
+              id: {
+                not: user.ActiveFaculty.facultyId,
+              },
+            },
+          ],
+        },
+      },
+    });
+  }
+
   return build();
 }
