@@ -3786,12 +3786,27 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "0da99ad0-5045-4ae3-b0ff-9326023ccf1a",
     "name": "READ CoordinatorSuggestion",
-    "url": "{{host}}/api/coordinator_suggestion/clf7k795m0000s9q8smgae6ls",
+    "url": "{{host}}/api/coordinator_suggestion/clgu588g90016s9cid6stcfsi",
     "method": "GET",
     "sortNum": 1610000,
     "created": "2023-03-14T01:32:57.315Z",
-    "modified": "2023-03-14T01:33:22.096Z",
-    "headers": [],
+    "modified": "2023-04-24T01:32:31.897Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}"
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}",
+        "isDisabled": true
+      }
+    ],
     "params": [],
     "tests": []
   },
