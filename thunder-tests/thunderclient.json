@@ -3623,12 +3623,27 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "6d8a5d29-bfb8-4433-a90d-3e27b6343515",
     "name": "READ PeerSuggestionItem",
-    "url": "{{host}}/api/peer_suggestion_item/clf6hfd0v0002s92f9yatimyi",
+    "url": "{{host}}/api/peer_suggestion_item/clgukcrny0098s9civn93sy8y",
     "method": "GET",
     "sortNum": 1490000,
     "created": "2023-03-13T07:22:24.363Z",
-    "modified": "2023-03-13T07:22:46.853Z",
-    "headers": [],
+    "modified": "2023-04-24T08:21:41.918Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}"
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}",
+        "isDisabled": true
+      }
+    ],
     "params": [],
     "tests": []
   },
