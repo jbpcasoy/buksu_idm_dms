@@ -12,8 +12,6 @@ export default async function handler(req, res) {
     switch (req.method) {
       case "GET":
         return getFileHandler(req, res);
-      case "PUT":
-        return putFileHandler(req, res);
       case "DELETE":
         return deleteFileHandler(req, res);
       default:
