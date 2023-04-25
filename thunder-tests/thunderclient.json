@@ -6033,16 +6033,16 @@
     "method": "GET",
     "sortNum": 2230000,
     "created": "2023-04-03T02:54:09.911Z",
-    "modified": "2023-04-25T03:30:36.503Z",
+    "modified": "2023-04-25T03:38:57.280Z",
     "headers": [
       {
         "name": "Cookie",
-        "value": "{{Cookie}}"
+        "value": "{{Cookie}}",
+        "isDisabled": true
       },
       {
         "name": "Cookie",
-        "value": "{{FacultyCookie}}",
-        "isDisabled": true
+        "value": "{{FacultyCookie}}"
       },
       {
         "name": "Cookie",
@@ -6098,16 +6098,26 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "8c7db9af-43f6-4495-9028-4dd97791ebb2",
     "name": "UPDATE IMDCoorinatorSuggestionItem",
-    "url": "{{host}}/api/imd_coordinator_suggestion_item/clg08ch5p0003s9lf415hfvv6",
+    "url": "{{host}}/api/imd_coordinator_suggestion_item/clgvotym9004fs96qsi44wld9",
     "method": "PUT",
     "sortNum": 2250000,
     "created": "2023-04-03T03:27:30.294Z",
-    "modified": "2023-04-03T03:28:38.635Z",
-    "headers": [],
+    "modified": "2023-04-25T03:40:58.568Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}"
+      }
+    ],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"value\": \"Bad title Updated\",\n  \"actionTaken\": \"Updated\",\n  \"pageNumber\": 2,\n  \"remarks\": \"Revise Updated\"\n}",
+      "raw": "{\n  \"value\": \"Bad title Updated 1\",\n  \"actionTaken\": \"Updated 1\",\n  \"pageNumber\": 21,\n  \"remarks\": \"Revise Updated 1\"\n}",
       "form": []
     },
     "tests": []

@@ -920,6 +920,37 @@ export default async function userAbility(user) {
         },
       },
     });
+
+    can(
+      "update",
+      "IMDCoordinatorSuggestionItem",
+      ["value", "pageNumber", "remarks"],
+      {
+        IMDCoordinatorSuggestion: {
+          is: {
+            iMDCoordinatorId: {
+              equals: user.IMDCoordinator.ActiveIMDCoordinator.iMDCoordinatorId,
+            },
+          },
+        },
+      }
+    );
+  }
+
+  if (user?.ActiveFaculty) {
+    can("update", "IMDCoordinatorSuggestionItem", ["actionTaken"], {
+      IMDCoordinatorSuggestion: {
+        is: {
+          IM: {
+            is: {
+              ownerId: {
+                equals: user.ActiveFaculty.facultyId,
+              },
+            },
+          },
+        },
+      },
+    });
   }
 
   return build();
