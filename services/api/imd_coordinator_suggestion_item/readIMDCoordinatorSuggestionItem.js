@@ -1,16 +1,24 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
+import { accessibleBy } from "@casl/prisma";
 
-export default async function readIMDCoordinatorSuggestionItem(
+export default async function readIMDCoordinatorSuggestionItem({
   id,
-  filter = {}
-) {
+  filter = {},
+  ability,
+}) {
   const prisma = PRISMA_CLIENT;
+  const accessibility = accessibleBy(ability).IMDCoordinatorSuggestionItem;
 
   const iMDCoordinatorSuggestionItem =
     await prisma.iMDCoordinatorSuggestionItem.findFirstOrThrow({
       where: {
-        ...filter,
-        id,
+        AND: [
+          accessibility,
+          {
+            ...filter,
+            id,
+          },
+        ],
       },
     });
   return iMDCoordinatorSuggestionItem;
