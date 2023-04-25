@@ -1017,6 +1017,7 @@ export default async function userAbility(user) {
       },
     });
   }
+  can("read", "File");
 
   return build();
 }
