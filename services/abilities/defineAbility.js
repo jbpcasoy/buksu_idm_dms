@@ -910,6 +910,16 @@ export default async function userAbility(user) {
         },
       },
     });
+
+    can("delete", "IMDCoordinatorSuggestionItem", {
+      IMDCoordinatorSuggestion: {
+        is: {
+          iMDCoordinatorId: {
+            equals: user.IMDCoordinator.ActiveIMDCoordinator.iMDCoordinatorId,
+          },
+        },
+      },
+    });
   }
 
   return build();

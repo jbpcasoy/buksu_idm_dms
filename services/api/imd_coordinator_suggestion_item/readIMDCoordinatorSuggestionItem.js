@@ -20,6 +20,9 @@ export default async function readIMDCoordinatorSuggestionItem({
           },
         ],
       },
+      include: {
+        IMDCoordinatorSuggestion: true,
+      },
     });
   return iMDCoordinatorSuggestionItem;
 }

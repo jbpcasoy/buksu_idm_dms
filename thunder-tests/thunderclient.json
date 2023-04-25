@@ -6102,12 +6102,27 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "8c7db9af-43f6-4495-9028-4dd97791ebb2",
     "name": "DELETE IMDCoordinatorSuggestionItem",
-    "url": "{{host}}/api/imd_coordinator_suggestion_item/clg08ch5p0003s9lf415hfvv6",
+    "url": "{{host}}/api/imd_coordinator_suggestion_item/clgvotxca004ds96qoihmv5m6",
     "method": "DELETE",
     "sortNum": 2260000,
     "created": "2023-04-03T03:37:24.405Z",
-    "modified": "2023-04-03T03:37:50.879Z",
-    "headers": [],
+    "modified": "2023-04-25T03:26:01.315Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}"
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}",
+        "isDisabled": true
+      }
+    ],
     "params": [],
     "tests": []
   },
