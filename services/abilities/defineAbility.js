@@ -964,6 +964,16 @@ export default async function userAbility(user) {
         },
       }
     );
+
+    can("read", "SubmittedIMDCoordinatorSuggestion", {
+      IMDCoordinatorSuggestion: {
+        is: {
+          iMDCoordinatorId: {
+            equals: user.IMDCoordinator.ActiveIMDCoordinator.iMDCoordinatorId,
+          },
+        },
+      },
+    });
   }
 
   return build();
