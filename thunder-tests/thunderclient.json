@@ -5931,12 +5931,25 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "f44c83ad-40e7-4a75-aec9-9eca246130a5",
     "name": "READ IMDCoordinatorSuggestion",
-    "url": "{{host}}/api/imd_coordinator_suggestion/clg08ca550001s9lficlz6sfv",
+    "url": "{{host}}/api/imd_coordinator_suggestion/clgvmuens003os96qwacvu1ba",
     "method": "GET",
     "sortNum": 2200000,
     "created": "2023-04-03T01:54:53.127Z",
-    "modified": "2023-04-03T08:48:44.285Z",
-    "headers": [],
+    "modified": "2023-04-25T02:27:38.007Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}"
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}"
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}"
+      }
+    ],
     "params": [],
     "tests": []
   },
