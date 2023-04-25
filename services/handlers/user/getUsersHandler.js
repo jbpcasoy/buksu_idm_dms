@@ -1,4 +1,6 @@
+import userAbility from "@/services/abilities/defineAbility";
 import readUsers from "@/services/api/user/readUsers";
+import getServerUser from "@/services/helpers/getServerUser";
 
 export default async function getUsersHandler(req, res) {
   const {
@@ -9,6 +11,7 @@ export default async function getUsersHandler(req, res) {
     sortColumn = "name",
     sortOrder = "asc",
   } = req.query;
+  const user = await getServerUser(req, res);
 
   const users = await readUsers({
     limit: parseInt(limit),
@@ -17,6 +20,7 @@ export default async function getUsersHandler(req, res) {
     email,
     sortColumn,
     sortOrder,
+    ability: await userAbility(user),
   });
 
   return res.status(200).json(users);

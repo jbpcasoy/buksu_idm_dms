@@ -1001,5 +1001,8 @@ export default async function userAbility(user) {
     });
   }
 
+  // User
+  can("read", "User");
+
   return build();
 }
