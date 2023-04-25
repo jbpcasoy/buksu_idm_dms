@@ -193,12 +193,29 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "a3ba7e72-c342-44b0-bcfa-a88f9cd2da5c",
     "name": "DELETE File",
-    "url": "{{host}}/api/file/cle3k4pt90006s9xn7571lmsx",
+    "url": "{{host}}/api/file/clgvzc3190073s96qqo434cks",
     "method": "DELETE",
     "sortNum": 90000,
     "created": "2023-02-26T01:21:31.363Z",
-    "modified": "2023-02-26T01:21:31.363Z",
-    "headers": []
+    "modified": "2023-04-25T08:23:30.709Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}"
+      }
+    ],
+    "params": [],
+    "tests": []
   },
   {
     "_id": "decc07ea-dd77-479f-b1ce-007a1db705d7",
