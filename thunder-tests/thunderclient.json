@@ -132,8 +132,13 @@
     "method": "GET",
     "sortNum": 60000,
     "created": "2023-02-26T01:21:31.360Z",
-    "modified": "2023-04-25T08:07:59.248Z",
-    "headers": [],
+    "modified": "2023-04-25T08:27:13.525Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}"
+      }
+    ],
     "params": [
       {
         "name": "page",
