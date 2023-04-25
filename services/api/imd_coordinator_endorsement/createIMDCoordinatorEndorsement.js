@@ -4,13 +4,15 @@ import readSubmittedIMDCoordinatorSuggestion from "../submitted_imd_coordinator_
 export default async function createIMDCoordinatorEndorsement({
   iMDCoordinatorId,
   submittedIMDCoordinatorSuggestionId,
+  ability,
 }) {
   const prisma = PRISMA_CLIENT;
 
   const submittedIMDCoordinatorSuggestion =
-    await readSubmittedIMDCoordinatorSuggestion(
-      submittedIMDCoordinatorSuggestionId
-    );
+    await readSubmittedIMDCoordinatorSuggestion({
+      id: submittedIMDCoordinatorSuggestionId,
+      ability,
+    });
 
   const iMDCoordinatorEndorsement =
     await prisma.iMDCoordinatorEndorsement.create({

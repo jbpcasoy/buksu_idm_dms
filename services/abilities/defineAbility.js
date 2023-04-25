@@ -976,5 +976,22 @@ export default async function userAbility(user) {
     });
   }
 
+  // IMDCoordinatorEndorsement
+  if (user?.IMDCoordinator?.ActiveIMDCoordinator) {
+    can(
+      "connectToIMDCoordinatorEndorsement",
+      "SubmittedIMDCoordinatorSuggestion",
+      {
+        IMDCoordinatorSuggestion: {
+          is: {
+            iMDCoordinatorId: {
+              equals: user.IMDCoordinator.ActiveIMDCoordinator.iMDCoordinatorId,
+            },
+          },
+        },
+      }
+    );
+  }
+
   return build();
 }

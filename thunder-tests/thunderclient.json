@@ -6194,16 +6194,16 @@
     "method": "GET",
     "sortNum": 2280000,
     "created": "2023-04-03T05:12:20.322Z",
-    "modified": "2023-04-25T05:14:22.156Z",
+    "modified": "2023-04-25T05:34:21.501Z",
     "headers": [
       {
         "name": "Cookie",
-        "value": "{{Cookie}}"
+        "value": "{{Cookie}}",
+        "isDisabled": true
       },
       {
         "name": "Cookie",
-        "value": "{{FacultyCookie}}",
-        "isDisabled": true
+        "value": "{{FacultyCookie}}"
       }
     ],
     "params": [
@@ -6287,12 +6287,27 @@
     "method": "POST",
     "sortNum": 2310000,
     "created": "2023-04-03T08:44:08.341Z",
-    "modified": "2023-04-03T08:49:10.166Z",
-    "headers": [],
+    "modified": "2023-04-25T05:41:30.731Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}"
+      }
+    ],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"iMId\": \"clg051inc000qs9r4v86mhywl\",\n  \"submittedIMDCoordinatorSuggestionId\": \"clg0h1xyw0021s9avcole30ot\",\n  \"iMDCoordinatorId\": \"clg04zkjr000ms9r4l6zd874u\"\n}",
+      "raw": "{\n  \"submittedIMDCoordinatorSuggestionId\": \"clgvtb5ig005ps96qdlvnngf7\"\n}",
       "form": []
     },
     "tests": []
