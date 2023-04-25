@@ -1022,5 +1022,8 @@ export default async function userAbility(user) {
   // Notification
   can("read", "Notification");
 
+  // IMEvent
+  can("read", "IMEvent");
+
   return build();
 }

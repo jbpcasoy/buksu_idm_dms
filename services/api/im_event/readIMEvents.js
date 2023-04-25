@@ -1,7 +1,15 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
+import { accessibleBy } from "@casl/prisma";
 
-export default async function readIMEvents({ limit, page, iMId, facultyId }) {
+export default async function readIMEvents({
+  limit,
+  page,
+  iMId,
+  facultyId,
+  ability,
+}) {
   const prisma = PRISMA_CLIENT;
+  const accessibility = accessibleBy(ability).IMEvent;
 
   const iMEvents = await prisma.iMEvent.findMany({
     take: limit,
@@ -11,157 +19,147 @@ export default async function readIMEvents({ limit, page, iMId, facultyId }) {
     },
     where: {
       AND: [
+        accessibility,
         {
-          OR: [
+          AND: [
             {
-              CoordinatorEndorsement: {
-                iMId: {
-                  contains: iMId,
-                },
-              },
-            },
-            {
-              CITLDirectorEndorsement: {
-                IMDCoordinatorEndorsement: {
-                  iMId: {
-                    contains: iMId,
+              OR: [
+                {
+                  CoordinatorEndorsement: {
+                    iMId: {
+                      contains: iMId,
+                    },
                   },
                 },
-              },
-            },
-            {
-              DeanEndorsement: {
-                CoordinatorEndorsement: {
-                  iMId: {
-                    contains: iMId,
+                {
+                  CITLDirectorEndorsement: {
+                    IMDCoordinatorEndorsement: {
+                      iMId: {
+                        contains: iMId,
+                      },
+                    },
                   },
                 },
-              },
-            },
-            {
-              File: {
-                iMId: {
-                  contains: iMId,
-                },
-              },
-            },
-            {
-              IM: {
-                id: {
-                  contains: iMId,
-                },
-              },
-            },
-            {
-              IMDCoordinatorEndorsement: {
-                iMId: {
-                  contains: iMId,
-                },
-              },
-            },
-            {
-              SubmittedChairpersonReview: {
-                iMId: {
-                  contains: iMId,
-                },
-              },
-            },
-            {
-              SubmittedChairpersonSuggestion: {
-                iMId: {
-                  contains: iMId,
-                },
-              },
-            },
-            {
-              SubmittedCoordinatorReview: {
-                iMId: {
-                  contains: iMId,
-                },
-              },
-            },
-            {
-              SubmittedCoordinatorSuggestion: {
-                iMId: {
-                  contains: iMId,
-                },
-              },
-            },
-            {
-              SubmittedIMDCoordinatorSuggestion: {
-                IMDCoordinatorSuggestion: {
-                  iMId: {
-                    contains: iMId,
+                {
+                  DeanEndorsement: {
+                    CoordinatorEndorsement: {
+                      iMId: {
+                        contains: iMId,
+                      },
+                    },
                   },
                 },
-              },
-            },
-            {
-              SubmittedPeerReview: {
-                iMId: {
-                  contains: iMId,
-                },
-              },
-            },
-            {
-              SubmittedPeerSuggestion: {
-                iMId: {
-                  contains: iMId,
-                },
-              },
-            },
-          ],
-        },
-        {
-          OR: [
-            {
-              CoordinatorEndorsement: {
-                Coordinator: {
-                  facultyId: {
-                    contains: facultyId,
+                {
+                  File: {
+                    iMId: {
+                      contains: iMId,
+                    },
                   },
                 },
-              },
-            },
-            {
-              DeanEndorsement: {
-                Dean: {
-                  facultyId: {
-                    contains: facultyId,
+                {
+                  IM: {
+                    id: {
+                      contains: iMId,
+                    },
                   },
                 },
-              },
-            },
-            {
-              File: {
-                iM: {
-                  ownerId: {
-                    contains: facultyId,
+                {
+                  IMDCoordinatorEndorsement: {
+                    iMId: {
+                      contains: iMId,
+                    },
                   },
                 },
-              },
-            },
-            {
-              IM: {
-                ownerId: {
-                  contains: facultyId,
+                {
+                  SubmittedChairpersonReview: {
+                    iMId: {
+                      contains: iMId,
+                    },
+                  },
                 },
-              },
+                {
+                  SubmittedChairpersonSuggestion: {
+                    iMId: {
+                      contains: iMId,
+                    },
+                  },
+                },
+                {
+                  SubmittedCoordinatorReview: {
+                    iMId: {
+                      contains: iMId,
+                    },
+                  },
+                },
+                {
+                  SubmittedCoordinatorSuggestion: {
+                    iMId: {
+                      contains: iMId,
+                    },
+                  },
+                },
+                {
+                  SubmittedIMDCoordinatorSuggestion: {
+                    IMDCoordinatorSuggestion: {
+                      iMId: {
+                        contains: iMId,
+                      },
+                    },
+                  },
+                },
+                {
+                  SubmittedPeerReview: {
+                    iMId: {
+                      contains: iMId,
+                    },
+                  },
+                },
+                {
+                  SubmittedPeerSuggestion: {
+                    iMId: {
+                      contains: iMId,
+                    },
+                  },
+                },
+              ],
             },
             {
-              SubmittedChairpersonReview: {
-                ChairpersonReview: {
-                  Chairperson: {
-                    facultyId: {
+              OR: [
+                {
+                  CoordinatorEndorsement: {
+                    Coordinator: {
+                      facultyId: {
+                        contains: facultyId,
+                      },
+                    },
+                  },
+                },
+                {
+                  DeanEndorsement: {
+                    Dean: {
+                      facultyId: {
+                        contains: facultyId,
+                      },
+                    },
+                  },
+                },
+                {
+                  File: {
+                    iM: {
+                      ownerId: {
+                        contains: facultyId,
+                      },
+                    },
+                  },
+                },
+                {
+                  IM: {
+                    ownerId: {
                       contains: facultyId,
                     },
                   },
                 },
-              },
-            },
-            {
-              SubmittedChairpersonSuggestion: {
-                ChairpersonSuggestion: {
+                {
                   SubmittedChairpersonReview: {
                     ChairpersonReview: {
                       Chairperson: {
@@ -172,22 +170,22 @@ export default async function readIMEvents({ limit, page, iMId, facultyId }) {
                     },
                   },
                 },
-              },
-            },
-            {
-              SubmittedCoordinatorReview: {
-                CoordinatorReview: {
-                  Coordinator: {
-                    facultyId: {
-                      contains: facultyId,
+                {
+                  SubmittedChairpersonSuggestion: {
+                    ChairpersonSuggestion: {
+                      SubmittedChairpersonReview: {
+                        ChairpersonReview: {
+                          Chairperson: {
+                            facultyId: {
+                              contains: facultyId,
+                            },
+                          },
+                        },
+                      },
                     },
                   },
                 },
-              },
-            },
-            {
-              SubmittedCoordinatorSuggestion: {
-                CoordinatorSuggestion: {
+                {
                   SubmittedCoordinatorReview: {
                     CoordinatorReview: {
                       Coordinator: {
@@ -198,20 +196,22 @@ export default async function readIMEvents({ limit, page, iMId, facultyId }) {
                     },
                   },
                 },
-              },
-            },
-            {
-              SubmittedPeerReview: {
-                PeerReview: {
-                  facultyId: {
-                    contains: facultyId,
+                {
+                  SubmittedCoordinatorSuggestion: {
+                    CoordinatorSuggestion: {
+                      SubmittedCoordinatorReview: {
+                        CoordinatorReview: {
+                          Coordinator: {
+                            facultyId: {
+                              contains: facultyId,
+                            },
+                          },
+                        },
+                      },
+                    },
                   },
                 },
-              },
-            },
-            {
-              SubmittedPeerSuggestion: {
-                PeerSuggestion: {
+                {
                   SubmittedPeerReview: {
                     PeerReview: {
                       facultyId: {
@@ -220,7 +220,20 @@ export default async function readIMEvents({ limit, page, iMId, facultyId }) {
                     },
                   },
                 },
-              },
+                {
+                  SubmittedPeerSuggestion: {
+                    PeerSuggestion: {
+                      SubmittedPeerReview: {
+                        PeerReview: {
+                          facultyId: {
+                            contains: facultyId,
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              ],
             },
           ],
         },
@@ -230,157 +243,147 @@ export default async function readIMEvents({ limit, page, iMId, facultyId }) {
   const total = await prisma.iMEvent.count({
     where: {
       AND: [
+        accessibility,
         {
-          OR: [
+          AND: [
             {
-              CoordinatorEndorsement: {
-                iMId: {
-                  contains: iMId,
-                },
-              },
-            },
-            {
-              CITLDirectorEndorsement: {
-                IMDCoordinatorEndorsement: {
-                  iMId: {
-                    contains: iMId,
+              OR: [
+                {
+                  CoordinatorEndorsement: {
+                    iMId: {
+                      contains: iMId,
+                    },
                   },
                 },
-              },
-            },
-            {
-              DeanEndorsement: {
-                CoordinatorEndorsement: {
-                  iMId: {
-                    contains: iMId,
+                {
+                  CITLDirectorEndorsement: {
+                    IMDCoordinatorEndorsement: {
+                      iMId: {
+                        contains: iMId,
+                      },
+                    },
                   },
                 },
-              },
-            },
-            {
-              File: {
-                iMId: {
-                  contains: iMId,
-                },
-              },
-            },
-            {
-              IM: {
-                id: {
-                  contains: iMId,
-                },
-              },
-            },
-            {
-              IMDCoordinatorEndorsement: {
-                iMId: {
-                  contains: iMId,
-                },
-              },
-            },
-            {
-              SubmittedChairpersonReview: {
-                iMId: {
-                  contains: iMId,
-                },
-              },
-            },
-            {
-              SubmittedChairpersonSuggestion: {
-                iMId: {
-                  contains: iMId,
-                },
-              },
-            },
-            {
-              SubmittedCoordinatorReview: {
-                iMId: {
-                  contains: iMId,
-                },
-              },
-            },
-            {
-              SubmittedCoordinatorSuggestion: {
-                iMId: {
-                  contains: iMId,
-                },
-              },
-            },
-            {
-              SubmittedIMDCoordinatorSuggestion: {
-                IMDCoordinatorSuggestion: {
-                  iMId: {
-                    contains: iMId,
+                {
+                  DeanEndorsement: {
+                    CoordinatorEndorsement: {
+                      iMId: {
+                        contains: iMId,
+                      },
+                    },
                   },
                 },
-              },
-            },
-            {
-              SubmittedPeerReview: {
-                iMId: {
-                  contains: iMId,
-                },
-              },
-            },
-            {
-              SubmittedPeerSuggestion: {
-                iMId: {
-                  contains: iMId,
-                },
-              },
-            },
-          ],
-        },
-        {
-          OR: [
-            {
-              CoordinatorEndorsement: {
-                Coordinator: {
-                  facultyId: {
-                    contains: facultyId,
+                {
+                  File: {
+                    iMId: {
+                      contains: iMId,
+                    },
                   },
                 },
-              },
-            },
-            {
-              DeanEndorsement: {
-                Dean: {
-                  facultyId: {
-                    contains: facultyId,
+                {
+                  IM: {
+                    id: {
+                      contains: iMId,
+                    },
                   },
                 },
-              },
-            },
-            {
-              File: {
-                iM: {
-                  ownerId: {
-                    contains: facultyId,
+                {
+                  IMDCoordinatorEndorsement: {
+                    iMId: {
+                      contains: iMId,
+                    },
                   },
                 },
-              },
-            },
-            {
-              IM: {
-                ownerId: {
-                  contains: facultyId,
+                {
+                  SubmittedChairpersonReview: {
+                    iMId: {
+                      contains: iMId,
+                    },
+                  },
                 },
-              },
+                {
+                  SubmittedChairpersonSuggestion: {
+                    iMId: {
+                      contains: iMId,
+                    },
+                  },
+                },
+                {
+                  SubmittedCoordinatorReview: {
+                    iMId: {
+                      contains: iMId,
+                    },
+                  },
+                },
+                {
+                  SubmittedCoordinatorSuggestion: {
+                    iMId: {
+                      contains: iMId,
+                    },
+                  },
+                },
+                {
+                  SubmittedIMDCoordinatorSuggestion: {
+                    IMDCoordinatorSuggestion: {
+                      iMId: {
+                        contains: iMId,
+                      },
+                    },
+                  },
+                },
+                {
+                  SubmittedPeerReview: {
+                    iMId: {
+                      contains: iMId,
+                    },
+                  },
+                },
+                {
+                  SubmittedPeerSuggestion: {
+                    iMId: {
+                      contains: iMId,
+                    },
+                  },
+                },
+              ],
             },
             {
-              SubmittedChairpersonReview: {
-                ChairpersonReview: {
-                  Chairperson: {
-                    facultyId: {
+              OR: [
+                {
+                  CoordinatorEndorsement: {
+                    Coordinator: {
+                      facultyId: {
+                        contains: facultyId,
+                      },
+                    },
+                  },
+                },
+                {
+                  DeanEndorsement: {
+                    Dean: {
+                      facultyId: {
+                        contains: facultyId,
+                      },
+                    },
+                  },
+                },
+                {
+                  File: {
+                    iM: {
+                      ownerId: {
+                        contains: facultyId,
+                      },
+                    },
+                  },
+                },
+                {
+                  IM: {
+                    ownerId: {
                       contains: facultyId,
                     },
                   },
                 },
-              },
-            },
-            {
-              SubmittedChairpersonSuggestion: {
-                ChairpersonSuggestion: {
+                {
                   SubmittedChairpersonReview: {
                     ChairpersonReview: {
                       Chairperson: {
@@ -391,22 +394,22 @@ export default async function readIMEvents({ limit, page, iMId, facultyId }) {
                     },
                   },
                 },
-              },
-            },
-            {
-              SubmittedCoordinatorReview: {
-                CoordinatorReview: {
-                  Coordinator: {
-                    facultyId: {
-                      contains: facultyId,
+                {
+                  SubmittedChairpersonSuggestion: {
+                    ChairpersonSuggestion: {
+                      SubmittedChairpersonReview: {
+                        ChairpersonReview: {
+                          Chairperson: {
+                            facultyId: {
+                              contains: facultyId,
+                            },
+                          },
+                        },
+                      },
                     },
                   },
                 },
-              },
-            },
-            {
-              SubmittedCoordinatorSuggestion: {
-                CoordinatorSuggestion: {
+                {
                   SubmittedCoordinatorReview: {
                     CoordinatorReview: {
                       Coordinator: {
@@ -417,20 +420,22 @@ export default async function readIMEvents({ limit, page, iMId, facultyId }) {
                     },
                   },
                 },
-              },
-            },
-            {
-              SubmittedPeerReview: {
-                PeerReview: {
-                  facultyId: {
-                    contains: facultyId,
+                {
+                  SubmittedCoordinatorSuggestion: {
+                    CoordinatorSuggestion: {
+                      SubmittedCoordinatorReview: {
+                        CoordinatorReview: {
+                          Coordinator: {
+                            facultyId: {
+                              contains: facultyId,
+                            },
+                          },
+                        },
+                      },
+                    },
                   },
                 },
-              },
-            },
-            {
-              SubmittedPeerSuggestion: {
-                PeerSuggestion: {
+                {
                   SubmittedPeerReview: {
                     PeerReview: {
                       facultyId: {
@@ -439,7 +444,20 @@ export default async function readIMEvents({ limit, page, iMId, facultyId }) {
                     },
                   },
                 },
-              },
+                {
+                  SubmittedPeerSuggestion: {
+                    PeerSuggestion: {
+                      SubmittedPeerReview: {
+                        PeerReview: {
+                          facultyId: {
+                            contains: facultyId,
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              ],
             },
           ],
         },

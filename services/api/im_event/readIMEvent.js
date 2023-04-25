@@ -1,12 +1,19 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
+import { accessibleBy } from "@casl/prisma";
 
-export default async function readIMEvent(id, filter = {}) {
+export default async function readIMEvent({ id, filter = {}, ability }) {
   const prisma = PRISMA_CLIENT;
+  const accessibility = accessibleBy(ability).IMEvent;
 
   const iMEvent = await prisma.iMEvent.findFirstOrThrow({
     where: {
-      ...filter,
-      id,
+      AND: [
+        accessibility,
+        {
+          ...filter,
+          id,
+        },
+      ],
     },
     include: {
       IM: true,
