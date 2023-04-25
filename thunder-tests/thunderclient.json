@@ -400,11 +400,11 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "d12648fd-3f0e-402f-a735-8e75c368d353",
     "name": "READ User",
-    "url": "{{host}}/api/user/clgka359v0000s9d5p05jjd4p",
+    "url": "{{host}}/api/user/clgkaaht0000as9r74nfefhsu",
     "method": "GET",
     "sortNum": 210000,
     "created": "2023-02-26T01:21:31.375Z",
-    "modified": "2023-04-25T06:51:51.198Z",
+    "modified": "2023-04-25T07:01:21.504Z",
     "headers": [
       {
         "name": "Cookie",
@@ -425,16 +425,34 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "d12648fd-3f0e-402f-a735-8e75c368d353",
     "name": "UPDATE User",
-    "url": "{{host}}/api/user/cle235q3g0000s9t9oseu8naf",
+    "url": "{{host}}/api/user/clgkaaht0000as9r74nfefhsu",
     "method": "PUT",
     "sortNum": 220000,
     "created": "2023-02-26T01:21:31.376Z",
-    "modified": "2023-02-26T01:21:31.376Z",
-    "headers": [],
+    "modified": "2023-04-25T07:22:01.895Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}"
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"name\": \"John\",\n    \"image\": \"https://images.unsplash.com/photo-1618641986557-1ecd230959aa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8cHJvZmlsZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60\"\n}"
-    }
+      "raw": "{\n    \"name\": \"John Bryan Pit Acaso Updated\",\n    \"image\": \"https://lh3.googleusercontent.com/a/AGNmyxbulTOwbjpSxznxHaD8uQyelExU9GJ0pASEwKPn=s96-c\"\n}",
+      "form": []
+    },
+    "tests": []
   },
   {
     "_id": "b3551d5f-8e18-4210-aa9b-96648622566a",

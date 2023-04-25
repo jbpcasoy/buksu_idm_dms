@@ -1003,6 +1003,11 @@ export default async function userAbility(user) {
 
   // User
   can("read", "User");
+  can("update", "User", {
+    id: {
+      equals: user.id,
+    },
+  });
 
   return build();
 }
