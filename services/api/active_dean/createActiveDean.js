@@ -1,10 +1,10 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
 import readDean from "../dean/readDean";
 
-export default async function createActiveDean({ deanId }) {
+export default async function createActiveDean({ deanId, ability }) {
   const prisma = PRISMA_CLIENT;
 
-  const dean = await readDean(deanId);
+  const dean = await readDean({ id: deanId, ability });
   const activeFaculty = await findActiveFaculty(deanId);
 
   const activeDean = await prisma.activeDean.create({

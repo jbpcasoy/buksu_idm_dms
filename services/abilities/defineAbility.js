@@ -842,5 +842,45 @@ export default async function userAbility(user) {
     });
   }
 
+  // Dean
+  if (user?.ActiveFaculty?.ActiveDean) {
+    can("read", "Dean");
+  }
+
+  // DeanEndorsement
+  if (user?.ActiveFaculty?.ActiveDean) {
+    can("connectToDeanEndorsement", "CoordinatorEndorsement", {
+      Coordinator: {
+        is: {
+          Faculty: {
+            is: {
+              department: {
+                is: {
+                  college: {
+                    is: {
+                      ActiveDean: {
+                        is: {
+                          deanId: {
+                            equals: user.ActiveFaculty.ActiveDean.deanId,
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    });
+
+    can("read", "DeanEndorsement", {
+      deanId: {
+        equals: user.ActiveFaculty.ActiveCoordinator.deanId,
+      },
+    });
+  }
+
   return build();
 }

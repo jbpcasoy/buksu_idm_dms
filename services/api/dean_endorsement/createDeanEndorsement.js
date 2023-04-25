@@ -6,17 +6,24 @@ import updateIM from "../im/updateIM";
 export default async function createDeanEndorsement({
   coordinatorEndorsementId,
   deanId,
+  ability,
 }) {
   const prisma = PRISMA_CLIENT;
 
-  const coordinatorEndorsement = await readCoordinatorEndorsement(
-    coordinatorEndorsementId
-  );
-  const dean = await readDean(deanId, {
-    ActiveDean: {
-      isNot: null,
+  const coordinatorEndorsement = await readCoordinatorEndorsement({
+    id: coordinatorEndorsementId,
+    ability,
+  });
+  const dean = await readDean({
+    id: deanId,
+    ability,
+    filter: {
+      ActiveDean: {
+        isNot: null,
+      },
+      collegeId:
+        coordinatorEndorsement.Coordinator.Faculty.department.collegeId,
     },
-    collegeId: coordinatorEndorsement.Coordinator.Faculty.department.collegeId,
   });
 
   const deanEndorsement = await prisma.deanEndorsement.create({

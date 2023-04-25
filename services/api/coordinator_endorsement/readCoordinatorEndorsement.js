@@ -27,7 +27,11 @@ export default async function readCoordinatorEndorsement({
               include: {
                 department: {
                   include: {
-                    college: true,
+                    college: {
+                      include: {
+                        ActiveDean: true,
+                      },
+                    },
                   },
                 },
               },

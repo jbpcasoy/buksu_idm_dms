@@ -51,7 +51,6 @@ export default function ViewIM() {
   async function handleConfirmEndorsement() {
     return frontendCreateDeanEndorsement({
       coordinatorEndorsementId: iM.CoordinatorEndorsement.id,
-      deanId: user?.ActiveFaculty?.ActiveDean?.deanId,
     }).then((res) => {
       refreshIM();
     });
