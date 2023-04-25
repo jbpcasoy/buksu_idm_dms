@@ -877,7 +877,7 @@ export default async function userAbility(user) {
 
     can("read", "DeanEndorsement", {
       deanId: {
-        equals: user.ActiveFaculty.ActiveCoordinator.deanId,
+        equals: user.ActiveFaculty.ActiveDean.deanId,
       },
     });
   }

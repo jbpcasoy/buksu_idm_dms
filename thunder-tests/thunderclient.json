@@ -5274,12 +5274,26 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "de9b54c6-f513-4bea-aa02-0afa0a0297cf",
     "name": "READ DeanEndorsement",
-    "url": "{{host}}/api/dean_endorsement/clfsdb4aw0002s9rfhkm99xav",
+    "url": "{{host}}/api/dean_endorsement/clgvld5io002gs96qjwlzgyh2",
     "method": "GET",
     "sortNum": 2000000,
     "created": "2023-03-28T15:31:57.399Z",
-    "modified": "2023-03-28T15:32:16.202Z",
-    "headers": [],
+    "modified": "2023-04-25T01:44:12.840Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}"
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}"
+      }
+    ],
     "params": [],
     "tests": []
   },
