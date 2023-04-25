@@ -4406,8 +4406,18 @@
     "method": "GET",
     "sortNum": 1680000,
     "created": "2023-03-17T06:32:48.205Z",
-    "modified": "2023-03-17T06:34:05.006Z",
-    "headers": [],
+    "modified": "2023-04-25T08:45:54.370Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}"
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
+      }
+    ],
     "params": [
       {
         "name": "limit",
@@ -4417,6 +4427,18 @@
       {
         "name": "page",
         "value": "1",
+        "isPath": false
+      },
+      {
+        "name": "userId",
+        "value": "clgkaaht0000as9r74nfefhsu",
+        "isDisabled": true,
+        "isPath": false
+      },
+      {
+        "name": "userId",
+        "value": "clgka98dz0000s9r7m0duzo7a",
+        "isDisabled": true,
         "isPath": false
       }
     ],

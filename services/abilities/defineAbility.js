@@ -1019,5 +1019,8 @@ export default async function userAbility(user) {
   }
   can("read", "File");
 
+  // Notification
+  can("read", "Notification");
+
   return build();
 }
