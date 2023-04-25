@@ -882,5 +882,9 @@ export default async function userAbility(user) {
     });
   }
 
+  if (user?.IMDCoordinator?.ActiveIMDCoordinator) {
+    can("connectToIMDCoordinatorSuggestion", "IM");
+  }
+
   return build();
 }

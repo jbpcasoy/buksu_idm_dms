@@ -5876,12 +5876,27 @@
     "method": "POST",
     "sortNum": 2170000,
     "created": "2023-04-03T01:38:49.493Z",
-    "modified": "2023-04-03T01:40:15.904Z",
-    "headers": [],
+    "modified": "2023-04-25T02:13:21.621Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}"
+      }
+    ],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"iMId\": \"clg051inc000qs9r4v86mhywl\",\n  \"iMDCoordinatorId\": \"clg04zkjr000ms9r4l6zd874u\"\n}",
+      "raw": "{\n  \"iMId\": \"clgkb0mjl001as9r7bigar4za\"\n}",
       "form": []
     },
     "tests": []
