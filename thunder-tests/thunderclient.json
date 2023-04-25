@@ -6033,8 +6033,23 @@
     "method": "GET",
     "sortNum": 2230000,
     "created": "2023-04-03T02:54:09.911Z",
-    "modified": "2023-04-03T02:54:33.825Z",
-    "headers": [],
+    "modified": "2023-04-25T03:30:36.503Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}"
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}",
+        "isDisabled": true
+      }
+    ],
     "params": [
       {
         "name": "limit",
