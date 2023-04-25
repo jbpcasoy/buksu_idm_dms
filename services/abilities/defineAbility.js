@@ -893,5 +893,14 @@ export default async function userAbility(user) {
     });
   }
 
+  // IMDCoordinatorSuggestionItem
+  if (user?.IMDCoordinator?.ActiveIMDCoordinator) {
+    can("connectToIMDCoordinatorSuggestionItem", "IMDCoordinatorSuggestion", {
+      iMDCoordinatorId: {
+        equals: user.IMDCoordinator.ActiveIMDCoordinator.iMDCoordinatorId,
+      },
+    });
+  }
+
   return build();
 }
