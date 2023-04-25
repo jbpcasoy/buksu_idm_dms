@@ -1009,5 +1009,14 @@ export default async function userAbility(user) {
     },
   });
 
+  // File
+  if (user?.ActiveFaculty) {
+    can("connectToFile", "IM", {
+      ownerId: {
+        equals: user.ActiveFaculty.facultyId,
+      },
+    });
+  }
+
   return build();
 }
