@@ -18,7 +18,7 @@ export default function Me() {
     <Layout>
       <ProfileFormView
         onSubmit={(profile) => {
-          axios.patch(`/api/profile/${user.id}`, profile).then((res) => {
+          axios.put(`/api/user/${user.id}`, profile).then((res) => {
             router.reload();
           });
         }}
