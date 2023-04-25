@@ -5876,7 +5876,7 @@
     "method": "POST",
     "sortNum": 2170000,
     "created": "2023-04-03T01:38:49.493Z",
-    "modified": "2023-04-25T02:13:21.621Z",
+    "modified": "2023-04-25T02:43:02.200Z",
     "headers": [
       {
         "name": "Cookie",
@@ -5885,12 +5885,12 @@
       },
       {
         "name": "Cookie",
-        "value": "{{FacultyCookie}}",
-        "isDisabled": true
+        "value": "{{FacultyCookie}}"
       },
       {
         "name": "Cookie",
-        "value": "{{AdminCookie}}"
+        "value": "{{AdminCookie}}",
+        "isDisabled": true
       }
     ],
     "params": [],
@@ -5968,12 +5968,26 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "f44c83ad-40e7-4a75-aec9-9eca246130a5",
     "name": "DELETE IMDCoordinatorSuggestion",
-    "url": "{{host}}/api/imd_coordinator_suggestion/clg05zhqs004fs9r4s5uo9m28",
+    "url": "{{host}}/api/imd_coordinator_suggestion/clgvnxi6b0044s96qm2msf1ll",
     "method": "DELETE",
     "sortNum": 2210000,
     "created": "2023-04-03T02:00:07.574Z",
-    "modified": "2023-04-03T02:00:22.237Z",
-    "headers": [],
+    "modified": "2023-04-25T02:43:36.867Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}"
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}"
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}",
+        "isDisabled": true
+      }
+    ],
     "params": [],
     "tests": []
   },
