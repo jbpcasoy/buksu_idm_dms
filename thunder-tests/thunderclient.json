@@ -112,16 +112,33 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "bd1fca66-edfe-47f2-8d18-0d6c8e254442",
     "name": "UPDATE IM",
-    "url": "{{host}}/api/im/cle27h6wh0002s90jiupiozbt",
+    "url": "{{host}}/api/im/clgx907wz001is91yxbyudt3m",
     "method": "PUT",
     "sortNum": 30000,
     "created": "2023-02-26T01:21:31.357Z",
-    "modified": "2023-02-26T01:21:31.357Z",
-    "headers": [],
+    "modified": "2023-04-26T05:25:23.387Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}"
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}"
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"title\": \"Updated title\",\n    \"status\": \"SUBMITTED\",\n    \"serialNumber\": \"Updated serial number\"\n}"
-    }
+      "raw": "{\n    \"title\": \"Updated title 2\",\n    \"status\": \"DEPARTMENT_REVIEWED\",\n    \"serialNumber\": \"Updated serial number 2\",\n    \"authors\": \"John\"\n}",
+      "form": []
+    },
+    "tests": []
   },
   {
     "_id": "e6998f13-3aec-4742-bd2f-a330b48dd7f9",
@@ -155,11 +172,11 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "bd1fca66-edfe-47f2-8d18-0d6c8e254442",
     "name": "READ IM",
-    "url": "{{host}}/api/im/clgx16zku000is91y0pa422sz",
+    "url": "{{host}}/api/im/clgx4fxx60010s91yru95ryp3",
     "method": "GET",
     "sortNum": 50000,
     "created": "2023-02-26T01:21:31.359Z",
-    "modified": "2023-04-26T01:43:22.650Z",
+    "modified": "2023-04-26T05:18:26.548Z",
     "headers": [
       {
         "name": "Cookie",
@@ -277,7 +294,7 @@
     "method": "POST",
     "sortNum": 100000,
     "created": "2023-02-26T01:21:31.364Z",
-    "modified": "2023-04-25T08:03:11.099Z",
+    "modified": "2023-04-26T05:24:31.092Z",
     "headers": [
       {
         "name": "Cookie",
@@ -286,18 +303,18 @@
       },
       {
         "name": "Cookie",
-        "value": "{{FacultyCookie}}",
-        "isDisabled": true
+        "value": "{{FacultyCookie}}"
       },
       {
         "name": "Cookie",
-        "value": "{{AdminCookie}}"
+        "value": "{{AdminCookie}}",
+        "isDisabled": true
       }
     ],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"iMId\":\"clgkb0mjl001as9r7bigar4za\",\n    \"originalFileName\": \"Artiaga Weekly Accomplishment Report.docx-(5).pdf\",\n    \"fileName\": \"8b3415fc-11be-4bf3-b362-3fa16ad636cf_artiaga_weekly_accomplishment_report.docx-(6).pdf\",\n    \"googleDocsUrl\": \"https://docs.google.com/myfile\"\n}",
+      "raw": "{\n    \"iMId\":\"clgx907wz001is91yxbyudt3m\",\n    \"originalFileName\": \"Artiaga Weekly Accomplishment Report.docx-(6).pdf\",\n    \"fileName\": \"8b3415fc-11be-4bf3-b362-3fa16ad636cf_artiaga_weekly_accomplishment_report.docx-(8).pdf\",\n    \"googleDocsUrl\": \"https://docs.google.com/myfile\"\n}",
       "form": []
     },
     "tests": []
@@ -1931,16 +1948,16 @@
     "method": "POST",
     "sortNum": 810000,
     "created": "2023-02-26T01:21:31.438Z",
-    "modified": "2023-04-13T06:06:38.088Z",
+    "modified": "2023-04-26T05:24:51.770Z",
     "headers": [
       {
         "name": "Cookie",
-        "value": "{{Cookie}}"
+        "value": "{{Cookie}}",
+        "isDisabled": true
       },
       {
         "name": "Cookie",
-        "value": "{{FacultyCookie}}",
-        "isDisabled": true
+        "value": "{{FacultyCookie}}"
       },
       {
         "name": "Cookie",
@@ -1951,7 +1968,7 @@
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"fileId\": \"clgeof8pj000xs9xtngluj8qy\",\n    \"iMId\": \"clgeof7mo000ss9xtntnr101o\"\n}",
+      "raw": "{\n    \"fileId\": \"clgx94hd9001rs91ylea1qfob\",\n    \"iMId\": \"clgx907wz001is91yxbyudt3m\"\n}",
       "form": []
     },
     "tests": []
