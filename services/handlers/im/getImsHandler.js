@@ -1,4 +1,6 @@
+import userAbility from "@/services/abilities/defineAbility";
 import readIMs from "../../api/im/readIMs";
+import getServerUser from "@/services/helpers/getServerUser";
 
 export default async function getImsHandler(req, res) {
   const {
@@ -28,6 +30,8 @@ export default async function getImsHandler(req, res) {
     CITLDirectorEndorsed,
     endorsedByCITLDirector,
   } = req.query;
+  const user = await getServerUser(req, res);
+
   const ims = await readIMs({
     limit: parseInt(limit),
     page: parseInt(page),
@@ -60,6 +64,7 @@ export default async function getImsHandler(req, res) {
       ? JSON.parse(CITLDirectorEndorsed)
       : undefined,
     endorsedByCITLDirector,
+    ability: await userAbility(user),
   });
 
   return res.status(200).json(ims);

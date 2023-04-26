@@ -38,12 +38,27 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "bd1fca66-edfe-47f2-8d18-0d6c8e254442",
     "name": "READ IMs",
-    "url": "{{host}}/api/im?page=1&limit=10&sortColumn=title&sortOrder=desc&status=CITL_REVIEWED",
+    "url": "{{host}}/api/im?page=1&limit=10&sortColumn=title&sortOrder=desc",
     "method": "GET",
     "sortNum": 20000,
     "created": "2023-02-26T01:21:31.356Z",
-    "modified": "2023-04-03T08:46:15.865Z",
-    "headers": [],
+    "modified": "2023-04-26T02:24:37.027Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}"
+      }
+    ],
     "params": [
       {
         "name": "page",
@@ -86,6 +101,7 @@
       {
         "name": "status",
         "value": "CITL_REVIEWED",
+        "isDisabled": true,
         "isPath": false
       }
     ],

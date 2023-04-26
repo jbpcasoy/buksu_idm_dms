@@ -1,5 +1,6 @@
 const { PrismaClient } = require("@prisma/client");
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
+import { accessibleBy } from "@casl/prisma";
 import _ from "lodash";
 
 export default async function readIMs({
@@ -28,10 +29,12 @@ export default async function readIMs({
   endorsedByIMDCoordinator,
   CITLDirectorEndorsed,
   endorsedByCITLDirector,
+  ability,
 }) {
   const prisma = PRISMA_CLIENT;
   const sortFilter = {};
   _.set(sortFilter, sortColumn, sortOrder);
+  const accessibility = accessibleBy(ability).IM;
 
   const ims = await prisma.iM.findMany({
     take: limit,
@@ -98,192 +101,197 @@ export default async function readIMs({
     },
     where: {
       AND: [
+        accessibility,
         {
-          CoordinatorEndorsement:
-            coordinatorEndorsed === true
-              ? {
-                  id: {
-                    contains: "",
-                  },
-                }
-              : coordinatorEndorsed === false
-              ? {
-                  isNot: {
-                    id: { contains: "" },
-                  },
-                }
-              : undefined,
-        },
-        {
-          IMDCoordinatorEndorsement:
-            iMDCoordinatorEndorsed === true
-              ? {
-                  id: {
-                    contains: "",
-                  },
-                }
-              : iMDCoordinatorEndorsed === false
-              ? {
-                  isNot: {
-                    id: { contains: "" },
-                  },
-                }
-              : undefined,
-        },
-        {
-          CoordinatorEndorsement: {
-            DeanEndorsement:
-              deanEndorsed === true
-                ? {
-                    id: {
-                      contains: "",
-                    },
-                  }
-                : deanEndorsed === false
-                ? {
-                    isNot: {
+          AND: [
+            {
+              CoordinatorEndorsement:
+                coordinatorEndorsed === true
+                  ? {
                       id: {
                         contains: "",
                       },
+                    }
+                  : coordinatorEndorsed === false
+                  ? {
+                      isNot: {
+                        id: { contains: "" },
+                      },
+                    }
+                  : undefined,
+            },
+            {
+              IMDCoordinatorEndorsement:
+                iMDCoordinatorEndorsed === true
+                  ? {
+                      id: {
+                        contains: "",
+                      },
+                    }
+                  : iMDCoordinatorEndorsed === false
+                  ? {
+                      isNot: {
+                        id: { contains: "" },
+                      },
+                    }
+                  : undefined,
+            },
+            {
+              CoordinatorEndorsement: {
+                DeanEndorsement:
+                  deanEndorsed === true
+                    ? {
+                        id: {
+                          contains: "",
+                        },
+                      }
+                    : deanEndorsed === false
+                    ? {
+                        isNot: {
+                          id: {
+                            contains: "",
+                          },
+                        },
+                      }
+                    : undefined,
+              },
+            },
+            {
+              CoordinatorEndorsement: {
+                DeanEndorsement: endorsedByDean
+                  ? {
+                      deanId: {
+                        contains: endorsedByDean,
+                      },
+                    }
+                  : undefined,
+              },
+            },
+            {
+              CoordinatorEndorsement: endorsedByCoordinator
+                ? {
+                    coordinatorId: {
+                      contains: endorsedByCoordinator,
                     },
                   }
                 : undefined,
-          },
-        },
-        {
-          CoordinatorEndorsement: {
-            DeanEndorsement: endorsedByDean
-              ? {
-                  deanId: {
-                    contains: endorsedByDean,
-                  },
-                }
-              : undefined,
-          },
-        },
-        {
-          CoordinatorEndorsement: endorsedByCoordinator
-            ? {
-                coordinatorId: {
-                  contains: endorsedByCoordinator,
-                },
-              }
-            : undefined,
-        },
-        {
-          IMDCoordinatorEndorsement: endorsedByIMDCoordinator
-            ? {
-                iMDCoordinatorId: {
-                  contains: endorsedByIMDCoordinator,
-                },
-              }
-            : undefined,
-        },
-        {
-          IMDCoordinatorEndorsement:
-            CITLDirectorEndorsed === true
-              ? {
-                  CITLDirectorEndorsement: {
-                    id: {
-                      contains: "",
+            },
+            {
+              IMDCoordinatorEndorsement: endorsedByIMDCoordinator
+                ? {
+                    iMDCoordinatorId: {
+                      contains: endorsedByIMDCoordinator,
                     },
-                  },
-                }
-              : CITLDirectorEndorsed === false
-              ? {
-                  CITLDirectorEndorsement: {
-                    isNot: {
-                      id: {
-                        contains: "",
-                      },
-                    },
-                  },
-                }
-              : undefined,
-        },
-        {
-          ownerId: {
-            not: notOwnerId,
-          },
-        },
-        {
-          OR: reviewerId
-            ? [
-                {
-                  SubmittedPeerReview: {
-                    PeerReview: {
-                      Faculty: {
-                        userId: { contains: reviewerId },
-                      },
-                    },
-                  },
-                },
-                {
-                  SubmittedChairpersonReview: {
-                    ChairpersonReview: {
-                      Chairperson: {
-                        Faculty: {
-                          userId: { contains: reviewerId },
+                  }
+                : undefined,
+            },
+            {
+              IMDCoordinatorEndorsement:
+                CITLDirectorEndorsed === true
+                  ? {
+                      CITLDirectorEndorsement: {
+                        id: {
+                          contains: "",
                         },
                       },
-                    },
-                  },
-                },
-                {
-                  SubmittedCoordinatorReview: {
-                    CoordinatorReview: {
-                      Coordinator: {
-                        Faculty: {
-                          userId: { contains: reviewerId },
+                    }
+                  : CITLDirectorEndorsed === false
+                  ? {
+                      CITLDirectorEndorsement: {
+                        isNot: {
+                          id: {
+                            contains: "",
+                          },
                         },
                       },
-                    },
-                  },
-                },
-              ]
-            : undefined,
-          IMDCoordinatorSuggestion: iMDCoordinatorReviewerId
-            ? {
-                IMDCoordinator: {
-                  userId: iMDCoordinatorReviewerId,
-                },
-              }
-            : undefined,
-          owner: {
-            user: {
-              name: { contains: owner },
+                    }
+                  : undefined,
             },
-            departmentId: departmentId,
-            department: {
-              collegeId: collegeId,
-            },
-          },
-          type: {
-            equals: type,
-          },
-          ownerId: ownerId,
-          serialNumber: serialNumber
-            ? {
-                contains: serialNumber,
-                // mode: "insensitive",
-              }
-            : undefined,
-          title: {
-            contains: title,
-            // mode: "insensitive",
-          },
-          status: toRevise
-            ? {
-                in: status
-                  ? ["CITL_REVIEWED", "DEPARTMENT_REVIEWED", status]
-                  : ["CITL_REVIEWED", "DEPARTMENT_REVIEWED"],
-              }
-            : {
-                equals: status,
+            {
+              ownerId: {
+                not: notOwnerId,
               },
-          authors: {
-            contains: authors,
-          },
+            },
+            {
+              OR: reviewerId
+                ? [
+                    {
+                      SubmittedPeerReview: {
+                        PeerReview: {
+                          Faculty: {
+                            userId: { contains: reviewerId },
+                          },
+                        },
+                      },
+                    },
+                    {
+                      SubmittedChairpersonReview: {
+                        ChairpersonReview: {
+                          Chairperson: {
+                            Faculty: {
+                              userId: { contains: reviewerId },
+                            },
+                          },
+                        },
+                      },
+                    },
+                    {
+                      SubmittedCoordinatorReview: {
+                        CoordinatorReview: {
+                          Coordinator: {
+                            Faculty: {
+                              userId: { contains: reviewerId },
+                            },
+                          },
+                        },
+                      },
+                    },
+                  ]
+                : undefined,
+              IMDCoordinatorSuggestion: iMDCoordinatorReviewerId
+                ? {
+                    IMDCoordinator: {
+                      userId: iMDCoordinatorReviewerId,
+                    },
+                  }
+                : undefined,
+              owner: {
+                user: {
+                  name: { contains: owner },
+                },
+                departmentId: departmentId,
+                department: {
+                  collegeId: collegeId,
+                },
+              },
+              type: {
+                equals: type,
+              },
+              ownerId: ownerId,
+              serialNumber: serialNumber
+                ? {
+                    contains: serialNumber,
+                    // mode: "insensitive",
+                  }
+                : undefined,
+              title: {
+                contains: title,
+                // mode: "insensitive",
+              },
+              status: toRevise
+                ? {
+                    in: status
+                      ? ["CITL_REVIEWED", "DEPARTMENT_REVIEWED", status]
+                      : ["CITL_REVIEWED", "DEPARTMENT_REVIEWED"],
+                  }
+                : {
+                    equals: status,
+                  },
+              authors: {
+                contains: authors,
+              },
+            },
+          ],
         },
       ],
     },
@@ -293,192 +301,197 @@ export default async function readIMs({
   const total = await prisma.iM.count({
     where: {
       AND: [
+        accessibility,
         {
-          CoordinatorEndorsement:
-            coordinatorEndorsed === true
-              ? {
-                  id: {
-                    contains: "",
-                  },
-                }
-              : coordinatorEndorsed === false
-              ? {
-                  isNot: {
-                    id: { contains: "" },
-                  },
-                }
-              : undefined,
-        },
-        {
-          IMDCoordinatorEndorsement:
-            iMDCoordinatorEndorsed === true
-              ? {
-                  id: {
-                    contains: "",
-                  },
-                }
-              : iMDCoordinatorEndorsed === false
-              ? {
-                  isNot: {
-                    id: { contains: "" },
-                  },
-                }
-              : undefined,
-        },
-        {
-          CoordinatorEndorsement: {
-            DeanEndorsement:
-              deanEndorsed === true
-                ? {
-                    id: {
-                      contains: "",
-                    },
-                  }
-                : deanEndorsed === false
-                ? {
-                    isNot: {
+          AND: [
+            {
+              CoordinatorEndorsement:
+                coordinatorEndorsed === true
+                  ? {
                       id: {
                         contains: "",
                       },
+                    }
+                  : coordinatorEndorsed === false
+                  ? {
+                      isNot: {
+                        id: { contains: "" },
+                      },
+                    }
+                  : undefined,
+            },
+            {
+              IMDCoordinatorEndorsement:
+                iMDCoordinatorEndorsed === true
+                  ? {
+                      id: {
+                        contains: "",
+                      },
+                    }
+                  : iMDCoordinatorEndorsed === false
+                  ? {
+                      isNot: {
+                        id: { contains: "" },
+                      },
+                    }
+                  : undefined,
+            },
+            {
+              CoordinatorEndorsement: {
+                DeanEndorsement:
+                  deanEndorsed === true
+                    ? {
+                        id: {
+                          contains: "",
+                        },
+                      }
+                    : deanEndorsed === false
+                    ? {
+                        isNot: {
+                          id: {
+                            contains: "",
+                          },
+                        },
+                      }
+                    : undefined,
+              },
+            },
+            {
+              CoordinatorEndorsement: {
+                DeanEndorsement: endorsedByDean
+                  ? {
+                      deanId: {
+                        contains: endorsedByDean,
+                      },
+                    }
+                  : undefined,
+              },
+            },
+            {
+              CoordinatorEndorsement: endorsedByCoordinator
+                ? {
+                    coordinatorId: {
+                      contains: endorsedByCoordinator,
                     },
                   }
                 : undefined,
-          },
-        },
-        {
-          CoordinatorEndorsement: {
-            DeanEndorsement: endorsedByDean
-              ? {
-                  deanId: {
-                    contains: endorsedByDean,
-                  },
-                }
-              : undefined,
-          },
-        },
-        {
-          CoordinatorEndorsement: endorsedByCoordinator
-            ? {
-                coordinatorId: {
-                  contains: endorsedByCoordinator,
-                },
-              }
-            : undefined,
-        },
-        {
-          IMDCoordinatorEndorsement: endorsedByIMDCoordinator
-            ? {
-                iMDCoordinatorId: {
-                  contains: endorsedByIMDCoordinator,
-                },
-              }
-            : undefined,
-        },
-        {
-          IMDCoordinatorEndorsement:
-            CITLDirectorEndorsed === true
-              ? {
-                  CITLDirectorEndorsement: {
-                    id: {
-                      contains: "",
+            },
+            {
+              IMDCoordinatorEndorsement: endorsedByIMDCoordinator
+                ? {
+                    iMDCoordinatorId: {
+                      contains: endorsedByIMDCoordinator,
                     },
-                  },
-                }
-              : CITLDirectorEndorsed === false
-              ? {
-                  CITLDirectorEndorsement: {
-                    isNot: {
-                      id: {
-                        contains: "",
-                      },
-                    },
-                  },
-                }
-              : undefined,
-        },
-        {
-          ownerId: {
-            not: notOwnerId,
-          },
-        },
-        {
-          OR: reviewerId
-            ? [
-                {
-                  SubmittedPeerReview: {
-                    PeerReview: {
-                      Faculty: {
-                        userId: { contains: reviewerId },
-                      },
-                    },
-                  },
-                },
-                {
-                  SubmittedChairpersonReview: {
-                    ChairpersonReview: {
-                      Chairperson: {
-                        Faculty: {
-                          userId: { contains: reviewerId },
+                  }
+                : undefined,
+            },
+            {
+              IMDCoordinatorEndorsement:
+                CITLDirectorEndorsed === true
+                  ? {
+                      CITLDirectorEndorsement: {
+                        id: {
+                          contains: "",
                         },
                       },
-                    },
-                  },
-                },
-                {
-                  SubmittedCoordinatorReview: {
-                    CoordinatorReview: {
-                      Coordinator: {
-                        Faculty: {
-                          userId: { contains: reviewerId },
+                    }
+                  : CITLDirectorEndorsed === false
+                  ? {
+                      CITLDirectorEndorsement: {
+                        isNot: {
+                          id: {
+                            contains: "",
+                          },
                         },
                       },
-                    },
-                  },
-                },
-              ]
-            : undefined,
-          IMDCoordinatorSuggestion: iMDCoordinatorReviewerId
-            ? {
-                IMDCoordinator: {
-                  userId: iMDCoordinatorReviewerId,
-                },
-              }
-            : undefined,
-          owner: {
-            user: {
-              name: { contains: owner },
+                    }
+                  : undefined,
             },
-            departmentId: departmentId,
-            department: {
-              collegeId: collegeId,
-            },
-          },
-          type: {
-            equals: type,
-          },
-          ownerId: ownerId,
-          serialNumber: serialNumber
-            ? {
-                contains: serialNumber,
-                // mode: "insensitive",
-              }
-            : undefined,
-          title: {
-            contains: title,
-            // mode: "insensitive",
-          },
-          status: toRevise
-            ? {
-                in: status
-                  ? ["CITL_REVIEWED", "DEPARTMENT_REVIEWED", status]
-                  : ["CITL_REVIEWED", "DEPARTMENT_REVIEWED"],
-              }
-            : {
-                equals: status,
+            {
+              ownerId: {
+                not: notOwnerId,
               },
-          authors: {
-            contains: authors,
-          },
+            },
+            {
+              OR: reviewerId
+                ? [
+                    {
+                      SubmittedPeerReview: {
+                        PeerReview: {
+                          Faculty: {
+                            userId: { contains: reviewerId },
+                          },
+                        },
+                      },
+                    },
+                    {
+                      SubmittedChairpersonReview: {
+                        ChairpersonReview: {
+                          Chairperson: {
+                            Faculty: {
+                              userId: { contains: reviewerId },
+                            },
+                          },
+                        },
+                      },
+                    },
+                    {
+                      SubmittedCoordinatorReview: {
+                        CoordinatorReview: {
+                          Coordinator: {
+                            Faculty: {
+                              userId: { contains: reviewerId },
+                            },
+                          },
+                        },
+                      },
+                    },
+                  ]
+                : undefined,
+              IMDCoordinatorSuggestion: iMDCoordinatorReviewerId
+                ? {
+                    IMDCoordinator: {
+                      userId: iMDCoordinatorReviewerId,
+                    },
+                  }
+                : undefined,
+              owner: {
+                user: {
+                  name: { contains: owner },
+                },
+                departmentId: departmentId,
+                department: {
+                  collegeId: collegeId,
+                },
+              },
+              type: {
+                equals: type,
+              },
+              ownerId: ownerId,
+              serialNumber: serialNumber
+                ? {
+                    contains: serialNumber,
+                    // mode: "insensitive",
+                  }
+                : undefined,
+              title: {
+                contains: title,
+                // mode: "insensitive",
+              },
+              status: toRevise
+                ? {
+                    in: status
+                      ? ["CITL_REVIEWED", "DEPARTMENT_REVIEWED", status]
+                      : ["CITL_REVIEWED", "DEPARTMENT_REVIEWED"],
+                  }
+                : {
+                    equals: status,
+                  },
+              authors: {
+                contains: authors,
+              },
+            },
+          ],
         },
       ],
     },
