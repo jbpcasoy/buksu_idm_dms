@@ -5,7 +5,7 @@ export default async function readNotification({ id, ability, filter = {} }) {
   const prisma = PRISMA_CLIENT;
   const accessibility = accessibleBy(ability).Notification;
 
-  const notification = await prisma.notification.findUniqueOrThrow({
+  const notification = await prisma.notification.findFirstOrThrow({
     where: {
       AND: [
         accessibility,
