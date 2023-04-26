@@ -4532,12 +4532,27 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "4a3fab0b-abd7-402d-a549-8dcd7d29cea1",
     "name": "READ ReadNotification",
-    "url": "{{host}}/api/read_notification/clfc7ksb50000s9lu713cgv6a",
+    "url": "{{host}}/api/read_notification/clgwy9c670000s91y1zon1uk6",
     "method": "GET",
     "sortNum": 1720000,
     "created": "2023-03-17T07:34:54.001Z",
-    "modified": "2023-03-17T07:35:18.226Z",
-    "headers": [],
+    "modified": "2023-04-26T00:35:01.385Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}"
+      }
+    ],
     "params": [],
     "tests": []
   },
