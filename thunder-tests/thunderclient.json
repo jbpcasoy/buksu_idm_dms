@@ -4561,12 +4561,27 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "4a3fab0b-abd7-402d-a549-8dcd7d29cea1",
     "name": "DELETE ReadNotification",
-    "url": "{{host}}/api/read_notification/clfc8cood0004s9luiwzusart",
+    "url": "{{host}}/api/read_notification/clgwy9c670000s91y1zon1uk6",
     "method": "DELETE",
     "sortNum": 1730000,
     "created": "2023-03-17T07:39:02.828Z",
-    "modified": "2023-03-17T07:40:24.318Z",
-    "headers": [],
+    "modified": "2023-04-26T00:43:59.128Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}"
+      }
+    ],
     "params": [],
     "tests": []
   },
