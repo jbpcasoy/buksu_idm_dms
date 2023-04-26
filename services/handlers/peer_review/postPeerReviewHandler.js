@@ -9,7 +9,7 @@ export default async function postPeerReviewHandler(req, res) {
   const { iMId } = req.body;
 
   const user = await getServerUser(req, res);
-  const iM = await readIM(iMId);
+  const iM = await readIM({ id: iMId, ability: await userAbility(user) });
 
   console.log({
     activeFacultyDepartment: user?.ActiveFaculty?.departmentId,

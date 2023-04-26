@@ -1,3 +1,4 @@
+import userAbility from "@/services/abilities/defineAbility";
 import createCoordinatorReview from "@/services/api/coordinator_review/createCoordinatorReview";
 import readIM from "@/services/api/im/readIM";
 import getServerUser from "@/services/helpers/getServerUser";
@@ -8,7 +9,7 @@ export default async function postCoordinatorReviewHandler(req, res) {
   const { iMId } = req.body;
 
   const user = await getServerUser(req, res);
-  const iM = await readIM(iMId);
+  const iM = await readIM({ id: iMId, ability: await userAbility(user) });
   return abilityValidator({
     req,
     res,

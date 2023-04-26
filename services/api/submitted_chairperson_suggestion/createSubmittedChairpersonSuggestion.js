@@ -44,7 +44,10 @@ export default async function createSubmittedChairpersonSuggestion({
     id: chairpersonSuggestion.submittedChairpersonReviewId,
     ability,
   });
-  await checkAndUpdateStatus(submittedChairpersonReview.iMId);
+  await checkAndUpdateStatus({
+    iMId: submittedChairpersonReview.iMId,
+    ability,
+  });
 
   return submittedChairpersonSuggestion;
 }

@@ -1043,6 +1043,7 @@ export default async function userAbility(user) {
   // IM
   if (user?.ActiveFaculty) {
     can("create", "IM");
+    can("read", "IM");
   }
 
   return build();

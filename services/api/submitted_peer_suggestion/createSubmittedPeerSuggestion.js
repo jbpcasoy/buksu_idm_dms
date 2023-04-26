@@ -43,7 +43,7 @@ export default async function createSubmittedPeerSuggestion({
     id: peerSuggestion.submittedPeerReviewId,
     ability,
   });
-  await checkAndUpdateStatus(submittedPeerReview.iMId);
+  await checkAndUpdateStatus({ iMId: submittedPeerReview.iMId, ability });
 
   return submittedPeerSuggestion;
 }

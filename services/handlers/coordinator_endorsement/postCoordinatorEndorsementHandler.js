@@ -8,7 +8,7 @@ import { subject } from "@casl/ability";
 export default async function postCoordinatorEndorsementHandler(req, res) {
   const { iMId } = req.body;
   const user = await getServerUser(req, res);
-  const iM = await readIM(iMId);
+  const iM = await readIM({ id: iMId, ability: await userAbility(user) });
 
   return abilityValidator({
     req,

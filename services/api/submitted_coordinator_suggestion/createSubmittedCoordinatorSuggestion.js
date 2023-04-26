@@ -44,6 +44,9 @@ export default async function createSubmittedCoordinatorSuggestion({
     id: coordinatorSuggestion.submittedCoordinatorReviewId,
     ability,
   });
-  await checkAndUpdateStatus(submittedCoordinatorReview.iMId);
+  await checkAndUpdateStatus({
+    iMId: submittedCoordinatorReview.iMId,
+    ability,
+  });
   return submittedCoordinatorSuggestion;
 }

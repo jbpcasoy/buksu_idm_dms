@@ -9,8 +9,12 @@ export default async function createCoordinatorEndorsement({
 }) {
   const prisma = PRISMA_CLIENT;
 
-  const iM = await readIM(iMId, {
-    status: "DEPARTMENT_REVISED",
+  const iM = await readIM({
+    id: iMId,
+    filter: {
+      status: "DEPARTMENT_REVISED",
+    },
+    ability,
   });
   const coordinator = await readCoordinator({ id: coordinatorId, ability });
 

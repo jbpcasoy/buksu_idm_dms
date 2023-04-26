@@ -5,11 +5,12 @@ const { PrismaClient } = require("@prisma/client");
 
 export default async function updateIM(
   id,
-  { serialNumber, title, status, type }
+  { serialNumber, title, status, type },
+  ability
 ) {
   const prisma = PRISMA_CLIENT;
 
-  const prevIM = await readIM(id);
+  const prevIM = await readIM({ id, ability });
   const im = await prisma.iM.update({
     where: {
       id,

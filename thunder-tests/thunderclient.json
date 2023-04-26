@@ -8,16 +8,16 @@
     "method": "POST",
     "sortNum": 10000,
     "created": "2023-02-26T01:21:31.354Z",
-    "modified": "2023-04-26T01:22:05.146Z",
+    "modified": "2023-04-26T01:42:32.883Z",
     "headers": [
       {
         "name": "Cookie",
-        "value": "{{Cookie}}"
+        "value": "{{Cookie}}",
+        "isDisabled": true
       },
       {
         "name": "Cookie",
-        "value": "{{FacultyCookie}}",
-        "isDisabled": true
+        "value": "{{FacultyCookie}}"
       },
       {
         "name": "Cookie",
@@ -124,12 +124,17 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "bd1fca66-edfe-47f2-8d18-0d6c8e254442",
     "name": "READ IM",
-    "url": "{{host}}/api/im/clers34xs001es9h3bjw9fe0j",
+    "url": "{{host}}/api/im/clgx16zku000is91y0pa422sz",
     "method": "GET",
     "sortNum": 50000,
     "created": "2023-02-26T01:21:31.359Z",
-    "modified": "2023-03-03T05:38:59.839Z",
-    "headers": [],
+    "modified": "2023-04-26T01:43:22.650Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}"
+      }
+    ],
     "params": [],
     "tests": []
   },
