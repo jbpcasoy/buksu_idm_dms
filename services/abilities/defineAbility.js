@@ -512,6 +512,26 @@ export default async function userAbility(user) {
     });
   }
 
+  if (user?.ActiveFaculty?.ActiveChairperson) {
+    can("read", "SubmittedCoordinatorReview", {
+      IM: {
+        is: {
+          SubmittedChairpersonReview: {
+            is: {
+              ChairpersonReview: {
+                is: {
+                  chairpersonId: {
+                    equals: user.ActiveFaculty.ActiveChairperson.chairpersonId,
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    });
+  }
+
   if (user?.ActiveFaculty) {
     can("read", "SubmittedCoordinatorReview", {
       IM: {
@@ -551,6 +571,31 @@ export default async function userAbility(user) {
             is: {
               coordinatorId: {
                 equals: user.ActiveFaculty.ActiveCoordinator.coordinatorId,
+              },
+            },
+          },
+        },
+      },
+    });
+  }
+
+  if (user?.ActiveFaculty?.ActiveChairperson) {
+    can("read", "CoordinatorSuggestion", {
+      SubmittedCoordinatorReview: {
+        is: {
+          IM: {
+            is: {
+              SubmittedChairpersonReview: {
+                is: {
+                  ChairpersonReview: {
+                    is: {
+                      chairpersonId: {
+                        equals:
+                          user.ActiveFaculty.ActiveChairperson.chairpersonId,
+                      },
+                    },
+                  },
+                },
               },
             },
           },
@@ -675,6 +720,36 @@ export default async function userAbility(user) {
                         is: {
                           facultyId: {
                             equals: user.ActiveFaculty.facultyId,
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    });
+  }
+
+  if (user?.ActiveFaculty?.ActiveChairperson) {
+    can("read", "CoordinatorSuggestionItem", {
+      CoordinatorSuggestion: {
+        is: {
+          SubmittedCoordinatorReview: {
+            is: {
+              IM: {
+                is: {
+                  SubmittedChairpersonReview: {
+                    is: {
+                      ChairpersonReview: {
+                        is: {
+                          chairpersonId: {
+                            equals:
+                              user.ActiveFaculty.ActiveChairperson
+                                .chairpersonId,
                           },
                         },
                       },
@@ -830,6 +905,26 @@ export default async function userAbility(user) {
     });
   }
 
+  if (user?.ActiveFaculty?.ActiveChairperson) {
+    can("read", "SubmittedPeerReview", {
+      IM: {
+        is: {
+          SubmittedChairpersonReview: {
+            is: {
+              ChairpersonReview: {
+                is: {
+                  chairpersonId: {
+                    equals: user.ActiveFaculty.ActiveChairperson.chairpersonId,
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    });
+  }
+
   // PeerSuggestion
   if (user?.ActiveFaculty) {
     can("connectToPeerSuggestion", "SubmittedPeerReview", {
@@ -856,6 +951,32 @@ export default async function userAbility(user) {
       },
     });
   }
+
+  if (user?.ActiveFaculty?.ActiveChairperson) {
+    can("read", "PeerSuggestion", {
+      SubmittedPeerReview: {
+        is: {
+          IM: {
+            is: {
+              SubmittedChairpersonReview: {
+                is: {
+                  ChairpersonReview: {
+                    is: {
+                      chairpersonId: {
+                        equals:
+                          user.ActiveFaculty.ActiveChairperson.chairpersonId,
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    });
+  }
+
   // PeerSuggestionItem
   if (user?.ActiveFaculty) {
     can("connectToPeerSuggestionItem", "PeerSuggestion", {
@@ -917,6 +1038,36 @@ export default async function userAbility(user) {
                 is: {
                   facultyId: {
                     equals: user.ActiveFaculty.facultyId,
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    });
+  }
+
+  if (user?.ActiveFaculty?.ActiveChairperson) {
+    can("read", "PeerSuggestionItem", {
+      PeerSuggestion: {
+        is: {
+          SubmittedPeerReview: {
+            is: {
+              IM: {
+                is: {
+                  SubmittedChairpersonReview: {
+                    is: {
+                      ChairpersonReview: {
+                        is: {
+                          chairpersonId: {
+                            equals:
+                              user.ActiveFaculty.ActiveChairperson
+                                .chairpersonId,
+                          },
+                        },
+                      },
+                    },
                   },
                 },
               },
