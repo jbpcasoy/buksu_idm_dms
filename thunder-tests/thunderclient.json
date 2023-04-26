@@ -112,12 +112,27 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "bd1fca66-edfe-47f2-8d18-0d6c8e254442",
     "name": "DELETE IM",
-    "url": "{{host}}/api/im/cle27h6wh0002s90jiupiozbt",
+    "url": "{{host}}/api/im/clgx16zku000is91y0pa422sz",
     "method": "DELETE",
     "sortNum": 40000,
     "created": "2023-02-26T01:21:31.358Z",
-    "modified": "2023-02-26T01:21:31.358Z",
-    "headers": []
+    "modified": "2023-04-26T02:17:24.405Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}"
+      },
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}"
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}"
+      }
+    ],
+    "params": [],
+    "tests": []
   },
   {
     "_id": "4e30e8f5-5e3b-431e-bcf7-fff8ead2e1c7",
