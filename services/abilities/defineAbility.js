@@ -1040,5 +1040,10 @@ export default async function userAbility(user) {
     can("createOrUpdate", "LoginRole");
   }
 
+  // IM
+  if (user?.ActiveFaculty) {
+    can("create", "IM");
+  }
+
   return build();
 }
