@@ -2,7 +2,6 @@ import { AbilityBuilder } from "@casl/ability";
 import { createPrismaAbility } from "@casl/prisma";
 
 export default async function userAbility(user) {
-  console.log({ user: JSON.stringify(user) });
   const { can, cannot, build } = new AbilityBuilder(createPrismaAbility);
 
   // Global

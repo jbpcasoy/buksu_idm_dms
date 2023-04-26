@@ -172,11 +172,11 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "bd1fca66-edfe-47f2-8d18-0d6c8e254442",
     "name": "READ IM",
-    "url": "{{host}}/api/im/clgx4fxx60010s91yru95ryp3",
+    "url": "{{host}}/api/im/clgxaqd28005as91yr3dp35er",
     "method": "GET",
     "sortNum": 50000,
     "created": "2023-02-26T01:21:31.359Z",
-    "modified": "2023-04-26T05:18:26.548Z",
+    "modified": "2023-04-26T06:15:06.565Z",
     "headers": [
       {
         "name": "Cookie",
@@ -3488,11 +3488,11 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "327637e1-b39d-480c-ac73-f1814c515440",
     "name": "READ SubmittedCoordinatorReviews",
-    "url": "{{host}}/api/submitted_coordinator_review?limit=10&page=1",
+    "url": "{{host}}/api/submitted_coordinator_review?coordinatorReviewId=clgxa4flw004as91y0x9ycdbv ",
     "method": "GET",
     "sortNum": 1400000,
     "created": "2023-03-09T08:27:51.828Z",
-    "modified": "2023-04-24T00:55:43.437Z",
+    "modified": "2023-04-26T06:06:32.488Z",
     "headers": [
       {
         "name": "Cookie",
@@ -3501,23 +3501,30 @@
       },
       {
         "name": "Cookie",
-        "value": "{{FacultyCookie}}",
-        "isDisabled": true
+        "value": "{{FacultyCookie}}"
       },
       {
         "name": "Cookie",
-        "value": "{{AdminCookie}}"
+        "value": "{{AdminCookie}}",
+        "isDisabled": true
       }
     ],
     "params": [
       {
         "name": "limit",
         "value": "10",
+        "isDisabled": true,
         "isPath": false
       },
       {
         "name": "page",
         "value": "1",
+        "isDisabled": true,
+        "isPath": false
+      },
+      {
+        "name": "coordinatorReviewId",
+        "value": "clgxa4flw004as91y0x9ycdbv ",
         "isPath": false
       }
     ],
@@ -3532,7 +3539,7 @@
     "method": "GET",
     "sortNum": 1410000,
     "created": "2023-03-09T08:36:43.123Z",
-    "modified": "2023-04-24T00:42:25.964Z",
+    "modified": "2023-04-26T05:58:25.786Z",
     "headers": [
       {
         "name": "Cookie",

@@ -10,12 +10,6 @@ export default async function abilityValidator({
   fields = [],
   type,
 }) {
-  console.log({
-    action,
-    subject,
-    fields,
-    type,
-  });
   try {
     const user = await getServerUser(req, res);
     const ability = await userAbility(user);
@@ -23,7 +17,6 @@ export default async function abilityValidator({
     if (fields?.length > 0) {
       for (let field of fields) {
         if (ability.cannot(action, subject, field)) {
-          console.log("Cannot");
           return res.status(403).json({
             message: `Unauthorized, cannot ${action} ${type} on ${field}`,
           });

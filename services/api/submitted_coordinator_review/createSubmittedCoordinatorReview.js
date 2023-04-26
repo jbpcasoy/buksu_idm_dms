@@ -8,7 +8,7 @@ export default async function createSubmittedCoordinatorReview({
   const prisma = PRISMA_CLIENT;
 
   const coordinatorReview = await readCoordinatorReview({
-    coordinatorReviewId,
+    id: coordinatorReviewId,
     ability,
   });
 
