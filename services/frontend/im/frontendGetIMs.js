@@ -60,6 +60,7 @@ export default async function frontendGetIMs({
     return response.data;
   } catch (error) {
     console.error(error);
-    throw error;
+    // throw error;
+    return { data: [], total: 0 };
   }
 }

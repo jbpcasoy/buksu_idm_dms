@@ -3098,16 +3098,15 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "06eb4a00-c0cd-41f2-b5f6-a5c96efd214e",
     "name": "READ SubmittedChairpersonReviews",
-    "url": "{{host}}/api/submitted_chairperson_review?limit=10&page=1",
+    "url": "{{host}}/api/submitted_chairperson_review?chairpersonReview=clgxbnfzh002hs9rf7bid1ude",
     "method": "GET",
     "sortNum": 1280000,
     "created": "2023-03-08T08:40:39.713Z",
-    "modified": "2023-04-18T05:31:45.555Z",
+    "modified": "2023-04-26T07:10:32.850Z",
     "headers": [
       {
         "name": "Cookie",
-        "value": "{{Cookie}}",
-        "isDisabled": true
+        "value": "{{Cookie}}"
       },
       {
         "name": "Cookie",
@@ -3116,18 +3115,26 @@
       },
       {
         "name": "Cookie",
-        "value": "{{AdminCookie}}"
+        "value": "{{AdminCookie}}",
+        "isDisabled": true
       }
     ],
     "params": [
       {
         "name": "limit",
         "value": "10",
+        "isDisabled": true,
         "isPath": false
       },
       {
         "name": "page",
         "value": "1",
+        "isDisabled": true,
+        "isPath": false
+      },
+      {
+        "name": "chairpersonReview",
+        "value": "clgxbnfzh002hs9rf7bid1ude",
         "isPath": false
       }
     ],
@@ -3910,20 +3917,20 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "9d22f5a3-9315-4e10-8e8e-217b6d94eec1",
     "name": "READ ChairpersonSuggestions",
-    "url": "{{host}}/api/chairperson_suggestion?limit=10&page=1",
+    "url": "{{host}}/api/chairperson_suggestion?chairpersonReviewId=clgxbnyyu002ns9rf9tfhu06u",
     "method": "GET",
     "sortNum": 1520000,
     "created": "2023-03-13T07:54:31.014Z",
-    "modified": "2023-04-18T06:34:25.884Z",
+    "modified": "2023-04-26T07:36:35.668Z",
     "headers": [
       {
         "name": "Cookie",
-        "value": "{{Cookie}}",
-        "isDisabled": true
+        "value": "{{Cookie}}"
       },
       {
         "name": "Cookie",
-        "value": "{{FacultyCookie}}"
+        "value": "{{FacultyCookie}}",
+        "isDisabled": true
       },
       {
         "name": "Cookie",
@@ -3935,11 +3942,18 @@
       {
         "name": "limit",
         "value": "10",
+        "isDisabled": true,
         "isPath": false
       },
       {
         "name": "page",
         "value": "1",
+        "isDisabled": true,
+        "isPath": false
+      },
+      {
+        "name": "chairpersonReviewId",
+        "value": "clgxbnyyu002ns9rf9tfhu06u",
         "isPath": false
       }
     ],

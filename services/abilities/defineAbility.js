@@ -19,9 +19,6 @@ export default async function userAbility(user) {
     });
     // when IM owners can update status
     can("update", "IM", ["status"], {
-      ownerId: {
-        equals: user.ActiveFaculty.facultyId,
-      },
       ActiveFile: {
         is: {
           fileId: {
@@ -199,6 +196,26 @@ export default async function userAbility(user) {
     });
   }
 
+  if (user?.ActiveFaculty) {
+    can("read", "SubmittedChairpersonReview", {
+      IM: {
+        is: {
+          SubmittedPeerReview: {
+            is: {
+              PeerReview: {
+                is: {
+                  facultyId: {
+                    equals: user.ActiveFaculty.facultyId,
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    });
+  }
+
   // ChairpersonSuggestion
   if (user?.ActiveFaculty?.ActiveChairperson) {
     can("connectToChairpersonSuggestion", "SubmittedChairpersonReview", {
@@ -218,6 +235,30 @@ export default async function userAbility(user) {
             is: {
               chairpersonId: {
                 equals: user.ActiveFaculty.ActiveChairperson.chairpersonId,
+              },
+            },
+          },
+        },
+      },
+    });
+  }
+
+  if (user?.ActiveFaculty) {
+    can("read", "ChairpersonSuggestion", {
+      SubmittedChairpersonReview: {
+        is: {
+          IM: {
+            is: {
+              SubmittedPeerReview: {
+                is: {
+                  PeerReview: {
+                    is: {
+                      facultyId: {
+                        equals: user.ActiveFaculty.facultyId,
+                      },
+                    },
+                  },
+                },
               },
             },
           },
@@ -301,6 +342,34 @@ export default async function userAbility(user) {
         },
       }
     );
+  }
+
+  if (user?.ActiveFaculty) {
+    can("read", "ChairpersonSuggestionItem", {
+      ChairpersonSuggestion: {
+        is: {
+          SubmittedChairpersonReview: {
+            is: {
+              IM: {
+                is: {
+                  SubmittedPeerReview: {
+                    is: {
+                      PeerReview: {
+                        is: {
+                          facultyId: {
+                            equals: user.ActiveFaculty.facultyId,
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    });
   }
 
   if (user?.ActiveFaculty) {
@@ -443,6 +512,26 @@ export default async function userAbility(user) {
     });
   }
 
+  if (user?.ActiveFaculty) {
+    can("read", "SubmittedCoordinatorReview", {
+      IM: {
+        is: {
+          SubmittedPeerReview: {
+            is: {
+              PeerReview: {
+                is: {
+                  facultyId: {
+                    equals: user.ActiveFaculty.facultyId,
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    });
+  }
+
   // CoordinatorSuggestion
   if (user?.ActiveFaculty?.ActiveCoordinator) {
     can("connectToCoordinatorSuggestion", "SubmittedCoordinatorReview", {
@@ -462,6 +551,30 @@ export default async function userAbility(user) {
             is: {
               coordinatorId: {
                 equals: user.ActiveFaculty.ActiveCoordinator.coordinatorId,
+              },
+            },
+          },
+        },
+      },
+    });
+  }
+
+  if (user?.ActiveFaculty) {
+    can("read", "CoordinatorSuggestion", {
+      SubmittedCoordinatorReview: {
+        is: {
+          IM: {
+            is: {
+              SubmittedPeerReview: {
+                is: {
+                  PeerReview: {
+                    is: {
+                      facultyId: {
+                        equals: user.ActiveFaculty.facultyId,
+                      },
+                    },
+                  },
+                },
               },
             },
           },
@@ -545,6 +658,35 @@ export default async function userAbility(user) {
         },
       }
     );
+  }
+  // TODO ensure that peer, chairperson, dean, imd coordinator,
+  // and citl director can still read do the same on other resources
+  if (user?.ActiveFaculty) {
+    can("read", "CoordinatorSuggestionItem", {
+      CoordinatorSuggestion: {
+        is: {
+          SubmittedCoordinatorReview: {
+            is: {
+              IM: {
+                is: {
+                  SubmittedPeerReview: {
+                    is: {
+                      PeerReview: {
+                        is: {
+                          facultyId: {
+                            equals: user.ActiveFaculty.facultyId,
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    });
   }
 
   if (user?.ActiveFaculty) {
