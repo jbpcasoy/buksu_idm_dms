@@ -1027,6 +1027,13 @@ export default async function userAbility(user) {
 
   // ReadNotification
   can("connectToReadNotification", "Notification");
+  if (user) {
+    can("read", "ReadNotification", {
+      userId: {
+        equals: user.id,
+      },
+    });
+  }
 
   return build();
 }
