@@ -6795,5 +6795,30 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "dd7b2e0c-08b5-4a69-804f-64604756faa4",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "b34e26c2-c390-4028-8bef-ebf7b3fc3e8f",
+    "name": "UPDATE LoginRole",
+    "url": "{{host}}/api/login_role?role=FACULTY",
+    "method": "GET",
+    "sortNum": 2440000,
+    "created": "2023-04-26T01:03:14.140Z",
+    "modified": "2023-04-26T01:05:44.355Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{FacultyCookie}}"
+      }
+    ],
+    "params": [
+      {
+        "name": "role",
+        "value": "FACULTY",
+        "isPath": false
+      }
+    ],
+    "tests": []
   }
 ]

@@ -21,7 +21,7 @@
       },
       {
         "name": "FacultyCookie",
-        "value": "next-auth.csrf-token=6347fbb33cfa305560fed7c3413cbd635053b52e5c0b793d97b440566073807c|53eb3c8bb4a054bf3a30dc0bb00c599c4001b39384d1b82c54707d626888318b; next-auth.callback-url=http://localhost:3000/api/login_role?role=FACULTY&redirect=/home; next-auth.session-token=e988af93-2dc8-4f9b-ac99-5fb94cc9f460"
+        "value": "next-auth.csrf-token=07cff308d5d8d31b4d5b7ea72b97f9dd97ea7c0d2ad9664169f3d6d8713e863b|0f6de0814c069d0b1b4a489c7455cd9aad2ccfde740ee720472284638ac49402; next-auth.callback-url=http://localhost:3000/api/login_role?role=FACULTY&redirect=/home; next-auth.session-token=348fe1ed-029e-460d-aedf-b21592102e19"
       }
     ]
   }

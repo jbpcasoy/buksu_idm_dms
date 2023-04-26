@@ -1036,8 +1036,9 @@ export default async function userAbility(user) {
   }
 
   // LoginRole
-  // Can't set LoginRole rules because this function requires a user
-  // LoginRole will remain as public as login route
+  if (user) {
+    can("createOrUpdate", "LoginRole");
+  }
 
   return build();
 }
