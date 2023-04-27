@@ -19,6 +19,16 @@ export default async function submittedPeerReviewAbility({
         },
       },
     });
+
+    can("read", "SubmittedPeerReview", {
+      IM: {
+        is: {
+          ownerId: {
+            equals: user.ActiveFaculty.facultyId,
+          },
+        },
+      },
+    });
   }
 
   if (user?.ActiveFaculty?.ActiveChairperson) {

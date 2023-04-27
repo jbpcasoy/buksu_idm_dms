@@ -23,6 +23,20 @@ export default async function peerSuggestionAbility({ can, cannot, user }) {
         },
       },
     });
+
+    can("read", "PeerSuggestion", {
+      SubmittedPeerReview: {
+        is: {
+          IM: {
+            is: {
+              ownerId: {
+                equals: user.ActiveFaculty.facultyId,
+              },
+            },
+          },
+        },
+      },
+    });
   }
 
   if (user?.ActiveFaculty?.ActiveChairperson) {

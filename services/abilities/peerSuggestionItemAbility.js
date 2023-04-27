@@ -67,6 +67,24 @@ export default async function peerSuggestionItemAbility({ can, cannot, user }) {
         },
       },
     });
+
+    can("read", "PeerSuggestionItem", {
+      PeerSuggestion: {
+        is: {
+          SubmittedPeerReview: {
+            is: {
+              IM: {
+                is: {
+                  ownerId: {
+                    equals: user.ActiveFaculty.facultyId,
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    });
   }
 
   if (user?.ActiveFaculty?.ActiveChairperson) {

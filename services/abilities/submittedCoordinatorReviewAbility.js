@@ -59,5 +59,15 @@ export default async function submittedCoordinatorReviewAbility({
         },
       },
     });
+
+    can("read", "SubmittedCoordinatorReview", {
+      IM: {
+        is: {
+          ownerId: {
+            equals: user.ActiveFaculty.facultyId,
+          },
+        },
+      },
+    });
   }
 }

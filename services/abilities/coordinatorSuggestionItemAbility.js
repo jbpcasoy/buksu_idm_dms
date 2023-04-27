@@ -155,5 +155,23 @@ export default async function coordinatorSuggestionItemAbility({
         },
       },
     });
+
+    can("read", "CoordinatorSuggestionItem", {
+      CoordinatorSuggestion: {
+        is: {
+          SubmittedCoordinatorReview: {
+            is: {
+              IM: {
+                is: {
+                  ownerId: {
+                    equals: user.ActiveFaculty.facultyId,
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    });
   }
 }

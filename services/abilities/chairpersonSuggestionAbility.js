@@ -51,5 +51,19 @@ export default async function chairpersonSuggestionAbility({
         },
       },
     });
+
+    can("read", "ChairpersonSuggestion", {
+      SubmittedChairpersonReview: {
+        is: {
+          IM: {
+            is: {
+              ownerId: {
+                equals: user.ActiveFaculty.facultyId,
+              },
+            },
+          },
+        },
+      },
+    });
   }
 }
