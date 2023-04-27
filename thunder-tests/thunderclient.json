@@ -1388,12 +1388,11 @@
     "method": "GET",
     "sortNum": 460000,
     "created": "2023-02-26T01:21:31.402Z",
-    "modified": "2023-04-14T01:49:46.034Z",
+    "modified": "2023-04-26T08:24:06.893Z",
     "headers": [
       {
         "name": "Cookie",
-        "value": "{{Cookie}}",
-        "isDisabled": true
+        "value": "{{Cookie}}"
       },
       {
         "name": "Cookie",
@@ -1402,7 +1401,8 @@
       },
       {
         "name": "Cookie",
-        "value": "{{AdminCookie}}"
+        "value": "{{AdminCookie}}",
+        "isDisabled": true
       }
     ],
     "params": [
@@ -1433,17 +1433,16 @@
     "_id": "25ba7e8d-046e-470b-a587-2e2d5f96cebd",
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "6d886ec5-bc9e-4b75-a0b7-6922e37da04c",
-    "name": "GET Coordinator",
-    "url": "{{host}}/api/coordinator/clgdg02k5000js9r7jv0oognl",
+    "name": "READ Coordinator",
+    "url": "{{host}}/api/coordinator/clgmdm6yy0007s9eyknqus6o6",
     "method": "GET",
     "sortNum": 470000,
     "created": "2023-02-26T01:21:31.403Z",
-    "modified": "2023-04-14T01:45:58.106Z",
+    "modified": "2023-04-26T08:24:11.408Z",
     "headers": [
       {
         "name": "Cookie",
-        "value": "{{Cookie}}",
-        "isDisabled": true
+        "value": "{{Cookie}}"
       },
       {
         "name": "Cookie",
@@ -1452,7 +1451,8 @@
       },
       {
         "name": "Cookie",
-        "value": "{{AdminCookie}}"
+        "value": "{{AdminCookie}}",
+        "isDisabled": true
       }
     ],
     "params": [],
