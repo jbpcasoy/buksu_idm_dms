@@ -50,4 +50,24 @@ export default async function submittedPeerReviewAbility({
       },
     });
   }
+
+  if (user?.ActiveFaculty?.ActiveCoordinator) {
+    can("read", "SubmittedPeerReview", {
+      IM: {
+        is: {
+          SubmittedCoordinatorReview: {
+            is: {
+              CoordinatorReview: {
+                is: {
+                  coordinatorId: {
+                    equals: user.ActiveFaculty.ActiveCoordinator.coordinatorId,
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    });
+  }
 }

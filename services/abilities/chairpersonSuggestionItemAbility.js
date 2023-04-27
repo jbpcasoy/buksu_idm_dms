@@ -144,4 +144,34 @@ export default async function chairpersonSuggestionItemAbility({
       },
     });
   }
+
+  if (user?.ActiveFaculty?.ActiveCoordinator) {
+    can("read", "ChairpersonSuggestionItem", {
+      ChairpersonSuggestion: {
+        is: {
+          SubmittedChairpersonReview: {
+            is: {
+              IM: {
+                is: {
+                  SubmittedCoordinatorReview: {
+                    is: {
+                      CoordinatorReview: {
+                        is: {
+                          coordinatorId: {
+                            equals:
+                              user.ActiveFaculty.ActiveCoordinator
+                                .coordinatorId,
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    });
+  }
 }

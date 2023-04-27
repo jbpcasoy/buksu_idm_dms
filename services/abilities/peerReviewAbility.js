@@ -17,6 +17,9 @@ export default async function peerReviewAbility({ can, cannot, user }) {
           ],
         },
       },
+      status: {
+        equals: "SUBMITTED",
+      },
     });
 
     can("read", "PeerReview", {

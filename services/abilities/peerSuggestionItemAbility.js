@@ -117,6 +117,36 @@ export default async function peerSuggestionItemAbility({ can, cannot, user }) {
     });
   }
 
+  if (user?.ActiveFaculty?.ActiveCoordinator) {
+    can("read", "PeerSuggestionItem", {
+      PeerSuggestion: {
+        is: {
+          SubmittedPeerReview: {
+            is: {
+              IM: {
+                is: {
+                  SubmittedCoordinatorReview: {
+                    is: {
+                      CoordinatorReview: {
+                        is: {
+                          coordinatorId: {
+                            equals:
+                              user.ActiveFaculty.ActiveCoordinator
+                                .coordinatorId,
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    });
+  }
+
   if (user?.ActiveFaculty) {
     can("update", "PeerSuggestionItem", ["actionTaken"], {
       PeerSuggestion: {

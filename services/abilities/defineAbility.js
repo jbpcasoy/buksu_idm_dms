@@ -5,7 +5,7 @@ import coordinatorAbility from "./coordinatorAbility";
 import activeFacultyAbility from "./activeFacultyAbility";
 import departmentAbility from "./departmentAbility";
 import chairpersonReviewAbility from "./chairpersonReviewAbility";
-import chairpersonReviewItemAbility from "./chairpersonReviewItem";
+import chairpersonReviewItemAbility from "./chairpersonReviewItemAbility";
 import submittedChairpersonReviewAbility from "./submittedChairpersonReviewAbility";
 import chairpersonSuggestionAbility from "./chairpersonSuggestionAbility";
 import chairpersonSuggestionItemAbility from "./chairpersonSuggestionItemAbility";

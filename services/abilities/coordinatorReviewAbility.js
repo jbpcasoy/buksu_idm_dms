@@ -16,6 +16,9 @@ export default async function coordinatorReviewAbility({ can, cannot, user }) {
           },
         },
       },
+      status: {
+        equals: "SUBMITTED",
+      },
     });
 
     can("read", "CoordinatorReview", {

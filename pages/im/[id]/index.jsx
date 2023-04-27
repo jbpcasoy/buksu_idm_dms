@@ -176,16 +176,18 @@ export default function ViewIM() {
                 <li>
                   {/*  EDIT IM should be visible and accessible only for the owner of the IM
                    */}
-                  {iM && iM.owner.userId === user?.id && (
-                    <button
-                      data-modal-target='im-update-modal'
-                      data-modal-toggle='im-update-modal'
-                      className='block text-sm  text-left px-4 py-2.5  hover:bg-gray-100 w-full'
-                      type='button'
-                    >
-                      Edit IM
-                    </button>
-                  )}
+                  {iM &&
+                    iM.owner.userId === user?.id &&
+                    iM.status === "DRAFT" && (
+                      <button
+                        data-modal-target='im-update-modal'
+                        data-modal-toggle='im-update-modal'
+                        className='block text-sm  text-left px-4 py-2.5  hover:bg-gray-100 w-full'
+                        type='button'
+                      >
+                        Edit IM
+                      </button>
+                    )}
                 </li>
 
                 {iM &&
@@ -242,7 +244,8 @@ export default function ViewIM() {
                 <li>
                   {user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId &&
                     user?.ActiveFaculty?.Faculty?.departmentId ===
-                      iM?.owner?.departmentId && (
+                      iM?.owner?.departmentId &&
+                    iM?.status === "SUBMITTED" && (
                       <button
                         disabled={
                           iM?.SubmittedPeerSuggestion ||
@@ -271,7 +274,8 @@ export default function ViewIM() {
                     user?.ActiveFaculty?.ActiveCoordinator) &&
                     user?.ActiveFaculty?.ActiveCoordinator &&
                     user?.ActiveFaculty?.Faculty?.departmentId ===
-                      iM?.owner?.departmentId && (
+                      iM?.owner?.departmentId &&
+                    iM?.status === "SUBMITTED" && (
                       <button
                         onClick={() =>
                           router.push(`/im/${iM?.id}/review/coordinator`)
@@ -306,7 +310,8 @@ export default function ViewIM() {
                     user?.ActiveFaculty?.ActiveChairperson) &&
                     user?.ActiveFaculty?.ActiveChairperson &&
                     user?.ActiveFaculty?.Faculty?.departmentId ===
-                      iM?.owner?.departmentId && (
+                      iM?.owner?.departmentId &&
+                    iM?.status === "SUBMITTED" && (
                       <button
                         onClick={() =>
                           router.push(`/im/${iM?.id}/review/chairperson`)

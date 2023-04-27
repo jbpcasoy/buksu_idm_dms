@@ -4,6 +4,7 @@ import CoordinatorSuggestionView from "@/components/review/suggestion/suggestion
 import PeerSuggestionView from "@/components/review/suggestion/suggestion_view/PeerSuggestionView";
 import UserContext from "@/contexts/UserContext";
 import useIM from "@/hooks/useIM";
+import frontendCreateActiveFile from "@/services/frontend/active_file/frontendCreateActiveFile";
 import frontendUpdateActiveFile from "@/services/frontend/active_file/frontendUpdateIMFile";
 import frontendCreateFile from "@/services/frontend/file/frontendCreateFile";
 import uploadIMFile from "@/services/frontend/im/upload/uploadIMFile";
@@ -27,11 +28,18 @@ export default function ViewIM() {
       originalFileName: file.name,
       fileName: res.filename,
     });
-    await frontendUpdateActiveFile(iM.ActiveFile.id, {
+    await frontendUpdateActiveFile(iM?.ActiveFile?.id, {
       fileId: createdFile.id,
-    }).then((res) => {
-      router.push(`/im/${router.query.id}`);
-    });
+    })
+      .catch((err) => {
+        return frontendCreateActiveFile({
+          iMId: iM.id,
+          fileId: createdFile.id,
+        });
+      })
+      .finally((res) => {
+        router.push(`/im/${router.query.id}`);
+      });
   }
 
   useEffect(() => {

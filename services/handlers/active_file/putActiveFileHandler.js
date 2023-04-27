@@ -3,7 +3,6 @@ import readActiveFile from "@/services/api/active_file/readActiveFile";
 import updateActiveFile from "@/services/api/active_file/updateActiveFile";
 import readFile from "@/services/api/file/readFile";
 import getServerUser from "@/services/helpers/getServerUser";
-import statusError from "@/services/helpers/throwError";
 import abilityValidator from "@/services/validator/abilityValidator";
 import { subject } from "@casl/ability";
 import { permittedFieldsOf } from "@casl/ability/extra";
@@ -12,7 +11,8 @@ import _ from "lodash";
 export default async function putActiveFileHandler(req, res) {
   const { id } = req.query;
   const { fileId } = req.body;
-  const file = await readFile(fileId);
+  const user = await getServerUser(req, res);
+  const file = await readFile({ id: fileId, ability: await userAbility(user) });
 
   async function findSubject({ id }) {
     const user = await getServerUser(req, res);
@@ -24,7 +24,6 @@ export default async function putActiveFileHandler(req, res) {
     return subject;
   }
 
-  const user = await getServerUser(req, res);
   const activeFile = await findSubject({ id });
   return abilityValidator({
     req,

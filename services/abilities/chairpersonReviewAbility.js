@@ -16,6 +16,9 @@ export default async function chairpersonReviewAbility({ can, cannot, user }) {
           },
         },
       },
+      status: {
+        equals: "SUBMITTED",
+      },
     });
 
     can("read", "ChairpersonReview", {

@@ -21,6 +21,26 @@ export default async function submittedChairpersonReviewAbility({
     });
   }
 
+  if (user?.ActiveFaculty?.ActiveCoordinator) {
+    can("read", "SubmittedChairpersonReview", {
+      IM: {
+        is: {
+          SubmittedCoordinatorReview: {
+            is: {
+              CoordinatorReview: {
+                is: {
+                  coordinatorId: {
+                    equals: user.ActiveFaculty.ActiveCoordinator.coordinatorId,
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    });
+  }
+
   if (user?.ActiveFaculty) {
     can("read", "SubmittedChairpersonReview", {
       IM: {

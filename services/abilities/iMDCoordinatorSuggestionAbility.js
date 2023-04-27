@@ -4,7 +4,11 @@ export default async function iMDCoordinatorSuggestionAbility({
   user,
 }) {
   if (user?.IMDCoordinator?.ActiveIMDCoordinator) {
-    can("connectToIMDCoordinatorSuggestion", "IM");
+    can("connectToIMDCoordinatorSuggestion", "IM", {
+      status: {
+        equals: "DEPARTMENT_ENDORSED",
+      },
+    });
 
     can("read", "IMDCoordinatorSuggestion", {
       iMDCoordinatorId: {
