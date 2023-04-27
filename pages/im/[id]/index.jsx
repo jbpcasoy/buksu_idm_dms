@@ -245,13 +245,14 @@ export default function ViewIM() {
                   {user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId &&
                     user?.ActiveFaculty?.Faculty?.departmentId ===
                       iM?.owner?.departmentId &&
-                    iM?.status === "SUBMITTED" && (
+                    iM.status !== "DRAFT" && (
                       <button
                         disabled={
                           iM?.SubmittedPeerSuggestion ||
                           (iM?.SubmittedPeerReview &&
                             user?.ActiveFaculty?.facultyId !==
-                              iM?.SubmittedPeerReview?.PeerReview?.facultyId)
+                              iM?.SubmittedPeerReview?.PeerReview?.facultyId) ||
+                          iM?.status !== "SUBMITTED"
                         }
                         title={
                           iM?.SubmittedPeerReview &&
@@ -275,7 +276,7 @@ export default function ViewIM() {
                     user?.ActiveFaculty?.ActiveCoordinator &&
                     user?.ActiveFaculty?.Faculty?.departmentId ===
                       iM?.owner?.departmentId &&
-                    iM?.status === "SUBMITTED" && (
+                    iM.status !== "DRAFT" && (
                       <button
                         onClick={() =>
                           router.push(`/im/${iM?.id}/review/coordinator`)
@@ -286,7 +287,8 @@ export default function ViewIM() {
                             user?.ActiveFaculty?.ActiveCoordinator
                               ?.coordinatorId !==
                               iM?.SubmittedCoordinatorReview?.CoordinatorReview
-                                ?.coordinatorId)
+                                ?.coordinatorId) ||
+                          iM?.status !== "SUBMITTED"
                         }
                         title={
                           iM?.SubmittedCoordinatorReview &&
@@ -311,7 +313,7 @@ export default function ViewIM() {
                     user?.ActiveFaculty?.ActiveChairperson &&
                     user?.ActiveFaculty?.Faculty?.departmentId ===
                       iM?.owner?.departmentId &&
-                    iM?.status === "SUBMITTED" && (
+                    iM.status !== "DRAFT" && (
                       <button
                         onClick={() =>
                           router.push(`/im/${iM?.id}/review/chairperson`)
@@ -322,7 +324,8 @@ export default function ViewIM() {
                             user?.ActiveFaculty?.ActiveChairperson
                               ?.chairpersonId !==
                               iM?.SubmittedChairpersonReview?.ChairpersonReview
-                                ?.chairpersonId)
+                                ?.chairpersonId) ||
+                          iM?.status !== "SUBMITTED"
                         }
                         title={
                           iM?.SubmittedChairpersonReview &&

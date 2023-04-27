@@ -18,24 +18,6 @@ export default async function coordinatorSuggestionItemAbility({
       },
     });
 
-    can("read", "CoordinatorSuggestionItem", {
-      CoordinatorSuggestion: {
-        is: {
-          SubmittedCoordinatorReview: {
-            is: {
-              CoordinatorReview: {
-                is: {
-                  coordinatorId: {
-                    equals: user.ActiveFaculty.ActiveCoordinator.coordinatorId,
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
-    });
-
     can("delete", "CoordinatorSuggestionItem", {
       CoordinatorSuggestion: {
         is: {
@@ -80,64 +62,6 @@ export default async function coordinatorSuggestionItemAbility({
   }
 
   if (user?.ActiveFaculty) {
-    can("read", "CoordinatorSuggestionItem", {
-      CoordinatorSuggestion: {
-        is: {
-          SubmittedCoordinatorReview: {
-            is: {
-              IM: {
-                is: {
-                  SubmittedPeerReview: {
-                    is: {
-                      PeerReview: {
-                        is: {
-                          facultyId: {
-                            equals: user.ActiveFaculty.facultyId,
-                          },
-                        },
-                      },
-                    },
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
-    });
-  }
-
-  if (user?.ActiveFaculty?.ActiveChairperson) {
-    can("read", "CoordinatorSuggestionItem", {
-      CoordinatorSuggestion: {
-        is: {
-          SubmittedCoordinatorReview: {
-            is: {
-              IM: {
-                is: {
-                  SubmittedChairpersonReview: {
-                    is: {
-                      ChairpersonReview: {
-                        is: {
-                          chairpersonId: {
-                            equals:
-                              user.ActiveFaculty.ActiveChairperson
-                                .chairpersonId,
-                          },
-                        },
-                      },
-                    },
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
-    });
-  }
-
-  if (user?.ActiveFaculty) {
     can("update", "CoordinatorSuggestionItem", ["actionTaken"], {
       CoordinatorSuggestion: {
         is: {
@@ -163,8 +87,10 @@ export default async function coordinatorSuggestionItemAbility({
             is: {
               IM: {
                 is: {
-                  ownerId: {
-                    equals: user.ActiveFaculty.facultyId,
+                  owner: {
+                    departmentId: {
+                      equals: user.ActiveFaculty.Faculty.departmentId,
+                    },
                   },
                 },
               },

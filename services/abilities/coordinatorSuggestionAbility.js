@@ -13,45 +13,6 @@ export default async function coordinatorSuggestionAbility({
         },
       },
     });
-
-    can("read", "CoordinatorSuggestion", {
-      SubmittedCoordinatorReview: {
-        is: {
-          CoordinatorReview: {
-            is: {
-              coordinatorId: {
-                equals: user.ActiveFaculty.ActiveCoordinator.coordinatorId,
-              },
-            },
-          },
-        },
-      },
-    });
-  }
-
-  if (user?.ActiveFaculty?.ActiveChairperson) {
-    can("read", "CoordinatorSuggestion", {
-      SubmittedCoordinatorReview: {
-        is: {
-          IM: {
-            is: {
-              SubmittedChairpersonReview: {
-                is: {
-                  ChairpersonReview: {
-                    is: {
-                      chairpersonId: {
-                        equals:
-                          user.ActiveFaculty.ActiveChairperson.chairpersonId,
-                      },
-                    },
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
-    });
   }
 
   if (user?.ActiveFaculty) {
@@ -60,30 +21,10 @@ export default async function coordinatorSuggestionAbility({
         is: {
           IM: {
             is: {
-              SubmittedPeerReview: {
-                is: {
-                  PeerReview: {
-                    is: {
-                      facultyId: {
-                        equals: user.ActiveFaculty.facultyId,
-                      },
-                    },
-                  },
+              owner: {
+                departmentId: {
+                  equals: user.ActiveFaculty.Faculty.departmentId,
                 },
-              },
-            },
-          },
-        },
-      },
-    });
-
-    can("read", "CoordinatorSuggestion", {
-      SubmittedCoordinatorReview: {
-        is: {
-          IM: {
-            is: {
-              ownerId: {
-                equals: user.ActiveFaculty.facultyId,
               },
             },
           },

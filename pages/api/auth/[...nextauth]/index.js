@@ -36,6 +36,7 @@ export const authOptions = {
                 ActiveChairperson: true,
                 ActiveCoordinator: true,
                 ActiveDean: true,
+                Faculty: true,
               },
             },
             CITLDirector: {

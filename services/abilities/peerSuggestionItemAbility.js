@@ -14,24 +14,6 @@ export default async function peerSuggestionItemAbility({ can, cannot, user }) {
       },
     });
 
-    can("read", "PeerSuggestionItem", {
-      PeerSuggestion: {
-        is: {
-          SubmittedPeerReview: {
-            is: {
-              PeerReview: {
-                is: {
-                  facultyId: {
-                    equals: user.ActiveFaculty.facultyId,
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
-    });
-
     can("delete", "PeerSuggestionItem", {
       PeerSuggestion: {
         is: {
@@ -75,67 +57,9 @@ export default async function peerSuggestionItemAbility({ can, cannot, user }) {
             is: {
               IM: {
                 is: {
-                  ownerId: {
-                    equals: user.ActiveFaculty.facultyId,
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
-    });
-  }
-
-  if (user?.ActiveFaculty?.ActiveChairperson) {
-    can("read", "PeerSuggestionItem", {
-      PeerSuggestion: {
-        is: {
-          SubmittedPeerReview: {
-            is: {
-              IM: {
-                is: {
-                  SubmittedChairpersonReview: {
-                    is: {
-                      ChairpersonReview: {
-                        is: {
-                          chairpersonId: {
-                            equals:
-                              user.ActiveFaculty.ActiveChairperson
-                                .chairpersonId,
-                          },
-                        },
-                      },
-                    },
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
-    });
-  }
-
-  if (user?.ActiveFaculty?.ActiveCoordinator) {
-    can("read", "PeerSuggestionItem", {
-      PeerSuggestion: {
-        is: {
-          SubmittedPeerReview: {
-            is: {
-              IM: {
-                is: {
-                  SubmittedCoordinatorReview: {
-                    is: {
-                      CoordinatorReview: {
-                        is: {
-                          coordinatorId: {
-                            equals:
-                              user.ActiveFaculty.ActiveCoordinator
-                                .coordinatorId,
-                          },
-                        },
-                      },
+                  owner: {
+                    departmentId: {
+                      equals: user.ActiveFaculty.Faculty.departmentId,
                     },
                   },
                 },
