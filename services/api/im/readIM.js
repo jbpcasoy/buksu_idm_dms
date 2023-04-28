@@ -21,11 +21,7 @@ export default async function readIM({ id, filter = {}, ability }) {
           DeanEndorsement: true,
         },
       },
-      IMDCoordinatorEndorsement: {
-        include: {
-          CITLDirectorEndorsement: true,
-        },
-      },
+      IMDCoordinatorEndorsement: true,
       SubmittedChairpersonSuggestion: true,
       SubmittedCoordinatorSuggestion: true,
       SubmittedPeerSuggestion: true,

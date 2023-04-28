@@ -27,7 +27,6 @@ export default async function getImsHandler(req, res) {
     toRevise,
     iMDCoordinatorEndorsed,
     endorsedByIMDCoordinator,
-    CITLDirectorEndorsed,
     endorsedByCITLDirector,
   } = req.query;
   const user = await getServerUser(req, res);
@@ -60,9 +59,6 @@ export default async function getImsHandler(req, res) {
       ? JSON.parse(iMDCoordinatorEndorsed)
       : undefined,
     endorsedByIMDCoordinator,
-    CITLDirectorEndorsed: CITLDirectorEndorsed
-      ? JSON.parse(CITLDirectorEndorsed)
-      : undefined,
     endorsedByCITLDirector,
     ability: await userAbility(user),
   });

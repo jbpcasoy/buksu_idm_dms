@@ -136,19 +136,6 @@ export default async function readNotifications({
                 },
               },
             },
-            {
-              CITLDirectorEndorsement: {
-                IMDCoordinatorEndorsement: {
-                  IM: {
-                    owner: {
-                      userId: {
-                        contains: userId,
-                      },
-                    },
-                  },
-                },
-              },
-            },
           ],
           ReadNotification:
             read === true
@@ -284,19 +271,6 @@ export default async function readNotifications({
                   owner: {
                     userId: {
                       contains: userId,
-                    },
-                  },
-                },
-              },
-            },
-            {
-              CITLDirectorEndorsement: {
-                IMDCoordinatorEndorsement: {
-                  IM: {
-                    owner: {
-                      userId: {
-                        contains: userId,
-                      },
                     },
                   },
                 },

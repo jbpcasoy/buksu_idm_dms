@@ -195,20 +195,6 @@ export default async function readNotification({ id, ability, filter = {} }) {
           },
         },
       },
-      CITLDirectorEndorsement: {
-        include: {
-          IMDCoordinatorEndorsement: {
-            include: {
-              IM: true,
-              IMDCoordinator: {
-                include: {
-                  User: true,
-                },
-              },
-            },
-          },
-        },
-      },
     },
   });
   return notification;

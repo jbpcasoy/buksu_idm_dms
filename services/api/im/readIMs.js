@@ -27,8 +27,6 @@ export default async function readIMs({
   toRevise,
   iMDCoordinatorEndorsed,
   endorsedByIMDCoordinator,
-  CITLDirectorEndorsed,
-  endorsedByCITLDirector,
   ability,
 }) {
   const prisma = PRISMA_CLIENT;
@@ -184,28 +182,6 @@ export default async function readIMs({
                     },
                   }
                 : undefined,
-            },
-            {
-              IMDCoordinatorEndorsement:
-                CITLDirectorEndorsed === true
-                  ? {
-                      CITLDirectorEndorsement: {
-                        id: {
-                          contains: "",
-                        },
-                      },
-                    }
-                  : CITLDirectorEndorsed === false
-                  ? {
-                      CITLDirectorEndorsement: {
-                        isNot: {
-                          id: {
-                            contains: "",
-                          },
-                        },
-                      },
-                    }
-                  : undefined,
             },
             {
               ownerId: {
@@ -384,28 +360,6 @@ export default async function readIMs({
                     },
                   }
                 : undefined,
-            },
-            {
-              IMDCoordinatorEndorsement:
-                CITLDirectorEndorsed === true
-                  ? {
-                      CITLDirectorEndorsement: {
-                        id: {
-                          contains: "",
-                        },
-                      },
-                    }
-                  : CITLDirectorEndorsed === false
-                  ? {
-                      CITLDirectorEndorsement: {
-                        isNot: {
-                          id: {
-                            contains: "",
-                          },
-                        },
-                      },
-                    }
-                  : undefined,
             },
             {
               ownerId: {

@@ -5,7 +5,6 @@ import IMDCoordinatorSuggestionView from "@/components/review/suggestion/suggest
 import PeerSuggestionView from "@/components/review/suggestion/suggestion_view/PeerSuggestionView";
 import UserContext from "@/contexts/UserContext";
 import useIM from "@/hooks/useIM";
-import frontendCreateCITLDirectorEndorsement from "@/services/frontend/citl_director_endorsement/frontendCreateCITLDirectorEndorsement";
 import frontendCreateCoordinatorEndorsement from "@/services/frontend/coordinator_endorsement/frontendCreateCoordinatorEndorsement";
 import frontendCreateDeanEndorsement from "@/services/frontend/dean_endorsement/frontendCreateDeanEndorsement";
 import frontendReturnIMDCoordinatorRevision from "@/services/frontend/im/frontendReturnIMDCoordinatorRevision";
@@ -51,14 +50,6 @@ export default function ViewIM() {
   async function handleConfirmEndorsement() {
     return frontendCreateDeanEndorsement({
       coordinatorEndorsementId: iM.CoordinatorEndorsement.id,
-    }).then((res) => {
-      refreshIM();
-    });
-  }
-
-  async function handleCITLDirectorConfirmEndorsement() {
-    return frontendCreateCITLDirectorEndorsement({
-      iMDCoordinatorEndorsementId: iM.IMDCoordinatorEndorsement.id,
     }).then((res) => {
       refreshIM();
     });
@@ -415,7 +406,8 @@ export default function ViewIM() {
                 </li>
                 {/* NOTE: for imd coordinator */}
                 <li>
-                  {iM?.status === "CITL_REVISED" &&
+                  {(iM?.status === "CITL_REVISED" ||
+                    iM?.status === "CITL_ENDORSED") &&
                     user?.IMDCoordinator?.ActiveIMDCoordinator && (
                       <button
                         disabled={iM?.IMDCoordinatorEndorsement}
@@ -448,30 +440,6 @@ export default function ViewIM() {
                             : ""
                         }
                         onClick={handleConfirmEndorsement}
-                        className='block w-full  text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter'
-                      >
-                        Confirm Endorsement
-                      </button>
-                    )}
-                </li>
-                {/* NOTE: for citl director */}
-                <li>
-                  {iM?.status === "CITL_REVISED" &&
-                    user?.CITLDirector?.ActiveCITLDirector && (
-                      <button
-                        disabled={
-                          !iM?.IMDCoordinatorEndorsement ||
-                          iM?.IMDCoordinatorEndorsement?.CITLDirectorEndorsement
-                        }
-                        title={
-                          !iM?.IMDCoordinatorEndorsement
-                            ? "Pending IMD coordinator endorsement"
-                            : iM?.IMDCoordinatorEndorsement
-                                ?.CITLDirectorEndorsement
-                            ? "Endorsement already confirmed"
-                            : ""
-                        }
-                        onClick={handleCITLDirectorConfirmEndorsement}
                         className='block w-full  text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter'
                       >
                         Confirm Endorsement

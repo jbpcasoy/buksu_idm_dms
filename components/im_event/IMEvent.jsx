@@ -1,5 +1,4 @@
 import useIMEvent from "@/hooks/im_event/useIMEvent";
-import IMCITLDirectorEndorsementEvent from "./IMCITLDirectorEndorsementEvent";
 import IMCITLReviewedEvent from "./IMCITLReviewedEvent";
 import IMCITLRevisedEvent from "./IMCITLRevisedEvent";
 import IMCoordinatorEndorsementEvent from "./IMCoordinatorEndorsementEvent";
@@ -54,7 +53,5 @@ export default function IMEvent({ iMEventId }) {
     return <IMCITLRevisedEvent iMEvent={iMEvent} />;
   } else if (iMEvent?.IMEventType === "IMD_COORDINATOR_ENDORSEMENT") {
     return <IMIMDCoordinatorEndorsementEvent iMEvent={iMEvent} />;
-  } else if (iMEvent?.IMEventType === "CITL_DIRECTOR_ENDORSEMENT") {
-    return <IMCITLDirectorEndorsementEvent iMEvent={iMEvent} />;
-  }
+  } 
 }

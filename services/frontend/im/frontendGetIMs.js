@@ -24,7 +24,6 @@ export default async function frontendGetIMs({
   toRevise,
   iMDCoordinatorEndorsed,
   endorsedByIMDCoordinator,
-  CITLDirectorEndorsed,
   endorsedByCITLDirector,
 }) {
   try {
@@ -53,7 +52,6 @@ export default async function frontendGetIMs({
         toRevise,
         iMDCoordinatorEndorsed,
         endorsedByIMDCoordinator,
-        CITLDirectorEndorsed,
         endorsedByCITLDirector,
       },
     });

@@ -14,7 +14,7 @@ export default function useCITLConfirmedCount() {
       return frontendGetIMs({
         ...filter,
         status: "CITL_ENDORSED",
-        CITLDirectorEndorsed: true,
+        iMDCoordinatorEndorsed: true,
         endorsedByCITLDirector: user.CITLDirector.id,
       });
     }

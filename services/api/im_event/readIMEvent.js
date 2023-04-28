@@ -202,20 +202,6 @@ export default async function readIMEvent({ id, filter = {}, ability }) {
           },
         },
       },
-      CITLDirectorEndorsement: {
-        include: {
-          CITLDirector: {
-            include: {
-              User: true,
-            },
-          },
-          IMDCoordinatorEndorsement: {
-            include: {
-              IM: true,
-            },
-          },
-        },
-      },
     },
   });
   return iMEvent;

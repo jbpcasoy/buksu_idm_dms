@@ -32,7 +32,14 @@ export default function Home() {
   const router = useRouter();
 
   useEffect(() => {
-    if (!user || !user?.IMDCoordinator?.ActiveIMDCoordinator) return;
+    if (
+      !user ||
+      !(
+        user?.IMDCoordinator?.ActiveIMDCoordinator ||
+        user?.CITLDirector?.ActiveCITLDirector
+      )
+    )
+      return;
     let subscribe = true;
     setLoading(true);
 
@@ -86,17 +93,20 @@ export default function Home() {
 
   return (
     <Layout>
-      {user && !user?.IMDCoordinator?.ActiveIMDCoordinator && !userLoading && (
-        <div className=' flex-wrap grid text-center justify-items-center  border min-h-fit border-slate-300  bg-CITLWhite m-2 p-3 rounded-lg shadow-lg overflow-hidden'>
-          <div className='px-6 py-4 md:w-10/12 sm:w-12/12'>
-            <h3 className='text-3xl font-bold text-CITLDarkBlue'>
-              Unauthorized
-            </h3>
-            <p className='text-gray-600 mt-2 pb-5'>
-              You are currently not an active faculty, please contact
-              administrator.
-            </p>
-            {/* <button className="items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-CITLDarkBlue rounded-lg ">
+      {user &&
+        !user?.IMDCoordinator?.ActiveIMDCoordinator &&
+        !user?.CITLDirector?.ActiveCITLDirector &&
+        !userLoading && (
+          <div className=' flex-wrap grid text-center justify-items-center  border min-h-fit border-slate-300  bg-CITLWhite m-2 p-3 rounded-lg shadow-lg overflow-hidden'>
+            <div className='px-6 py-4 md:w-10/12 sm:w-12/12'>
+              <h3 className='text-3xl font-bold text-CITLDarkBlue'>
+                Unauthorized
+              </h3>
+              <p className='text-gray-600 mt-2 pb-5'>
+                You are currently not an active faculty, please contact
+                administrator.
+              </p>
+              {/* <button className="items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-CITLDarkBlue rounded-lg ">
             Read more
             <svg
               className="w-3 h-3 ml-2"
@@ -111,15 +121,16 @@ export default function Home() {
               ></path>
             </svg>
           </button> */}
+            </div>
+            <img
+              className=' md:w-2/12 sm:w-12/12 rounded-lg '
+              src='/IMAGES/undraw_personal_information_re_vw8a.svg'
+              alt='Unauthorized'
+            />
           </div>
-          <img
-            className=' md:w-2/12 sm:w-12/12 rounded-lg '
-            src='/IMAGES/undraw_personal_information_re_vw8a.svg'
-            alt='Unauthorized'
-          />
-        </div>
-      )}
-      {user?.IMDCoordinator?.ActiveIMDCoordinator && (
+        )}
+      {(user?.IMDCoordinator?.ActiveIMDCoordinator ||
+        user?.CITLDirector?.ActiveCITLDirector) && (
         <div className=' grid grid-flow-row items-center border border-CITLGray-lighter bg-CITLWhite m-2 mt-5 relative rounded-lg shadow-lg overflow-x-auto'>
           <div className=' bg-CITLGray-light py-3 px-3 pr-3'>
             <div className='w-full  grid grid-flow-col '>

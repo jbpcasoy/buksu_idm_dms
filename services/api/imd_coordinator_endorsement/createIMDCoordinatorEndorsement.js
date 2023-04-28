@@ -1,5 +1,6 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
 import readSubmittedIMDCoordinatorSuggestion from "../submitted_imd_coordinator_suggestion/readSubmittedIMDCoordinatorSuggestion";
+import updateIM from "../im/updateIM";
 
 export default async function createIMDCoordinatorEndorsement({
   iMDCoordinatorId,
@@ -44,6 +45,14 @@ export default async function createIMDCoordinatorEndorsement({
         },
       },
     });
+
+  await updateIM(
+    submittedIMDCoordinatorSuggestion.IMDCoordinatorSuggestion.iMId,
+    {
+      status: "CITL_ENDORSED",
+    },
+    ability
+  );
 
   return iMDCoordinatorEndorsement;
 }

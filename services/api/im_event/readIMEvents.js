@@ -32,15 +32,6 @@ export default async function readIMEvents({
                   },
                 },
                 {
-                  CITLDirectorEndorsement: {
-                    IMDCoordinatorEndorsement: {
-                      iMId: {
-                        contains: iMId,
-                      },
-                    },
-                  },
-                },
-                {
                   DeanEndorsement: {
                     CoordinatorEndorsement: {
                       iMId: {
@@ -252,15 +243,6 @@ export default async function readIMEvents({
                   CoordinatorEndorsement: {
                     iMId: {
                       contains: iMId,
-                    },
-                  },
-                },
-                {
-                  CITLDirectorEndorsement: {
-                    IMDCoordinatorEndorsement: {
-                      iMId: {
-                        contains: iMId,
-                      },
                     },
                   },
                 },

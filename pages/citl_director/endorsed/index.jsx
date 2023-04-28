@@ -40,7 +40,7 @@ export default function Home() {
       return frontendGetIMs({
         ...filter,
         status: "CITL_ENDORSED",
-        CITLDirectorEndorsed: true,
+        iMDCoordinatorEndorsed: true,
         endorsedByCITLDirector: user.CITLDirector.id,
       });
     }
