@@ -41,6 +41,7 @@ export default function AdminChairperson({ chairperson }) {
     <AdminChairpersonView
       image={chairpersonData.Faculty.user.image}
       name={chairpersonData.Faculty.user.name}
+      email={chairpersonData.Faculty.user.email}
       department={chairpersonData.Faculty.department.name}
       college={chairpersonData.Faculty.department.college.name}
       active={Boolean(chairpersonData.ActiveChairperson)}

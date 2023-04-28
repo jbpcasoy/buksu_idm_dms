@@ -32,6 +32,7 @@ export default function AdminChairpersonPage() {
     limit: 5,
     page: 0,
     name: "",
+    email: "",
     departmentName: "",
     collegeName: "",
     openAdd: false,
@@ -47,6 +48,7 @@ export default function AdminChairpersonPage() {
       limit: state.limit,
       page: state.page + 1,
       name: state.name,
+      email: state.email,
       departmentName: state.departmentName,
       collegeName: state.collegeName,
       active: state.active,
@@ -97,6 +99,14 @@ export default function AdminChairpersonPage() {
     handleDepartmentNameChange,
     800
   );
+
+  function handleEmailChange(e) {
+    setState((prev) => ({
+      ...prev,
+      email: e.target.value,
+    }));
+  }
+  const debouncedHandleEmailChange = _.debounce(handleEmailChange, 800);
 
   function handleCollegeNameChange(e) {
     setState((prev) => ({
@@ -160,6 +170,11 @@ export default function AdminChairpersonPage() {
           />
           <TextField
             size='small'
+            label='Email'
+            onChange={debouncedHandleEmailChange}
+          />
+          <TextField
+            size='small'
             label='Department'
             onChange={debouncedHandleDepartmentChange}
           />
@@ -176,6 +191,7 @@ export default function AdminChairpersonPage() {
             sortColumn={state.sortColumn}
             sortOptions={[
               { value: "Faculty.user.name", label: "Name" },
+              { value: "Faculty.user.email", label: "Email" },
               { value: "Faculty.department.name", label: "Department" },
               { value: "Faculty.department.college.name", label: "College" },
             ]}
@@ -188,6 +204,7 @@ export default function AdminChairpersonPage() {
               <TableRow>
                 <TableCell>Image</TableCell>
                 <TableCell>Name</TableCell>
+                <TableCell>Email</TableCell>
                 <TableCell>Department</TableCell>
                 <TableCell>College</TableCell>
                 <TableCell align='center'>Active</TableCell>

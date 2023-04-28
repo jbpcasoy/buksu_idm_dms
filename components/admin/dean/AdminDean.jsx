@@ -39,6 +39,7 @@ export default function AdminDean({ dean }) {
     <AdminDeanView
       image={deanData?.Faculty?.user?.image}
       name={deanData?.Faculty?.user?.name}
+      email={deanData?.Faculty?.user.email}
       departmentName={deanData?.Faculty?.department?.name}
       collegeName={deanData?.Faculty?.department?.college?.name}
       onDelete={onDelete}

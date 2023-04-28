@@ -10,6 +10,7 @@ export default async function getChairpersonsHandler(req, res) {
     departmentName,
     collegeName,
     active,
+    email,
     sortColumn = "Faculty.user.name",
     sortOrder = "asc",
   } = req.query;
@@ -25,6 +26,7 @@ export default async function getChairpersonsHandler(req, res) {
     active: active ? JSON.parse(active) : undefined,
     sortColumn,
     sortOrder,
+    email,
     ability: await userAbility(user),
   });
 

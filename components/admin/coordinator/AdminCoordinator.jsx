@@ -39,6 +39,7 @@ export default function AdminCoordinator({ coordinator }) {
     <AdminCoordinatorView
       image={coordinatorData.Faculty.user.image}
       name={coordinatorData.Faculty.user.name}
+      email={coordinatorData.Faculty.user.email}
       department={coordinatorData.Faculty.department.name}
       college={coordinatorData.Faculty.department.college.name}
       active={Boolean(coordinatorData.ActiveCoordinator)}

@@ -8,6 +8,8 @@ export default async function readCITLDirectors({
   name,
   sortColumn,
   sortOrder,
+  active,
+  email,
   ability,
 }) {
   const prisma = PRISMA_CLIENT;
@@ -31,7 +33,25 @@ export default async function readCITLDirectors({
             name: {
               contains: name,
             },
+            email: {
+              contains: email,
+              // mode: "insensitive",
+            },
           },
+          ActiveCITLDirector:
+            active === true
+              ? {
+                  id: {
+                    contains: "",
+                  },
+                }
+              : active === false
+              ? {
+                  isNot: {
+                    id: { contains: "" },
+                  },
+                }
+              : undefined,
         },
       ],
     },
@@ -46,7 +66,25 @@ export default async function readCITLDirectors({
             name: {
               contains: name,
             },
+            email: {
+              contains: email,
+              // mode: "insensitive",
+            },
           },
+          ActiveCITLDirector:
+            active === true
+              ? {
+                  id: {
+                    contains: "",
+                  },
+                }
+              : active === false
+              ? {
+                  isNot: {
+                    id: { contains: "" },
+                  },
+                }
+              : undefined,
         },
       ],
     },

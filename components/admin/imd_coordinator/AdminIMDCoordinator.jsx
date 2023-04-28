@@ -47,6 +47,7 @@ export default function AdminIMDCoordinator({ iMDCoordinator }) {
     <AdminIMDCoordinatorView
       image={iMDCoordinatorData.User.image}
       name={iMDCoordinatorData.User.name}
+      email={iMDCoordinatorData.User.email}
       onDelete={onDelete}
       active={Boolean(iMDCoordinatorData.ActiveIMDCoordinator)}
       onActivate={onActivate}

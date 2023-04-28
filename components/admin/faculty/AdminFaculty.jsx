@@ -41,6 +41,7 @@ export default function AdminFaculty({ faculty }) {
     <AdminFacultyView
       image={facultyData.user.image}
       name={facultyData.user.name}
+      email={facultyData.user.email}
       departmentName={facultyData?.department?.name}
       collegeName={facultyData?.department?.college?.name}
       onDelete={onDelete}

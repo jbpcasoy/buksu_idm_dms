@@ -4,6 +4,7 @@ export default async function frontendReadDeans({
   limit,
   page,
   name,
+  email,
   departmentName,
   collegeName,
   active,
@@ -15,6 +16,7 @@ export default async function frontendReadDeans({
       params: {
         limit,
         page,
+        email,
         name,
         departmentName,
         collegeName,

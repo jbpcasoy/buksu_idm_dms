@@ -4,6 +4,7 @@ import frontendCreateIMDCoordinator from "@/services/frontend/imd_coordinator/fr
 import frontendReadIMDCoordinators from "@/services/frontend/imd_coordinator/frontendReadIMDCoordinators";
 import AdminAddIMDCoordinatorForm from "@/views/admin/imd_coordinator/AdminAddIMDCoordinatorForm";
 import Sort from "@/views/admin/Sort";
+import ActiveFilter from "@/views/forms/ActiveFilter";
 import AddIcon from "@mui/icons-material/Add";
 import {
   Box,
@@ -32,8 +33,10 @@ export default function AdminIMDCoordinatorPage() {
     page: 0,
     openAdd: false,
     name: "",
+    email: "",
     sortColumn: "User.name",
     sortOrder: "asc",
+    active: null,
   });
 
   useEffect(() => {
@@ -43,6 +46,8 @@ export default function AdminIMDCoordinatorPage() {
       limit: state.limit,
       page: state.page + 1,
       name: state.name,
+      email: state.email,
+      active: state.active,
       sortColumn: state.sortColumn,
       sortOrder: state.sortOrder,
     }).then((res) => {
@@ -90,6 +95,21 @@ export default function AdminIMDCoordinatorPage() {
   }
   const debouncedHandleNameChange = _.debounce(handleNameChange, 800);
 
+  function handleEmailChange(e) {
+    setState((prev) => ({
+      ...prev,
+      email: e.target.value,
+    }));
+  }
+  const debouncedHandleEmailChange = _.debounce(handleEmailChange, 800);
+
+  function handleActiveChange(active) {
+    setState((prev) => ({
+      ...prev,
+      active,
+    }));
+  }
+
   function handleSortByChange(e) {
     setState((prev) => ({
       ...prev,
@@ -130,11 +150,21 @@ export default function AdminIMDCoordinatorPage() {
             label='Name'
             onChange={debouncedHandleNameChange}
           />
+          <TextField
+            size='small'
+            label='Email'
+            onChange={debouncedHandleEmailChange}
+          />
+          <ActiveFilter onChange={handleActiveChange} />
+
           <Sort
             onChangeSortColumn={handleSortByChange}
             onChangeSortOrder={handleSortOrderChange}
             sortColumn={state.sortColumn}
-            sortOptions={[{ value: "User.name", label: "Name" }]}
+            sortOptions={[
+              { value: "User.name", label: "Name" },
+              { value: "User.email", label: "Email" },
+            ]}
             sortOrder={state.sortOrder}
           />
         </Stack>
@@ -144,6 +174,7 @@ export default function AdminIMDCoordinatorPage() {
               <TableRow>
                 <TableCell>Image</TableCell>
                 <TableCell>Name</TableCell>
+                <TableCell>Email</TableCell>
                 <TableCell align='center'>Active</TableCell>
                 <TableCell align='center'>Actions</TableCell>
               </TableRow>

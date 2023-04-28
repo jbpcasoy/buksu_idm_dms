@@ -11,6 +11,7 @@ export default async function readCoordinators({
   active,
   sortColumn,
   sortOrder,
+  email,
   ability,
 }) {
   const prisma = PRISMA_CLIENT;
@@ -30,6 +31,7 @@ export default async function readCoordinators({
             select: {
               name: true,
               image: true,
+              email: true,
             },
           },
           department: {
@@ -54,6 +56,10 @@ export default async function readCoordinators({
             user: {
               name: {
                 contains: name,
+                // mode: "insensitive",
+              },
+              email: {
+                contains: email,
                 // mode: "insensitive",
               },
             },
@@ -95,6 +101,10 @@ export default async function readCoordinators({
             user: {
               name: {
                 contains: name,
+                // mode: "insensitive",
+              },
+              email: {
+                contains: email,
                 // mode: "insensitive",
               },
             },

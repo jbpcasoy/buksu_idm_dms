@@ -7,6 +7,7 @@ export default async function getCoordinatorsHandler(req, res) {
     limit,
     page,
     name,
+    email,
     collegeName,
     departmentName,
     active,
@@ -25,6 +26,7 @@ export default async function getCoordinatorsHandler(req, res) {
     active: active ? JSON.parse(active) : undefined,
     sortColumn,
     sortOrder,
+    email,
     ability: await userAbility(user),
   });
 

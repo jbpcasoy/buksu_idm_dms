@@ -33,6 +33,7 @@ export default function AdminCoordinatorPage() {
     page: 0,
     openAdd: false,
     name: "",
+    email: "",
     departmentName: "",
     collegeName: "",
     active: null,
@@ -47,6 +48,7 @@ export default function AdminCoordinatorPage() {
       limit: state.limit,
       page: state.page + 1,
       name: state.name,
+      email: state.email,
       departmentName: state.departmentName,
       collegeName: state.collegeName,
       active: state.active,
@@ -105,6 +107,14 @@ export default function AdminCoordinatorPage() {
     800
   );
 
+  function handleEmailChange(e) {
+    setState((prev) => ({
+      ...prev,
+      email: e.target.value,
+    }));
+  }
+  const debouncedHandleEmailChange = _.debounce(handleEmailChange, 800);
+
   function handleCollegeNameChange(e) {
     setState((prev) => ({
       ...prev,
@@ -161,6 +171,11 @@ export default function AdminCoordinatorPage() {
           />
           <TextField
             size='small'
+            label='Email'
+            onChange={debouncedHandleEmailChange}
+          />
+          <TextField
+            size='small'
             label='Department'
             onChange={debouncedHandleDepartmentChange}
           />
@@ -177,6 +192,7 @@ export default function AdminCoordinatorPage() {
             sortColumn={state.sortColumn}
             sortOptions={[
               { value: "Faculty.user.name", label: "Name" },
+              { value: "Faculty.user.email", label: "Email" },
               { value: "Faculty.department.name", label: "Department" },
               { value: "Faculty.department.college.name", label: "College" },
             ]}
@@ -189,6 +205,7 @@ export default function AdminCoordinatorPage() {
               <TableRow>
                 <TableCell>Image</TableCell>
                 <TableCell>Name</TableCell>
+                <TableCell>Email</TableCell>
                 <TableCell>Department</TableCell>
                 <TableCell>College</TableCell>
                 <TableCell align='center'>Active</TableCell>

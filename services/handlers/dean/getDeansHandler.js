@@ -10,8 +10,9 @@ export default async function getDeansHandler(req, res) {
     departmentName,
     collegeName,
     active,
-    sortColumn,
-    sortOrder,
+    sortColumn = "Faculty.user.name",
+    sortOrder = "asc",
+    email,
   } = req.query;
 
   const user = await getServerUser(req, res);
@@ -25,6 +26,7 @@ export default async function getDeansHandler(req, res) {
     active: active ? JSON.parse(active) : undefined,
     sortColumn,
     sortOrder,
+    email,
     ability: await userAbility(user),
     ability: await userAbility(user),
   });

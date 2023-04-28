@@ -48,6 +48,7 @@ export default function AdminCITLDirector({ cITLDirector }) {
       image={cITLDirectorData.User.image}
       name={cITLDirectorData.User.name}
       onDelete={onDelete}
+      email={cITLDirectorData.User.email}
       active={Boolean(cITLDirectorData.ActiveCITLDirector)}
       onActivate={onActivate}
       onDeactivate={onDeactivate}

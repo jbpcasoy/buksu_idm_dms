@@ -9,6 +9,8 @@ export default async function readIMDCoordinators({
   sortColumn,
   sortOrder,
   ability,
+  email,
+  active,
 }) {
   const prisma = PRISMA_CLIENT;
   const sortFilter = {};
@@ -31,7 +33,25 @@ export default async function readIMDCoordinators({
             name: {
               contains: name,
             },
+            email: {
+              contains: email,
+              // mode: "insensitive",
+            },
           },
+          ActiveIMDCoordinator:
+            active === true
+              ? {
+                  id: {
+                    contains: "",
+                  },
+                }
+              : active === false
+              ? {
+                  isNot: {
+                    id: { contains: "" },
+                  },
+                }
+              : undefined,
         },
       ],
     },

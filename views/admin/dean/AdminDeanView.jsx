@@ -8,6 +8,7 @@ import AdminDeleteDeanAlert from "./AdminDeleteFacultyAlert";
 export default function AdminDeanView({
   image,
   name,
+  email,
   active,
   collegeName,
   departmentName,
@@ -30,6 +31,7 @@ export default function AdminDeanView({
           <Avatar src={image} />
         </TableCell>
         <TableCell>{name}</TableCell>
+        <TableCell>{email}</TableCell>
         <TableCell>{departmentName}</TableCell>
         <TableCell>{collegeName}</TableCell>
         <TableCell align='center'>

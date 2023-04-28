@@ -9,8 +9,10 @@ export default async function getFacultiesHandler(req, res) {
     name,
     departmentName,
     collegeName,
-    sortColumn = "user.name",
+    sortColumn = "User.name",
     sortOrder = "asc",
+    active,
+    email,
   } = req.query;
 
   const user = await getServerUser(req, res);
@@ -22,6 +24,8 @@ export default async function getFacultiesHandler(req, res) {
     departmentName,
     collegeName,
     sortColumn,
+    active: active ? JSON.parse(active) : undefined,
+    email,
     sortOrder,
     ability: await userAbility(user),
   });

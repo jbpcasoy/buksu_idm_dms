@@ -9,6 +9,8 @@ export default async function getIMDCoordinatorsHandler(req, res) {
     name,
     sortColumn = "User.name",
     sortOrder = "asc",
+    active,
+    email,
   } = req.query;
 
   const user = await getServerUser(req, res);
@@ -19,6 +21,8 @@ export default async function getIMDCoordinatorsHandler(req, res) {
     name,
     sortColumn,
     sortOrder,
+    active: active ? JSON.parse(active) : undefined,
+    email,
     ability: await userAbility(user),
   });
 

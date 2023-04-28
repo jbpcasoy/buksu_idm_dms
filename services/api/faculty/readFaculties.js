@@ -9,6 +9,8 @@ export default async function readFaculties({
   departmentName,
   collegeName,
   sortColumn,
+  active,
+  email,
   sortOrder,
   ability,
 }) {
@@ -25,6 +27,7 @@ export default async function readFaculties({
         select: {
           name: true,
           image: true,
+          email: true,
         },
       },
       department: {
@@ -48,6 +51,10 @@ export default async function readFaculties({
               contains: name,
               // mode: "insensitive",
             },
+            email: {
+              contains: email,
+              // mode: "insensitive",
+            },
           },
           department: {
             name: {
@@ -61,6 +68,20 @@ export default async function readFaculties({
               },
             },
           },
+          ActiveFaculty:
+            active === true
+              ? {
+                  id: {
+                    contains: "",
+                  },
+                }
+              : active === false
+              ? {
+                  isNot: {
+                    id: { contains: "" },
+                  },
+                }
+              : undefined,
         },
       ],
     },
@@ -75,6 +96,10 @@ export default async function readFaculties({
           user: {
             name: {
               contains: name,
+              // mode: "insensitive",
+            },
+            email: {
+              contains: email,
               // mode: "insensitive",
             },
           },

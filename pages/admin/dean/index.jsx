@@ -33,6 +33,7 @@ export default function AdminDeanPage() {
     page: 0,
     openAdd: false,
     name: "",
+    email: "",
     departmentName: "",
     collegeName: "",
     active: null,
@@ -47,6 +48,7 @@ export default function AdminDeanPage() {
       limit: state.limit,
       page: state.page + 1,
       name: state.name,
+      email: state.email,
       departmentName: state.departmentName,
       collegeName: state.collegeName,
       active: state.active,
@@ -94,6 +96,14 @@ export default function AdminDeanPage() {
     handleDepartmentNameChange,
     800
   );
+
+  function handleEmailChange(e) {
+    setState((prev) => ({
+      ...prev,
+      email: e.target.value,
+    }));
+  }
+  const debouncedHandleEmailChange = _.debounce(handleEmailChange, 800);
 
   function handleCollegeNameChange(e) {
     setState((prev) => ({
@@ -168,6 +178,11 @@ export default function AdminDeanPage() {
           />
           <TextField
             size='small'
+            label='Email'
+            onChange={debouncedHandleEmailChange}
+          />
+          <TextField
+            size='small'
             label='Department'
             onChange={debouncedHandleDepartmentChange}
           />
@@ -184,6 +199,7 @@ export default function AdminDeanPage() {
             sortColumn={state.sortColumn}
             sortOptions={[
               { value: "Faculty.user.name", label: "Name" },
+              { value: "Faculty.user.email", label: "Email" },
               { value: "Faculty.department.name", label: "Department" },
               { value: "Faculty.department.college.name", label: "College" },
             ]}
@@ -197,6 +213,7 @@ export default function AdminDeanPage() {
               <TableRow>
                 <TableCell>Image</TableCell>
                 <TableCell>Name</TableCell>
+                <TableCell>Email</TableCell>
                 <TableCell>Department</TableCell>
                 <TableCell>College</TableCell>
                 <TableCell align='center'>Active</TableCell>

@@ -4,6 +4,8 @@ export default async function frontendReadIMDCoordinators({
   limit,
   page,
   name,
+  email,
+  active,
   sortColumn,
   sortOrder,
 }) {
@@ -12,7 +14,9 @@ export default async function frontendReadIMDCoordinators({
       params: {
         limit,
         page,
+        email,
         name,
+        active,
         sortColumn,
         sortOrder,
       },

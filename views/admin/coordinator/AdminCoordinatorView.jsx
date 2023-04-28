@@ -9,6 +9,7 @@ export default function AdminCoordinatorView({
   image,
   name,
   department,
+  email,
   college,
   active,
   onDelete,
@@ -30,6 +31,7 @@ export default function AdminCoordinatorView({
           <Avatar src={image} />
         </TableCell>
         <TableCell>{name}</TableCell>
+        <TableCell>{email}</TableCell>
         <TableCell>{department}</TableCell>
         <TableCell>{college}</TableCell>
         <TableCell align='center'>
