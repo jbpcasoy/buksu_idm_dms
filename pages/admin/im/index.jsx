@@ -2,6 +2,7 @@ import AdminLayout from "@/components/admin/AdminLayout";
 import IMStatuses from "@/services/constants/im_status";
 import IMTypes from "@/services/constants/im_type";
 import frontendReadIms from "@/services/frontend/admin/im";
+import frontendUpdateIM from "@/services/frontend/im/frontendUpdateIM";
 import AdminIMView from "@/views/admin/im/AdminIMView";
 import Sort from "@/views/admin/Sort";
 import {
@@ -211,6 +212,7 @@ export default function AdminIM() {
                 <TableCell>Title</TableCell>
                 <TableCell>Type</TableCell>
                 <TableCell>Owner</TableCell>
+                <TableCell>Authors</TableCell>
                 <TableCell>Department</TableCell>
                 <TableCell>Status</TableCell>
                 <TableCell align='center'>Peer Review</TableCell>
@@ -234,6 +236,15 @@ export default function AdminIM() {
                   status={im.status}
                   dateCreated={im.createdAt}
                   key={im.id}
+                  authors={im.authors}
+                  onEdit={(values) => {
+                    return frontendUpdateIM(im.id, {
+                      serialNumber: values.serialNumber,
+                      authors: values.authors,
+                      title: values.title,
+                      type: values.type,
+                    });
+                  }}
                   onViewPeerReview={() =>
                     router.push(
                       `/admin/peer_review/${im.SubmittedPeerReview.PeerReview.id}`

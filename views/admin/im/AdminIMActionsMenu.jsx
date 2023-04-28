@@ -4,8 +4,9 @@ import { IconButton, ListItemIcon, ListItemText } from "@mui/material";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import * as React from "react";
+import EditIcon from "@mui/icons-material/Edit";
 
-export default function AdminIMActionsMenu({ onView }) {
+export default function AdminIMActionsMenu({ onEdit, onView }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -45,6 +46,18 @@ export default function AdminIMActionsMenu({ onView }) {
             <VisibilityIcon fontSize='small' />
           </ListItemIcon>
           <ListItemText>View</ListItemText>
+        </MenuItem>
+
+        <MenuItem
+          onClick={() => {
+            handleClose();
+            onEdit();
+          }}
+        >
+          <ListItemIcon>
+            <EditIcon fontSize='small' />
+          </ListItemIcon>
+          <ListItemText>Edit</ListItemText>
         </MenuItem>
       </Menu>
     </div>

@@ -11,6 +11,11 @@ export default async function adminAbility({ can, cannot, user }) {
         equals: "DRAFT",
       },
     });
+    can("update", "IM", ["serialNumber"], {
+      status: {
+        equals: "CITL_ENDORSED",
+      },
+    });
     // when IM owners can update status
     can("update", "IM", ["status"], {
       ActiveFile: {

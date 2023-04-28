@@ -12,10 +12,12 @@ export default async function iMAbility({ can, cannot, user }) {
       },
     });
   }
-  can("read", "IM");
-  // if (user?.IMDCoordinator?.ActiveIMDCoordinator) {
-  //   can("read", "IM");
-  // }
+  if (
+    user?.IMDCoordinator?.ActiveIMDCoordinator ||
+    user?.CITLDirector?.ActiveCITLDirector
+  ) {
+    can("read", "IM");
+  }
   if (user?.ActiveFaculty) {
     can("create", "IM");
     can("read", "IM", {
