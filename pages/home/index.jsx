@@ -1,7 +1,10 @@
 import Layout from "@/components/layout/Layout";
 import ContactModal from "../ContactModal";
+import { useContext } from "react";
+import UserContext from "@/contexts/UserContext";
 
 export default function index() {
+  const { user, userLoading, userError } = useContext(UserContext);
   return (
     <>
       <Layout>
@@ -16,7 +19,10 @@ export default function index() {
                   BukSUIMD the official Document Management System of the Center
                   for Innovative Teaching and Learning.
                 </p>
-                <ContactModal />
+                {user &&
+                  !user?.IMDCoordinator?.ActiveIMDCoordinator &&
+                  !user?.CITLDirector?.ActiveCITLDirector &&
+                  !user?.ActiveFaculty && <ContactModal />}
               </div>
               {/* <div className='bg-gradient-to-b from-gray-300 to-transparent dark:from-blue-900 w-full h-full absolute top-0 left-0 z-0'></div> */}
             </section>
