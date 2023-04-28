@@ -10,6 +10,7 @@ export default function AdminDeanView({
   name,
   active,
   collegeName,
+  departmentName,
   onDelete,
   onActivate,
   onDeactivate,
@@ -29,6 +30,7 @@ export default function AdminDeanView({
           <Avatar src={image} />
         </TableCell>
         <TableCell>{name}</TableCell>
+        <TableCell>{departmentName}</TableCell>
         <TableCell>{collegeName}</TableCell>
         <TableCell align='center'>
           {active && (

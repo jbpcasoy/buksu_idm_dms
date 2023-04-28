@@ -1,7 +1,17 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
 import { accessibleBy } from "@casl/prisma";
 
-export default async function readDeans({ limit, page, ability }) {
+export default async function readDeans({
+  limit,
+  page,
+  name,
+  collegeName,
+  departmentName,
+  active,
+  sortColumn,
+  sortOrder,
+  ability,
+}) {
   const prisma = PRISMA_CLIENT;
   const accessibility = accessibleBy(ability).Dean;
 
@@ -19,6 +29,7 @@ export default async function readDeans({ limit, page, ability }) {
           },
           department: {
             select: {
+              name: true,
               college: {
                 select: {
                   name: true,
@@ -31,7 +42,41 @@ export default async function readDeans({ limit, page, ability }) {
       ActiveDean: true,
     },
     where: {
-      AND: [accessibility],
+      AND: [
+        accessibility,
+        {
+          Faculty: {
+            user: {
+              name: {
+                contains: name,
+                // mode: "insensitive",
+              },
+            },
+            department: {
+              name: {
+                contains: departmentName,
+                // mode: "insensitive",
+              },
+              college: {
+                name: {
+                  contains: collegeName,
+                  // mode: "insensitive",
+                },
+              },
+            },
+          },
+          ActiveDean:
+            active === true
+              ? {
+                  isNot: null,
+                }
+              : active === false
+              ? {
+                  is: null,
+                }
+              : undefined,
+        },
+      ],
     },
   });
 

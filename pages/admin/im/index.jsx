@@ -225,7 +225,7 @@ export default function AdminIMTable() {
             </TableHead>
             <TableBody>
               {ims.map((im) => (
-                <AdminIM im={im} />
+                <AdminIM im={im} key={im.id} />
               ))}
             </TableBody>
           </Table>
