@@ -12,8 +12,8 @@ export default function IMSubmittedEvent({ iMEvent }) {
           aria-hidden='true'
         >
           <path
-            clip-rule='evenodd'
-            fill-rule='evenodd'
+            clipRule='evenodd'
+            fillRule='evenodd'
             d='M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z'
           ></path>
         </svg>
@@ -50,7 +50,7 @@ export default function IMSubmittedEvent({ iMEvent }) {
         >
           <path
             strokeLinecap='round'
-            stroke-Linejoin='round'
+            strokeLinejoin='round'
             d='M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25'
           ></path>
         </svg>{" "}

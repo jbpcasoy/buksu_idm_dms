@@ -500,22 +500,22 @@ export default function ViewIM() {
                 {iM?.SubmittedPeerSuggestion && (
                   <svg
                     aria-hidden='true'
-                    class='w-3 h-3  text-purple-800 rounded-full ml-1'
+                    className='w-3 h-3  text-purple-800 rounded-full ml-1'
                     fill='currentColor'
                     viewBox='0 0 20 20'
                     xmlns='http://www.w3.org/2000/svg'
                   >
                     <path
-                      fill-rule='evenodd'
+                      fillRule='evenodd'
                       d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z'
-                      clip-rule='evenodd'
+                      clipRule='evenodd'
                     ></path>
                   </svg>
                 )}
                 {!iM?.SubmittedPeerSuggestion && (
                   <svg
                     fill='none'
-                    class='w-3 h-3  text-purple-800 rounded-full ml-1'
+                    className='w-3 h-3  text-purple-800 rounded-full ml-1'
                     stroke='currentColor'
                     strokeWidth='1.5'
                     viewBox='0 0 24 24'
@@ -550,22 +550,22 @@ export default function ViewIM() {
                 {iM?.SubmittedChairpersonSuggestion && (
                   <svg
                     aria-hidden='true'
-                    class='w-3 h-3  text-orange-500 rounded-full ml-1'
+                    className='w-3 h-3  text-orange-500 rounded-full ml-1'
                     fill='currentColor'
                     viewBox='0 0 20 20'
                     xmlns='http://www.w3.org/2000/svg'
                   >
                     <path
-                      fill-rule='evenodd'
+                      fillRule='evenodd'
                       d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z'
-                      clip-rule='evenodd'
+                      clipRule='evenodd'
                     ></path>
                   </svg>
                 )}
                 {!iM?.SubmittedChairpersonSuggestion && (
                   <svg
                     fill='none'
-                    class='w-3 h-3  text-orange-500 rounded-full ml-1'
+                    className='w-3 h-3  text-orange-500 rounded-full ml-1'
                     stroke='currentColor'
                     strokeWidth='1.5'
                     viewBox='0 0 24 24'
@@ -600,22 +600,22 @@ export default function ViewIM() {
                 {iM?.SubmittedCoordinatorSuggestion && (
                   <svg
                     aria-hidden='true'
-                    class='w-3 h-3  text-green-900 rounded-full ml-1'
+                    className='w-3 h-3  text-green-900 rounded-full ml-1'
                     fill='currentColor'
                     viewBox='0 0 20 20'
                     xmlns='http://www.w3.org/2000/svg'
                   >
                     <path
-                      fill-rule='evenodd'
+                      fillRule='evenodd'
                       d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z'
-                      clip-rule='evenodd'
+                      clipRule='evenodd'
                     ></path>
                   </svg>
                 )}
                 {!iM?.SubmittedCoordinatorSuggestion && (
                   <svg
                     fill='none'
-                    class='w-3 h-3  text-green-900 rounded-full ml-1'
+                    className='w-3 h-3  text-green-900 rounded-full ml-1'
                     stroke='currentColor'
                     strokeWidth='1.5'
                     viewBox='0 0 24 24'
