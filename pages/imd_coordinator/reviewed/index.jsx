@@ -32,7 +32,7 @@ export default function Home() {
   const router = useRouter();
 
   useEffect(() => {
-    if (!user || !user?.ActiveFaculty) return;
+    if (!user || !user?.IMDCoordinator?.ActiveIMDCoordinator) return;
     let subscribe = true;
     setLoading(true);
 
@@ -87,7 +87,7 @@ export default function Home() {
 
   return (
     <Layout>
-      {user && !user?.ActiveFaculty && !userLoading && (
+      {user && !user?.IMDCoordinator?.ActiveIMDCoordinator && !userLoading && (
         <div className=' flex-wrap grid text-center justify-items-center  border min-h-fit border-slate-300  bg-CITLWhite m-2 p-3 rounded-lg shadow-lg overflow-hidden'>
           <div className='px-6 py-4 md:w-10/12 sm:w-12/12'>
             <h3 className='text-3xl font-bold text-CITLDarkBlue'>
@@ -120,7 +120,7 @@ export default function Home() {
           />
         </div>
       )}
-      {user?.ActiveFaculty && (
+      {user?.IMDCoordinator?.ActiveIMDCoordinator && (
         <div className=' grid grid-flow-row items-center border border-CITLGray-lighter bg-CITLWhite m-2 mt-5 relative rounded-lg shadow-lg overflow-x-auto'>
           <div className=' bg-CITLGray-light py-3 px-3 pr-3'>
             <div className='w-full grid grid-flow-col'>

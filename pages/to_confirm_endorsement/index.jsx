@@ -38,7 +38,7 @@ export default function Home() {
     async function getToConfirmEndorsement(filter) {
       return frontendGetIMs({
         ...filter,
-        departmentId: user.ActiveFaculty.Faculty.departmentId,
+        collegeId: user.ActiveFaculty.Faculty.department.collegeId,
         status: "DEPARTMENT_REVISED",
         coordinatorEndorsed: true,
         deanEndorsed: false,
@@ -266,9 +266,7 @@ export default function Home() {
                   <SortButton
                     label='Date'
                     sortOrder={
-                      state.sortColumn === "date"
-                        ? state.sortOrder
-                        : undefined
+                      state.sortColumn === "date" ? state.sortOrder : undefined
                     }
                     setSortOrder={(order) =>
                       setState((prev) => ({

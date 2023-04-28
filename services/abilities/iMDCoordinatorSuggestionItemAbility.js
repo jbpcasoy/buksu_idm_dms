@@ -61,4 +61,22 @@ export default async function iMDCoordinatorSuggestionItemAbility({
       },
     });
   }
+
+  if (user?.ActiveFaculty) {
+    can("read", "IMDCoordinatorSuggestionItem", {
+      IMDCoordinatorSuggestion: {
+        is: {
+          IM: {
+            is: {
+              owner: {
+                departmentId: {
+                  equals: user.ActiveFaculty.Faculty.departmentId,
+                },
+              },
+            },
+          },
+        },
+      },
+    });
+  }
 }

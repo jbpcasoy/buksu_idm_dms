@@ -22,6 +22,9 @@ export default async function readIMDCoordinatorSuggestions({
           },
         ],
       },
+      include: {
+        IMDCoordinator: { include: { User: true } },
+      },
     });
   const total = await prisma.iMDCoordinatorSuggestion.count({
     where: {

@@ -100,4 +100,11 @@ export default async function coordinatorSuggestionItemAbility({
       },
     });
   }
+
+  if (
+    user?.IMDCoordinator?.ActiveIMDCoordinator ||
+    user?.CITLDirector?.ActiveCITLDirector
+  ) {
+    can("read", "CoordinatorSuggestionItem");
+  }
 }

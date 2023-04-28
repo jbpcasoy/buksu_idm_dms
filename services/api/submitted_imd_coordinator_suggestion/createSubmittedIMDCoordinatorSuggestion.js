@@ -29,9 +29,13 @@ export default async function createSubmittedIMDCoordinatorSuggestion({
       },
     });
 
-  await updateIM(iMDCoordinatorSuggestion.iMId, {
-    status: "CITL_REVIEWED",
-  });
+  await updateIM(
+    iMDCoordinatorSuggestion.iMId,
+    {
+      status: "CITL_REVIEWED",
+    },
+    ability
+  );
 
   return submittedIMDCoordinatorSuggestion;
 }

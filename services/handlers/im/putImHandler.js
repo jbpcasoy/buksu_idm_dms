@@ -98,6 +98,7 @@ export default async function putImHandler(req, res) {
                 message: `Can only move IM to \"CITL_REVIEWED\" from \"CITL_REVISED\"`,
               });
             }
+            break;
           case "CITL_REVISED":
             if (iM.status !== "CITL_REVIEWED") {
               throw statusError({
@@ -105,6 +106,7 @@ export default async function putImHandler(req, res) {
                 message: `Can only move IM to \"CITL_REVISED\" from \"CITL_REVIEWED\"`,
               });
             }
+            break;
           case "CITL_ENDORSED":
             if (iM.status === "CITL_REVISED") {
               throw statusError({
@@ -112,6 +114,7 @@ export default async function putImHandler(req, res) {
                 message: `Cannot move IM to \"CITL_ENDORSED\" from \"CITL_REVISED\" manually`,
               });
             }
+            break;
           default:
             throw statusError({
               statusCode: 400,

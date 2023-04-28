@@ -22,4 +22,11 @@ export default async function submittedPeerReviewAbility({
       },
     });
   }
+
+  if (
+    user?.IMDCoordinator?.ActiveIMDCoordinator ||
+    user?.CITLDirector?.ActiveCITLDirector
+  ) {
+    can("read", "SubmittedPeerReview");
+  }
 }

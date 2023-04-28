@@ -24,4 +24,11 @@ export default async function submittedCoordinatorReviewAbility({
       },
     });
   }
+
+  if (
+    user?.IMDCoordinator?.ActiveIMDCoordinator ||
+    user?.CITLDirector?.ActiveCITLDirector
+  ) {
+    can("read", "SubmittedCoordinatorReview");
+  }
 }

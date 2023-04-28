@@ -1,7 +1,32 @@
 export default async function iMAbility({ can, cannot, user }) {
+  if (user?.ActiveFaculty?.ActiveDean) {
+    can("read", "IM", {
+      owner: {
+        is: {
+          department: {
+            is: {
+              collegeId: { equals: user.ActiveFaculty.ActiveDean.collegeId },
+            },
+          },
+        },
+      },
+    });
+  }
+  can("read", "IM");
+  // if (user?.IMDCoordinator?.ActiveIMDCoordinator) {
+  //   can("read", "IM");
+  // }
   if (user?.ActiveFaculty) {
     can("create", "IM");
-    can("read", "IM");
+    can("read", "IM", {
+      owner: {
+        is: {
+          departmentId: {
+            equals: user.ActiveFaculty.Faculty.departmentId,
+          },
+        },
+      },
+    });
 
     // IM owners can only set title authors and type WHILE IM IS STILL IN DRAFT
     can("update", "IM", ["title", "authors", "type"], {
@@ -25,16 +50,13 @@ export default async function iMAbility({ can, cannot, user }) {
         },
       },
       status: {
-        in: ["DRAFT", "DEPARTMENT_REVIEWED", "CITL_REVISED"],
+        in: ["DRAFT", "DEPARTMENT_REVIEWED", "CITL_REVIEWED"],
       },
     });
   }
 
   if (user?.ActiveFaculty?.ActiveCoordinator) {
     can("update", "IM", ["status"], {
-      ownerId: {
-        equals: user.ActiveFaculty.facultyId,
-      },
       ActiveFile: {
         is: {
           fileId: {
@@ -65,9 +87,6 @@ export default async function iMAbility({ can, cannot, user }) {
 
   if (user?.IMDCoordinator?.ActiveIMDCoordinator) {
     can("update", "IM", ["status"], {
-      ownerId: {
-        equals: user.ActiveFaculty.facultyId,
-      },
       ActiveFile: {
         is: {
           fileId: {

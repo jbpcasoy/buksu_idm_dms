@@ -51,8 +51,12 @@ export default async function createDeanEndorsement({
     },
   });
 
-  await updateIM(coordinatorEndorsement.iMId, {
-    status: "DEPARTMENT_ENDORSED",
-  });
+  await updateIM(
+    coordinatorEndorsement.iMId,
+    {
+      status: "DEPARTMENT_ENDORSED",
+    },
+    ability
+  );
   return deanEndorsement;
 }

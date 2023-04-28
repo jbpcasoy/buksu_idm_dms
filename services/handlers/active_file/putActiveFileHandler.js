@@ -15,8 +15,6 @@ export default async function putActiveFileHandler(req, res) {
   const file = await readFile({ id: fileId, ability: await userAbility(user) });
 
   async function findSubject({ id }) {
-    const user = await getServerUser(req, res);
-
     const subject = await readActiveFile({
       id,
       ability: await userAbility(user),
@@ -42,9 +40,13 @@ export default async function putActiveFileHandler(req, res) {
             }
           );
 
-          const updatedActiveFile = await updateActiveFile(id, {
-            ..._.pick({ fileId }, fields),
-          });
+          const updatedActiveFile = await updateActiveFile(
+            id,
+            {
+              ..._.pick({ fileId }, fields),
+            },
+            await userAbility(user)
+          );
 
           return res.status(200).json(updatedActiveFile);
         },

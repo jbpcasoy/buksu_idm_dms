@@ -359,7 +359,9 @@ export default function ViewIM() {
                 {/* NOTE: for department revision */}
                 <li>
                   {iM?.status === "DEPARTMENT_REVISED" &&
-                    user?.ActiveFaculty?.facultyId === iM?.ownerId &&
+                    user?.ActiveFaculty?.ActiveCoordinator &&
+                    user?.ActiveFaculty?.Faculty?.departmentId ===
+                      iM?.owner?.departmentId &&
                     !iM?.CoordinatorEndorsement && (
                       <button
                         onClick={handleReturnForRevision}
@@ -369,7 +371,7 @@ export default function ViewIM() {
                       </button>
                     )}
                 </li>
-                {/* NOTE: for chairperson */}
+                {/* NOTE: for coordinator */}
                 <li>
                   {iM?.status === "DEPARTMENT_REVISED" &&
                     user?.ActiveFaculty?.ActiveCoordinator && (
@@ -401,7 +403,7 @@ export default function ViewIM() {
                 {/* NOTE: for citl revision */}
                 <li>
                   {iM?.status === "CITL_REVISED" &&
-                    user?.ActiveFaculty?.facultyId === iM?.ownerId &&
+                    user?.IMDCoordinator?.ActiveIMDCoordinator &&
                     !iM?.IMDCoordinatorEndorsement && (
                       <button
                         onClick={handleReturnForIMDCoordinatorRevision}
@@ -430,7 +432,8 @@ export default function ViewIM() {
                 </li>
                 {/* NOTE: for dean */}
                 <li>
-                  {iM?.status === "DEPARTMENT_REVISED" &&
+                  {(iM?.status === "DEPARTMENT_REVISED" ||
+                    iM?.status === "DEPARTMENT_ENDORSED") &&
                     user?.ActiveFaculty?.ActiveDean && (
                       <button
                         disabled={
@@ -478,7 +481,8 @@ export default function ViewIM() {
 
                 <li>
                   {user?.IMDCoordinator?.ActiveIMDCoordinator &&
-                    iM?.status === "DEPARTMENT_ENDORSED" && (
+                    (iM?.status === "DEPARTMENT_ENDORSED" ||
+                      iM?.status === "CITL_REVIEWED") && (
                       <button
                         onClick={() =>
                           router.push(`/im/${iM?.id}/review/imd_coordinator`)

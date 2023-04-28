@@ -32,4 +32,11 @@ export default async function chairpersonSuggestionAbility({
       },
     });
   }
+
+  if (
+    user?.IMDCoordinator?.ActiveIMDCoordinator ||
+    user?.CITLDirector?.ActiveCITLDirector
+  ) {
+    can("read", "ChairpersonSuggestion");
+  }
 }

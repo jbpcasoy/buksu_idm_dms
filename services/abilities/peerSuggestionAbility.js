@@ -26,4 +26,11 @@ export default async function peerSuggestionAbility({ can, cannot, user }) {
       },
     });
   }
+
+  if (
+    user?.IMDCoordinator?.ActiveIMDCoordinator ||
+    user?.CITLDirector?.ActiveCITLDirector
+  ) {
+    can("read", "PeerSuggestion");
+  }
 }

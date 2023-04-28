@@ -7,7 +7,7 @@ export default function useCITLToConfirmCount() {
   const { user } = useContext(UserContext);
 
   useEffect(() => {
-    if (!user || !user?.ActiveFaculty) return;
+    if (!user || !user?.CITLDirector?.ActiveCITLDirector) return;
     let subscribe = true;
 
     async function getToReview(filter) {

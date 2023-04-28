@@ -28,4 +28,24 @@ export default async function coordinatorEndorsementAbility({
       },
     });
   }
+
+  if (user?.ActiveFaculty?.ActiveDean) {
+    can("read", "CoordinatorEndorsement", {
+      IM: {
+        is: {
+          owner: {
+            is: {
+              department: {
+                is: {
+                  collegeId: {
+                    equals: user.ActiveF,
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    });
+  }
 }

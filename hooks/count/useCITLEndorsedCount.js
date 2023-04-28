@@ -7,7 +7,7 @@ export default function useCITLEndorsedCount() {
   const { user } = useContext(UserContext);
 
   useEffect(() => {
-    if (!user || !user?.IMDCoordinator) return;
+    if (!user || !user?.IMDCoordinator?.ActiveIMDCoordinator) return;
     let subscribe = true;
 
     async function getEndorsed(filter) {
