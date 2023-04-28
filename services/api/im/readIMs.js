@@ -10,6 +10,7 @@ export default async function readIMs({
   title,
   status,
   ownerId,
+  departmentName,
   notOwnerId,
   departmentId,
   reviewerId,
@@ -237,6 +238,7 @@ export default async function readIMs({
                 },
                 departmentId: departmentId,
                 department: {
+                  name: { contains: departmentName },
                   collegeId: collegeId,
                 },
               },

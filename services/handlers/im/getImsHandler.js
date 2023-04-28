@@ -5,6 +5,7 @@ import getServerUser from "@/services/helpers/getServerUser";
 export default async function getImsHandler(req, res) {
   const {
     page,
+    departmentName,
     limit,
     serialNumber,
     title,
@@ -38,6 +39,7 @@ export default async function getImsHandler(req, res) {
     title,
     status,
     ownerId,
+    departmentName,
     notOwnerId,
     departmentId,
     reviewerId,

@@ -18,6 +18,7 @@ export default function Home() {
     serialNumber: "",
     title: "",
     status: undefined,
+    departmentName: "",
     sortColumn: "title",
     sortOrder: "asc",
   });
@@ -150,6 +151,10 @@ export default function Home() {
                     label: "Owner",
                   },
                   {
+                    value: "departmentName",
+                    label: "Department",
+                  },
+                  {
                     value: "authors",
                     label: "Authors",
                   },
@@ -234,6 +239,27 @@ export default function Home() {
                     }
                   />
                 </th>
+
+                <th
+                  scope='col'
+                  className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
+                >
+                  <SortButton
+                    label='Department'
+                    sortOrder={
+                      state.sortColumn === "owner.department.name"
+                        ? state.sortOrder
+                        : undefined
+                    }
+                    setSortOrder={(order) =>
+                      setState((prev) => ({
+                        ...prev,
+                        sortColumn: "owner.department.name",
+                        sortOrder: order,
+                      }))
+                    }
+                  />
+                </th>
                 <th
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
@@ -309,6 +335,10 @@ export default function Home() {
                     <div className='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
                   </td>
 
+                  <td className='bg-white  font-medium text-slate-400  items-center justify-center px-6 py-4 '>
+                    <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                  </td>
+
                   <td className='px-6 py-4 '>
                     <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
                     <div className='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
@@ -331,6 +361,8 @@ export default function Home() {
                 ims.map((im, index) => {
                   return (
                     <IM
+                      showDepartmentName={true}
+                      departmentName={im.owner.department.name}
                       showReviewSuggestion={false}
                       authors={im.authors}
                       // bottomBorder={index < state.ims.length - 1}

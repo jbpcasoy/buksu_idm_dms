@@ -17,6 +17,7 @@ export default function Home() {
     page: 1,
     limit: 10,
     serialNumber: "",
+    departmentName: "",
     title: "",
     status: undefined,
     sortColumn: "title",
@@ -49,6 +50,7 @@ export default function Home() {
       limit: state.limit,
       sortColumn: state.sortColumn,
       sortOrder: state.sortOrder,
+      departmentName: state.departmentName,
     };
 
     getReviewed(filter).then((res) => {
@@ -94,7 +96,7 @@ export default function Home() {
               Unauthorized
             </h3>
             <p className='text-gray-600 mt-2 pb-5'>
-              You are currently not an active faculty, please contact
+              You are currently not an active IMD Coordinator, please contact
               administrator.
             </p>
             {/* <button className="items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-CITLDarkBlue rounded-lg ">
@@ -149,6 +151,10 @@ export default function Home() {
                   {
                     value: "owner",
                     label: "Owner",
+                  },
+                  {
+                    value: "departmentName",
+                    label: "Department",
                   },
                   {
                     value: "authors",
@@ -235,6 +241,26 @@ export default function Home() {
                       setState((prev) => ({
                         ...prev,
                         sortColumn: "owner.user.name",
+                        sortOrder: order,
+                      }))
+                    }
+                  />
+                </th>
+                <th
+                  scope='col'
+                  className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
+                >
+                  <SortButton
+                    label='Department'
+                    sortOrder={
+                      state.sortColumn === "owner.department.name"
+                        ? state.sortOrder
+                        : undefined
+                    }
+                    setSortOrder={(order) =>
+                      setState((prev) => ({
+                        ...prev,
+                        sortColumn: "owner.department.name",
                         sortOrder: order,
                       }))
                     }
@@ -335,6 +361,10 @@ export default function Home() {
                     <div className='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
                   </td>
 
+                  <td className='bg-white  font-medium text-slate-400  items-center justify-center px-6 py-4 '>
+                    <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                  </td>
+
                   <td className='px-6 py-4 '>
                     <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
                     <div className='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
@@ -357,6 +387,8 @@ export default function Home() {
                 ims.map((im, index) => {
                   return (
                     <IM
+                      showDepartmentName={true}
+                      departmentName={im.owner.department.name}
                       showStatus={true}
                       showReviewSuggestion={false}
                       authors={im.authors}

@@ -10,12 +10,14 @@ export default function IM({
   showSerialNumber = false,
   showReviewedAs = false,
   id,
+  departmentName,
   serialNumber,
   title,
   status,
   originalFileName,
   fileName,
   owner,
+  showDepartmentName = false,
   date,
   updatedAt,
   onView,
@@ -68,6 +70,8 @@ export default function IM({
       <td className='px-6 py-4 '>{type}</td>
 
       {showOwner && <td className='px-6 py-4'>{owner}</td>}
+
+      {showDepartmentName && <td className='px-6 py-4'>{departmentName}</td>}
       <td className='px-6 py-4 w-32 '>{authors}</td>
 
       {showStatus && <td className='px-6 py-4 '>{status}</td>}

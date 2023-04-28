@@ -17,6 +17,7 @@ export default function Home() {
     limit: 10,
     serialNumber: "",
     title: "",
+    departmentName: "",
     status: undefined,
     sortColumn: "title",
     sortOrder: "asc",
@@ -38,7 +39,7 @@ export default function Home() {
     async function getConfirmedEndorsement(filter) {
       return frontendGetIMs({
         ...filter,
-        departmentId: user.ActiveFaculty.Faculty.departmentId,
+        collegeId: user.ActiveFaculty.Faculty.department.collegeId,
         coordinatorEndorsed: true,
         deanEndorsed: true,
         endorsedByDean: user.ActiveFaculty.ActiveDean.deanId,
@@ -51,6 +52,7 @@ export default function Home() {
       limit: state.limit,
       sortColumn: state.sortColumn,
       sortOrder: state.sortOrder,
+      departmentName: state.departmentName,
     };
 
     getConfirmedEndorsement(filter).then((res) => {
@@ -153,6 +155,10 @@ export default function Home() {
                     label: "Owner",
                   },
                   {
+                    value: "departmentName",
+                    label: "Department",
+                  },
+                  {
                     value: "authors",
                     label: "Authors",
                   },
@@ -232,6 +238,26 @@ export default function Home() {
                       setState((prev) => ({
                         ...prev,
                         sortColumn: "owner.user.name",
+                        sortOrder: order,
+                      }))
+                    }
+                  />
+                </th>
+                <th
+                  scope='col'
+                  className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
+                >
+                  <SortButton
+                    label='Department'
+                    sortOrder={
+                      state.sortColumn === "owner.department.name"
+                        ? state.sortOrder
+                        : undefined
+                    }
+                    setSortOrder={(order) =>
+                      setState((prev) => ({
+                        ...prev,
+                        sortColumn: "owner.department.name",
                         sortOrder: order,
                       }))
                     }
@@ -333,6 +359,10 @@ export default function Home() {
                     <div className='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
                   </td>
 
+                  <td className='bg-white  font-medium text-slate-400  items-center justify-center px-6 py-4 '>
+                    <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                  </td>
+
                   <td className='px-6 py-4 '>
                     <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
                     <div className='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
@@ -356,6 +386,8 @@ export default function Home() {
                   return (
                     <IM
                       authors={im.authors}
+                      showDepartmentName={true}
+                      departmentName={im.owner.department.name}
                       // bottomBorder={index < state.ims.length - 1}
                       showStatus={true}
                       im={im}
