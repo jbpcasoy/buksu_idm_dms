@@ -79,6 +79,66 @@ export default async function updateIM(
             }
           : undefined,
     },
+    include: {
+      SubmittedChairpersonSuggestion: true,
+      SubmittedPeerSuggestion: true,
+      SubmittedCoordinatorSuggestion: true,
+      SubmittedPeerReview: {
+        select: {
+          PeerReview: {
+            include: {
+              Faculty: {
+                select: { userId: true },
+              },
+            },
+          },
+        },
+      },
+      SubmittedChairpersonReview: {
+        select: {
+          ChairpersonReview: {
+            include: {
+              Chairperson: {
+                select: {
+                  Faculty: {
+                    select: { userId: true },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+      SubmittedCoordinatorReview: {
+        select: {
+          CoordinatorReview: {
+            include: {
+              Coordinator: {
+                select: {
+                  Faculty: {
+                    select: { userId: true },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+      owner: {
+        select: {
+          department: {
+            select: {
+              name: true,
+            },
+          },
+          user: {
+            select: {
+              name: true,
+            },
+          },
+        },
+      },
+    },
   });
   return im;
 }

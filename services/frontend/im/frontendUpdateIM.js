@@ -11,7 +11,7 @@ export default async function frontendUpdateIM(
       authors,
       serialNumber,
     });
-    return iM;
+    return iM.data;
   } catch (error) {
     throw error;
   }

@@ -6,11 +6,7 @@ export default async function adminAbility({ can, cannot, user }) {
     // restricts admin IM updating capability to ensure that
     // the status flow was followed
     cannot("update", "IM");
-    can("update", "IM", ["title", "authors", "type"], {
-      status: {
-        equals: "DRAFT",
-      },
-    });
+    can("update", "IM", ["title", "authors", "type"]);
     can("update", "IM", ["serialNumber"], {
       status: {
         equals: "CITL_ENDORSED",
