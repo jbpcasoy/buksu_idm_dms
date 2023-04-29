@@ -8,6 +8,7 @@ export default function IM({
   authors,
   showOwner = false,
   showSerialNumber = false,
+  collegeName,
   showReviewedAs = false,
   id,
   departmentName,
@@ -71,7 +72,11 @@ export default function IM({
 
       {showOwner && <td className='px-6 py-4'>{owner}</td>}
 
-      {showDepartmentName && <td className='px-6 py-4'>{departmentName}</td>}
+      {showDepartmentName && (
+        <td className='px-6 py-4'>
+          {departmentName} | {collegeName}
+        </td>
+      )}
       <td className='px-6 py-4 w-32 '>{authors}</td>
 
       {showStatus && <td className='px-6 py-4 '>{status}</td>}

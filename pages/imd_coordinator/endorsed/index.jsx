@@ -18,6 +18,7 @@ export default function Home() {
     limit: 10,
     serialNumber: "",
     departmentName: "",
+    collegeName: "",
     title: "",
     status: undefined,
     sortColumn: "title",
@@ -52,6 +53,7 @@ export default function Home() {
       sortColumn: state.sortColumn,
       sortOrder: state.sortOrder,
       departmentName: state.departmentName,
+      collegeName: state.collegeName,
     };
 
     getEndorsed(filter).then((res) => {
@@ -161,6 +163,10 @@ export default function Home() {
                   {
                     value: "departmentName",
                     label: "Department",
+                  },
+                  {
+                    value: "collegeName",
+                    label: "College",
                   },
                   {
                     value: "authors",
@@ -390,6 +396,7 @@ export default function Home() {
                   return (
                     <IM
                       showDepartmentName={true}
+                      collegeName={im.owner.department.college.name}
                       departmentName={im.owner.department.name}
                       authors={im.authors}
                       showStatus={true}

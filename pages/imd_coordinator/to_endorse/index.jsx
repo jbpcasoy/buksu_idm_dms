@@ -18,6 +18,7 @@ export default function Home() {
     serialNumber: "",
     title: "",
     departmentName: "",
+    collegeName: "",
     status: undefined,
     sortColumn: "title",
     sortOrder: "asc",
@@ -155,6 +156,10 @@ export default function Home() {
                   {
                     value: "departmentName",
                     label: "Department",
+                  },
+                  {
+                    value: "collegeName",
+                    label: "College",
                   },
                   {
                     value: "authors",
@@ -364,6 +369,7 @@ export default function Home() {
                     <IM
                       showDepartmentName={true}
                       departmentName={im.owner.department.name}
+                      collegeName={im.owner.department.college.name}
                       authors={im.authors}
                       // bottomBorder={index < state.ims.length - 1}
                       im={im}

@@ -11,6 +11,7 @@ export default async function readIMs({
   status,
   ownerId,
   departmentName,
+  collegeName,
   notOwnerId,
   departmentId,
   reviewerId,
@@ -87,6 +88,11 @@ export default async function readIMs({
         select: {
           department: {
             select: {
+              college: {
+                select: {
+                  name: true,
+                },
+              },
               name: true,
             },
           },
@@ -240,6 +246,11 @@ export default async function readIMs({
                 department: {
                   name: { contains: departmentName },
                   collegeId: collegeId,
+                  college: {
+                    name: {
+                      contains: collegeName,
+                    },
+                  },
                 },
               },
               type: {
@@ -417,7 +428,13 @@ export default async function readIMs({
                 },
                 departmentId: departmentId,
                 department: {
+                  name: { contains: departmentName },
                   collegeId: collegeId,
+                  college: {
+                    name: {
+                      contains: collegeName,
+                    },
+                  },
                 },
               },
               type: {

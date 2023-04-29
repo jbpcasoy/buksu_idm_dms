@@ -20,6 +20,7 @@ export default function Home() {
     title: "",
     status: undefined,
     departmentName: "",
+    collegeName: "",
     sortColumn: "title",
     sortOrder: "asc",
   });
@@ -44,6 +45,7 @@ export default function Home() {
         iMDCoordinatorEndorsed: true,
         endorsedByCITLDirector: user.CITLDirector.id,
         departmentName: state.departmentName,
+        collegeName: state.collegeName,
       });
     }
 
@@ -162,6 +164,10 @@ export default function Home() {
                   {
                     value: "departmentName",
                     label: "Department",
+                  },
+                  {
+                    value: "collegeName",
+                    label: "College",
                   },
                   {
                     value: "authors",
@@ -391,6 +397,7 @@ export default function Home() {
                     <IM
                       showDepartmentName={true}
                       departmentName={im.owner.department.name}
+                      collegeName={im.owner.department.college.name}
                       authors={im.authors}
                       // bottomBorder={index < state.ims.length - 1}
                       showStatus={true}

@@ -20,6 +20,7 @@ export default async function frontendGetIMs({
   authors,
   type,
   owner,
+  collegeName,
   departmentName,
   iMDCoordinatorReviewerId,
   toRevise,
@@ -31,6 +32,7 @@ export default async function frontendGetIMs({
     const response = await axios.get("/api/im", {
       params: {
         departmentName,
+        collegeName,
         limit,
         page,
         ownerId,

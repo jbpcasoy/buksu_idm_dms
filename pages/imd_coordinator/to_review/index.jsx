@@ -19,6 +19,7 @@ export default function Home() {
     title: "",
     status: undefined,
     departmentName: "",
+    collegeName: "",
     sortColumn: "title",
     sortOrder: "asc",
   });
@@ -49,6 +50,8 @@ export default function Home() {
       limit: state.limit,
       sortColumn: state.sortColumn,
       sortOrder: state.sortOrder,
+      departmentName: state.departmentName,
+      collegeName: state.collegeName,
     };
 
     getToReview(filter).then((res) => {
@@ -153,6 +156,10 @@ export default function Home() {
                   {
                     value: "departmentName",
                     label: "Department",
+                  },
+                  {
+                    value: "collegeName",
+                    label: "College",
                   },
                   {
                     value: "authors",
@@ -362,6 +369,7 @@ export default function Home() {
                   return (
                     <IM
                       showDepartmentName={true}
+                      collegeName={im.owner.department.college.name}
                       departmentName={im.owner.department.name}
                       showReviewSuggestion={false}
                       authors={im.authors}

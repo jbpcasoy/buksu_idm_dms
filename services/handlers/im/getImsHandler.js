@@ -29,6 +29,7 @@ export default async function getImsHandler(req, res) {
     iMDCoordinatorEndorsed,
     endorsedByIMDCoordinator,
     endorsedByCITLDirector,
+    collegeName,
   } = req.query;
   const user = await getServerUser(req, res);
 
@@ -40,6 +41,7 @@ export default async function getImsHandler(req, res) {
     status,
     ownerId,
     departmentName,
+    collegeName,
     notOwnerId,
     departmentId,
     reviewerId,

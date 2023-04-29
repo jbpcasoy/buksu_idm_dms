@@ -18,6 +18,7 @@ export default function Home() {
     limit: 10,
     serialNumber: "",
     departmentName: "",
+    collegeName: "",
     title: "",
     status: undefined,
     sortColumn: "title",
@@ -57,6 +58,7 @@ export default function Home() {
       sortColumn: state.sortColumn,
       sortOrder: state.sortOrder,
       departmentName: state.departmentName,
+      collegeName: state.collegeName,
     };
 
     getIms(filter).then((res) => {
@@ -165,6 +167,10 @@ export default function Home() {
                   {
                     value: "departmentName",
                     label: "Department",
+                  },
+                  {
+                    value: "collegeName",
+                    label: "College",
                   },
                   {
                     value: "authors",
@@ -437,6 +443,7 @@ export default function Home() {
                     <IM
                       showDepartmentName={true}
                       departmentName={im.owner.department.name}
+                      collegeName={im.owner.department.college.name}
                       showStatus={true}
                       showReviewSuggestion={true}
                       authors={im.authors}
