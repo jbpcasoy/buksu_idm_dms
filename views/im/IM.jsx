@@ -236,7 +236,9 @@ export default function IM({
         </td>
       )}
 
-      <td className='px-6 py-4  '>{moment(date).format("M/D/YYYY, h:mm A")}</td>
+      <td className='px-6 py-4  '>
+        {moment(im.createdAt).format("M/D/YYYY, h:mm A")}
+      </td>
 
       {/* <td className='px-6 py-4 '>
         {moment(updatedAt).format("M/D/YYYY, h:mm A")}

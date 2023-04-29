@@ -158,11 +158,15 @@ export default function ViewIM() {
                   ></path>
                 </svg>
               </button>
-              {iM?.status === "DRAFT" && (
-                <div className='relative flex '>
-                  <div className='absolute inline-flex items-center justify-center w-2 h-2 text-xs  bg-red-500 rounded-full -top-9 right-1 dark:border-gray-900 animate-pulse duration-75'></div>
-                </div>
-              )}
+              {iM &&
+                iM.owner.userId === user?.id &&
+                (iM?.status === "DRAFT" ||
+                  iM?.status === "DEPARTMENT_REVIEWED" ||
+                  iM?.status === "CITL_REVIEWED") && (
+                  <div className='relative flex '>
+                    <div className='absolute inline-flex items-center justify-center w-2 h-2 text-xs  bg-red-500 rounded-full -top-9 right-1 dark:border-gray-900 animate-pulse duration-75'></div>
+                  </div>
+                )}
             </div>
 
             <div
@@ -204,6 +208,13 @@ export default function ViewIM() {
                           className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
                         >
                           Upload New Version
+                          {iM.owner.userId === user?.id &&
+                            (iM?.status === "DEPARTMENT_REVIEWED" ||
+                              iM?.status === "CITL_REVIEWED") && (
+                              <div className='relative flex '>
+                                <div className='absolute inline-flex items-center justify-center w-2 h-2 text-xs  bg-red-500 rounded-full -top-6 right-1 dark:border-gray-900 animate-pulse duration-75'></div>
+                              </div>
+                            )}
                         </Link>
                       )}
                     </li>
@@ -353,6 +364,12 @@ export default function ViewIM() {
                         className='block w-full  text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter'
                       >
                         Submit For Endorsement
+                        {iM.owner.userId === user?.id &&
+                          iM?.status === "DEPARTMENT_REVIEWED" && (
+                            <div className='relative flex '>
+                              <div className='absolute inline-flex items-center justify-center w-2 h-2 text-xs  bg-red-500 rounded-full -top-6 right-1 dark:border-gray-900 animate-pulse duration-75'></div>
+                            </div>
+                          )}
                       </button>
                     )}
                 </li>
@@ -397,6 +414,12 @@ export default function ViewIM() {
                         className='block w-full  text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter'
                       >
                         Submit For Endorsement
+                        {iM.owner.userId === user?.id &&
+                          iM?.status === "CITL_REVIEWED" && (
+                            <div className='relative flex '>
+                              <div className='absolute inline-flex items-center justify-center w-2 h-2 text-xs  bg-red-500 rounded-full -top-6 right-1 dark:border-gray-900 animate-pulse duration-75'></div>
+                            </div>
+                          )}
                       </button>
                     )}
                 </li>
