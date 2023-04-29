@@ -17,14 +17,25 @@ import { initDropdowns, initModals } from "flowbite";
 import moment from "moment";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import ToggleIM from "../../../components/im/ToggleIM";
 import ReviewEndorsementIndicator from "@/components/im/ReviewEndorsementIndicator";
+import ConfirmModal from "@/components/ConfirmModal";
 
 export default function ViewIM() {
   const router = useRouter();
   const { user } = useContext(UserContext);
   const { iM, iMError, iMLoading, refreshIM } = useIM(router?.query?.id);
+  const [state, setState] = useState({
+    openSubmissionConfirmation: false,
+    openDepartmentSubmissionConfirmation: false,
+    openCoordinatorEndorsementConfirmation: false,
+    openDeanEndorsementConfirmation: false,
+    openCITLSubmissionConfirmation: false,
+    openCITLReturnConfirmation: false,
+    openCITLEndorsementConfirmation: false,
+    openDepartmentReturnConfirmation: false,
+  });
 
   useEffect(() => {
     initDropdowns();
@@ -224,7 +235,12 @@ export default function ViewIM() {
                   iM.owner.userId === user?.id &&
                   iM?.status === "DRAFT" && (
                     <button
-                      onClick={handleSubmitForReview}
+                      onClick={() =>
+                        setState((prev) => ({
+                          ...prev,
+                          openSubmissionConfirmation: true,
+                        }))
+                      }
                       className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter text-left w-full'
                     >
                       Submit For Review
@@ -358,7 +374,12 @@ export default function ViewIM() {
                   {iM?.status === "DEPARTMENT_REVIEWED" &&
                     user?.ActiveFaculty?.facultyId === iM?.ownerId && (
                       <button
-                        onClick={handleSubmitForEndorsement}
+                        onClick={() =>
+                          setState((prev) => ({
+                            ...prev,
+                            openDepartmentSubmissionConfirmation: true,
+                          }))
+                        }
                         className='block w-full  text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter'
                       >
                         Submit For Endorsement
@@ -379,7 +400,12 @@ export default function ViewIM() {
                       iM?.owner?.departmentId &&
                     !iM?.CoordinatorEndorsement && (
                       <button
-                        onClick={handleReturnForRevision}
+                        onClick={() =>
+                          setState((prev) => ({
+                            ...prev,
+                            openDepartmentReturnConfirmation: true,
+                          }))
+                        }
                         className='block w-full  text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter'
                       >
                         Return For Revision
@@ -396,7 +422,12 @@ export default function ViewIM() {
                           iM?.CoordinatorEndorsement &&
                           "IM was already endorsed"
                         }
-                        onClick={handleEndorse}
+                        onClick={() =>
+                          setState((prev) => ({
+                            ...prev,
+                            openCoordinatorEndorsementConfirmation: true,
+                          }))
+                        }
                         className='block w-full  text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter'
                       >
                         Endorse
@@ -408,7 +439,12 @@ export default function ViewIM() {
                   {iM?.status === "CITL_REVIEWED" &&
                     user?.ActiveFaculty?.facultyId === iM?.ownerId && (
                       <button
-                        onClick={handleSubmitForIMDCoordinatorEndorsement}
+                        onClick={() =>
+                          setState((prev) => ({
+                            ...prev,
+                            openCITLSubmissionConfirmation: true,
+                          }))
+                        }
                         className='block w-full  text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter'
                       >
                         Submit For Endorsement
@@ -427,7 +463,12 @@ export default function ViewIM() {
                     user?.IMDCoordinator?.ActiveIMDCoordinator &&
                     !iM?.IMDCoordinatorEndorsement && (
                       <button
-                        onClick={handleReturnForIMDCoordinatorRevision}
+                        onClick={() =>
+                          setState((prev) => ({
+                            ...prev,
+                            openCITLReturnConfirmation: true,
+                          }))
+                        }
                         className='block w-full  text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter'
                       >
                         Return For Revision
@@ -445,7 +486,12 @@ export default function ViewIM() {
                           iM?.IMDCoordinatorEndorsement &&
                           "IM was already endorsed"
                         }
-                        onClick={handleIMDCoordinatorEndorse}
+                        onClick={() =>
+                          setState((prev) => ({
+                            ...prev,
+                            openCITLEndorsementConfirmation: true,
+                          }))
+                        }
                         className='block w-full  text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter'
                       >
                         Endorse
@@ -469,7 +515,12 @@ export default function ViewIM() {
                             ? "Endorsement already confirmed"
                             : ""
                         }
-                        onClick={handleConfirmEndorsement}
+                        onClick={() =>
+                          setState((prev) => ({
+                            ...prev,
+                            openDeanEndorsementConfirmation: true,
+                          }))
+                        }
                         className='block w-full  text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter'
                       >
                         Confirm Endorsement
@@ -586,6 +637,85 @@ export default function ViewIM() {
           />
         )}
       </div>
+
+      <ConfirmModal
+        show={state.openSubmissionConfirmation}
+        onAgree={handleSubmitForReview}
+        onClose={() =>
+          setState((prev) => ({ ...prev, openSubmissionConfirmation: false }))
+        }
+      />
+      <ConfirmModal
+        show={state.openDepartmentSubmissionConfirmation}
+        onAgree={handleSubmitForEndorsement}
+        onClose={() =>
+          setState((prev) => ({
+            ...prev,
+            openDepartmentSubmissionConfirmation: false,
+          }))
+        }
+      />
+      <ConfirmModal
+        show={state.openCoordinatorEndorsementConfirmation}
+        onAgree={handleEndorse}
+        onClose={() =>
+          setState((prev) => ({
+            ...prev,
+            openCoordinatorEndorsementConfirmation: false,
+          }))
+        }
+      />
+      <ConfirmModal
+        show={state.openDeanEndorsementConfirmation}
+        onAgree={handleConfirmEndorsement}
+        onClose={() =>
+          setState((prev) => ({
+            ...prev,
+            openDeanEndorsementConfirmation: false,
+          }))
+        }
+      />
+      <ConfirmModal
+        show={state.openCITLSubmissionConfirmation}
+        onAgree={handleSubmitForIMDCoordinatorEndorsement}
+        onClose={() =>
+          setState((prev) => ({
+            ...prev,
+            openCITLSubmissionConfirmation: false,
+          }))
+        }
+      />
+      <ConfirmModal
+        show={state.openCITLReturnConfirmation}
+        onAgree={handleReturnForIMDCoordinatorRevision}
+        onClose={() =>
+          setState((prev) => ({
+            ...prev,
+            openCITLReturnConfirmation: false,
+          }))
+        }
+      />
+      <ConfirmModal
+        show={state.openCITLEndorsementConfirmation}
+        onAgree={handleIMDCoordinatorEndorse}
+        onClose={() =>
+          setState((prev) => ({
+            ...prev,
+            openCITLEndorsementConfirmation: false,
+          }))
+        }
+      />
+      <ConfirmModal
+        show={state.openDepartmentReturnConfirmation}
+        onAgree={handleReturnForRevision}
+        onClose={() =>
+          setState((prev) => ({
+            ...prev,
+            openDepartmentReturnConfirmation: false,
+          }))
+        }
+      />
+      {/* handleReturnForRevision */}
     </Layout>
   );
 }

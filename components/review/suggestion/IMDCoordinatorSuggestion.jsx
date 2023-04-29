@@ -71,8 +71,8 @@ export default function IMDCoordinatorSuggestion({
       showCoordinatorSuggestion
       showPeerSuggestion
       handleSubmit={handleSubmit}
-      onFinish={() => {
-        handleSubmitSuggestion().then(() => onFinish());
+      onFinish={async () => {
+        return handleSubmitSuggestion().then(() => onFinish());
       }}
       onPrevious={onPrevious}
       iM={iM}

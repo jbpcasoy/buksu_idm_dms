@@ -1,5 +1,5 @@
 import UserContext from "@/contexts/UserContext";
-import { initCarousels } from "flowbite";
+import { initCarousels, initModals } from "flowbite";
 import { useRouter } from "next/router";
 import { useContext, useEffect } from "react";
 import Header from "./Header";

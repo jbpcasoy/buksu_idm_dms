@@ -77,8 +77,8 @@ export default function ChairpersonSuggestion({
       showCoordinatorSuggestion
       showPeerSuggestion
       handleSubmit={handleSubmit}
-      onFinish={() => {
-        handleSubmitSuggestion().then(() => onFinish());
+      onFinish={async () => {
+        return handleSubmitSuggestion().then(() => onFinish());
       }}
       onPrevious={onPrevious}
       iM={iM}

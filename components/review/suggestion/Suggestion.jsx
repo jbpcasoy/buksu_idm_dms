@@ -1,7 +1,9 @@
+import { useState } from "react";
 import SuggestionAddModal from "./SuggestionAddModal";
 import ChairpersonSuggestionView from "./suggestion_view/ChairpersonSuggestionView";
 import CoordinatorSuggestionView from "./suggestion_view/CoordinatorSuggestionView";
 import PeerSuggestionView from "./suggestion_view/PeerSuggestionView";
+import ConfirmModal from "@/components/ConfirmModal";
 
 export default function Suggestion({
   onFinish,
@@ -14,6 +16,9 @@ export default function Suggestion({
   showCoordinatorSuggestion = false,
   title,
 }) {
+  const [state, setState] = useState({
+    showSubmitConfirmation: false,
+  });
   return (
     <div>
       <div className=' grid grid-flow-row items-center mt-5 relative overflow-x-auto'>
@@ -103,7 +108,9 @@ export default function Suggestion({
       <div className='flex mt-4'>
         <div className='flex-auto flex flex-row-reverse justify-between'>
           <button
-            onClick={onFinish}
+            onClick={() => {
+              setState((prev) => ({ ...prev, showSubmitConfirmation: true }));
+            }}
             className='group relative inline-flex items-center overflow-hidden rounded-md bg-CITLOrange px-8 py-3 text-CITLDarkBlue focus:outline-none '
           >
             <span className='absolute right-0 translate-x-full transition-transform group-hover:-translate-x-4'>
@@ -154,6 +161,13 @@ export default function Suggestion({
           </button>
         </div>
       </div>
+      <ConfirmModal
+        show={state.showSubmitConfirmation}
+        onAgree={onFinish}
+        onClose={() =>
+          setState((prev) => ({ ...prev, showSubmitConfirmation: false }))
+        }
+      />
     </div>
   );
 }
