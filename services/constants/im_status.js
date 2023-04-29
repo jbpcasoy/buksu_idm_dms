@@ -2,8 +2,10 @@ const IMStatuses = [
   "DRAFT",
   "SUBMITTED",
   "DEPARTMENT_REVIEWED",
+  "DEPARTMENT_REVISED",
   "DEPARTMENT_ENDORSED",
   "CITL_REVIEWED",
+  "CITL_REVISED",
   "CITL_ENDORSED",
 ];
 export default IMStatuses;

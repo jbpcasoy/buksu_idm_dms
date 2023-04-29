@@ -87,6 +87,7 @@ export default function AdminIMView({
           type,
           serialNumber,
           authors,
+          status,
         }}
         open={state.openUpdate}
         onClose={() => openUpdateDialog(false)}

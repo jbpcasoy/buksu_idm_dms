@@ -30,15 +30,21 @@ export default function AdminIMUpdateForm({
       type: initialValues.type,
       serialNumber: initialValues.serialNumber,
       authors: initialValues.authors,
+      status: initialValues.status,
     },
     validationSchema: Yup.object({
       title: Yup.string().required("Title is required"),
       type: Yup.string().required("Type is required"),
       authors: Yup.string().required("Authors is required"),
+      status: Yup.string().required("Status is required"),
       serialNumber: Yup.string().nullable(),
     }),
     onSubmit: (values) => {
-      return onSubmit(values).then((res) => {
+      return onSubmit({
+        ...values,
+        status:
+          values.status === initialValues.status ? undefined : values.status,
+      }).then((res) => {
         onClose();
       });
     },
@@ -51,7 +57,7 @@ export default function AdminIMUpdateForm({
         <DialogContent>
           <Stack spacing={1}>
             <DialogContentText>
-              This will change the IM's data across resources.
+              This will change the IM&apos;s data across resources.
             </DialogContentText>
             <TextField
               label='Title'
@@ -84,6 +90,42 @@ export default function AdminIMUpdateForm({
                 <MenuItem value={"TEXTBOOK"}>TEXTBOOK</MenuItem>
               </Select>
             </FormControl>
+            {(initialValues.status === "SUBMITTED" ||
+              initialValues.status === "DEPARTMENT_REVISED" ||
+              initialValues.status === "CITL_REVISED") && (
+              <FormControl size='small' sx={{ width: "auto" }}>
+                <InputLabel>Status</InputLabel>
+                <Select
+                  value={formik.values.status}
+                  label='Status'
+                  fullWidth
+                  {...formik.getFieldProps("status")}
+                >
+                  {initialValues.status === "SUBMITTED" && (
+                    <MenuItem value={"SUBMITTED"}>SUBMITTED</MenuItem>
+                  )}
+                  {initialValues.status === "SUBMITTED" && (
+                    <MenuItem value={"DRAFT"}>DRAFT</MenuItem>
+                  )}
+                  {initialValues.status === "DEPARTMENT_REVISED" && (
+                    <MenuItem value={"DEPARTMENT_REVISED"}>
+                      DEPARTMENT_REVISED
+                    </MenuItem>
+                  )}
+                  {initialValues.status === "DEPARTMENT_REVISED" && (
+                    <MenuItem value={"DEPARTMENT_REVIEWED"}>
+                      DEPARTMENT_REVIEWED
+                    </MenuItem>
+                  )}
+                  {initialValues.status === "CITL_REVISED" && (
+                    <MenuItem value={"CITL_REVISED"}>CITL_REVISED</MenuItem>
+                  )}
+                  {initialValues.status === "CITL_REVISED" && (
+                    <MenuItem value={"CITL_REVIEWED"}>CITL_REVIEWED</MenuItem>
+                  )}
+                </Select>
+              </FormControl>
+            )}
             <Stack
               direction='row'
               alignItems='center'

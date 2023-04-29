@@ -13,6 +13,7 @@ export default function AdminIM({ im }) {
       authors: values.authors,
       title: values.title,
       type: values.type,
+      status: values.status,
     }).then((res) => setIMData(res));
   }
 
