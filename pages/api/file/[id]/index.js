@@ -1,7 +1,6 @@
 import { reqLog } from "@/services/api/logger";
 import deleteFileHandler from "@/services/handlers/file/deleteFileHandler";
 import getFileHandler from "@/services/handlers/file/getFileHandler";
-import putFileHandler from "@/services/handlers/file/putFileHandler";
 import methodNaHandler from "@/services/handlers/methodNaHandler";
 import catchAllError from "@/services/middleware/catchAllError";
 

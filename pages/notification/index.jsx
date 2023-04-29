@@ -11,13 +11,17 @@ export default function Notifications() {
     limit: 5,
     read: false,
   });
-  const { notifications, notificationsLoading, notificationsError } =
-    useNotifications({
-      limit: state.limit,
-      page: state.page,
-      userId: user?.id,
-      read: state.read,
-    });
+  const {
+    notifications,
+    notificationsLoading,
+    notificationsError,
+    refreshNotifications,
+  } = useNotifications({
+    limit: state.limit,
+    page: state.page,
+    userId: user?.id,
+    read: state.read,
+  });
 
   return (
     <Layout>
@@ -45,6 +49,7 @@ export default function Notifications() {
             <NotificationItem
               notification={notification}
               key={notification.id}
+              refreshNotifications={refreshNotifications}
             />
           ))}
           <div className='flex flex-row items-center bg-CITLGray-light justify-end  py-3 w-full'>
