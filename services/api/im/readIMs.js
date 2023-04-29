@@ -40,6 +40,11 @@ export default async function readIMs({
     take: limit,
     skip: (page - 1) * limit,
     include: {
+      CoordinatorEndorsement: {
+        include: {
+          DeanEndorsement: true,
+        },
+      },
       SubmittedChairpersonSuggestion: true,
       SubmittedPeerSuggestion: true,
       SubmittedCoordinatorSuggestion: true,
@@ -54,6 +59,12 @@ export default async function readIMs({
           },
         },
       },
+      IMDCoordinatorSuggestion: {
+        include: {
+          SubmittedIMDCoordinatorSuggestion: true,
+        },
+      },
+      IMDCoordinatorEndorsement: true,
       SubmittedChairpersonReview: {
         select: {
           ChairpersonReview: {
