@@ -160,6 +160,13 @@ const IMDCoordinatorReviewPage = () => {
   //     console.log({ iMDCoordinatorReview });
   //   }, [iMDCoordinatorReview]);
 
-  return <ReviewPage reviewingAs='IMD Coordinator' step={step} steps={steps} />;
+  return (
+    <ReviewPage
+      reviewingAs='IMD Coordinator'
+      step={step}
+      steps={steps}
+      iM={iM}
+    />
+  );
 };
 export default IMDCoordinatorReviewPage;
