@@ -40,4 +40,11 @@ export default async function chairpersonReviewItemAbility({
       },
     });
   }
+
+  if (
+    user?.IMDCoordinator?.ActiveIMDCoordinator ||
+    user?.CITLDirector?.ActiveCITLDirector
+  ) {
+    can("read", "ChairpersonReviewItem");
+  }
 }

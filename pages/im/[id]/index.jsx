@@ -457,6 +457,20 @@ export default function ViewIM() {
                 </li>
 
                 <li>
+                  {user?.IMDCoordinator?.ActiveIMDCoordinator ||
+                    (user?.CITLDirector?.ActiveCITLDirector && (
+                      <button
+                        onClick={() =>
+                          router.push(`/im/${iM?.id}/preview_reviews`)
+                        }
+                        className='block w-full  text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter'
+                      >
+                        Reviews
+                      </button>
+                    ))}
+                </li>
+
+                <li>
                   {user?.IMDCoordinator?.ActiveIMDCoordinator &&
                     (iM?.status === "DEPARTMENT_ENDORSED" ||
                       iM?.status === "CITL_REVIEWED") && (

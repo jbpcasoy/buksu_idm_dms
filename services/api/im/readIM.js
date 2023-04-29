@@ -39,17 +39,64 @@ export default async function readIM({ id, filter = {}, ability }) {
       },
       SubmittedPeerReview: {
         include: {
-          PeerReview: true,
+          PeerReview: {
+            include: {
+              Faculty: {
+                include: {
+                  user: true,
+                  department: {
+                    include: {
+                      college: true,
+                    },
+                  },
+                },
+              },
+            },
+          },
         },
       },
       SubmittedChairpersonReview: {
         include: {
-          ChairpersonReview: true,
+          ChairpersonReview: {
+            include: {
+              Chairperson: {
+                include: {
+                  Faculty: {
+                    include: {
+                      user: true,
+                      department: {
+                        include: {
+                          college: true,
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
         },
       },
       SubmittedCoordinatorReview: {
         include: {
-          CoordinatorReview: true,
+          CoordinatorReview: {
+            include: {
+              Coordinator: {
+                include: {
+                  Faculty: {
+                    include: {
+                      user: true,
+                      department: {
+                        include: {
+                          college: true,
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
         },
       },
       IMDCoordinatorSuggestion: {

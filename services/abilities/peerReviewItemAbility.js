@@ -36,4 +36,11 @@ export default async function peerReviewItemAbility({ can, cannot, user }) {
       },
     });
   }
+
+  if (
+    user?.IMDCoordinator?.ActiveIMDCoordinator ||
+    user?.CITLDirector?.ActiveCITLDirector
+  ) {
+    can("read", "PeerReviewItem");
+  }
 }
