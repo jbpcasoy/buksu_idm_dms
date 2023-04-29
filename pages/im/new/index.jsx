@@ -35,12 +35,11 @@ export default function CreateIM() {
         authors,
         type,
       });
-      const res = await uploadIMFile(file);
       const createdFile = await frontendCreateFile({
         iMId: im.id,
         originalFileName: file.name,
-        fileName: res.filename,
       });
+      await uploadIMFile({ file, fileId: createdFile.id });
       const activeFile = await frontendCreateActiveFile({
         iMId: im.id,
         fileId: createdFile.id,

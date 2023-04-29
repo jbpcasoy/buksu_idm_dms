@@ -115,7 +115,8 @@ model IM {
 
 model File {
   id               String      @id @default(cuid())
-  fileName         String      @unique
+  // no longer referenced use id instead to find file
+  fileName         String?     @unique // deprecated
   originalFileName String
   iM               IM          @relation(fields: [iMId], references: [id])
   createdAt        DateTime    @default(now())

@@ -23,12 +23,11 @@ export default function ViewIM() {
   const [filePreviewUrl, setFilePreviewUrl] = useState();
 
   async function handleSubmit() {
-    const res = await uploadIMFile(file);
     const createdFile = await frontendCreateFile({
       iMId: iM.id,
       originalFileName: file.name,
-      fileName: res.filename,
     });
+    await uploadIMFile({ file, fileId: createdFile.id });
     await frontendUpdateActiveFile(iM?.ActiveFile?.id, {
       fileId: createdFile.id,
     })

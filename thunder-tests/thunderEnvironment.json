@@ -13,7 +13,7 @@
       },
       {
         "name": "Cookie",
-        "value": "next-auth.csrf-token=cc2d4a5fac87a6d3b9f5a73f3b3641af33a88cb715ac2267d34b9c956742f19b|0950aac11b2404753ff528ceb00057cb685b446a3dca36667b1ff1c25d4d8b7b; next-auth.callback-url=http://localhost:3000/api/login_role?role=FACULTY&redirect=/home; next-auth.session-token=becdee86-f6f3-458c-82c7-4220793de362"
+        "value": "next-auth.session-token=15c579a4-ca2e-4370-a8e0-c5f15ac8e231; next-auth.csrf-token=66f444fa391c43d1527ef54c4ec1d5d8ad94ef182f78d253c85205190e105397|a74efc094379cda438676cb106bd0235ccc953a89d1856ac5e16bf93a4bca659; next-auth.callback-url=http://localhost:3000/im/new"
       },
       {
         "name": "AdminCookie",

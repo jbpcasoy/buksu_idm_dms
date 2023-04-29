@@ -1,50 +1,54 @@
-import firebaseUploadFile from "@/services/api/upload/file/firebaseUploadFile";
-import uploadFile from "@/services/middleware/upload/uploadFile";
-import { uuidv4 } from "@firebase/util";
+import uploadMemoryStorageMiddleware from "@/services/middleware/upload/uploadFile";
 import nextConnect from "next-connect";
-import slugify from "slugify";
+import getServerUser from "@/services/helpers/getServerUser";
+import readFile from "@/services/api/file/readFile";
+import userAbility from "@/services/abilities/defineAbility";
+import statusError from "@/services/helpers/throwError";
+import updateFile from "@/services/api/file/updateFile";
+import catchAllError from "@/services/middleware/catchAllError";
+import uploadFileToStorage from "@/services/helpers/uploadFileToStorage";
 
 // TODO implement logging
 
 const apiRoute = nextConnect({
   onError(error, req, res) {
-    res
-      .status(501)
-      .json({ error: `Sorry something Happened! ${error.message}` });
+    throw error;
   },
   onNoMatch(req, res) {
     res.status(405).json({ error: `Method '${req.method}' Not Allowed` });
   },
 });
 
-apiRoute.use(uploadFile);
+apiRoute.use(uploadMemoryStorageMiddleware);
 
 apiRoute.post(async (req, res) => {
-  if (process.env.STORAGE === "cloud") {
-    return cloudUploadFileHandler(req, res);
-  } else if (process.env.STORAGE === "local") {
-    localUploadFileHandler(req, res);
-  } else {
-    throw new Error(
-      `env variable STORAGE ${process.env.STORAGE} is not supported`
-    );
-  }
+  return catchAllError(req, res, async (req, res) => {
+    const { fileId } = req.body;
+    const file = req.file;
+
+    const user = await getServerUser(req, res);
+
+    const serverFile = await readFile({
+      id: fileId,
+      ability: await userAbility(user),
+    });
+
+    if (serverFile?.fileName) {
+      throw statusError({ statusCode: 409, message: "File already uploaded" });
+    }
+
+    await uploadFileToStorage({ dest: `uploads/file/${fileId}.pdf`, file });
+    await updateFile({
+      id: fileId,
+      data: { fileName: `${fileId}.pdf` },
+      ability: await userAbility(user),
+    });
+
+    return res
+      .status(201)
+      .json({ ...file, filename: `${fileId}.pdf`, buffer: undefined });
+  });
 });
-
-async function cloudUploadFileHandler(req, res) {
-  const file = req.file;
-
-  const filename = `${uuidv4()}_${slugify(file.originalname, { lower: true })}`;
-
-  await firebaseUploadFile({ path: `uploads/file/${filename}`, file });
-  return res.status(200).json({ ...file, filename, buffer: undefined });
-}
-
-async function localUploadFileHandler(req, res) {
-  const file = req.file;
-
-  res.status(200).json(file);
-}
 
 export default apiRoute;
 

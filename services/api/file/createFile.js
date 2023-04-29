@@ -14,7 +14,11 @@ export default async function createFile({
     data: {
       originalFileName,
       fileName,
-      iMId,
+      iM: {
+        connect: {
+          id: iMId,
+        },
+      },
       googleDocsUrl,
       IMEvent: {
         create: {
