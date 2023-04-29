@@ -233,26 +233,23 @@ export default function ViewIM() {
                       </div>
                     </button>
                   )}
-                {user?.ActiveFaculty?.facultyId === iM?.ownerId && (
-                  <li>
-                    <Link
-                      href={`/im/${iM?.id}/versions`}
-                      className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
-                    >
-                      View Versions
-                    </Link>
-                  </li>
-                )}
-                {user?.ActiveFaculty?.facultyId === iM?.ownerId && (
-                  <li>
-                    <Link
-                      href={`/im/${iM?.id}/track`}
-                      className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
-                    >
-                      Track
-                    </Link>
-                  </li>
-                )}
+                <li>
+                  <Link
+                    href={`/im/${iM?.id}/versions`}
+                    className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
+                  >
+                    View Versions
+                  </Link>
+                </li>
+
+                <li>
+                  <Link
+                    href={`/im/${iM?.id}/track`}
+                    className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
+                  >
+                    Track
+                  </Link>
+                </li>
                 <li>
                   {user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId &&
                     user?.ActiveFaculty?.Faculty?.departmentId ===
