@@ -8,11 +8,24 @@ export default function ReviewEndorsementIndicator({ im, direction = "row" }) {
   const chairpersonSuggested = Boolean(im?.SubmittedChairpersonSuggestion);
   const coordinatorSuggested = Boolean(im?.SubmittedCoordinatorSuggestion);
   const coordinatorEndorsed = Boolean(im?.CoordinatorEndorsement);
-  const deanEndorsed = Boolean(im?.CoordinatorEndorsement.DeanEndorsement);
+  const deanEndorsed = Boolean(im?.CoordinatorEndorsement?.DeanEndorsement);
   const imdCoordinatorSuggested = Boolean(
     im?.IMDCoordinatorEndorsement?.SubmittedIMDCoordinatorEndorsement
   );
   const imdCoordinatorEndorsed = Boolean(im?.IMDCoordinatorEndorsement);
+  const peerReviewer = im?.SubmittedPeerReview?.PeerReview?.Faculty?.user;
+  const chairpersonReviewer =
+    im?.SubmittedChairpersonReview?.ChairpersonReview?.Chairperson?.Faculty
+      ?.user;
+  const coordinatorReviewer =
+    im?.SubmittedCoordinatorReview?.CoordinatorReview?.Coordinator?.Faculty
+      ?.user;
+  const coordinatorEndorser =
+    im?.CoordinatorEndorsement?.Coordinator?.Faculty?.user;
+  const deanEndorser =
+    im?.CoordinatorEndorsement?.DeanEndorsement?.Dean?.Faculty?.user;
+  const imdCoordinatorEndorser =
+    im?.IMDCoordinatorEndorsement?.IMDCoordinator?.User;
 
   return (
     <div
@@ -33,36 +46,20 @@ export default function ReviewEndorsementIndicator({ im, direction = "row" }) {
             >
               Peer
               {peerSuggested && (
-                <svg
-                  aria-hidden='true'
-                  className='w-3 h-3  text-purple-800 rounded-full ml-1'
-                  fill='currentColor'
-                  viewBox='0 0 20 20'
-                  xmlns='http://www.w3.org/2000/svg'
-                >
-                  <path
-                    fillRule='evenodd'
-                    d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z'
-                    clipRule='evenodd'
-                  ></path>
-                </svg>
+                <img
+                  src={peerReviewer.image}
+                  alt='Peer'
+                  title={peerReviewer.name}
+                  className='w-3 h-3   rounded-full mx-1'
+                />
               )}
               {!peerSuggested && (
-                <svg
-                  fill='none'
-                  className='w-3 h-3  text-purple-800 rounded-full ml-1'
-                  stroke='currentColor'
-                  strokeWidth='1.5'
-                  viewBox='0 0 24 24'
-                  xmlns='http://www.w3.org/2000/svg'
-                  aria-hidden='true'
-                >
-                  <path
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                    d='M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
-                  ></path>
-                </svg>
+                <img
+                  src={peerReviewer.image}
+                  alt='Peer'
+                  title={peerReviewer.name}
+                  className='w-3 h-3   rounded-full mx-1'
+                />
               )}
             </span>
           )}
@@ -83,36 +80,20 @@ export default function ReviewEndorsementIndicator({ im, direction = "row" }) {
             >
               Chairperson
               {chairpersonSuggested && (
-                <svg
-                  aria-hidden='true'
-                  className='w-3 h-3  text-orange-500 rounded-full ml-1'
-                  fill='currentColor'
-                  viewBox='0 0 20 20'
-                  xmlns='http://www.w3.org/2000/svg'
-                >
-                  <path
-                    fillRule='evenodd'
-                    d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z'
-                    clipRule='evenodd'
-                  ></path>
-                </svg>
+                <img
+                  src={chairpersonReviewer.image}
+                  alt='Chairperson'
+                  title={chairpersonReviewer.name}
+                  className='w-3 h-3   rounded-full mx-1'
+                />
               )}
               {!chairpersonSuggested && (
-                <svg
-                  fill='none'
-                  className='w-3 h-3  text-orange-500 rounded-full ml-1'
-                  stroke='currentColor'
-                  strokeWidth='1.5'
-                  viewBox='0 0 24 24'
-                  xmlns='http://www.w3.org/2000/svg'
-                  aria-hidden='true'
-                >
-                  <path
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                    d='M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
-                  ></path>
-                </svg>
+                <img
+                  src={chairpersonReviewer.image}
+                  alt='Chairperson'
+                  title={chairpersonReviewer.name}
+                  className='w-3 h-3   rounded-full mx-1'
+                />
               )}
             </span>
           )}
@@ -133,36 +114,20 @@ export default function ReviewEndorsementIndicator({ im, direction = "row" }) {
             >
               Coordinator{" "}
               {coordinatorSuggested && (
-                <svg
-                  aria-hidden='true'
-                  className='w-3 h-3  text-green-900 rounded-full ml-1'
-                  fill='currentColor'
-                  viewBox='0 0 20 20'
-                  xmlns='http://www.w3.org/2000/svg'
-                >
-                  <path
-                    fillRule='evenodd'
-                    d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z'
-                    clipRule='evenodd'
-                  ></path>
-                </svg>
+                <img
+                  src={coordinatorReviewer.image}
+                  alt='Coordinator'
+                  title={coordinatorReviewer.name}
+                  className='w-3 h-3   rounded-full mx-1'
+                />
               )}
               {!coordinatorSuggested && (
-                <svg
-                  fill='none'
-                  className='w-3 h-3  text-green-900 rounded-full ml-1'
-                  stroke='currentColor'
-                  strokeWidth='1.5'
-                  viewBox='0 0 24 24'
-                  xmlns='http://www.w3.org/2000/svg'
-                  aria-hidden='true'
-                >
-                  <path
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                    d='M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
-                  ></path>
-                </svg>
+                <img
+                  src={coordinatorReviewer.image}
+                  alt='Coordinator'
+                  title={coordinatorReviewer.name}
+                  className='w-3 h-3   rounded-full mx-1'
+                />
               )}
             </span>
           )}
@@ -183,19 +148,12 @@ export default function ReviewEndorsementIndicator({ im, direction = "row" }) {
             >
               Coordinator{" "}
               {coordinatorEndorsed && (
-                <svg
-                  aria-hidden='true'
-                  className='w-3 h-3  text-green-900 rounded-full ml-1'
-                  fill='currentColor'
-                  viewBox='0 0 20 20'
-                  xmlns='http://www.w3.org/2000/svg'
-                >
-                  <path
-                    fillRule='evenodd'
-                    d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z'
-                    clipRule='evenodd'
-                  ></path>
-                </svg>
+                <img
+                  src={coordinatorEndorser.image}
+                  alt='Coordinator'
+                  title={coordinatorEndorser.name}
+                  className='w-3 h-3   rounded-full mx-1'
+                />
               )}
             </span>
           )}
@@ -214,19 +172,12 @@ export default function ReviewEndorsementIndicator({ im, direction = "row" }) {
             >
               Dean{" "}
               {deanEndorsed && (
-                <svg
-                  aria-hidden='true'
-                  className='w-3 h-3  text-green-900 rounded-full ml-1'
-                  fill='currentColor'
-                  viewBox='0 0 20 20'
-                  xmlns='http://www.w3.org/2000/svg'
-                >
-                  <path
-                    fillRule='evenodd'
-                    d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z'
-                    clipRule='evenodd'
-                  ></path>
-                </svg>
+                <img
+                  src={deanEndorser.image}
+                  alt='Dean'
+                  title={deanEndorser.name}
+                  className='w-3 h-3   rounded-full mx-1'
+                />
               )}
             </span>
           )}
@@ -249,19 +200,12 @@ export default function ReviewEndorsementIndicator({ im, direction = "row" }) {
             >
               IMD Coordinator{" "}
               {imdCoordinatorSuggested && (
-                <svg
-                  aria-hidden='true'
-                  className='w-3 h-3  text-green-900 rounded-full ml-1'
-                  fill='currentColor'
-                  viewBox='0 0 20 20'
-                  xmlns='http://www.w3.org/2000/svg'
-                >
-                  <path
-                    fillRule='evenodd'
-                    d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z'
-                    clipRule='evenodd'
-                  ></path>
-                </svg>
+                <img
+                  src={imdCoordinatorEndorser.image}
+                  alt='IMD Coordinator'
+                  title={imdCoordinatorEndorser.name}
+                  className='w-3 h-3   rounded-full mx-1'
+                />
               )}
             </span>
           )}
@@ -286,19 +230,12 @@ export default function ReviewEndorsementIndicator({ im, direction = "row" }) {
             >
               IMD Coordinator{" "}
               {imdCoordinatorEndorsed && (
-                <svg
-                  aria-hidden='true'
-                  className='w-3 h-3  text-green-900 rounded-full ml-1'
-                  fill='currentColor'
-                  viewBox='0 0 20 20'
-                  xmlns='http://www.w3.org/2000/svg'
-                >
-                  <path
-                    fillRule='evenodd'
-                    d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z'
-                    clipRule='evenodd'
-                  ></path>
-                </svg>
+                <img
+                  src={imdCoordinatorEndorser.image}
+                  alt='IMD Coordinator'
+                  title={imdCoordinatorEndorser.name}
+                  className='w-3 h-3   rounded-full mx-1'
+                />
               )}
             </span>
           )}

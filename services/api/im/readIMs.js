@@ -42,7 +42,28 @@ export default async function readIMs({
     include: {
       CoordinatorEndorsement: {
         include: {
-          DeanEndorsement: true,
+          Coordinator: {
+            include: {
+              Faculty: {
+                include: {
+                  user: true,
+                },
+              },
+            },
+          },
+          DeanEndorsement: {
+            include: {
+              Dean: {
+                include: {
+                  Faculty: {
+                    include: {
+                      user: true,
+                    },
+                  },
+                },
+              },
+            },
+          },
         },
       },
       SubmittedChairpersonSuggestion: true,
@@ -53,7 +74,7 @@ export default async function readIMs({
           PeerReview: {
             include: {
               Faculty: {
-                select: { userId: true },
+                select: { userId: true, user: true },
               },
             },
           },
@@ -64,7 +85,15 @@ export default async function readIMs({
           SubmittedIMDCoordinatorSuggestion: true,
         },
       },
-      IMDCoordinatorEndorsement: true,
+      IMDCoordinatorEndorsement: {
+        include: {
+          IMDCoordinator: {
+            include: {
+              User: true,
+            },
+          },
+        },
+      },
       SubmittedChairpersonReview: {
         select: {
           ChairpersonReview: {
@@ -72,7 +101,7 @@ export default async function readIMs({
               Chairperson: {
                 select: {
                   Faculty: {
-                    select: { userId: true },
+                    select: { userId: true, user: true },
                   },
                 },
               },
@@ -87,7 +116,7 @@ export default async function readIMs({
               Coordinator: {
                 select: {
                   Faculty: {
-                    select: { userId: true },
+                    select: { userId: true, user: true },
                   },
                 },
               },
