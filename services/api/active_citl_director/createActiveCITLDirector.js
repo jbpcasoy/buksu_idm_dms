@@ -10,6 +10,7 @@ export default async function createActiveCITLDirector({ cITLDirectorId }) {
           id: cITLDirectorId,
         },
       },
+      uuid: process.env.UUID,
     },
   });
 

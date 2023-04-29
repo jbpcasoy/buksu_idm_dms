@@ -750,6 +750,7 @@ model ActiveIMDCoordinator {
   updatedAt        DateTime       @updatedAt
   IMDCoordinator   IMDCoordinator @relation(fields: [iMDCoordinatorId], references: [id])
   iMDCoordinatorId String         @unique
+  uuid             String         @unique
 }
 
 model CITLDirector {
@@ -768,6 +769,7 @@ model ActiveCITLDirector {
   updatedAt      DateTime     @updatedAt
   CITLDirector   CITLDirector @relation(fields: [cITLDirectorId], references: [id])
   cITLDirectorId String       @unique
+  uuid           String       @unique
 }
 
 model IMDCoordinatorSuggestion {

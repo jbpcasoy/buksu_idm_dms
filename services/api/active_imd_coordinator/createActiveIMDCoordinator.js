@@ -10,6 +10,7 @@ export default async function createActiveIMDCoordinator({ iMDCoordinatorId }) {
           id: iMDCoordinatorId,
         },
       },
+      uuid: process.env.UUID,
     },
   });
   return activeIMDCoordinator;
