@@ -20,6 +20,7 @@ export default function Notifications() {
     limit: state.limit,
     page: state.page,
     userId: user?.id,
+    facultyId: user?.ActiveFaculty?.facultyId,
     read: state.read,
   });
 

@@ -30,6 +30,7 @@ export default async function readIM({ id, filter = {}, ability }) {
           user: true,
           department: {
             include: {
+              college: true,
               ActiveChairperson: true,
               ActiveCoordinator: true,
             },

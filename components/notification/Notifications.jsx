@@ -11,7 +11,12 @@ export default function Notifications() {
     notificationsLoading,
     notificationsError,
     refreshNotifications,
-  } = useNotifications({ limit: 5, page: 1, userId: user?.id });
+  } = useNotifications({
+    limit: 5,
+    page: 1,
+    userId: user?.id,
+    facultyId: user?.ActiveFaculty?.facultyId,
+  });
 
   return (
     <div>

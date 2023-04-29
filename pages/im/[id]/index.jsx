@@ -104,6 +104,15 @@ export default function ViewIM() {
                 <span className='text-xs font-medium '>{iM?.status}</span>
               </h2>
             </div>
+            <div className='lg:flex sm:flex-rows-2 gap-3'>
+              <h2 className='text-xs  text-CITLGray-main'>
+                Department:{" "}
+                <span className='text-xs font-medium '>
+                  {iM?.owner?.department?.name} |{" "}
+                  {iM?.owner?.department?.college?.name}
+                </span>
+              </h2>
+            </div>
             <div className='flex flex-cols mt-3'>
               <Link href={`/profile/${iM?.owner?.user?.id}`}>
                 <img

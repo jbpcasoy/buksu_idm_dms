@@ -7,6 +7,7 @@ export default async function readNotifications({
   userId,
   read,
   ability,
+  facultyId,
 }) {
   const prisma = PRISMA_CLIENT;
   const accessibility = accessibleBy(ability).Notification;
@@ -26,9 +27,7 @@ export default async function readNotifications({
               SubmittedChairpersonReview: {
                 IM: {
                   owner: {
-                    userId: {
-                      contains: userId,
-                    },
+                    id: { contains: facultyId },
                   },
                 },
               },
@@ -37,9 +36,7 @@ export default async function readNotifications({
               SubmittedCoordinatorReview: {
                 IM: {
                   owner: {
-                    userId: {
-                      contains: userId,
-                    },
+                    id: { contains: facultyId },
                   },
                 },
               },
@@ -48,9 +45,7 @@ export default async function readNotifications({
               SubmittedPeerReview: {
                 IM: {
                   owner: {
-                    userId: {
-                      contains: userId,
-                    },
+                    id: { contains: facultyId },
                   },
                 },
               },
@@ -59,9 +54,7 @@ export default async function readNotifications({
               SubmittedChairpersonSuggestion: {
                 IM: {
                   owner: {
-                    userId: {
-                      contains: userId,
-                    },
+                    id: { contains: facultyId },
                   },
                 },
               },
@@ -70,9 +63,7 @@ export default async function readNotifications({
               SubmittedCoordinatorSuggestion: {
                 IM: {
                   owner: {
-                    userId: {
-                      contains: userId,
-                    },
+                    id: { contains: facultyId },
                   },
                 },
               },
@@ -81,9 +72,7 @@ export default async function readNotifications({
               SubmittedPeerSuggestion: {
                 IM: {
                   owner: {
-                    userId: {
-                      contains: userId,
-                    },
+                    id: { contains: facultyId },
                   },
                 },
               },
@@ -92,9 +81,7 @@ export default async function readNotifications({
               CoordinatorEndorsement: {
                 IM: {
                   owner: {
-                    userId: {
-                      contains: userId,
-                    },
+                    id: { contains: facultyId },
                   },
                 },
               },
@@ -104,9 +91,7 @@ export default async function readNotifications({
                 CoordinatorEndorsement: {
                   IM: {
                     owner: {
-                      userId: {
-                        contains: userId,
-                      },
+                      id: { contains: facultyId },
                     },
                   },
                 },
@@ -117,9 +102,7 @@ export default async function readNotifications({
                 IMDCoordinatorSuggestion: {
                   IM: {
                     owner: {
-                      userId: {
-                        contains: userId,
-                      },
+                      id: { contains: facultyId },
                     },
                   },
                 },
@@ -129,9 +112,7 @@ export default async function readNotifications({
               IMDCoordinatorEndorsement: {
                 IM: {
                   owner: {
-                    userId: {
-                      contains: userId,
-                    },
+                    id: { contains: facultyId },
                   },
                 },
               },
@@ -166,9 +147,7 @@ export default async function readNotifications({
               SubmittedChairpersonReview: {
                 IM: {
                   owner: {
-                    userId: {
-                      contains: userId,
-                    },
+                    id: { contains: facultyId },
                   },
                 },
               },
@@ -177,9 +156,7 @@ export default async function readNotifications({
               SubmittedCoordinatorReview: {
                 IM: {
                   owner: {
-                    userId: {
-                      contains: userId,
-                    },
+                    id: { contains: facultyId },
                   },
                 },
               },
@@ -188,9 +165,7 @@ export default async function readNotifications({
               SubmittedPeerReview: {
                 IM: {
                   owner: {
-                    userId: {
-                      contains: userId,
-                    },
+                    id: { contains: facultyId },
                   },
                 },
               },
@@ -199,9 +174,7 @@ export default async function readNotifications({
               SubmittedChairpersonSuggestion: {
                 IM: {
                   owner: {
-                    userId: {
-                      contains: userId,
-                    },
+                    id: { contains: facultyId },
                   },
                 },
               },
@@ -210,9 +183,7 @@ export default async function readNotifications({
               SubmittedCoordinatorSuggestion: {
                 IM: {
                   owner: {
-                    userId: {
-                      contains: userId,
-                    },
+                    id: { contains: facultyId },
                   },
                 },
               },
@@ -221,9 +192,7 @@ export default async function readNotifications({
               SubmittedPeerSuggestion: {
                 IM: {
                   owner: {
-                    userId: {
-                      contains: userId,
-                    },
+                    id: { contains: facultyId },
                   },
                 },
               },
@@ -232,9 +201,7 @@ export default async function readNotifications({
               CoordinatorEndorsement: {
                 IM: {
                   owner: {
-                    userId: {
-                      contains: userId,
-                    },
+                    id: { contains: facultyId },
                   },
                 },
               },
@@ -244,9 +211,7 @@ export default async function readNotifications({
                 CoordinatorEndorsement: {
                   IM: {
                     owner: {
-                      userId: {
-                        contains: userId,
-                      },
+                      id: { contains: facultyId },
                     },
                   },
                 },
@@ -257,9 +222,7 @@ export default async function readNotifications({
                 IMDCoordinatorSuggestion: {
                   IM: {
                     owner: {
-                      userId: {
-                        contains: userId,
-                      },
+                      id: { contains: facultyId },
                     },
                   },
                 },
@@ -269,9 +232,7 @@ export default async function readNotifications({
               IMDCoordinatorEndorsement: {
                 IM: {
                   owner: {
-                    userId: {
-                      contains: userId,
-                    },
+                    id: { contains: facultyId },
                   },
                 },
               },
