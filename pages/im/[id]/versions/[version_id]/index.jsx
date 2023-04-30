@@ -16,11 +16,10 @@ export default function IMVersion() {
       <div className='bg-white rounded-md p-4'>
         <div className='flex items-center justify-between mb-4'>
           <div>
-            <div>
-              <span className='text-lg font-medium'>{iM?.title} | </span>
-              <span>{file?.id}</span>
-            </div>
-            <div className='lg:flex sm:flex-rows-2 gap-3'>
+            <div className='lg:flex-rows sm:flex-rows-2 gap-3'>
+              <span className='text-sm font-medium'>
+                {iM?.title} | {file?.id}
+              </span>
               <h2 className='text-xs  text-CITLGray-main'>
                 Filename:{" "}
                 <span className='text-xs font-medium '>
@@ -39,39 +38,41 @@ export default function IMVersion() {
                   alt='owner'
                 ></img>
               </Link>
-              <div className=''>
-                <h2 className='text-xs font-semibold text-CITLGray-main pl-3 -mb-1'>
-                  {iM?.owner?.user?.name}
-                </h2>
-                <time className='text-xs text-CITLGray-main pl-3 '>
-                  {iM?.createdAt &&
-                    moment(file?.createdAt).format("MMMM D, YYYY | h:mm A")}
-                </time>
+              <div className='sm:flex-rows items-center justify-between'>
+                <div>
+                  <h2 className='text-xs font-semibold text-CITLGray-main pl-3 -mb-1'>
+                    {iM?.owner?.user?.name}
+                  </h2>
+                  <time className='text-xs text-CITLGray-main pl-3 '>
+                    {iM?.createdAt &&
+                      moment(file?.createdAt).format("MMMM D, YYYY | h:mm A")}
+                  </time>
+                </div>
+                <div className='flex -ml-8 mt-3'>
+                  <Link
+                    href={`/im/${iM?.id}`}
+                    className='inline-flex items-center text-CITLWhite font-medium text-sm bg-CITLDarkBlue  px-4 py-2.5 rounded-md '
+                  >
+                    Current version
+                    <svg
+                      fill='none'
+                      stroke='currentColor'
+                      className='w-4 h-4 ml-2 '
+                      strokeWidth='1.5'
+                      viewBox='0 0 24 24'
+                      xmlns='http://www.w3.org/2000/svg'
+                      aria-hidden='true'
+                    >
+                      <path
+                        strokeLinecap='round'
+                        strokeLinejoin='round'
+                        d='M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25'
+                      ></path>
+                    </svg>
+                  </Link>{" "}
+                </div>
               </div>
             </div>
-          </div>
-          <div className='items-left'>
-            <Link
-              href={`/im/${iM?.id}`}
-              className='inline-flex items-center text-CITLWhite font-medium text-sm bg-CITLDarkBlue  px-4 py-2.5 rounded-md '
-            >
-              Current version
-              <svg
-                fill='none'
-                stroke='currentColor'
-                className='w-4 h-4 ml-2 '
-                strokeWidth='1.5'
-                viewBox='0 0 24 24'
-                xmlns='http://www.w3.org/2000/svg'
-                aria-hidden='true'
-              >
-                <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  d='M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25'
-                ></path>
-              </svg>
-            </Link>{" "}
           </div>
         </div>
 
