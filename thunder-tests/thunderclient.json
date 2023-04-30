@@ -6969,5 +6969,146 @@
       ]
     },
     "tests": []
+  },
+  {
+    "_id": "d21f271b-88b9-49f0-b471-8aaf47de6c8a",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "ce9868f3-d16c-4ff1-bb3a-797fe15d16ea",
+    "name": "CREATE Announcement",
+    "url": "{{host}}/api/announcement",
+    "method": "POST",
+    "sortNum": 2470000,
+    "created": "2023-04-30T09:15:34.315Z",
+    "modified": "2023-04-30T09:55:19.882Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"title\": \"Tutorial\",\n  \"description\": \"The best guide to start with BukSU IMD DMS!\",\n  \"link\": \"my-link.com\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "85d31e04-08c9-46fb-8aa0-5c03660c4519",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "ce9868f3-d16c-4ff1-bb3a-797fe15d16ea",
+    "name": "READ Announcements",
+    "url": "{{host}}/api/announcement?limit=10&page=1",
+    "method": "GET",
+    "sortNum": 2480000,
+    "created": "2023-04-30T09:23:26.134Z",
+    "modified": "2023-04-30T10:01:59.519Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}"
+      }
+    ],
+    "params": [
+      {
+        "name": "limit",
+        "value": "10",
+        "isPath": false
+      },
+      {
+        "name": "page",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "086a9ac9-5c08-4758-ab8f-0a23751441ba",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "ce9868f3-d16c-4ff1-bb3a-797fe15d16ea",
+    "name": "READ Announcement",
+    "url": "{{host}}/api/announcement/clh38k4w90006tn38zahmr2ze",
+    "method": "GET",
+    "sortNum": 2490000,
+    "created": "2023-04-30T09:31:09.805Z",
+    "modified": "2023-04-30T09:58:32.201Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}"
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "cecdef20-064e-4301-8da0-d7c0026b60ea",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "ce9868f3-d16c-4ff1-bb3a-797fe15d16ea",
+    "name": "DELETE Announcement",
+    "url": "{{host}}/api/announcement/clh38k4w90006tn38zahmr2ze",
+    "method": "DELETE",
+    "sortNum": 2500000,
+    "created": "2023-04-30T09:34:06.255Z",
+    "modified": "2023-04-30T10:03:48.390Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}"
+      }
+    ],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "36f7ceb6-8a09-4333-b8f8-42ff225f2f1b",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "ce9868f3-d16c-4ff1-bb3a-797fe15d16ea",
+    "name": "UPDATE Announcement",
+    "url": "{{host}}/api/announcement/clh377sia0002tn38yk4tiw6s",
+    "method": "PUT",
+    "sortNum": 2510000,
+    "created": "2023-04-30T09:50:17.582Z",
+    "modified": "2023-04-30T10:08:46.477Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"title\": \"Updated\",\n  \"description\": \"Updated description\",\n  \"link\": \"my-updated-link.com\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
