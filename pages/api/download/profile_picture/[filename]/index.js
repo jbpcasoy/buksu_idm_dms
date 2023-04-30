@@ -6,10 +6,10 @@ export default async function handler(req, res) {
   return catchAllError(req, res, async (req, res) => {
     await reqLog(req, res);
     const { filename } = req.query;
-    const path = `uploads/file/${filename}`;
+    const path = `uploads/profile_picture/${filename}`;
 
-    res.setHeader("Content-Disposition", `inline`);
-    res.setHeader("Content-Type", `application/pdf`);
+    res.setHeader("Content-Type", "image/jpeg");
+    res.setHeader("Cache-Control", "no-store");
     return downloadHandler({ path, res });
   });
 }

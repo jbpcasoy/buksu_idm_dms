@@ -22,7 +22,7 @@ export default function UserEvents({ facultyId }) {
       <div className='flex flex-wrap items-center border border-slate-300  bg-CITLGray-light m-2 p-3 relative rounded-lg shadow-lg overflow-x-auto'>
         <div className='px-6 py-4 md:w-10/12 sm:w-12/12'>
           <h3 className='text-lg font-semibold text-CITLDarkBlue mb-12'>
-            Instructional Material Tracker
+            Instructional Material Action History
           </h3>
           <ol className='relative border-l border-CITLDarkBlue dark:border-gray-700'>
             {iMEvents?.data?.map((iMEvent) => {

@@ -32,7 +32,7 @@ export default function IMCITLRevisedEvent({ iMEvent }) {
         <span className='font-semibold text-green-400'>
           &quot;{iMEvent?.IM?.title}&quot;
         </span>{" "}
-        was move for CITL endorsement.
+        was moved for CITL endorsement.
       </p>
 
       <a

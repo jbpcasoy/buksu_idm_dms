@@ -23,6 +23,22 @@ export default function Me() {
           });
         }}
         defaultName={user?.name}
+        onUploadImage={async (e) => {
+          const profilePicture = e.target.files[0];
+          const formData = new FormData();
+          formData.append("file", profilePicture, profilePicture.name);
+          return axios
+            .post(`/api/upload/profile_picture`, formData)
+            .then(async (res) => {
+              return axios
+                .put(`/api/user/${user.id}`, {
+                  image: `/api/download/profile_picture/${user.id}`,
+                })
+                .then((res) => {
+                  router.reload();
+                });
+            });
+        }}
       />
     </Layout>
   );

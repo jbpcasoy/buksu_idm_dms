@@ -16,7 +16,7 @@ const apiRoute = nextConnect({
     throw error;
   },
   onNoMatch(req, res) {
-    res.status(405).json({ error: `Method '${req.method}' Not Allowed` });
+    res.status(405).json({ message: `Method '${req.method}' Not Allowed` });
   },
 });
 
@@ -24,31 +24,20 @@ apiRoute.use(uploadMemoryStorageMiddleware);
 
 apiRoute.post(async (req, res) => {
   return catchAllError(req, res, async (req, res) => {
-    reqLog(req, res);
-    const { fileId } = req.body;
+    await reqLog(req, res);
     const file = req.file;
+    console.log({ file });
 
     const user = await getServerUser(req, res);
 
-    const serverFile = await readFile({
-      id: fileId,
-      ability: await userAbility(user),
-    });
-
-    if (serverFile?.fileName) {
-      throw statusError({ statusCode: 409, message: "File already uploaded" });
-    }
-
-    await uploadFileToStorage({ dest: `uploads/file/${fileId}.pdf`, file });
-    await updateFile({
-      id: fileId,
-      data: { fileName: `${fileId}.pdf` },
-      ability: await userAbility(user),
+    await uploadFileToStorage({
+      dest: `uploads/profile_picture/${user.id}`,
+      file,
     });
 
     return res
       .status(201)
-      .json({ ...file, filename: `${fileId}.pdf`, buffer: undefined });
+      .json({ ...file, filename: file.filename, buffer: undefined });
   });
 });
 

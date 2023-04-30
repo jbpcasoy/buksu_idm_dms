@@ -1,8 +1,13 @@
 import ToggleModal from "@/components/ToggleModal";
+import ProfileUpload from "@/components/user/ProfileUpload";
 import UserContext from "@/contexts/UserContext";
 import { useContext } from "react";
 
-export default function ProfileFormView({ onSubmit, defaultName }) {
+export default function ProfileFormView({
+  onSubmit,
+  defaultName,
+  onUploadImage,
+}) {
   const { user, userError, userLoading } = useContext(UserContext);
 
   return (
@@ -60,10 +65,9 @@ export default function ProfileFormView({ onSubmit, defaultName }) {
         </div> */}
         </div>
         <div className='flex flex-col items-center pb-10'>
-          <img
-            className='w-24 h-24 mb-3 rounded-full shadow-lg'
-            src={user?.image}
-            alt='image'
+          <ProfileUpload
+            userImage={user?.image}
+            onUploadImage={onUploadImage}
           />
           <h5 className='mb-1 text-xl font-semibold text-gray-900 dark:text-white'>
             {user?.name}
