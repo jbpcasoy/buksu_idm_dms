@@ -12,6 +12,24 @@ export default async function coordinatorSuggestionItemAbility({
               coordinatorId: {
                 equals: user.ActiveFaculty.ActiveCoordinator.coordinatorId,
               },
+              IM: {
+                is: {
+                  OR: [
+                    {
+                      SubmittedCoordinatorSuggestion: {
+                        isNot: {
+                          id: { contains: "" },
+                        },
+                      },
+                    },
+                    {
+                      returned: {
+                        equals: true,
+                      },
+                    },
+                  ],
+                },
+              },
             },
           },
         },
@@ -27,6 +45,24 @@ export default async function coordinatorSuggestionItemAbility({
                 is: {
                   coordinatorId: {
                     equals: user.ActiveFaculty.ActiveCoordinator.coordinatorId,
+                  },
+                  IM: {
+                    is: {
+                      OR: [
+                        {
+                          SubmittedCoordinatorSuggestion: {
+                            isNot: {
+                              id: { contains: "" },
+                            },
+                          },
+                        },
+                        {
+                          returned: {
+                            equals: true,
+                          },
+                        },
+                      ],
+                    },
                   },
                 },
               },
@@ -50,6 +86,24 @@ export default async function coordinatorSuggestionItemAbility({
                     coordinatorId: {
                       equals:
                         user.ActiveFaculty.ActiveCoordinator.coordinatorId,
+                    },
+                    IM: {
+                      is: {
+                        OR: [
+                          {
+                            SubmittedCoordinatorSuggestion: {
+                              isNot: {
+                                id: { contains: "" },
+                              },
+                            },
+                          },
+                          {
+                            returned: {
+                              equals: true,
+                            },
+                          },
+                        ],
+                      },
                     },
                   },
                 },

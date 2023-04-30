@@ -8,6 +8,15 @@ export default async function chairpersonReviewItemAbility({
       chairpersonId: {
         equals: user.ActiveFaculty.ActiveChairperson.chairpersonId,
       },
+      IM: {
+        is: {
+          SubmittedChairpersonSuggestion: {
+            isNot: {
+              id: { contains: "" },
+            },
+          },
+        },
+      },
     });
 
     can("read", "ChairpersonReviewItem", {
@@ -26,6 +35,15 @@ export default async function chairpersonReviewItemAbility({
           chairpersonId: {
             equals: user.ActiveFaculty.ActiveChairperson.chairpersonId,
           },
+          IM: {
+            is: {
+              SubmittedChairpersonSuggestion: {
+                isNot: {
+                  id: { contains: "" },
+                },
+              },
+            },
+          },
         },
       },
     });
@@ -35,6 +53,15 @@ export default async function chairpersonReviewItemAbility({
         is: {
           chairpersonId: {
             equals: user.ActiveFaculty.ActiveChairperson.chairpersonId,
+          },
+          IM: {
+            is: {
+              SubmittedChairpersonSuggestion: {
+                isNot: {
+                  id: { contains: "" },
+                },
+              },
+            },
           },
         },
       },

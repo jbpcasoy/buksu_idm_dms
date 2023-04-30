@@ -58,6 +58,33 @@ export default async function iMAbility({ can, cannot, user }) {
   }
 
   if (user?.ActiveFaculty?.ActiveCoordinator) {
+    can("update", "IM", ["returned"], {
+      ActiveFile: {
+        is: {
+          fileId: {
+            contains: "",
+          },
+        },
+      },
+      status: {
+        in: ["DEPARTMENT_REVISED"],
+      },
+      owner: {
+        is: {
+          department: {
+            is: {
+              ActiveCoordinator: {
+                is: {
+                  coordinatorId: {
+                    equals: user.ActiveFaculty.ActiveCoordinator.coordinatorId,
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    });
     can("update", "IM", ["status"], {
       ActiveFile: {
         is: {
@@ -88,6 +115,18 @@ export default async function iMAbility({ can, cannot, user }) {
   }
 
   if (user?.IMDCoordinator?.ActiveIMDCoordinator) {
+    can("update", "IM", ["returned"], {
+      ActiveFile: {
+        is: {
+          fileId: {
+            contains: "",
+          },
+        },
+      },
+      status: {
+        in: ["CITL_REVISED"],
+      },
+    });
     can("update", "IM", ["status"], {
       ActiveFile: {
         is: {

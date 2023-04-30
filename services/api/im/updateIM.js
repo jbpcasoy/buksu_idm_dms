@@ -5,7 +5,7 @@ const { PrismaClient } = require("@prisma/client");
 
 export default async function updateIM(
   id,
-  { serialNumber, title, status, authors, type },
+  { serialNumber, title, status, authors, type, returned },
   ability
 ) {
   const prisma = PRISMA_CLIENT;
@@ -21,6 +21,7 @@ export default async function updateIM(
       status,
       type,
       authors,
+      returned,
       IMEvent:
         status === "SUBMITTED"
           ? {

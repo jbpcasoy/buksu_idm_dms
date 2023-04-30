@@ -8,6 +8,24 @@ export default async function iMDCoordinatorSuggestionItemAbility({
       iMDCoordinatorId: {
         equals: user.IMDCoordinator.ActiveIMDCoordinator.iMDCoordinatorId,
       },
+      OR: [
+        {
+          SubmittedIMDCoordinatorSuggestion: {
+            isNot: {
+              id: { contains: "" },
+            },
+          },
+        },
+        {
+          IM: {
+            is: {
+              returned: {
+                equals: true,
+              },
+            },
+          },
+        },
+      ],
     });
 
     can("read", "IMDCoordinatorSuggestionItem", {
@@ -26,6 +44,24 @@ export default async function iMDCoordinatorSuggestionItemAbility({
           iMDCoordinatorId: {
             equals: user.IMDCoordinator.ActiveIMDCoordinator.iMDCoordinatorId,
           },
+          OR: [
+            {
+              SubmittedIMDCoordinatorSuggestion: {
+                isNot: {
+                  id: { contains: "" },
+                },
+              },
+            },
+            {
+              IM: {
+                is: {
+                  returned: {
+                    equals: true,
+                  },
+                },
+              },
+            },
+          ],
         },
       },
     });
@@ -40,6 +76,24 @@ export default async function iMDCoordinatorSuggestionItemAbility({
             iMDCoordinatorId: {
               equals: user.IMDCoordinator.ActiveIMDCoordinator.iMDCoordinatorId,
             },
+            OR: [
+              {
+                SubmittedIMDCoordinatorSuggestion: {
+                  isNot: {
+                    id: { contains: "" },
+                  },
+                },
+              },
+              {
+                IM: {
+                  is: {
+                    returned: {
+                      equals: true,
+                    },
+                  },
+                },
+              },
+            ],
           },
         },
       }

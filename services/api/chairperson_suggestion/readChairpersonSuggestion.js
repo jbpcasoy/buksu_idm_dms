@@ -23,7 +23,15 @@ export default async function readChairpersonSuggestion({
       include: {
         SubmittedChairpersonReview: {
           include: {
-            ChairpersonReview: true,
+            ChairpersonReview: {
+              include: {
+                IM: {
+                  include: {
+                    SubmittedChairpersonSuggestion: true,
+                  },
+                },
+              },
+            },
           },
         },
       },

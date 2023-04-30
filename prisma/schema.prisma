@@ -109,6 +109,7 @@ model IM {
   IMDCoordinatorSuggestion       IMDCoordinatorSuggestion?
   IMDCoordinatorEndorsement      IMDCoordinatorEndorsement?
   IMEvent                        IMEvent[]
+  returned                       Boolean                         @default(false)
 
   @@index([ownerId])
 }

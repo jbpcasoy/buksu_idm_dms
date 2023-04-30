@@ -4,6 +4,15 @@ export default async function peerReviewItemAbility({ can, cannot, user }) {
       facultyId: {
         equals: user.ActiveFaculty.facultyId,
       },
+      IM: {
+        is: {
+          SubmittedPeerSuggestion: {
+            isNot: {
+              id: { contains: "" },
+            },
+          },
+        },
+      },
     });
 
     can("read", "PeerReviewItem", {
@@ -22,6 +31,15 @@ export default async function peerReviewItemAbility({ can, cannot, user }) {
           facultyId: {
             equals: user.ActiveFaculty.facultyId,
           },
+          IM: {
+            is: {
+              SubmittedPeerSuggestion: {
+                isNot: {
+                  id: { contains: "" },
+                },
+              },
+            },
+          },
         },
       },
     });
@@ -31,6 +49,15 @@ export default async function peerReviewItemAbility({ can, cannot, user }) {
         is: {
           facultyId: {
             equals: user.ActiveFaculty.facultyId,
+          },
+          IM: {
+            is: {
+              SubmittedPeerSuggestion: {
+                isNot: {
+                  id: { contains: "" },
+                },
+              },
+            },
           },
         },
       },

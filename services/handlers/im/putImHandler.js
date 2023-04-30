@@ -10,7 +10,7 @@ import _ from "lodash";
 
 export default async function putImHandler(req, res) {
   const { id } = req.query;
-  const { title, serialNumber, authors, status, type } = req.body;
+  const { title, serialNumber, authors, status, type, returned } = req.body;
 
   const user = await getServerUser(req, res);
   const ability = await userAbility(user);
@@ -27,9 +27,20 @@ export default async function putImHandler(req, res) {
   const caslSubject = subject("IM", iM);
   const fields = permittedFieldsOf(ability, "update", caslSubject, {
     fieldsFrom: (rule) =>
-      rule.fields || ["title", "serialNumber", "authors", "status", "type"],
+      rule.fields || [
+        "title",
+        "serialNumber",
+        "authors",
+        "status",
+        "type",
+        "returned",
+      ],
   });
-  const data = _.pick({ title, serialNumber, authors, status, type }, fields);
+  const data = _.pick(
+    { title, serialNumber, authors, status, type, returned },
+    fields
+  );
+  console.log({ data });
 
   return abilityValidator({
     req,
@@ -68,6 +79,13 @@ export default async function putImHandler(req, res) {
                 message: `Can only move IM to \"DEPARTMENT_REVIEWED\" from \"DEPARTMENT_REVISED\"`,
               });
             }
+            if (data?.returned !== true) {
+              throw statusError({
+                statusCode: 400,
+                message:
+                  "Cannot set status to  'DEPARTMENT_REVIEWED' without setting returned to 'true'",
+              });
+            }
             break;
           case "DEPARTMENT_REVISED":
             if (iM.status !== "DEPARTMENT_REVIEWED") {
@@ -98,6 +116,13 @@ export default async function putImHandler(req, res) {
                 message: `Can only move IM to \"CITL_REVIEWED\" from \"CITL_REVISED\"`,
               });
             }
+            if (data?.returned !== true) {
+              throw statusError({
+                statusCode: 400,
+                message:
+                  "Cannot set status to 'CITL_REVIEWED' without setting returned to 'true'",
+              });
+            }
             break;
           case "CITL_REVISED":
             if (iM.status !== "CITL_REVIEWED") {
@@ -121,6 +146,41 @@ export default async function putImHandler(req, res) {
               message: `Status unknown: ${dataStatus}`,
             });
         }
+      }
+
+      if (data?.returned === false) {
+        throw statusError({
+          statusCode: 400,
+          message: `Setting returned to 'false' manually is not allowed`,
+        });
+      }
+
+      if (
+        data?.returned === true &&
+        iM.status !== "DEPARTMENT_REVISED" &&
+        iM.status !== "CITL_REVISED"
+      ) {
+        if (
+          data?.status !== "DEPARTMENT_REVIEWED" &&
+          data?.status !== "CITL_REVIEWED"
+        ) {
+          throw statusError({
+            statusCode: 400,
+            message:
+              "Cannot set returned to 'true' without setting status to 'DEPARTMENT_REVIEWED' or 'CITL_REVIEWED'",
+          });
+        }
+        throw statusError({
+          statusCode: 400,
+          message: `IM can only be returned when DEPARTMENT_REVISED or CITL_REVISED`,
+        });
+      }
+
+      if (
+        data?.status === "DEPARTMENT_REVISED" ||
+        data?.status === "CITL_REVISED"
+      ) {
+        data.returned = false;
       }
 
       const updatedIm = await updateIM(id, data, ability);

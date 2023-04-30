@@ -12,6 +12,15 @@ export default async function chairpersonSuggestionItemAbility({
               chairpersonId: {
                 equals: user.ActiveFaculty.ActiveChairperson.chairpersonId,
               },
+              IM: {
+                is: {
+                  SubmittedChairpersonSuggestion: {
+                    isNot: {
+                      id: { contains: "" },
+                    },
+                  },
+                },
+              },
             },
           },
         },
@@ -27,6 +36,15 @@ export default async function chairpersonSuggestionItemAbility({
                 is: {
                   chairpersonId: {
                     equals: user.ActiveFaculty.ActiveChairperson.chairpersonId,
+                  },
+                  IM: {
+                    is: {
+                      SubmittedChairpersonSuggestion: {
+                        isNot: {
+                          id: { contains: "" },
+                        },
+                      },
+                    },
                   },
                 },
               },
@@ -50,6 +68,15 @@ export default async function chairpersonSuggestionItemAbility({
                     chairpersonId: {
                       equals:
                         user.ActiveFaculty.ActiveChairperson.chairpersonId,
+                    },
+                    IM: {
+                      is: {
+                        SubmittedChairpersonSuggestion: {
+                          isNot: {
+                            id: { contains: "" },
+                          },
+                        },
+                      },
                     },
                   },
                 },

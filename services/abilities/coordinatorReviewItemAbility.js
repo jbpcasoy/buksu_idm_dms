@@ -8,6 +8,15 @@ export default async function coordinatorReviewItemAbility({
       coordinatorId: {
         equals: user.ActiveFaculty.ActiveCoordinator.coordinatorId,
       },
+      IM: {
+        is: {
+          SubmittedCoordinatorSuggestion: {
+            isNot: {
+              id: { contains: "" },
+            },
+          },
+        },
+      },
     });
 
     can("read", "CoordinatorReviewItem", {
@@ -26,6 +35,16 @@ export default async function coordinatorReviewItemAbility({
           coordinatorId: {
             equals: user.ActiveFaculty.ActiveCoordinator.coordinatorId,
           },
+
+          IM: {
+            is: {
+              SubmittedCoordinatorSuggestion: {
+                isNot: {
+                  id: { contains: "" },
+                },
+              },
+            },
+          },
         },
       },
     });
@@ -35,6 +54,15 @@ export default async function coordinatorReviewItemAbility({
         is: {
           coordinatorId: {
             equals: user.ActiveFaculty.ActiveCoordinator.coordinatorId,
+          },
+          IM: {
+            is: {
+              SubmittedCoordinatorSuggestion: {
+                isNot: {
+                  id: { contains: "" },
+                },
+              },
+            },
           },
         },
       },

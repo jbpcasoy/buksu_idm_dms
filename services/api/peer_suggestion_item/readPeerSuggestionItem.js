@@ -19,7 +19,15 @@ export default async function readPeerSuggestionItem({ id, ability }) {
         include: {
           SubmittedPeerReview: {
             include: {
-              PeerReview: true,
+              PeerReview: {
+                include: {
+                  IM: {
+                    include: {
+                      SubmittedPeerSuggestion: true,
+                    },
+                  },
+                },
+              },
               IM: true,
             },
           },

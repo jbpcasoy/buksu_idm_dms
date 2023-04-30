@@ -8,6 +8,15 @@ export default async function peerSuggestionItemAbility({ can, cannot, user }) {
               facultyId: {
                 equals: user.ActiveFaculty.facultyId,
               },
+              IM: {
+                is: {
+                  SubmittedPeerSuggestion: {
+                    isNot: {
+                      id: { contains: "" },
+                    },
+                  },
+                },
+              },
             },
           },
         },
@@ -23,6 +32,15 @@ export default async function peerSuggestionItemAbility({ can, cannot, user }) {
                 is: {
                   facultyId: {
                     equals: user.ActiveFaculty.facultyId,
+                  },
+                  IM: {
+                    is: {
+                      SubmittedPeerSuggestion: {
+                        isNot: {
+                          id: { contains: "" },
+                        },
+                      },
+                    },
                   },
                 },
               },
@@ -41,6 +59,15 @@ export default async function peerSuggestionItemAbility({ can, cannot, user }) {
                 is: {
                   facultyId: {
                     equals: user.ActiveFaculty.facultyId,
+                  },
+                  IM: {
+                    is: {
+                      SubmittedPeerSuggestion: {
+                        isNot: {
+                          id: { contains: "" },
+                        },
+                      },
+                    },
                   },
                 },
               },

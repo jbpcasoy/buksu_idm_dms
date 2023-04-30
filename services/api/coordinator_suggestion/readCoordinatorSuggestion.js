@@ -23,7 +23,15 @@ export default async function readCoordinatorSuggestion({
       include: {
         SubmittedCoordinatorReview: {
           include: {
-            CoordinatorReview: true,
+            CoordinatorReview: {
+              include: {
+                IM: {
+                  include: {
+                    SubmittedCoordinatorSuggestion: true,
+                  },
+                },
+              },
+            },
           },
         },
       },

@@ -14,7 +14,11 @@ export default async function readChairpersonReview({
       AND: [accessibility, { ...filter, id }],
     },
     include: {
-      IM: true,
+      IM: {
+        include: {
+          SubmittedChairpersonSuggestion: true,
+        },
+      },
       Chairperson: {
         select: {
           Faculty: {

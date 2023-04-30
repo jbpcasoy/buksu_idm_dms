@@ -24,6 +24,7 @@ export default async function readIMDCoordinatorSuggestionItem({
         IMDCoordinatorSuggestion: {
           include: {
             IM: true,
+            SubmittedIMDCoordinatorSuggestion: true,
           },
         },
       },
