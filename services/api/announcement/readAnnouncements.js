@@ -21,7 +21,7 @@ export default async function readAnnouncements({
   const announcements = await prisma.announcement.findMany({
     orderBy: sortFilter,
     take: limit,
-    skip: (page - 1) * limit,
+    skip: page ? (page - 1) * limit : undefined,
     where: {
       AND: [
         accessibility,

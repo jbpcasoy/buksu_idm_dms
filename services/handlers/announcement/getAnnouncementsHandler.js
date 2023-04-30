@@ -15,8 +15,8 @@ export default async function getAnnouncementsHandler(req, res) {
   const user = await getServerUser(req, res);
 
   const announcements = await readAnnouncements({
-    limit: parseInt(limit),
-    page: parseInt(page),
+    limit: limit ? parseInt(limit) : undefined,
+    page: page ? parseInt(page) : undefined,
     title,
     description,
     link,
