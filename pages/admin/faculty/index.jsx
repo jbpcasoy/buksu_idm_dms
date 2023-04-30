@@ -23,9 +23,11 @@ import {
   Typography,
 } from "@mui/material";
 import _ from "lodash";
+import { useSnackbar } from "notistack";
 import { useEffect, useState } from "react";
 
 export default function AdminFacultyPage() {
+  const { closeSnackbar, enqueueSnackbar } = useSnackbar();
   const [total, setTotal] = useState(0);
   const [faculties, setFaculties] = useState([]);
   const [state, setState] = useState({
@@ -88,7 +90,20 @@ export default function AdminFacultyPage() {
   async function onAdd(value) {
     const { departmentId, userId } = value;
 
-    return frontendCreateFaculty({ departmentId, userId });
+    return frontendCreateFaculty({ departmentId, userId })
+      .then((res) => {
+        enqueueSnackbar({
+          message: "Added faculty successfully",
+          variant: "error",
+        });
+      })
+      .catch((err) => {
+        console.error(err);
+        enqueueSnackbar({
+          message: err?.response?.data?.error ?? "Failed to add faculty",
+          variant: "error",
+        });
+      });
   }
 
   function handleNameChange(e) {

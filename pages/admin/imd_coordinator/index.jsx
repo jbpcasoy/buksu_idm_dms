@@ -23,9 +23,11 @@ import {
   Typography,
 } from "@mui/material";
 import _ from "lodash";
+import { useSnackbar } from "notistack";
 import { useEffect, useState } from "react";
 
 export default function AdminIMDCoordinatorPage() {
+  const { closeSnackbar, enqueueSnackbar } = useSnackbar();
   const [total, setTotal] = useState(0);
   const [iMDCoordinators, setIMDCoordinators] = useState([]);
   const [state, setState] = useState({
@@ -84,7 +86,20 @@ export default function AdminIMDCoordinatorPage() {
   async function onAdd(value) {
     const { userId } = value;
 
-    return frontendCreateIMDCoordinator({ userId });
+    return frontendCreateIMDCoordinator({ userId })
+      .then((res) => {
+        enqueueSnackbar({
+          message: "IMD Coordinator added successfully",
+          variant: "success",
+        });
+      })
+      .catch((err) => {
+        enqueueSnackbar({
+          message:
+            err?.response?.data?.error ?? "Failed to add IMD Coordinator",
+          variant: "error",
+        });
+      });
   }
 
   function handleNameChange(e) {

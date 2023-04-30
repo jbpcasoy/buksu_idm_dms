@@ -2,33 +2,64 @@ import frontendCreateActiveDean from "@/services/frontend/active_admin/frontendC
 import frontendDeleteActiveDean from "@/services/frontend/active_admin/frontendDeleteActiveDean";
 import frontendDeleteDean from "@/services/frontend/dean/frontendDeleteDean";
 import AdminDeanView from "@/views/admin/dean/AdminDeanView";
+import { useSnackbar } from "notistack";
 import { useState } from "react";
 
 export default function AdminDean({ dean }) {
+  const { closeSnackbar, enqueueSnackbar } = useSnackbar();
   const [deanData, setDeanData] = useState(dean);
 
   async function onDelete() {
-    return frontendDeleteDean(dean.id).then((res) => {
-      setDeanData(null);
-    });
+    return frontendDeleteDean(dean.id)
+      .then((res) => {
+        enqueueSnackbar({
+          message: "Dean deleted successfully",
+          variant: "success",
+        });
+        setDeanData(null);
+      })
+      .catch((err) => {
+        enqueueSnackbar({
+          message: err?.response?.data?.error ?? "Failed to delete dean",
+          variant: "error",
+        });
+      });
   }
 
   async function onActivate() {
-    try {
-      return frontendCreateActiveDean({
-        deanId: deanData.id,
-      }).then((res) => {
+    return frontendCreateActiveDean({
+      deanId: deanData.id,
+    })
+      .then((res) => {
+        enqueueSnackbar({
+          message: "Dean activated successfully",
+          variant: "success",
+        });
         setDeanData((prev) => ({ ...prev, ActiveDean: res }));
+      })
+      .catch((err) => {
+        enqueueSnackbar({
+          message: err?.response?.data?.error ?? "Failed to activate dean",
+          variant: "error",
+        });
       });
-    } catch (error) {
-      throw error;
-    }
   }
 
   async function onDeactivate() {
-    return frontendDeleteActiveDean(deanData.ActiveDean.id).then((res) => {
-      setDeanData((prev) => ({ ...prev, ActiveDean: null }));
-    });
+    return frontendDeleteActiveDean(deanData.ActiveDean.id)
+      .then((res) => {
+        enqueueSnackbar({
+          message: "Dean activated successfully",
+          variant: "success",
+        });
+        setDeanData((prev) => ({ ...prev, ActiveDean: null }));
+      })
+      .catch((err) => {
+        enqueueSnackbar({
+          message: err?.response?.data?.error ?? "Failed to activate dean",
+          variant: "error",
+        });
+      });
   }
 
   if (!deanData) {

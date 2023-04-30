@@ -15,6 +15,13 @@ export default async function readChairperson({ id, ability, filter = {} }) {
         },
       ],
     },
+    include: {
+      Faculty: {
+        include: {
+          ActiveFaculty: true,
+        },
+      },
+    },
   });
 
   return chairperson;

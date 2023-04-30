@@ -16,12 +16,12 @@ export default async function catchAllError(req, res, next) {
       return res.status(statusCode).json({ error: message });
     } else if (error instanceof ForbiddenError) {
       return res.status(403).json({
-        message: error?.message ?? "Something went wrong",
+        error: error?.message ?? "Something went wrong",
       });
     }
 
     return res.status(error?.statusCode ?? 500).json({
-      message: error?.message ?? "Something went wrong",
+      error: error?.message ?? "Something went wrong",
     });
   }
 }

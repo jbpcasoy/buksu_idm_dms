@@ -23,9 +23,11 @@ import {
   Typography,
 } from "@mui/material";
 import _ from "lodash";
+import { useSnackbar } from "notistack";
 import { useEffect, useState } from "react";
 
 export default function AdminCITLDirectorPage() {
+  const { closeSnackbar, enqueueSnackbar } = useSnackbar();
   const [total, setTotal] = useState(0);
   const [cITLDirectors, setCITLDirectors] = useState([]);
   const [state, setState] = useState({
@@ -84,7 +86,19 @@ export default function AdminCITLDirectorPage() {
   async function onAdd(value) {
     const { userId } = value;
 
-    return frontendCreateCITLDirector({ userId });
+    return frontendCreateCITLDirector({ userId })
+      .then((res) => {
+        enqueueSnackbar({
+          message: "CITL Director added successfully",
+          variant: "success",
+        });
+      })
+      .catch((err) => {
+        enqueueSnackbar({
+          message: err?.response?.data?.error ?? "Failed to add CITL Director",
+          variant: "error",
+        });
+      });
   }
 
   function handleNameChange(e) {

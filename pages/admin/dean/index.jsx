@@ -24,8 +24,10 @@ import {
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import _ from "lodash";
+import { useSnackbar } from "notistack";
 
 export default function AdminDeanPage() {
+  const { closeSnackbar, enqueueSnackbar } = useSnackbar();
   const [total, setTotal] = useState(0);
   const [deans, setDeans] = useState([]);
   const [state, setState] = useState({
@@ -113,12 +115,6 @@ export default function AdminDeanPage() {
   }
   const debouncedHandleCollegeChange = _.debounce(handleCollegeNameChange, 800);
 
-  async function onAdd(value) {
-    const { facultyId } = value;
-
-    return frontendCreateChairperson({ facultyId });
-  }
-
   function handleActiveChange(active) {
     setState((prev) => ({
       ...prev,
@@ -146,7 +142,19 @@ export default function AdminDeanPage() {
   async function onAdd(value) {
     const { facultyId } = value;
 
-    return frontendCreateDean({ facultyId });
+    return frontendCreateDean({ facultyId })
+      .then((res) => {
+        enqueueSnackbar({
+          message: "Dean added successfully",
+          variant: "success",
+        });
+      })
+      .catch((err) => {
+        enqueueSnackbar({
+          message: err?.response?.data?.error ?? "Failed to add dean",
+          variant: "error",
+        });
+      });
   }
 
   return (

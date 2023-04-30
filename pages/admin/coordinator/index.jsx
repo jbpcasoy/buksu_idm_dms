@@ -23,9 +23,11 @@ import {
   Typography,
 } from "@mui/material";
 import _ from "lodash";
+import { useSnackbar } from "notistack";
 import { useEffect, useState } from "react";
 
 export default function AdminCoordinatorPage() {
+  const { closeSnackbar, enqueueSnackbar } = useSnackbar();
   const [coordinators, setCoordinators] = useState([]);
   const [total, setTotal] = useState(0);
   const [state, setState] = useState({
@@ -85,7 +87,19 @@ export default function AdminCoordinatorPage() {
   async function onAdd(values) {
     const { facultyId } = values;
 
-    return frontendCreateCoordinator({ facultyId });
+    return frontendCreateCoordinator({ facultyId })
+      .then((res) => {
+        enqueueSnackbar({
+          message: "Successfully added coordinator",
+          variant: "success",
+        });
+      })
+      .catch((err) => {
+        enqueueSnackbar({
+          message: err?.response?.data?.error ?? "Failed to add coordinator",
+          variant: "error",
+        });
+      });
   }
 
   function handleNameChange(e) {

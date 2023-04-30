@@ -1,9 +1,11 @@
 import frontendUpdateIM from "@/services/frontend/im/frontendUpdateIM";
 import AdminIMView from "@/views/admin/im/AdminIMView";
 import { useRouter } from "next/router";
+import { useSnackbar } from "notistack";
 import React, { useState } from "react";
 
 export default function AdminIM({ im }) {
+  const { closeSnackbar, enqueueSnackbar } = useSnackbar();
   const [iMData, setIMData] = useState(im);
   const router = useRouter();
 
@@ -14,7 +16,20 @@ export default function AdminIM({ im }) {
       title: values.title,
       type: values.type,
       status: values.status,
-    }).then((res) => setIMData(res));
+    })
+      .then((res) => {
+        enqueueSnackbar({
+          message: "IM updated successfully",
+          variant: "success",
+        });
+        setIMData(res);
+      })
+      .catch((err) => {
+        enqueueSnackbar({
+          message: err?.response?.data?.error ?? "Failed to update IM",
+          variant: "error",
+        });
+      });
   }
 
   return (

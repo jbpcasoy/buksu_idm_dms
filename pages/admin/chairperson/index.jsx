@@ -23,9 +23,11 @@ import {
   Typography,
 } from "@mui/material";
 import _ from "lodash";
+import { useSnackbar } from "notistack";
 import { useEffect, useState } from "react";
 
 export default function AdminChairpersonPage() {
+  const { closeSnackbar, enqueueSnackbar } = useSnackbar();
   const [chairpersons, setChairpersons] = useState([]);
   const [total, setTotal] = useState(0);
   const [state, setState] = useState({
@@ -119,7 +121,19 @@ export default function AdminChairpersonPage() {
   async function onAdd(value) {
     const { facultyId } = value;
 
-    return frontendCreateChairperson({ facultyId });
+    return frontendCreateChairperson({ facultyId })
+      .then((res) => {
+        enqueueSnackbar({
+          message: "Chairperson added successfully",
+          variant: "success",
+        });
+      })
+      .catch((err) => {
+        enqueueSnackbar({
+          message: err?.response?.data?.error ?? "Failed to add chairperson",
+          variant: "error",
+        });
+      });
   }
 
   function handleActiveChange(active) {
