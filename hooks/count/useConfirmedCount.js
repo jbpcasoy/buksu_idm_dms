@@ -13,7 +13,7 @@ export default function useConfirmedCount() {
 
     async function getConfirmedEndorsement(filter) {
       return frontendGetIMs({
-        departmentId: user.ActiveFaculty.Faculty.departmentId,
+        collegeId: user.ActiveFaculty.Faculty.department.collegeId,
         coordinatorEndorsed: true,
         deanEndorsed: true,
         endorsedByDean: user.ActiveFaculty.ActiveDean.deanId,

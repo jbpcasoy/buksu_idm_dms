@@ -4,6 +4,7 @@ import frontendReadFaculties from "@/services/frontend/admin/faculty/frontendRea
 import frontendCreateFaculty from "@/services/frontend/faculty/frontendCreateFaculty";
 import AdminAddFacultyForm from "@/views/admin/faculty/AdminAddFacultyForm";
 import Sort from "@/views/admin/Sort";
+import ActiveFilter from "@/views/forms/ActiveFilter";
 import AddIcon from "@mui/icons-material/Add";
 import {
   Box,
@@ -22,9 +23,11 @@ import {
   Typography,
 } from "@mui/material";
 import _ from "lodash";
+import { useSnackbar } from "notistack";
 import { useEffect, useState } from "react";
 
 export default function AdminFacultyPage() {
+  const { closeSnackbar, enqueueSnackbar } = useSnackbar();
   const [total, setTotal] = useState(0);
   const [faculties, setFaculties] = useState([]);
   const [state, setState] = useState({
@@ -32,10 +35,12 @@ export default function AdminFacultyPage() {
     page: 0,
     openAdd: false,
     name: "",
+    email: "",
     departmentName: "",
     collegeName: "",
     sortColumn: "user.name",
     sortOrder: "asc",
+    active: null,
   });
 
   useEffect(() => {
@@ -45,6 +50,8 @@ export default function AdminFacultyPage() {
       limit: state.limit,
       page: state.page + 1,
       name: state.name,
+      email: state.email,
+      active: state.active,
       departmentName: state.departmentName,
       collegeName: state.collegeName,
       sortColumn: state.sortColumn,
@@ -83,7 +90,20 @@ export default function AdminFacultyPage() {
   async function onAdd(value) {
     const { departmentId, userId } = value;
 
-    return frontendCreateFaculty({ departmentId, userId });
+    return frontendCreateFaculty({ departmentId, userId })
+      .then((res) => {
+        enqueueSnackbar({
+          message: "Added faculty successfully",
+          variant: "error",
+        });
+      })
+      .catch((err) => {
+        console.error(err);
+        enqueueSnackbar({
+          message: err?.response?.data?.error ?? "Failed to add faculty",
+          variant: "error",
+        });
+      });
   }
 
   function handleNameChange(e) {
@@ -105,6 +125,14 @@ export default function AdminFacultyPage() {
     800
   );
 
+  function handleEmailChange(e) {
+    setState((prev) => ({
+      ...prev,
+      email: e.target.value,
+    }));
+  }
+  const debouncedHandleEmailChange = _.debounce(handleEmailChange, 800);
+
   function handleCollegeNameChange(e) {
     setState((prev) => ({
       ...prev,
@@ -112,6 +140,13 @@ export default function AdminFacultyPage() {
     }));
   }
   const debouncedHandleCollegeChange = _.debounce(handleCollegeNameChange, 800);
+
+  function handleActiveChange(active) {
+    setState((prev) => ({
+      ...prev,
+      active,
+    }));
+  }
 
   function handleSortByChange(e) {
     setState((prev) => ({
@@ -155,6 +190,11 @@ export default function AdminFacultyPage() {
           />
           <TextField
             size='small'
+            label='Email'
+            onChange={debouncedHandleEmailChange}
+          />
+          <TextField
+            size='small'
             label='Department'
             onChange={debouncedHandleDepartmentChange}
           />
@@ -163,12 +203,15 @@ export default function AdminFacultyPage() {
             label='College'
             onChange={debouncedHandleCollegeChange}
           />
+          <ActiveFilter onChange={handleActiveChange} />
+
           <Sort
             onChangeSortColumn={handleSortByChange}
             onChangeSortOrder={handleSortOrderChange}
             sortColumn={state.sortColumn}
             sortOptions={[
               { value: "user.name", label: "Name" },
+              { value: "user.email", label: "Email" },
               { value: "department.name", label: "Department" },
               { value: "department.college.name", label: "College" },
             ]}
@@ -181,6 +224,7 @@ export default function AdminFacultyPage() {
               <TableRow>
                 <TableCell>Image</TableCell>
                 <TableCell>Name</TableCell>
+                <TableCell>Email</TableCell>
                 <TableCell>Department</TableCell>
                 <TableCell>College</TableCell>
                 <TableCell align='center'>Active</TableCell>

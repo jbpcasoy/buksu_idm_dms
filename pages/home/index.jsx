@@ -1,7 +1,10 @@
 import Layout from "@/components/layout/Layout";
 import ContactModal from "../ContactModal";
+import { useContext } from "react";
+import UserContext from "@/contexts/UserContext";
 
-export default function index() {
+export default function Home() {
+  const { user, userLoading, userError } = useContext(UserContext);
   return (
     <>
       <Layout>
@@ -16,7 +19,10 @@ export default function index() {
                   BukSUIMD the official Document Management System of the Center
                   for Innovative Teaching and Learning.
                 </p>
-                <ContactModal />
+                {user &&
+                  !user?.IMDCoordinator?.ActiveIMDCoordinator &&
+                  !user?.CITLDirector?.ActiveCITLDirector &&
+                  !user?.ActiveFaculty && <ContactModal />}
               </div>
               {/* <div className='bg-gradient-to-b from-gray-300 to-transparent dark:from-blue-900 w-full h-full absolute top-0 left-0 z-0'></div> */}
             </section>
@@ -31,14 +37,14 @@ export default function index() {
                     fill='none'
                     stroke='currentColor'
                     className='w-3 h-3 mr-1'
-                    stroke-width='1.5'
+                    strokeWidth='1.5'
                     viewBox='0 0 24 24'
                     xmlns='http://www.w3.org/2000/svg'
                     aria-hidden='true'
                   >
                     <path
-                      stroke-linecap='round'
-                      stroke-linejoin='round'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
                       d='M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25'
                     ></path>
                   </svg>
@@ -62,13 +68,13 @@ export default function index() {
                     className='w-4 h-4 ml-2'
                     fill='none'
                     stroke='currentColor'
-                    stroke-width='2'
+                    strokeWidth='2'
                     viewBox='0 0 24 24'
                     xmlns='http://www.w3.org/2000/svg'
                   >
                     <path
-                      stroke-linecap='round'
-                      stroke-linejoin='round'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
                       d='M17 8l4 4m0 0l-4 4m4-4H3'
                     ></path>
                   </svg>
@@ -83,14 +89,14 @@ export default function index() {
                     fill='none'
                     stroke='currentColor'
                     className='w-3 h-3 mr-1'
-                    stroke-width='1.5'
+                    strokeWidth='1.5'
                     viewBox='0 0 24 24'
                     xmlns='http://www.w3.org/2000/svg'
                     aria-hidden='true'
                   >
                     <path
-                      stroke-linecap='round'
-                      stroke-linejoin='round'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
                       d='M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25'
                     ></path>
                   </svg>
@@ -114,13 +120,13 @@ export default function index() {
                     className='w-4 h-4 ml-2'
                     fill='none'
                     stroke='currentColor'
-                    stroke-width='2'
+                    strokeWidth='2'
                     viewBox='0 0 24 24'
                     xmlns='http://www.w3.org/2000/svg'
                   >
                     <path
-                      stroke-linecap='round'
-                      stroke-linejoin='round'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
                       d='M17 8l4 4m0 0l-4 4m4-4H3'
                     ></path>
                   </svg>

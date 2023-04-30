@@ -4,6 +4,8 @@ export default async function frontendReadCITLDirectors({
   limit,
   page,
   name,
+  email,
+  active,
   sortColumn,
   sortOrder,
 }) {
@@ -13,6 +15,8 @@ export default async function frontendReadCITLDirectors({
         limit,
         page,
         name,
+        email,
+        active,
         sortColumn,
         sortOrder,
       },

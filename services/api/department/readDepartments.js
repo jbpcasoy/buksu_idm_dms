@@ -1,4 +1,5 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
+import { accessibleBy } from "@casl/prisma";
 import _ from "lodash";
 
 export default async function readDepartments({
@@ -9,60 +10,68 @@ export default async function readDepartments({
   collegeId,
   sortColumn,
   sortOrder,
+  ability,
 }) {
   const prisma = PRISMA_CLIENT;
   const sortFilter = {};
   _.set(sortFilter, sortColumn, sortOrder);
+  const accessibility = accessibleBy(ability).Department;
 
-  try {
-    const departments = await prisma.department.findMany({
-      take: limit,
-      skip: (page - 1) * limit,
-      include: {
-        college: {
-          select: {
-            name: true,
-          },
+  const departments = await prisma.department.findMany({
+    take: limit,
+    skip: (page - 1) * limit,
+    include: {
+      college: {
+        select: {
+          name: true,
         },
       },
-      where: {
-        name: {
-          contains: name,
-          // mode: "insensitive",
-        },
-        college: {
-          id: {
-            contains: collegeId,
-          },
+    },
+    where: {
+      AND: [
+        accessibility,
+        {
           name: {
-            contains: collegeName,
+            contains: name,
             // mode: "insensitive",
           },
-        },
-      },
-      orderBy: sortFilter,
-    });
-
-    const total = await prisma.department.count({
-      where: {
-        name: {
-          contains: name,
-          // mode: "insensitive",
-        },
-        college: {
-          id: {
-            contains: collegeId,
+          college: {
+            id: {
+              contains: collegeId,
+            },
+            name: {
+              contains: collegeName,
+              // mode: "insensitive",
+            },
           },
+        },
+      ],
+    },
+    orderBy: sortFilter,
+  });
+
+  const total = await prisma.department.count({
+    where: {
+      AND: [
+        accessibility,
+        {
           name: {
-            contains: collegeName,
+            contains: name,
             // mode: "insensitive",
           },
+          college: {
+            id: {
+              contains: collegeId,
+            },
+            name: {
+              contains: collegeName,
+              // mode: "insensitive",
+            },
+          },
         },
-      },
-    });
+      ],
+    },
+  });
 
-    return { data: departments, total };
-  } catch (error) {
-    throw error;
-  }
+  return { data: departments, total };
 }

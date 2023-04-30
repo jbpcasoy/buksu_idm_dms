@@ -6,19 +6,15 @@ export default async function createIMReviewQuestion({
 }) {
   const prisma = PRISMA_CLIENT;
 
-  try {
-    const iMReviewQuestion = await prisma.iMReviewQuestion.create({
-      data: {
-        IMReviewSection: {
-          connect: {
-            id: iMReviewSectionId,
-          },
+  const iMReviewQuestion = await prisma.iMReviewQuestion.create({
+    data: {
+      IMReviewSection: {
+        connect: {
+          id: iMReviewSectionId,
         },
-        question,
       },
-    });
-    return iMReviewQuestion;
-  } catch (error) {
-    throw error;
-  }
+      question,
+    },
+  });
+  return iMReviewQuestion;
 }

@@ -1,9 +1,11 @@
 import Layout from "@/components/layout/Layout";
 import ChairpersonSuggestionView from "@/components/review/suggestion/suggestion_view/ChairpersonSuggestionView";
 import CoordinatorSuggestionView from "@/components/review/suggestion/suggestion_view/CoordinatorSuggestionView";
+import IMDCoordinatorSuggestionView from "@/components/review/suggestion/suggestion_view/IMDCoordinatorSuggestionView";
 import PeerSuggestionView from "@/components/review/suggestion/suggestion_view/PeerSuggestionView";
 import UserContext from "@/contexts/UserContext";
 import useIM from "@/hooks/useIM";
+import frontendCreateActiveFile from "@/services/frontend/active_file/frontendCreateActiveFile";
 import frontendUpdateActiveFile from "@/services/frontend/active_file/frontendUpdateIMFile";
 import frontendCreateFile from "@/services/frontend/file/frontendCreateFile";
 import uploadIMFile from "@/services/frontend/im/upload/uploadIMFile";
@@ -11,6 +13,7 @@ import { initDropdowns, initModals } from "flowbite";
 import moment from "moment";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useSnackbar } from "notistack";
 import { useContext, useEffect, useState } from "react";
 
 export default function ViewIM() {
@@ -19,20 +22,34 @@ export default function ViewIM() {
   const { iM, iMError, iMLoading, refreshIM } = useIM(router?.query?.id);
   const [file, setFile] = useState();
   const [filePreviewUrl, setFilePreviewUrl] = useState();
+  const { closeSnackbar, enqueueSnackbar } = useSnackbar();
 
   async function handleSubmit() {
-    const res = await uploadIMFile(file);
-    const createdFile = await frontendCreateFile({
-      iMId: iM.id,
-      originalFileName: file.name,
-      fileName: res.filename,
-    });
-    await frontendUpdateActiveFile(iM.ActiveFile.id, {
-      iMId: iM.id,
-      fileId: createdFile.id,
-    }).then((res) => {
+    try {
+      const createdFile = await frontendCreateFile({
+        iMId: iM.id,
+        originalFileName: file.name,
+      });
+      await uploadIMFile({ file, fileId: createdFile.id });
+      await frontendUpdateActiveFile(iM?.ActiveFile?.id, {
+        fileId: createdFile.id,
+      }).catch((err) => {
+        return frontendCreateActiveFile({
+          iMId: iM.id,
+          fileId: createdFile.id,
+        });
+      });
+      enqueueSnackbar({
+        message: "New version uploaded successfully",
+        variant: "success",
+      });
       router.push(`/im/${router.query.id}`);
-    });
+    } catch (err) {
+      enqueueSnackbar({
+        message: "Failed to upload new version",
+        variant: "error",
+      });
+    }
   }
 
   useEffect(() => {
@@ -74,7 +91,7 @@ export default function ViewIM() {
               <Link href={`/profile/${iM?.owner?.user?.id}`}>
                 <img
                   src={iM?.owner?.user?.image}
-                  className='h-8 rounded-full sm:h-8'
+                  className='w-8 h-8 rounded-full sm:h-8'
                   alt='owner'
                 ></img>
               </Link>
@@ -166,6 +183,13 @@ export default function ViewIM() {
                   }
                 />
               )}
+
+            {iM?.IMDCoordinatorSuggestion
+              ?.SubmittedIMDCoordinatorSuggestion && (
+              <IMDCoordinatorSuggestionView
+                IMDCoordinatorReview={iM?.IMDCoordinatorSuggestion}
+              />
+            )}
           </>
         )}
 

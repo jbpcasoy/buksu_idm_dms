@@ -39,12 +39,12 @@ export default function IMDCoordinatorSuggestionView({
     <SuggestionView
       title={"IMD Coordinator Suggestions"}
       viewOnly={viewOnly}
-      reviewerName={iMDCoordinatorSuggestion?.IMDCoordinator?.user?.name}
-      reviewerImage={iMDCoordinatorSuggestion?.IMDCoordinator?.user?.image}
+      reviewerName={iMDCoordinatorSuggestion?.IMDCoordinator?.User?.name}
+      reviewerImage={iMDCoordinatorSuggestion?.IMDCoordinator?.User?.image}
       reviewDate={
         iMDCoordinatorSuggestion?.SubmittedIMDCoordinatorSuggestion?.createdAt
       }
-      reviewerId={iMDCoordinatorSuggestion?.IMDCoordinator?.user?.id}
+      reviewerId={iMDCoordinatorSuggestion?.IMDCoordinator?.User?.id}
     >
       {iMDCoordinatorSuggestionItemsLoading && (
         <tr>

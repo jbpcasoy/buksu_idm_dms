@@ -1,37 +1,28 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
 import readIM from "../im/readIM";
+import readFile from "../file/readFile";
 
-export default async function createActiveFile({ fileId, iMId }) {
+export default async function createActiveFile({ fileId, iMId, ability }) {
   const prisma = PRISMA_CLIENT;
 
-  try {
-    const file = await findFile({ fileId, iMId });
-    const activeFile = await prisma.activeFile.create({
-      data: { fileId: file.id, iMId },
-    });
-
-    return activeFile;
-  } catch (error) {
-    throw error;
-  }
-}
-
-async function findFile({ fileId, iMId }) {
-  const prisma = PRISMA_CLIENT;
-
-  try {
-    const iM = await readIM(iMId);
-    const file = await prisma.file.findFirstOrThrow({
-      where: {
-        iM: {
-          id: iM.id,
-        },
-        id: fileId,
+  // const file = await findFile({ fileId, iMId });
+  const file = await readFile({
+    id: fileId,
+    ability,
+    filter: {
+      iM: {
+        id: iMId,
       },
-    });
+    },
+  });
+  const activeFile = await prisma.activeFile.create({
+    data: {
+      File: { connect: { id: file.id } },
+      IM: {
+        connect: { id: file.iMId },
+      },
+    },
+  });
 
-    return file;
-  } catch (error) {
-    throw error;
-  }
+  return activeFile;
 }

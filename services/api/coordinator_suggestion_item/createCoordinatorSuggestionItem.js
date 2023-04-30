@@ -8,22 +8,18 @@ export default async function createCoordinatorSuggestionItem({
 }) {
   const prisma = PRISMA_CLIENT;
 
-  try {
-    const coordinatorSuggestionItem =
-      await prisma.coordinatorSuggestionItem.create({
-        data: {
-          pageNumber,
-          value,
-          CoordinatorSuggestion: {
-            connect: {
-              id: coordinatorSuggestionId,
-            },
+  const coordinatorSuggestionItem =
+    await prisma.coordinatorSuggestionItem.create({
+      data: {
+        pageNumber,
+        value,
+        CoordinatorSuggestion: {
+          connect: {
+            id: coordinatorSuggestionId,
           },
-          remarks,
         },
-      });
-    return coordinatorSuggestionItem;
-  } catch (error) {
-    throw error;
-  }
+        remarks,
+      },
+    });
+  return coordinatorSuggestionItem;
 }

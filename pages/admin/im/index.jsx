@@ -1,7 +1,9 @@
 import AdminLayout from "@/components/admin/AdminLayout";
+import AdminIM from "@/components/admin/im/AdminIM";
 import IMStatuses from "@/services/constants/im_status";
 import IMTypes from "@/services/constants/im_type";
 import frontendReadIms from "@/services/frontend/admin/im";
+import frontendUpdateIM from "@/services/frontend/im/frontendUpdateIM";
 import AdminIMView from "@/views/admin/im/AdminIMView";
 import Sort from "@/views/admin/Sort";
 import {
@@ -26,7 +28,7 @@ import _ from "lodash";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-export default function AdminIM() {
+export default function AdminIMTable() {
   const router = useRouter();
   const [ims, setIms] = useState([]);
   const [total, setTotal] = useState(0);
@@ -211,6 +213,7 @@ export default function AdminIM() {
                 <TableCell>Title</TableCell>
                 <TableCell>Type</TableCell>
                 <TableCell>Owner</TableCell>
+                <TableCell>Authors</TableCell>
                 <TableCell>Department</TableCell>
                 <TableCell>Status</TableCell>
                 <TableCell align='center'>Peer Review</TableCell>
@@ -222,37 +225,7 @@ export default function AdminIM() {
             </TableHead>
             <TableBody>
               {ims.map((im) => (
-                <AdminIMView
-                  type={im.type}
-                  peerReviewed={Boolean(im.SubmittedPeerReview)}
-                  coordinatorReviewed={Boolean(im.SubmittedCoordinatorReview)}
-                  chairpersonReviewed={Boolean(im.SubmittedChairpersonReview)}
-                  serialNumber={im.serialNumber}
-                  title={im.title}
-                  owner={im.owner.user.name}
-                  department={im.owner.department.name}
-                  status={im.status}
-                  dateCreated={im.createdAt}
-                  key={im.id}
-                  onViewPeerReview={() =>
-                    router.push(
-                      `/admin/peer_review/${im.SubmittedPeerReview.PeerReview.id}`
-                    )
-                  }
-                  onViewChairpersonReview={() =>
-                    router.push(
-                      `/admin/chairperson_review/${im.SubmittedChairpersonReview.ChairpersonReview.id}`
-                    )
-                  }
-                  onViewCoordinatorReview={() =>
-                    router.push(
-                      `/admin/coordinator_review/${im.SubmittedCoordinatorReview.CoordinatorReview.id}`
-                    )
-                  }
-                  onViewIM={() => {
-                    router.push(`/admin/im/${im.id}`);
-                  }}
-                />
+                <AdminIM im={im} key={im.id} />
               ))}
             </TableBody>
           </Table>

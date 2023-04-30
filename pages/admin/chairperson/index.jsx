@@ -23,15 +23,18 @@ import {
   Typography,
 } from "@mui/material";
 import _ from "lodash";
+import { useSnackbar } from "notistack";
 import { useEffect, useState } from "react";
 
 export default function AdminChairpersonPage() {
+  const { closeSnackbar, enqueueSnackbar } = useSnackbar();
   const [chairpersons, setChairpersons] = useState([]);
   const [total, setTotal] = useState(0);
   const [state, setState] = useState({
     limit: 5,
     page: 0,
     name: "",
+    email: "",
     departmentName: "",
     collegeName: "",
     openAdd: false,
@@ -47,6 +50,7 @@ export default function AdminChairpersonPage() {
       limit: state.limit,
       page: state.page + 1,
       name: state.name,
+      email: state.email,
       departmentName: state.departmentName,
       collegeName: state.collegeName,
       active: state.active,
@@ -98,6 +102,14 @@ export default function AdminChairpersonPage() {
     800
   );
 
+  function handleEmailChange(e) {
+    setState((prev) => ({
+      ...prev,
+      email: e.target.value,
+    }));
+  }
+  const debouncedHandleEmailChange = _.debounce(handleEmailChange, 800);
+
   function handleCollegeNameChange(e) {
     setState((prev) => ({
       ...prev,
@@ -109,7 +121,19 @@ export default function AdminChairpersonPage() {
   async function onAdd(value) {
     const { facultyId } = value;
 
-    return frontendCreateChairperson({ facultyId });
+    return frontendCreateChairperson({ facultyId })
+      .then((res) => {
+        enqueueSnackbar({
+          message: "Chairperson added successfully",
+          variant: "success",
+        });
+      })
+      .catch((err) => {
+        enqueueSnackbar({
+          message: err?.response?.data?.error ?? "Failed to add chairperson",
+          variant: "error",
+        });
+      });
   }
 
   function handleActiveChange(active) {
@@ -160,6 +184,11 @@ export default function AdminChairpersonPage() {
           />
           <TextField
             size='small'
+            label='Email'
+            onChange={debouncedHandleEmailChange}
+          />
+          <TextField
+            size='small'
             label='Department'
             onChange={debouncedHandleDepartmentChange}
           />
@@ -176,6 +205,7 @@ export default function AdminChairpersonPage() {
             sortColumn={state.sortColumn}
             sortOptions={[
               { value: "Faculty.user.name", label: "Name" },
+              { value: "Faculty.user.email", label: "Email" },
               { value: "Faculty.department.name", label: "Department" },
               { value: "Faculty.department.college.name", label: "College" },
             ]}
@@ -188,6 +218,7 @@ export default function AdminChairpersonPage() {
               <TableRow>
                 <TableCell>Image</TableCell>
                 <TableCell>Name</TableCell>
+                <TableCell>Email</TableCell>
                 <TableCell>Department</TableCell>
                 <TableCell>College</TableCell>
                 <TableCell align='center'>Active</TableCell>

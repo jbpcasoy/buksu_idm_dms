@@ -1,19 +1,26 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
+import { accessibleBy } from "@casl/prisma";
 
-export default async function readIMDCoordinatorEndorsement(id, filter = {}) {
+export default async function readIMDCoordinatorEndorsement({
+  id,
+  ability,
+  filter = {},
+}) {
   const prisma = PRISMA_CLIENT;
+  const accessibility = accessibleBy(ability).IMDCoordinatorEndorsement;
 
-  try {
-    const iMDCoordinatorEndorsement =
-      await prisma.iMDCoordinatorEndorsement.findFirstOrThrow({
-        where: {
-          ...filter,
-          id,
-        },
-      });
+  const iMDCoordinatorEndorsement =
+    await prisma.iMDCoordinatorEndorsement.findFirstOrThrow({
+      where: {
+        AND: [
+          accessibility,
+          {
+            ...filter,
+            id,
+          },
+        ],
+      },
+    });
 
-    return iMDCoordinatorEndorsement;
-  } catch (error) {
-    throw error;
-  }
+  return iMDCoordinatorEndorsement;
 }

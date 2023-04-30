@@ -7,27 +7,23 @@ export default async function readIMReviewQuestions({
 }) {
   const prisma = PRISMA_CLIENT;
 
-  try {
-    const iMReviewQuestions = await prisma.iMReviewQuestion.findMany({
-      where: {
-        iMReviewSectionId: {
-          contains: iMReviewSection,
-        },
+  const iMReviewQuestions = await prisma.iMReviewQuestion.findMany({
+    where: {
+      iMReviewSectionId: {
+        contains: iMReviewSection,
       },
-      take: limit,
-      skip: (page - 1) * limit,
-    });
+    },
+    take: limit,
+    skip: (page - 1) * limit,
+  });
 
-    const total = await prisma.iMReviewQuestion.count({
-      where: {
-        iMReviewSectionId: {
-          contains: iMReviewSection,
-        },
+  const total = await prisma.iMReviewQuestion.count({
+    where: {
+      iMReviewSectionId: {
+        contains: iMReviewSection,
       },
-    });
+    },
+  });
 
-    return { data: iMReviewQuestions, total };
-  } catch (error) {
-    throw error;
-  }
+  return { data: iMReviewQuestions, total };
 }

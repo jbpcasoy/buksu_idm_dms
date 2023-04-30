@@ -4,6 +4,7 @@ import frontendCreateCITLDirector from "@/services/frontend/citl_director/fronte
 import frontendReadCITLDirectors from "@/services/frontend/citl_director/frontendReadCITLDirectors";
 import AdminAddCITLDirectorForm from "@/views/admin/citl_director/AdminAddCITLDirectorForm";
 import Sort from "@/views/admin/Sort";
+import ActiveFilter from "@/views/forms/ActiveFilter";
 import AddIcon from "@mui/icons-material/Add";
 import {
   Box,
@@ -22,9 +23,11 @@ import {
   Typography,
 } from "@mui/material";
 import _ from "lodash";
+import { useSnackbar } from "notistack";
 import { useEffect, useState } from "react";
 
 export default function AdminCITLDirectorPage() {
+  const { closeSnackbar, enqueueSnackbar } = useSnackbar();
   const [total, setTotal] = useState(0);
   const [cITLDirectors, setCITLDirectors] = useState([]);
   const [state, setState] = useState({
@@ -34,6 +37,8 @@ export default function AdminCITLDirectorPage() {
     name: "",
     sortColumn: "User.name",
     sortOrder: "asc",
+    email: "",
+    active: null,
   });
 
   useEffect(() => {
@@ -43,6 +48,8 @@ export default function AdminCITLDirectorPage() {
       limit: state.limit,
       page: state.page + 1,
       name: state.name,
+      email: state.email,
+      active: state.active,
       sortColumn: state.sortColumn,
       sortOrder: state.sortOrder,
     }).then((res) => {
@@ -79,7 +86,19 @@ export default function AdminCITLDirectorPage() {
   async function onAdd(value) {
     const { userId } = value;
 
-    return frontendCreateCITLDirector({ userId });
+    return frontendCreateCITLDirector({ userId })
+      .then((res) => {
+        enqueueSnackbar({
+          message: "CITL Director added successfully",
+          variant: "success",
+        });
+      })
+      .catch((err) => {
+        enqueueSnackbar({
+          message: err?.response?.data?.error ?? "Failed to add CITL Director",
+          variant: "error",
+        });
+      });
   }
 
   function handleNameChange(e) {
@@ -89,6 +108,21 @@ export default function AdminCITLDirectorPage() {
     }));
   }
   const debouncedHandleNameChange = _.debounce(handleNameChange, 800);
+
+  function handleEmailChange(e) {
+    setState((prev) => ({
+      ...prev,
+      email: e.target.value,
+    }));
+  }
+  const debouncedHandleEmailChange = _.debounce(handleEmailChange, 800);
+
+  function handleActiveChange(active) {
+    setState((prev) => ({
+      ...prev,
+      active,
+    }));
+  }
 
   function handleSortByChange(e) {
     setState((prev) => ({
@@ -130,11 +164,21 @@ export default function AdminCITLDirectorPage() {
             label='Name'
             onChange={debouncedHandleNameChange}
           />
+          <TextField
+            size='small'
+            label='Email'
+            onChange={debouncedHandleEmailChange}
+          />
+          <ActiveFilter onChange={handleActiveChange} />
+
           <Sort
             onChangeSortColumn={handleSortByChange}
             onChangeSortOrder={handleSortOrderChange}
             sortColumn={state.sortColumn}
-            sortOptions={[{ value: "User.name", label: "Name" }]}
+            sortOptions={[
+              { value: "User.name", label: "Name" },
+              { value: "User.email", label: "Email" },
+            ]}
             sortOrder={state.sortOrder}
           />
         </Stack>
@@ -144,6 +188,7 @@ export default function AdminCITLDirectorPage() {
               <TableRow>
                 <TableCell>Image</TableCell>
                 <TableCell>Name</TableCell>
+                <TableCell>Email</TableCell>
                 <TableCell align='center'>Active</TableCell>
                 <TableCell align='center'>Actions</TableCell>
               </TableRow>

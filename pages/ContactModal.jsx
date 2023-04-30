@@ -47,16 +47,16 @@ export default function ContactModal({ onSubmit }) {
         <path
           d='M12 9v5M12 21.41H5.94c-3.47 0-4.92-2.48-3.24-5.51l3.12-5.62L8.76 5c1.78-3.21 4.7-3.21 6.48 0l2.94 5.29 3.12 5.62c1.68 3.03.22 5.51-3.24 5.51H12v-.01Z'
           stroke='#FF8A65'
-          stroke-width='1.5'
-          stroke-linecap='round'
-          stroke-linejoin='round'
+          strokeWidth='1.5'
+          strokeLinecap='round'
+          strokeLinejoin='round'
         ></path>
         <path
           d='M11.995 17h.009'
           stroke='#FF8A65'
-          stroke-width='2'
-          stroke-linecap='round'
-          stroke-linejoin='round'
+          strokeWidth='2'
+          strokeLinecap='round'
+          strokeLinejoin='round'
         ></path>
       </svg>
 
@@ -75,45 +75,45 @@ export default function ContactModal({ onSubmit }) {
       </div>
       <div
         id='crypto-modal'
-        tabindex='-1'
+        tabIndex='-1'
         aria-hidden='true'
-        class='fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full'
+        className='fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full'
       >
-        <div class='relative w-full max-w-md max-h-full'>
-          <div class='relative bg-white rounded-lg shadow dark:bg-gray-700'>
+        <div className='relative w-full max-w-md max-h-full'>
+          <div className='relative bg-white rounded-lg shadow dark:bg-gray-700'>
             <button
               type='button'
-              class='absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white'
+              className='absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white'
               data-modal-hide='crypto-modal'
             >
               <svg
                 aria-hidden='true'
-                class='w-5 h-5'
+                className='w-5 h-5'
                 fill='currentColor'
                 viewBox='0 0 20 20'
                 xmlns='http://www.w3.org/2000/svg'
               >
                 <path
-                  fill-rule='evenodd'
+                  fillRule='evenodd'
                   d='M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z'
-                  clip-rule='evenodd'
+                  clipRule='evenodd'
                 ></path>
               </svg>
-              <span class='sr-only'>Close modal</span>
+              <span className='sr-only'>Close modal</span>
             </button>
 
-            <div class='px-6 py-4 border-b rounded-t dark:border-gray-600'>
-              <h3 class='text-base font-semibold text-left text-gray-900 lg:text-xl dark:text-white'>
+            <div className='px-6 py-4 border-b rounded-t dark:border-gray-600'>
+              <h3 className='text-base font-semibold text-left text-gray-900 lg:text-xl dark:text-white'>
                 Contact us
               </h3>
             </div>
 
-            <div class='p-6'>
-              <ul class='my-4 space-y-3'>
+            <div className='p-6'>
+              <ul className='my-4 space-y-3'>
                 <li>
                   <a
                     href='https://m.me/110429694111266'
-                    class='flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white'
+                    className='flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white'
                   >
                     <img
                       src='/IMAGES/messenger-logo.svg'
@@ -121,13 +121,15 @@ export default function ContactModal({ onSubmit }) {
                       alt=''
                     />
 
-                    <span class='flex-1 ml-3 whitespace-nowrap'>Messenger</span>
+                    <span className='flex-1 ml-3 whitespace-nowrap'>
+                      Messenger
+                    </span>
                   </a>
                 </li>
                 <li>
                   <a
                     href='https://buksu.edu.ph/'
-                    class='flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white'
+                    className='flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white'
                   >
                     <svg
                       xmlns='http://www.w3.org/2000/svg'
@@ -149,13 +151,15 @@ export default function ContactModal({ onSubmit }) {
                       ></path>
                     </svg>
 
-                    <span class='flex-1 ml-3 whitespace-nowrap'>Website</span>
+                    <span className='flex-1 ml-3 whitespace-nowrap'>
+                      Website
+                    </span>
                   </a>
                 </li>
                 <li>
                   <a
                     href='#'
-                    class='flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white'
+                    className='flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white'
                   >
                     <svg
                       xmlns='http://www.w3.org/2000/svg'
@@ -168,7 +172,9 @@ export default function ContactModal({ onSubmit }) {
                         d='M11.05 14.95L9.2 16.8c-.39.39-1.01.39-1.41.01-.11-.11-.22-.21-.33-.32a28.414 28.414 0 01-2.79-3.27c-.82-1.14-1.48-2.28-1.96-3.41C2.24 8.67 2 7.58 2 6.54c0-.68.12-1.33.36-1.93.24-.61.62-1.17 1.15-1.67C4.15 2.31 4.85 2 5.59 2c.28 0 .56.06.81.18.26.12.49.3.67.56l2.32 3.27c.18.25.31.48.4.7.09.21.14.42.14.61 0 .24-.07.48-.21.71-.13.23-.32.47-.56.71l-.76.79c-.11.11-.16.24-.16.4 0 .08.01.15.03.23.03.08.06.14.08.2.18.33.49.76.93 1.28.45.52.93 1.05 1.45 1.58.1.1.21.2.31.3.4.39.41 1.03.01 1.43zM21.97 18.33a2.54 2.54 0 01-.25 1.09c-.17.36-.39.7-.68 1.02-.49.54-1.03.93-1.64 1.18-.01 0-.02.01-.03.01-.59.24-1.23.37-1.92.37-1.02 0-2.11-.24-3.26-.73s-2.3-1.15-3.44-1.98c-.39-.29-.78-.58-1.15-.89l3.27-3.27c.28.21.53.37.74.48.05.02.11.05.18.08.08.03.16.04.25.04.17 0 .3-.06.41-.17l.76-.75c.25-.25.49-.44.72-.56.23-.14.46-.21.71-.21.19 0 .39.04.61.13.22.09.45.22.7.39l3.31 2.35c.26.18.44.39.55.64.1.25.16.5.16.78z'
                       ></path>
                     </svg>
-                    <span class='flex-1 ml-3 whitespace-nowrap'>Local 139</span>
+                    <span className='flex-1 ml-3 whitespace-nowrap'>
+                      Local 139
+                    </span>
                   </a>
                 </li>
               </ul>

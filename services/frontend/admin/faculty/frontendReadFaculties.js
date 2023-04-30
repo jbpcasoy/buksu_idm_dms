@@ -4,6 +4,8 @@ export default async function frontendReadFaculties({
   limit,
   page,
   name,
+  email,
+  active,
   departmentName,
   collegeName,
   sortColumn,
@@ -14,6 +16,8 @@ export default async function frontendReadFaculties({
       params: {
         limit,
         page,
+        email,
+        active,
         name,
         departmentName,
         collegeName,

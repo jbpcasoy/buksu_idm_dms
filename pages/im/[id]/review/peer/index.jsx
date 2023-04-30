@@ -168,6 +168,6 @@ const PeerReviewPage = () => {
     console.log({ peerReview });
   }, [peerReview]);
 
-  return <ReviewPage reviewingAs='Peer' step={step} steps={steps} />;
+  return <ReviewPage reviewingAs='Peer' step={step} steps={steps} iM={iM} />;
 };
 export default PeerReviewPage;

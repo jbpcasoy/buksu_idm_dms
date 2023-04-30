@@ -1,29 +1,41 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
+import { accessibleBy } from "@casl/prisma";
 
 export default async function readIMDCoordinatorSuggestions({
   limit,
   page,
   iMId,
+  ability,
 }) {
   const prisma = PRISMA_CLIENT;
+  const accessibility = accessibleBy(ability).IMDCoordinatorSuggestion;
 
-  try {
-    const iMDCoordinatorSuggestions =
-      await prisma.iMDCoordinatorSuggestion.findMany({
-        take: limit,
-        skip: page && limit ? (page - 1) * limit : undefined,
-        where: {
-          iMId,
-        },
-      });
-    const total = await prisma.iMDCoordinatorSuggestion.count({
+  const iMDCoordinatorSuggestions =
+    await prisma.iMDCoordinatorSuggestion.findMany({
+      take: limit,
+      skip: page && limit ? (page - 1) * limit : undefined,
       where: {
-        iMId,
+        AND: [
+          accessibility,
+          {
+            iMId,
+          },
+        ],
+      },
+      include: {
+        IMDCoordinator: { include: { User: true } },
       },
     });
+  const total = await prisma.iMDCoordinatorSuggestion.count({
+    where: {
+      AND: [
+        accessibility,
+        {
+          iMId,
+        },
+      ],
+    },
+  });
 
-    return { data: iMDCoordinatorSuggestions, total };
-  } catch (error) {
-    throw error;
-  }
+  return { data: iMDCoordinatorSuggestions, total };
 }

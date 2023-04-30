@@ -5,10 +5,12 @@ import frontendCreateIM from "@/services/frontend/im/frontendCreateIM";
 import uploadIMFile from "@/services/frontend/im/upload/uploadIMFile";
 import { useFormik } from "formik";
 import { useRouter } from "next/router";
+import { useSnackbar } from "notistack";
 import { useEffect, useState } from "react";
 import * as Yup from "yup";
 
 export default function CreateIM() {
+  const { closeSnackbar, enqueueSnackbar } = useSnackbar();
   const [file, setFile] = useState();
   const [filePreviewUrl, setFilePreviewUrl] = useState();
   const router = useRouter();
@@ -28,25 +30,35 @@ export default function CreateIM() {
         .required(),
     }),
     onSubmit: async (values) => {
-      const { title, authors, type } = values;
+      try {
+        const { title, authors, type } = values;
 
-      const im = await frontendCreateIM({
-        title,
-        authors,
-        type,
-      });
-      const res = await uploadIMFile(file);
-      const createdFile = await frontendCreateFile({
-        iMId: im.id,
-        originalFileName: file.name,
-        fileName: res.filename,
-      });
-      const activeFile = await frontendCreateActiveFile({
-        iMId: im.id,
-        fileId: createdFile.id,
-      });
+        const im = await frontendCreateIM({
+          title,
+          authors,
+          type,
+        });
+        const createdFile = await frontendCreateFile({
+          iMId: im.id,
+          originalFileName: file.name,
+        });
+        await uploadIMFile({ file, fileId: createdFile.id });
+        const activeFile = await frontendCreateActiveFile({
+          iMId: im.id,
+          fileId: createdFile.id,
+        });
+        enqueueSnackbar({
+          message: "IM created successfully",
+          variant: "success",
+        });
 
-      router.push(`/im/${im.id}`);
+        router.push(`/im/${im.id}`);
+      } catch (err) {
+        enqueueSnackbar({
+          message: "Failed to create IM",
+          variant: "error",
+        });
+      }
     },
   });
 

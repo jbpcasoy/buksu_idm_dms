@@ -1,21 +1,27 @@
-import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import createIM from "@/services/api/im/createIM";
-import getUserByEmail from "@/services/helpers/getUserByEmail";
-import { getServerSession } from "next-auth";
+import getServerUser from "@/services/helpers/getServerUser";
+import abilityValidator from "@/services/validator/abilityValidator";
 
 export default async function postImHandler(req, res) {
-  const { title, serialNumber, authors, type } = req.body;
-  const session = await getServerSession(req, res, authOptions);
+  const { title, authors, type } = req.body;
+  const user = await getServerUser(req, res);
 
-  const user = await getUserByEmail(session?.user?.email);
+  return abilityValidator({
+    req,
+    res,
+    next: async (req, res) => {
+      const im = await createIM({
+        title,
+        ownerId: user.ActiveFaculty.facultyId,
+        authors,
+        type,
+      });
 
-  const im = await createIM({
-    title,
-    serialNumber,
-    ownerId: user.ActiveFaculty.facultyId,
-    authors,
-    type,
+      return res.status(201).json(im);
+    },
+    action: "create",
+    subject: "IM",
+    fields: undefined,
+    type: "IM",
   });
-
-  return res.status(201).json(im);
 }

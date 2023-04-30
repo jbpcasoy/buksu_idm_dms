@@ -1,312 +1,261 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
+import { accessibleBy } from "@casl/prisma";
 
-export default async function readNotifications({ limit, page, userId, read }) {
+export default async function readNotifications({
+  limit,
+  page,
+  userId,
+  read,
+  ability,
+  facultyId,
+}) {
   const prisma = PRISMA_CLIENT;
+  const accessibility = accessibleBy(ability).Notification;
 
-  try {
-    const notifications = await prisma.notification.findMany({
-      take: limit,
-      skip: (page - 1) * limit,
-      orderBy: {
-        createdAt: "desc",
-      },
-      where: {
-        OR: [
-          {
-            SubmittedChairpersonReview: {
-              IM: {
-                owner: {
-                  userId: {
-                    contains: userId,
+  const notifications = await prisma.notification.findMany({
+    take: limit,
+    skip: (page - 1) * limit,
+    orderBy: {
+      createdAt: "desc",
+    },
+    where: {
+      AND: [
+        accessibility,
+        {
+          OR: [
+            {
+              SubmittedChairpersonReview: {
+                IM: {
+                  owner: {
+                    id: { contains: facultyId },
                   },
                 },
               },
             },
-          },
-          {
-            SubmittedCoordinatorReview: {
-              IM: {
-                owner: {
-                  userId: {
-                    contains: userId,
+            {
+              SubmittedCoordinatorReview: {
+                IM: {
+                  owner: {
+                    id: { contains: facultyId },
                   },
                 },
               },
             },
-          },
-          {
-            SubmittedPeerReview: {
-              IM: {
-                owner: {
-                  userId: {
-                    contains: userId,
+            {
+              SubmittedPeerReview: {
+                IM: {
+                  owner: {
+                    id: { contains: facultyId },
                   },
                 },
               },
             },
-          },
-          {
-            SubmittedChairpersonSuggestion: {
-              IM: {
-                owner: {
-                  userId: {
-                    contains: userId,
+            {
+              SubmittedChairpersonSuggestion: {
+                IM: {
+                  owner: {
+                    id: { contains: facultyId },
                   },
                 },
               },
             },
-          },
-          {
-            SubmittedCoordinatorSuggestion: {
-              IM: {
-                owner: {
-                  userId: {
-                    contains: userId,
+            {
+              SubmittedCoordinatorSuggestion: {
+                IM: {
+                  owner: {
+                    id: { contains: facultyId },
                   },
                 },
               },
             },
-          },
-          {
-            SubmittedPeerSuggestion: {
-              IM: {
-                owner: {
-                  userId: {
-                    contains: userId,
+            {
+              SubmittedPeerSuggestion: {
+                IM: {
+                  owner: {
+                    id: { contains: facultyId },
                   },
                 },
               },
             },
-          },
-          {
-            CoordinatorEndorsement: {
-              IM: {
-                owner: {
-                  userId: {
-                    contains: userId,
-                  },
-                },
-              },
-            },
-          },
-          {
-            DeanEndorsement: {
+            {
               CoordinatorEndorsement: {
                 IM: {
                   owner: {
-                    userId: {
-                      contains: userId,
+                    id: { contains: facultyId },
+                  },
+                },
+              },
+            },
+            {
+              DeanEndorsement: {
+                CoordinatorEndorsement: {
+                  IM: {
+                    owner: {
+                      id: { contains: facultyId },
                     },
                   },
                 },
               },
             },
-          },
-          {
-            SubmittedIMDCoordinatorSuggestion: {
-              IMDCoordinatorSuggestion: {
-                IM: {
-                  owner: {
-                    userId: {
-                      contains: userId,
+            {
+              SubmittedIMDCoordinatorSuggestion: {
+                IMDCoordinatorSuggestion: {
+                  IM: {
+                    owner: {
+                      id: { contains: facultyId },
                     },
                   },
                 },
               },
             },
-          },
-          {
-            IMDCoordinatorEndorsement: {
-              IM: {
-                owner: {
-                  userId: {
-                    contains: userId,
-                  },
-                },
-              },
-            },
-          },
-          {
-            CITLDirectorEndorsement: {
+            {
               IMDCoordinatorEndorsement: {
                 IM: {
                   owner: {
-                    userId: {
-                      contains: userId,
-                    },
+                    id: { contains: facultyId },
                   },
                 },
               },
             },
-          },
-        ],
-        ReadNotification:
-          read === true
-            ? {
-                some: {
-                  userId,
-                },
-              }
-            : read === false
-            ? {
-                none: {
-                  userId,
-                },
-              }
-            : undefined,
-      },
-    });
+          ],
+          ReadNotification:
+            read === true
+              ? {
+                  some: {
+                    userId,
+                  },
+                }
+              : read === false
+              ? {
+                  none: {
+                    userId,
+                  },
+                }
+              : undefined,
+        },
+      ],
+    },
+  });
 
-    const total = await prisma.notification.count({
-      where: {
-        OR: [
-          {
-            SubmittedChairpersonReview: {
-              IM: {
-                owner: {
-                  userId: {
-                    contains: userId,
+  const total = await prisma.notification.count({
+    where: {
+      AND: [
+        accessibility,
+        {
+          OR: [
+            {
+              SubmittedChairpersonReview: {
+                IM: {
+                  owner: {
+                    id: { contains: facultyId },
                   },
                 },
               },
             },
-          },
-          {
-            SubmittedCoordinatorReview: {
-              IM: {
-                owner: {
-                  userId: {
-                    contains: userId,
+            {
+              SubmittedCoordinatorReview: {
+                IM: {
+                  owner: {
+                    id: { contains: facultyId },
                   },
                 },
               },
             },
-          },
-          {
-            SubmittedPeerReview: {
-              IM: {
-                owner: {
-                  userId: {
-                    contains: userId,
+            {
+              SubmittedPeerReview: {
+                IM: {
+                  owner: {
+                    id: { contains: facultyId },
                   },
                 },
               },
             },
-          },
-          {
-            SubmittedChairpersonSuggestion: {
-              IM: {
-                owner: {
-                  userId: {
-                    contains: userId,
+            {
+              SubmittedChairpersonSuggestion: {
+                IM: {
+                  owner: {
+                    id: { contains: facultyId },
                   },
                 },
               },
             },
-          },
-          {
-            SubmittedCoordinatorSuggestion: {
-              IM: {
-                owner: {
-                  userId: {
-                    contains: userId,
+            {
+              SubmittedCoordinatorSuggestion: {
+                IM: {
+                  owner: {
+                    id: { contains: facultyId },
                   },
                 },
               },
             },
-          },
-          {
-            SubmittedPeerSuggestion: {
-              IM: {
-                owner: {
-                  userId: {
-                    contains: userId,
+            {
+              SubmittedPeerSuggestion: {
+                IM: {
+                  owner: {
+                    id: { contains: facultyId },
                   },
                 },
               },
             },
-          },
-          {
-            CoordinatorEndorsement: {
-              IM: {
-                owner: {
-                  userId: {
-                    contains: userId,
-                  },
-                },
-              },
-            },
-          },
-          {
-            DeanEndorsement: {
+            {
               CoordinatorEndorsement: {
                 IM: {
                   owner: {
-                    userId: {
-                      contains: userId,
+                    id: { contains: facultyId },
+                  },
+                },
+              },
+            },
+            {
+              DeanEndorsement: {
+                CoordinatorEndorsement: {
+                  IM: {
+                    owner: {
+                      id: { contains: facultyId },
                     },
                   },
                 },
               },
             },
-          },
-          {
-            SubmittedIMDCoordinatorSuggestion: {
-              IMDCoordinatorSuggestion: {
-                IM: {
-                  owner: {
-                    userId: {
-                      contains: userId,
+            {
+              SubmittedIMDCoordinatorSuggestion: {
+                IMDCoordinatorSuggestion: {
+                  IM: {
+                    owner: {
+                      id: { contains: facultyId },
                     },
                   },
                 },
               },
             },
-          },
-          {
-            IMDCoordinatorEndorsement: {
-              IM: {
-                owner: {
-                  userId: {
-                    contains: userId,
-                  },
-                },
-              },
-            },
-          },
-          {
-            CITLDirectorEndorsement: {
+            {
               IMDCoordinatorEndorsement: {
                 IM: {
                   owner: {
-                    userId: {
-                      contains: userId,
-                    },
+                    id: { contains: facultyId },
                   },
                 },
               },
             },
-          },
-        ],
-        ReadNotification:
-          read === true
-            ? {
-                some: {
-                  userId,
-                },
-              }
-            : read === false
-            ? {
-                none: {
-                  userId,
-                },
-              }
-            : undefined,
-      },
-    });
+          ],
+          ReadNotification:
+            read === true
+              ? {
+                  some: {
+                    userId,
+                  },
+                }
+              : read === false
+              ? {
+                  none: {
+                    userId,
+                  },
+                }
+              : undefined,
+        },
+      ],
+    },
+  });
 
-    return { data: notifications, total };
-  } catch (error) {
-    throw error;
-  }
+  return { data: notifications, total };
 }

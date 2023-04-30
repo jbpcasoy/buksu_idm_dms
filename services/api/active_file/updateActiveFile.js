@@ -1,32 +1,22 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
 import readFile from "../file/readFile";
-import readIM from "../im/readIM";
+import userAbility from "@/services/abilities/defineAbility";
 
-export default async function updateActiveFile(id, { iMId, fileId }) {
+export default async function updateActiveFile(id, { fileId }, ability) {
   const prisma = PRISMA_CLIENT;
-  try {
-    const iM = await readIM(iMId);
-    const file = await readFile(fileId);
+  const file = await readFile({ id: fileId, ability });
 
-    const activeFile = await prisma.activeFile.update({
-      where: {
-        id,
-      },
-      data: {
-        IM: {
-          connect: {
-            id: iM.id,
-          },
-        },
-        File: {
-          connect: {
-            id: file.id,
-          },
+  const activeFile = await prisma.activeFile.update({
+    where: {
+      id,
+    },
+    data: {
+      File: {
+        connect: {
+          id: file.id,
         },
       },
-    });
-    return activeFile;
-  } catch (error) {
-    throw error;
-  }
+    },
+  });
+  return activeFile;
 }

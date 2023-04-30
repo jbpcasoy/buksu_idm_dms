@@ -1,16 +1,19 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
+import { accessibleBy } from "@casl/prisma";
 
-export default async function readReadNotification(id) {
+export default async function readReadNotification({ id, ability }) {
   const prisma = PRISMA_CLIENT;
+  const accessibility = accessibleBy(ability).ReadNotification;
 
-  try {
-    const readNotification = await prisma.readNotification.findUniqueOrThrow({
-      where: {
-        id,
-      },
-    });
-    return readNotification;
-  } catch (error) {
-    throw error;
-  }
+  const readNotification = await prisma.readNotification.findFirstOrThrow({
+    where: {
+      AND: [
+        accessibility,
+        {
+          id,
+        },
+      ],
+    },
+  });
+  return readNotification;
 }
