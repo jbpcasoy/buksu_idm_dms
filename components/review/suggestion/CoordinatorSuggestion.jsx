@@ -8,12 +8,14 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import CoordinatorSuggestionItem from "./CoordinatorSuggestionItem";
 import Suggestion from "./Suggestion";
+import { useSnackbar } from "notistack";
 
 export default function CoordinatorSuggestion({
   coordinatorReview,
   onFinish,
   onPrevious,
 }) {
+  const { closeSnackbar, enqueueSnackbar } = useSnackbar();
   const {
     submittedCoordinatorReview,
     submittedCoordinatorReviewError,
@@ -78,7 +80,15 @@ export default function CoordinatorSuggestion({
     <Suggestion
       handleSubmit={handleSubmit}
       onFinish={async () => {
-        return handleSubmitSuggestion().then(() => onFinish());
+        return handleSubmitSuggestion()
+          .catch((err) => console.error(err))
+          .finally(() => {
+            onFinish();
+            enqueueSnackbar({
+              message: "Suggestions submitted successfully",
+              variant: "success",
+            });
+          });
       }}
       onPrevious={onPrevious}
       iM={iM}

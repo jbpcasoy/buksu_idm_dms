@@ -1,8 +1,10 @@
 import frontendUpdateIM from "@/services/frontend/im/frontendUpdateIM";
 import { useFormik } from "formik";
+import { useSnackbar } from "notistack";
 import * as Yup from "yup";
 
 export default function ToggleIM({ iM, onUpdate }) {
+  const { closeSnackbar, enqueueSnackbar } = useSnackbar();
   const formik = useFormik({
     initialValues: {
       title: iM.title,
@@ -18,9 +20,22 @@ export default function ToggleIM({ iM, onUpdate }) {
     onSubmit: async (values) => {
       const { title, authors, type } = values;
 
-      return frontendUpdateIM(iM.id, { title, type, authors }).finally(() => {
-        onUpdate();
-      });
+      return frontendUpdateIM(iM.id, { title, type, authors })
+        .then((res) => {
+          enqueueSnackbar({
+            message: "Updated IM successfully",
+            variant: "success",
+          });
+        })
+        .catch((err) => {
+          enqueueSnackbar({
+            message: "Failed to update IM",
+            variant: "error",
+          });
+        })
+        .finally(() => {
+          onUpdate();
+        });
     },
   });
 

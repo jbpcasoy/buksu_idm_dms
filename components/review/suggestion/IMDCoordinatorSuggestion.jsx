@@ -7,12 +7,14 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import IMDCoordinatorSuggestionItem from "./IMDCoordinatorSuggestionItem";
 import Suggestion from "./Suggestion";
+import { useSnackbar } from "notistack";
 
 export default function IMDCoordinatorSuggestion({
   //   iMDCoordinatorReview,
   onFinish,
   onPrevious,
 }) {
+  const { closeSnackbar, enqueueSnackbar } = useSnackbar();
   //   const {
   //     submittedIMDCoordinatorReview,
   //     submittedIMDCoordinatorReviewError,
@@ -72,7 +74,15 @@ export default function IMDCoordinatorSuggestion({
       showPeerSuggestion
       handleSubmit={handleSubmit}
       onFinish={async () => {
-        return handleSubmitSuggestion().then(() => onFinish());
+        return handleSubmitSuggestion()
+          .catch((err) => console.error(err))
+          .finally(() => {
+            onFinish();
+            enqueueSnackbar({
+              message: "Suggestions submitted successfully",
+              variant: "success",
+            });
+          });
       }}
       onPrevious={onPrevious}
       iM={iM}

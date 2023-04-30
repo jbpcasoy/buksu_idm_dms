@@ -13,6 +13,7 @@ import { initDropdowns, initModals } from "flowbite";
 import moment from "moment";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useSnackbar } from "notistack";
 import { useContext, useEffect, useState } from "react";
 
 export default function ViewIM() {
@@ -21,25 +22,34 @@ export default function ViewIM() {
   const { iM, iMError, iMLoading, refreshIM } = useIM(router?.query?.id);
   const [file, setFile] = useState();
   const [filePreviewUrl, setFilePreviewUrl] = useState();
+  const { closeSnackbar, enqueueSnackbar } = useSnackbar();
 
   async function handleSubmit() {
-    const createdFile = await frontendCreateFile({
-      iMId: iM.id,
-      originalFileName: file.name,
-    });
-    await uploadIMFile({ file, fileId: createdFile.id });
-    await frontendUpdateActiveFile(iM?.ActiveFile?.id, {
-      fileId: createdFile.id,
-    })
-      .catch((err) => {
+    try {
+      const createdFile = await frontendCreateFile({
+        iMId: iM.id,
+        originalFileName: file.name,
+      });
+      await uploadIMFile({ file, fileId: createdFile.id });
+      await frontendUpdateActiveFile(iM?.ActiveFile?.id, {
+        fileId: createdFile.id,
+      }).catch((err) => {
         return frontendCreateActiveFile({
           iMId: iM.id,
           fileId: createdFile.id,
         });
-      })
-      .finally((res) => {
-        router.push(`/im/${router.query.id}`);
       });
+      enqueueSnackbar({
+        message: "New version uploaded successfully",
+        variant: "success",
+      });
+      router.push(`/im/${router.query.id}`);
+    } catch (err) {
+      enqueueSnackbar({
+        message: "Failed to upload new version",
+        variant: "error",
+      });
+    }
   }
 
   useEffect(() => {

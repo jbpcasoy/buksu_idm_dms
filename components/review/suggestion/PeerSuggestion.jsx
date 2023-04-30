@@ -8,8 +8,10 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import PeerSuggestionItem from "./PeerSuggestionItem";
 import Suggestion from "./Suggestion";
+import { useSnackbar } from "notistack";
 
 export default function PeerSuggestion({ peerReview, onFinish, onPrevious }) {
+  const { closeSnackbar, enqueueSnackbar } = useSnackbar();
   const {
     submittedPeerReview,
     submittedPeerReviewError,
@@ -61,7 +63,15 @@ export default function PeerSuggestion({ peerReview, onFinish, onPrevious }) {
       showCoordinatorSuggestion
       handleSubmit={handleSubmit}
       onFinish={async () => {
-        return handleSubmitSuggestion().then(() => onFinish());
+        return handleSubmitSuggestion()
+          .catch((err) => console.error(err))
+          .finally(() => {
+            onFinish();
+            enqueueSnackbar({
+              message: "Suggestions submitted successfully",
+              variant: "success",
+            });
+          });
       }}
       onPrevious={onPrevious}
       iM={iM}

@@ -21,6 +21,7 @@ import { useContext, useEffect, useState } from "react";
 import ToggleIM from "../../../components/im/ToggleIM";
 import ReviewEndorsementIndicator from "@/components/im/ReviewEndorsementIndicator";
 import ConfirmModal from "@/components/ConfirmModal";
+import { enqueueSnackbar } from "notistack";
 
 export default function ViewIM() {
   const router = useRouter();
@@ -45,60 +46,146 @@ export default function ViewIM() {
   async function handleEndorse() {
     return frontendCreateCoordinatorEndorsement({
       iMId: iM.id,
-    }).then((res) => {
-      refreshIM();
-    });
+    })
+      .then((res) => {
+        enqueueSnackbar({
+          message: "IM endorsed successfully",
+          variant: "success",
+        });
+        refreshIM();
+      })
+      .catch((err) => {
+        enqueueSnackbar({
+          message: "Failed to endorse IM",
+          variant: "error",
+        });
+      });
   }
 
   async function handleIMDCoordinatorEndorse() {
     return frontendCreateIMDCoordinatorEndorsement({
       submittedIMDCoordinatorSuggestionId:
         iM.IMDCoordinatorSuggestion.SubmittedIMDCoordinatorSuggestion.id,
-    }).then((res) => {
-      refreshIM();
-    });
+    })
+      .then((res) => {
+        enqueueSnackbar({
+          message: "IM endorsed successfully",
+          variant: "success",
+        });
+        refreshIM();
+      })
+      .catch((err) => {
+        enqueueSnackbar({
+          message: "Failed to endorse IM",
+          variant: "error",
+        });
+      });
   }
 
   async function handleConfirmEndorsement() {
     return frontendCreateDeanEndorsement({
       coordinatorEndorsementId: iM.CoordinatorEndorsement.id,
-    }).then((res) => {
-      refreshIM();
-    });
+    })
+      .then((res) => {
+        enqueueSnackbar({
+          message: "Successfully confirmed IM endorsement",
+          variant: "success",
+        });
+        refreshIM();
+      })
+      .catch((err) => {
+        enqueueSnackbar({
+          message: "Failed to confirm IM endorsement",
+          variant: "error",
+        });
+      });
   }
 
   async function handleSubmitForReview() {
-    return frontendSubmitIMForReview({ iMId: iM.id }).then((res) => {
-      refreshIM();
-    });
+    return frontendSubmitIMForReview({ iMId: iM.id })
+      .then((res) => {
+        enqueueSnackbar({
+          message: "Submitted IM for review",
+          variant: "success",
+        });
+        refreshIM();
+      })
+      .catch((err) => {
+        enqueueSnackbar({
+          message: "Failed to submit IM for review",
+          variant: "error",
+        });
+      });
   }
 
   async function handleSubmitForEndorsement() {
-    return frontendSubmitIMForEndorsement({ iMId: iM.id }).then((res) => {
-      refreshIM();
-    });
+    return frontendSubmitIMForEndorsement({ iMId: iM.id })
+      .then((res) => {
+        enqueueSnackbar({
+          message: "Submitted IM for department endorsement",
+          variant: "success",
+        });
+        refreshIM();
+      })
+      .catch((err) => {
+        enqueueSnackbar({
+          message: "Failed to submit IM for department endorsement",
+          variant: "error",
+        });
+      });
   }
 
   async function handleSubmitForIMDCoordinatorEndorsement() {
-    return frontendSubmitIMForIMDCoordinatorEndorsement({ iMId: iM.id }).then(
-      (res) => {
+    return frontendSubmitIMForIMDCoordinatorEndorsement({ iMId: iM.id })
+      .then((res) => {
+        enqueueSnackbar({
+          message: "Submitted IM for CITL endorsement",
+          variant: "success",
+        });
         refreshIM();
-      }
-    );
+      })
+      .catch((err) => {
+        enqueueSnackbar({
+          message: "Failed to submit IM for CITL endorsement",
+          variant: "error",
+        });
+      });
   }
 
   async function handleReturnForRevision() {
-    return frontendReturnIMForRevision({ iMId: iM.id }).then((res) => {
-      refreshIM();
-      router.push(`/im/${iM.id}/review/coordinator`);
-    });
+    return frontendReturnIMForRevision({ iMId: iM.id })
+      .then((res) => {
+        enqueueSnackbar({
+          message: "Returned IM for revision",
+          variant: "success",
+        });
+        refreshIM();
+        router.push(`/im/${iM.id}/review/coordinator`);
+      })
+      .catch((err) => {
+        enqueueSnackbar({
+          message: "Failed to return IM for revision",
+          variant: "error",
+        });
+      });
   }
 
   async function handleReturnForIMDCoordinatorRevision() {
-    return frontendReturnIMDCoordinatorRevision({ iMId: iM.id }).then((res) => {
-      refreshIM();
-      router.push(`/im/${iM.id}/review/imd_coordinator`);
-    });
+    return frontendReturnIMDCoordinatorRevision({ iMId: iM.id })
+      .then((res) => {
+        enqueueSnackbar({
+          message: "Returned IM for revision",
+          variant: "success",
+        });
+        refreshIM();
+        router.push(`/im/${iM.id}/review/imd_coordinator`);
+      })
+      .catch((err) => {
+        enqueueSnackbar({
+          message: "Failed to return IM for revision",
+          variant: "error",
+        });
+      });
   }
 
   return (

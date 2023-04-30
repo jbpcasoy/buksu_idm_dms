@@ -8,12 +8,14 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import ChairpersonSuggestionItem from "./ChairpersonSuggestionItem";
 import Suggestion from "./Suggestion";
+import { useSnackbar } from "notistack";
 
 export default function ChairpersonSuggestion({
   chairpersonReview,
   onFinish,
   onPrevious,
 }) {
+  const { closeSnackbar, enqueueSnackbar } = useSnackbar();
   const {
     submittedChairpersonReview,
     submittedChairpersonReviewError,
@@ -78,7 +80,15 @@ export default function ChairpersonSuggestion({
       showPeerSuggestion
       handleSubmit={handleSubmit}
       onFinish={async () => {
-        return handleSubmitSuggestion().then(() => onFinish());
+        return handleSubmitSuggestion()
+          .catch((err) => console.error(err))
+          .finally(() => {
+            onFinish();
+            enqueueSnackbar({
+              message: "Suggestions submitted successfully",
+              variant: "success",
+            });
+          });
       }}
       onPrevious={onPrevious}
       iM={iM}
