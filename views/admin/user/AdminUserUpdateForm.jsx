@@ -35,7 +35,7 @@ export default function AdminUserUpdateForm({
         <DialogContent>
           <Stack spacing={1}>
             <DialogContentText>
-              This will change the user's data across resources.
+              This will change the user&apos;s data across resources.
             </DialogContentText>
             <TextField
               size='small'

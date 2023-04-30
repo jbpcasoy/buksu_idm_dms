@@ -9,6 +9,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import Person2Icon from "@mui/icons-material/Person2";
 import Person3Icon from "@mui/icons-material/Person3";
 import Person4Icon from "@mui/icons-material/Person4";
+import CampaignIcon from "@mui/icons-material/Campaign";
 import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
 import {
   Box,
@@ -77,6 +78,11 @@ const menuItems = [
     label: "IMs",
     icon: <DescriptionIcon />,
     link: "/admin/im",
+  },
+  {
+    label: "Announcements",
+    icon: <CampaignIcon />,
+    link: "/admin/announcement",
   },
   // Postponed idea
   // {

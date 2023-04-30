@@ -1,11 +1,8 @@
 import AdminLayout from "@/components/admin/AdminLayout";
 import AdminUser from "@/components/admin/user/AdminUser";
 import frontendReadUsers from "@/services/frontend/admin/user/frontendReadUsers";
-import frontendUpdateUser from "@/services/frontend/user/frontendUpdateUser";
 import Sort from "@/views/admin/Sort";
-import AdminUserView from "@/views/admin/user/AdminUser";
 import {
-  Avatar,
   Box,
   Stack,
   Table,
