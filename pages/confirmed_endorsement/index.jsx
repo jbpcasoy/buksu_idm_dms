@@ -318,12 +318,14 @@ export default function Home() {
                   <SortButton
                     label='Date'
                     sortOrder={
-                      state.sortColumn === "date" ? state.sortOrder : undefined
+                      state.sortColumn === "createdAt"
+                        ? state.sortOrder
+                        : undefined
                     }
                     setSortOrder={(order) =>
                       setState((prev) => ({
                         ...prev,
-                        sortColumn: "date",
+                        sortColumn: "createdAt",
                         sortOrder: order,
                       }))
                     }
