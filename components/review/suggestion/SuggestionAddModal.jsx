@@ -35,7 +35,7 @@ export default function SuggestionAddModal({ onSubmit }) {
       <button
         data-modal-target='suggestion-modal'
         data-modal-toggle='suggestion-modal'
-        className='flex gap-2 text-sm font-medium text-center px-4 py-2 text-CITLWhite  bg-CITLDarkBlue rounded-md hover:bg-transparent hover:border-CITLDarkBlue border hover:text-CITLDarkBlue'
+        className='flex gap-2 text-sm font-medium text-center px-4 py-2 text-CITLWhite  bg-CITLDarkBlue rounded-md hover:bg-transparent hover:border-CITLDarkBlue border hover:text-CITLDarkBlue '
         type='button'
       >
         <svg

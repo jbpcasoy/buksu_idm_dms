@@ -78,11 +78,6 @@ const menuItems = [
     icon: <DescriptionIcon />,
     link: "/admin/im",
   },
-  {
-    label: "Files",
-    icon: <FileOpenIcon />,
-    link: "/admin/file",
-  },
   // Postponed idea
   // {
   //   label: "IM Review",

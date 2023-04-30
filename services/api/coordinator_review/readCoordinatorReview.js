@@ -1,28 +1,41 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
+import { accessibleBy } from "@casl/prisma";
 
-export default async function readCoordinatorReview(id) {
+export default async function readCoordinatorReview({
+  id,
+  ability,
+  filter = {},
+}) {
   const prisma = PRISMA_CLIENT;
-  try {
-    const coordinatorReview = await prisma.coordinatorReview.findUniqueOrThrow({
-      where: {
-        id,
+  const accessibility = accessibleBy(ability).CoordinatorReview;
+
+  const coordinatorReview = await prisma.coordinatorReview.findFirstOrThrow({
+    where: {
+      AND: [
+        accessibility,
+        {
+          ...filter,
+          id,
+        },
+      ],
+    },
+    include: {
+      IM: {
+        include: {
+          SubmittedCoordinatorSuggestion: true,
+        },
       },
-      include: {
-        IM: true,
-        Coordinator: {
-          select: {
-            Faculty: {
-              include: {
-                user: true,
-              },
+      Coordinator: {
+        select: {
+          Faculty: {
+            include: {
+              user: true,
             },
           },
         },
       },
-    });
+    },
+  });
 
-    return coordinatorReview;
-  } catch (error) {
-    throw error;
-  }
+  return coordinatorReview;
 }

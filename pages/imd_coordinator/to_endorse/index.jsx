@@ -17,6 +17,8 @@ export default function Home() {
     limit: 10,
     serialNumber: "",
     title: "",
+    departmentName: "",
+    collegeName: "",
     status: undefined,
     sortColumn: "title",
     sortOrder: "asc",
@@ -31,7 +33,7 @@ export default function Home() {
   const router = useRouter();
 
   useEffect(() => {
-    if (!user || !user?.ActiveFaculty) return;
+    if (!user || !user?.IMDCoordinator?.ActiveIMDCoordinator) return;
     let subscribe = true;
     setLoading(true);
 
@@ -49,6 +51,7 @@ export default function Home() {
       limit: state.limit,
       sortColumn: state.sortColumn,
       sortOrder: state.sortOrder,
+      departmentName: state.departmentName,
     };
 
     getToReview(filter).then((res) => {
@@ -87,14 +90,14 @@ export default function Home() {
 
   return (
     <Layout>
-      {user && !user?.ActiveFaculty && !userLoading && (
+      {user && !user?.IMDCoordinator?.ActiveIMDCoordinator && !userLoading && (
         <div className=' flex-wrap grid text-center justify-items-center  border min-h-fit border-slate-300  bg-CITLWhite m-2 p-3 rounded-lg shadow-lg overflow-hidden'>
           <div className='px-6 py-4 md:w-10/12 sm:w-12/12'>
             <h3 className='text-3xl font-bold text-CITLDarkBlue'>
               Unauthorized
             </h3>
             <p className='text-gray-600 mt-2 pb-5'>
-              You are currently not an active faculty, please contact
+              You are currently not an active IMD Coordinator, please contact
               administrator.
             </p>
             {/* <button className="items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-CITLDarkBlue rounded-lg ">
@@ -120,7 +123,7 @@ export default function Home() {
           />
         </div>
       )}
-      {user?.ActiveFaculty && (
+      {user?.IMDCoordinator?.ActiveIMDCoordinator && (
         <div className=' grid grid-flow-row items-center border border-CITLGray-lighter bg-CITLWhite m-2 mt-5 relative rounded-lg shadow-lg overflow-x-auto'>
           <div className=' bg-CITLGray-light py-3 px-3 pr-3'>
             <div className='w-full grid grid-flow-col'>
@@ -149,6 +152,14 @@ export default function Home() {
                   {
                     value: "owner",
                     label: "Owner",
+                  },
+                  {
+                    value: "departmentName",
+                    label: "Department",
+                  },
+                  {
+                    value: "collegeName",
+                    label: "College",
                   },
                   {
                     value: "authors",
@@ -240,6 +251,26 @@ export default function Home() {
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
                   <SortButton
+                    label='Department'
+                    sortOrder={
+                      state.sortColumn === "owner.department.name"
+                        ? state.sortOrder
+                        : undefined
+                    }
+                    setSortOrder={(order) =>
+                      setState((prev) => ({
+                        ...prev,
+                        sortColumn: "owner.department.name",
+                        sortOrder: order,
+                      }))
+                    }
+                  />
+                </th>
+                <th
+                  scope='col'
+                  className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
+                >
+                  <SortButton
                     label='Authors'
                     sortOrder={
                       state.sortColumn === "authors"
@@ -263,12 +294,14 @@ export default function Home() {
                   <SortButton
                     label='date'
                     sortOrder={
-                      state.sortColumn === "date" ? state.sortOrder : undefined
+                      state.sortColumn === "createdAt"
+                        ? state.sortOrder
+                        : undefined
                     }
                     setSortOrder={(order) =>
                       setState((prev) => ({
                         ...prev,
-                        sortColumn: "date",
+                        sortColumn: "createdAt",
                         sortOrder: order,
                       }))
                     }
@@ -310,6 +343,10 @@ export default function Home() {
                     <div className='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
                   </td>
 
+                  <td className='bg-white  font-medium text-slate-400  items-center justify-center px-6 py-4 '>
+                    <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
+                  </td>
+
                   <td className='px-6 py-4 '>
                     <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
                     <div className='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
@@ -332,6 +369,9 @@ export default function Home() {
                 ims.map((im, index) => {
                   return (
                     <IM
+                      showDepartmentName={true}
+                      departmentName={im.owner.department.name}
+                      collegeName={im.owner.department.college.name}
                       authors={im.authors}
                       // bottomBorder={index < state.ims.length - 1}
                       im={im}

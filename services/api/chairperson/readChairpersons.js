@@ -1,4 +1,5 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
+import { accessibleBy } from "@casl/prisma";
 import _ from "lodash";
 
 export default async function readChairpersons({
@@ -10,111 +11,130 @@ export default async function readChairpersons({
   active,
   sortColumn,
   sortOrder,
+  email,
+  ability,
 }) {
   const prisma = PRISMA_CLIENT;
   const sortFilter = {};
   _.set(sortFilter, sortColumn, sortOrder);
 
-  try {
-    const chairpersons = await prisma.chairperson.findMany({
-      take: limit,
-      skip: (page - 1) * limit,
-      include: {
-        Faculty: {
-          select: {
-            departmentId: true,
-            user: {
-              select: {
-                name: true,
-                image: true,
-              },
+  const accessibility = accessibleBy(ability).Chairperson;
+
+  const chairpersons = await prisma.chairperson.findMany({
+    take: limit,
+    skip: (page - 1) * limit,
+    include: {
+      Faculty: {
+        select: {
+          departmentId: true,
+          user: {
+            select: {
+              name: true,
+              image: true,
+              email: true,
             },
-            department: {
-              select: {
-                name: true,
-                college: {
-                  select: {
-                    name: true,
-                  },
+          },
+          department: {
+            select: {
+              name: true,
+              college: {
+                select: {
+                  name: true,
                 },
               },
             },
           },
         },
-        ActiveChairperson: true,
       },
-      where: {
-        Faculty: {
-          user: {
-            name: {
-              contains: name,
-              // mode: "insensitive",
-            },
-          },
-          department: {
-            name: {
-              contains: departmentName,
-              // mode: "insensitive",
-            },
-            college: {
+      ActiveChairperson: true,
+    },
+    where: {
+      AND: [
+        accessibility,
+        {
+          Faculty: {
+            user: {
               name: {
-                contains: collegeName,
+                contains: name,
+                // mode: "insensitive",
+              },
+              email: {
+                contains: email,
                 // mode: "insensitive",
               },
             },
-          },
-        },
-        ActiveChairperson:
-          active === true
-            ? {
-                isNot: null,
-              }
-            : active === false
-            ? {
-                is: null,
-              }
-            : undefined,
-      },
-      orderBy: sortFilter,
-    });
-
-    const total = await prisma.chairperson.count({
-      where: {
-        Faculty: {
-          user: {
-            name: {
-              contains: name,
-              // mode: "insensitive",
-            },
-          },
-          department: {
-            name: {
-              contains: departmentName,
-              // mode: "insensitive",
-            },
-            college: {
+            department: {
               name: {
-                contains: collegeName,
+                contains: departmentName,
                 // mode: "insensitive",
+              },
+              college: {
+                name: {
+                  contains: collegeName,
+                  // mode: "insensitive",
+                },
               },
             },
           },
+          ActiveChairperson:
+            active === true
+              ? {
+                  isNot: null,
+                }
+              : active === false
+              ? {
+                  is: null,
+                }
+              : undefined,
         },
-        ActiveChairperson:
-          active === true
-            ? {
-                isNot: null,
-              }
-            : active === false
-            ? {
-                is: null,
-              }
-            : undefined,
-      },
-    });
+      ],
+    },
+    orderBy: sortFilter,
+  });
 
-    return { data: chairpersons, total };
-  } catch (error) {
-    throw error;
-  }
+  const total = await prisma.chairperson.count({
+    where: {
+      AND: [
+        accessibility,
+        {
+          Faculty: {
+            user: {
+              name: {
+                contains: name,
+                // mode: "insensitive",
+              },
+              email: {
+                contains: email,
+                // mode: "insensitive",
+              },
+            },
+            department: {
+              name: {
+                contains: departmentName,
+                // mode: "insensitive",
+              },
+              college: {
+                name: {
+                  contains: collegeName,
+                  // mode: "insensitive",
+                },
+              },
+            },
+          },
+          ActiveChairperson:
+            active === true
+              ? {
+                  isNot: null,
+                }
+              : active === false
+              ? {
+                  is: null,
+                }
+              : undefined,
+        },
+      ],
+    },
+  });
+
+  return { data: chairpersons, total };
 }

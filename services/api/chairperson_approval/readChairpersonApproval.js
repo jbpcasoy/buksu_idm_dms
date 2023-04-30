@@ -3,15 +3,11 @@ import { PRISMA_CLIENT } from "@/prisma/prisma_client";
 export default async function readChairpersonApproval(id) {
   const prisma = PRISMA_CLIENT;
 
-  try {
-    const chairpersonApproval =
-      await prisma.chairpersonApproval.findUniqueOrThrow({
-        where: {
-          id,
-        },
-      });
-    return chairpersonApproval;
-  } catch (error) {
-    throw error;
-  }
+  const chairpersonApproval =
+    await prisma.chairpersonApproval.findUniqueOrThrow({
+      where: {
+        id,
+      },
+    });
+  return chairpersonApproval;
 }

@@ -5,46 +5,45 @@ import readSubmittedPeerReview from "../submitted_peer_review/readSubmittedPeerR
 
 export default async function createSubmittedPeerSuggestion({
   peerSuggestionId,
+  ability,
 }) {
-  try {
-    const prisma = PRISMA_CLIENT;
+  const prisma = PRISMA_CLIENT;
 
-    const peerSuggestion = await readPeerSuggestion(peerSuggestionId);
+  const peerSuggestion = await readPeerSuggestion({
+    id: peerSuggestionId,
+    ability,
+  });
 
-    const submittedPeerSuggestion = await prisma.submittedPeerSuggestion.create(
-      {
-        data: {
-          PeerSuggestion: {
-            connect: {
-              id: peerSuggestion.id,
-            },
-          },
-          IM: {
-            connect: {
-              id: peerSuggestion.SubmittedPeerReview.iMId,
-            },
-          },
-          Notification: {
-            create: {
-              Type: "SUBMITTED_PEER_SUGGESTION",
-            },
-          },
-          IMEvent: {
-            create: {
-              IMEventType: "SUBMITTED_PEER_SUGGESTION",
-            },
-          },
+  const submittedPeerSuggestion = await prisma.submittedPeerSuggestion.create({
+    data: {
+      PeerSuggestion: {
+        connect: {
+          id: peerSuggestion.id,
         },
-      }
-    );
+      },
+      IM: {
+        connect: {
+          id: peerSuggestion.SubmittedPeerReview.iMId,
+        },
+      },
+      Notification: {
+        create: {
+          Type: "SUBMITTED_PEER_SUGGESTION",
+        },
+      },
+      IMEvent: {
+        create: {
+          IMEventType: "SUBMITTED_PEER_SUGGESTION",
+        },
+      },
+    },
+  });
 
-    const submittedPeerReview = await readSubmittedPeerReview(
-      peerSuggestion.submittedPeerReviewId
-    );
-    await checkAndUpdateStatus(submittedPeerReview.iMId);
+  const submittedPeerReview = await readSubmittedPeerReview({
+    id: peerSuggestion.submittedPeerReviewId,
+    ability,
+  });
+  await checkAndUpdateStatus({ iMId: submittedPeerReview.iMId, ability });
 
-    return submittedPeerSuggestion;
-  } catch (error) {
-    throw error;
-  }
+  return submittedPeerSuggestion;
 }

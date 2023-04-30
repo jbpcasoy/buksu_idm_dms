@@ -1,39 +1,48 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
+import { accessibleBy } from "@casl/prisma";
 
 export default async function readPeerReviewItems({
   limit,
   page,
   questionId,
   peerReviewId,
+  ability,
 }) {
   const prisma = PRISMA_CLIENT;
+  const accessibility = accessibleBy(ability).PeerReviewItem;
 
-  try {
-    const peerReviewItems = await prisma.peerReviewItem.findMany({
-      take: limit,
-      skip: limit && page ? (page - 1) * limit : undefined,
-      where: {
-        questionId: {
-          contains: questionId,
+  const peerReviewItems = await prisma.peerReviewItem.findMany({
+    take: limit,
+    skip: limit && page ? (page - 1) * limit : undefined,
+    where: {
+      AND: [
+        accessibility,
+        {
+          questionId: {
+            contains: questionId,
+          },
+          peerReviewId: {
+            contains: peerReviewId,
+          },
         },
-        peerReviewId: {
-          contains: peerReviewId,
+      ],
+    },
+  });
+  const total = await prisma.peerReviewItem.count({
+    where: {
+      AND: [
+        accessibility,
+        {
+          questionId: {
+            contains: questionId,
+          },
+          peerReviewId: {
+            contains: peerReviewId,
+          },
         },
-      },
-    });
-    const total = await prisma.peerReviewItem.count({
-      where: {
-        questionId: {
-          contains: questionId,
-        },
-        peerReviewId: {
-          contains: peerReviewId,
-        },
-      },
-    });
+      ],
+    },
+  });
 
-    return { data: peerReviewItems, total };
-  } catch (error) {
-    throw error;
-  }
+  return { data: peerReviewItems, total };
 }

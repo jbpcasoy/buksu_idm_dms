@@ -7,7 +7,14 @@ export default function useImsCount() {
   const { user } = useContext(UserContext);
 
   useEffect(() => {
-    if (!user || !user?.ActiveFaculty) return;
+    if (
+      !user ||
+      !(
+        user?.IMDCoordinator?.ActiveIMDCoordinator ||
+        user?.CITLDirector?.ActiveCITLDirector
+      )
+    )
+      return;
     let subscribe = true;
 
     async function getIMs(filter) {

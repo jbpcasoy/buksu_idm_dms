@@ -6,6 +6,7 @@ import PreviewQuestion from "./PreviewQuestion";
 export default function ChairpersonPreviewQuestion({
   question,
   chairpersonReviewId,
+  disabled = false,
 }) {
   const [loading, setLoading] = useState(false);
   const {
@@ -29,6 +30,7 @@ export default function ChairpersonPreviewQuestion({
 
   return (
     <PreviewQuestion
+      disabled={disabled}
       loading={chairpersonReviewItemLoading}
       key={question.id}
       question={question}

@@ -4,6 +4,7 @@ export default async function frontendReadNotifications({
   limit,
   page,
   userId,
+  facultyId,
   read = false,
 }) {
   try {
@@ -12,6 +13,7 @@ export default async function frontendReadNotifications({
         limit,
         page,
         userId,
+        facultyId,
         read,
       },
     });

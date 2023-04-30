@@ -1,26 +1,30 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
+import { accessibleBy } from "@casl/prisma";
 
-export default async function readFaculty(id) {
+export default async function readFaculty({ id, ability, filter = {} }) {
   const prisma = PRISMA_CLIENT;
+  const accessibility = accessibleBy(ability).Faculty;
 
-  try {
-    const faculty = await prisma.faculty.findUniqueOrThrow({
-      where: {
-        id,
-      },
-      include: {
-        user: true,
-        ActiveFaculty: true,
-        department: {
-          include: {
-            college: true,
-          },
+  const faculty = await prisma.faculty.findFirstOrThrow({
+    where: {
+      AND: [
+        accessibility,
+        {
+          ...filter,
+          id,
+        },
+      ],
+    },
+    include: {
+      user: true,
+      ActiveFaculty: true,
+      department: {
+        include: {
+          college: true,
         },
       },
-    });
+    },
+  });
 
-    return faculty;
-  } catch (error) {
-    throw error;
-  }
+  return faculty;
 }

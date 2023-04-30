@@ -1,6 +1,9 @@
 import AdminLayout from "@/components/admin/AdminLayout";
+import AdminUser from "@/components/admin/user/AdminUser";
 import frontendReadUsers from "@/services/frontend/admin/user/frontendReadUsers";
+import frontendUpdateUser from "@/services/frontend/user/frontendUpdateUser";
 import Sort from "@/views/admin/Sort";
+import AdminUserView from "@/views/admin/user/AdminUser";
 import {
   Avatar,
   Box,
@@ -19,7 +22,7 @@ import {
 import _ from "lodash";
 import { useEffect, useState } from "react";
 
-export default function AdminUser() {
+export default function AdminUserTable() {
   const [users, setUsers] = useState([]);
   const [total, setTotal] = useState(0);
   const [state, setState] = useState({
@@ -128,21 +131,13 @@ export default function AdminUser() {
                 <TableCell>Image</TableCell>
                 <TableCell>Name</TableCell>
                 <TableCell>Email</TableCell>
+                <TableCell width={100}>Actions</TableCell>
               </TableRow>
             </TableHead>
 
             <TableBody>
-              {users?.map((users) => (
-                <TableRow
-                  key={users.id}
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                >
-                  <TableCell>
-                    <Avatar src={users.image} />
-                  </TableCell>
-                  <TableCell>{users.name}</TableCell>
-                  <TableCell>{users.email}</TableCell>
-                </TableRow>
+              {users?.map((user) => (
+                <AdminUser user={user} key={user.id} />
               ))}
             </TableBody>
           </Table>

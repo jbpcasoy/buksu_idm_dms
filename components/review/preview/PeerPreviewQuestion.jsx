@@ -3,7 +3,11 @@ import frontendUpdatePeerReviewItem from "@/services/frontend/peer_review_item/f
 import { useState } from "react";
 import PreviewQuestion from "./PreviewQuestion";
 
-export default function PeerPreviewQuestion({ question, peerReviewId }) {
+export default function PeerPreviewQuestion({
+  question,
+  peerReviewId,
+  disabled = false,
+}) {
   const [loading, setLoading] = useState(false);
   const { peerReviewItem, peerReviewItemError, peerReviewItemLoading } =
     usePeerReviewItemByQuestion({
@@ -23,6 +27,7 @@ export default function PeerPreviewQuestion({ question, peerReviewId }) {
 
   return (
     <PreviewQuestion
+      disabled={disabled}
       loading={peerReviewItemLoading}
       key={question.id}
       question={question}

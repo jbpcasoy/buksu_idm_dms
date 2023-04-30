@@ -1,17 +1,22 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
+import { accessibleBy } from "@casl/prisma";
 
-export default async function readDeanEndorsements({ limit, page }) {
+export default async function readDeanEndorsements({ limit, page, ability }) {
   const prisma = PRISMA_CLIENT;
+  const accessibility = accessibleBy(ability).DeanEndorsement;
 
-  try {
-    const deanEndorsements = await prisma.deanEndorsement.findMany({
-      take: limit,
-      skip: (page - 1) * limit,
-    });
-    const total = await prisma.deanEndorsement.count();
+  const deanEndorsements = await prisma.deanEndorsement.findMany({
+    take: limit,
+    skip: (page - 1) * limit,
+    where: {
+      AND: [accessibility],
+    },
+  });
+  const total = await prisma.deanEndorsement.count({
+    where: {
+      AND: [accessibility],
+    },
+  });
 
-    return { data: deanEndorsements, total };
-  } catch (error) {
-    throw error;
-  }
+  return { data: deanEndorsements, total };
 }

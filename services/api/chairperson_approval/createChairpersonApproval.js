@@ -10,51 +10,42 @@ export default async function createChairpersonApproval({
 }) {
   const prisma = PRISMA_CLIENT;
 
-  try {
-    const chairperson = await findChairperson({
+  const chairperson = await findChairperson({
+    departmentApprovalId,
+    chairpersonId,
+  });
+
+  const chairpersonApproval = prisma.chairpersonApproval.create({
+    data: {
       departmentApprovalId,
-      chairpersonId,
-    });
+      chairpersonId: chairperson.id,
+    },
+  });
 
-    const chairpersonApproval = prisma.chairpersonApproval.create({
-      data: {
-        departmentApprovalId,
-        chairpersonId: chairperson.id,
-      },
-    });
-
-    return chairpersonApproval;
-  } catch (error) {
-    throw error;
-  }
+  return chairpersonApproval;
 }
 
 async function findChairperson({ departmentApprovalId, chairpersonId }) {
   const prisma = PRISMA_CLIENT;
-  try {
-    const departmentApproval = await readDepartmentApproval(
-      departmentApprovalId
-    );
-    const iM = await readIM(departmentApproval.iMId);
-    const faculty = await readFaculty(iM.ownerId);
-    const department = await readDepartment(faculty.departmentId);
 
-    const chairperson = await prisma.chairperson.findFirstOrThrow({
-      where: {
-        Faculty: {
-          departmentId: department.id,
-          department: {
-            ActiveChairperson: {
-              chairpersonId: chairpersonId,
-            },
+  const departmentApproval = await readDepartmentApproval(departmentApprovalId);
+  const iM = await readIM(departmentApproval.iMId);
+  const faculty = await readFaculty(iM.ownerId);
+  const department = await readDepartment(faculty.departmentId);
+
+  const chairperson = await prisma.chairperson.findFirstOrThrow({
+    where: {
+      Faculty: {
+        departmentId: department.id,
+        department: {
+          ActiveChairperson: {
+            chairpersonId: chairpersonId,
           },
         },
-        id: chairpersonId,
       },
-    });
+      id: chairpersonId,
+    },
+  });
 
-    return chairperson;
-  } catch (error) {
-    throw error;
-  }
+  return chairperson;
 }

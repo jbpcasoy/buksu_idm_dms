@@ -167,6 +167,8 @@ const ChairpersonReviewPage = () => {
     console.log({ chairpersonReview });
   }, [chairpersonReview]);
 
-  return <ReviewPage reviewingAs='Chairperson' step={step} steps={steps} />;
+  return (
+    <ReviewPage reviewingAs='Chairperson' step={step} steps={steps} iM={iM} />
+  );
 };
 export default ChairpersonReviewPage;

@@ -9,19 +9,15 @@ export default async function createIMDCoordinatorSuggestionItem({
 }) {
   const prisma = PRISMA_CLIENT;
 
-  try {
-    const iMDCoordinatorSuggestionItem =
-      await prisma.iMDCoordinatorSuggestionItem.create({
-        data: {
-          iMDCoordinatorSuggestionId,
-          value,
-          pageNumber,
-          actionTaken,
-          remarks,
-        },
-      });
-    return iMDCoordinatorSuggestionItem;
-  } catch (error) {
-    throw error;
-  }
+  const iMDCoordinatorSuggestionItem =
+    await prisma.iMDCoordinatorSuggestionItem.create({
+      data: {
+        iMDCoordinatorSuggestionId,
+        value,
+        pageNumber,
+        actionTaken,
+        remarks,
+      },
+    });
+  return iMDCoordinatorSuggestionItem;
 }

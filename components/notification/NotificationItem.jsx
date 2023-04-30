@@ -1,6 +1,5 @@
 import ChairpersonReviewNotificationItem from "./ChairpersonReviewNotificationItem";
 import ChairpersonSuggestionNotificationItem from "./ChairpersonSuggestionNotificationItem";
-import CITLDirectorEndorsementNotificationItem from "./CITLDirectorEndorsementNotificationItem";
 import CoordinatorEndorsementNotificationItem from "./CoordinatorEndorsementNotificationItem";
 import CoordinatorReviewNotificationItem from "./CoordinatorReviewNotificationItem";
 import CoordinatorSuggestionNotificationItem from "./CoordinatorSuggestionNotificationItem";
@@ -82,13 +81,6 @@ export default function NotificationItem({
   } else if (notification.Type === "IMD_COORDINATOR_ENDORSEMENT") {
     return (
       <IMDCoordinatorEndorsementNotificationItem
-        notification={notification}
-        refreshNotifications={refreshNotifications}
-      />
-    );
-  } else if (notification.Type === "CITL_DIRECTOR_ENDORSEMENT") {
-    return (
-      <CITLDirectorEndorsementNotificationItem
         notification={notification}
         refreshNotifications={refreshNotifications}
       />

@@ -23,9 +23,11 @@ import {
 } from "@mui/material";
 import _ from "lodash";
 import { useRouter } from "next/router";
+import { useSnackbar } from "notistack";
 import { useEffect, useState } from "react";
 
 export default function AdminCollegePage() {
+  const { closeSnackbar, enqueueSnackbar } = useSnackbar();
   const [colleges, setColleges] = useState([]);
   const [total, setTotal] = useState(0);
   const [state, setState] = useState({
@@ -72,9 +74,20 @@ export default function AdminCollegePage() {
   }
 
   async function onAdd({ name }) {
-    return frontendCreateCollege({ name }).then((res) => {
-      reloadColleges();
-    });
+    return frontendCreateCollege({ name })
+      .then((res) => {
+        enqueueSnackbar({
+          message: "Added college successfully",
+          variant: "success",
+        });
+        reloadColleges();
+      })
+      .catch((err) => {
+        enqueueSnackbar({
+          message: "Failed to add college",
+          variant: "error",
+        });
+      });
   }
 
   function handleChangePage(_, page) {

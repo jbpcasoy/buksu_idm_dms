@@ -1,7 +1,12 @@
+import { reqLog } from "@/services/api/logger";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import prisma from "../../../../lib/prismadb";
+import catchAllError from "@/services/middleware/catchAllError";
+import { PRISMA_CLIENT } from "@/prisma/prisma_client";
+
+const prismaClient = PRISMA_CLIENT;
 
 export const authOptions = {
   adapter: PrismaAdapter(prisma),
@@ -13,13 +18,50 @@ export const authOptions = {
     }),
     // ...add more providers here
   ],
+  pages: {
+    signIn: "/",
+  },
   callbacks: {
     session: async ({ session, token, user }) => {
       if (session?.user) {
-        session.user.id = user.id;
+        const id = user.id;
+
+        session.user = await prismaClient.user.findUnique({
+          where: {
+            id,
+          },
+          include: {
+            ActiveFaculty: {
+              include: {
+                ActiveChairperson: true,
+                ActiveCoordinator: true,
+                ActiveDean: true,
+                Faculty: true,
+              },
+            },
+            CITLDirector: {
+              include: {
+                ActiveCITLDirector: true,
+              },
+            },
+            IMDCoordinator: {
+              include: {
+                ActiveIMDCoordinator: true,
+              },
+            },
+            LoginRole: true,
+            Admin: true,
+          },
+        });
       }
       return session;
     },
   },
 };
-export default NextAuth(authOptions);
+
+export default async function handler(req, res) {
+  return catchAllError(req, res, async (req, res) => {
+    await reqLog(req, res);
+    return await NextAuth(req, res, authOptions);
+  });
+}

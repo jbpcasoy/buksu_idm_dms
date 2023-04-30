@@ -4,6 +4,7 @@ export default async function frontendReadChairpersons({
   limit,
   page,
   name,
+  email,
   departmentName,
   collegeName,
   active,
@@ -15,6 +16,7 @@ export default async function frontendReadChairpersons({
       params: {
         limit,
         page,
+        email,
         name,
         departmentName,
         collegeName,

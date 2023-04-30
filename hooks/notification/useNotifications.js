@@ -1,7 +1,13 @@
 import frontendReadNotifications from "@/services/frontend/notification/frontendReadNotifications";
 import { useEffect, useState } from "react";
 
-export default function useNotifications({ limit, page, userId, read }) {
+export default function useNotifications({
+  limit,
+  page,
+  userId,
+  facultyId,
+  read,
+}) {
   const [notifications, setNotifications] = useState([]);
   const [notificationsError, setNotificationsError] = useState();
   const [notificationsLoading, setNotificationsLoading] = useState(true);
@@ -16,7 +22,7 @@ export default function useNotifications({ limit, page, userId, read }) {
     setNotificationsLoading(true);
 
     let subscribe = true;
-    frontendReadNotifications({ limit, page, userId, read })
+    frontendReadNotifications({ limit, page, userId, facultyId, read })
       .then((res) => {
         if (!subscribe) return;
         setNotifications(res);

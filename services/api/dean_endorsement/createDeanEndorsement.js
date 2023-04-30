@@ -6,51 +6,57 @@ import updateIM from "../im/updateIM";
 export default async function createDeanEndorsement({
   coordinatorEndorsementId,
   deanId,
+  ability,
 }) {
   const prisma = PRISMA_CLIENT;
 
-  try {
-    const coordinatorEndorsement = await readCoordinatorEndorsement(
-      coordinatorEndorsementId
-    );
-    const dean = await readDean(deanId, {
+  const coordinatorEndorsement = await readCoordinatorEndorsement({
+    id: coordinatorEndorsementId,
+    ability,
+  });
+  const dean = await readDean({
+    id: deanId,
+    ability,
+    filter: {
       ActiveDean: {
         isNot: null,
       },
       collegeId:
         coordinatorEndorsement.Coordinator.Faculty.department.collegeId,
-    });
+    },
+  });
 
-    const deanEndorsement = await prisma.deanEndorsement.create({
-      data: {
-        Dean: {
-          connect: {
-            id: dean.id,
-          },
-        },
-        CoordinatorEndorsement: {
-          connect: {
-            id: coordinatorEndorsement.id,
-          },
-        },
-        Notification: {
-          create: {
-            Type: "DEAN_ENDORSEMENT",
-          },
-        },
-        IMEvent: {
-          create: {
-            IMEventType: "DEAN_ENDORSEMENT",
-          },
+  const deanEndorsement = await prisma.deanEndorsement.create({
+    data: {
+      Dean: {
+        connect: {
+          id: dean.id,
         },
       },
-    });
+      CoordinatorEndorsement: {
+        connect: {
+          id: coordinatorEndorsement.id,
+        },
+      },
+      Notification: {
+        create: {
+          Type: "DEAN_ENDORSEMENT",
+        },
+      },
+      IMEvent: {
+        create: {
+          IMEventType: "DEAN_ENDORSEMENT",
+        },
+      },
+    },
+  });
 
-    await updateIM(coordinatorEndorsement.iMId, {
+  await updateIM(
+    coordinatorEndorsement.iMId,
+    {
       status: "DEPARTMENT_ENDORSED",
-    });
-    return deanEndorsement;
-  } catch (error) {
-    throw error;
-  }
+    },
+    ability
+  );
+  return deanEndorsement;
 }

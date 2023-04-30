@@ -7,15 +7,14 @@ export default function useCITLConfirmedCount() {
   const { user } = useContext(UserContext);
 
   useEffect(() => {
-    if (!user || !user?.CITLDirector || !user?.CITLDirector?.ActiveCITLDirector)
-      return;
+    if (!user || !user?.CITLDirector?.ActiveCITLDirector) return;
     let subscribe = true;
 
     async function getEndorsed(filter) {
       return frontendGetIMs({
         ...filter,
         status: "CITL_ENDORSED",
-        CITLDirectorEndorsed: true,
+        iMDCoordinatorEndorsed: true,
         endorsedByCITLDirector: user.CITLDirector.id,
       });
     }

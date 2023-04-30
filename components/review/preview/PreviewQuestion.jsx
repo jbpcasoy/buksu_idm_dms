@@ -3,6 +3,7 @@ export default function PreviewQuestion({
   answer,
   onSelect,
   loading,
+  disabled,
 }) {
   return (
     <div>
@@ -18,7 +19,7 @@ export default function PreviewQuestion({
           <div className='flex items-center pl-3'>
             <input
               onChange={() => onSelect("VM")}
-              disabled={loading}
+              disabled={loading || disabled}
               name={question.id}
               checked={answer === "VM"}
               id={question.id + "-vm"}
@@ -37,7 +38,7 @@ export default function PreviewQuestion({
           <div className='flex items-center pl-3'>
             <input
               onChange={() => onSelect("M")}
-              disabled={loading}
+              disabled={loading || disabled}
               name={question.id}
               checked={answer === "M"}
               type='radio'
@@ -56,7 +57,7 @@ export default function PreviewQuestion({
         <li className='w-full border-b border-gray-200 sm:border-b-0 sm:border-r '>
           <div className='flex items-center pl-3'>
             <input
-              disabled={loading}
+              disabled={loading || disabled}
               name={question.id}
               onChange={() => onSelect("JE")}
               checked={answer === "JE"}
@@ -76,7 +77,7 @@ export default function PreviewQuestion({
         <li className='w-full border-b border-gray-200 sm:border-b-0 sm:border-r'>
           <div className='flex items-center pl-3'>
             <input
-              disabled={loading}
+              disabled={loading || disabled}
               name={question.id}
               onChange={() => onSelect("NM")}
               checked={answer === "NM"}
@@ -96,7 +97,7 @@ export default function PreviewQuestion({
         <li className='w-full '>
           <div className='flex items-center pl-3'>
             <input
-              disabled={loading}
+              disabled={loading || disabled}
               name={question.id}
               type='radio'
               onChange={() => onSelect("NAA")}

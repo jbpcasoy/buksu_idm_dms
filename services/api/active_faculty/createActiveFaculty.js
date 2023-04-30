@@ -1,44 +1,25 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
+import readFaculty from "../faculty/readFaculty";
+import userAbility from "@/services/abilities/defineAbility";
 
-export default async function createActiveFaculty({
-  userId,
-  facultyId,
-  departmentId,
-}) {
+export default async function createActiveFaculty({ facultyId, ability }) {
   const prisma = PRISMA_CLIENT;
 
-  try {
-    const faculty = await findFaculty({
-      facultyId,
-      departmentId,
-    });
-    const activeFaculty = await prisma.activeFaculty.create({
-      data: {
-        departmentId,
-        facultyId: faculty.id,
-        userId,
+  const faculty = await readFaculty({ id: facultyId, ability });
+
+  const activeFaculty = await prisma.activeFaculty.create({
+    data: {
+      Department: {
+        connect: {
+          id: faculty.departmentId,
+        },
       },
-    });
-
-    return activeFaculty;
-  } catch (error) {
-    throw error;
-  }
-}
-
-async function findFaculty({ facultyId, departmentId }) {
-  const prisma = PRISMA_CLIENT;
-
-  try {
-    const faculty = await prisma.faculty.findFirstOrThrow({
-      where: {
-        departmentId: departmentId,
-        id: facultyId,
+      Faculty: { connect: { id: faculty.id } },
+      User: {
+        connect: { id: faculty.userId },
       },
-    });
+    },
+  });
 
-    return faculty;
-  } catch (error) {
-    throw error;
-  }
+  return activeFaculty;
 }

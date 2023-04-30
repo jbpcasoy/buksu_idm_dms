@@ -6,17 +6,13 @@ export default async function updateChairpersonSuggestionItem(
 ) {
   const prisma = PRISMA_CLIENT;
 
-  try {
-    const chairpersonSuggestionItem =
-      await prisma.chairpersonSuggestionItem.update({
-        where: {
-          id,
-        },
-        data: { actionTaken, pageNumber, remarks, value },
-      });
+  const chairpersonSuggestionItem =
+    await prisma.chairpersonSuggestionItem.update({
+      where: {
+        id,
+      },
+      data: { actionTaken, pageNumber, remarks, value },
+    });
 
-    return chairpersonSuggestionItem;
-  } catch (error) {
-    throw error;
-  }
+  return chairpersonSuggestionItem;
 }

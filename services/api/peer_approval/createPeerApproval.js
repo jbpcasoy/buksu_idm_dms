@@ -11,50 +11,41 @@ export default async function createPeerApproval({
   const prisma = PRISMA_CLIENT;
   // TODO find peer from same department as the IMApproval
 
-  try {
-    const peer = await findPeer({
+  const peer = await findPeer({
+    departmentApprovalId,
+    facultyId,
+  });
+  const peerApproval = await prisma.peerApproval.create({
+    data: {
       departmentApprovalId,
-      facultyId,
-    });
-    const peerApproval = await prisma.peerApproval.create({
-      data: {
-        departmentApprovalId,
-        facultyId: peer.id,
-      },
-    });
+      facultyId: peer.id,
+    },
+  });
 
-    return peerApproval;
-  } catch (error) {
-    throw error;
-  }
+  return peerApproval;
 }
 
 async function findPeer({ departmentApprovalId, facultyId }) {
   const prisma = PRISMA_CLIENT;
-  try {
-    const departmentApproval = await readDepartmentApproval(
-      departmentApprovalId
-    );
-    const iM = await readIM(departmentApproval.iMId);
-    const faculty = await readFaculty(iM.ownerId);
-    const department = await readDepartment(faculty.departmentId);
 
-    const chairperson = await prisma.faculty.findFirstOrThrow({
-      where: {
-        departmentId: department.id,
-        department: {
-          ActiveFaculty: {
-            some: {
-              facultyId: facultyId,
-            },
+  const departmentApproval = await readDepartmentApproval(departmentApprovalId);
+  const iM = await readIM(departmentApproval.iMId);
+  const faculty = await readFaculty(iM.ownerId);
+  const department = await readDepartment(faculty.departmentId);
+
+  const chairperson = await prisma.faculty.findFirstOrThrow({
+    where: {
+      departmentId: department.id,
+      department: {
+        ActiveFaculty: {
+          some: {
+            facultyId: facultyId,
           },
         },
-        id: facultyId,
       },
-    });
+      id: facultyId,
+    },
+  });
 
-    return chairperson;
-  } catch (error) {
-    throw error;
-  }
+  return chairperson;
 }

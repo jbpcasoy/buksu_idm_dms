@@ -7,7 +7,7 @@ export default function useCITLReviewedCount() {
   const { user } = useContext(UserContext);
 
   useEffect(() => {
-    if (!user || !user?.ActiveFaculty) return;
+    if (!user || !user?.IMDCoordinator?.ActiveIMDCoordinator) return;
     let subscribe = true;
 
     async function getReviewed(filter) {

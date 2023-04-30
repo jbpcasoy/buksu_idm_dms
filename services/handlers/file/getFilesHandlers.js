@@ -1,4 +1,6 @@
+import userAbility from "@/services/abilities/defineAbility";
 import readFiles from "@/services/api/file/readFiles";
+import getServerUser from "@/services/helpers/getServerUser";
 
 export default async function getFilesHandler(req, res) {
   const {
@@ -12,6 +14,9 @@ export default async function getFilesHandler(req, res) {
     sortColumn = "fileName",
     sortOrder = "asc",
   } = req.query;
+
+  const user = await getServerUser(req, res);
+
   const files = await readFiles({
     limit: parseInt(limit),
     page: parseInt(page),
@@ -22,6 +27,7 @@ export default async function getFilesHandler(req, res) {
     iMId,
     sortColumn,
     sortOrder,
+    ability: await userAbility(user),
   });
   return res.status(200).json(files);
 }

@@ -7,20 +7,16 @@ export default async function createChairpersonReviewItem({
 }) {
   const prisma = PRISMA_CLIENT;
 
-  try {
-    const chairpersonReviewItem = await prisma.chairpersonReviewItem.create({
-      data: {
-        answer,
-        questionId,
-        ChairpersonReview: {
-          connect: {
-            id: chairpersonReviewId,
-          },
+  const chairpersonReviewItem = await prisma.chairpersonReviewItem.create({
+    data: {
+      answer,
+      questionId,
+      ChairpersonReview: {
+        connect: {
+          id: chairpersonReviewId,
         },
       },
-    });
-    return chairpersonReviewItem;
-  } catch (error) {
-    throw error;
-  }
+    },
+  });
+  return chairpersonReviewItem;
 }

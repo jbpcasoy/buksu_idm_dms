@@ -8,6 +8,7 @@ export default function AdminChairpersonView({
   name,
   department,
   college,
+  email,
   active,
   onDelete,
   onActivate,
@@ -19,6 +20,7 @@ export default function AdminChairpersonView({
         <Avatar src={image} />
       </TableCell>
       <TableCell>{name}</TableCell>
+      <TableCell>{email}</TableCell>
       <TableCell>{department}</TableCell>
       <TableCell>{college}</TableCell>
       <TableCell align='center'>
