@@ -12,7 +12,12 @@ const statusToEvent = {
   CITL_ENDORSED: "IMD_COORDINATOR_ENDORSEMENT",
 };
 
-export default async function countIM({ status, year, collegeId }) {
+export default async function countIM({
+  status,
+  year,
+  collegeId,
+  departmentId,
+}) {
   const prisma = PRISMA_CLIENT;
 
   const startDate = moment().year(year).startOf("year").toDate();
@@ -36,6 +41,9 @@ export default async function countIM({ status, year, collegeId }) {
       },
       owner: {
         department: {
+          id: {
+            contains: departmentId,
+          },
           collegeId: {
             contains: collegeId,
           },

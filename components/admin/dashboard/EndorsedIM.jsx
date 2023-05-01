@@ -14,6 +14,7 @@ import YearRange from "../form/YearRange";
 import { useEffect, useState } from "react";
 import moment from "moment";
 import frontendGetIMCount from "@/services/frontend/chart/im/frontendGetIMCount";
+import DepartmentSelectField from "../form/DepartmentSelectField";
 
 export const options = {
   responsive: true,
@@ -31,6 +32,7 @@ export default function EndorsedIM() {
     startYear: moment().year() - 6,
     endYear: moment().year(),
     collegeId: "",
+    departmentId: "",
   });
 
   const [counts, setCounts] = useState({
@@ -59,18 +61,20 @@ export default function EndorsedIM() {
     setData((prev) => ({ ...prev, labels: newLabels }));
   }, [filter]);
 
-  async function getCounts({ years, status, collegeId }) {
+  async function getCounts({ years, status, collegeId, departmentId }) {
     console.log({
       getCounts: {
         years,
         status,
         collegeId,
+        departmentId,
       },
     });
     const counts = [];
 
     for (let year of years) {
       const count = await frontendGetIMCount({
+        departmentId,
         year,
         status: status,
         collegeId,
@@ -81,50 +85,59 @@ export default function EndorsedIM() {
     return counts;
   }
 
-  async function getStatusCounts({ years, collegeId }) {
+  async function getStatusCounts({ years, collegeId, departmentId }) {
     console.log({
       getStatusCounts: {
         years,
         collegeId,
+        departmentId,
       },
     });
     const draft = await getCounts({
-      collegeId: collegeId,
+      collegeId,
+      departmentId,
       status: "DRAFT",
       years,
     });
     const submitted = await getCounts({
-      collegeId: collegeId,
+      collegeId,
+      departmentId,
       status: "SUBMITTED",
       years,
     });
     const department_reviewed = await getCounts({
-      collegeId: collegeId,
+      collegeId,
+      departmentId,
       status: "DEPARTMENT_REVIEWED",
       years,
     });
     const department_revised = await getCounts({
-      collegeId: collegeId,
+      collegeId,
+      departmentId,
       status: "DEPARTMENT_REVISED",
       years,
     });
     const department_endorsed = await getCounts({
-      collegeId: collegeId,
+      collegeId,
+      departmentId,
       status: "DEPARTMENT_ENDORSED",
       years,
     });
     const citl_reviewed = await getCounts({
-      collegeId: collegeId,
+      collegeId,
+      departmentId,
       status: "CITL_REVIEWED",
       years,
     });
     const citl_revised = await getCounts({
-      collegeId: collegeId,
+      collegeId,
+      departmentId,
       status: "CITL_REVISED",
       years,
     });
     const citl_endorsed = await getCounts({
-      collegeId: collegeId,
+      collegeId,
+      departmentId,
       status: "CITL_ENDORSED",
       years,
     });
@@ -147,6 +160,7 @@ export default function EndorsedIM() {
     if (labels.length < 1) return;
 
     getStatusCounts({
+      departmentId: filter.departmentId,
       collegeId: filter.collegeId,
       years: data.labels,
     }).then((res) => {
@@ -158,7 +172,7 @@ export default function EndorsedIM() {
     return () => {
       subscribe = false;
     };
-  }, [data.labels, filter.collegeId]);
+  }, [data.labels, filter.collegeId, filter.departmentId]);
 
   useEffect(() => {
     console.log({ counts });
@@ -241,11 +255,20 @@ export default function EndorsedIM() {
         <CardHeader title="College IM's" />
         <CardContent>
           <Grid container spacing={1}>
-            <Grid item xs={8}>
+            <Grid item xs={4}>
               <CollegeSelectField
                 fullWidth
                 onChange={(collegeId) =>
                   setFilter((prev) => ({ ...prev, collegeId }))
+                }
+              />
+            </Grid>
+            <Grid item xs={4}>
+              <DepartmentSelectField
+                fullWidth
+                collegeId={filter.collegeId}
+                onChange={(departmentId) =>
+                  setFilter((prev) => ({ ...prev, departmentId }))
                 }
               />
             </Grid>
