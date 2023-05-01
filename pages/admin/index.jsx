@@ -1,5 +1,6 @@
 import AdminLayout from "@/components/admin/AdminLayout";
 import EndorsedIM from "@/components/admin/dashboard/EndorsedIM";
+import FacultyChart from "@/components/admin/dashboard/FacultyChart";
 import IMPieChart from "@/components/admin/dashboard/IMPieChart";
 import { ApprovedIMsLine } from "@/components/charts/ApprovedIMsLine";
 import Chart from "@/components/charts/Chart";
@@ -13,12 +14,15 @@ export default function AdminHome() {
         <Toolbar>
           <Typography variant='h6'>Dashboard</Typography>
         </Toolbar>
-        <Grid container>
+        <Grid container spacing={2}>
           <Grid item xs={12} md={8}>
             <EndorsedIM />
           </Grid>
           <Grid item xs={12} md={4}>
             <IMPieChart />
+          </Grid>
+          <Grid item xs={12}>
+            <FacultyChart />
           </Grid>
         </Grid>
       </Box>

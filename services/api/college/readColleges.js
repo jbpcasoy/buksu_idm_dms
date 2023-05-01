@@ -16,7 +16,7 @@ export default async function readColleges({
   const accessibility = accessibleBy(ability).College;
 
   const colleges = await prisma.college.findMany({
-    skip: (page - 1) * limit,
+    skip: page ? (page - 1) * limit : undefined,
     take: limit,
     where: {
       AND: [
@@ -28,6 +28,17 @@ export default async function readColleges({
           },
         },
       ],
+    },
+    include: {
+      Department: {
+        include: {
+          _count: {
+            select: {
+              ActiveFaculty: true,
+            },
+          },
+        },
+      },
     },
     orderBy: sortFilter,
   });
