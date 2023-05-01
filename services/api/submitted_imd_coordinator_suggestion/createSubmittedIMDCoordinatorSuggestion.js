@@ -23,6 +23,11 @@ export default async function createSubmittedIMDCoordinatorSuggestion({
         },
         IMEvent: {
           create: {
+            IM: {
+              connect: {
+                id: iMDCoordinatorSuggestion.iMId,
+              },
+            },
             IMEventType: "SUBMITTED_IMD_COORDINATOR_SUGGESTION",
           },
         },

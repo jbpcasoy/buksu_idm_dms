@@ -37,6 +37,11 @@ export default async function createCoordinatorEndorsement({
       },
       IMEvent: {
         create: {
+          IM: {
+            connect: {
+              id: iM.id,
+            },
+          },
           IMEventType: "COORDINATOR_ENDORSEMENT",
         },
       },

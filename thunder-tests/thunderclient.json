@@ -7110,5 +7110,30 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "8faa709b-98d1-4821-9b0a-b93cd3cc26bf",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "d3976672-9357-49c6-bda6-d9478b6ad368",
+    "name": "IM",
+    "url": "{{host}}/api/chart/im?status=CITL_ENDORSED&year=2023",
+    "method": "GET",
+    "sortNum": 2520000,
+    "created": "2023-05-01T04:11:42.830Z",
+    "modified": "2023-05-01T04:21:14.391Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "status",
+        "value": "CITL_ENDORSED",
+        "isPath": false
+      },
+      {
+        "name": "year",
+        "value": "2023",
+        "isPath": false
+      }
+    ],
+    "tests": []
   }
 ]

@@ -33,6 +33,11 @@ export default async function createSubmittedPeerSuggestion({
       },
       IMEvent: {
         create: {
+          IM: {
+            connect: {
+              id: peerSuggestion.SubmittedPeerReview.iMId,
+            },
+          },
           IMEventType: "SUBMITTED_PEER_SUGGESTION",
         },
       },

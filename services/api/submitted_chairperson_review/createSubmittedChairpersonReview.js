@@ -24,6 +24,11 @@ export default async function createSubmittedChairpersonReview({
         },
         IMEvent: {
           create: {
+            IM: {
+              connect: {
+                id: chairpersonReview.iMId,
+              },
+            },
             IMEventType: "SUBMITTED_CHAIRPERSON_REVIEW",
           },
         },

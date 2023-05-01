@@ -45,6 +45,11 @@ export default async function createDeanEndorsement({
       },
       IMEvent: {
         create: {
+          IM: {
+            connect: {
+              id: coordinatorEndorsement.iMId,
+            },
+          },
           IMEventType: "DEAN_ENDORSEMENT",
         },
       },

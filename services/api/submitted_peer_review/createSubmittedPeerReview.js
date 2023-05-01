@@ -28,6 +28,11 @@ export default async function createSubmittedPeerReview({
       },
       IMEvent: {
         create: {
+          IM: {
+            connect: {
+              id: peerReview.iMId,
+            },
+          },
           IMEventType: "SUBMITTED_PEER_REVIEW",
         },
       },
