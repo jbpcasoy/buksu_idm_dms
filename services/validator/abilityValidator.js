@@ -34,7 +34,7 @@ export default async function abilityValidator({
       }
     }
   } catch (error) {
-    console.error(error);
+    logger.error(error);
     return res
       .status(error?.statusCode ?? 500)
       .json({ message: error?.message ?? "Something went wrong" });

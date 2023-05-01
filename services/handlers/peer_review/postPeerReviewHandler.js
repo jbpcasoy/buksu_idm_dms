@@ -11,10 +11,6 @@ export default async function postPeerReviewHandler(req, res) {
   const user = await getServerUser(req, res);
   const iM = await readIM({ id: iMId, ability: await userAbility(user) });
 
-  console.log({
-    activeFacultyDepartment: user?.ActiveFaculty?.departmentId,
-    iMOwnerDepartment: iM?.owner?.departmentId,
-  });
   return abilityValidator({
     req,
     res,
