@@ -24,6 +24,11 @@ export default async function createSubmittedCoordinatorReview({
         },
         IMEvent: {
           create: {
+            IM: {
+              connect: {
+                id: coordinatorReview.iMId,
+              },
+            },
             IMEventType: "SUBMITTED_COORDINATOR_REVIEW",
           },
         },

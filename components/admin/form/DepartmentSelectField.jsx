@@ -2,7 +2,11 @@ import frontendReadDepartments from "@/services/frontend/admin/department/fronte
 import { Autocomplete, TextField } from "@mui/material";
 import { useEffect, useState } from "react";
 
-export default function DepartmentSelectField({ onChange, ...props }) {
+export default function DepartmentSelectField({
+  onChange,
+  collegeId,
+  ...props
+}) {
   const [options, setOptions] = useState([]);
   const [input, setInput] = useState("");
 
@@ -13,6 +17,7 @@ export default function DepartmentSelectField({ onChange, ...props }) {
       limit: 10,
       page: 1,
       name: input,
+      collegeId,
     }).then((res) => {
       setOptions(
         res.data.map((department) => ({
@@ -21,7 +26,7 @@ export default function DepartmentSelectField({ onChange, ...props }) {
         }))
       );
     });
-  }, [input]);
+  }, [input, collegeId]);
 
   return (
     <Autocomplete

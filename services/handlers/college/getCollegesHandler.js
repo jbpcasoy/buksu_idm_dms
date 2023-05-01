@@ -14,8 +14,8 @@ export default async function getCollegesHandler(req, res) {
   const user = await getServerUser(req, res);
 
   const colleges = await readColleges({
-    page: parseInt(page),
-    limit: parseInt(limit),
+    page: page ? parseInt(page) : undefined,
+    limit: page ? parseInt(limit) : undefined,
     name,
     sortColumn,
     sortOrder,

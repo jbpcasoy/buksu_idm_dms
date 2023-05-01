@@ -40,6 +40,12 @@ export default async function createIMDCoordinatorEndorsement({
         },
         IMEvent: {
           create: {
+            IM: {
+              connect: {
+                id: submittedIMDCoordinatorSuggestion.IMDCoordinatorSuggestion
+                  .iMId,
+              },
+            },
             IMEventType: "IMD_COORDINATOR_ENDORSEMENT",
           },
         },

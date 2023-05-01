@@ -2,15 +2,16 @@ import Layout from "@/components/layout/Layout";
 import ContactModal from "../ContactModal";
 import { useContext } from "react";
 import UserContext from "@/contexts/UserContext";
+import EndorsedIM from "@/components/admin/dashboard/EndorsedIM";
 
 export default function Home() {
   const { user, userLoading, userError } = useContext(UserContext);
   return (
     <>
       <Layout>
-        <div className='p-4 '>
+        <div className=" dark:bg-gray-900 bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')] dark:bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern-dark.svg')] p-4">
           <div className='mt-12 lg:mt-20'>
-            <section className=" dark:bg-gray-900 bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')] dark:bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern-dark.svg')] ">
+            <section>
               <div className='py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 z-50 relative'>
                 <h1 className='mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white'>
                   Educate. Innovate. Lead.
@@ -26,6 +27,10 @@ export default function Home() {
               </div>
               {/* <div className='bg-gradient-to-b from-gray-300 to-transparent dark:from-blue-900 w-full h-full absolute top-0 left-0 z-0'></div> */}
             </section>
+
+            <div className='mb-4'>
+              <EndorsedIM />
+            </div>
 
             <div className='grid md:grid-cols-2 gap-8'>
               <div className='bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-8 md:p-12'>

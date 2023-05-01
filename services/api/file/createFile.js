@@ -22,6 +22,11 @@ export default async function createFile({
       googleDocsUrl,
       IMEvent: {
         create: {
+          IM: {
+            connect: {
+              id: iMId,
+            },
+          },
           IMEventType: "NEW_VERSION",
         },
       },

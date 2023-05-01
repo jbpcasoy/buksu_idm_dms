@@ -21,7 +21,11 @@ export default async function readSubmittedIMDCoordinatorSuggestion({
         ],
       },
       include: {
-        IMDCoordinatorSuggestion: true,
+        IMDCoordinatorSuggestion: {
+          include: {
+            IM: true,
+          },
+        },
       },
     });
 
