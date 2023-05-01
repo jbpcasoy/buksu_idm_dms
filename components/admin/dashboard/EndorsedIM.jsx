@@ -61,102 +61,102 @@ export default function EndorsedIM() {
     setData((prev) => ({ ...prev, labels: newLabels }));
   }, [filter]);
 
-  async function getCounts({ years, status, collegeId, departmentId }) {
-    console.log({
-      getCounts: {
-        years,
-        status,
-        collegeId,
-        departmentId,
-      },
-    });
-    const counts = [];
-
-    for (let year of years) {
-      const count = await frontendGetIMCount({
-        departmentId,
-        year,
-        status: status,
-        collegeId,
+  useEffect(() => {
+    async function getCounts({ years, status, collegeId, departmentId }) {
+      console.log({
+        getCounts: {
+          years,
+          status,
+          collegeId,
+          departmentId,
+        },
       });
-      counts.push(count);
+      const counts = [];
+
+      for (let year of years) {
+        const count = await frontendGetIMCount({
+          departmentId,
+          year,
+          status: status,
+          collegeId,
+        });
+        counts.push(count);
+      }
+
+      return counts;
     }
 
-    return counts;
-  }
-
-  async function getStatusCounts({ years, collegeId, departmentId }) {
-    console.log({
-      getStatusCounts: {
-        years,
+    async function getStatusCounts({ years, collegeId, departmentId }) {
+      console.log({
+        getStatusCounts: {
+          years,
+          collegeId,
+          departmentId,
+        },
+      });
+      const draft = await getCounts({
         collegeId,
         departmentId,
-      },
-    });
-    const draft = await getCounts({
-      collegeId,
-      departmentId,
-      status: "DRAFT",
-      years,
-    });
-    const submitted = await getCounts({
-      collegeId,
-      departmentId,
-      status: "SUBMITTED",
-      years,
-    });
-    const department_reviewed = await getCounts({
-      collegeId,
-      departmentId,
-      status: "DEPARTMENT_REVIEWED",
-      years,
-    });
-    const department_revised = await getCounts({
-      collegeId,
-      departmentId,
-      status: "DEPARTMENT_REVISED",
-      years,
-    });
-    const department_endorsed = await getCounts({
-      collegeId,
-      departmentId,
-      status: "DEPARTMENT_ENDORSED",
-      years,
-    });
-    const citl_reviewed = await getCounts({
-      collegeId,
-      departmentId,
-      status: "CITL_REVIEWED",
-      years,
-    });
-    const citl_revised = await getCounts({
-      collegeId,
-      departmentId,
-      status: "CITL_REVISED",
-      years,
-    });
-    const citl_endorsed = await getCounts({
-      collegeId,
-      departmentId,
-      status: "CITL_ENDORSED",
-      years,
-    });
+        status: "DRAFT",
+        years,
+      });
+      const submitted = await getCounts({
+        collegeId,
+        departmentId,
+        status: "SUBMITTED",
+        years,
+      });
+      const department_reviewed = await getCounts({
+        collegeId,
+        departmentId,
+        status: "DEPARTMENT_REVIEWED",
+        years,
+      });
+      const department_revised = await getCounts({
+        collegeId,
+        departmentId,
+        status: "DEPARTMENT_REVISED",
+        years,
+      });
+      const department_endorsed = await getCounts({
+        collegeId,
+        departmentId,
+        status: "DEPARTMENT_ENDORSED",
+        years,
+      });
+      const citl_reviewed = await getCounts({
+        collegeId,
+        departmentId,
+        status: "CITL_REVIEWED",
+        years,
+      });
+      const citl_revised = await getCounts({
+        collegeId,
+        departmentId,
+        status: "CITL_REVISED",
+        years,
+      });
+      const citl_endorsed = await getCounts({
+        collegeId,
+        departmentId,
+        status: "CITL_ENDORSED",
+        years,
+      });
 
-    return {
-      draft,
-      submitted,
-      department_reviewed,
-      department_revised,
-      department_endorsed,
-      citl_reviewed,
-      citl_revised,
-      citl_endorsed,
-    };
-  }
+      return {
+        draft,
+        submitted,
+        department_reviewed,
+        department_revised,
+        department_endorsed,
+        citl_reviewed,
+        citl_revised,
+        citl_endorsed,
+      };
+    }
 
-  useEffect(() => {
     let subscribe = true;
-    const { labels } = data;
+    const labels = data.labels;
     if (labels.length < 1) return;
 
     getStatusCounts({
