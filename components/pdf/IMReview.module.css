@@ -1,0 +1,849 @@
+@import url("https://themes.googleusercontent.com/fonts/css?kit=hh9VFM0qOK4TrLidDd__Ui5bnSrpY5TE94xSqAiQW91KDTn8LERXlzF7PmED91NiTGckFRjXKfVJY4BMWL-AuQ");
+
+.lst-kix_list_1-3>li:before {
+    content: "\0025cf  ";
+}
+
+.lst-kix_list_1-4>li:before {
+    content: "o  ";
+}
+
+ul.lst-kix_list_1-0 {
+    list-style-type: none;
+}
+
+.lst-kix_list_1-7>li:before {
+    content: "o  ";
+}
+
+.lst-kix_list_1-5>li:before {
+    content: "\0025aa  ";
+}
+
+.lst-kix_list_1-6>li:before {
+    content: "\0025cf  ";
+}
+
+li.li-bullet-0:before {
+    /* margin-left: -18pt; */
+    white-space: nowrap;
+    /* display: none; */
+    min-width: 18pt;
+}
+
+ul.lst-kix_list_1-3 {
+    list-style-type: none;
+}
+
+.lst-kix_list_1-0>li:before {
+    content: "\0025cf  ";
+}
+
+ul.lst-kix_list_1-4 {
+    list-style-type: none;
+}
+
+.lst-kix_list_1-8>li:before {
+    content: "\0025aa  ";
+}
+
+ul.lst-kix_list_1-1 {
+    list-style-type: none;
+}
+
+ul.lst-kix_list_1-2 {
+    list-style-type: none;
+}
+
+ul.lst-kix_list_1-7 {
+    list-style-type: none;
+}
+
+.lst-kix_list_1-1>li:before {
+    content: "o  ";
+}
+
+.lst-kix_list_1-2>li:before {
+    content: "\0025aa  ";
+}
+
+ul.lst-kix_list_1-8 {
+    list-style-type: none;
+}
+
+ul.lst-kix_list_1-5 {
+    list-style-type: none;
+}
+
+ul.lst-kix_list_1-6 {
+    list-style-type: none;
+}
+
+ol.custom-ol {
+    margin: 0;
+    padding: 0;
+}
+
+table td.custom-td,
+table th.custom-th {
+    padding: 0;
+}
+
+.c11 {
+    border-right-style: solid;
+    padding: 0pt 5.4pt 0pt 5.4pt;
+    border-bottom-color: #000000;
+    border-top-width: 1pt;
+    border-right-width: 1pt;
+    border-left-color: #000000;
+    vertical-align: top;
+    border-right-color: #000000;
+    border-left-width: 1pt;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-bottom-width: 1pt;
+    width: 27.6pt;
+    border-top-color: #000000;
+    border-bottom-style: solid;
+}
+
+.c55 {
+    border-right-style: solid;
+    padding: 0pt 5.4pt 0pt 5.4pt;
+    border-bottom-color: #000000;
+    border-top-width: 1pt;
+    border-right-width: 0pt;
+    border-left-color: #000000;
+    vertical-align: top;
+    border-right-color: #000000;
+    border-left-width: 0pt;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-bottom-width: 0pt;
+    width: 31pt;
+    border-top-color: #000000;
+    border-bottom-style: solid;
+}
+
+.c34 {
+    border-right-style: solid;
+    padding: 5pt 5pt 5pt 5pt;
+    border-bottom-color: #000000;
+    border-top-width: 0pt;
+    border-right-width: 0pt;
+    border-left-color: #000000;
+    vertical-align: middle;
+    border-right-color: #000000;
+    border-left-width: 0pt;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-bottom-width: 0pt;
+    width: 190px;
+    border-top-color: #000000;
+    border-bottom-style: solid;
+}
+
+.c29 {
+    border-right-style: solid;
+    padding: 0pt 5.4pt 0pt 5.4pt;
+    border-bottom-color: #000000;
+    border-top-width: 0pt;
+    border-right-width: 0pt;
+    border-left-color: #000000;
+    vertical-align: top;
+    border-right-color: #000000;
+    border-left-width: 0pt;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-bottom-width: 1pt;
+    width: 30.4pt;
+    border-top-color: #000000;
+    border-bottom-style: solid;
+}
+
+.c20 {
+    border-right-style: solid;
+    padding: 0pt 5.4pt 0pt 5.4pt;
+    border-bottom-color: #000000;
+    border-top-width: 0pt;
+    border-right-width: 0pt;
+    border-left-color: #000000;
+    vertical-align: top;
+    border-right-color: #000000;
+    border-left-width: 0pt;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-bottom-width: 1pt;
+    width: 297.1pt;
+    border-top-color: #000000;
+    border-bottom-style: solid;
+}
+
+.c49 {
+    border-right-style: solid;
+    padding: 0pt 5.4pt 0pt 5.4pt;
+    border-bottom-color: #000000;
+    border-top-width: 1pt;
+    border-right-width: 0pt;
+    border-left-color: #000000;
+    vertical-align: top;
+    border-right-color: #000000;
+    border-left-width: 0pt;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-bottom-width: 0pt;
+    width: 37.1pt;
+    border-top-color: #000000;
+    border-bottom-style: solid;
+}
+
+.c8 {
+    border-right-style: solid;
+    padding: 0pt 5.4pt 0pt 5.4pt;
+    border-bottom-color: #000000;
+    border-top-width: 1pt;
+    border-right-width: 1pt;
+    border-left-color: #000000;
+    vertical-align: top;
+    border-right-color: #000000;
+    border-left-width: 1pt;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-bottom-width: 1pt;
+    width: 31pt;
+    border-top-color: #000000;
+    border-bottom-style: solid;
+}
+
+.c26 {
+    border-right-style: solid;
+    padding: 5pt 5pt 5pt 5pt;
+    border-bottom-color: #000000;
+    border-top-width: 0pt;
+    border-right-width: 0pt;
+    border-left-color: #000000;
+    vertical-align: middle;
+    border-right-color: #000000;
+    border-left-width: 0pt;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-bottom-width: 0pt;
+    width: 84pt;
+    border-top-color: #000000;
+    border-bottom-style: solid;
+}
+
+.c17 {
+    border-right-style: solid;
+    padding: 0pt 5.4pt 0pt 5.4pt;
+    border-bottom-color: #000000;
+    border-top-width: 1pt;
+    border-right-width: 1pt;
+    border-left-color: #000000;
+    vertical-align: top;
+    border-right-color: #000000;
+    border-left-width: 1pt;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-bottom-width: 1pt;
+    width: 37.1pt;
+    border-top-color: #000000;
+    border-bottom-style: solid;
+}
+
+.c43 {
+    border-right-style: solid;
+    padding: 0pt 5.4pt 0pt 5.4pt;
+    border-bottom-color: #000000;
+    border-top-width: 0pt;
+    border-right-width: 0pt;
+    border-left-color: #000000;
+    vertical-align: top;
+    border-right-color: #000000;
+    border-left-width: 0pt;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-bottom-width: 1pt;
+    width: 31pt;
+    border-top-color: #000000;
+    border-bottom-style: solid;
+}
+
+.c30 {
+    border-right-style: solid;
+    padding: 0pt 5.4pt 0pt 5.4pt;
+    border-bottom-color: #000000;
+    border-top-width: 1pt;
+    border-right-width: 0pt;
+    border-left-color: #000000;
+    vertical-align: top;
+    border-right-color: #000000;
+    border-left-width: 0pt;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-bottom-width: 0pt;
+    width: 27.6pt;
+    border-top-color: #000000;
+    border-bottom-style: solid;
+}
+
+.c28 {
+    border-right-style: solid;
+    padding: 0pt 5.4pt 0pt 5.4pt;
+    border-bottom-color: #000000;
+    border-top-width: 1pt;
+    border-right-width: 0pt;
+    border-left-color: #000000;
+    vertical-align: top;
+    border-right-color: #000000;
+    border-left-width: 0pt;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-bottom-width: 0pt;
+    width: 297.1pt;
+    border-top-color: #000000;
+    border-bottom-style: solid;
+}
+
+.c6 {
+    border-right-style: solid;
+    padding: 0pt 5.4pt 0pt 5.4pt;
+    border-bottom-color: #000000;
+    border-top-width: 1pt;
+    border-right-width: 1pt;
+    border-left-color: #000000;
+    vertical-align: top;
+    border-right-color: #000000;
+    border-left-width: 1pt;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-bottom-width: 1pt;
+    width: 297.1pt;
+    border-top-color: #000000;
+    border-bottom-style: solid;
+}
+
+.c23 {
+    border-right-style: solid;
+    padding: 0pt 5.4pt 0pt 5.4pt;
+    border-bottom-color: #000000;
+    border-top-width: 1pt;
+    border-right-width: 1pt;
+    border-left-color: #000000;
+    vertical-align: top;
+    border-right-color: #000000;
+    border-left-width: 1pt;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-bottom-width: 1pt;
+    width: 30.4pt;
+    border-top-color: #000000;
+    border-bottom-style: solid;
+}
+
+.c27 {
+    border-right-style: solid;
+    padding: 0pt 5.4pt 0pt 5.4pt;
+    border-bottom-color: #000000;
+    border-top-width: 0pt;
+    border-right-width: 0pt;
+    border-left-color: #000000;
+    vertical-align: top;
+    border-right-color: #000000;
+    border-left-width: 0pt;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-bottom-width: 1pt;
+    width: 37.1pt;
+    border-top-color: #000000;
+    border-bottom-style: solid;
+}
+
+.c36 {
+    border-right-style: solid;
+    padding: 5pt 5pt 5pt 5pt;
+    border-bottom-color: #000000;
+    border-top-width: 0pt;
+    border-right-width: 0pt;
+    border-left-color: #000000;
+    vertical-align: middle;
+    border-right-color: #000000;
+    border-left-width: 0pt;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-bottom-width: 0pt;
+    width: 363pt;
+    border-top-color: #000000;
+    border-bottom-style: solid;
+}
+
+.c52 {
+    border-right-style: solid;
+    padding: 0pt 5.4pt 0pt 5.4pt;
+    border-bottom-color: #000000;
+    border-top-width: 0pt;
+    border-right-width: 0pt;
+    border-left-color: #000000;
+    vertical-align: top;
+    border-right-color: #000000;
+    border-left-width: 0pt;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-bottom-width: 1pt;
+    width: 27.6pt;
+    border-top-color: #000000;
+    border-bottom-style: solid;
+}
+
+.c37 {
+    border-right-style: solid;
+    padding: 0pt 5.4pt 0pt 5.4pt;
+    border-bottom-color: #000000;
+    border-top-width: 1pt;
+    border-right-width: 0pt;
+    border-left-color: #000000;
+    vertical-align: top;
+    border-right-color: #000000;
+    border-left-width: 0pt;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-bottom-width: 0pt;
+    width: 30.4pt;
+    border-top-color: #000000;
+    border-bottom-style: solid;
+}
+
+.c33 {
+    -webkit-text-decoration-skip: none;
+    color: #0000ff;
+    font-weight: 400;
+    text-decoration: underline;
+    vertical-align: baseline;
+    text-decoration-skip-ink: none;
+    font-size: 10pt;
+    font-family: "Book Antiqua";
+    font-style: normal;
+}
+
+.c3 {
+    margin-left: 36pt;
+    padding-top: 0pt;
+    padding-left: 0pt;
+    padding-bottom: 8pt;
+    line-height: 1.0791666666666666;
+    orphans: 2;
+    widows: 2;
+    text-align: justify;
+}
+
+.c42 {
+    padding-top: 0pt;
+    text-indent: -28.4pt;
+    padding-bottom: 0pt;
+    line-height: 1;
+    orphans: 2;
+    widows: 2;
+    text-align: left;
+    margin-right: -16.5pt;
+}
+
+.c14 {
+    color: #000000;
+    font-weight: 700;
+    text-decoration: none;
+    vertical-align: baseline;
+    font-size: 10pt;
+    font-family: "Book Antiqua";
+    font-style: normal;
+}
+
+.c39 {
+    color: #000000;
+    font-weight: 400;
+    text-decoration: none;
+    vertical-align: baseline;
+    font-size: 7pt;
+    font-family: "Book Antiqua";
+    font-style: normal;
+}
+
+.c51 {
+    color: #000000;
+    font-weight: 700;
+    text-decoration: none;
+    vertical-align: baseline;
+    font-size: 7pt;
+    font-family: "Book Antiqua";
+    font-style: normal;
+}
+
+.c25 {
+    color: #000000;
+    font-weight: 400;
+    text-decoration: none;
+    vertical-align: baseline;
+    font-size: 11pt;
+    font-family: "Book Antiqua";
+    font-style: normal;
+}
+
+.c1 {
+    color: #000000;
+    font-weight: 400;
+    text-decoration: none;
+    vertical-align: baseline;
+    font-size: 11pt;
+    font-family: "Book Antiqua";
+    font-style: normal;
+}
+
+.c40 {
+    color: #000000;
+    font-weight: 700;
+    text-decoration: none;
+    vertical-align: baseline;
+    font-size: 11pt;
+    font-family: "Book Antiqua";
+    font-style: normal;
+}
+
+.c2 {
+    color: #000000;
+    font-weight: 400;
+    text-decoration: none;
+    vertical-align: baseline;
+    font-size: 10pt;
+    font-family: "Book Antiqua";
+    font-style: normal;
+}
+
+.c4 {
+    padding-top: 0pt;
+    padding-bottom: 0pt;
+    line-height: 1;
+    orphans: 2;
+    widows: 2;
+    text-align: justify;
+    height: 11pt;
+}
+
+.c56 {
+    color: #272f41;
+    font-weight: 700;
+    text-decoration: none;
+    vertical-align: baseline;
+    font-size: 7pt;
+    font-family: "Book Antiqua";
+    font-style: normal;
+}
+
+.c31 {
+    padding-top: 0pt;
+    padding-bottom: 0pt;
+    line-height: 1;
+    orphans: 2;
+    widows: 2;
+    text-align: justify;
+}
+
+.c32 {
+    padding-top: 0pt;
+    padding-bottom: 8pt;
+    line-height: 1.0791666666666666;
+    orphans: 2;
+    widows: 2;
+    text-align: left;
+}
+
+.c35 {
+    padding-top: 0pt;
+    padding-bottom: 0pt;
+    line-height: 1.0791666666666666;
+    orphans: 2;
+    widows: 2;
+    text-align: left;
+}
+
+.c0 {
+    padding-top: 0pt;
+    padding-bottom: 0pt;
+    line-height: 1;
+    orphans: 2;
+    widows: 2;
+    text-align: center;
+}
+
+.c22 {
+    padding-top: 0pt;
+    padding-bottom: 0pt;
+    line-height: 1.0791666666666666;
+    orphans: 2;
+    widows: 2;
+    text-align: justify;
+}
+
+.c10 {
+    padding-top: 0pt;
+    padding-bottom: 0pt;
+    line-height: 1.0791666666666666;
+    orphans: 2;
+    widows: 2;
+    text-align: center;
+}
+
+.c15 {
+    padding-top: 0pt;
+    padding-bottom: 8pt;
+    line-height: 1.0791666666666666;
+    orphans: 2;
+    widows: 2;
+    text-align: justify;
+}
+
+.c7 {
+    font-size: 8pt;
+    font-family: "Book Antiqua";
+    color: #000000;
+    font-weight: 400;
+}
+
+.c41 {
+    color: #000000;
+    text-decoration: none;
+    vertical-align: baseline;
+    font-size: 10pt;
+}
+
+.c19 {
+    padding-top: 0pt;
+    padding-bottom: 0pt;
+    line-height: 1;
+    text-align: center;
+}
+
+.c50 {
+    -webkit-text-decoration-skip: none;
+    color: #1155cc;
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+}
+
+.c45 {
+    color: #000000;
+    text-decoration: none;
+    vertical-align: baseline;
+    font-size: 11pt;
+}
+
+.c24 {
+    padding-top: 0pt;
+    padding-bottom: 8pt;
+    line-height: 1.075;
+    text-align: center;
+}
+
+.c47 {
+    font-size: 8pt;
+    font-family: "Book Antiqua";
+    color: #000000;
+    font-weight: 700;
+}
+
+.c54 {
+    border-spacing: 0;
+    border-collapse: collapse;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.c16 {
+    margin-left: auto;
+    border-spacing: 0;
+    border-collapse: collapse;
+    margin-right: auto;
+}
+
+.c18 {
+    font-family: "Book Antiqua";
+    font-style: italic;
+    font-weight: 400;
+}
+
+.c48 {
+    font-size: 10pt;
+    font-family: "Book Antiqua";
+    font-weight: 400;
+}
+
+.c44 {
+    background-color: #ffffff;
+    max-width: 451.3pt;
+    padding: 72pt 72pt 72pt 72pt;
+}
+
+.c5 {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.c13 {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+.c21 {
+    height: 11pt;
+}
+
+.c46 {
+    text-indent: 36pt;
+}
+
+.c53 {
+    color: #ff9c42;
+}
+
+.c9 {
+    height: 0pt;
+}
+
+.c12 {
+    height: 92.1pt;
+}
+
+.c38 {
+    margin-left: 36pt;
+}
+
+.title {
+    padding-top: 24pt;
+    color: #000000;
+    font-weight: 700;
+    font-size: 36pt;
+    padding-bottom: 6pt;
+    font-family: "Book Antiqua";
+    line-height: 1.0791666666666666;
+    page-break-after: avoid;
+    orphans: 2;
+    widows: 2;
+    text-align: left;
+}
+
+.subtitle {
+    padding-top: 18pt;
+    color: #666666;
+    font-size: 24pt;
+    padding-bottom: 4pt;
+    font-family: "Georgia";
+    line-height: 1.0791666666666666;
+    page-break-after: avoid;
+    font-style: italic;
+    orphans: 2;
+    widows: 2;
+    text-align: left;
+}
+
+li.custom-li {
+    color: #000000;
+    font-size: 11pt;
+    font-family: "Book Antiqua";
+}
+
+p.custom-p {
+    margin: 0;
+    color: #000000;
+    font-size: 11pt;
+    font-family: "Book Antiqua";
+}
+
+h1.custom-h1 {
+    padding-top: 24pt;
+    color: #000000;
+    font-weight: 700;
+    font-size: 24pt;
+    padding-bottom: 6pt;
+    font-family: "Book Antiqua";
+    line-height: 1.0791666666666666;
+    page-break-after: avoid;
+    orphans: 2;
+    widows: 2;
+    text-align: left;
+}
+
+h2.custom-h2 {
+    padding-top: 18pt;
+    color: #000000;
+    font-weight: 700;
+    font-size: 18pt;
+    padding-bottom: 4pt;
+    font-family: "Book Antiqua";
+    line-height: 1.0791666666666666;
+    page-break-after: avoid;
+    orphans: 2;
+    widows: 2;
+    text-align: left;
+}
+
+h3.custom-h3 {
+    padding-top: 14pt;
+    color: #000000;
+    font-weight: 700;
+    font-size: 14pt;
+    padding-bottom: 4pt;
+    font-family: "Book Antiqua";
+    line-height: 1.0791666666666666;
+    page-break-after: avoid;
+    orphans: 2;
+    widows: 2;
+    text-align: left;
+}
+
+h4.custom-h4 {
+    padding-top: 12pt;
+    color: #000000;
+    font-weight: 700;
+    font-size: 12pt;
+    padding-bottom: 2pt;
+    font-family: "Book Antiqua";
+    line-height: 1.0791666666666666;
+    page-break-after: avoid;
+    orphans: 2;
+    widows: 2;
+    text-align: left;
+}
+
+h5.custom-h5 {
+    padding-top: 11pt;
+    color: #000000;
+    font-weight: 700;
+    font-size: 11pt;
+    padding-bottom: 2pt;
+    font-family: "Book Antiqua";
+    line-height: 1.0791666666666666;
+    page-break-after: avoid;
+    orphans: 2;
+    widows: 2;
+    text-align: left;
+}
+
+h6.custom-h6 {
+    padding-top: 10pt;
+    color: #000000;
+    font-weight: 700;
+    font-size: 10pt;
+    padding-bottom: 2pt;
+    font-family: "Book Antiqua";
+    line-height: 1.0791666666666666;
+    page-break-after: avoid;
+    orphans: 2;
+    widows: 2;
+    text-align: left;
+}
+
+/* Added css */
+.center {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}

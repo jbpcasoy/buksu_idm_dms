@@ -11,6 +11,7 @@ import CoordinatorPreviewQuestion from "@/components/review/preview/CoordinatorP
 import IMPreview from "@/components/IMPreview";
 import Link from "next/link";
 import moment from "moment";
+import IMReviewPrintDialog from "@/components/pdf/print/IMReviewPrintDialog";
 
 export default function PreviewReviews() {
   const router = useRouter();
@@ -20,26 +21,35 @@ export default function PreviewReviews() {
     chairperson: "Chairperson",
     coordinator: "Coordinator",
   };
-  const [state, setState] = useState({ tab: tabs.peer });
+  const [state, setState] = useState({ tab: tabs.peer, openPrint: false });
 
   return (
     <Layout>
-      <select
-        id='default'
-        className='bg-CITLGray-light border-CITLGray-lighter border text-CITLGray-main  text-sm font-medium  rounded-md'
-        value={state.state}
-        onChange={(e) => setState((prev) => ({ ...prev, tab: e.target.value }))}
-      >
-        <option key={tabs.peer} value={tabs.peer}>
-          {tabs.peer}
-        </option>
-        <option key={tabs.chairperson} value={tabs.chairperson}>
-          {tabs.chairperson}
-        </option>
-        <option key={tabs.coordinator} value={tabs.coordinator}>
-          {tabs.coordinator}
-        </option>
-      </select>
+      <div className='flex justify-between px-1'>
+        <select
+          id='default'
+          className='bg-CITLGray-light border-CITLGray-lighter border text-CITLGray-main  text-sm font-medium  rounded-md'
+          value={state.state}
+          onChange={(e) =>
+            setState((prev) => ({ ...prev, tab: e.target.value }))
+          }
+        >
+          <option key={tabs.peer} value={tabs.peer}>
+            {tabs.peer}
+          </option>
+          <option key={tabs.chairperson} value={tabs.chairperson}>
+            {tabs.chairperson}
+          </option>
+          <option key={tabs.coordinator} value={tabs.coordinator}>
+            {tabs.coordinator}
+          </option>
+        </select>
+        <button
+          onClick={() => setState((prev) => ({ ...prev, openPrint: true }))}
+        >
+          Print
+        </button>
+      </div>
 
       {state.tab === tabs.peer && (
         <>
@@ -399,6 +409,11 @@ export default function PreviewReviews() {
         </div>
         <IMPreview iM={iM} />
       </div>
+      <IMReviewPrintDialog
+        onPrint={() => console.log("Printed!")}
+        onClose={() => setState((prev) => ({ ...prev, openPrint: false }))}
+        show={state.openPrint}
+      />
     </Layout>
   );
 }

@@ -215,5 +215,5 @@ function countQuestions(sections) {
   return total;
 }
 
-//  don't change format, used by /validator.js
+//  don't change format, used by /validator.js cant be es6 format
 module.exports = { sections, countQuestions };
