@@ -27,4 +27,11 @@ export default async function chairpersonReviewAbility({ can, cannot, user }) {
       },
     });
   }
+
+  if (
+    user?.IMDCoordinator?.ActiveIMDCoordinator ||
+    user?.CITLDirector?.ActiveCITLDirector
+  ) {
+    can("read", "ChairpersonReview");
+  }
 }

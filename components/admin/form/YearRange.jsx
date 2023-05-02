@@ -10,6 +10,7 @@ export default function YearRange({ startYear, endYear, onChange }) {
   useEffect(() => {
     console.log({ state });
     onChange(state);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state]);
 
   return (

@@ -25,6 +25,7 @@ export default async function readCoordinatorReview({
           SubmittedCoordinatorSuggestion: true,
         },
       },
+      CoordinatorReviewItem: true,
       Coordinator: {
         select: {
           Faculty: {

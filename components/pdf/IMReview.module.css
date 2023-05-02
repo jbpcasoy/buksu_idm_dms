@@ -138,7 +138,7 @@ table th.custom-th {
     border-top-style: solid;
     border-left-style: solid;
     border-bottom-width: 0pt;
-    width: 190px;
+    width: 130px;
     border-top-color: #000000;
     border-bottom-style: solid;
 }
@@ -372,7 +372,7 @@ table th.custom-th {
     border-top-style: solid;
     border-left-style: solid;
     border-bottom-width: 0pt;
-    width: 363pt;
+    /* width: 363pt; */
     border-top-color: #000000;
     border-bottom-style: solid;
 }
@@ -846,4 +846,15 @@ h6.custom-h6 {
     width: fit-content;
     margin-left: auto;
     margin-right: auto;
+}
+
+@media print {
+    @page {
+        margin: .5in;
+    }
+
+    .printable {
+        page-break-inside: avoid;
+        /* Prevent page breaks within the element */
+    }
 }

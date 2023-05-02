@@ -12,6 +12,9 @@ import IMPreview from "@/components/IMPreview";
 import Link from "next/link";
 import moment from "moment";
 import IMReviewPrintDialog from "@/components/pdf/print/IMReviewPrintDialog";
+import PeerIMReviewPrintDialog from "@/components/pdf/print/PeerIMReviewPrintDialog";
+import CoordinatorIMReviewPrintDialog from "@/components/pdf/print/CoordinatorIMReviewPrintDialog";
+import ChairpersonIMReviewPrintDialog from "@/components/pdf/print/ChairpersonIMReviewDialog";
 
 export default function PreviewReviews() {
   const router = useRouter();
@@ -44,11 +47,6 @@ export default function PreviewReviews() {
             {tabs.coordinator}
           </option>
         </select>
-        <button
-          onClick={() => setState((prev) => ({ ...prev, openPrint: true }))}
-        >
-          Print
-        </button>
       </div>
 
       {state.tab === tabs.peer && (
@@ -128,6 +126,7 @@ export default function PreviewReviews() {
                     </h2>
                   </div>
                 </div>
+                <PeerIMReviewPrintDialog iM={iM} />
               </div>
               {sections.map((section) => {
                 if (section.active) {
@@ -232,6 +231,8 @@ export default function PreviewReviews() {
                     </h2>
                   </div>
                 </div>
+
+                <ChairpersonIMReviewPrintDialog iM={iM} />
               </div>
               {sections.map((section) => {
                 if (section.active) {
@@ -337,6 +338,8 @@ export default function PreviewReviews() {
                     </h2>
                   </div>
                 </div>
+
+                <CoordinatorIMReviewPrintDialog iM={iM} />
               </div>
               {sections.map((section) => {
                 if (section.active) {
@@ -409,11 +412,6 @@ export default function PreviewReviews() {
         </div>
         <IMPreview iM={iM} />
       </div>
-      <IMReviewPrintDialog
-        onPrint={() => console.log("Printed!")}
-        onClose={() => setState((prev) => ({ ...prev, openPrint: false }))}
-        show={state.openPrint}
-      />
     </Layout>
   );
 }
