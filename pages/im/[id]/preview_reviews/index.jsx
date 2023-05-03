@@ -129,25 +129,21 @@ export default function PreviewReviews() {
                 <PeerIMReviewPrintDialog iM={iM} />
               </div>
               {sections.map((section) => {
-                if (section.active) {
-                  return (
-                    <PreviewSection key={section.title} section={section}>
-                      {section.questions.map((question) => {
-                        if (question.active)
-                          return (
-                            <PeerPreviewQuestion
-                              disabled={true}
-                              key={question.id}
-                              question={question}
-                              peerReviewId={
-                                iM?.SubmittedPeerReview?.peerReviewId
-                              }
-                            />
-                          );
-                      })}
-                    </PreviewSection>
-                  );
-                }
+                return (
+                  <PreviewSection key={section.title} section={section}>
+                    {section.questions.map((question) => {
+                      if (question.active)
+                        return (
+                          <PeerPreviewQuestion
+                            disabled={true}
+                            key={question.id}
+                            question={question}
+                            peerReviewId={iM?.SubmittedPeerReview?.peerReviewId}
+                          />
+                        );
+                    })}
+                  </PreviewSection>
+                );
               })}
             </>
           )}

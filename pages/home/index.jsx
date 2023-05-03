@@ -28,9 +28,11 @@ export default function Home() {
               {/* <div className='bg-gradient-to-b from-gray-300 to-transparent dark:from-blue-900 w-full h-full absolute top-0 left-0 z-0'></div> */}
             </section>
 
-            <div className='mb-4'>
-              <EndorsedIM />
-            </div>
+            {user && (
+              <div className='mb-4'>
+                <EndorsedIM />
+              </div>
+            )}
 
             <div className='grid md:grid-cols-2 gap-8'>
               <div className='bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-8 md:p-12'>
