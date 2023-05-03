@@ -30,7 +30,7 @@ export default function Layout({ children, active }) {
       <div className=' sm:ml-64'>
         <div className='p-2'>
           <div className=' mt-16'>
-            <Announcements />
+            {user && <Announcements />}
             {children}
           </div>
         </div>

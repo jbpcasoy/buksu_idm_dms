@@ -31,7 +31,7 @@ export default async function peerReviewAbility({ can, cannot, user }) {
 
   if (
     user?.IMDCoordinator?.ActiveIMDCoordinator ||
-    user?.CITLDirector.ActiveCITLDirector
+    user?.CITLDirector?.ActiveCITLDirector
   ) {
     can("read", "PeerReview");
   }
