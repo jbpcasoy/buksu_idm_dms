@@ -19,6 +19,7 @@ import {
 } from "chart.js";
 import { SessionProvider } from "next-auth/react";
 import { closeSnackbar, SnackbarProvider } from "notistack";
+import { NextSeo } from "next-seo";
 
 ChartJS.register(
   CategoryScale,
@@ -38,24 +39,45 @@ export default function App({
   pageProps: { session, ...pageProps },
 }) {
   return (
-    <ThemeProvider theme={theme}>
-      <SnackbarProvider
-        anchorOrigin={{
-          horizontal: "left",
-          vertical: "top",
+    <>
+      <NextSeo
+        title='BukSU IMD DMS'
+        description='The official Document Management System of the Center for Innovative Teaching and Learning.'
+        openGraph={{
+          type: "website",
+          url: process.env.NEXT_PUBLIC_HOST_URL,
+          title: "BukSU IMD DMS",
+          description:
+            "The official Document Management System of the Center for Innovative Teaching and Learning.",
+          images: [
+            {
+              url: "/IMAGES/og_image.png",
+              alt: "BukSU",
+              width: 800,
+              height: 600,
+            },
+          ],
         }}
-        action={(key) => (
-          <IconButton color='inherit' onClick={() => closeSnackbar(key)}>
-            <CloseIcon />
-          </IconButton>
-        )}
-      >
-        <SessionProvider session={session}>
-          <UserContextProvider>
-            <Component {...pageProps} />
-          </UserContextProvider>
-        </SessionProvider>
-      </SnackbarProvider>
-    </ThemeProvider>
+      />
+      <ThemeProvider theme={theme}>
+        <SnackbarProvider
+          anchorOrigin={{
+            horizontal: "left",
+            vertical: "top",
+          }}
+          action={(key) => (
+            <IconButton color='inherit' onClick={() => closeSnackbar(key)}>
+              <CloseIcon />
+            </IconButton>
+          )}
+        >
+          <SessionProvider session={session}>
+            <UserContextProvider>
+              <Component {...pageProps} />
+            </UserContextProvider>
+          </SessionProvider>
+        </SnackbarProvider>
+      </ThemeProvider>
+    </>
   );
 }
