@@ -32,15 +32,6 @@ export default function Document() {
         <meta name='application-name' content='BukSU IMD DMS' />
         <meta name='msapplication-TileColor' content='#f2c050' />
         <meta name='theme-color' content='#ffffff' />
-
-        {/* OpenGraph */}
-        <meta property='og:url' content={process.env.NEXT_PUBLIC_HOST_URL} />
-        <meta property='og:title' content='BukSU IMD DMS' />
-        <meta
-          property='og:description'
-          content='The official Document Management System of the Center for Innovative Teaching and Learning.'
-        />
-        <meta property='og:image' content='/og_image.png' />
       </Head>
       <body>
         <Main />
