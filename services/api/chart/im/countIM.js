@@ -23,11 +23,6 @@ export default async function countIM({
   const startDate = moment().year(year).startOf("year").toDate();
   const endDate = moment().year(year).endOf("year").toDate();
   const event = statusToEvent[status];
-  console.table({ status, event });
-  console.table({
-    startDate: startDate.toISOString(),
-    endDate: endDate.toISOString(),
-  });
 
   const count = await prisma.iM.count({
     where: {

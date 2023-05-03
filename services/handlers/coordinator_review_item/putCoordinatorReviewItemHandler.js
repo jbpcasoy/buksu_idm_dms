@@ -32,7 +32,6 @@ export default async function putCoordinatorReviewItemHandler(req, res) {
     req,
     res,
     next: async (req, res) => {
-      console.log("Updating");
       const updatedCoordinatorReviewItem = await updateCoordinatorReviewItem(
         id,
         data

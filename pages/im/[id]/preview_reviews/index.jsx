@@ -11,6 +11,10 @@ import CoordinatorPreviewQuestion from "@/components/review/preview/CoordinatorP
 import IMPreview from "@/components/IMPreview";
 import Link from "next/link";
 import moment from "moment";
+import IMReviewPrintDialog from "@/components/pdf/print/IMReviewPrintDialog";
+import PeerIMReviewPrintDialog from "@/components/pdf/print/PeerIMReviewPrintDialog";
+import CoordinatorIMReviewPrintDialog from "@/components/pdf/print/CoordinatorIMReviewPrintDialog";
+import ChairpersonIMReviewPrintDialog from "@/components/pdf/print/ChairpersonIMReviewDialog";
 
 export default function PreviewReviews() {
   const router = useRouter();
@@ -20,26 +24,30 @@ export default function PreviewReviews() {
     chairperson: "Chairperson",
     coordinator: "Coordinator",
   };
-  const [state, setState] = useState({ tab: tabs.peer });
+  const [state, setState] = useState({ tab: tabs.peer, openPrint: false });
 
   return (
     <Layout>
-      <select
-        id='default'
-        className='bg-CITLGray-light border-CITLGray-lighter border text-CITLGray-main  text-sm font-medium  rounded-md'
-        value={state.state}
-        onChange={(e) => setState((prev) => ({ ...prev, tab: e.target.value }))}
-      >
-        <option key={tabs.peer} value={tabs.peer}>
-          {tabs.peer}
-        </option>
-        <option key={tabs.chairperson} value={tabs.chairperson}>
-          {tabs.chairperson}
-        </option>
-        <option key={tabs.coordinator} value={tabs.coordinator}>
-          {tabs.coordinator}
-        </option>
-      </select>
+      <div className='flex justify-between px-1'>
+        <select
+          id='default'
+          className='bg-CITLGray-light border-CITLGray-lighter border text-CITLGray-main  text-sm font-medium  rounded-md'
+          value={state.state}
+          onChange={(e) =>
+            setState((prev) => ({ ...prev, tab: e.target.value }))
+          }
+        >
+          <option key={tabs.peer} value={tabs.peer}>
+            {tabs.peer}
+          </option>
+          <option key={tabs.chairperson} value={tabs.chairperson}>
+            {tabs.chairperson}
+          </option>
+          <option key={tabs.coordinator} value={tabs.coordinator}>
+            {tabs.coordinator}
+          </option>
+        </select>
+      </div>
 
       {state.tab === tabs.peer && (
         <>
@@ -118,6 +126,7 @@ export default function PreviewReviews() {
                     </h2>
                   </div>
                 </div>
+                <PeerIMReviewPrintDialog iM={iM} />
               </div>
               {sections.map((section) => {
                 if (section.active) {
@@ -222,6 +231,8 @@ export default function PreviewReviews() {
                     </h2>
                   </div>
                 </div>
+
+                <ChairpersonIMReviewPrintDialog iM={iM} />
               </div>
               {sections.map((section) => {
                 if (section.active) {
@@ -327,6 +338,8 @@ export default function PreviewReviews() {
                     </h2>
                   </div>
                 </div>
+
+                <CoordinatorIMReviewPrintDialog iM={iM} />
               </div>
               {sections.map((section) => {
                 if (section.active) {

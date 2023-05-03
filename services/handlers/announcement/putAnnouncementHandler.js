@@ -28,7 +28,6 @@ export default async function putAnnouncementHandler(req, res) {
     fieldsFrom: (rule) => rule.fields || ["title", "description", "link"],
   });
   const data = _.pick({ title, description, link }, fields);
-  console.log({ data });
 
   return abilityValidator({
     req,

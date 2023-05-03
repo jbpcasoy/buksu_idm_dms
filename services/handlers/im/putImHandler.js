@@ -40,7 +40,6 @@ export default async function putImHandler(req, res) {
     { title, serialNumber, authors, status, type, returned },
     fields
   );
-  console.log({ data });
 
   return abilityValidator({
     req,

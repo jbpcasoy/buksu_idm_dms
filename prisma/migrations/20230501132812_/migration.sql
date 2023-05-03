@@ -63,6 +63,7 @@ CREATE TABLE `IM` (
     `updatedAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `authors` TEXT NULL,
     `type` ENUM('MODULE', 'COURSE_FILE', 'WORKTEXT', 'TEXTBOOK') NOT NULL DEFAULT 'MODULE',
+    `returned` BOOLEAN NOT NULL DEFAULT false,
 
     UNIQUE INDEX `IM_serialNumber_key`(`serialNumber`),
     INDEX `IM_ownerId_idx`(`ownerId`),
@@ -72,7 +73,7 @@ CREATE TABLE `IM` (
 -- CreateTable
 CREATE TABLE `File` (
     `id` VARCHAR(191) NOT NULL,
-    `fileName` VARCHAR(191) NOT NULL,
+    `fileName` VARCHAR(191) NULL,
     `originalFileName` VARCHAR(191) NOT NULL,
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updatedAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
@@ -88,7 +89,7 @@ CREATE TABLE `File` (
 CREATE TABLE `ActiveFile` (
     `id` VARCHAR(191) NOT NULL,
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
-    `updatedAT` DATETIME(3) NOT NULL,
+    `updatedAt` DATETIME(3) NOT NULL,
     `fileId` VARCHAR(191) NOT NULL,
     `iMId` VARCHAR(191) NOT NULL,
 
@@ -670,8 +671,10 @@ CREATE TABLE `ActiveIMDCoordinator` (
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updatedAt` DATETIME(3) NOT NULL,
     `iMDCoordinatorId` VARCHAR(191) NOT NULL,
+    `uuid` VARCHAR(191) NOT NULL,
 
     UNIQUE INDEX `ActiveIMDCoordinator_iMDCoordinatorId_key`(`iMDCoordinatorId`),
+    UNIQUE INDEX `ActiveIMDCoordinator_uuid_key`(`uuid`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -692,8 +695,10 @@ CREATE TABLE `ActiveCITLDirector` (
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updatedAt` DATETIME(3) NOT NULL,
     `cITLDirectorId` VARCHAR(191) NOT NULL,
+    `uuid` VARCHAR(191) NOT NULL,
 
     UNIQUE INDEX `ActiveCITLDirector_cITLDirectorId_key`(`cITLDirectorId`),
+    UNIQUE INDEX `ActiveCITLDirector_uuid_key`(`uuid`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -797,5 +802,17 @@ CREATE TABLE `IMEvent` (
     INDEX `IMEvent_submittedIMDCoordinatorSuggestionId_idx`(`submittedIMDCoordinatorSuggestionId`),
     INDEX `IMEvent_cITLDirectorEndorsementId_idx`(`cITLDirectorEndorsementId`),
     INDEX `IMEvent_submittedChairpersonSuggestionId_idx`(`submittedChairpersonSuggestionId`),
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `Announcement` (
+    `id` VARCHAR(191) NOT NULL,
+    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `updatedAt` DATETIME(3) NOT NULL,
+    `title` VARCHAR(191) NOT NULL,
+    `description` VARCHAR(191) NOT NULL,
+    `link` VARCHAR(191) NOT NULL,
+
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;

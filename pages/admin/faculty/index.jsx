@@ -94,7 +94,7 @@ export default function AdminFacultyPage() {
       .then((res) => {
         enqueueSnackbar({
           message: "Added faculty successfully",
-          variant: "error",
+          variant: "success",
         });
       })
       .catch((err) => {

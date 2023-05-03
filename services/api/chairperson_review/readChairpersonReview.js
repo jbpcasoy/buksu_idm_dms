@@ -19,6 +19,7 @@ export default async function readChairpersonReview({
           SubmittedChairpersonSuggestion: true,
         },
       },
+      ChairpersonReviewItem: true,
       Chairperson: {
         select: {
           Faculty: {
