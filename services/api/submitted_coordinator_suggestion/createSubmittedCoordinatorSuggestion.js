@@ -5,46 +5,53 @@ import readSubmittedCoordinatorReview from "../submitted_coordinator_review/read
 
 export default async function createSubmittedCoordinatorSuggestion({
   coordinatorSuggestionId,
+  ability,
 }) {
-  try {
-    const prisma = PRISMA_CLIENT;
+  const prisma = PRISMA_CLIENT;
 
-    const coordinatorSuggestion = await readCoordinatorSuggestion(
-      coordinatorSuggestionId
-    );
+  const coordinatorSuggestion = await readCoordinatorSuggestion({
+    id: coordinatorSuggestionId,
+    ability,
+  });
 
-    const submittedCoordinatorSuggestion =
-      await prisma.submittedCoordinatorSuggestion.create({
-        data: {
-          CoordinatorSuggestion: {
-            connect: {
-              id: coordinatorSuggestion.id,
-            },
-          },
-          IM: {
-            connect: {
-              id: coordinatorSuggestion.SubmittedCoordinatorReview.iMId,
-            },
-          },
-          Notification: {
-            create: {
-              Type: "SUBMITTED_COORDINATOR_SUGGESTION",
-            },
-          },
-          IMEvent: {
-            create: {
-              IMEventType: "SUBMITTED_COORDINATOR_SUGGESTION",
-            },
+  const submittedCoordinatorSuggestion =
+    await prisma.submittedCoordinatorSuggestion.create({
+      data: {
+        CoordinatorSuggestion: {
+          connect: {
+            id: coordinatorSuggestion.id,
           },
         },
-      });
+        IM: {
+          connect: {
+            id: coordinatorSuggestion.SubmittedCoordinatorReview.iMId,
+          },
+        },
+        Notification: {
+          create: {
+            Type: "SUBMITTED_COORDINATOR_SUGGESTION",
+          },
+        },
+        IMEvent: {
+          create: {
+            IM: {
+              connect: {
+                id: coordinatorSuggestion.SubmittedCoordinatorReview.iMId,
+              },
+            },
+            IMEventType: "SUBMITTED_COORDINATOR_SUGGESTION",
+          },
+        },
+      },
+    });
 
-    const submittedCoordinatorReview = await readSubmittedCoordinatorReview(
-      coordinatorSuggestion.submittedCoordinatorReviewId
-    );
-    await checkAndUpdateStatus(submittedCoordinatorReview.iMId);
-    return submittedCoordinatorSuggestion;
-  } catch (error) {
-    throw error;
-  }
+  const submittedCoordinatorReview = await readSubmittedCoordinatorReview({
+    id: coordinatorSuggestion.submittedCoordinatorReviewId,
+    ability,
+  });
+  await checkAndUpdateStatus({
+    iMId: submittedCoordinatorReview.iMId,
+    ability,
+  });
+  return submittedCoordinatorSuggestion;
 }

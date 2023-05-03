@@ -1,20 +1,40 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
+import { accessibleBy } from "@casl/prisma";
 
-export default async function readChairpersonSuggestion(id) {
+export default async function readChairpersonSuggestion({
+  id,
+  ability,
+  filter = {},
+}) {
   const prisma = PRISMA_CLIENT;
+  const accessibility = accessibleBy(ability).ChairpersonSuggestion;
 
-  try {
-    const chairpersonSuggestion =
-      await prisma.chairpersonSuggestion.findUniqueOrThrow({
-        where: {
-          id,
+  const chairpersonSuggestion =
+    await prisma.chairpersonSuggestion.findFirstOrThrow({
+      where: {
+        AND: [
+          accessibility,
+          {
+            ...filter,
+            id,
+          },
+        ],
+      },
+      include: {
+        SubmittedChairpersonReview: {
+          include: {
+            ChairpersonReview: {
+              include: {
+                IM: {
+                  include: {
+                    SubmittedChairpersonSuggestion: true,
+                  },
+                },
+              },
+            },
+          },
         },
-        include: {
-          SubmittedChairpersonReview: true,
-        },
-      });
-    return chairpersonSuggestion;
-  } catch (error) {
-    throw error;
-  }
+      },
+    });
+  return chairpersonSuggestion;
 }

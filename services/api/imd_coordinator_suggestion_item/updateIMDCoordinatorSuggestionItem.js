@@ -6,22 +6,18 @@ export default async function updateIMDCoordinatorSuggestionItem(
 ) {
   const prisma = PRISMA_CLIENT;
 
-  try {
-    const iMDCoordinatorSuggestionItem =
-      await prisma.iMDCoordinatorSuggestionItem.update({
-        where: {
-          id,
-        },
-        data: {
-          value,
-          pageNumber,
-          actionTaken,
-          remarks,
-        },
-      });
+  const iMDCoordinatorSuggestionItem =
+    await prisma.iMDCoordinatorSuggestionItem.update({
+      where: {
+        id,
+      },
+      data: {
+        value,
+        pageNumber,
+        actionTaken,
+        remarks,
+      },
+    });
 
-    return iMDCoordinatorSuggestionItem;
-  } catch (error) {
-    throw error;
-  }
+  return iMDCoordinatorSuggestionItem;
 }

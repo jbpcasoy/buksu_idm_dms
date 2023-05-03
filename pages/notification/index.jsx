@@ -11,13 +11,18 @@ export default function Notifications() {
     limit: 5,
     read: false,
   });
-  const { notifications, notificationsLoading, notificationsError } =
-    useNotifications({
-      limit: state.limit,
-      page: state.page,
-      userId: user?.id,
-      read: state.read,
-    });
+  const {
+    notifications,
+    notificationsLoading,
+    notificationsError,
+    refreshNotifications,
+  } = useNotifications({
+    limit: state.limit,
+    page: state.page,
+    userId: user?.id,
+    facultyId: user?.ActiveFaculty?.facultyId,
+    read: state.read,
+  });
 
   return (
     <Layout>
@@ -45,6 +50,7 @@ export default function Notifications() {
             <NotificationItem
               notification={notification}
               key={notification.id}
+              refreshNotifications={refreshNotifications}
             />
           ))}
           <div className='flex flex-row items-center bg-CITLGray-light justify-end  py-3 w-full'>
@@ -57,7 +63,7 @@ export default function Notifications() {
               Entries
             </span> */}
 
-            <div className='flex flex-row items-center justify-end py-3 w-full'>
+            <div className='flex flex-row items-center justify-end py-3 w-full mx-5 '>
               {!notificationsLoading && (
                 <span className='text-sm text-gray-700 dark:text-gray-400 '>
                   Showing{" "}

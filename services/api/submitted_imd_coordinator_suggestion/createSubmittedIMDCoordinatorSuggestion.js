@@ -4,36 +4,43 @@ import readIMDCoordinatorSuggestion from "../imd_coordinator_suggestion/readIMDC
 
 export default async function createSubmittedIMDCoordinatorSuggestion({
   iMDCoordinatorSuggestionId,
+  ability,
 }) {
   const prisma = PRISMA_CLIENT;
 
-  try {
-    const iMDCoordinatorSuggestion = await readIMDCoordinatorSuggestion(
-      iMDCoordinatorSuggestionId
-    );
-    const submittedIMDCoordinatorSuggestion =
-      await prisma.submittedIMDCoordinatorSuggestion.create({
-        data: {
-          iMDCoordinatorSuggestionId: iMDCoordinatorSuggestion.id,
-          Notification: {
-            create: {
-              Type: "SUBMITTED_IMD_COORDINATOR_SUGGESTION",
-            },
-          },
-          IMEvent: {
-            create: {
-              IMEventType: "SUBMITTED_IMD_COORDINATOR_SUGGESTION",
-            },
+  const iMDCoordinatorSuggestion = await readIMDCoordinatorSuggestion({
+    id: iMDCoordinatorSuggestionId,
+    ability,
+  });
+  const submittedIMDCoordinatorSuggestion =
+    await prisma.submittedIMDCoordinatorSuggestion.create({
+      data: {
+        iMDCoordinatorSuggestionId: iMDCoordinatorSuggestion.id,
+        Notification: {
+          create: {
+            Type: "SUBMITTED_IMD_COORDINATOR_SUGGESTION",
           },
         },
-      });
-
-    await updateIM(iMDCoordinatorSuggestion.iMId, {
-      status: "CITL_REVIEWED",
+        IMEvent: {
+          create: {
+            IM: {
+              connect: {
+                id: iMDCoordinatorSuggestion.iMId,
+              },
+            },
+            IMEventType: "SUBMITTED_IMD_COORDINATOR_SUGGESTION",
+          },
+        },
+      },
     });
 
-    return submittedIMDCoordinatorSuggestion;
-  } catch (error) {
-    throw error;
-  }
+  await updateIM(
+    iMDCoordinatorSuggestion.iMId,
+    {
+      status: "CITL_REVIEWED",
+    },
+    ability
+  );
+
+  return submittedIMDCoordinatorSuggestion;
 }

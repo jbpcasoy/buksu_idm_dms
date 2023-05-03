@@ -5,7 +5,6 @@ import IMDCoordinatorSuggestionView from "@/components/review/suggestion/suggest
 import PeerSuggestionView from "@/components/review/suggestion/suggestion_view/PeerSuggestionView";
 import UserContext from "@/contexts/UserContext";
 import useIM from "@/hooks/useIM";
-import frontendCreateCITLDirectorEndorsement from "@/services/frontend/citl_director_endorsement/frontendCreateCITLDirectorEndorsement";
 import frontendCreateCoordinatorEndorsement from "@/services/frontend/coordinator_endorsement/frontendCreateCoordinatorEndorsement";
 import frontendCreateDeanEndorsement from "@/services/frontend/dean_endorsement/frontendCreateDeanEndorsement";
 import frontendReturnIMDCoordinatorRevision from "@/services/frontend/im/frontendReturnIMDCoordinatorRevision";
@@ -18,13 +17,26 @@ import { initDropdowns, initModals } from "flowbite";
 import moment from "moment";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import ToggleIM from "../../../components/im/ToggleIM";
+import ReviewEndorsementIndicator from "@/components/im/ReviewEndorsementIndicator";
+import ConfirmModal from "@/components/ConfirmModal";
+import { enqueueSnackbar } from "notistack";
 
 export default function ViewIM() {
   const router = useRouter();
   const { user } = useContext(UserContext);
   const { iM, iMError, iMLoading, refreshIM } = useIM(router?.query?.id);
+  const [state, setState] = useState({
+    openSubmissionConfirmation: false,
+    openDepartmentSubmissionConfirmation: false,
+    openCoordinatorEndorsementConfirmation: false,
+    openDeanEndorsementConfirmation: false,
+    openCITLSubmissionConfirmation: false,
+    openCITLReturnConfirmation: false,
+    openCITLEndorsementConfirmation: false,
+    openDepartmentReturnConfirmation: false,
+  });
 
   useEffect(() => {
     initDropdowns();
@@ -34,70 +46,146 @@ export default function ViewIM() {
   async function handleEndorse() {
     return frontendCreateCoordinatorEndorsement({
       iMId: iM.id,
-      coordinatorId: user?.ActiveFaculty?.ActiveCoordinator?.coordinatorId,
-    }).then((res) => {
-      refreshIM();
-    });
+    })
+      .then((res) => {
+        enqueueSnackbar({
+          message: "IM endorsed successfully",
+          variant: "success",
+        });
+        refreshIM();
+      })
+      .catch((err) => {
+        enqueueSnackbar({
+          message: "Failed to endorse IM",
+          variant: "error",
+        });
+      });
   }
 
   async function handleIMDCoordinatorEndorse() {
     return frontendCreateIMDCoordinatorEndorsement({
       submittedIMDCoordinatorSuggestionId:
         iM.IMDCoordinatorSuggestion.SubmittedIMDCoordinatorSuggestion.id,
-    }).then((res) => {
-      refreshIM();
-    });
+    })
+      .then((res) => {
+        enqueueSnackbar({
+          message: "IM endorsed successfully",
+          variant: "success",
+        });
+        refreshIM();
+      })
+      .catch((err) => {
+        enqueueSnackbar({
+          message: "Failed to endorse IM",
+          variant: "error",
+        });
+      });
   }
 
   async function handleConfirmEndorsement() {
     return frontendCreateDeanEndorsement({
       coordinatorEndorsementId: iM.CoordinatorEndorsement.id,
-      deanId: user?.ActiveFaculty?.ActiveDean?.deanId,
-    }).then((res) => {
-      refreshIM();
-    });
-  }
-
-  async function handleCITLDirectorConfirmEndorsement() {
-    return frontendCreateCITLDirectorEndorsement({
-      iMDCoordinatorEndorsementId: iM.IMDCoordinatorEndorsement.id,
-    }).then((res) => {
-      refreshIM();
-    });
+    })
+      .then((res) => {
+        enqueueSnackbar({
+          message: "Successfully confirmed IM endorsement",
+          variant: "success",
+        });
+        refreshIM();
+      })
+      .catch((err) => {
+        enqueueSnackbar({
+          message: "Failed to confirm IM endorsement",
+          variant: "error",
+        });
+      });
   }
 
   async function handleSubmitForReview() {
-    return frontendSubmitIMForReview({ iMId: iM.id }).then((res) => {
-      refreshIM();
-    });
+    return frontendSubmitIMForReview({ iMId: iM.id })
+      .then((res) => {
+        enqueueSnackbar({
+          message: "Submitted IM for review",
+          variant: "success",
+        });
+        refreshIM();
+      })
+      .catch((err) => {
+        enqueueSnackbar({
+          message: "Failed to submit IM for review",
+          variant: "error",
+        });
+      });
   }
 
   async function handleSubmitForEndorsement() {
-    return frontendSubmitIMForEndorsement({ iMId: iM.id }).then((res) => {
-      refreshIM();
-    });
+    return frontendSubmitIMForEndorsement({ iMId: iM.id })
+      .then((res) => {
+        enqueueSnackbar({
+          message: "Submitted IM for department endorsement",
+          variant: "success",
+        });
+        refreshIM();
+      })
+      .catch((err) => {
+        enqueueSnackbar({
+          message: "Failed to submit IM for department endorsement",
+          variant: "error",
+        });
+      });
   }
 
   async function handleSubmitForIMDCoordinatorEndorsement() {
-    return frontendSubmitIMForIMDCoordinatorEndorsement({ iMId: iM.id }).then(
-      (res) => {
+    return frontendSubmitIMForIMDCoordinatorEndorsement({ iMId: iM.id })
+      .then((res) => {
+        enqueueSnackbar({
+          message: "Submitted IM for CITL endorsement",
+          variant: "success",
+        });
         refreshIM();
-      }
-    );
+      })
+      .catch((err) => {
+        enqueueSnackbar({
+          message: "Failed to submit IM for CITL endorsement",
+          variant: "error",
+        });
+      });
   }
 
   async function handleReturnForRevision() {
-    return frontendReturnIMForRevision({ iMId: iM.id }).then((res) => {
-      refreshIM();
-      router.push(`/im/${iM.id}/review/coordinator`);
-    });
+    return frontendReturnIMForRevision({ iMId: iM.id })
+      .then((res) => {
+        enqueueSnackbar({
+          message: "Returned IM for revision",
+          variant: "success",
+        });
+        refreshIM();
+        router.push(`/im/${iM.id}/review/coordinator`);
+      })
+      .catch((err) => {
+        enqueueSnackbar({
+          message: "Failed to return IM for revision",
+          variant: "error",
+        });
+      });
   }
 
   async function handleReturnForIMDCoordinatorRevision() {
-    return frontendReturnIMDCoordinatorRevision({ iMId: iM.id }).then((res) => {
-      refreshIM();
-      router.push(`/im/${iM.id}/review/imd_coordinator`);
-    });
+    return frontendReturnIMDCoordinatorRevision({ iMId: iM.id })
+      .then((res) => {
+        enqueueSnackbar({
+          message: "Returned IM for revision",
+          variant: "success",
+        });
+        refreshIM();
+        router.push(`/im/${iM.id}/review/imd_coordinator`);
+      })
+      .catch((err) => {
+        enqueueSnackbar({
+          message: "Failed to return IM for revision",
+          variant: "error",
+        });
+      });
   }
 
   return (
@@ -115,11 +203,20 @@ export default function ViewIM() {
                 <span className='text-xs font-medium '>{iM?.status}</span>
               </h2>
             </div>
+            <div className='lg:flex sm:flex-rows-2 gap-3'>
+              <h2 className='text-xs  text-CITLGray-main'>
+                Department:{" "}
+                <span className='text-xs font-medium '>
+                  {iM?.owner?.department?.name} |{" "}
+                  {iM?.owner?.department?.college?.name}
+                </span>
+              </h2>
+            </div>
             <div className='flex flex-cols mt-3'>
               <Link href={`/profile/${iM?.owner?.user?.id}`}>
                 <img
                   src={iM?.owner?.user?.image}
-                  className='h-8 rounded-full sm:h-8'
+                  className='h-8 w-8 rounded-full '
                   alt='owner'
                 ></img>
               </Link>
@@ -160,11 +257,15 @@ export default function ViewIM() {
                   ></path>
                 </svg>
               </button>
-              {iM?.status === "DRAFT" && (
-                <div className='relative flex '>
-                  <div className='absolute inline-flex items-center justify-center w-2 h-2 text-xs  bg-red-500 rounded-full -top-9 right-1 dark:border-gray-900 animate-pulse duration-75'></div>
-                </div>
-              )}
+              {iM &&
+                iM.owner.userId === user?.id &&
+                (iM?.status === "DRAFT" ||
+                  iM?.status === "DEPARTMENT_REVIEWED" ||
+                  iM?.status === "CITL_REVIEWED") && (
+                  <div className='relative flex '>
+                    <div className='absolute inline-flex items-center justify-center w-2 h-2 text-xs  bg-red-500 rounded-full -top-9 right-1 dark:border-gray-900 animate-pulse duration-75'></div>
+                  </div>
+                )}
             </div>
 
             <div
@@ -178,16 +279,18 @@ export default function ViewIM() {
                 <li>
                   {/*  EDIT IM should be visible and accessible only for the owner of the IM
                    */}
-                  {iM && iM.owner.userId === user?.id && (
-                    <button
-                      data-modal-target='im-update-modal'
-                      data-modal-toggle='im-update-modal'
-                      className='block text-sm  text-left px-4 py-2.5  hover:bg-gray-100 w-full'
-                      type='button'
-                    >
-                      Edit IM
-                    </button>
-                  )}
+                  {iM &&
+                    iM.owner.userId === user?.id &&
+                    iM.status === "DRAFT" && (
+                      <button
+                        data-modal-target='im-update-modal'
+                        data-modal-toggle='im-update-modal'
+                        className='block text-sm  text-left px-4 py-2.5  hover:bg-gray-100 w-full'
+                        type='button'
+                      >
+                        Edit IM
+                      </button>
+                    )}
                 </li>
 
                 {iM &&
@@ -204,6 +307,13 @@ export default function ViewIM() {
                           className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
                         >
                           Upload New Version
+                          {iM.owner.userId === user?.id &&
+                            (iM?.status === "DEPARTMENT_REVIEWED" ||
+                              iM?.status === "CITL_REVIEWED") && (
+                              <div className='relative flex '>
+                                <div className='absolute inline-flex items-center justify-center w-2 h-2 text-xs  bg-red-500 rounded-full -top-6 right-1 dark:border-gray-900 animate-pulse duration-75'></div>
+                              </div>
+                            )}
                         </Link>
                       )}
                     </li>
@@ -212,7 +322,12 @@ export default function ViewIM() {
                   iM.owner.userId === user?.id &&
                   iM?.status === "DRAFT" && (
                     <button
-                      onClick={handleSubmitForReview}
+                      onClick={() =>
+                        setState((prev) => ({
+                          ...prev,
+                          openSubmissionConfirmation: true,
+                        }))
+                      }
                       className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter text-left w-full'
                     >
                       Submit For Review
@@ -221,36 +336,35 @@ export default function ViewIM() {
                       </div>
                     </button>
                   )}
-                {user?.ActiveFaculty?.facultyId === iM?.ownerId && (
-                  <li>
-                    <Link
-                      href={`/im/${iM?.id}/versions`}
-                      className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
-                    >
-                      View Versions
-                    </Link>
-                  </li>
-                )}
-                {user?.ActiveFaculty?.facultyId === iM?.ownerId && (
-                  <li>
-                    <Link
-                      href={`/im/${iM?.id}/track`}
-                      className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
-                    >
-                      Track
-                    </Link>
-                  </li>
-                )}
+                <li>
+                  <Link
+                    href={`/im/${iM?.id}/versions`}
+                    className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
+                  >
+                    View Versions
+                  </Link>
+                </li>
+
+                <li>
+                  <Link
+                    href={`/im/${iM?.id}/track`}
+                    className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
+                  >
+                    Track
+                  </Link>
+                </li>
                 <li>
                   {user?.ActiveFaculty?.Faculty?.id !== iM?.ownerId &&
                     user?.ActiveFaculty?.Faculty?.departmentId ===
-                      iM?.owner?.departmentId && (
+                      iM?.owner?.departmentId &&
+                    iM.status !== "DRAFT" && (
                       <button
                         disabled={
                           iM?.SubmittedPeerSuggestion ||
                           (iM?.SubmittedPeerReview &&
                             user?.ActiveFaculty?.facultyId !==
-                              iM?.SubmittedPeerReview?.PeerReview?.facultyId)
+                              iM?.SubmittedPeerReview?.PeerReview?.facultyId) ||
+                          iM?.status !== "SUBMITTED"
                         }
                         title={
                           iM?.SubmittedPeerReview &&
@@ -273,7 +387,8 @@ export default function ViewIM() {
                     user?.ActiveFaculty?.ActiveCoordinator) &&
                     user?.ActiveFaculty?.ActiveCoordinator &&
                     user?.ActiveFaculty?.Faculty?.departmentId ===
-                      iM?.owner?.departmentId && (
+                      iM?.owner?.departmentId &&
+                    iM.status !== "DRAFT" && (
                       <button
                         onClick={() =>
                           router.push(`/im/${iM?.id}/review/coordinator`)
@@ -284,7 +399,8 @@ export default function ViewIM() {
                             user?.ActiveFaculty?.ActiveCoordinator
                               ?.coordinatorId !==
                               iM?.SubmittedCoordinatorReview?.CoordinatorReview
-                                ?.coordinatorId)
+                                ?.coordinatorId) ||
+                          iM?.status !== "SUBMITTED"
                         }
                         title={
                           iM?.SubmittedCoordinatorReview &&
@@ -308,7 +424,8 @@ export default function ViewIM() {
                     user?.ActiveFaculty?.ActiveChairperson) &&
                     user?.ActiveFaculty?.ActiveChairperson &&
                     user?.ActiveFaculty?.Faculty?.departmentId ===
-                      iM?.owner?.departmentId && (
+                      iM?.owner?.departmentId &&
+                    iM.status !== "DRAFT" && (
                       <button
                         onClick={() =>
                           router.push(`/im/${iM?.id}/review/chairperson`)
@@ -319,7 +436,8 @@ export default function ViewIM() {
                             user?.ActiveFaculty?.ActiveChairperson
                               ?.chairpersonId !==
                               iM?.SubmittedChairpersonReview?.ChairpersonReview
-                                ?.chairpersonId)
+                                ?.chairpersonId) ||
+                          iM?.status !== "SUBMITTED"
                         }
                         title={
                           iM?.SubmittedChairpersonReview &&
@@ -343,27 +461,45 @@ export default function ViewIM() {
                   {iM?.status === "DEPARTMENT_REVIEWED" &&
                     user?.ActiveFaculty?.facultyId === iM?.ownerId && (
                       <button
-                        onClick={handleSubmitForEndorsement}
+                        onClick={() =>
+                          setState((prev) => ({
+                            ...prev,
+                            openDepartmentSubmissionConfirmation: true,
+                          }))
+                        }
                         className='block w-full  text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter'
                       >
                         Submit For Endorsement
+                        {iM.owner.userId === user?.id &&
+                          iM?.status === "DEPARTMENT_REVIEWED" && (
+                            <div className='relative flex '>
+                              <div className='absolute inline-flex items-center justify-center w-2 h-2 text-xs  bg-red-500 rounded-full -top-6 right-1 dark:border-gray-900 animate-pulse duration-75'></div>
+                            </div>
+                          )}
                       </button>
                     )}
                 </li>
                 {/* NOTE: for department revision */}
                 <li>
                   {iM?.status === "DEPARTMENT_REVISED" &&
-                    user?.ActiveFaculty?.facultyId === iM?.ownerId &&
+                    user?.ActiveFaculty?.ActiveCoordinator &&
+                    user?.ActiveFaculty?.Faculty?.departmentId ===
+                      iM?.owner?.departmentId &&
                     !iM?.CoordinatorEndorsement && (
                       <button
-                        onClick={handleReturnForRevision}
+                        onClick={() =>
+                          setState((prev) => ({
+                            ...prev,
+                            openDepartmentReturnConfirmation: true,
+                          }))
+                        }
                         className='block w-full  text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter'
                       >
                         Return For Revision
                       </button>
                     )}
                 </li>
-                {/* NOTE: for chairperson */}
+                {/* NOTE: for coordinator */}
                 <li>
                   {iM?.status === "DEPARTMENT_REVISED" &&
                     user?.ActiveFaculty?.ActiveCoordinator && (
@@ -373,7 +509,12 @@ export default function ViewIM() {
                           iM?.CoordinatorEndorsement &&
                           "IM was already endorsed"
                         }
-                        onClick={handleEndorse}
+                        onClick={() =>
+                          setState((prev) => ({
+                            ...prev,
+                            openCoordinatorEndorsementConfirmation: true,
+                          }))
+                        }
                         className='block w-full  text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter'
                       >
                         Endorse
@@ -385,20 +526,36 @@ export default function ViewIM() {
                   {iM?.status === "CITL_REVIEWED" &&
                     user?.ActiveFaculty?.facultyId === iM?.ownerId && (
                       <button
-                        onClick={handleSubmitForIMDCoordinatorEndorsement}
+                        onClick={() =>
+                          setState((prev) => ({
+                            ...prev,
+                            openCITLSubmissionConfirmation: true,
+                          }))
+                        }
                         className='block w-full  text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter'
                       >
                         Submit For Endorsement
+                        {iM.owner.userId === user?.id &&
+                          iM?.status === "CITL_REVIEWED" && (
+                            <div className='relative flex '>
+                              <div className='absolute inline-flex items-center justify-center w-2 h-2 text-xs  bg-red-500 rounded-full -top-6 right-1 dark:border-gray-900 animate-pulse duration-75'></div>
+                            </div>
+                          )}
                       </button>
                     )}
                 </li>
                 {/* NOTE: for citl revision */}
                 <li>
                   {iM?.status === "CITL_REVISED" &&
-                    user?.ActiveFaculty?.facultyId === iM?.ownerId &&
+                    user?.IMDCoordinator?.ActiveIMDCoordinator &&
                     !iM?.IMDCoordinatorEndorsement && (
                       <button
-                        onClick={handleReturnForIMDCoordinatorRevision}
+                        onClick={() =>
+                          setState((prev) => ({
+                            ...prev,
+                            openCITLReturnConfirmation: true,
+                          }))
+                        }
                         className='block w-full  text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter'
                       >
                         Return For Revision
@@ -407,7 +564,8 @@ export default function ViewIM() {
                 </li>
                 {/* NOTE: for imd coordinator */}
                 <li>
-                  {iM?.status === "CITL_REVISED" &&
+                  {(iM?.status === "CITL_REVISED" ||
+                    iM?.status === "CITL_ENDORSED") &&
                     user?.IMDCoordinator?.ActiveIMDCoordinator && (
                       <button
                         disabled={iM?.IMDCoordinatorEndorsement}
@@ -415,7 +573,12 @@ export default function ViewIM() {
                           iM?.IMDCoordinatorEndorsement &&
                           "IM was already endorsed"
                         }
-                        onClick={handleIMDCoordinatorEndorse}
+                        onClick={() =>
+                          setState((prev) => ({
+                            ...prev,
+                            openCITLEndorsementConfirmation: true,
+                          }))
+                        }
                         className='block w-full  text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter'
                       >
                         Endorse
@@ -424,7 +587,8 @@ export default function ViewIM() {
                 </li>
                 {/* NOTE: for dean */}
                 <li>
-                  {iM?.status === "DEPARTMENT_REVISED" &&
+                  {(iM?.status === "DEPARTMENT_REVISED" ||
+                    iM?.status === "DEPARTMENT_ENDORSED") &&
                     user?.ActiveFaculty?.ActiveDean && (
                       <button
                         disabled={
@@ -438,31 +602,12 @@ export default function ViewIM() {
                             ? "Endorsement already confirmed"
                             : ""
                         }
-                        onClick={handleConfirmEndorsement}
-                        className='block w-full  text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter'
-                      >
-                        Confirm Endorsement
-                      </button>
-                    )}
-                </li>
-                {/* NOTE: for citl director */}
-                <li>
-                  {iM?.status === "CITL_REVISED" &&
-                    user?.CITLDirector?.ActiveCITLDirector && (
-                      <button
-                        disabled={
-                          !iM?.IMDCoordinatorEndorsement ||
-                          iM?.IMDCoordinatorEndorsement?.CITLDirectorEndorsement
+                        onClick={() =>
+                          setState((prev) => ({
+                            ...prev,
+                            openDeanEndorsementConfirmation: true,
+                          }))
                         }
-                        title={
-                          !iM?.IMDCoordinatorEndorsement
-                            ? "Pending IMD coordinator endorsement"
-                            : iM?.IMDCoordinatorEndorsement
-                                ?.CITLDirectorEndorsement
-                            ? "Endorsement already confirmed"
-                            : ""
-                        }
-                        onClick={handleCITLDirectorConfirmEndorsement}
                         className='block w-full  text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter'
                       >
                         Confirm Endorsement
@@ -471,8 +616,23 @@ export default function ViewIM() {
                 </li>
 
                 <li>
+                  {(user?.IMDCoordinator?.ActiveIMDCoordinator ||
+                    user?.CITLDirector?.ActiveCITLDirector) && (
+                    <button
+                      onClick={() =>
+                        router.push(`/im/${iM?.id}/preview_reviews`)
+                      }
+                      className='block w-full  text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white disabled:text-CITLGray-lighter'
+                    >
+                      Reviews
+                    </button>
+                  )}
+                </li>
+
+                <li>
                   {user?.IMDCoordinator?.ActiveIMDCoordinator &&
-                    iM?.status === "DEPARTMENT_ENDORSED" && (
+                    (iM?.status === "DEPARTMENT_ENDORSED" ||
+                      iM?.status === "CITL_REVIEWED") && (
                       <button
                         onClick={() =>
                           router.push(`/im/${iM?.id}/review/imd_coordinator`)
@@ -507,159 +667,7 @@ export default function ViewIM() {
             Edit IM
           </ToggleIM>
         )}
-        {iM && (
-          <div className='inline-flex space-x-1 my-1'>
-            {iM?.SubmittedPeerReview && (
-              <span
-                className='inline-flex items-center bg-purple-400 text-purple-800 text-xs px-3 py-1 rounded-full'
-                title={
-                  iM?.SubmittedPeerSuggestion
-                    ? "Reviewed with Suggestions"
-                    : "Reviewed, No Suggestions"
-                }
-              >
-                Peer
-                {iM?.SubmittedPeerSuggestion && (
-                  <svg
-                    aria-hidden='true'
-                    class='w-3 h-3  text-purple-800 rounded-full ml-1'
-                    fill='currentColor'
-                    viewBox='0 0 20 20'
-                    xmlns='http://www.w3.org/2000/svg'
-                  >
-                    <path
-                      fill-rule='evenodd'
-                      d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z'
-                      clip-rule='evenodd'
-                    ></path>
-                  </svg>
-                )}
-                {!iM?.SubmittedPeerSuggestion && (
-                  <svg
-                    fill='none'
-                    class='w-3 h-3  text-purple-800 rounded-full ml-1'
-                    stroke='currentColor'
-                    strokeWidth='1.5'
-                    viewBox='0 0 24 24'
-                    xmlns='http://www.w3.org/2000/svg'
-                    aria-hidden='true'
-                  >
-                    <path
-                      strokeLinecap='round'
-                      strokeLinejoin='round'
-                      d='M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
-                    ></path>
-                  </svg>
-                )}
-              </span>
-            )}
-            {!iM?.SubmittedPeerReview && (
-              <span className='bg-red-300 text-red-600 text-xs px-3 py-1 rounded-2xl'>
-                Peer
-              </span>
-            )}
-
-            {iM?.SubmittedChairpersonReview && (
-              <span
-                className='inline-flex items-center bg-orange-300 text-orange-500 text-xs px-3  py-1 rounded-2xl'
-                title={
-                  iM?.SubmittedChairpersonSuggestion
-                    ? "Reviewed with Suggestions"
-                    : "Reviewed, No Suggestions"
-                }
-              >
-                Chairperson
-                {iM?.SubmittedChairpersonSuggestion && (
-                  <svg
-                    aria-hidden='true'
-                    class='w-3 h-3  text-orange-500 rounded-full ml-1'
-                    fill='currentColor'
-                    viewBox='0 0 20 20'
-                    xmlns='http://www.w3.org/2000/svg'
-                  >
-                    <path
-                      fill-rule='evenodd'
-                      d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z'
-                      clip-rule='evenodd'
-                    ></path>
-                  </svg>
-                )}
-                {!iM?.SubmittedChairpersonSuggestion && (
-                  <svg
-                    fill='none'
-                    class='w-3 h-3  text-orange-500 rounded-full ml-1'
-                    stroke='currentColor'
-                    strokeWidth='1.5'
-                    viewBox='0 0 24 24'
-                    xmlns='http://www.w3.org/2000/svg'
-                    aria-hidden='true'
-                  >
-                    <path
-                      strokeLinecap='round'
-                      strokeLinejoin='round'
-                      d='M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
-                    ></path>
-                  </svg>
-                )}
-              </span>
-            )}
-
-            {!iM?.SubmittedChairpersonReview && (
-              <span className='bg-red-300 text-red-600 text-xs px-3 py-1 rounded-2xl'>
-                Chairperson
-              </span>
-            )}
-            {iM?.SubmittedCoordinatorReview && (
-              <span
-                className='inline-flex items-center bg-green-300 text-green-900 text-xs px-3 py-1 rounded-2xl'
-                title={
-                  iM?.SubmittedCoordinatorSuggestion
-                    ? "Reviewed with Suggestions"
-                    : "Reviewed, No Suggestions"
-                }
-              >
-                Coordinator{" "}
-                {iM?.SubmittedCoordinatorSuggestion && (
-                  <svg
-                    aria-hidden='true'
-                    class='w-3 h-3  text-green-900 rounded-full ml-1'
-                    fill='currentColor'
-                    viewBox='0 0 20 20'
-                    xmlns='http://www.w3.org/2000/svg'
-                  >
-                    <path
-                      fill-rule='evenodd'
-                      d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z'
-                      clip-rule='evenodd'
-                    ></path>
-                  </svg>
-                )}
-                {!iM?.SubmittedCoordinatorSuggestion && (
-                  <svg
-                    fill='none'
-                    class='w-3 h-3  text-green-900 rounded-full ml-1'
-                    stroke='currentColor'
-                    strokeWidth='1.5'
-                    viewBox='0 0 24 24'
-                    xmlns='http://www.w3.org/2000/svg'
-                    aria-hidden='true'
-                  >
-                    <path
-                      strokeLinecap='round'
-                      strokeLinejoin='round'
-                      d='M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
-                    ></path>
-                  </svg>
-                )}
-              </span>
-            )}
-            {!iM?.SubmittedCoordinatorReview && (
-              <span className='bg-red-300 text-red-600 text-xs px-3 py-1 rounded-2xl'>
-                Coordinator
-              </span>
-            )}
-          </div>
-        )}
+        {iM && <ReviewEndorsementIndicator im={iM} direction='col' />}
 
         {(iM?.owner?.userId === user?.id ||
           user?.ActiveFaculty?.ActiveChairperson ||
@@ -716,6 +724,85 @@ export default function ViewIM() {
           />
         )}
       </div>
+
+      <ConfirmModal
+        show={state.openSubmissionConfirmation}
+        onAgree={handleSubmitForReview}
+        onClose={() =>
+          setState((prev) => ({ ...prev, openSubmissionConfirmation: false }))
+        }
+      />
+      <ConfirmModal
+        show={state.openDepartmentSubmissionConfirmation}
+        onAgree={handleSubmitForEndorsement}
+        onClose={() =>
+          setState((prev) => ({
+            ...prev,
+            openDepartmentSubmissionConfirmation: false,
+          }))
+        }
+      />
+      <ConfirmModal
+        show={state.openCoordinatorEndorsementConfirmation}
+        onAgree={handleEndorse}
+        onClose={() =>
+          setState((prev) => ({
+            ...prev,
+            openCoordinatorEndorsementConfirmation: false,
+          }))
+        }
+      />
+      <ConfirmModal
+        show={state.openDeanEndorsementConfirmation}
+        onAgree={handleConfirmEndorsement}
+        onClose={() =>
+          setState((prev) => ({
+            ...prev,
+            openDeanEndorsementConfirmation: false,
+          }))
+        }
+      />
+      <ConfirmModal
+        show={state.openCITLSubmissionConfirmation}
+        onAgree={handleSubmitForIMDCoordinatorEndorsement}
+        onClose={() =>
+          setState((prev) => ({
+            ...prev,
+            openCITLSubmissionConfirmation: false,
+          }))
+        }
+      />
+      <ConfirmModal
+        show={state.openCITLReturnConfirmation}
+        onAgree={handleReturnForIMDCoordinatorRevision}
+        onClose={() =>
+          setState((prev) => ({
+            ...prev,
+            openCITLReturnConfirmation: false,
+          }))
+        }
+      />
+      <ConfirmModal
+        show={state.openCITLEndorsementConfirmation}
+        onAgree={handleIMDCoordinatorEndorse}
+        onClose={() =>
+          setState((prev) => ({
+            ...prev,
+            openCITLEndorsementConfirmation: false,
+          }))
+        }
+      />
+      <ConfirmModal
+        show={state.openDepartmentReturnConfirmation}
+        onAgree={handleReturnForRevision}
+        onClose={() =>
+          setState((prev) => ({
+            ...prev,
+            openDepartmentReturnConfirmation: false,
+          }))
+        }
+      />
+      {/* handleReturnForRevision */}
     </Layout>
   );
 }

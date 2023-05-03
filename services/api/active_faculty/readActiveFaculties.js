@@ -1,4 +1,5 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
+import { accessibleBy } from "@casl/prisma";
 import _ from "lodash";
 
 export default async function readActiveFaculties({
@@ -8,68 +9,77 @@ export default async function readActiveFaculties({
   departmentId,
   sortOrder,
   sortColumn,
+  ability,
 }) {
   const prisma = PRISMA_CLIENT;
 
   const sortFilter = {};
   _.set(sortFilter, sortColumn, sortOrder);
 
-  try {
-    const activeFaculties = await prisma.activeFaculty.findMany({
-      take: limit,
-      skip: (page - 1) * limit,
-      where: {
-        departmentId: {
-          contains: departmentId,
-        },
-        Faculty: {
-          user: {
-            name: {
-              contains: name,
-              // mode: "insensitive",
-            },
+  const accessibility = accessibleBy(ability).ActiveFaculty;
+
+  const activeFaculties = await prisma.activeFaculty.findMany({
+    take: limit,
+    skip: (page - 1) * limit,
+    where: {
+      AND: [
+        accessibility,
+        {
+          departmentId: {
+            contains: departmentId,
           },
-        },
-      },
-      include: {
-        Faculty: {
-          select: {
-            id: true,
+          Faculty: {
             user: {
-              select: {
-                name: true,
-                image: true,
-              },
-            },
-            department: {
-              select: {
-                name: true,
+              name: {
+                contains: name,
+                // mode: "insensitive",
               },
             },
           },
         },
-      },
-      orderBy: sortFilter,
-    });
-
-    const total = await prisma.activeFaculty.count({
-      where: {
-        departmentId: {
-          contains: departmentId,
-        },
-        Faculty: {
+      ],
+    },
+    include: {
+      Faculty: {
+        select: {
+          id: true,
           user: {
-            name: {
-              contains: name,
-              // mode: "insensitive",
+            select: {
+              name: true,
+              image: true,
+            },
+          },
+          department: {
+            select: {
+              name: true,
             },
           },
         },
       },
-    });
+    },
+    orderBy: sortFilter,
+  });
 
-    return { data: activeFaculties, total };
-  } catch (error) {
-    throw error;
-  }
+  const total = await prisma.activeFaculty.count({
+    where: {
+      AND: [
+        accessibility,
+        {
+          departmentId: {
+            contains: departmentId,
+          },
+          Faculty: {
+            user: {
+              name: {
+                contains: name,
+                // mode: "insensitive",
+              },
+            },
+          },
+        },
+      ],
+    },
+  });
+
+  return { data: activeFaculties, total };
 }

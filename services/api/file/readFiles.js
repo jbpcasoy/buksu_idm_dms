@@ -1,4 +1,5 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
+import { accessibleBy } from "@casl/prisma";
 import _ from "lodash";
 
 const { PrismaClient } = require("@prisma/client");
@@ -13,81 +14,89 @@ export default async function readFiles({
   iMId,
   sortColumn,
   sortOrder,
+  ability,
 }) {
   const prisma = PRISMA_CLIENT;
+  const accessibility = accessibleBy(ability).File;
 
   const sortFilter = {};
   _.set(sortFilter, sortColumn, sortOrder);
 
-  try {
-    const files = await prisma.file.findMany({
-      take: limit,
-      skip: (page - 1) * limit,
-      include: {
-        iM: true,
-        ActiveFile: true,
-      },
-      where: {
-        fileName: {
-          contains: fileName,
-        },
-        originalFileName: {
-          contains: originalFileName,
-        },
-        iM: {
-          serialNumber: {
-            contains: iMSerialNumber,
+  const files = await prisma.file.findMany({
+    take: limit,
+    skip: (page - 1) * limit,
+    include: {
+      iM: true,
+      ActiveFile: true,
+    },
+    where: {
+      AND: [
+        accessibility,
+        {
+          fileName: {
+            contains: fileName,
           },
-          id: {
-            contains: iMId,
+          originalFileName: {
+            contains: originalFileName,
           },
+          iM: {
+            serialNumber: {
+              contains: iMSerialNumber,
+            },
+            id: {
+              contains: iMId,
+            },
+          },
+          ActiveFile:
+            active === true
+              ? {
+                  isNot: null,
+                }
+              : active === false
+              ? {
+                  is: null,
+                }
+              : undefined,
         },
-        ActiveFile:
-          active === true
-            ? {
-                isNot: null,
-              }
-            : active === false
-            ? {
-                is: null,
-              }
-            : undefined,
-      },
+      ],
+    },
 
-      orderBy: sortFilter,
-    });
+    orderBy: sortFilter,
+  });
 
-    const total = await prisma.file.count({
-      where: {
-        fileName: {
-          contains: fileName,
-        },
-        originalFileName: {
-          contains: originalFileName,
-        },
-        iM: {
-          serialNumber: {
-            contains: iMSerialNumber,
+  const total = await prisma.file.count({
+    where: {
+      AND: [
+        accessibility,
+        {
+          fileName: {
+            contains: fileName,
           },
-          id: {
-            contains: iMId,
+          originalFileName: {
+            contains: originalFileName,
           },
+          iM: {
+            serialNumber: {
+              contains: iMSerialNumber,
+            },
+            id: {
+              contains: iMId,
+            },
+          },
+          ActiveFile:
+            active === true
+              ? {
+                  isNot: null,
+                }
+              : active === false
+              ? {
+                  is: null,
+                }
+              : undefined,
         },
-        ActiveFile:
-          active === true
-            ? {
-                isNot: null,
-              }
-            : active === false
-            ? {
-                is: null,
-              }
-            : undefined,
-      },
-    });
+      ],
+    },
+  });
 
-    return { data: files, total };
-  } catch (error) {
-    throw error;
-  }
+  return { data: files, total };
 }

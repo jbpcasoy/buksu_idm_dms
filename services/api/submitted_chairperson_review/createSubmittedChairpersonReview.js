@@ -3,32 +3,37 @@ import readChairpersonReview from "../chairperson_review/readChairpersonReview";
 
 export default async function createSubmittedChairpersonReview({
   chairpersonReviewId,
+  ability,
 }) {
   const prisma = PRISMA_CLIENT;
 
-  try {
-    const chairpersonReview = await readChairpersonReview(chairpersonReviewId);
+  const chairpersonReview = await readChairpersonReview({
+    id: chairpersonReviewId,
+    ability,
+  });
 
-    const submittedChairpersonReview =
-      await prisma.submittedChairpersonReview.create({
-        data: {
-          chairpersonReviewId: chairpersonReview.id,
-          iMId: chairpersonReview.iMId,
-          Notification: {
-            create: {
-              Type: "SUBMITTED_CHAIRPERSON_REVIEW",
-            },
-          },
-          IMEvent: {
-            create: {
-              IMEventType: "SUBMITTED_CHAIRPERSON_REVIEW",
-            },
+  const submittedChairpersonReview =
+    await prisma.submittedChairpersonReview.create({
+      data: {
+        chairpersonReviewId: chairpersonReview.id,
+        iMId: chairpersonReview.iMId,
+        Notification: {
+          create: {
+            Type: "SUBMITTED_CHAIRPERSON_REVIEW",
           },
         },
-      });
+        IMEvent: {
+          create: {
+            IM: {
+              connect: {
+                id: chairpersonReview.iMId,
+              },
+            },
+            IMEventType: "SUBMITTED_CHAIRPERSON_REVIEW",
+          },
+        },
+      },
+    });
 
-    return submittedChairpersonReview;
-  } catch (error) {
-    throw error;
-  }
+  return submittedChairpersonReview;
 }

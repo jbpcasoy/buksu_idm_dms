@@ -1,20 +1,18 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
 
-export default async function updateCoordinatorReviewItem(id, { answer }) {
+export default async function updateCoordinatorReviewItem(id, data) {
   const prisma = PRISMA_CLIENT;
 
-  try {
-    const coordinatorReviewItem = await prisma.coordinatorReviewItem.update({
-      where: {
-        id,
-      },
-      data: {
-        answer,
-      },
-    });
+  const { answer } = data;
 
-    return coordinatorReviewItem;
-  } catch (error) {
-    throw error;
-  }
+  const coordinatorReviewItem = await prisma.coordinatorReviewItem.update({
+    where: {
+      id,
+    },
+    data: {
+      answer,
+    },
+  });
+
+  return coordinatorReviewItem;
 }

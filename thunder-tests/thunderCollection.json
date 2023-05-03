@@ -396,6 +396,27 @@
         "containerId": "",
         "created": "2023-04-05T12:12:40.651Z",
         "sortNum": 590000
+      },
+      {
+        "_id": "b34e26c2-c390-4028-8bef-ebf7b3fc3e8f",
+        "name": "LoginRole",
+        "containerId": "",
+        "created": "2023-04-26T01:02:29.309Z",
+        "sortNum": 600000
+      },
+      {
+        "_id": "ce9868f3-d16c-4ff1-bb3a-797fe15d16ea",
+        "name": "Announcement",
+        "containerId": "",
+        "created": "2023-04-30T09:15:24.930Z",
+        "sortNum": 610000
+      },
+      {
+        "_id": "d3976672-9357-49c6-bda6-d9478b6ad368",
+        "name": "Chart",
+        "containerId": "",
+        "created": "2023-05-01T04:11:16.824Z",
+        "sortNum": 620000
       }
     ],
     "settings": {

@@ -9,6 +9,7 @@ export default function AdminFacultyView({
   image,
   name,
   active,
+  email,
   departmentName,
   collegeName,
   onDelete,
@@ -30,27 +31,28 @@ export default function AdminFacultyView({
           <Avatar src={image} />
         </TableCell>
         <TableCell>{name}</TableCell>
+        <TableCell>{email}</TableCell>
         <TableCell>{departmentName}</TableCell>
         <TableCell>{collegeName}</TableCell>
-        <TableCell align="center">
+        <TableCell align='center'>
           {active && (
             <Chip
-              label="Active"
-              size="small"
-              color="success"
+              label='Active'
+              size='small'
+              color='success'
               icon={<CheckIcon />}
             />
           )}
           {!active && (
             <Chip
-              label="Inactive"
-              size="small"
-              color="error"
+              label='Inactive'
+              size='small'
+              color='error'
               icon={<CloseIcon />}
             />
           )}
         </TableCell>
-        <TableCell align="center">
+        <TableCell align='center'>
           <AdminFacultyActionsMenu
             onDelete={() => openDeleteDialog(true)}
             active={active}

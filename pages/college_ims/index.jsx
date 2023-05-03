@@ -19,6 +19,8 @@ export default function Home() {
     serialNumber: "",
     title: "",
     status: undefined,
+    departmentName: "",
+    collegeName: "",
     sortColumn: "title",
     sortOrder: "asc",
   });
@@ -49,6 +51,8 @@ export default function Home() {
       limit: state.limit,
       sortColumn: state.sortColumn,
       sortOrder: state.sortOrder,
+      departmentName: state.departmentName,
+      collegeName: state.collegeName,
     };
 
     getCollegeIms(filter).then((res) => {
@@ -127,9 +131,9 @@ export default function Home() {
               <div>
                 <button
                   type='button'
-                  className={`inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue border-CITLOrange rounded-none border-b-2`}
+                  className={`inline-flex items-center mr-3 px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue border-CITLOrange rounded-none border-b-2`}
                 >
-                  <span className='inline-flex items-center justify-center w-4 h-4 mr-1 text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full'>
+                  <span className='inline-flex items-center justify-center px-1 mr-1 bg-CITLOrange rounded-full text-xs font-semibold text-CITLWhite '>
                     {total}
                   </span>
                   College IM&apos;s
@@ -149,6 +153,14 @@ export default function Home() {
                   {
                     value: "owner",
                     label: "Owner",
+                  },
+                  {
+                    value: "departmentName",
+                    label: "Department",
+                  },
+                  {
+                    value: "collegeName",
+                    label: "College",
                   },
                   {
                     value: "authors",
@@ -234,6 +246,27 @@ export default function Home() {
                     }
                   />
                 </th>
+
+                <th
+                  scope='col'
+                  className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
+                >
+                  <SortButton
+                    label='Department'
+                    sortOrder={
+                      state.sortColumn === "owner.department.name"
+                        ? state.sortOrder
+                        : undefined
+                    }
+                    setSortOrder={(order) =>
+                      setState((prev) => ({
+                        ...prev,
+                        sortColumn: "owner.department.name",
+                        sortOrder: order,
+                      }))
+                    }
+                  />
+                </th>
                 <th
                   scope='col'
                   className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
@@ -288,12 +321,14 @@ export default function Home() {
                   <SortButton
                     label='Date'
                     sortOrder={
-                      state.sortColumn === "date" ? state.sortOrder : undefined
+                      state.sortColumn === "createdAt"
+                        ? state.sortOrder
+                        : undefined
                     }
                     setSortOrder={(order) =>
                       setState((prev) => ({
                         ...prev,
-                        sortColumn: "date",
+                        sortColumn: "createdAt",
                         sortOrder: order,
                       }))
                     }
@@ -357,7 +392,6 @@ export default function Home() {
 
                   <td className='px-6 py-4 '>
                     <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
-                    <div className='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
                   </td>
                   <td className='px-4 py-4 space-x-1'>
                     <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
@@ -367,6 +401,10 @@ export default function Home() {
                   <td className='px-6 py-4 '>
                     <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
                     <div className='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
+                  </td>
+
+                  <td className='bg-white  font-medium text-slate-400  items-center justify-center px-6 py-4 '>
+                    <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
                   </td>
 
                   <td className='px-6 py-4 '>
@@ -385,16 +423,15 @@ export default function Home() {
                   <td className='bg-white  font-medium text-slate-400  items-center justify-center px-6 py-4 '>
                     <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
                   </td>
-
-                  <td className='bg-white  font-medium text-slate-400  items-center justify-center px-6 py-4 '>
-                    <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
-                  </td>
                 </tr>
               )}{" "}
               {!loading &&
                 ims.map((im, index) => {
                   return (
                     <IM
+                      showDepartmentName={true}
+                      departmentName={im.owner.department.name}
+                      collegeName={im.owner.department.college.name}
                       showStatus={true}
                       showReviewSuggestion={true}
                       authors={im.authors}

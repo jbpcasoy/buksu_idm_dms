@@ -1,4 +1,6 @@
+import userAbility from "@/services/abilities/defineAbility";
 import readActiveFaculties from "@/services/api/active_faculty/readActiveFaculties";
+import getServerUser from "@/services/helpers/getServerUser";
 
 export default async function getActiveFacultiesHandler(req, res) {
   const {
@@ -10,6 +12,8 @@ export default async function getActiveFacultiesHandler(req, res) {
     sortOrder = "asc",
   } = req.query;
 
+  const user = await getServerUser(req, res);
+
   const activeFaculties = await readActiveFaculties({
     page: parseInt(page),
     limit: parseInt(limit),
@@ -17,7 +21,8 @@ export default async function getActiveFacultiesHandler(req, res) {
     departmentId,
     sortColumn,
     sortOrder,
+    ability: await userAbility(user),
   });
 
-  return res.status(201).json(activeFaculties);
+  return res.status(200).json(activeFaculties);
 }

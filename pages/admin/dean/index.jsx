@@ -2,7 +2,9 @@ import AdminLayout from "@/components/admin/AdminLayout";
 import AdminDean from "@/components/admin/dean/AdminDean";
 import frontendCreateDean from "@/services/frontend/dean/frontendCreateDean";
 import frontendReadDeans from "@/services/frontend/dean/frontendReadDeans";
+import Sort from "@/views/admin/Sort";
 import AdminAddDeanForm from "@/views/admin/dean/AdminAddDeanForm";
+import ActiveFilter from "@/views/forms/ActiveFilter";
 import AddIcon from "@mui/icons-material/Add";
 import {
   Box,
@@ -15,19 +17,30 @@ import {
   TableHead,
   TablePagination,
   TableRow,
+  TextField,
   Toolbar,
   Tooltip,
   Typography,
 } from "@mui/material";
 import { useEffect, useState } from "react";
+import _ from "lodash";
+import { useSnackbar } from "notistack";
 
 export default function AdminDeanPage() {
+  const { closeSnackbar, enqueueSnackbar } = useSnackbar();
   const [total, setTotal] = useState(0);
   const [deans, setDeans] = useState([]);
   const [state, setState] = useState({
     limit: 5,
     page: 0,
     openAdd: false,
+    name: "",
+    email: "",
+    departmentName: "",
+    collegeName: "",
+    active: null,
+    sortColumn: "Faculty.user.name",
+    sortOrder: "asc",
   });
 
   useEffect(() => {
@@ -36,6 +49,13 @@ export default function AdminDeanPage() {
     frontendReadDeans({
       limit: state.limit,
       page: state.page + 1,
+      name: state.name,
+      email: state.email,
+      departmentName: state.departmentName,
+      collegeName: state.collegeName,
+      active: state.active,
+      sortColumn: state.sortColumn,
+      sortOrder: state.sortOrder,
     }).then((res) => {
       if (!subscribe) return;
 
@@ -60,6 +80,61 @@ export default function AdminDeanPage() {
     }));
   }
 
+  function handleNameChange(e) {
+    setState((prev) => ({
+      ...prev,
+      name: e.target.value,
+    }));
+  }
+  const debouncedHandleNameChange = _.debounce(handleNameChange, 800);
+
+  function handleDepartmentNameChange(e) {
+    setState((prev) => ({
+      ...prev,
+      departmentName: e.target.value,
+    }));
+  }
+  const debouncedHandleDepartmentChange = _.debounce(
+    handleDepartmentNameChange,
+    800
+  );
+
+  function handleEmailChange(e) {
+    setState((prev) => ({
+      ...prev,
+      email: e.target.value,
+    }));
+  }
+  const debouncedHandleEmailChange = _.debounce(handleEmailChange, 800);
+
+  function handleCollegeNameChange(e) {
+    setState((prev) => ({
+      ...prev,
+      collegeName: e.target.value,
+    }));
+  }
+  const debouncedHandleCollegeChange = _.debounce(handleCollegeNameChange, 800);
+
+  function handleActiveChange(active) {
+    setState((prev) => ({
+      ...prev,
+      active,
+    }));
+  }
+
+  function handleSortByChange(e) {
+    setState((prev) => ({
+      ...prev,
+      sortColumn: e.target.value,
+    }));
+  }
+  function handleSortOrderChange(e, value) {
+    setState((prev) => ({
+      ...prev,
+      sortOrder: value,
+    }));
+  }
+
   function openAddDialog(open) {
     setState((prev) => ({ ...prev, openAdd: open }));
   }
@@ -67,7 +142,19 @@ export default function AdminDeanPage() {
   async function onAdd(value) {
     const { facultyId } = value;
 
-    return frontendCreateDean({ facultyId });
+    return frontendCreateDean({ facultyId })
+      .then((res) => {
+        enqueueSnackbar({
+          message: "Dean added successfully",
+          variant: "success",
+        });
+      })
+      .catch((err) => {
+        enqueueSnackbar({
+          message: err?.response?.data?.error ?? "Failed to add dean",
+          variant: "error",
+        });
+      });
   }
 
   return (
@@ -91,12 +178,51 @@ export default function AdminDeanPage() {
           </Stack>
         </Toolbar>
 
+        <Stack direction='row' spacing={1} sx={{ px: 2 }}>
+          <TextField
+            size='small'
+            label='Name'
+            onChange={debouncedHandleNameChange}
+          />
+          <TextField
+            size='small'
+            label='Email'
+            onChange={debouncedHandleEmailChange}
+          />
+          <TextField
+            size='small'
+            label='Department'
+            onChange={debouncedHandleDepartmentChange}
+          />
+          <TextField
+            size='small'
+            label='College'
+            onChange={debouncedHandleCollegeChange}
+          />
+          <ActiveFilter onChange={handleActiveChange} />
+
+          <Sort
+            onChangeSortColumn={handleSortByChange}
+            onChangeSortOrder={handleSortOrderChange}
+            sortColumn={state.sortColumn}
+            sortOptions={[
+              { value: "Faculty.user.name", label: "Name" },
+              { value: "Faculty.user.email", label: "Email" },
+              { value: "Faculty.department.name", label: "Department" },
+              { value: "Faculty.department.college.name", label: "College" },
+            ]}
+            sortOrder={state.sortOrder}
+          />
+        </Stack>
+
         <TableContainer>
           <Table>
             <TableHead>
               <TableRow>
                 <TableCell>Image</TableCell>
                 <TableCell>Name</TableCell>
+                <TableCell>Email</TableCell>
+                <TableCell>Department</TableCell>
                 <TableCell>College</TableCell>
                 <TableCell align='center'>Active</TableCell>
                 <TableCell align='center'>Actions</TableCell>

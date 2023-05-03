@@ -3,15 +3,11 @@ import { PRISMA_CLIENT } from "@/prisma/prisma_client";
 export default function deleteCollege(id) {
   const prisma = PRISMA_CLIENT;
 
-  try {
-    const college = prisma.college.delete({
-      where: {
-        id,
-      },
-    });
+  const college = prisma.college.delete({
+    where: {
+      id,
+    },
+  });
 
-    return college;
-  } catch (error) {
-    throw error;
-  }
+  return college;
 }

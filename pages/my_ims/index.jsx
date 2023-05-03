@@ -109,9 +109,9 @@ export default function Home() {
               <div>
                 <button
                   type='button'
-                  className={`inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue rounded-none border-b-2 border-CITLOrange`}
+                  className={`inline-flex items-center mr-3 px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue rounded-none border-b-2 border-CITLOrange`}
                 >
-                  <div className='inline-flex items-center justify-center w-4 h-4 mr-1 text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
+                  <div className='inline-flex items-center justify-center px-1 mr-1 bg-CITLOrange rounded-full text-xs font-semibold text-CITLWhite '>
                     {total}
                   </div>
                   <span>My IM&apos;s</span>
@@ -273,12 +273,14 @@ export default function Home() {
                   <SortButton
                     label='Date'
                     sortOrder={
-                      state.sortColumn === "date" ? state.sortOrder : undefined
+                      state.sortColumn === "createdAt"
+                        ? state.sortOrder
+                        : undefined
                     }
                     setSortOrder={(order) =>
                       setState((prev) => ({
                         ...prev,
-                        sortColumn: "date",
+                        sortColumn: "createdAt",
                         sortOrder: order,
                       }))
                     }

@@ -7,7 +7,7 @@ export default function useCITLToEndorseCount() {
   const { user } = useContext(UserContext);
 
   useEffect(() => {
-    if (!user || !user?.ActiveFaculty) return;
+    if (!user || !user?.IMDCoordinator?.ActiveIMDCoordinator) return;
     let subscribe = true;
 
     async function getToReview(filter) {

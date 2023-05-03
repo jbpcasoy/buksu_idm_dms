@@ -9,6 +9,7 @@ export default function AdminIMDCoordinatorView({
   image,
   name,
   active,
+  email,
   onDelete,
   onActivate,
   onDeactivate,
@@ -28,6 +29,7 @@ export default function AdminIMDCoordinatorView({
           <Avatar src={image} />
         </TableCell>
         <TableCell>{name}</TableCell>
+        <TableCell>{email}</TableCell>
         <TableCell align='center'>
           {active && (
             <Chip

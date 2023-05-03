@@ -6,6 +6,7 @@ import PreviewQuestion from "./PreviewQuestion";
 export default function CoordinatorPreviewQuestion({
   question,
   coordinatorReviewId,
+  disabled = false,
 }) {
   const [loading, setLoading] = useState(false);
   const {
@@ -29,6 +30,7 @@ export default function CoordinatorPreviewQuestion({
 
   return (
     <PreviewQuestion
+      disabled={disabled}
       loading={coordinatorReviewItemLoading}
       key={question.id}
       question={question}

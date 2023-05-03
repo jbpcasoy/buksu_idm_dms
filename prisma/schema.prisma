@@ -109,13 +109,14 @@ model IM {
   IMDCoordinatorSuggestion       IMDCoordinatorSuggestion?
   IMDCoordinatorEndorsement      IMDCoordinatorEndorsement?
   IMEvent                        IMEvent[]
+  returned                       Boolean                         @default(false)
 
   @@index([ownerId])
 }
 
 model File {
   id               String      @id @default(cuid())
-  fileName         String      @unique
+  fileName         String?     @unique
   originalFileName String
   iM               IM          @relation(fields: [iMId], references: [id])
   createdAt        DateTime    @default(now())
@@ -131,7 +132,7 @@ model File {
 model ActiveFile {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now())
-  updatedAT DateTime @updatedAt
+  updatedAt DateTime @updatedAt
   File      File     @relation(fields: [fileId], references: [id])
   fileId    String   @unique
   IM        IM       @relation(fields: [iMId], references: [id])
@@ -750,6 +751,7 @@ model ActiveIMDCoordinator {
   updatedAt        DateTime       @updatedAt
   IMDCoordinator   IMDCoordinator @relation(fields: [iMDCoordinatorId], references: [id])
   iMDCoordinatorId String         @unique
+  uuid             String         @unique
 }
 
 model CITLDirector {
@@ -768,6 +770,7 @@ model ActiveCITLDirector {
   updatedAt      DateTime     @updatedAt
   CITLDirector   CITLDirector @relation(fields: [cITLDirectorId], references: [id])
   cITLDirectorId String       @unique
+  uuid           String       @unique
 }
 
 model IMDCoordinatorSuggestion {
@@ -906,4 +909,13 @@ model IMEvent {
   @@index([submittedIMDCoordinatorSuggestionId])
   @@index([cITLDirectorEndorsementId])
   @@index([submittedChairpersonSuggestionId])
+}
+
+model Announcement {
+  id          String   @id @default(cuid())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  title       String
+  description String
+  link        String
 }

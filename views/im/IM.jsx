@@ -1,3 +1,4 @@
+import ReviewEndorsementIndicator from "@/components/im/ReviewEndorsementIndicator";
 import UserContext from "@/contexts/UserContext";
 import moment from "moment/moment";
 import { useContext, useEffect, useState } from "react";
@@ -8,14 +9,17 @@ export default function IM({
   authors,
   showOwner = false,
   showSerialNumber = false,
+  collegeName,
   showReviewedAs = false,
   id,
+  departmentName,
   serialNumber,
   title,
   status,
   originalFileName,
   fileName,
   owner,
+  showDepartmentName = false,
   date,
   updatedAt,
   onView,
@@ -68,166 +72,24 @@ export default function IM({
       <td className='px-6 py-4 '>{type}</td>
 
       {showOwner && <td className='px-6 py-4'>{owner}</td>}
+
+      {showDepartmentName && (
+        <td className='px-6 py-4'>
+          {departmentName} | {collegeName}
+        </td>
+      )}
       <td className='px-6 py-4 w-32 '>{authors}</td>
 
       {showStatus && <td className='px-6 py-4 '>{status}</td>}
       {showReviewSuggestion && (
         <td className='px-4 py-4 space-y-1 '>
-          <div className='grid grid-flow-row space-y-1 w-32'>
-            {peerReviewed && (
-              <span
-                className='inline-flex items-center bg-purple-400 text-purple-800 text-xs px-3 py-1 rounded-full'
-                title={
-                  peerSuggested
-                    ? "Reviewed with Suggestions"
-                    : "Reviewed, No Suggestions"
-                }
-              >
-                Peer
-                {peerSuggested && (
-                  <svg
-                    aria-hidden='true'
-                    class='w-3 h-3  text-purple-800 rounded-full ml-1'
-                    fill='currentColor'
-                    viewBox='0 0 20 20'
-                    xmlns='http://www.w3.org/2000/svg'
-                  >
-                    <path
-                      fill-rule='evenodd'
-                      d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z'
-                      clip-rule='evenodd'
-                    ></path>
-                  </svg>
-                )}
-                {!peerSuggested && (
-                  <svg
-                    fill='none'
-                    class='w-3 h-3  text-purple-800 rounded-full ml-1'
-                    stroke='currentColor'
-                    strokeWidth='1.5'
-                    viewBox='0 0 24 24'
-                    xmlns='http://www.w3.org/2000/svg'
-                    aria-hidden='true'
-                  >
-                    <path
-                      strokeLinecap='round'
-                      strokeLinejoin='round'
-                      d='M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
-                    ></path>
-                  </svg>
-                )}
-              </span>
-            )}
-            {!peerReviewed && (
-              <span className='bg-red-300 text-red-600 text-xs px-3 py-1 rounded-2xl'>
-                Peer
-              </span>
-            )}
-
-            {chairpersonReviewed && (
-              <span
-                className='inline-flex items-center bg-orange-300 text-orange-500 text-xs px-3  py-1 rounded-2xl'
-                title={
-                  chairpersonSuggested
-                    ? "Reviewed with Suggestions"
-                    : "Reviewed, No Suggestions"
-                }
-              >
-                Chairperson
-                {chairpersonSuggested && (
-                  <svg
-                    aria-hidden='true'
-                    class='w-3 h-3  text-orange-500 rounded-full ml-1'
-                    fill='currentColor'
-                    viewBox='0 0 20 20'
-                    xmlns='http://www.w3.org/2000/svg'
-                  >
-                    <path
-                      fill-rule='evenodd'
-                      d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z'
-                      clip-rule='evenodd'
-                    ></path>
-                  </svg>
-                )}
-                {!chairpersonSuggested && (
-                  <svg
-                    fill='none'
-                    class='w-3 h-3  text-orange-500 rounded-full ml-1'
-                    stroke='currentColor'
-                    strokeWidth='1.5'
-                    viewBox='0 0 24 24'
-                    xmlns='http://www.w3.org/2000/svg'
-                    aria-hidden='true'
-                  >
-                    <path
-                      strokeLinecap='round'
-                      strokeLinejoin='round'
-                      d='M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
-                    ></path>
-                  </svg>
-                )}
-              </span>
-            )}
-
-            {!chairpersonReviewed && (
-              <span className='bg-red-300 text-red-600 text-xs px-3 py-1 rounded-2xl'>
-                Chairperson
-              </span>
-            )}
-            {coordinatorReviewed && (
-              <span
-                className='inline-flex items-center bg-green-300 text-green-900 text-xs px-3 py-1 rounded-2xl'
-                title={
-                  coordinatorSuggested
-                    ? "Reviewed with Suggestions"
-                    : "Reviewed, No Suggestions"
-                }
-              >
-                Coordinator{" "}
-                {coordinatorSuggested && (
-                  <svg
-                    aria-hidden='true'
-                    class='w-3 h-3  text-green-900 rounded-full ml-1'
-                    fill='currentColor'
-                    viewBox='0 0 20 20'
-                    xmlns='http://www.w3.org/2000/svg'
-                  >
-                    <path
-                      fill-rule='evenodd'
-                      d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z'
-                      clip-rule='evenodd'
-                    ></path>
-                  </svg>
-                )}
-                {!coordinatorSuggested && (
-                  <svg
-                    fill='none'
-                    class='w-3 h-3  text-green-900 rounded-full ml-1'
-                    stroke='currentColor'
-                    strokeWidth='1.5'
-                    viewBox='0 0 24 24'
-                    xmlns='http://www.w3.org/2000/svg'
-                    aria-hidden='true'
-                  >
-                    <path
-                      strokeLinecap='round'
-                      strokeLinejoin='round'
-                      d='M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
-                    ></path>
-                  </svg>
-                )}
-              </span>
-            )}
-            {!coordinatorReviewed && (
-              <span className='bg-red-300 text-red-600 text-xs px-3 py-1 rounded-2xl'>
-                Coordinator
-              </span>
-            )}
-          </div>{" "}
+          <ReviewEndorsementIndicator im={im} />
         </td>
       )}
 
-      <td className='px-6 py-4  '>{moment(date).format("M/D/YYYY, h:mm A")}</td>
+      <td className='px-6 py-4  '>
+        {moment(im.createdAt).format("M/D/YYYY, h:mm A")}
+      </td>
 
       {/* <td className='px-6 py-4 '>
         {moment(updatedAt).format("M/D/YYYY, h:mm A")}

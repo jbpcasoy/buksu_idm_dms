@@ -168,6 +168,8 @@ const CoordinatorReviewPage = () => {
     console.log({ coordinatorReview });
   }, [coordinatorReview]);
 
-  return <ReviewPage reviewingAs='Coordinator' step={step} steps={steps} />;
+  return (
+    <ReviewPage reviewingAs='Coordinator' step={step} steps={steps} iM={iM} />
+  );
 };
 export default CoordinatorReviewPage;

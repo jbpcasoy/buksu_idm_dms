@@ -20,16 +20,19 @@ export default async function frontendGetIMs({
   authors,
   type,
   owner,
+  collegeName,
+  departmentName,
   iMDCoordinatorReviewerId,
   toRevise,
   iMDCoordinatorEndorsed,
   endorsedByIMDCoordinator,
-  CITLDirectorEndorsed,
   endorsedByCITLDirector,
 }) {
   try {
     const response = await axios.get("/api/im", {
       params: {
+        departmentName,
+        collegeName,
         limit,
         page,
         ownerId,
@@ -53,13 +56,13 @@ export default async function frontendGetIMs({
         toRevise,
         iMDCoordinatorEndorsed,
         endorsedByIMDCoordinator,
-        CITLDirectorEndorsed,
         endorsedByCITLDirector,
       },
     });
     return response.data;
   } catch (error) {
     console.error(error);
-    throw error;
+    // throw error;
+    return { data: [], total: 0 };
   }
 }

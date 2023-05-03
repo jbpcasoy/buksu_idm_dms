@@ -1,15 +1,9 @@
 import axios from "axios";
 
-export default async function frontendCreateActiveFaculty({
-  userId,
-  facultyId,
-  departmentId,
-}) {
+export default async function frontendCreateActiveFaculty({ facultyId }) {
   try {
     const activeFaculty = await axios.post("/api/active_faculty", {
-      userId,
       facultyId,
-      departmentId,
     });
 
     return activeFaculty.data;

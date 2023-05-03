@@ -35,7 +35,7 @@ export default function AdminCollegeUpdateForm({
         <DialogContent>
           <Stack spacing={1}>
             <DialogContentText>
-              This will change how this college's data across resources.
+              This will change the college's data across resources.
             </DialogContentText>
             <TextField
               label='Name'

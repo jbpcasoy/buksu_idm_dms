@@ -11,27 +11,23 @@ export default async function createIM({
 }) {
   const prisma = PRISMA_CLIENT;
 
-  try {
-    const im = await prisma.iM.create({
-      data: {
-        serialNumber,
-        title,
-        authors,
-        owner: {
-          connect: {
-            id: ownerId,
-          },
-        },
-        type,
-        IMEvent: {
-          create: {
-            IMEventType: "IM_CREATED",
-          },
+  const im = await prisma.iM.create({
+    data: {
+      serialNumber,
+      title,
+      authors,
+      owner: {
+        connect: {
+          id: ownerId,
         },
       },
-    });
-    return im;
-  } catch (error) {
-    throw error;
-  }
+      type,
+      IMEvent: {
+        create: {
+          IMEventType: "IM_CREATED",
+        },
+      },
+    },
+  });
+  return im;
 }
