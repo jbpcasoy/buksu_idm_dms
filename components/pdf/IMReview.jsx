@@ -298,6 +298,7 @@ const IMReview = React.forwardRef((props, ref) => {
             </tr>
             {sections.map((section) => (
               <IMReviewSection
+                key={sections.id}
                 reviewItems={reviewItems}
                 questions={section?.questions}
                 title={section?.title}

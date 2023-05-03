@@ -87,7 +87,7 @@ export default function IMReviewSection({
       </tr>
       {answeredQuestions.map((question) => {
         return (
-          <tr className={styles["c9"]}>
+          <tr className={styles["c9"]} key={question.id}>
             <td
               className={(styles["custom-td"], styles["c6"])}
               colspan='1'
