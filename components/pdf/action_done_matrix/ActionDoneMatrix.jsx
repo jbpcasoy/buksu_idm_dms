@@ -2,9 +2,16 @@ import React from "react";
 import styles from "./ActionDoneMatrix.module.css";
 import ActionDoneMatrixItem from "./ActionDoneMatrixItem";
 
-export default function ActionDoneMatrix() {
+const ActionDoneMatrix = React.forwardRef((props, ref) => {
+  const {
+    coordinator,
+    imdCoordinator,
+    citlDirector,
+    vpaa,
+    peerSuggestionItems = [],
+  } = props;
   return (
-    <div className={(styles["c30"], styles["doc-content"])}>
+    <div className={(styles["c30"], styles["doc-content"])} ref={ref}>
       <div>
         <p className={(styles["custom-p"], styles["c18"], styles["c12"])}>
           <span className={styles["c2"]}></span>
@@ -116,12 +123,14 @@ export default function ActionDoneMatrix() {
                 </p>
               </td>
             </tr>
-            <ActionDoneMatrixItem
-              value={"Remove racist terms."}
-              pageNumber={"51"}
-              remarks={"Cultural diversity efforts."}
-              actionTaken={"Removed black people stigmatizing words."}
-            />
+            {peerSuggestionItems.map((peerSuggestionItem) => (
+              <ActionDoneMatrixItem
+                value={"Remove racist terms."}
+                pageNumber={"51"}
+                remarks={"Cultural diversity efforts."}
+                actionTaken={"Removed black people stigmatizing words."}
+              />
+            ))}
           </tbody>
         </table>
         <p className={(styles["custom-p"], styles["c6"], styles["c12"])}>
@@ -132,7 +141,7 @@ export default function ActionDoneMatrix() {
         </p>
 
         <div>
-          <p className={(styles["custom-p"], styles["c6"], "inline")}>
+          <p className={(styles["custom-p"], styles["c6"], "block text-left")}>
             <span className={styles["c1"]}>Reviewed by:</span>
           </p>
           <p
@@ -140,10 +149,10 @@ export default function ActionDoneMatrix() {
               (styles["custom-p"],
               styles["c6"],
               styles["c1"],
-              "text-center pt-3")
+              "text-center pt-3 underline")
             }
           >
-            _____________________________
+            {coordinator}
           </p>
           <p
             className={
@@ -202,7 +211,7 @@ export default function ActionDoneMatrix() {
         </p>
 
         <div className='mb-2'>
-          <p className={(styles["custom-p"], styles["c6"], "inline")}>
+          <p className={(styles["custom-p"], styles["c6"], "block text-left")}>
             <span className={styles["c1"]}>Reviewed by:</span>
           </p>
           <p
@@ -210,10 +219,10 @@ export default function ActionDoneMatrix() {
               (styles["custom-p"],
               styles["c6"],
               styles["c1"],
-              "text-center pt-3")
+              "text-center pt-5 underline")
             }
           >
-            _____________________________
+            {imdCoordinator}
           </p>
           <p
             className={
@@ -227,10 +236,10 @@ export default function ActionDoneMatrix() {
               (styles["custom-p"],
               styles["c6"],
               styles["c1"],
-              "text-center pt-3")
+              "text-center pt-5 underline")
             }
           >
-            _____________________________
+            {citlDirector}
           </p>
           <p
             className={
@@ -244,10 +253,10 @@ export default function ActionDoneMatrix() {
               (styles["custom-p"],
               styles["c6"],
               styles["c1"],
-              "text-center pt-3")
+              "text-center pt-5 underline")
             }
           >
-            _____________________________
+            {vpaa}
           </p>
           <p
             className={
@@ -321,4 +330,6 @@ export default function ActionDoneMatrix() {
       </div>
     </div>
   );
-}
+});
+
+export default ActionDoneMatrix;

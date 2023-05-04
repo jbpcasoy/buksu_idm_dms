@@ -22,6 +22,10 @@ import ToggleIM from "../../../components/im/ToggleIM";
 import ReviewEndorsementIndicator from "@/components/im/ReviewEndorsementIndicator";
 import ConfirmModal from "@/components/ConfirmModal";
 import { enqueueSnackbar } from "notistack";
+import ActionDoneMatrixPrintDialog from "@/components/pdf/print/ActionDoneMatrixPrintDialog";
+import useCITLDirector from "@/hooks/citl_director/useCITLDirector";
+import usePeerSuggestion from "@/hooks/usePeerSuggestion";
+import usePeerSuggestionItems from "@/hooks/usePeerSuggestionItems";
 
 export default function ViewIM() {
   const router = useRouter();
@@ -37,6 +41,33 @@ export default function ViewIM() {
     openCITLEndorsementConfirmation: false,
     openDepartmentReturnConfirmation: false,
   });
+
+  const { citlDirector, citlDirectorLoading, citlDirectorError } =
+    useCITLDirector();
+  const { peerSuggestion, peerSuggestionError, peerSuggestionLoading } =
+    usePeerSuggestion({
+      submittedPeerReviewId: iM?.SubmittedPeerReview?.id,
+    });
+  const {
+    peerSuggestionItems,
+    peerSuggestionItemsError,
+    peerSuggestionItemsLoading,
+    refreshPeerSuggestionItems,
+  } = usePeerSuggestionItems({
+    peerSuggestionId: peerSuggestion?.id,
+  });
+
+  useEffect(() => {
+    console.log({ peerSuggestion });
+  }, [peerSuggestion]);
+
+  useEffect(() => {
+    console.log({ peerSuggestionItems });
+  }, [peerSuggestionItems]);
+
+  useEffect(() => {
+    console.log({ iM });
+  }, [iM]);
 
   useEffect(() => {
     initDropdowns();
@@ -667,7 +698,26 @@ export default function ViewIM() {
             Edit IM
           </ToggleIM>
         )}
-        {iM && <ReviewEndorsementIndicator im={iM} direction='col' />}
+        <div className='flex justify-between items-center py-1'>
+          <div className='flex flex-col '>
+            {iM && <ReviewEndorsementIndicator im={iM} direction='col' />}
+          </div>
+          {iM?.status === "CITL_ENDORSED" &&
+            (user?.IMDCoordinator?.ActiveIMDCoordinator ||
+              user?.CITLDirector?.ActiveCITLDirector) && (
+              <ActionDoneMatrixPrintDialog
+                citlDirector={citlDirector?.User?.name}
+                imdCoordinator={
+                  iM?.IMDCoordinatorEndorsement?.IMDCoordinator?.User?.name
+                }
+                vpaa='Hazel Jean M. Abejuela'
+                coordinator={
+                  iM?.CoordinatorEndorsement?.Coordinator?.Faculty?.user?.name
+                }
+                peerSuggestionItems={peerSuggestionItems}
+              />
+            )}
+        </div>
 
         {(iM?.owner?.userId === user?.id ||
           user?.ActiveFaculty?.ActiveChairperson ||

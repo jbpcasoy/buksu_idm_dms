@@ -39,6 +39,7 @@ import iMAbility from "./iMAbility";
 import activeFileAbility from "./activeFileAbility";
 import collegeAbility from "./collegeAbility";
 import announcementAbility from "./announcementAbility";
+import citlDirectorAbility from "./citlDirectorAbility";
 
 export default async function userAbility(user) {
   const { can, cannot, build } = new AbilityBuilder(createPrismaAbility);
@@ -82,6 +83,7 @@ export default async function userAbility(user) {
   loginRoleAbility({ can, cannot, user });
   iMAbility({ can, cannot, user });
   announcementAbility({ can, cannot, user });
+  citlDirectorAbility({ can, cannot, user });
 
   // TODO ensure that peer, chairperson, dean, imd coordinator,
   // and citl director can still read suggestions, do the same on other resources
