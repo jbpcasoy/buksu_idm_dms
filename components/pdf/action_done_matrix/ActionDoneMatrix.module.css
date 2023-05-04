@@ -1,0 +1,536 @@
+@import url("https://themes.googleusercontent.com/fonts/css?kit=hh9VFM0qOK4TrLidDd__Ui5bnSrpY5TE94xSqAiQW91KDTn8LERXlzF7PmED91NiTGckFRjXKfVJY4BMWL-AuQ");
+
+ol.custom-ol {
+    margin: 0;
+    padding: 0;
+}
+
+table td.custom-td,
+table th.custom-th {
+    padding: 0;
+}
+
+.c25 {
+    padding: 0pt 5.8pt 0pt 5.8pt;
+    vertical-align: top;
+    width: 68.2pt;
+}
+
+.c19 {
+    border-right-style: solid;
+    padding: 0pt 5.8pt 0pt 5.8pt;
+    border-bottom-color: #000000;
+    border-top-width: 1pt;
+    border-right-width: 1pt;
+    border-left-color: #000000;
+    vertical-align: top;
+    border-right-color: #000000;
+    border-left-width: 1pt;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-bottom-width: 1pt;
+    width: 211.5pt;
+    border-top-color: #000000;
+    border-bottom-style: solid;
+}
+
+.c21 {
+    padding: 0pt 5.8pt 0pt 5.8pt;
+    vertical-align: top;
+    width: 106.6pt;
+}
+
+.c26 {
+    border-right-style: solid;
+    padding: 5pt 5pt 5pt 5pt;
+    border-bottom-color: #000000;
+    border-top-width: 0pt;
+    border-right-width: 0pt;
+    border-left-color: #000000;
+    vertical-align: middle;
+    border-right-color: #000000;
+    border-left-width: 0pt;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-bottom-width: 0pt;
+    width: 400.5pt;
+    border-top-color: #000000;
+    border-bottom-style: solid;
+}
+
+.c0 {
+    border-right-style: solid;
+    padding: 0pt 5.8pt 0pt 5.8pt;
+    border-bottom-color: #000000;
+    border-top-width: 1pt;
+    border-right-width: 1pt;
+    border-left-color: #000000;
+    vertical-align: top;
+    border-right-color: #000000;
+    border-left-width: 1pt;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-bottom-width: 1pt;
+    width: 49.6pt;
+    border-top-color: #000000;
+    border-bottom-style: solid;
+}
+
+.c23 {
+    border-right-style: solid;
+    padding: 5pt 5pt 5pt 5pt;
+    border-bottom-color: #000000;
+    border-top-width: 0pt;
+    border-right-width: 0pt;
+    border-left-color: #000000;
+    vertical-align: top;
+    border-right-color: #000000;
+    border-left-width: 0pt;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-bottom-width: 0pt;
+    width: 67.5pt;
+    border-top-color: #000000;
+    border-bottom-style: solid;
+}
+
+.c15 {
+    border-right-style: solid;
+    padding: 0pt 5.8pt 0pt 5.8pt;
+    border-bottom-color: #000000;
+    border-top-width: 1pt;
+    border-right-width: 1pt;
+    border-left-color: #000000;
+    vertical-align: top;
+    border-right-color: #000000;
+    border-left-width: 1pt;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-bottom-width: 1pt;
+    width: 212.7pt;
+    border-top-color: #000000;
+    border-bottom-style: solid;
+}
+
+.c7 {
+    border-right-style: solid;
+    padding: 0pt 5.8pt 0pt 5.8pt;
+    border-bottom-color: #000000;
+    border-top-width: 1pt;
+    border-right-width: 1pt;
+    border-left-color: #000000;
+    vertical-align: top;
+    border-right-color: #000000;
+    border-left-width: 1pt;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-bottom-width: 1pt;
+    width: 46.5pt;
+    border-top-color: #000000;
+    border-bottom-style: solid;
+}
+
+.c14 {
+    border-right-style: solid;
+    padding: 0pt 5.8pt 0pt 5.8pt;
+    border-bottom-color: #000000;
+    border-top-width: 1pt;
+    border-right-width: 1pt;
+    border-left-color: #000000;
+    vertical-align: top;
+    border-right-color: #000000;
+    border-left-width: 1pt;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-bottom-width: 1pt;
+    width: 78pt;
+    border-top-color: #000000;
+    border-bottom-style: solid;
+}
+
+.c36 {
+    padding: 0pt 5.8pt 0pt 5.8pt;
+    vertical-align: top;
+    width: 106.3pt;
+}
+
+.c33 {
+    padding: 0pt 5.8pt 0pt 5.8pt;
+    vertical-align: top;
+    width: 126pt;
+}
+
+.c32 {
+    padding: 0pt 5.8pt 0pt 5.8pt;
+    vertical-align: top;
+    width: 118pt;
+}
+
+.c4 {
+    border-right-style: solid;
+    padding: 0pt 5.8pt 0pt 5.8pt;
+    border-bottom-color: #000000;
+    border-top-width: 1pt;
+    border-right-width: 1pt;
+    border-left-color: #000000;
+    vertical-align: top;
+    border-right-color: #000000;
+    border-left-width: 1pt;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-bottom-width: 1pt;
+    width: 148.8pt;
+    border-top-color: #000000;
+    border-bottom-style: solid;
+}
+
+.c20 {
+    border-right-style: solid;
+    padding: 0pt 5.8pt 0pt 5.8pt;
+    border-bottom-color: #000000;
+    border-top-width: 1pt;
+    border-right-width: 1pt;
+    border-left-color: #000000;
+    vertical-align: top;
+    border-right-color: #000000;
+    border-left-width: 1pt;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-bottom-width: 1pt;
+    width: 153pt;
+    border-top-color: #000000;
+    border-bottom-style: solid;
+}
+
+.c9 {
+    color: #000000;
+    font-weight: 400;
+    text-decoration: none;
+    vertical-align: baseline;
+    font-size: 9pt;
+    font-family: "Book Antiqua";
+    font-style: normal;
+}
+
+.c22 {
+    color: #000000;
+    font-weight: 400;
+    text-decoration: none;
+    vertical-align: baseline;
+    font-size: 12pt;
+    font-family: "Calibri";
+    font-style: normal;
+}
+
+.c10 {
+    padding-top: 0pt;
+    padding-bottom: 0pt;
+    line-height: 1.5;
+    orphans: 2;
+    widows: 2;
+    text-align: justify;
+    height: 12pt;
+}
+
+.c16 {
+    color: #000000;
+    font-weight: 700;
+    text-decoration: none;
+    vertical-align: baseline;
+    font-size: 11pt;
+    font-family: "Book Antiqua";
+    font-style: normal;
+}
+
+.c2 {
+    color: #000000;
+    font-weight: 700;
+    text-decoration: none;
+    vertical-align: baseline;
+    font-size: 12pt;
+    font-family: "Calibri";
+    font-style: normal;
+}
+
+.c8 {
+    color: #000000;
+    font-weight: 400;
+    text-decoration: none;
+    vertical-align: baseline;
+    font-size: 8pt;
+    font-family: "Book Antiqua";
+    font-style: normal;
+}
+
+.c1 {
+    color: #000000;
+    font-weight: 400;
+    text-decoration: none;
+    vertical-align: baseline;
+    font-size: 11pt;
+    font-family: "Book Antiqua";
+    font-style: normal;
+}
+
+.c11 {
+    padding-top: 0pt;
+    padding-bottom: 0pt;
+    line-height: 1;
+    orphans: 2;
+    widows: 2;
+    text-align: center;
+}
+
+.c18 {
+    padding-top: 0pt;
+    padding-bottom: 0pt;
+    line-height: 1;
+    orphans: 2;
+    widows: 2;
+    text-align: left;
+}
+
+.c6 {
+    padding-top: 0pt;
+    padding-bottom: 0pt;
+    line-height: 1;
+    orphans: 2;
+    widows: 2;
+    text-align: justify;
+}
+
+.c24 {
+    -webkit-text-decoration-skip: none;
+    color: #0563c1;
+    font-weight: 400;
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+    font-family: "Book Antiqua";
+}
+
+.c31 {
+    color: #000000;
+    text-decoration: none;
+    vertical-align: baseline;
+    font-size: 12pt;
+    font-style: normal;
+}
+
+.c34 {
+    color: #ff0000;
+    text-decoration: none;
+    vertical-align: baseline;
+    font-size: 8pt;
+    font-style: normal;
+}
+
+.c37 {
+    color: #000000;
+    text-decoration: none;
+    vertical-align: baseline;
+    font-size: 10.5pt;
+    font-style: italic;
+}
+
+.c13 {
+    margin-left: auto;
+    border-spacing: 0;
+    border-collapse: collapse;
+    margin-right: auto;
+}
+
+.c17 {
+    padding-top: 0pt;
+    padding-bottom: 0pt;
+    line-height: 1.1500000000000001;
+    text-align: left;
+}
+
+.c3 {
+    margin-left: -0.2pt;
+    border-spacing: 0;
+    border-collapse: collapse;
+    margin-right: auto;
+}
+
+.c30 {
+    background-color: #ffffff;
+    max-width: 468pt;
+    padding: 72pt 72pt 72pt 72pt;
+}
+
+.c28 {
+    font-size: 11pt;
+    font-family: "Book Antiqua";
+    font-weight: 700;
+}
+
+.c27 {
+    font-weight: 400;
+    font-family: "Book Antiqua";
+}
+
+.c38 {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.c35 {
+    font-weight: 700;
+    font-family: "Book Antiqua";
+}
+
+.c12 {
+    height: 12pt;
+}
+
+.c29 {
+    height: 29.1pt;
+}
+
+.c5 {
+    height: 0pt;
+}
+
+.title {
+    padding-top: 24pt;
+    color: #000000;
+    font-weight: 700;
+    font-size: 36pt;
+    padding-bottom: 6pt;
+    font-family: "Calibri";
+    line-height: 1;
+    page-break-after: avoid;
+    orphans: 2;
+    widows: 2;
+    text-align: left;
+}
+
+.subtitle {
+    padding-top: 18pt;
+    color: #666666;
+    font-size: 24pt;
+    padding-bottom: 4pt;
+    font-family: "Georgia";
+    line-height: 1;
+    page-break-after: avoid;
+    font-style: italic;
+    orphans: 2;
+    widows: 2;
+    text-align: left;
+}
+
+li.custom-li {
+    color: #000000;
+    font-size: 12pt;
+    font-family: "Calibri";
+}
+
+p.custom-p {
+    margin: 0;
+    color: #000000;
+    font-size: 12pt;
+    font-family: "Calibri";
+}
+
+h1.custom-h1 {
+    padding-top: 24pt;
+    color: #000000;
+    font-weight: 700;
+    font-size: 24pt;
+    padding-bottom: 6pt;
+    font-family: "Calibri";
+    line-height: 1;
+    page-break-after: avoid;
+    orphans: 2;
+    widows: 2;
+    text-align: left;
+}
+
+h2.custom-h2 {
+    padding-top: 18pt;
+    color: #000000;
+    font-weight: 700;
+    font-size: 18pt;
+    padding-bottom: 4pt;
+    font-family: "Calibri";
+    line-height: 1;
+    page-break-after: avoid;
+    orphans: 2;
+    widows: 2;
+    text-align: left;
+}
+
+h3.custom-h3 {
+    padding-top: 14pt;
+    color: #000000;
+    font-weight: 700;
+    font-size: 14pt;
+    padding-bottom: 4pt;
+    font-family: "Calibri";
+    line-height: 1;
+    page-break-after: avoid;
+    orphans: 2;
+    widows: 2;
+    text-align: left;
+}
+
+h4.custom-h4 {
+    padding-top: 12pt;
+    color: #000000;
+    font-weight: 700;
+    font-size: 12pt;
+    padding-bottom: 2pt;
+    font-family: "Calibri";
+    line-height: 1;
+    page-break-after: avoid;
+    orphans: 2;
+    widows: 2;
+    text-align: left;
+}
+
+h5.custom-h5 {
+    padding-top: 11pt;
+    color: #000000;
+    font-weight: 700;
+    font-size: 11pt;
+    padding-bottom: 2pt;
+    font-family: "Calibri";
+    line-height: 1;
+    page-break-after: avoid;
+    orphans: 2;
+    widows: 2;
+    text-align: left;
+}
+
+h6.custom-h6 {
+    padding-top: 10pt;
+    color: #000000;
+    font-weight: 700;
+    font-size: 10pt;
+    padding-bottom: 2pt;
+    font-family: "Calibri";
+    line-height: 1;
+    page-break-after: avoid;
+    orphans: 2;
+    widows: 2;
+    text-align: left;
+}
+
+/* Added css */
+.center {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media print {
+    @page {
+        margin: .5in;
+    }
+
+    .printable {
+        page-break-inside: avoid;
+        /* Prevent page breaks within the element */
+    }
+}
