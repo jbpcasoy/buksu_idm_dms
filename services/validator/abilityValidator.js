@@ -1,5 +1,6 @@
 import userAbility from "@/services/abilities/defineAbility";
 import getServerUser from "@/services/helpers/getServerUser";
+import logger from "../api/logger";
 
 export default async function abilityValidator({
   req,

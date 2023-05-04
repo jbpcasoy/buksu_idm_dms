@@ -7135,5 +7135,48 @@
       }
     ],
     "tests": []
+  },
+  {
+    "_id": "0ef80702-8444-40b4-bda1-ee4dbaa658ca",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "ffc0b380-af97-4c54-9470-30e6dbc918f5",
+    "name": "UPSERT Settings",
+    "url": "{{host}}/api/settings",
+    "method": "PUT",
+    "sortNum": 2530000,
+    "created": "2023-05-04T13:05:56.328Z",
+    "modified": "2023-05-04T13:18:22.949Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"vpaa\": \"Hazel Jean M. Abejuela\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "9bcc93e6-a84d-4069-addd-ef5ac598c1e0",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "ffc0b380-af97-4c54-9470-30e6dbc918f5",
+    "name": "READ Settings",
+    "url": "{{host}}/api/settings",
+    "method": "GET",
+    "sortNum": 2540000,
+    "created": "2023-05-04T13:22:26.231Z",
+    "modified": "2023-05-04T13:22:39.771Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]

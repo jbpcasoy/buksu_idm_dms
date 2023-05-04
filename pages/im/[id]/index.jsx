@@ -32,6 +32,7 @@ import useCoordinatorSuggestion from "@/hooks/useCoordinatorSuggestion";
 import useCoordinatorSuggestionItems from "@/hooks/useCoordinatorSuggestionItems";
 import useIMDCoordinatorSuggestion from "@/hooks/imd_coordinator_suggestion/useIMDCoordinatorSuggestion";
 import useIMDCoordinatorSuggestionItems from "@/hooks/imd_coordinator_suggestion/useIMDCoordinatorSuggestionItems";
+import useSettings from "@/hooks/settings/useSettings";
 
 export default function ViewIM() {
   const router = useRouter();
@@ -100,6 +101,8 @@ export default function ViewIM() {
   } = useIMDCoordinatorSuggestionItems({
     iMDCoordinatorSuggestionId: iM?.IMDCoordinatorSuggestion?.id,
   });
+
+  const { settings, settingsError, settingsLoading } = useSettings();
 
   useEffect(() => {
     console.log({ peerSuggestion });
@@ -754,7 +757,7 @@ export default function ViewIM() {
                 imdCoordinator={
                   iM?.IMDCoordinatorEndorsement?.IMDCoordinator?.User?.name
                 }
-                vpaa='Hazel Jean M. Abejuela'
+                vpaa={settings?.vpaa}
                 coordinator={
                   iM?.CoordinatorEndorsement?.Coordinator?.Faculty?.user?.name
                 }

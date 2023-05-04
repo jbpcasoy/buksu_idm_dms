@@ -11,6 +11,7 @@ import Person3Icon from "@mui/icons-material/Person3";
 import Person4Icon from "@mui/icons-material/Person4";
 import CampaignIcon from "@mui/icons-material/Campaign";
 import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
+import SettingsIcon from "@mui/icons-material/Settings";
 import {
   Box,
   Drawer,
@@ -83,6 +84,11 @@ const menuItems = [
     label: "Announcements",
     icon: <CampaignIcon />,
     link: "/admin/announcement",
+  },
+  {
+    label: "Settings",
+    icon: <SettingsIcon />,
+    link: "/admin/settings",
   },
   // Postponed idea
   // {
