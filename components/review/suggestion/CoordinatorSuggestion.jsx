@@ -5,10 +5,10 @@ import useSubmittedCoordinatorReview from "@/hooks/useSubmittedCoordinatorReview
 import frontendCreateCoordinatorSuggestionItem from "@/services/frontend/coordinator_sugestion_item/frontendCreateCoordinatorSuggestionItem";
 import frontendCreateSubmittedCoordinatorSuggestion from "@/services/frontend/submitted_coordinator_suggestion/frontendCreateSubmittedCoordinatorSuggestion";
 import { useRouter } from "next/router";
+import { useSnackbar } from "notistack";
 import { useEffect } from "react";
 import CoordinatorSuggestionItem from "./CoordinatorSuggestionItem";
 import Suggestion from "./Suggestion";
-import { useSnackbar } from "notistack";
 
 export default function CoordinatorSuggestion({
   coordinatorReview,

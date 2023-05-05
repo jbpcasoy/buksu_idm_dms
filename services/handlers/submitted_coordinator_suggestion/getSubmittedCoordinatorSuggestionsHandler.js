@@ -1,6 +1,6 @@
 import userAbility from "@/services/abilities/defineAbility";
-import readSubmittedCoordinatorSuggestions from "../../api/submitted_coordinator_suggestion/readSubmittedCoordinatorSuggestions";
 import getServerUser from "@/services/helpers/getServerUser";
+import readSubmittedCoordinatorSuggestions from "../../api/submitted_coordinator_suggestion/readSubmittedCoordinatorSuggestions";
 
 export default async function getSubmittedCoordinatorSuggestionsHandler(
   req,

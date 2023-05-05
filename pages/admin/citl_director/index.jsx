@@ -141,15 +141,14 @@ export default function AdminCITLDirectorPage() {
     <AdminLayout>
       <Box sx={{ m: 1 }}>
         <Toolbar>
-          <Typography variant='h6'>CITL Directors</Typography>
-
           <Stack
             direction='row'
-            justifyContent='flex-end'
+            justifyContent='space-between'
             alignItems='center'
             spacing={2}
             sx={{ width: "100%" }}
           >
+            <Typography variant='h6'>CITL Directors</Typography>
             <Tooltip title='Add'>
               <IconButton onClick={() => openAddDialog(true)}>
                 <AddIcon />

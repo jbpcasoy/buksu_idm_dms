@@ -1,5 +1,4 @@
 import { Button, Modal } from "flowbite-react";
-import React, { useState } from "react";
 
 export default function ConfirmModal({
   show,

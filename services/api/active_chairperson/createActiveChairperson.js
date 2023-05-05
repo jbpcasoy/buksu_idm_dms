@@ -1,6 +1,6 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
-import readChairperson from "../chairperson/readChairperson";
 import readActiveFaculty from "../active_faculty/readActiveFaculty";
+import readChairperson from "../chairperson/readChairperson";
 import readUser from "../user/readUser";
 
 export default async function createActiveChairperson({

@@ -2,7 +2,6 @@ import useUserEvents from "@/hooks/im_event/useUserEvent";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import IMEvent from "../im_event/IMEvent";
-import useActiveFaculty from "@/hooks/faculty/useActiveFaculty";
 
 export default function UserEvents({ facultyId }) {
   const router = useRouter();

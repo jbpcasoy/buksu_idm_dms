@@ -2,7 +2,6 @@ import userAbility from "@/services/abilities/defineAbility";
 import deleteActiveFaculty from "@/services/api/active_faculty/deleteActiveFaculty";
 import readActiveFaculty from "@/services/api/active_faculty/readActiveFaculty";
 import getServerUser from "@/services/helpers/getServerUser";
-import statusError from "@/services/helpers/throwError";
 import abilityValidator from "@/services/validator/abilityValidator";
 
 export default async function deleteActiveFacultyHandler(req, res) {

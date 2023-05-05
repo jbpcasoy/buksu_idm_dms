@@ -1,3 +1,4 @@
+import InfoIcon from "@mui/icons-material/Info";
 import {
   FormControl,
   InputLabel,
@@ -15,7 +16,6 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import InfoIcon from "@mui/icons-material/Info";
 
 export default function AdminIMUpdateForm({
   open,

@@ -1,5 +1,5 @@
 import { Stack, TextField } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function YearRange({ startYear, endYear, onChange }) {
   const [state, setState] = useState({

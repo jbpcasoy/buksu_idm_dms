@@ -1,5 +1,4 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
-import statusError from "@/services/helpers/throwError";
 import { accessibleBy } from "@casl/prisma";
 
 export default async function readActiveCITLDirector({

@@ -10,9 +10,13 @@ export default async function loginRoleHandler(req, res) {
     req,
     res,
     next: async (req, res) => {
-      await createOrUpdateLoginRole({ userId: user?.id, Role: role });
+      try {
+        await createOrUpdateLoginRole({ userId: user?.id, Role: role });
 
-      return res.redirect(redirect ?? "/");
+        return res.redirect(redirect ?? "/");
+      } catch (err) {
+        return res.redirect(`/?error=${err.message}`);
+      }
     },
     action: "createOrUpdate",
     subject: "LoginRole",

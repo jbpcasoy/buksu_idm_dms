@@ -2,7 +2,6 @@ import userAbility from "@/services/abilities/defineAbility";
 import deleteActiveCITLDirector from "@/services/api/active_citl_director/deleteActiveCITLDirector";
 import readActiveCITLDirector from "@/services/api/active_citl_director/readActiveCITLDirector";
 import getServerUser from "@/services/helpers/getServerUser";
-import statusError from "@/services/helpers/throwError";
 import abilityValidator from "@/services/validator/abilityValidator";
 
 export default async function deleteActiveCITLDirectorHandler(req, res) {

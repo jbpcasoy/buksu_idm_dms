@@ -2,7 +2,7 @@ import frontendUpdateIM from "@/services/frontend/im/frontendUpdateIM";
 import AdminIMView from "@/views/admin/im/AdminIMView";
 import { useRouter } from "next/router";
 import { useSnackbar } from "notistack";
-import React, { useState } from "react";
+import { useState } from "react";
 
 export default function AdminIM({ im }) {
   const { closeSnackbar, enqueueSnackbar } = useSnackbar();

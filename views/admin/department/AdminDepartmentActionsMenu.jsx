@@ -23,7 +23,8 @@ export default function AdminDepartmentActionsMenu({ onEdit, onDelete }) {
         aria-controls={open ? "basic-menu" : undefined}
         aria-haspopup='true'
         aria-expanded={open ? "true" : undefined}
-        onClick={handleClick}>
+        onClick={handleClick}
+      >
         <MoreVertIcon />
       </IconButton>
       <Menu
@@ -33,12 +34,14 @@ export default function AdminDepartmentActionsMenu({ onEdit, onDelete }) {
         onClose={handleClose}
         MenuListProps={{
           "aria-labelledby": "basic-button",
-        }}>
+        }}
+      >
         <MenuItem
           onClick={() => {
             handleClose();
             onEdit();
-          }}>
+          }}
+        >
           <ListItemIcon>
             <EditIcon fontSize='small' />
           </ListItemIcon>
@@ -48,7 +51,8 @@ export default function AdminDepartmentActionsMenu({ onEdit, onDelete }) {
           onClick={() => {
             handleClose();
             onDelete();
-          }}>
+          }}
+        >
           <ListItemIcon>
             <DeleteIcon fontSize='small' />
           </ListItemIcon>

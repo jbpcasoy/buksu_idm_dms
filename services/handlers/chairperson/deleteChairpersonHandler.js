@@ -2,7 +2,6 @@ import userAbility from "@/services/abilities/defineAbility";
 import deleteChairperson from "@/services/api/chairperson/deleteChairperson";
 import readChairperson from "@/services/api/chairperson/readChairperson";
 import getServerUser from "@/services/helpers/getServerUser";
-import statusError from "@/services/helpers/throwError";
 import abilityValidator from "@/services/validator/abilityValidator";
 
 export default async function deleteChairpersonHandler(req, res) {

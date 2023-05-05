@@ -1,10 +1,10 @@
+import { PRISMA_CLIENT } from "@/prisma/prisma_client";
 import { reqLog } from "@/services/api/logger";
+import catchAllError from "@/services/middleware/catchAllError";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import prisma from "../../../../lib/prismadb";
-import catchAllError from "@/services/middleware/catchAllError";
-import { PRISMA_CLIENT } from "@/prisma/prisma_client";
 
 const prismaClient = PRISMA_CLIENT;
 

@@ -1,6 +1,6 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
-import readSubmittedIMDCoordinatorSuggestion from "../submitted_imd_coordinator_suggestion/readSubmittedIMDCoordinatorSuggestion";
 import updateIM from "../im/updateIM";
+import readSubmittedIMDCoordinatorSuggestion from "../submitted_imd_coordinator_suggestion/readSubmittedIMDCoordinatorSuggestion";
 
 export default async function createIMDCoordinatorEndorsement({
   iMDCoordinatorId,

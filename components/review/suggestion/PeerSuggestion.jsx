@@ -5,10 +5,10 @@ import useSubmittedPeerReview from "@/hooks/useSubmittedPeerReview";
 import frontendCreatePeerSuggestionItem from "@/services/frontend/peer_suggestion_item/frontendCreatePeerSuggestionItem";
 import frontendCreateSubmittedPeerSuggestion from "@/services/frontend/submitted_peer_suggestion/frontendCreateSubmittedPeerSuggestion";
 import { useRouter } from "next/router";
+import { useSnackbar } from "notistack";
 import { useEffect } from "react";
 import PeerSuggestionItem from "./PeerSuggestionItem";
 import Suggestion from "./Suggestion";
-import { useSnackbar } from "notistack";
 
 export default function PeerSuggestion({ peerReview, onFinish, onPrevious }) {
   const { closeSnackbar, enqueueSnackbar } = useSnackbar();

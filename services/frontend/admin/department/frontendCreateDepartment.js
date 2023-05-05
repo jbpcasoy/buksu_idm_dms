@@ -7,7 +7,7 @@ export default async function frontendCreateDepartment({ name, collegeId }) {
       collegeId,
     });
 
-    return department;
+    return department.data;
   } catch (error) {
     throw error;
   }

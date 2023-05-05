@@ -1,8 +1,7 @@
-import handler from "@/pages/api/active_chairperson";
-import formatPrismaError from "../helpers/formatPrismaError";
-import { Prisma } from "@prisma/client";
 import { ForbiddenError } from "@casl/ability";
+import { Prisma } from "@prisma/client";
 import logger from "../api/logger";
+import formatPrismaError from "../helpers/formatPrismaError";
 
 export default async function catchAllError(req, res, next) {
   try {

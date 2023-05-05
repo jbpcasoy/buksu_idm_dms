@@ -3,8 +3,6 @@ import AdminIM from "@/components/admin/im/AdminIM";
 import IMStatuses from "@/services/constants/im_status";
 import IMTypes from "@/services/constants/im_type";
 import frontendReadIms from "@/services/frontend/admin/im";
-import frontendUpdateIM from "@/services/frontend/im/frontendUpdateIM";
-import AdminIMView from "@/views/admin/im/AdminIMView";
 import Sort from "@/views/admin/Sort";
 import {
   Box,

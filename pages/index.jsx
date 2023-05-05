@@ -90,14 +90,10 @@ export default function Home() {
                   <div className='space-y-4'>
                     <button
                       onClick={() => {
-                        signIn(
-                          "google",
-                          {
-                            callbackUrl:
-                              "/api/login_role?role=FACULTY&redirect=/home",
-                          },
-                          { prompt: "login" }
-                        ).catch((err) => {
+                        signIn("google", {
+                          callbackUrl:
+                            "/api/login_role?role=FACULTY&redirect=/home",
+                        }).catch((err) => {
                           signOut();
                         });
                       }}
@@ -107,14 +103,10 @@ export default function Home() {
                     </button>
                     <button
                       onClick={() => {
-                        signIn(
-                          "google",
-                          {
-                            callbackUrl:
-                              "/api/login_role?role=ADMIN&redirect=/admin",
-                          },
-                          { prompt: "login" }
-                        ).catch((err) => {
+                        signIn("google", {
+                          callbackUrl:
+                            "/api/login_role?role=ADMIN&redirect=/admin",
+                        }).catch((err) => {
                           signOut();
                         });
                       }}

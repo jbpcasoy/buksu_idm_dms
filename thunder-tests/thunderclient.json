@@ -294,7 +294,7 @@
     "method": "POST",
     "sortNum": 100000,
     "created": "2023-02-26T01:21:31.364Z",
-    "modified": "2023-04-26T05:24:31.092Z",
+    "modified": "2023-05-05T12:41:51.853Z",
     "headers": [
       {
         "name": "Cookie",
@@ -303,7 +303,7 @@
       },
       {
         "name": "Cookie",
-        "value": "{{FacultyCookie}}"
+        "value": "{{Faculty1Cookie}}"
       },
       {
         "name": "Cookie",
@@ -314,7 +314,7 @@
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"iMId\":\"clgx907wz001is91yxbyudt3m\",\n    \"originalFileName\": \"Artiaga Weekly Accomplishment Report.docx-(6).pdf\",\n    \"fileName\": \"8b3415fc-11be-4bf3-b362-3fa16ad636cf_artiaga_weekly_accomplishment_report.docx-(8).pdf\",\n    \"googleDocsUrl\": \"https://docs.google.com/myfile\"\n}",
+      "raw": "{\n    \"iMId\":\"clhajjuck000otngw9gruyr1p\",\n    \"originalFileName\": \"IKFM4H1lBZxfDiTnNWxP.pdf\"\n}",
       "form": []
     },
     "tests": []
@@ -1958,7 +1958,7 @@
     "method": "POST",
     "sortNum": 810000,
     "created": "2023-02-26T01:21:31.438Z",
-    "modified": "2023-04-26T05:24:51.770Z",
+    "modified": "2023-05-05T12:45:26.403Z",
     "headers": [
       {
         "name": "Cookie",
@@ -1978,7 +1978,7 @@
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"fileId\": \"clgx94hd9001rs91ylea1qfob\",\n    \"iMId\": \"clgx907wz001is91yxbyudt3m\"\n}",
+      "raw": "{\n    \"fileId\": \"clhajpl5a0016tngwchpas4vt\",\n    \"iMId\": \"clhajjuck000otngw9gruyr1p\"\n}",
       "form": []
     },
     "tests": []
@@ -6793,11 +6793,11 @@
     "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
     "containerId": "e3ba3dbd-e314-4a35-8e3a-55cf6b019d13",
     "name": "UPDATE ActiveFile",
-    "url": "{{host}}/api/active_file/clget3gud0031s9xt35unvjeg",
+    "url": "{{host}}/api/active_file/clhajjvwq000wtngwjqbwy61v",
     "method": "PUT",
     "sortNum": 2410000,
     "created": "2023-04-13T07:30:02.334Z",
-    "modified": "2023-04-13T07:55:46.466Z",
+    "modified": "2023-05-05T12:43:49.950Z",
     "headers": [
       {
         "name": "Cookie",
@@ -6817,7 +6817,7 @@
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"fileId\": \"clget8sgv003bs9xt3uehtkoy\"\n}",
+      "raw": "{\n  \"fileId\": \"clhajlrkn0012tngwi75h7azb\"\n}",
       "form": []
     },
     "tests": []
@@ -7134,6 +7134,49 @@
         "isPath": false
       }
     ],
+    "tests": []
+  },
+  {
+    "_id": "0ef80702-8444-40b4-bda1-ee4dbaa658ca",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "ffc0b380-af97-4c54-9470-30e6dbc918f5",
+    "name": "UPSERT Settings",
+    "url": "{{host}}/api/settings",
+    "method": "PUT",
+    "sortNum": 2530000,
+    "created": "2023-05-04T13:05:56.328Z",
+    "modified": "2023-05-04T13:18:22.949Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "{{Cookie}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "{{AdminCookie}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"vpaa\": \"Hazel Jean M. Abejuela\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "9bcc93e6-a84d-4069-addd-ef5ac598c1e0",
+    "colId": "efee9868-e195-4c4c-ada8-ad6d5b072f11",
+    "containerId": "ffc0b380-af97-4c54-9470-30e6dbc918f5",
+    "name": "READ Settings",
+    "url": "{{host}}/api/settings",
+    "method": "GET",
+    "sortNum": 2540000,
+    "created": "2023-05-04T13:22:26.231Z",
+    "modified": "2023-05-04T13:22:39.771Z",
+    "headers": [],
+    "params": [],
     "tests": []
   }
 ]

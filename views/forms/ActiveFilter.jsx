@@ -14,7 +14,8 @@ export default function ActiveFilter({ onChange }) {
       <Select
         value={active}
         label='Status'
-        onChange={(e) => setActive(e.target.value)}>
+        onChange={(e) => setActive(e.target.value)}
+      >
         <MenuItem value='All'>All</MenuItem>
         <MenuItem value='Active'>Active</MenuItem>
         <MenuItem value='Inactive'>Inactive</MenuItem>
