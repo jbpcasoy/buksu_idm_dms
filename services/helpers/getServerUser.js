@@ -1,6 +1,5 @@
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { getServerSession } from "next-auth";
-import getUserByEmail from "./getUserByEmail";
 import statusError from "./throwError";
 
 export default async function getServerUser(req, res) {

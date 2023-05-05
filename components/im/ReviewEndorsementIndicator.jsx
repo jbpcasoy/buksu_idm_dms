@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function ReviewEndorsementIndicator({ im, direction = "row" }) {
   const peerReviewed = Boolean(im?.SubmittedPeerReview);
   const chairpersonReviewed = Boolean(im?.SubmittedChairpersonReview);

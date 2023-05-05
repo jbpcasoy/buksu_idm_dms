@@ -5,10 +5,10 @@ import useSubmittedChairpersonReview from "@/hooks/useSubmittedChairpersonReview
 import frontendCreateChairpersonSuggestionItem from "@/services/frontend/chairperson_suggestion_item/frontendCreateChairpersonSuggestionItem";
 import frontendCreateSubmittedChairpersonSuggestion from "@/services/frontend/submitted_chairperson_suggestion/frontendCreateSubmittedChairpersonSuggestion";
 import { useRouter } from "next/router";
+import { useSnackbar } from "notistack";
 import { useEffect } from "react";
 import ChairpersonSuggestionItem from "./ChairpersonSuggestionItem";
 import Suggestion from "./Suggestion";
-import { useSnackbar } from "notistack";
 
 export default function ChairpersonSuggestion({
   chairpersonReview,

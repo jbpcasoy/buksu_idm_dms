@@ -2,9 +2,6 @@ import AdminLayout from "@/components/admin/AdminLayout";
 import EndorsedIM from "@/components/admin/dashboard/EndorsedIM";
 import FacultyChart from "@/components/admin/dashboard/FacultyChart";
 import IMPieChart from "@/components/admin/dashboard/IMPieChart";
-import { ApprovedIMsLine } from "@/components/charts/ApprovedIMsLine";
-import Chart from "@/components/charts/Chart";
-import NumberOfFaculties from "@/components/charts/Faculties";
 import { Box, Grid, Toolbar, Typography } from "@mui/material";
 
 export default function AdminHome() {

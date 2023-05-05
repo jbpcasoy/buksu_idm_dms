@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./IMReview.module.css";
 
 export default function IMReviewSection({

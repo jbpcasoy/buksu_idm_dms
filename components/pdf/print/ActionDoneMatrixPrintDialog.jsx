@@ -1,7 +1,6 @@
 import { Button, Modal } from "flowbite-react";
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useReactToPrint } from "react-to-print";
-import { sections } from "@/constants/questions";
 import ActionDoneMatrix from "../action_done_matrix/ActionDoneMatrix";
 
 export default function ActionDoneMatrixPrintDialog({

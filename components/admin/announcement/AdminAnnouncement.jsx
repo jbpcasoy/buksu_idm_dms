@@ -2,7 +2,7 @@ import frontendDeleteAnnouncement from "@/services/frontend/announcement/fronten
 import frontendUpdateAnnouncement from "@/services/frontend/announcement/frontendUpdateAnnouncement";
 import AdminAnnouncementView from "@/views/admin/announcement/AdminAnnouncementView";
 import { useSnackbar } from "notistack";
-import React, { useState } from "react";
+import { useState } from "react";
 
 export default function AdminAnnouncement({ announcement }) {
   const [announcementData, setAnnouncementData] = useState(announcement);

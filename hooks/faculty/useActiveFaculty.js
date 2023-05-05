@@ -1,4 +1,3 @@
-import frontendReadActiveFaculties from "@/services/frontend/admin/active_faculty/frontendReadActiveFaculties";
 import frontendReadActiveFaculty from "@/services/frontend/admin/active_faculty/frontendReadFaculty";
 import { useEffect, useState } from "react";
 

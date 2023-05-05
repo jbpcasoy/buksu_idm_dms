@@ -4,8 +4,7 @@ import { Avatar, Chip, TableCell, TableRow } from "@mui/material";
 import { useState } from "react";
 import AdminCoordinatorActionsMenu from "./AdminCoordinatorActionsMenu";
 import AdminDeleteCoordinatorAlert from "./AdminDeleteCoordinatorAlert";
-import AdminDeleteConfirmation from "../AdminDeleteConfirmation";
-
+import ;
 export default function AdminCoordinatorView({
   image,
   name,

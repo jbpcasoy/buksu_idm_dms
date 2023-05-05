@@ -1,9 +1,9 @@
 import CheckIcon from "@mui/icons-material/Check";
 import CloseIcon from "@mui/icons-material/Close";
 import { Avatar, Chip, TableCell, TableRow } from "@mui/material";
-import AdminChairpersonActionsMenu from "./AdminChairpersonActionsMenu";
-import AdminDeleteConfirmation from "../AdminDeleteConfirmation";
 import { useState } from "react";
+import AdminDeleteConfirmation from "../AdminDeleteConfirmation";
+import AdminChairpersonActionsMenu from "./AdminChairpersonActionsMenu";
 
 export default function AdminChairpersonView({
   image,

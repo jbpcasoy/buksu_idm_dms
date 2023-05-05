@@ -11,7 +11,7 @@ import {
   TextField,
 } from "@mui/material";
 import { useFormik } from "formik";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import * as Yup from "yup";
 
 export default function SettingsPage() {

@@ -2,7 +2,6 @@ import userAbility from "@/services/abilities/defineAbility";
 import deleteActiveFile from "@/services/api/active_file/deleteActiveFile";
 import readActiveFile from "@/services/api/active_file/readActiveFile";
 import getServerUser from "@/services/helpers/getServerUser";
-import statusError from "@/services/helpers/throwError";
 import abilityValidator from "@/services/validator/abilityValidator";
 import { subject } from "@casl/ability";
 

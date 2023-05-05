@@ -1,6 +1,6 @@
 import frontendReadColleges from "@/services/frontend/admin/college/frontendReadColleges";
 import { Card, CardContent, CardHeader, Container, Grid } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function FacultyChart() {
   const [colleges, setColleges] = useState([]);

@@ -2,7 +2,6 @@ import userAbility from "@/services/abilities/defineAbility";
 import readCollege from "@/services/api/college/readCollege";
 import updateCollege from "@/services/api/college/updateCollege";
 import getServerUser from "@/services/helpers/getServerUser";
-import statusError from "@/services/helpers/throwError";
 import abilityValidator from "@/services/validator/abilityValidator";
 import { subject } from "@casl/ability";
 

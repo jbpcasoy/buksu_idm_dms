@@ -4,7 +4,6 @@ import useSubmittedPeerReview from "@/hooks/useSubmittedPeerReview";
 import Empty from "@/views/Empty";
 import PeerSuggestionItemView from "./PeerSuggestionItemView";
 import SuggestionView from "./SuggestionView";
-import ActionDoneMatrixPrintDialog from "@/components/pdf/print/ActionDoneMatrixPrintDialog";
 
 export default function PeerSuggestionView({ peerReview, viewOnly = false }) {
   const {

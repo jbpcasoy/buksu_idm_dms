@@ -1,6 +1,5 @@
-import React from "react";
-import IMReviewPrintDialog from "./IMReviewPrintDialog";
 import usePeerReview from "@/hooks/usePeerReview";
+import IMReviewPrintDialog from "./IMReviewPrintDialog";
 
 export default function PeerIMReviewPrintDialog({ iM }) {
   const { peerReview, peerReviewError, peerReviewLoading } = usePeerReview(

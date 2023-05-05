@@ -2,7 +2,6 @@ import userAbility from "@/services/abilities/defineAbility";
 import readDepartment from "@/services/api/department/readDepartment";
 import updateDocument from "@/services/api/department/updateDocument";
 import getServerUser from "@/services/helpers/getServerUser";
-import statusError from "@/services/helpers/throwError";
 import abilityValidator from "@/services/validator/abilityValidator";
 import { subject } from "@casl/ability";
 

@@ -22,9 +22,9 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import { useEffect, useState } from "react";
 import _ from "lodash";
 import { useSnackbar } from "notistack";
+import { useEffect, useState } from "react";
 
 export default function AdminDeanPage() {
   const { closeSnackbar, enqueueSnackbar } = useSnackbar();

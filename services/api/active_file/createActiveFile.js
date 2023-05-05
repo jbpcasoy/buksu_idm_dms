@@ -1,5 +1,4 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
-import readIM from "../im/readIM";
 import readFile from "../file/readFile";
 
 export default async function createActiveFile({ fileId, iMId, ability }) {

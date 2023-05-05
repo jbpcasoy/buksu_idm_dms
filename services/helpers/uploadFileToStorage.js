@@ -1,6 +1,6 @@
 import firebaseUploadFile from "@/services/api/upload/file/firebaseUploadFile";
-import path from "path";
 import localUploadFile from "@/services/api/upload/file/localUploadFile";
+import path from "path";
 
 export default async function uploadFileToStorage({ dest, file }) {
   if (process.env.STORAGE === "cloud") {
