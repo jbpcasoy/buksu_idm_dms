@@ -165,15 +165,14 @@ export default function AdminFacultyPage() {
     <AdminLayout>
       <Box sx={{ m: 1 }}>
         <Toolbar>
-          <Typography variant='h6'>Faculties</Typography>
-
           <Stack
             direction='row'
-            justifyContent='flex-end'
+            justifyContent='space-between'
             alignItems='center'
             spacing={2}
             sx={{ width: "100%" }}
           >
+            <Typography variant='h6'>Faculties</Typography>
             <Tooltip title='Add'>
               <IconButton onClick={() => openAddDialog(true)}>
                 <AddIcon />

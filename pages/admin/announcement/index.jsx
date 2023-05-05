@@ -140,15 +140,14 @@ export default function AdminAnnouncementPage() {
     <AdminLayout>
       <Box sx={{ m: 1 }}>
         <Toolbar>
-          <Typography variant='h6'>Announcements</Typography>
-
           <Stack
             direction='row'
-            justifyContent='flex-end'
+            justifyContent='space-between'
             alignItems='center'
             spacing={2}
             sx={{ width: "100%" }}
           >
+            <Typography variant='h6'>Announcements</Typography>
             <Tooltip title='Add'>
               <IconButton onClick={() => openAddDialog(true)}>
                 <AddIcon />

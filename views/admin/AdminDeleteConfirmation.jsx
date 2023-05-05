@@ -10,8 +10,8 @@ export default function AdminDeleteConfirmation({
   onAgree,
   onClose,
   open,
-  agreeText = "Yes",
-  closeText = "No",
+  agreeText = "Delete",
+  closeText = "Cancel",
   title = "Are you sure?",
   message = "This action cannot be undone.",
 }) {
@@ -30,6 +30,9 @@ export default function AdminDeleteConfirmation({
         </DialogContentText>
       </DialogContent>
       <DialogActions>
+        <Button onClick={onClose} autoFocus>
+          {closeText}
+        </Button>
         <Button
           onClick={() => {
             onAgree().then(() => {
@@ -39,9 +42,6 @@ export default function AdminDeleteConfirmation({
           color='error'
         >
           {agreeText}
-        </Button>
-        <Button onClick={onClose} autoFocus>
-          {closeText}
         </Button>
       </DialogActions>
     </Dialog>

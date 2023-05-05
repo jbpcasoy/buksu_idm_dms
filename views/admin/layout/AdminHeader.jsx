@@ -5,23 +5,26 @@ import Typography from "@mui/material/Typography";
 import { signIn, signOut } from "next-auth/react";
 import AdminLoginButton from "../AdminLoginButton";
 import AdminDrawerMenu from "./AdminDrawerMenu";
+import { Stack } from "@mui/material";
 
 export default function AdminHeader() {
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position='static'>
-        <Toolbar>
-          <AdminDrawerMenu />
-          <Typography
-            variant='h6'
-            component='a'
-            sx={{ flexGrow: 1 }}
-            href='/admin'>
+    <AppBar position='static'>
+      <Toolbar>
+        <AdminDrawerMenu />
+        <Stack
+          direction='row'
+          justifyContent='space-between'
+          alignItems='center'
+          spacing={2}
+          sx={{ width: "100%" }}
+        >
+          <Typography variant='h6' component='a' href='/admin'>
             Admin
           </Typography>
           <AdminLoginButton onSignIn={signIn} onSignOut={signOut} />
-        </Toolbar>
-      </AppBar>
-    </Box>
+        </Stack>
+      </Toolbar>
+    </AppBar>
   );
 }

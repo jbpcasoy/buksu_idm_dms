@@ -33,6 +33,7 @@ export default function SettingsPage() {
     formik.setValues({
       vpaa: settings.vpaa,
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [settings]);
 
   return (
