@@ -35,7 +35,7 @@ export default function AddIMReviewSectionDialog({ open, onClose, onSubmit }) {
                 size='small'
                 {...formik.getFieldProps("title")}
                 error={formik.touched.title && formik.errors.title}
-                helperText={formik.touched && formik.errors.title}
+                helperText={formik.touched.title && formik.errors.title}
               />
             </Stack>
           </DialogContent>

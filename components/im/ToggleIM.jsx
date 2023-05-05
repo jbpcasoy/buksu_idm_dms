@@ -29,7 +29,7 @@ export default function ToggleIM({ iM, onUpdate }) {
         })
         .catch((err) => {
           enqueueSnackbar({
-            message: "Failed to update IM",
+            message: err?.response?.data?.error ?? "Failed to update IM",
             variant: "error",
           });
         })

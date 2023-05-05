@@ -43,7 +43,7 @@ export default function AdminAddCollegeDepartmentForm({
               size='small'
               {...formik.getFieldProps("name")}
               error={formik.touched.name && formik.errors.name}
-              helperText={formik.touched && formik.errors.name}
+              helperText={formik.touched.name && formik.errors.name}
             />
           </Stack>
         </DialogContent>

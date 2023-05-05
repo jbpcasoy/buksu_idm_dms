@@ -24,7 +24,7 @@ export default function AdminCollege({ college }) {
       })
       .catch((err) => {
         enqueueSnackbar({
-          message: "Failed to update college",
+          message: err?.response?.data?.error ?? "Failed to update college",
           variant: "error",
         });
       });
@@ -60,7 +60,7 @@ export default function AdminCollege({ college }) {
       .catch((err) => {
         console.error(err);
         enqueueSnackbar({
-          message: "Failed to add department",
+          message: err?.response?.data?.error ?? "Failed to add department",
           variant: "error",
         });
       });

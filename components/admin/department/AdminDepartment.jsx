@@ -21,7 +21,7 @@ export default function AdminDepartment({ department }) {
       })
       .catch((err) => {
         enqueueSnackbar({
-          message: "Failed to update department",
+          message: err?.response?.data?.error ?? "Failed to update department",
           variant: "error",
         });
       });

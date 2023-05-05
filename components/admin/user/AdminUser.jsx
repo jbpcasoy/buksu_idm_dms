@@ -20,7 +20,7 @@ export default function AdminUser({ user }) {
       })
       .catch((err) => {
         enqueueSnackbar({
-          message: "Failed to update user",
+          message: err?.response?.data?.error ?? "Failed to update user",
           variant: "error",
         });
       });

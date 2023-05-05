@@ -25,7 +25,8 @@ export default function AdminAnnouncement({ announcement }) {
       })
       .catch((err) => {
         enqueueSnackbar({
-          message: "Failed to update announcement",
+          message:
+            err?.response?.data?.error ?? "Failed to update announcement",
           variant: "error",
         });
       });
@@ -42,7 +43,8 @@ export default function AdminAnnouncement({ announcement }) {
       })
       .catch((err) => {
         enqueueSnackbar({
-          message: "Failed to delete announcement",
+          message:
+            err?.response?.data?.error ?? "Failed to delete announcement",
           variant: "error",
         });
       });
