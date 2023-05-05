@@ -4,6 +4,9 @@ export default async function activeFileAbility({ can, cannot, user }) {
       ownerId: {
         equals: user.ActiveFaculty.facultyId,
       },
+      status: {
+        in: ["DRAFT", "DEPARTMENT_REVIEWED", "CITL_REVIEWED"],
+      },
     });
     can("connectToActiveFile", "File", {
       iM: {
@@ -11,6 +14,9 @@ export default async function activeFileAbility({ can, cannot, user }) {
           ownerId: {
             equals: user.ActiveFaculty.facultyId,
           },
+        },
+        status: {
+          in: ["DRAFT", "DEPARTMENT_REVIEWED", "CITL_REVIEWED"],
         },
       },
     });
@@ -41,6 +47,9 @@ export default async function activeFileAbility({ can, cannot, user }) {
         is: {
           ownerId: {
             equals: user?.ActiveFaculty?.facultyId,
+          },
+          status: {
+            in: ["DRAFT", "DEPARTMENT_REVIEWED", "CITL_REVIEWED"],
           },
         },
       },
