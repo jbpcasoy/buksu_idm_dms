@@ -4,10 +4,10 @@ import useIM from "@/hooks/useIM";
 import frontendCreateIMDCoordinatorSuggestionItem from "@/services/frontend/imd_coordinator_suggestion_item/frontendCreateIMDCoordinatorSuggestionItem";
 import frontendCreateSubmittedIMDCoordinatorSuggestion from "@/services/frontend/submitted_imd_coordinator_suggestion_item/frontendCreateSubmittedIMDCoordinatorSuggestion";
 import { useRouter } from "next/router";
+import { useSnackbar } from "notistack";
 import { useEffect } from "react";
 import IMDCoordinatorSuggestionItem from "./IMDCoordinatorSuggestionItem";
 import Suggestion from "./Suggestion";
-import { useSnackbar } from "notistack";
 
 export default function IMDCoordinatorSuggestion({
   //   iMDCoordinatorReview,

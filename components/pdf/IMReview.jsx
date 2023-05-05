@@ -50,7 +50,7 @@ const IMReview = React.forwardRef((props, ref) => {
                   >
                     <img
                       alt='BukSU Logo'
-                      src='/im_review/images/image1.png'
+                      src='/pdf_images/image1.png'
                       style={{
                         width: "55px",
                         height: "55px",
@@ -73,7 +73,7 @@ const IMReview = React.forwardRef((props, ref) => {
                   >
                     <img
                       alt='CITL Logo'
-                      src='/im_review/images/image2.png'
+                      src='/pdf_images/image2.png'
                       style={{
                         width: "55px",
                         height: "55px",
@@ -149,7 +149,7 @@ const IMReview = React.forwardRef((props, ref) => {
                   >
                     <img
                       alt='CITL Motto'
-                      src='/im_review/images/image3.png'
+                      src='/pdf_images/image3.png'
                       style={{
                         overflow: "hidden",
                         display: "inline-block",

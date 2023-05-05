@@ -1,7 +1,7 @@
 import frontendUpdateUser from "@/services/frontend/user/frontendUpdateUser";
 import AdminUserView from "@/views/admin/user/AdminUser";
 import { useSnackbar } from "notistack";
-import React, { useState } from "react";
+import { useState } from "react";
 
 export default function AdminUser({ user }) {
   const [userData, setUserData] = useState(user);
@@ -20,7 +20,7 @@ export default function AdminUser({ user }) {
       })
       .catch((err) => {
         enqueueSnackbar({
-          message: "Failed to update user",
+          message: err?.response?.data?.error ?? "Failed to update user",
           variant: "error",
         });
       });

@@ -1,6 +1,5 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
 import readFaculty from "../faculty/readFaculty";
-import userAbility from "@/services/abilities/defineAbility";
 
 export default async function createActiveFaculty({ facultyId, ability }) {
   const prisma = PRISMA_CLIENT;

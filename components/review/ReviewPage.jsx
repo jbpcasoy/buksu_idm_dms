@@ -1,8 +1,8 @@
 import Layout from "@/components/layout/Layout";
-import ProgressBar from "../ProgressBar";
+import moment from "moment";
 import Link from "next/link";
 import IMPreview from "../IMPreview";
-import moment from "moment";
+import ProgressBar from "../ProgressBar";
 
 export default function ReviewPage({ step, steps, reviewingAs, iM }) {
   return (

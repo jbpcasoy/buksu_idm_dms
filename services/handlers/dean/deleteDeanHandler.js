@@ -2,7 +2,6 @@ import userAbility from "@/services/abilities/defineAbility";
 import deleteDean from "@/services/api/dean/deleteDean";
 import readDean from "@/services/api/dean/readDean";
 import getServerUser from "@/services/helpers/getServerUser";
-import statusError from "@/services/helpers/throwError";
 import abilityValidator from "@/services/validator/abilityValidator";
 
 export default async function deleteDeanHandler(req, res) {

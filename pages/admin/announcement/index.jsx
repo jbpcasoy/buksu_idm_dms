@@ -1,7 +1,10 @@
 import AdminLayout from "@/components/admin/AdminLayout";
 import AdminAnnouncement from "@/components/admin/announcement/AdminAnnouncement";
+import frontendCreateAnnouncement from "@/services/frontend/announcement/frontendCreateAnnouncement";
 import frontendReadAnnouncements from "@/services/frontend/announcement/frontendReadAnnouncements";
 import Sort from "@/views/admin/Sort";
+import AdminAddAnnouncementForm from "@/views/admin/announcement/AdminAddAnnouncementForm";
+import AddIcon from "@mui/icons-material/Add";
 import {
   Box,
   IconButton,
@@ -17,13 +20,10 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
 import { Table } from "flowbite-react";
-import React, { useEffect, useState } from "react";
 import _ from "lodash";
-import AdminAddAnnouncementForm from "@/views/admin/announcement/AdminAddAnnouncementForm";
-import frontendCreateAnnouncement from "@/services/frontend/announcement/frontendCreateAnnouncement";
 import { useSnackbar } from "notistack";
+import { useEffect, useState } from "react";
 
 export default function AdminAnnouncementPage() {
   const { closeSnackbar, enqueueSnackbar } = useSnackbar();
@@ -140,15 +140,14 @@ export default function AdminAnnouncementPage() {
     <AdminLayout>
       <Box sx={{ m: 1 }}>
         <Toolbar>
-          <Typography variant='h6'>Announcements</Typography>
-
           <Stack
             direction='row'
-            justifyContent='flex-end'
+            justifyContent='space-between'
             alignItems='center'
             spacing={2}
             sx={{ width: "100%" }}
           >
+            <Typography variant='h6'>Announcements</Typography>
             <Tooltip title='Add'>
               <IconButton onClick={() => openAddDialog(true)}>
                 <AddIcon />

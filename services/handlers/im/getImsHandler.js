@@ -1,6 +1,6 @@
 import userAbility from "@/services/abilities/defineAbility";
-import readIMs from "../../api/im/readIMs";
 import getServerUser from "@/services/helpers/getServerUser";
+import readIMs from "../../api/im/readIMs";
 
 export default async function getImsHandler(req, res) {
   const {

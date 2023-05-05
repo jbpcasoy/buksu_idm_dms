@@ -1,8 +1,8 @@
-import { Avatar, TableCell, TableRow } from "@mui/material";
-import React, { useState } from "react";
-import AdminAnnouncementUpdateForm from "./AdminAnnouncementUpdateForm";
-import AdminAnnouncementActionsMenu from "./AdminAnnouncementActionsMenu";
+import { TableCell, TableRow } from "@mui/material";
+import { useState } from "react";
 import AdminDeleteConfirmation from "../AdminDeleteConfirmation";
+import AdminAnnouncementActionsMenu from "./AdminAnnouncementActionsMenu";
+import AdminAnnouncementUpdateForm from "./AdminAnnouncementUpdateForm";
 
 export default function AdminAnnouncementView({
   title,

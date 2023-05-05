@@ -1,9 +1,9 @@
+import ConfirmModal from "@/components/ConfirmModal";
 import { useState } from "react";
 import SuggestionAddModal from "./SuggestionAddModal";
 import ChairpersonSuggestionView from "./suggestion_view/ChairpersonSuggestionView";
 import CoordinatorSuggestionView from "./suggestion_view/CoordinatorSuggestionView";
 import PeerSuggestionView from "./suggestion_view/PeerSuggestionView";
-import ConfirmModal from "@/components/ConfirmModal";
 
 export default function Suggestion({
   onFinish,

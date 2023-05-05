@@ -2,7 +2,6 @@ import userAbility from "@/services/abilities/defineAbility";
 import deleteIMDCoordinator from "@/services/api/imd_coordinator/deleteIMDCoordinator";
 import readIMDCoordinator from "@/services/api/imd_coordinator/readIMDCoordinator";
 import getServerUser from "@/services/helpers/getServerUser";
-import statusError from "@/services/helpers/throwError";
 import abilityValidator from "@/services/validator/abilityValidator";
 
 export default async function deleteIMDCoordinatorHandler(req, res) {

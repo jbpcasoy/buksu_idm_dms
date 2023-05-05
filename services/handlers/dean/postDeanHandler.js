@@ -11,7 +11,10 @@ export default async function postDeanHandler(req, res) {
     next: async (req, res) => {
       const { facultyId } = req.body;
 
-      const dean = await createDean({ facultyId, ability: await userAbility(user) });
+      const dean = await createDean({
+        facultyId,
+        ability: await userAbility(user),
+      });
       return res.status(201).json(dean);
     },
     action: "create",

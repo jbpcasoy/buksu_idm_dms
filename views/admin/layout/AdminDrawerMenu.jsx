@@ -1,7 +1,7 @@
 import ApartmentIcon from "@mui/icons-material/Apartment";
 import BusinessIcon from "@mui/icons-material/Business";
+import CampaignIcon from "@mui/icons-material/Campaign";
 import DescriptionIcon from "@mui/icons-material/Description";
-import FileOpenIcon from "@mui/icons-material/FileOpen";
 import GroupsIcon from "@mui/icons-material/Groups";
 import HomeIcon from "@mui/icons-material/Home";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -9,7 +9,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import Person2Icon from "@mui/icons-material/Person2";
 import Person3Icon from "@mui/icons-material/Person3";
 import Person4Icon from "@mui/icons-material/Person4";
-import CampaignIcon from "@mui/icons-material/Campaign";
+import SettingsIcon from "@mui/icons-material/Settings";
 import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
 import {
   Box,
@@ -83,6 +83,11 @@ const menuItems = [
     label: "Announcements",
     icon: <CampaignIcon />,
     link: "/admin/announcement",
+  },
+  {
+    label: "Settings",
+    icon: <SettingsIcon />,
+    link: "/admin/settings",
   },
   // Postponed idea
   // {

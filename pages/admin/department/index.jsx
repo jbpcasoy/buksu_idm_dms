@@ -1,9 +1,13 @@
 import AdminLayout from "@/components/admin/AdminLayout";
 import AdminDepartment from "@/components/admin/department/AdminDepartment";
+import frontendCreateDepartment from "@/services/frontend/admin/department/frontendCreateDepartment";
 import frontendReadDepartments from "@/services/frontend/admin/department/frontendReadDepartments";
 import Sort from "@/views/admin/Sort";
+import AdminAddDepartmentForm from "@/views/admin/department/AdminAddDepartmentForm";
+import AddIcon from "@mui/icons-material/Add";
 import {
   Box,
+  IconButton,
   Stack,
   Table,
   TableBody,
@@ -14,12 +18,15 @@ import {
   TableRow,
   TextField,
   Toolbar,
+  Tooltip,
   Typography,
 } from "@mui/material";
 import _ from "lodash";
+import { useSnackbar } from "notistack";
 import { useEffect, useState } from "react";
 
 export default function AdminDepartmentPage() {
+  const { closeSnackbar, enqueueSnackbar } = useSnackbar();
   const [departments, setDepartments] = useState([]);
   const [total, setTotal] = useState(0);
   const [state, setState] = useState({
@@ -29,6 +36,7 @@ export default function AdminDepartmentPage() {
     collegeName: "",
     sortColumn: "name",
     sortOrder: "asc",
+    openAddDepartment: false,
   });
 
   useEffect(() => {
@@ -96,11 +104,49 @@ export default function AdminDepartmentPage() {
     }));
   }
 
+  function reloadDepartments() {
+    setState((prev) => ({ ...prev }));
+  }
+
+  function openAddDialog(open) {
+    return setState((prev) => ({ ...prev, openAddDepartment: open }));
+  }
+
+  async function onAdd({ name, collegeId }) {
+    return frontendCreateDepartment({ name, collegeId })
+      .then((res) => {
+        enqueueSnackbar({
+          message: "Added department successfully",
+          variant: "success",
+        });
+        reloadDepartments();
+      })
+      .catch((err) => {
+        enqueueSnackbar({
+          message: err?.response?.data?.error ?? "Failed to add department",
+          variant: "error",
+        });
+      });
+  }
+
   return (
     <AdminLayout>
       <Box sx={{ m: 1 }}>
         <Toolbar>
-          <Typography variant='h6'>Departments</Typography>
+          <Stack
+            direction='row'
+            justifyContent='space-between'
+            alignItems='center'
+            spacing={2}
+            sx={{ width: "100%" }}
+          >
+            <Typography variant='h6'>Departments</Typography>
+            <Tooltip title='Add'>
+              <IconButton onClick={() => openAddDialog(true)}>
+                <AddIcon />
+              </IconButton>
+            </Tooltip>
+          </Stack>
         </Toolbar>
         <Stack direction='row' spacing={1} sx={{ px: 2 }}>
           <TextField
@@ -152,6 +198,12 @@ export default function AdminDepartmentPage() {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </Box>
+
+      <AdminAddDepartmentForm
+        onClose={() => openAddDialog(false)}
+        onSubmit={onAdd}
+        open={state.openAddDepartment}
+      />
     </AdminLayout>
   );
 }

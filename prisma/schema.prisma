@@ -919,3 +919,11 @@ model Announcement {
   description String
   link        String
 }
+
+model Settings {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  uuid      String   @unique
+  vpaa      String
+}

@@ -1,10 +1,10 @@
 import UserContext from "@/contexts/UserContext";
-import { initCarousels, initModals } from "flowbite";
+import { initCarousels } from "flowbite";
 import { useRouter } from "next/router";
 import { useContext, useEffect } from "react";
+import Announcements from "./Announcement";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
-import Announcements from "./Announcement";
 
 export default function Layout({ children, active }) {
   const { user, userError, userLoading } = useContext(UserContext);

@@ -35,7 +35,7 @@ export default function AdminAddCollegeForm({ open, onClose, onSubmit }) {
                 size='small'
                 {...formik.getFieldProps("name")}
                 error={formik.touched.name && formik.errors.name}
-                helperText={formik.touched && formik.errors.name}
+                helperText={formik.touched.name && formik.errors.name}
               />
             </Stack>
           </DialogContent>

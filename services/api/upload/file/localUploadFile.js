@@ -1,6 +1,6 @@
 import statusError from "@/services/helpers/throwError";
-import logger from "../../logger";
 import fs from "fs";
+import logger from "../../logger";
 
 export default async function localUploadFile({ path, file }) {
   return fs.writeFile(path, file.buffer, function (err) {

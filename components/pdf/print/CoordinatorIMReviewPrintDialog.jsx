@@ -1,6 +1,5 @@
-import React from "react";
-import IMReviewPrintDialog from "./IMReviewPrintDialog";
 import useCoordinatorReview from "@/hooks/useCoordinatorReview";
+import IMReviewPrintDialog from "./IMReviewPrintDialog";
 
 export default function CoordinatorIMReviewPrintDialog({ iM }) {
   const {
@@ -15,7 +14,8 @@ export default function CoordinatorIMReviewPrintDialog({ iM }) {
       authors={iM?.authors}
       imType={iM?.type}
       coordinator={
-        iM?.SubmittedCoordinatorReview?.CoordinatorReview?.Coordinator?.Faculty?.user?.name
+        iM?.SubmittedCoordinatorReview?.CoordinatorReview?.Coordinator?.Faculty
+          ?.user?.name
       }
       reviewItems={coordinatorReview?.CoordinatorReviewItem}
     />

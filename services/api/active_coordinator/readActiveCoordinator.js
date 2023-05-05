@@ -9,18 +9,17 @@ export default async function readActiveCoordinator({
   const prisma = PRISMA_CLIENT;
   const accessibility = accessibleBy(ability).ActiveCoordinator;
 
-    const activeCoordinator = prisma.activeCoordinator.findFirstOrThrow({
-      where: {
-        AND: [
-          accessibility,
-          {
-            ...filter,
-            id,
-          },
-        ],
-      },
-    });
+  const activeCoordinator = prisma.activeCoordinator.findFirstOrThrow({
+    where: {
+      AND: [
+        accessibility,
+        {
+          ...filter,
+          id,
+        },
+      ],
+    },
+  });
 
-    return activeCoordinator;
-
+  return activeCoordinator;
 }

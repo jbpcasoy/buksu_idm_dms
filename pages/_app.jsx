@@ -18,8 +18,8 @@ import {
   Tooltip,
 } from "chart.js";
 import { SessionProvider } from "next-auth/react";
-import { closeSnackbar, SnackbarProvider } from "notistack";
 import { NextSeo } from "next-seo";
+import { closeSnackbar, SnackbarProvider } from "notistack";
 
 ChartJS.register(
   CategoryScale,

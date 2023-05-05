@@ -1,5 +1,5 @@
-import deleteDepartmentHandler from "@/services/handlers/department/deleteDepartmentHandler";
 import { reqLog } from "@/services/api/logger";
+import deleteDepartmentHandler from "@/services/handlers/department/deleteDepartmentHandler";
 import getDepartmentHandler from "@/services/handlers/department/getDepartmentHandler";
 import putDepartmentHandler from "@/services/handlers/department/putDepartmentHandler";
 import methodNaHandler from "@/services/handlers/methodNaHandler";

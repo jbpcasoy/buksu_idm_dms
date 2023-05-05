@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import Announcement from "../announcement/Announcement";
-import { Carousel } from "flowbite-react";
 import frontendReadAnnouncements from "@/services/frontend/announcement/frontendReadAnnouncements";
+import { Carousel } from "flowbite-react";
+import { useEffect, useState } from "react";
+import Announcement from "../announcement/Announcement";
 
 export default function Announcements() {
   const [announcements, setAnnouncements] = useState([]);

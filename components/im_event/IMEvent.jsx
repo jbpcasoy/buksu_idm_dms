@@ -53,5 +53,5 @@ export default function IMEvent({ iMEventId }) {
     return <IMCITLRevisedEvent iMEvent={iMEvent} />;
   } else if (iMEvent?.IMEventType === "IMD_COORDINATOR_ENDORSEMENT") {
     return <IMIMDCoordinatorEndorsementEvent iMEvent={iMEvent} />;
-  } 
+  }
 }

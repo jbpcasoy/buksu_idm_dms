@@ -1,5 +1,5 @@
+import { Stack } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { signIn, signOut } from "next-auth/react";
@@ -8,20 +8,22 @@ import AdminDrawerMenu from "./AdminDrawerMenu";
 
 export default function AdminHeader() {
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position='static'>
-        <Toolbar>
-          <AdminDrawerMenu />
-          <Typography
-            variant='h6'
-            component='a'
-            sx={{ flexGrow: 1 }}
-            href='/admin'>
+    <AppBar position='static'>
+      <Toolbar>
+        <AdminDrawerMenu />
+        <Stack
+          direction='row'
+          justifyContent='space-between'
+          alignItems='center'
+          spacing={2}
+          sx={{ width: "100%" }}
+        >
+          <Typography variant='h6' component='a' href='/admin'>
             Admin
           </Typography>
           <AdminLoginButton onSignIn={signIn} onSignOut={signOut} />
-        </Toolbar>
-      </AppBar>
-    </Box>
+        </Stack>
+      </Toolbar>
+    </AppBar>
   );
 }

@@ -2,7 +2,6 @@ import userAbility from "@/services/abilities/defineAbility";
 import deleteCollege from "@/services/api/college/deleteCollege";
 import readCollege from "@/services/api/college/readCollege";
 import getServerUser from "@/services/helpers/getServerUser";
-import statusError from "@/services/helpers/throwError";
 import abilityValidator from "@/services/validator/abilityValidator";
 
 export default async function deleteCollegeHandler(req, res) {

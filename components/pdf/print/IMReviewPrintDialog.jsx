@@ -1,8 +1,8 @@
-import { Button, Modal } from "flowbite-react";
-import React, { useRef, useState } from "react";
-import IMReview from "../IMReview";
-import { useReactToPrint } from "react-to-print";
 import { sections } from "@/constants/questions";
+import { Button, Modal } from "flowbite-react";
+import { useRef, useState } from "react";
+import { useReactToPrint } from "react-to-print";
+import IMReview from "../IMReview";
 
 export default function IMReviewPrintDialog({
   printText = "Print",

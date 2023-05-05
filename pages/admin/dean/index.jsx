@@ -22,9 +22,9 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import { useEffect, useState } from "react";
 import _ from "lodash";
 import { useSnackbar } from "notistack";
+import { useEffect, useState } from "react";
 
 export default function AdminDeanPage() {
   const { closeSnackbar, enqueueSnackbar } = useSnackbar();
@@ -161,15 +161,14 @@ export default function AdminDeanPage() {
     <AdminLayout>
       <Box sx={{ m: 1 }}>
         <Toolbar>
-          <Typography variant='h6'>Deans</Typography>
-
           <Stack
             direction='row'
-            justifyContent='flex-end'
+            justifyContent='space-between'
             alignItems='center'
             spacing={2}
             sx={{ width: "100%" }}
           >
+            <Typography variant='h6'>Deans</Typography>
             <Tooltip title='Add'>
               <IconButton onClick={() => openAddDialog(true)}>
                 <AddIcon />

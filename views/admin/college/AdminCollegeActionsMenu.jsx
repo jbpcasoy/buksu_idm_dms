@@ -24,7 +24,8 @@ export default function AdminCollegeActionsMenu({ onEdit, onDelete, onAdd }) {
         aria-controls={open ? "basic-menu" : undefined}
         aria-haspopup='true'
         aria-expanded={open ? "true" : undefined}
-        onClick={handleClick}>
+        onClick={handleClick}
+      >
         <MoreVertIcon />
       </IconButton>
       <Menu
@@ -34,12 +35,14 @@ export default function AdminCollegeActionsMenu({ onEdit, onDelete, onAdd }) {
         onClose={handleClose}
         MenuListProps={{
           "aria-labelledby": "basic-button",
-        }}>
+        }}
+      >
         <MenuItem
           onClick={() => {
             handleClose();
             onEdit();
-          }}>
+          }}
+        >
           <ListItemIcon>
             <EditIcon fontSize='small' />
           </ListItemIcon>
@@ -49,7 +52,8 @@ export default function AdminCollegeActionsMenu({ onEdit, onDelete, onAdd }) {
           onClick={() => {
             handleClose();
             onDelete();
-          }}>
+          }}
+        >
           <ListItemIcon>
             <DeleteIcon fontSize='small' />
           </ListItemIcon>
@@ -59,7 +63,8 @@ export default function AdminCollegeActionsMenu({ onEdit, onDelete, onAdd }) {
           onClick={() => {
             handleClose();
             onAdd();
-          }}>
+          }}
+        >
           <ListItemIcon>
             <AddIcon fontSize='small' />
           </ListItemIcon>

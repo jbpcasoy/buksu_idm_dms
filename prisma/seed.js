@@ -94,6 +94,28 @@ async function seedDepartment(name, collegeId) {
   }
 }
 
+async function seedSettings() {
+  try {
+    const settings = await prisma.settings.create({
+      data: {
+        vpaa: process.env.DEFAULT_VPAA,
+        uuid: process.env.UUID,
+      },
+    });
+
+    console.log("Settings created:");
+    console.log(settings);
+  } catch (error) {
+    switch (error.code) {
+      case "P2002":
+        console.log(`Settings already exists.`);
+        break;
+      default:
+        throw error;
+    }
+  }
+}
+
 async function main() {
   // Seed Colleges
   for (let college of colleges) {
@@ -107,6 +129,9 @@ async function main() {
       await seedDepartment(department, college.id);
     }
   }
+
+  // Seed Settings
+  await seedSettings();
 }
 
 main()
