@@ -1,3 +1,4 @@
+import frontendDeleteIM from "@/services/frontend/im/frontendDeleteIM";
 import frontendUpdateIM from "@/services/frontend/im/frontendUpdateIM";
 import AdminIMView from "@/views/admin/im/AdminIMView";
 import { useRouter } from "next/router";
@@ -32,6 +33,27 @@ export default function AdminIM({ im }) {
       });
   }
 
+  async function onDelete() {
+    return frontendDeleteIM(iMData.id)
+      .then(() => {
+        enqueueSnackbar({
+          message: "IM deleted successfully",
+          variant: "success",
+        });
+        setIMData(null);
+      })
+      .catch((err) => {
+        enqueueSnackbar({
+          message: err?.response?.data?.error ?? "Failed to update IM",
+          variant: "error",
+        });
+      });
+  }
+
+  if (!iMData) {
+    return null;
+  }
+
   return (
     <AdminIMView
       type={iMData.type}
@@ -47,6 +69,7 @@ export default function AdminIM({ im }) {
       key={iMData.id}
       authors={iMData.authors}
       onEdit={onEdit}
+      onDelete={onDelete}
       onViewPeerReview={() =>
         router.push(
           `/admin/peer_review/${iMData.SubmittedPeerReview.PeerReview.id}`

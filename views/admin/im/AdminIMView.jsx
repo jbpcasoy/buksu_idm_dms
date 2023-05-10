@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import AdminIMActionsMenu from "./AdminIMActionsMenu";
 import AdminIMUpdateForm from "./AdminIMUpdateForm";
+import AdminDeleteConfirmation from "../AdminDeleteConfirmation";
 
 export default function AdminIMView({
   type,
@@ -12,6 +13,7 @@ export default function AdminIMView({
   chairpersonReviewed,
   serialNumber,
   title,
+  onDelete,
   department,
   owner,
   status,
@@ -26,10 +28,15 @@ export default function AdminIMView({
   const router = useRouter();
   const [state, setState] = useState({
     openUpdate: false,
+    openDelete: false,
   });
 
   function openUpdateDialog(open) {
     setState((prev) => ({ ...prev, openUpdate: open }));
+  }
+
+  function openDeleteDialog(open) {
+    setState((prev) => ({ ...prev, openDelete: open }));
   }
 
   return (
@@ -75,6 +82,7 @@ export default function AdminIMView({
         <TableCell>{moment(dateCreated).format("lll")}</TableCell>
         <TableCell>
           <AdminIMActionsMenu
+            onDelete={() => openDeleteDialog(true)}
             onEdit={() => openUpdateDialog(true)}
             onView={onViewIM}
           />
@@ -97,6 +105,13 @@ export default function AdminIMView({
           })
         }
         status={status}
+      />
+      <AdminDeleteConfirmation
+        onAgree={onDelete}
+        onClose={() => openDeleteDialog(false)}
+        open={state.openDelete}
+        title='Delete IM'
+        message='This action cannot be undone, are you sure?'
       />
     </>
   );
