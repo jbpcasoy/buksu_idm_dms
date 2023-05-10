@@ -32,7 +32,7 @@ export default function IMDCoordinatorSuggestionNotificationItem({
       }
       time={notificationData?.createdAt}
       icon={
-        <div className='absolute flex items-center justify-center w-5 h-5 ml-6 -mt-5 bg-green-300  border border-white rounded-full dark:border-gray-800'>
+        <div className='absolute flex items-center justify-center w-5 h-5 ml-6 -mt-5 bg-CITLLightBlue border border-white rounded-full dark:border-gray-800'>
           <svg
             fill='none'
             className='w-3 h-3 text-white'

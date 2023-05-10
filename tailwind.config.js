@@ -16,6 +16,7 @@ module.exports = {
       },
       colors: {
         CITLDarkBlue: "#152033",
+        CITLLightBlue: "#303548",
         CITLOrange: "#F2C050",
         CITLWhite: "#FFFFFF",
         // CITLGray: "#717883",
