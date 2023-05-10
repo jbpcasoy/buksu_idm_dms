@@ -61,7 +61,7 @@ export default function Header() {
                 >
                   <span className='sr-only'>Open user menu</span>
                   <img
-                    className='w-8 h-8 rounded-full'
+                    className='w-8 h-8 rounded-full object-center object-cover'
                     src={session?.user?.image}
                     alt='user photo'
                   />

@@ -23,6 +23,8 @@ export default function Me() {
           });
         }}
         defaultName={user?.name}
+        department={user?.ActiveFaculty?.Faculty?.department?.name}
+        college={user?.ActiveFaculty?.Faculty?.department?.college?.name}
         onUploadImage={async (e) => {
           const profilePicture = e.target.files[0];
           const formData = new FormData();

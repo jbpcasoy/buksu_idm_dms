@@ -34,7 +34,7 @@ export default function IMVersion() {
               <Link href={`/profile/${iM?.owner?.user?.id}`}>
                 <img
                   src={iM?.owner?.user?.image}
-                  className='w-8 h-8 rounded-full sm:h-8'
+                  className='w-8 h-8 rounded-full sm:h-8 object-center object-cover'
                   alt='owner'
                 ></img>
               </Link>

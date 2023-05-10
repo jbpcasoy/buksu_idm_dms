@@ -194,7 +194,7 @@ export default function DepartmentPage() {
                     href={`/profile/${department?.ActiveChairperson?.Chairperson?.Faculty?.user?.id}`}
                   >
                     <img
-                      className='w-10 h-10 border-2 border-CITLOrange rounded-full dark:border-gray-800'
+                      className='w-10 h-10 border-2 border-CITLOrange rounded-full dark:border-gray-800 object-center object-cover'
                       src={
                         department?.ActiveChairperson?.Chairperson?.Faculty
                           ?.user?.image
@@ -208,7 +208,7 @@ export default function DepartmentPage() {
                     href={`/profile/${department?.ActiveCoordinator?.Coordinator?.Faculty?.user?.id}`}
                   >
                     <img
-                      className='w-10 h-10 border-2 border-CITLOrange rounded-full dark:border-gray-800'
+                      className='w-10 h-10 border-2 border-CITLOrange rounded-full dark:border-gray-800 object-center object-cover'
                       src={
                         department?.ActiveCoordinator?.Coordinator?.Faculty
                           ?.user?.image

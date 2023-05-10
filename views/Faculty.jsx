@@ -6,7 +6,10 @@ export default function Faculty({ name, image, onView, bottomBorder = true }) {
       } text-sm text-CITLGray-main text-left p-4 `}
     >
       <td className='px-6 py-4 '>
-        <img src={image} className='rounded-full h-10' />
+        <img
+          src={image}
+          className='rounded-full h-10 w-10 object-center object-cover'
+        />
       </td>
       <td className='px-6 py-4 '>{name}</td>
 

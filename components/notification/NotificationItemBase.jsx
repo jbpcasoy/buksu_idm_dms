@@ -76,7 +76,7 @@ export default function NotificationItemBase({
         className='flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700 text-left w-full'
       >
         <div className='flex-shrink-0'>
-          <img className='rounded-full w-11 h-11' alt='from' src={imgSrc} />
+          <img className='rounded-full w-11 h-11 object-center object-cover' alt='from' src={imgSrc} />
           {icon}
         </div>
         <div className='w-full pl-3'>
