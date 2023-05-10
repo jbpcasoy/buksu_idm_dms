@@ -25,16 +25,21 @@ export default function DeanEndorsementNotificationItem({
       imgSrc={notificationData?.DeanEndorsement?.Dean?.Faculty?.user?.image}
       time={notificationData?.createdAt}
       icon={
-        <div className='absolute flex items-center justify-center w-5 h-5 ml-6 -mt-5 bg-orange-400  border border-white rounded-full dark:border-gray-800'>
+        <div className='absolute flex items-center justify-center w-5 h-5 ml-6 -mt-5 bg-green-800  border border-white rounded-full dark:border-gray-800'>
           <svg
+            fill='none'
             className='w-3 h-3 text-white'
-            aria-hidden='true'
-            fill='currentColor'
-            viewBox='0 0 20 20'
+            stroke='currentColor'
+            strokeWidth='1.5'
+            viewBox='0 0 24 24'
             xmlns='http://www.w3.org/2000/svg'
+            aria-hidden='true'
           >
-            <path d='M8.707 7.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l2-2a1 1 0 00-1.414-1.414L11 7.586V3a1 1 0 10-2 0v4.586l-.293-.293z'></path>
-            <path d='M3 5a2 2 0 012-2h1a1 1 0 010 2H5v7h2l1 2h4l1-2h2V5h-1a1 1 0 110-2h1a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5z'></path>
+            <path
+              strokeLinecap='round'
+              strokeLinejoin='round'
+              d='M4.5 12.75l6 6 9-13.5'
+            ></path>
           </svg>
         </div>
       }
