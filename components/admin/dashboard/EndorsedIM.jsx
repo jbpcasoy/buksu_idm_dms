@@ -1,7 +1,8 @@
+import UserContext from "@/contexts/UserContext";
 import frontendGetIMCount from "@/services/frontend/chart/im/frontendGetIMCount";
 import { Card, CardContent, CardHeader, Container, Grid } from "@mui/material";
 import moment from "moment";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
 import CollegeSelectField from "../form/CollegeSelectField";
 import DepartmentSelectField from "../form/DepartmentSelectField";
@@ -18,12 +19,13 @@ export const options = {
   // cubicInterpolationMode: "monotone",
 };
 
-export default function EndorsedIM() {
+export default function EndorsedIM({ fixedCollegeId, fixedDepartmentId }) {
+  const { user } = useContext(UserContext);
   const [filter, setFilter] = useState({
     startYear: moment().year() - 6,
     endYear: moment().year(),
-    collegeId: "",
-    departmentId: "",
+    collegeId: fixedCollegeId ?? "",
+    departmentId: fixedDepartmentId ?? "",
   });
 
   const [counts, setCounts] = useState({
@@ -249,6 +251,18 @@ export default function EndorsedIM() {
             <Grid item xs={4}>
               <CollegeSelectField
                 fullWidth
+                defaultValue={
+                  user?.ActiveFaculty?.ActiveDean ||
+                  user?.ActiveFaculty?.ActiveCoordinator ||
+                  user?.ActiveFaculty?.ActiveChairperson
+                    ? {
+                        label:
+                          user?.ActiveFaculty?.Faculty?.department?.college
+                            ?.name,
+                        id: user?.ActiveFaculty?.Faculty?.department?.collegeId,
+                      }
+                    : undefined
+                }
                 onChange={(collegeId) =>
                   setFilter((prev) => ({ ...prev, collegeId }))
                 }
@@ -258,6 +272,15 @@ export default function EndorsedIM() {
               <DepartmentSelectField
                 fullWidth
                 collegeId={filter.collegeId}
+                defaultValue={
+                  user?.ActiveFaculty?.ActiveCoordinator ||
+                  user?.ActiveFaculty?.ActiveChairperson
+                    ? {
+                        label: user?.ActiveFaculty?.Faculty?.department?.name,
+                        id: user?.ActiveFaculty?.Faculty?.departmentId,
+                      }
+                    : undefined
+                }
                 onChange={(departmentId) =>
                   setFilter((prev) => ({ ...prev, departmentId }))
                 }
