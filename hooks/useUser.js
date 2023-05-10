@@ -16,20 +16,22 @@ export default function useUser() {
     if (!session) return;
     let isSubscribed = true;
 
-    setUserLoading(true);
+    // setUserLoading(true);
 
-    frontendReadUser(session.user.id)
-      .then((res) => {
-        if (!isSubscribed) return;
-        setUser(res);
-      })
-      .catch((err) => {
-        if (!isSubscribed) return;
-        setUserError(err);
-      })
-      .finally(() => {
-        setUserLoading(false);
-      });
+    // frontendReadUser(session.user.id)
+    //   .then((res) => {
+    //     if (!isSubscribed) return;
+    //     setUser(res);
+    //   })
+    //   .catch((err) => {
+    //     if (!isSubscribed) return;
+    //     setUserError(err);
+    //   })
+    //   .finally(() => {
+    //     setUserLoading(false);
+    //   });
+
+    setUser(session.user);
 
     return () => {
       isSubscribed = false;
