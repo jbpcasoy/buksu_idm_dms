@@ -21,7 +21,7 @@ export default function SuggestionView({
                 <Link href={`/profile/${reviewerId}`}>
                   <img
                     src={reviewerImage}
-                    className='w-8 h-8 rounded-full sm:h-8'
+                    className='w-8 h-8 rounded-full sm:h-8 object-center object-cover'
                     alt='reviewer'
                   ></img>
                 </Link>

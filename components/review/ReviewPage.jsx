@@ -53,7 +53,7 @@ export default function ReviewPage({ step, steps, reviewingAs, iM }) {
               <Link href={`/profile/${iM?.owner?.user?.id}`}>
                 <img
                   src={iM?.owner?.user?.image}
-                  className='h-8 w-8 rounded-full sm:h-8'
+                  className='h-8 w-8 rounded-full sm:h-8 object-center object-cover'
                   alt='owner'
                 ></img>
               </Link>

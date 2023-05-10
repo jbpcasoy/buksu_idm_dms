@@ -293,7 +293,7 @@ export default function ViewIM() {
               <Link href={`/profile/${iM?.owner?.user?.id}`}>
                 <img
                   src={iM?.owner?.user?.image}
-                  className='h-8 w-8 rounded-full '
+                  className='h-8 w-8 rounded-full object-center object-cover'
                   alt='owner'
                 ></img>
               </Link>
