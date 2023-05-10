@@ -1,10 +1,12 @@
 import Layout from "@/components/layout/Layout";
 import SortButton from "@/components/SortButton";
+import UserContext from "@/contexts/UserContext";
 import frontendReadColleges from "@/services/frontend/admin/college/frontendReadColleges";
 import College from "@/views/College";
 import _ from "lodash";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useSnackbar } from "notistack";
+import { useContext, useEffect, useState } from "react";
 
 export default function CollegePage() {
   const [colleges, setColleges] = useState([]);
@@ -18,6 +20,8 @@ export default function CollegePage() {
   const [loading, setLoading] = useState(true);
   const [total, setTotal] = useState(0);
   const router = useRouter();
+  const { user } = useContext(UserContext);
+  const { closeSnackbar, enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
     let subscribe = true;
@@ -49,6 +53,23 @@ export default function CollegePage() {
     }));
   }
   const debouncedHandleNameChange = _.debounce(handleNameChange, 800);
+
+  useEffect(() => {
+    if (
+      !(
+        user?.ActiveFaculty?.ActiveDean ||
+        user?.IMDCoordinator?.ActiveIMDCoordinator ||
+        user?.CITLDirector?.ActiveCITLDirector
+      )
+    ) {
+      enqueueSnackbar({
+        message: "Unauthorized",
+        variant: "error",
+        preventDuplicate: true,
+      });
+      router.push("/home");
+    }
+  }, [user]);
 
   return (
     <Layout>
