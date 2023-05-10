@@ -55,6 +55,7 @@ export default function CollegePage() {
   const debouncedHandleNameChange = _.debounce(handleNameChange, 800);
 
   useEffect(() => {
+    if (!user) return;
     if (
       !(
         user?.IMDCoordinator?.ActiveIMDCoordinator ||

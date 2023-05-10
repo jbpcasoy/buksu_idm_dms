@@ -75,6 +75,7 @@ export default function Departments() {
   const debouncedHandleNameChange = _.debounce(handleNameChange, 800);
 
   useEffect(() => {
+    if (!user) return;
     if (
       !(
         user?.ActiveFaculty?.ActiveDean ||

@@ -27,11 +27,11 @@ export default function DepartmentPage() {
   const { closeSnackbar, enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
-    if (!router.query.departmentId) return;
+    if (!user?.ActiveFaculty?.departmentId) return;
     let subscribe = true;
     setLoading(true);
 
-    frontendReadDepartment(router.query.departmentId).then((res) => {
+    frontendReadDepartment(user?.ActiveFaculty?.departmentId).then((res) => {
       if (!subscribe) return;
       setDepartment(res);
       setLoading(false);
@@ -40,7 +40,7 @@ export default function DepartmentPage() {
     return () => {
       subscribe = false;
     };
-  }, [router.query.departmentId]);
+  }, [user?.ActiveFaculty?.departmentId]);
 
   useEffect(() => {
     if (!department) return;
@@ -82,13 +82,7 @@ export default function DepartmentPage() {
 
   useEffect(() => {
     if (!user) return;
-    if (
-      !(
-        user?.ActiveFaculty?.ActiveDean ||
-        user?.IMDCoordinator?.ActiveIMDCoordinator ||
-        user?.CITLDirector?.ActiveCITLDirector
-      )
-    ) {
+    if (!user?.ActiveFaculty) {
       enqueueSnackbar({
         message: "Unauthorized",
         variant: "error",
@@ -140,63 +134,8 @@ export default function DepartmentPage() {
             */}
               <nav className='flex' aria-label='Breadcrumb'>
                 <ol className='inline-flex items-center space-x-1 md:space-x-3'>
-                  <li className='inline-flex items-center'>
-                    <button
-                      type='button'
-                      onClick={() => router.push(`/college`)}
-                      className='inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue rounded-none'
-                    >
-                      <span className='inline-flex items-center justify-center w-4 h-4 mr-1 text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
-                        {router?.query?.collegeCount}
-                      </span>
-                      Colleges
-                    </button>
-                  </li>
-                  <li>
-                    <div className='flex items-center'>
-                      <svg
-                        aria-hidden='true'
-                        className='w-6 h-6 text-gray-400'
-                        fill='currentColor'
-                        viewBox='0 0 20 20'
-                        xmlns='http://www.w3.org/2000/svg'
-                      >
-                        <path
-                          fillRule='evenodd'
-                          d='M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z'
-                          clipRule='evenodd'
-                        ></path>
-                      </svg>
-                      <button
-                        onClick={() =>
-                          router.push(
-                            `/college/${router.query.id}/department?collegeCount=${router?.query?.collegeCount}`
-                          )
-                        }
-                        className='inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue rounded-none'
-                      >
-                        <span className='inline-flex items-center justify-center w-4 h-4 mr-1 text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
-                          {router?.query?.departmentCount}
-                        </span>
-                        Departments
-                      </button>
-                    </div>
-                  </li>
                   <li aria-current='page'>
                     <div className='flex items-center'>
-                      <svg
-                        aria-hidden='true'
-                        className='w-6 h-6 text-gray-400'
-                        fill='currentColor'
-                        viewBox='0 0 20 20'
-                        xmlns='http://www.w3.org/2000/svg'
-                      >
-                        <path
-                          fillRule='evenodd'
-                          d='M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z'
-                          clipRule='evenodd'
-                        ></path>
-                      </svg>
                       <span className='inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue border-b-2 border-CITLOrange rounded-none'>
                         <span className='inline-flex items-center justify-center w-4 h-4 mr-1 text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
                           {total}
