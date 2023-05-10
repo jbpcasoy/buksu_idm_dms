@@ -2,7 +2,6 @@ import EndorsedIM from "@/components/admin/dashboard/EndorsedIM";
 import Layout from "@/components/layout/Layout";
 import UserContext from "@/contexts/UserContext";
 import { useContext } from "react";
-import ContactModal from "../ContactModal";
 
 export default function Home() {
   const { user, userLoading, userError } = useContext(UserContext);
@@ -13,7 +12,9 @@ export default function Home() {
           <div className='mt-12 lg:mt-20'>
             {(user?.ActiveFaculty?.ActiveCoordinator ||
               user?.ActiveFaculty?.ActiveDean ||
-              user?.ActiveFaculty?.ActiveChairperson) && (
+              user?.ActiveFaculty?.ActiveChairperson ||
+              user?.IMDCoordinator?.ActiveIMDCoordinator ||
+              user?.CITLDirector?.ActiveCITLDirector) && (
               <div className='mb-4'>
                 <EndorsedIM />
               </div>

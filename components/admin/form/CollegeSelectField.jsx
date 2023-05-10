@@ -2,7 +2,11 @@ import frontendReadColleges from "@/services/frontend/admin/college/frontendRead
 import { Autocomplete, TextField } from "@mui/material";
 import { useEffect, useState } from "react";
 
-export default function CollegeSelectField({ onChange, ...props }) {
+export default function CollegeSelectField({
+  onChange,
+  defaultValue,
+  ...props
+}) {
   const [options, setOptions] = useState([]);
   const [input, setInput] = useState("");
 
@@ -28,6 +32,8 @@ export default function CollegeSelectField({ onChange, ...props }) {
       onChange={(_, value) => {
         onChange(value?.id);
       }}
+      defaultValue={defaultValue}
+      disabled={Boolean(defaultValue)}
       renderInput={(params) => (
         <TextField {...params} label='College' size='small' {...props} />
       )}
