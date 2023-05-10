@@ -1,5 +1,6 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
 import readChairpersonReview from "../chairperson_review/readChairpersonReview";
+import updateIM from "../im/updateIM";
 
 export default async function createSubmittedChairpersonReview({
   chairpersonReviewId,
@@ -34,6 +35,14 @@ export default async function createSubmittedChairpersonReview({
         },
       },
     });
+
+  await updateIM(
+    chairpersonReview.iMId,
+    {
+      updatedAt: new Date(),
+    },
+    ability
+  );
 
   return submittedChairpersonReview;
 }

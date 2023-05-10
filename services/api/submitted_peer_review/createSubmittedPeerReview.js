@@ -1,4 +1,5 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
+import updateIM from "../im/updateIM";
 import readPeerReview from "../peer_review/readPeerReview";
 
 export default async function createSubmittedPeerReview({
@@ -38,5 +39,13 @@ export default async function createSubmittedPeerReview({
       },
     },
   });
+
+  await updateIM(
+    peerReview.iMId,
+    {
+      updatedAt: new Date(),
+    },
+    ability
+  );
   return submittedPeerReview;
 }
