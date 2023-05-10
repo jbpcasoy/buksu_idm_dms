@@ -88,7 +88,7 @@ export default function PreviewReviews() {
                           iM?.SubmittedPeerReview?.PeerReview?.Faculty?.user
                             ?.image
                         }
-                        className='w-8 h-8 rounded-full sm:h-8'
+                        className='w-8 h-8 rounded-full sm:h-8 object-center object-cover'
                         alt='owner'
                       ></img>
                     </Link>
@@ -189,7 +189,7 @@ export default function PreviewReviews() {
                           iM?.SubmittedChairpersonReview?.ChairpersonReview
                             ?.Chairperson?.Faculty?.user?.image
                         }
-                        className='w-8 h-8 rounded-full sm:h-8'
+                        className='w-8 h-8 rounded-full sm:h-8 object-center object-cover'
                         alt='owner'
                       ></img>
                     </Link>
@@ -296,7 +296,7 @@ export default function PreviewReviews() {
                           iM?.SubmittedCoordinatorReview?.CoordinatorReview
                             ?.Coordinator?.Faculty?.user?.image
                         }
-                        className='w-8 h-8 rounded-full sm:h-8'
+                        className='w-8 h-8 rounded-full sm:h-8 object-center object-cover'
                         alt='owner'
                       ></img>
                     </Link>
@@ -388,7 +388,7 @@ export default function PreviewReviews() {
               <Link href={`/profile/${iM?.owner?.user?.id}`}>
                 <img
                   src={iM?.owner?.user?.image}
-                  className='w-8 h-8 rounded-full sm:h-8'
+                  className='w-8 h-8 rounded-full sm:h-8 object-center object-cover'
                   alt='owner'
                 ></img>
               </Link>

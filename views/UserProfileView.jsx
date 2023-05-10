@@ -4,7 +4,7 @@ export default function UserProfileView({ profile }) {
       <div className='w-full mx-auto max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700'>
         <div className='flex flex-col items-center py-10'>
           <img
-            className='w-24 h-24 mb-3 rounded-full shadow-lg'
+            className='w-24 h-24 mb-3 rounded-full shadow-lg object-cover object-center'
             src={profile?.image}
             alt='image'
           />

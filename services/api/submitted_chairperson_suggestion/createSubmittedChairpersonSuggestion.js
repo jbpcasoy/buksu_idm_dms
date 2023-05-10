@@ -1,6 +1,7 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
 import checkAndUpdateStatus from "@/services/helpers/checkAndUpdateStatus";
 import readChairpersonSuggestion from "../chairperson_suggestion/readChairpersonSuggestion";
+import updateIM from "../im/updateIM";
 import readSubmittedChairpersonReview from "../submitted_chairperson_review/readSubmittedChairpersonReview";
 
 export default async function createSubmittedChairpersonSuggestion({
@@ -53,6 +54,14 @@ export default async function createSubmittedChairpersonSuggestion({
     iMId: submittedChairpersonReview.iMId,
     ability,
   });
+
+  await updateIM(
+    submittedChairpersonReview.iMId,
+    {
+      updatedAt: new Date(),
+    },
+    ability
+  );
 
   return submittedChairpersonSuggestion;
 }

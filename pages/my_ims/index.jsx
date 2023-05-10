@@ -268,10 +268,10 @@ export default function Home() {
 
                 <th
                   scope='col'
-                  className='px-6 py-3 text-left w-42 text-xs font-medium text-gray-500 uppercase tracking-wider'
+                  className='py-3 text-left w-42 text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
                   <SortButton
-                    label='Date'
+                    label='Last Activity'
                     sortOrder={
                       state.sortColumn === "createdAt"
                         ? state.sortOrder

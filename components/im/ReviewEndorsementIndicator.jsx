@@ -43,22 +43,12 @@ export default function ReviewEndorsementIndicator({ im, direction = "row" }) {
               }
             >
               Peer
-              {peerSuggested && (
-                <img
-                  src={peerReviewer.image}
-                  alt='Peer'
-                  title={peerReviewer.name}
-                  className='w-3 h-3   rounded-full mx-1'
-                />
-              )}
-              {!peerSuggested && (
-                <img
-                  src={peerReviewer.image}
-                  alt='Peer'
-                  title={peerReviewer.name}
-                  className='w-3 h-3   rounded-full mx-1'
-                />
-              )}
+              <img
+                src={peerReviewer.image}
+                alt='Peer'
+                title={peerReviewer.name}
+                className='w-3 h-3   rounded-full mx-1 object-center object-cover'
+              />
             </span>
           )}
           {!peerReviewed && (
@@ -77,22 +67,12 @@ export default function ReviewEndorsementIndicator({ im, direction = "row" }) {
               }
             >
               Chairperson
-              {chairpersonSuggested && (
-                <img
-                  src={chairpersonReviewer.image}
-                  alt='Chairperson'
-                  title={chairpersonReviewer.name}
-                  className='w-3 h-3   rounded-full mx-1'
-                />
-              )}
-              {!chairpersonSuggested && (
-                <img
-                  src={chairpersonReviewer.image}
-                  alt='Chairperson'
-                  title={chairpersonReviewer.name}
-                  className='w-3 h-3   rounded-full mx-1'
-                />
-              )}
+              <img
+                src={chairpersonReviewer.image}
+                alt='Chairperson'
+                title={chairpersonReviewer.name}
+                className='w-3 h-3 rounded-full mx-1 object-center object-cover'
+              />
             </span>
           )}
 
@@ -110,23 +90,13 @@ export default function ReviewEndorsementIndicator({ im, direction = "row" }) {
                   : "Reviewed, No Suggestions"
               }
             >
-              Coordinator{" "}
-              {coordinatorSuggested && (
-                <img
-                  src={coordinatorReviewer.image}
-                  alt='Coordinator'
-                  title={coordinatorReviewer.name}
-                  className='w-3 h-3   rounded-full mx-1'
-                />
-              )}
-              {!coordinatorSuggested && (
-                <img
-                  src={coordinatorReviewer.image}
-                  alt='Coordinator'
-                  title={coordinatorReviewer.name}
-                  className='w-3 h-3   rounded-full mx-1'
-                />
-              )}
+              Coordinator
+              <img
+                src={coordinatorReviewer.image}
+                alt='Coordinator'
+                title={coordinatorReviewer.name}
+                className='w-3 h-3 rounded-full mx-1 object-center object-cover'
+              />
             </span>
           )}
           {!coordinatorReviewed && (
@@ -150,7 +120,7 @@ export default function ReviewEndorsementIndicator({ im, direction = "row" }) {
                   src={coordinatorEndorser.image}
                   alt='Coordinator'
                   title={coordinatorEndorser.name}
-                  className='w-3 h-3   rounded-full mx-1'
+                  className='w-3 h-3   rounded-full mx-1 object-center object-cover'
                 />
               )}
             </span>
@@ -174,7 +144,7 @@ export default function ReviewEndorsementIndicator({ im, direction = "row" }) {
                   src={deanEndorser.image}
                   alt='Dean'
                   title={deanEndorser.name}
-                  className='w-3 h-3   rounded-full mx-1'
+                  className='w-3 h-3   rounded-full mx-1 object-center object-cover'
                 />
               )}
             </span>
@@ -202,7 +172,7 @@ export default function ReviewEndorsementIndicator({ im, direction = "row" }) {
                   src={imdCoordinatorEndorser.image}
                   alt='IMD Coordinator'
                   title={imdCoordinatorEndorser.name}
-                  className='w-3 h-3   rounded-full mx-1'
+                  className='w-3 h-3   rounded-full mx-1 object-center object-cover'
                 />
               )}
             </span>
@@ -232,7 +202,7 @@ export default function ReviewEndorsementIndicator({ im, direction = "row" }) {
                   src={imdCoordinatorEndorser.image}
                   alt='IMD Coordinator'
                   title={imdCoordinatorEndorser.name}
-                  className='w-3 h-3   rounded-full mx-1'
+                  className='w-3 h-3   rounded-full mx-1 object-center object-cover'
                 />
               )}
             </span>

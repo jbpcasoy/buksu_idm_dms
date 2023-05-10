@@ -36,7 +36,15 @@ export const authOptions = {
                 ActiveChairperson: true,
                 ActiveCoordinator: true,
                 ActiveDean: true,
-                Faculty: true,
+                Faculty: {
+                  include: {
+                    department: {
+                      include: {
+                        college: true,
+                      },
+                    },
+                  },
+                },
               },
             },
             CITLDirector: {

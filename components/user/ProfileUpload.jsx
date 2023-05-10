@@ -34,7 +34,7 @@ export default function ProfileUpload({ userImage, onUploadImage }) {
           </div>
         ) : null}
         <img
-          className='w-24 h-24 rounded-full shadow-lg'
+          className='w-24 h-24 rounded-full shadow-lg object-center object-cover'
           src={userImage}
           alt='image'
         />

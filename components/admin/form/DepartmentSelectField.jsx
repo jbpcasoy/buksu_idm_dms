@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 export default function DepartmentSelectField({
   onChange,
+  defaultValue,
   collegeId,
   ...props
 }) {
@@ -32,6 +33,8 @@ export default function DepartmentSelectField({
     <Autocomplete
       disablePortal
       options={options}
+      defaultValue={defaultValue}
+      disabled={Boolean(defaultValue)}
       onInputChange={(_, value) => setInput(value)}
       onChange={(_, value) => {
         onChange(value?.id ?? "");

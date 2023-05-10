@@ -110,6 +110,7 @@ model IM {
   IMDCoordinatorEndorsement      IMDCoordinatorEndorsement?
   IMEvent                        IMEvent[]
   returned                       Boolean                         @default(false)
+  Notification                   Notification[]
 
   @@index([ownerId])
 }
@@ -561,15 +562,18 @@ model CoordinatorSuggestionItem {
 }
 
 enum Type {
+  SUBMITTED
   SUBMITTED_PEER_REVIEW
   SUBMITTED_CHAIRPERSON_REVIEW
   SUBMITTED_COORDINATOR_REVIEW
   SUBMITTED_PEER_SUGGESTION
   SUBMITTED_CHAIRPERSON_SUGGESTION
   SUBMITTED_COORDINATOR_SUGGESTION
+  DEPARTMENT_REVISED
   COORDINATOR_ENDORSEMENT
   DEAN_ENDORSEMENT
   SUBMITTED_IMD_COORDINATOR_SUGGESTION
+  CITL_REVISED
   IMD_COORDINATOR_ENDORSEMENT
   CITL_DIRECTOR_ENDORSEMENT
 }
@@ -602,6 +606,11 @@ model Notification {
   iMDCoordinatorEndorsementId         String?                            @unique
   CITLDirectorEndorsement             CITLDirectorEndorsement?           @relation(fields: [cITLDirectorEndorsementId], references: [id], onDelete: Cascade)
   cITLDirectorEndorsementId           String?                            @unique
+  IM                                  IM?                                @relation(fields: [iMId], references: [id])
+  iMId                                String?
+
+  @@unique([Type, iMId])
+  @@index([iMId])
 }
 
 model ReadNotification {

@@ -5,7 +5,7 @@ const { PrismaClient } = require("@prisma/client");
 
 export default async function updateIM(
   id,
-  { serialNumber, title, status, authors, type, returned },
+  { serialNumber, title, status, authors, type, returned, updatedAt },
   ability
 ) {
   const prisma = PRISMA_CLIENT;
@@ -22,6 +22,75 @@ export default async function updateIM(
       type,
       authors,
       returned,
+      updatedAt: updatedAt ?? new Date(),
+      Notification:
+        status === "SUBMITTED"
+          ? {
+              upsert: {
+                create: {
+                  Type: "SUBMITTED",
+                },
+                update: {
+                  Type: "SUBMITTED",
+                  ReadNotification: {
+                    deleteMany: {
+                      id: { contains: "" },
+                    },
+                  },
+                },
+                where: {
+                  Type_iMId: {
+                    iMId: id,
+                    Type: "SUBMITTED",
+                  },
+                },
+              },
+            }
+          : status === "DEPARTMENT_REVISED"
+          ? {
+              upsert: {
+                create: {
+                  Type: "DEPARTMENT_REVISED",
+                },
+                update: {
+                  Type: "DEPARTMENT_REVISED",
+                  ReadNotification: {
+                    deleteMany: {
+                      id: { contains: "" },
+                    },
+                  },
+                },
+                where: {
+                  Type_iMId: {
+                    iMId: id,
+                    Type: "DEPARTMENT_REVISED",
+                  },
+                },
+              },
+            }
+          : status === "CITL_REVISED"
+          ? {
+              upsert: {
+                create: {
+                  Type: "CITL_REVISED",
+                },
+                update: {
+                  Type: "CITL_REVISED",
+                  ReadNotification: {
+                    deleteMany: {
+                      id: { contains: "" },
+                    },
+                  },
+                },
+                where: {
+                  Type_iMId: {
+                    iMId: id,
+                    Type: "CITL_REVISED",
+                  },
+                },
+              },
+            }
+          : undefined,
       IMEvent:
         status === "SUBMITTED"
           ? {
