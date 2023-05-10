@@ -50,6 +50,10 @@ export default function AdminIM({ im }) {
       });
   }
 
+  async function onTrackIM() {
+    return router.push(`/admin/im/${iMData.id}/track`);
+  }
+
   if (!iMData) {
     return null;
   }
@@ -88,6 +92,7 @@ export default function AdminIM({ im }) {
       onViewIM={() => {
         router.push(`/admin/im/${iMData.id}`);
       }}
+      onTrackIM={onTrackIM}
     />
   );
 }
