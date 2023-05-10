@@ -29,12 +29,14 @@ export default function Layout({ children, active }) {
       <Sidebar />
       <div className=' sm:ml-64'>
         <div className='p-2'>
-          <div className=' mt-16'>
+          <div className='mt-16'>
             {user && <Announcements />}
-            {children}
+            <div className="dark:bg-gray-900  bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')] dark:bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern-dark.svg')]">
+              {children}
+            </div>
           </div>
         </div>
-      </div>{" "}
+      </div>
     </div>
   );
 }
