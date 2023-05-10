@@ -11,7 +11,9 @@ export default function Home() {
       <Layout>
         <div className='  p-4'>
           <div className='mt-12 lg:mt-20'>
-            {user && (
+            {(user?.ActiveFaculty?.ActiveCoordinator ||
+              user?.ActiveFaculty?.ActiveDean ||
+              user?.ActiveFaculty?.ActiveChairperson) && (
               <div className='mb-4'>
                 <EndorsedIM />
               </div>
