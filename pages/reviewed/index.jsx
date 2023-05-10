@@ -264,7 +264,7 @@ export default function Home() {
                   className='px-6 py-3 text-left w-32 text-xs font-medium text-gray-500 uppercase tracking-wider'
                 >
                   <SortButton
-                    label='Date'
+                    label='Last Activity'
                     sortOrder={
                       state.sortColumn === "createdAt"
                         ? state.sortOrder

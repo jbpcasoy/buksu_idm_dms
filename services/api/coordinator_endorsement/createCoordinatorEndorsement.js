@@ -1,6 +1,7 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
 import readCoordinator from "../coordinator/readCoordinator";
 import readIM from "../im/readIM";
+import updateIM from "../im/updateIM";
 
 export default async function createCoordinatorEndorsement({
   iMId,
@@ -47,6 +48,14 @@ export default async function createCoordinatorEndorsement({
       },
     },
   });
+
+  await updateIM(
+    iM.id,
+    {
+      updatedAt: new Date(),
+    },
+    ability
+  );
 
   return coordinatorEndorsement;
 }

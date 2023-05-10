@@ -15,12 +15,15 @@ export default async function postFileHandler(req, res) {
     req,
     res,
     next: async (req, res) => {
-      const file = await createFile({
-        fileName,
-        originalFileName,
-        iMId,
-        googleDocsUrl,
-      });
+      const file = await createFile(
+        {
+          fileName,
+          originalFileName,
+          iMId,
+          googleDocsUrl,
+        },
+        await userAbility(user)
+      );
       return res.status(201).json(file);
     },
     action: "connectToFile",

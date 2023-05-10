@@ -1,5 +1,6 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
 import checkAndUpdateStatus from "@/services/helpers/checkAndUpdateStatus";
+import updateIM from "../im/updateIM";
 import readPeerSuggestion from "../peer_suggestion/readPeerSuggestion";
 import readSubmittedPeerReview from "../submitted_peer_review/readSubmittedPeerReview";
 
@@ -49,6 +50,14 @@ export default async function createSubmittedPeerSuggestion({
     ability,
   });
   await checkAndUpdateStatus({ iMId: submittedPeerReview.iMId, ability });
+
+  await updateIM(
+    submittedPeerReview.iMId,
+    {
+      updatedAt: new Date(),
+    },
+    ability
+  );
 
   return submittedPeerSuggestion;
 }

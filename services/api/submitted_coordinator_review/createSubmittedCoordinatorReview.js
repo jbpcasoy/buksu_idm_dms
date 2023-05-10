@@ -1,5 +1,6 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
 import readCoordinatorReview from "../coordinator_review/readCoordinatorReview";
+import updateIM from "../im/updateIM";
 
 export default async function createSubmittedCoordinatorReview({
   coordinatorReviewId,
@@ -34,6 +35,14 @@ export default async function createSubmittedCoordinatorReview({
         },
       },
     });
+
+  await updateIM(
+    coordinatorReview.iMId,
+    {
+      updatedAt: new Date(),
+    },
+    ability
+  );
 
   return submittedCoordinatorReview;
 }
