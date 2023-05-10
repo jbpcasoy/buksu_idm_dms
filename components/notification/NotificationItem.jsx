@@ -1,13 +1,16 @@
+import CITLRevisedNotificationItem from "./CITLRevisedNotificationItem";
 import ChairpersonReviewNotificationItem from "./ChairpersonReviewNotificationItem";
 import ChairpersonSuggestionNotificationItem from "./ChairpersonSuggestionNotificationItem";
 import CoordinatorEndorsementNotificationItem from "./CoordinatorEndorsementNotificationItem";
 import CoordinatorReviewNotificationItem from "./CoordinatorReviewNotificationItem";
 import CoordinatorSuggestionNotificationItem from "./CoordinatorSuggestionNotificationItem";
 import DeanEndorsementNotificationItem from "./DeanEndorsementNotificationItem";
+import DepartmentRevisedNotificationItem from "./DepartmentRevisedNotificationItem";
 import IMDCoordinatorEndorsementNotificationItem from "./IMDCoordinatorEndorsementNotificationItem";
 import IMDCoordinatorSuggestionNotificationItem from "./IMDCoordinatorSuggestionNotificationItem";
 import PeerReviewNotificationItem from "./PeerReviewNotificationItem";
 import PeerSuggestionNotificationItem from "./PeerSuggestionNotificationItem";
+import SubmittedNotificationItem from "./SubmittedNotificationItem";
 
 export default function NotificationItem({
   notification,
@@ -81,6 +84,27 @@ export default function NotificationItem({
   } else if (notification.Type === "IMD_COORDINATOR_ENDORSEMENT") {
     return (
       <IMDCoordinatorEndorsementNotificationItem
+        notification={notification}
+        refreshNotifications={refreshNotifications}
+      />
+    );
+  } else if (notification.Type === "SUBMITTED") {
+    return (
+      <SubmittedNotificationItem
+        notification={notification}
+        refreshNotifications={refreshNotifications}
+      />
+    );
+  } else if (notification.Type === "DEPARTMENT_REVISED") {
+    return (
+      <DepartmentRevisedNotificationItem
+        notification={notification}
+        refreshNotifications={refreshNotifications}
+      />
+    );
+  } else if (notification.Type === "CITL_REVISED") {
+    return (
+      <CITLRevisedNotificationItem
         notification={notification}
         refreshNotifications={refreshNotifications}
       />

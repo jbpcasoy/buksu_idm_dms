@@ -19,6 +19,7 @@ import coordinatorSuggestionItemAbility from "./coordinatorSuggestionItemAbility
 import deanAbility from "./deanAbility";
 import deanEndorsementAbility from "./deanEndorsementAbility";
 import departmentAbility from "./departmentAbility";
+import facultyAbility from "./facultyAbility";
 import fileAbility from "./fileAbility";
 import iMAbility from "./iMAbility";
 import iMDCoordinatorEndorsementAbility from "./iMDCoordinatorEndorsementAbility";
@@ -86,6 +87,7 @@ export default async function userAbility(user) {
   announcementAbility({ can, cannot, user });
   citlDirectorAbility({ can, cannot, user });
   settingsAbility({ can, cannot, user });
+  facultyAbility({ can, cannot, user });
 
   // TODO ensure that peer, chairperson, dean, imd coordinator,
   // and citl director can still read suggestions, do the same on other resources

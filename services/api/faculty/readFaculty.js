@@ -17,7 +17,13 @@ export default async function readFaculty({ id, ability, filter = {} }) {
     },
     include: {
       user: true,
-      ActiveFaculty: true,
+      ActiveFaculty: {
+        include: {
+          ActiveChairperson: true,
+          ActiveCoordinator: true,
+          ActiveDean: true,
+        },
+      },
       department: {
         include: {
           college: true,

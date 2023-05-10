@@ -15,6 +15,16 @@ export default async function readNotification({ id, ability, filter = {} }) {
       ],
     },
     include: {
+      IM: {
+        include: {
+          owner: {
+            include: {
+              department: true,
+              user: true,
+            },
+          },
+        },
+      },
       SubmittedChairpersonReview: {
         include: {
           ChairpersonReview: {
