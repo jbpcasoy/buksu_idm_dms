@@ -118,7 +118,7 @@ model File {
   id               String      @id @default(cuid())
   fileName         String?     @unique
   originalFileName String
-  iM               IM          @relation(fields: [iMId], references: [id])
+  iM               IM          @relation(fields: [iMId], references: [id], onDelete: Cascade)
   createdAt        DateTime    @default(now())
   updatedAt        DateTime    @default(now())
   iMId             String
@@ -133,9 +133,9 @@ model ActiveFile {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  File      File     @relation(fields: [fileId], references: [id])
+  File      File     @relation(fields: [fileId], references: [id], onDelete: Cascade)
   fileId    String   @unique
-  IM        IM       @relation(fields: [iMId], references: [id])
+  IM        IM       @relation(fields: [iMId], references: [id], onDelete: Cascade)
   iMId      String   @unique
 }
 
@@ -368,7 +368,7 @@ model PeerReview {
   updatedAt           DateTime             @updatedAt
   Faculty             Faculty              @relation(fields: [facultyId], references: [id])
   facultyId           String
-  IM                  IM                   @relation(fields: [iMId], references: [id])
+  IM                  IM                   @relation(fields: [iMId], references: [id], onDelete: Cascade)
   iMId                String
   PeerReviewItem      PeerReviewItem[]
   SubmittedPeerReview SubmittedPeerReview?
@@ -382,9 +382,9 @@ model PeerReviewItem {
   id           String     @id @default(cuid())
   createdAt    DateTime   @default(now())
   updatedAt    DateTime   @updatedAt
-  questionId   String // static uuid from frontend, for prototype, production should have question table with google forms like features
+  questionId   String // static uuid from frontend, for prototype, idealy it should have question table with google forms like features
   answer       String
-  PeerReview   PeerReview @relation(fields: [peerReviewId], references: [id])
+  PeerReview   PeerReview @relation(fields: [peerReviewId], references: [id], onDelete: Cascade)
   peerReviewId String
 
   @@unique([peerReviewId, questionId])
@@ -395,9 +395,9 @@ model SubmittedPeerReview {
   id             String          @id @default(cuid())
   createdAt      DateTime        @default(now())
   updatedAt      DateTime        @updatedAt
-  IM             IM              @relation(fields: [iMId], references: [id])
+  IM             IM              @relation(fields: [iMId], references: [id], onDelete: Cascade)
   iMId           String          @unique
-  PeerReview     PeerReview      @relation(fields: [peerReviewId], references: [id])
+  PeerReview     PeerReview      @relation(fields: [peerReviewId], references: [id], onDelete: Cascade)
   peerReviewId   String          @unique
   PeerSuggestion PeerSuggestion?
   Notification   Notification?
@@ -410,7 +410,7 @@ model ChairpersonReview {
   updatedAt                  DateTime                    @updatedAt
   Chairperson                Chairperson                 @relation(fields: [chairpersonId], references: [id])
   chairpersonId              String
-  IM                         IM                          @relation(fields: [iMId], references: [id])
+  IM                         IM                          @relation(fields: [iMId], references: [id], onDelete: Cascade)
   iMId                       String
   ChairpersonReviewItem      ChairpersonReviewItem[]
   SubmittedChairpersonReview SubmittedChairpersonReview?
@@ -426,7 +426,7 @@ model ChairpersonReviewItem {
   updatedAt           DateTime          @updatedAt
   questionId          String // static uuid from frontend, for prototype, production should have question table with google forms like features
   answer              String
-  ChairpersonReview   ChairpersonReview @relation(fields: [chairpersonReviewId], references: [id])
+  ChairpersonReview   ChairpersonReview @relation(fields: [chairpersonReviewId], references: [id], onDelete: Cascade)
   chairpersonReviewId String
 
   @@unique([chairpersonReviewId, questionId])
@@ -437,9 +437,9 @@ model SubmittedChairpersonReview {
   id                    String                 @id @default(cuid())
   createdAt             DateTime               @default(now())
   updatedAt             DateTime               @updatedAt
-  IM                    IM                     @relation(fields: [iMId], references: [id])
+  IM                    IM                     @relation(fields: [iMId], references: [id], onDelete: Cascade)
   iMId                  String                 @unique
-  ChairpersonReview     ChairpersonReview      @relation(fields: [chairpersonReviewId], references: [id])
+  ChairpersonReview     ChairpersonReview      @relation(fields: [chairpersonReviewId], references: [id], onDelete: Cascade)
   chairpersonReviewId   String                 @unique
   ChairpersonSuggestion ChairpersonSuggestion?
   Notification          Notification?
@@ -452,7 +452,7 @@ model CoordinatorReview {
   updatedAt                  DateTime                    @updatedAt
   Coordinator                Coordinator                 @relation(fields: [coordinatorId], references: [id])
   coordinatorId              String
-  IM                         IM                          @relation(fields: [iMId], references: [id])
+  IM                         IM                          @relation(fields: [iMId], references: [id], onDelete: Cascade)
   iMId                       String
   CoordinatorReviewItem      CoordinatorReviewItem[]
   SubmittedCoordinatorReview SubmittedCoordinatorReview?
@@ -468,7 +468,7 @@ model CoordinatorReviewItem {
   updatedAt           DateTime          @updatedAt
   questionId          String // static uuid from frontend, for prototype, production should have question table with google forms like features
   answer              String
-  CoordinatorReview   CoordinatorReview @relation(fields: [coordinatorReviewId], references: [id])
+  CoordinatorReview   CoordinatorReview @relation(fields: [coordinatorReviewId], references: [id], onDelete: Cascade)
   coordinatorReviewId String
 
   @@unique([coordinatorReviewId, questionId])
@@ -479,9 +479,9 @@ model SubmittedCoordinatorReview {
   id                    String                 @id @default(cuid())
   createdAt             DateTime               @default(now())
   updatedAt             DateTime               @updatedAt
-  IM                    IM                     @relation(fields: [iMId], references: [id])
+  IM                    IM                     @relation(fields: [iMId], references: [id], onDelete: Cascade)
   iMId                  String                 @unique
-  CoordinatorReview     CoordinatorReview      @relation(fields: [coordinatorReviewId], references: [id])
+  CoordinatorReview     CoordinatorReview      @relation(fields: [coordinatorReviewId], references: [id], onDelete: Cascade)
   coordinatorReviewId   String                 @unique
   CoordinatorSuggestion CoordinatorSuggestion?
   Notification          Notification?
@@ -492,7 +492,7 @@ model PeerSuggestion {
   id                      String                   @id @default(cuid())
   createdAt               DateTime                 @default(now())
   updatedAt               DateTime                 @updatedAt
-  SubmittedPeerReview     SubmittedPeerReview      @relation(fields: [submittedPeerReviewId], references: [id])
+  SubmittedPeerReview     SubmittedPeerReview      @relation(fields: [submittedPeerReviewId], references: [id], onDelete: Cascade)
   submittedPeerReviewId   String                   @unique
   PeerSuggestionItem      PeerSuggestionItem[]
   SubmittedPeerSuggestion SubmittedPeerSuggestion?
@@ -502,7 +502,7 @@ model PeerSuggestionItem {
   id               String         @id @default(cuid())
   createdAt        DateTime       @default(now())
   updatedAt        DateTime       @updatedAt
-  PeerSuggestion   PeerSuggestion @relation(fields: [peerSuggestionId], references: [id])
+  PeerSuggestion   PeerSuggestion @relation(fields: [peerSuggestionId], references: [id], onDelete: Cascade)
   peerSuggestionId String
   value            String         @db.Text
   actionTaken      String?        @db.Text
@@ -516,7 +516,7 @@ model ChairpersonSuggestion {
   id                             String                          @id @default(cuid())
   createdAt                      DateTime                        @default(now())
   updatedAt                      DateTime                        @updatedAt
-  SubmittedChairpersonReview     SubmittedChairpersonReview      @relation(fields: [submittedChairpersonReviewId], references: [id])
+  SubmittedChairpersonReview     SubmittedChairpersonReview      @relation(fields: [submittedChairpersonReviewId], references: [id], onDelete: Cascade)
   submittedChairpersonReviewId   String                          @unique
   ChairpersonSuggestionItem      ChairpersonSuggestionItem[]
   SubmittedChairpersonSuggestion SubmittedChairpersonSuggestion?
@@ -526,7 +526,7 @@ model ChairpersonSuggestionItem {
   id                      String                @id @default(cuid())
   createdAt               DateTime              @default(now())
   updatedAt               DateTime              @updatedAt
-  ChairpersonSuggestion   ChairpersonSuggestion @relation(fields: [chairpersonSuggestionId], references: [id])
+  ChairpersonSuggestion   ChairpersonSuggestion @relation(fields: [chairpersonSuggestionId], references: [id], onDelete: Cascade)
   chairpersonSuggestionId String
   value                   String                @db.Text
   actionTaken             String?               @db.Text
@@ -540,7 +540,7 @@ model CoordinatorSuggestion {
   id                             String                          @id @default(cuid())
   createdAt                      DateTime                        @default(now())
   updatedAt                      DateTime                        @updatedAt
-  SubmittedCoordinatorReview     SubmittedCoordinatorReview      @relation(fields: [submittedCoordinatorReviewId], references: [id])
+  SubmittedCoordinatorReview     SubmittedCoordinatorReview      @relation(fields: [submittedCoordinatorReviewId], references: [id], onDelete: Cascade)
   submittedCoordinatorReviewId   String                          @unique
   CoordinatorSuggestionItem      CoordinatorSuggestionItem[]
   SubmittedCoordinatorSuggestion SubmittedCoordinatorSuggestion?
@@ -554,7 +554,7 @@ model CoordinatorSuggestionItem {
   actionTaken             String?               @db.Text
   pageNumber              Int
   remarks                 String?               @db.Text
-  CoordinatorSuggestion   CoordinatorSuggestion @relation(fields: [coordinatorSuggestionId], references: [id])
+  CoordinatorSuggestion   CoordinatorSuggestion @relation(fields: [coordinatorSuggestionId], references: [id], onDelete: Cascade)
   coordinatorSuggestionId String
 
   @@index([coordinatorSuggestionId])
@@ -580,27 +580,27 @@ model Notification {
   updatedAt                           DateTime                           @updatedAt
   ReadNotification                    ReadNotification[]
   Type                                Type
-  SubmittedPeerReview                 SubmittedPeerReview?               @relation(fields: [submittedPeerReviewId], references: [id])
+  SubmittedPeerReview                 SubmittedPeerReview?               @relation(fields: [submittedPeerReviewId], references: [id], onDelete: Cascade)
   submittedPeerReviewId               String?                            @unique
-  SubmittedChairpersonReview          SubmittedChairpersonReview?        @relation(fields: [submittedChairpersonReviewId], references: [id])
+  SubmittedChairpersonReview          SubmittedChairpersonReview?        @relation(fields: [submittedChairpersonReviewId], references: [id], onDelete: Cascade)
   submittedChairpersonReviewId        String?                            @unique
-  SubmittedCoordinatorReview          SubmittedCoordinatorReview?        @relation(fields: [submittedCoordinatorReviewId], references: [id])
+  SubmittedCoordinatorReview          SubmittedCoordinatorReview?        @relation(fields: [submittedCoordinatorReviewId], references: [id], onDelete: Cascade)
   submittedCoordinatorReviewId        String?                            @unique
-  SubmittedPeerSuggestion             SubmittedPeerSuggestion?           @relation(fields: [submittedPeerSuggestionId], references: [id])
+  SubmittedPeerSuggestion             SubmittedPeerSuggestion?           @relation(fields: [submittedPeerSuggestionId], references: [id], onDelete: Cascade)
   submittedPeerSuggestionId           String?                            @unique
-  SubmittedChairpersonSuggestion      SubmittedChairpersonSuggestion?    @relation(fields: [submittedChairpersonSuggestionId], references: [id])
+  SubmittedChairpersonSuggestion      SubmittedChairpersonSuggestion?    @relation(fields: [submittedChairpersonSuggestionId], references: [id], onDelete: Cascade)
   submittedChairpersonSuggestionId    String?                            @unique
-  SubmittedCoordinatorSuggestion      SubmittedCoordinatorSuggestion?    @relation(fields: [submittedCoordinatorSuggestionId], references: [id])
+  SubmittedCoordinatorSuggestion      SubmittedCoordinatorSuggestion?    @relation(fields: [submittedCoordinatorSuggestionId], references: [id], onDelete: Cascade)
   submittedCoordinatorSuggestionId    String?                            @unique
-  CoordinatorEndorsement              CoordinatorEndorsement?            @relation(fields: [coordinatorEndorsementId], references: [id])
+  CoordinatorEndorsement              CoordinatorEndorsement?            @relation(fields: [coordinatorEndorsementId], references: [id], onDelete: Cascade)
   coordinatorEndorsementId            String?                            @unique
-  DeanEndorsement                     DeanEndorsement?                   @relation(fields: [deanEndorsementId], references: [id])
+  DeanEndorsement                     DeanEndorsement?                   @relation(fields: [deanEndorsementId], references: [id], onDelete: Cascade)
   deanEndorsementId                   String?                            @unique
-  SubmittedIMDCoordinatorSuggestion   SubmittedIMDCoordinatorSuggestion? @relation(fields: [submittedIMDCoordinatorSuggestionId], references: [id])
+  SubmittedIMDCoordinatorSuggestion   SubmittedIMDCoordinatorSuggestion? @relation(fields: [submittedIMDCoordinatorSuggestionId], references: [id], onDelete: Cascade)
   submittedIMDCoordinatorSuggestionId String?                            @unique
-  IMDCoordinatorEndorsement           IMDCoordinatorEndorsement?         @relation(fields: [iMDCoordinatorEndorsementId], references: [id])
+  IMDCoordinatorEndorsement           IMDCoordinatorEndorsement?         @relation(fields: [iMDCoordinatorEndorsementId], references: [id], onDelete: Cascade)
   iMDCoordinatorEndorsementId         String?                            @unique
-  CITLDirectorEndorsement             CITLDirectorEndorsement?           @relation(fields: [cITLDirectorEndorsementId], references: [id])
+  CITLDirectorEndorsement             CITLDirectorEndorsement?           @relation(fields: [cITLDirectorEndorsementId], references: [id], onDelete: Cascade)
   cITLDirectorEndorsementId           String?                            @unique
 }
 
@@ -608,7 +608,7 @@ model ReadNotification {
   id             String       @id @default(cuid())
   createdAt      DateTime     @default(now())
   updatedAt      DateTime     @updatedAt
-  Notification   Notification @relation(fields: [notificationId], references: [id])
+  Notification   Notification @relation(fields: [notificationId], references: [id], onDelete: Cascade)
   notificationId String
   User           User         @relation(fields: [userId], references: [id])
   userId         String
@@ -647,9 +647,9 @@ model SubmittedPeerSuggestion {
   id               String         @id @default(cuid())
   createdAt        DateTime       @default(now())
   updatedAt        DateTime       @updatedAt
-  PeerSuggestion   PeerSuggestion @relation(fields: [peerSuggestionId], references: [id])
+  PeerSuggestion   PeerSuggestion @relation(fields: [peerSuggestionId], references: [id], onDelete: Cascade)
   peerSuggestionId String         @unique
-  IM               IM             @relation(fields: [iMId], references: [id])
+  IM               IM             @relation(fields: [iMId], references: [id], onDelete: Cascade)
   iMId             String         @unique
   Notification     Notification?
   IMEvent          IMEvent[]
@@ -659,9 +659,9 @@ model SubmittedCoordinatorSuggestion {
   id                      String                @id @default(cuid())
   createdAt               DateTime              @default(now())
   updatedAt               DateTime              @updatedAt
-  CoordinatorSuggestion   CoordinatorSuggestion @relation(fields: [coordinatorSuggestionId], references: [id])
+  CoordinatorSuggestion   CoordinatorSuggestion @relation(fields: [coordinatorSuggestionId], references: [id], onDelete: Cascade)
   coordinatorSuggestionId String                @unique
-  IM                      IM                    @relation(fields: [iMId], references: [id])
+  IM                      IM                    @relation(fields: [iMId], references: [id], onDelete: Cascade)
   iMId                    String                @unique
   Notification            Notification?
   IMEvent                 IMEvent[]
@@ -671,9 +671,9 @@ model SubmittedChairpersonSuggestion {
   id                      String                @id @default(cuid())
   createdAt               DateTime              @default(now())
   updatedAt               DateTime              @updatedAt
-  ChairpersonSuggestion   ChairpersonSuggestion @relation(fields: [chairpersonSuggestionId], references: [id])
+  ChairpersonSuggestion   ChairpersonSuggestion @relation(fields: [chairpersonSuggestionId], references: [id], onDelete: Cascade)
   chairpersonSuggestionId String                @unique
-  IM                      IM                    @relation(fields: [iMId], references: [id])
+  IM                      IM                    @relation(fields: [iMId], references: [id], onDelete: Cascade)
   iMId                    String                @unique
   Notification            Notification?
   IMEvent                 IMEvent[]
@@ -683,7 +683,7 @@ model CoordinatorEndorsement {
   id              String           @id @default(cuid())
   createdAt       DateTime         @default(now())
   updatedAt       DateTime         @updatedAt
-  IM              IM               @relation(fields: [iMId], references: [id])
+  IM              IM               @relation(fields: [iMId], references: [id], onDelete: Cascade)
   iMId            String           @unique
   Coordinator     Coordinator      @relation(fields: [coordinatorId], references: [id])
   coordinatorId   String
@@ -700,7 +700,7 @@ model DeanEndorsement {
   updatedAt                DateTime               @updatedAt
   Dean                     Dean                   @relation(fields: [deanId], references: [id])
   deanId                   String
-  CoordinatorEndorsement   CoordinatorEndorsement @relation(fields: [coordinatorEndorsementId], references: [id])
+  CoordinatorEndorsement   CoordinatorEndorsement @relation(fields: [coordinatorEndorsementId], references: [id], onDelete: Cascade)
   coordinatorEndorsementId String                 @unique
   Notification             Notification?
   IMEvent                  IMEvent[]
@@ -777,7 +777,7 @@ model IMDCoordinatorSuggestion {
   id                                String                             @id @default(cuid())
   createdAt                         DateTime                           @default(now())
   updatedAt                         DateTime                           @updatedAt
-  IM                                IM                                 @relation(fields: [iMId], references: [id])
+  IM                                IM                                 @relation(fields: [iMId], references: [id], onDelete: Cascade)
   iMId                              String                             @unique
   IMDCoordinator                    IMDCoordinator                     @relation(fields: [iMDCoordinatorId], references: [id])
   iMDCoordinatorId                  String
@@ -795,7 +795,7 @@ model IMDCoordinatorSuggestionItem {
   actionTaken                String?                  @db.Text
   pageNumber                 Int
   remarks                    String?                  @db.Text
-  IMDCoordinatorSuggestion   IMDCoordinatorSuggestion @relation(fields: [iMDCoordinatorSuggestionId], references: [id])
+  IMDCoordinatorSuggestion   IMDCoordinatorSuggestion @relation(fields: [iMDCoordinatorSuggestionId], references: [id], onDelete: Cascade)
   iMDCoordinatorSuggestionId String
 
   @@index([iMDCoordinatorSuggestionId])
@@ -805,7 +805,7 @@ model SubmittedIMDCoordinatorSuggestion {
   id                         String                     @id @default(cuid())
   createdAt                  DateTime                   @default(now())
   updatedAt                  DateTime                   @updatedAt
-  IMDCoordinatorSuggestion   IMDCoordinatorSuggestion   @relation(fields: [iMDCoordinatorSuggestionId], references: [id])
+  IMDCoordinatorSuggestion   IMDCoordinatorSuggestion   @relation(fields: [iMDCoordinatorSuggestionId], references: [id], onDelete: Cascade)
   iMDCoordinatorSuggestionId String                     @unique
   IMDCoordinatorEndorsement  IMDCoordinatorEndorsement?
   Notification               Notification?
@@ -816,11 +816,11 @@ model IMDCoordinatorEndorsement {
   id                                  String                            @id @default(cuid())
   createdAt                           DateTime                          @default(now())
   updatedAt                           DateTime                          @updatedAt
-  IM                                  IM                                @relation(fields: [iMId], references: [id])
+  IM                                  IM                                @relation(fields: [iMId], references: [id], onDelete: Cascade)
   iMId                                String                            @unique
   IMDCoordinator                      IMDCoordinator                    @relation(fields: [iMDCoordinatorId], references: [id])
   iMDCoordinatorId                    String
-  SubmittedIMDCoordinatorSuggestion   SubmittedIMDCoordinatorSuggestion @relation(fields: [submittedIMDCoordinatorSuggestionId], references: [id])
+  SubmittedIMDCoordinatorSuggestion   SubmittedIMDCoordinatorSuggestion @relation(fields: [submittedIMDCoordinatorSuggestionId], references: [id], onDelete: Cascade)
   submittedIMDCoordinatorSuggestionId String                            @unique
   CITLDirectorEndorsement             CITLDirectorEndorsement?
   Notification                        Notification?
@@ -835,7 +835,7 @@ model CITLDirectorEndorsement {
   updatedAt                   DateTime                  @updatedAt
   CITLDirector                CITLDirector              @relation(fields: [cITLDirectorId], references: [id])
   cITLDirectorId              String
-  IMDCoordinatorEndorsement   IMDCoordinatorEndorsement @relation(fields: [iMDCoordinatorEndorsementId], references: [id])
+  IMDCoordinatorEndorsement   IMDCoordinatorEndorsement @relation(fields: [iMDCoordinatorEndorsementId], references: [id], onDelete: Cascade)
   iMDCoordinatorEndorsementId String                    @unique
   Notification                Notification?
   IMEvent                     IMEvent[]
@@ -869,31 +869,31 @@ model IMEvent {
   createdAt                           DateTime                           @default(now())
   updatedAt                           DateTime                           @updatedAt
   IMEventType                         IMEventType
-  IM                                  IM?                                @relation(fields: [iMId], references: [id])
+  IM                                  IM?                                @relation(fields: [iMId], references: [id], onDelete: Cascade)
   iMId                                String?
-  File                                File?                              @relation(fields: [fileId], references: [id])
+  File                                File?                              @relation(fields: [fileId], references: [id], onDelete: Cascade)
   fileId                              String?
-  SubmittedPeerReview                 SubmittedPeerReview?               @relation(fields: [submittedPeerReviewId], references: [id])
+  SubmittedPeerReview                 SubmittedPeerReview?               @relation(fields: [submittedPeerReviewId], references: [id], onDelete: Cascade)
   submittedPeerReviewId               String?
-  SubmittedPeerSuggestion             SubmittedPeerSuggestion?           @relation(fields: [submittedPeerSuggestionId], references: [id])
+  SubmittedPeerSuggestion             SubmittedPeerSuggestion?           @relation(fields: [submittedPeerSuggestionId], references: [id], onDelete: Cascade)
   submittedPeerSuggestionId           String?
-  SubmittedCoordinatorReview          SubmittedCoordinatorReview?        @relation(fields: [submittedCoordinatorReviewId], references: [id])
+  SubmittedCoordinatorReview          SubmittedCoordinatorReview?        @relation(fields: [submittedCoordinatorReviewId], references: [id], onDelete: Cascade)
   submittedCoordinatorReviewId        String?
-  SubmittedCoordinatorSuggestion      SubmittedCoordinatorSuggestion?    @relation(fields: [submittedCoordinatorSuggestionId], references: [id])
+  SubmittedCoordinatorSuggestion      SubmittedCoordinatorSuggestion?    @relation(fields: [submittedCoordinatorSuggestionId], references: [id], onDelete: Cascade)
   submittedCoordinatorSuggestionId    String?
-  SubmittedChairpersonReview          SubmittedChairpersonReview?        @relation(fields: [submittedChairpersonReviewId], references: [id])
+  SubmittedChairpersonReview          SubmittedChairpersonReview?        @relation(fields: [submittedChairpersonReviewId], references: [id], onDelete: Cascade)
   submittedChairpersonReviewId        String?
-  SubmittedChairpersonSuggestion      SubmittedChairpersonSuggestion?    @relation(fields: [submittedChairpersonSuggestionId], references: [id])
+  SubmittedChairpersonSuggestion      SubmittedChairpersonSuggestion?    @relation(fields: [submittedChairpersonSuggestionId], references: [id], onDelete: Cascade)
   submittedChairpersonSuggestionId    String?
-  CoordinatorEndorsement              CoordinatorEndorsement?            @relation(fields: [coordinatorEndorsementId], references: [id])
+  CoordinatorEndorsement              CoordinatorEndorsement?            @relation(fields: [coordinatorEndorsementId], references: [id], onDelete: Cascade)
   coordinatorEndorsementId            String?
-  DeanEndorsement                     DeanEndorsement?                   @relation(fields: [deanEndorsementId], references: [id])
+  DeanEndorsement                     DeanEndorsement?                   @relation(fields: [deanEndorsementId], references: [id], onDelete: Cascade)
   deanEndorsementId                   String?
-  SubmittedIMDCoordinatorSuggestion   SubmittedIMDCoordinatorSuggestion? @relation(fields: [submittedIMDCoordinatorSuggestionId], references: [id])
+  SubmittedIMDCoordinatorSuggestion   SubmittedIMDCoordinatorSuggestion? @relation(fields: [submittedIMDCoordinatorSuggestionId], references: [id], onDelete: Cascade)
   submittedIMDCoordinatorSuggestionId String?
-  IMDCoordinatorEndorsement           IMDCoordinatorEndorsement?         @relation(fields: [iMDCoordinatorEndorsementId], references: [id])
+  IMDCoordinatorEndorsement           IMDCoordinatorEndorsement?         @relation(fields: [iMDCoordinatorEndorsementId], references: [id], onDelete: Cascade)
   iMDCoordinatorEndorsementId         String?
-  CITLDirectorEndorsement             CITLDirectorEndorsement?           @relation(fields: [cITLDirectorEndorsementId], references: [id])
+  CITLDirectorEndorsement             CITLDirectorEndorsement?           @relation(fields: [cITLDirectorEndorsementId], references: [id], onDelete: Cascade)
   cITLDirectorEndorsementId           String?
 
   @@index([iMId])
