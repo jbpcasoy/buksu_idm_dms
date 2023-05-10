@@ -1,12 +1,14 @@
 import Layout from "@/components/layout/Layout";
 import SortButton from "@/components/SortButton";
+import UserContext from "@/contexts/UserContext";
 import frontendReadActiveFaculties from "@/services/frontend/admin/active_faculty/frontendReadActiveFaculties";
 import frontendReadDepartment from "@/services/frontend/department/frontendReadDepartment";
 import Faculty from "@/views/Faculty";
 import _ from "lodash";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useSnackbar } from "notistack";
+import { useContext, useEffect, useState } from "react";
 
 export default function DepartmentPage() {
   const [department, setDepartment] = useState();
@@ -21,6 +23,8 @@ export default function DepartmentPage() {
     sortColumn: "Faculty.user.name",
   });
   const [total, setTotal] = useState(0);
+  const { user } = useContext(UserContext);
+  const { closeSnackbar, enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
     if (!router.query.departmentId) return;
@@ -75,6 +79,23 @@ export default function DepartmentPage() {
     }));
   }
   const debouncedHandleNameChange = _.debounce(handleNameChange, 800);
+
+  useEffect(() => {
+    if (
+      !(
+        user?.ActiveFaculty?.ActiveDean ||
+        user?.IMDCoordinator?.ActiveIMDCoordinator ||
+        user?.CITLDirector?.ActiveCITLDirector
+      )
+    ) {
+      enqueueSnackbar({
+        message: "Unauthorized",
+        variant: "error",
+        preventDuplicate: true,
+      });
+      router.push("/home");
+    }
+  }, [user]);
 
   return (
     <Layout>

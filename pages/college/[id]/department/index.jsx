@@ -1,11 +1,13 @@
 import Layout from "@/components/layout/Layout";
 import SortButton from "@/components/SortButton";
+import UserContext from "@/contexts/UserContext";
 import frontendReadCollege from "@/services/frontend/admin/college/frontendReadCollege";
 import frontendReadDepartments from "@/services/frontend/admin/department/frontendReadDepartments";
 import Department from "@/views/Department";
 import _ from "lodash";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useSnackbar } from "notistack";
+import { useContext, useEffect, useState } from "react";
 
 export default function Departments() {
   const [departments, setDepartments] = useState([]);
@@ -20,6 +22,8 @@ export default function Departments() {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
   const [college, setCollege] = useState();
+  const { user } = useContext(UserContext);
+  const { closeSnackbar, enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
     if (!college) return;
@@ -69,6 +73,23 @@ export default function Departments() {
     }));
   }
   const debouncedHandleNameChange = _.debounce(handleNameChange, 800);
+
+  useEffect(() => {
+    if (
+      !(
+        user?.ActiveFaculty?.ActiveDean ||
+        user?.IMDCoordinator?.ActiveIMDCoordinator ||
+        user?.CITLDirector?.ActiveCITLDirector
+      )
+    ) {
+      enqueueSnackbar({
+        message: "Unauthorized",
+        variant: "error",
+        preventDuplicate: true,
+      });
+      router.push("/home");
+    }
+  }, [user]);
 
   return (
     <Layout>
