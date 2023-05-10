@@ -1,15 +1,16 @@
 import Layout from "@/components/layout/Layout";
 import SortButton from "@/components/SortButton";
 import UserContext from "@/contexts/UserContext";
-import frontendReadColleges from "@/services/frontend/admin/college/frontendReadColleges";
-import College from "@/views/College";
+import frontendReadCollege from "@/services/frontend/admin/college/frontendReadCollege";
+import frontendReadDepartments from "@/services/frontend/admin/department/frontendReadDepartments";
+import Department from "@/views/Department";
 import _ from "lodash";
 import { useRouter } from "next/router";
 import { useSnackbar } from "notistack";
 import { useContext, useEffect, useState } from "react";
 
-export default function CollegePage() {
-  const [colleges, setColleges] = useState([]);
+export default function Departments() {
+  const [departments, setDepartments] = useState([]);
   const [state, setState] = useState({
     limit: 5,
     page: 1,
@@ -17,34 +18,55 @@ export default function CollegePage() {
     sortColumn: "name",
     sortOrder: "asc",
   });
-  const [loading, setLoading] = useState(true);
   const [total, setTotal] = useState(0);
+  const [loading, setLoading] = useState(true);
   const router = useRouter();
+  const [college, setCollege] = useState();
   const { user } = useContext(UserContext);
   const { closeSnackbar, enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
+    if (!college) return;
+
     let subscribe = true;
     setLoading(true);
 
-    frontendReadColleges({
-      page: state.page,
+    frontendReadDepartments({
       limit: state.limit,
+      page: state.page,
+      collegeId: college.id,
       name: state.name,
-      sortColumn: state.sortColumn,
       sortOrder: state.sortOrder,
+      sortColumn: state.sortColumn,
     }).then((res) => {
       setLoading(false);
       if (!subscribe) return;
 
-      setColleges(res.data);
+      setDepartments(res.data);
       setTotal(res.total);
     });
 
     return () => {
       subscribe = false;
     };
-  }, [state]);
+  }, [state, college]);
+
+  useEffect(() => {
+    let subscribe = true;
+    if (!user?.ActiveFaculty?.ActiveDean?.collegeId) return;
+
+    frontendReadCollege(user?.ActiveFaculty?.ActiveDean?.collegeId).then(
+      (res) => {
+        if (!subscribe) return;
+
+        setCollege(res);
+      }
+    );
+
+    return () => {
+      subscribe = false;
+    };
+  }, [user?.ActiveFaculty?.ActiveDean?.collegeId]);
 
   function handleNameChange(e) {
     setState((prev) => ({
@@ -55,8 +77,20 @@ export default function CollegePage() {
   const debouncedHandleNameChange = _.debounce(handleNameChange, 800);
 
   useEffect(() => {
+    if (!user) return;
+    console.log({
+      activeDean: user?.ActiveFaculty?.ActiveDean,
+      activeIMDCoordinator: user?.IMDCoordinator?.ActiveIMDCoordinator,
+      activeCITLDirector: user?.CITLDirector?.ActiveCITLDirector,
+      redirect: !(
+        user?.ActiveFaculty?.ActiveDean ||
+        user?.IMDCoordinator?.ActiveIMDCoordinator ||
+        user?.CITLDirector?.ActiveCITLDirector
+      ),
+    });
     if (
       !(
+        user?.ActiveFaculty?.ActiveDean ||
         user?.IMDCoordinator?.ActiveIMDCoordinator ||
         user?.CITLDirector?.ActiveCITLDirector
       )
@@ -81,39 +115,17 @@ export default function CollegePage() {
             */}
             <nav className='flex' aria-label='Breadcrumb'>
               <ol className='inline-flex items-center space-x-1 md:space-x-3'>
-                <li className='inline-flex items-center'>
-                  <button
-                    type='button'
-                    disabled
-                    className='inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue border-b-2 border-CITLOrange rounded-none'
-                  >
-                    <span className='inline-flex items-center justify-center w-4 h-4 mr-1 text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
-                      {total}
-                    </span>
-                    Colleges
-                  </button>
-                </li>
                 <li>
                   <div className='flex items-center'>
-                    <svg
-                      aria-hidden='true'
-                      className='w-6 h-6 text-gray-400'
-                      fill='currentColor'
-                      viewBox='0 0 20 20'
-                      xmlns='http://www.w3.org/2000/svg'
-                    >
-                      <path
-                        fillRule='evenodd'
-                        d='M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z'
-                        clipRule='evenodd'
-                      ></path>
-                    </svg>
-                    <span
+                    <button
                       disabled
-                      className='inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLGray-main  rounded-none'
+                      className='inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLDarkBlue  border-b-2 border-CITLOrange rounded-none'
                     >
+                      <span className='inline-flex items-center justify-center w-4 h-4 mr-1 text-xs font-semibold text-CITLWhite bg-CITLOrange rounded-full '>
+                        {total}
+                      </span>
                       Departments
-                    </span>
+                    </button>
                   </div>
                 </li>
                 <li aria-current='page'>
@@ -132,6 +144,7 @@ export default function CollegePage() {
                       ></path>
                     </svg>
                     <span className='inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-CITLGray-main  rounded-none'>
+                      {" "}
                       Faculty
                     </span>
                   </div>
@@ -179,34 +192,19 @@ export default function CollegePage() {
               </tr>
             </thead>
             <tbody className='bg-white divide-gray-200 overflow-y-auto'>
-              {loading && (
-                <tr
-                  className={` bg-white text-sm text-CITLGray-main text-left p-4 animate-pulse`}
-                >
-                  <td className='px-6 py-4 '>
-                    <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
-                    <div className='w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
-                  </td>
-
-                  <td className='bg-white  font-medium text-slate-400  items-center justify-center py-4 flex '>
-                    <div className='h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5'></div>
-                  </td>
-                </tr>
-              )}
-              {!loading &&
-                colleges.map((college, index) => (
-                  <College
-                    onView={() =>
-                      router.push(
-                        `/college/${college.id}/department?collegeCount=${total}`
-                      )
-                    }
-                    bottomBorder={true}
-                    name={college.name}
-                    id={index}
-                    key={index}
-                  />
-                ))}
+              {departments.map((department, index) => (
+                <Department
+                  onView={() =>
+                    router.push(
+                      `/department/${department.id}?departmentCount=${total}`
+                    )
+                  }
+                  bottomBorder={true}
+                  name={department.name}
+                  id={index}
+                  key={index}
+                />
+              ))}
             </tbody>
           </table>
           <div className='flex flex-row items-center justify-end px-6 py-3 w-full'>
