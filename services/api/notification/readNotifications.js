@@ -1,5 +1,7 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
 import { accessibleBy } from "@casl/prisma";
+import readFaculty from "../faculty/readFaculty";
+import readUser from "../user/readUser";
 
 export default async function readNotifications({
   limit,
@@ -11,6 +13,14 @@ export default async function readNotifications({
 }) {
   const prisma = PRISMA_CLIENT;
   const accessibility = accessibleBy(ability).Notification;
+  const faculty = facultyId
+    ? await readFaculty({ id: facultyId, ability })
+    : undefined;
+  const user = await readUser({ id: userId, ability });
+  console.log({ faculty });
+
+  // TODO: check if faculty has roles
+  // problem: shows submitted im notification on regular faculty
 
   const notifications = await prisma.notification.findMany({
     take: limit,
@@ -24,10 +34,80 @@ export default async function readNotifications({
         {
           OR: [
             {
+              CoordinatorEndorsement: {
+                Coordinator: {
+                  Faculty: {
+                    department: {
+                      collegeId:
+                        faculty?.ActiveFaculty?.ActiveDean?.collegeId ?? "",
+                    },
+                  },
+                },
+              },
+            },
+            {
+              Type: {
+                equals: "SUBMITTED",
+              },
+              IM: {
+                owner: {
+                  departmentId: {
+                    equals:
+                      faculty?.ActiveFaculty?.ActiveChairperson?.departmentId ??
+                      "",
+                  },
+                },
+              },
+            },
+            {
+              Type: {
+                equals: "SUBMITTED",
+              },
+              IM: {
+                owner: {
+                  departmentId: {
+                    equals:
+                      faculty?.ActiveFaculty?.ActiveCoordinator?.departmentId ??
+                      "",
+                  },
+                },
+              },
+            },
+            {
+              Type: {
+                equals: "DEPARTMENT_REVISED",
+              },
+              IM: {
+                owner: {
+                  departmentId: {
+                    equals:
+                      faculty?.ActiveFaculty?.ActiveCoordinator?.departmentId ??
+                      "",
+                  },
+                },
+              },
+            },
+            {
+              Type: {
+                equals: "CITL_REVISED",
+              },
+              IM: {
+                IMDCoordinatorSuggestion: {
+                  SubmittedIMDCoordinatorSuggestion: {
+                    IMDCoordinatorSuggestion: {
+                      iMDCoordinatorId:
+                        user?.IMDCoordinator?.ActiveIMDCoordinator
+                          ?.iMDCoordinatorId ?? "",
+                    },
+                  },
+                },
+              },
+            },
+            {
               SubmittedChairpersonReview: {
                 IM: {
                   owner: {
-                    id: { contains: facultyId },
+                    id: { equals: facultyId ?? "" },
                   },
                 },
               },
@@ -36,7 +116,7 @@ export default async function readNotifications({
               SubmittedCoordinatorReview: {
                 IM: {
                   owner: {
-                    id: { contains: facultyId },
+                    id: { equals: facultyId ?? "" },
                   },
                 },
               },
@@ -45,7 +125,7 @@ export default async function readNotifications({
               SubmittedPeerReview: {
                 IM: {
                   owner: {
-                    id: { contains: facultyId },
+                    id: { equals: facultyId ?? "" },
                   },
                 },
               },
@@ -54,7 +134,7 @@ export default async function readNotifications({
               SubmittedChairpersonSuggestion: {
                 IM: {
                   owner: {
-                    id: { contains: facultyId },
+                    id: { equals: facultyId ?? "" },
                   },
                 },
               },
@@ -63,7 +143,7 @@ export default async function readNotifications({
               SubmittedCoordinatorSuggestion: {
                 IM: {
                   owner: {
-                    id: { contains: facultyId },
+                    id: { equals: facultyId ?? "" },
                   },
                 },
               },
@@ -72,7 +152,7 @@ export default async function readNotifications({
               SubmittedPeerSuggestion: {
                 IM: {
                   owner: {
-                    id: { contains: facultyId },
+                    id: { equals: facultyId ?? "" },
                   },
                 },
               },
@@ -81,7 +161,7 @@ export default async function readNotifications({
               CoordinatorEndorsement: {
                 IM: {
                   owner: {
-                    id: { contains: facultyId },
+                    id: { equals: facultyId ?? "" },
                   },
                 },
               },
@@ -91,7 +171,7 @@ export default async function readNotifications({
                 CoordinatorEndorsement: {
                   IM: {
                     owner: {
-                      id: { contains: facultyId },
+                      id: { equals: facultyId ?? "" },
                     },
                   },
                 },
@@ -102,7 +182,7 @@ export default async function readNotifications({
                 IMDCoordinatorSuggestion: {
                   IM: {
                     owner: {
-                      id: { contains: facultyId },
+                      id: { equals: facultyId ?? "" },
                     },
                   },
                 },
@@ -112,7 +192,7 @@ export default async function readNotifications({
               IMDCoordinatorEndorsement: {
                 IM: {
                   owner: {
-                    id: { contains: facultyId },
+                    id: { equals: facultyId ?? "" },
                   },
                 },
               },
@@ -144,10 +224,80 @@ export default async function readNotifications({
         {
           OR: [
             {
+              CoordinatorEndorsement: {
+                Coordinator: {
+                  Faculty: {
+                    department: {
+                      collegeId:
+                        faculty?.ActiveFaculty?.ActiveDean?.collegeId ?? "",
+                    },
+                  },
+                },
+              },
+            },
+            {
+              Type: {
+                equals: "SUBMITTED",
+              },
+              IM: {
+                owner: {
+                  departmentId: {
+                    equals:
+                      faculty?.ActiveFaculty?.ActiveChairperson?.departmentId ??
+                      "",
+                  },
+                },
+              },
+            },
+            {
+              Type: {
+                equals: "SUBMITTED",
+              },
+              IM: {
+                owner: {
+                  departmentId: {
+                    equals:
+                      faculty?.ActiveFaculty?.ActiveCoordinator?.departmentId ??
+                      "",
+                  },
+                },
+              },
+            },
+            {
+              Type: {
+                equals: "DEPARTMENT_REVISED",
+              },
+              IM: {
+                owner: {
+                  departmentId: {
+                    equals:
+                      faculty?.ActiveFaculty?.ActiveCoordinator?.departmentId ??
+                      "",
+                  },
+                },
+              },
+            },
+            {
+              Type: {
+                equals: "CITL_REVISED",
+              },
+              IM: {
+                IMDCoordinatorSuggestion: {
+                  SubmittedIMDCoordinatorSuggestion: {
+                    IMDCoordinatorSuggestion: {
+                      iMDCoordinatorId:
+                        user?.IMDCoordinator?.ActiveIMDCoordinator
+                          ?.iMDCoordinatorId ?? "",
+                    },
+                  },
+                },
+              },
+            },
+            {
               SubmittedChairpersonReview: {
                 IM: {
                   owner: {
-                    id: { contains: facultyId },
+                    id: { equals: facultyId ?? "" },
                   },
                 },
               },
@@ -156,7 +306,7 @@ export default async function readNotifications({
               SubmittedCoordinatorReview: {
                 IM: {
                   owner: {
-                    id: { contains: facultyId },
+                    id: { equals: facultyId ?? "" },
                   },
                 },
               },
@@ -165,7 +315,7 @@ export default async function readNotifications({
               SubmittedPeerReview: {
                 IM: {
                   owner: {
-                    id: { contains: facultyId },
+                    id: { equals: facultyId ?? "" },
                   },
                 },
               },
@@ -174,7 +324,7 @@ export default async function readNotifications({
               SubmittedChairpersonSuggestion: {
                 IM: {
                   owner: {
-                    id: { contains: facultyId },
+                    id: { equals: facultyId ?? "" },
                   },
                 },
               },
@@ -183,7 +333,7 @@ export default async function readNotifications({
               SubmittedCoordinatorSuggestion: {
                 IM: {
                   owner: {
-                    id: { contains: facultyId },
+                    id: { equals: facultyId ?? "" },
                   },
                 },
               },
@@ -192,7 +342,7 @@ export default async function readNotifications({
               SubmittedPeerSuggestion: {
                 IM: {
                   owner: {
-                    id: { contains: facultyId },
+                    id: { equals: facultyId ?? "" },
                   },
                 },
               },
@@ -201,7 +351,7 @@ export default async function readNotifications({
               CoordinatorEndorsement: {
                 IM: {
                   owner: {
-                    id: { contains: facultyId },
+                    id: { equals: facultyId ?? "" },
                   },
                 },
               },
@@ -211,7 +361,7 @@ export default async function readNotifications({
                 CoordinatorEndorsement: {
                   IM: {
                     owner: {
-                      id: { contains: facultyId },
+                      id: { equals: facultyId ?? "" },
                     },
                   },
                 },
@@ -222,7 +372,7 @@ export default async function readNotifications({
                 IMDCoordinatorSuggestion: {
                   IM: {
                     owner: {
-                      id: { contains: facultyId },
+                      id: { equals: facultyId ?? "" },
                     },
                   },
                 },
@@ -232,7 +382,7 @@ export default async function readNotifications({
               IMDCoordinatorEndorsement: {
                 IM: {
                   owner: {
-                    id: { contains: facultyId },
+                    id: { equals: facultyId ?? "" },
                   },
                 },
               },
