@@ -2,12 +2,14 @@ import frontendCreateActiveFaculty from "@/services/frontend/admin/active_facult
 import frontendDeleteActiveFaculty from "@/services/frontend/admin/active_faculty/frontendDeleteActiveFaculty";
 import frontendDeleteFaculty from "@/services/frontend/faculty/frontendDeleteFaculty";
 import AdminFacultyView from "@/views/admin/faculty/AdminFacultyView";
+import { useRouter } from "next/router";
 import { useSnackbar } from "notistack";
 import { useState } from "react";
 
 export default function AdminFaculty({ faculty }) {
   const [facultyData, setFacultyData] = useState(faculty);
   const { closeSnackbar, enqueueSnackbar } = useSnackbar();
+  const router = useRouter();
 
   async function onDelete() {
     return frontendDeleteFaculty(faculty.id)
@@ -77,6 +79,9 @@ export default function AdminFaculty({ faculty }) {
       active={Boolean(facultyData.ActiveFaculty)}
       onActivate={onActivate}
       onDeactivate={onDeactivate}
+      onTimeline={() => {
+        router.push(`/admin/faculty/${facultyData.id}/timeline`);
+      }}
     />
   );
 }

@@ -15,6 +15,7 @@ export default function AdminFacultyView({
   onDelete,
   onActivate,
   onDeactivate,
+  onTimeline,
 }) {
   const [state, setState] = useState({
     openDelete: false,
@@ -58,6 +59,7 @@ export default function AdminFacultyView({
             active={active}
             onActivate={onActivate}
             onDeactivate={onDeactivate}
+            onTimeline={onTimeline}
           />
         </TableCell>
       </TableRow>
