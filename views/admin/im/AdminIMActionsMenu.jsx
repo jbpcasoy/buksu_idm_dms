@@ -1,13 +1,19 @@
-import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import TimelineIcon from "@mui/icons-material/Timeline";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { IconButton, ListItemIcon, ListItemText } from "@mui/material";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import * as React from "react";
 
-export default function AdminIMActionsMenu({ onEdit, onView, onDelete }) {
+export default function AdminIMActionsMenu({
+  onEdit,
+  onView,
+  onDelete,
+  onTrackIM,
+}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -71,6 +77,17 @@ export default function AdminIMActionsMenu({ onEdit, onView, onDelete }) {
             <DeleteIcon fontSize='small' />
           </ListItemIcon>
           <ListItemText>Delete</ListItemText>
+        </MenuItem>
+        <MenuItem
+          onClick={() => {
+            handleClose();
+            onTrackIM();
+          }}
+        >
+          <ListItemIcon>
+            <TimelineIcon fontSize='small' />
+          </ListItemIcon>
+          <ListItemText>Track</ListItemText>
         </MenuItem>
       </Menu>
     </div>
