@@ -2,9 +2,9 @@ import { Button, TableCell, TableRow } from "@mui/material";
 import moment from "moment";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import AdminDeleteConfirmation from "../AdminDeleteConfirmation";
 import AdminIMActionsMenu from "./AdminIMActionsMenu";
 import AdminIMUpdateForm from "./AdminIMUpdateForm";
-import AdminDeleteConfirmation from "../AdminDeleteConfirmation";
 
 export default function AdminIMView({
   type,
@@ -24,6 +24,7 @@ export default function AdminIMView({
   onViewIM,
   onEdit,
   authors,
+  onTrackIM,
 }) {
   const router = useRouter();
   const [state, setState] = useState({
@@ -85,6 +86,7 @@ export default function AdminIMView({
             onDelete={() => openDeleteDialog(true)}
             onEdit={() => openUpdateDialog(true)}
             onView={onViewIM}
+            onTrackIM={onTrackIM}
           />
         </TableCell>
       </TableRow>

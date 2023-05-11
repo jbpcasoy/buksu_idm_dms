@@ -42,6 +42,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## IMPORTANT
 
 - Do not delete the 'uploads' folder, uploaded files are stored in this folder
+- uploads folder should contain the following folders: file, profile_picture
 
 ## Coding Practices
 
@@ -61,14 +62,29 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 - [Prisma](https://www.prisma.io) - Database ORM
 - [Postgres](https://www.postgresql.org/) - Database
 - [NextAuth](https://next-auth.js.org/) - Authentication
-- [CASL] (https://casl.js.org/v6/en) - Role Based Access Control
+- [CASL](https://casl.js.org/v6/en) - Role Based Access Control
+- [Moment.js](https://momentjs.com/) - Time formatting library
 
 ## Environment Variables (.env)
 
 - GOOGLE_CLIENT_ID - client id from google console
 - GOOGLE_CLIENT_SECRET - client secret from google console
 - DATABASE_URL - database URL for a database supported by Prisma, we recommend postgres
-- JWT_SECRET - secret key for encrypting JWT tokens
+- NEXTAUTH_SECRET - NextAuth config
+- NEXTAUTH_URL - NextAuth config
+- NEXT_PUBLIC_HOST_URL - NextAuth config
+- FIREBASE_API_KEY - Firebase config
+- FIREBASE_AUTH_DOMAIN - Firebase config
+- FIREBASE_PROJECT_ID - Firebase config
+- FIREBASE_STORAGE_BUCKET - Firebase config
+- FIREBASE_MESSAGING_SENDER_ID - Firebase config
+- FIREBASE_APP_ID - Firebase config
+- FIREBASE_MEASUREMENT_ID - Firebase config
+- STORAGE - storage method for files "cloud" uses firebase while "local" uses host server storage
+- DATABASE_URL - The database mysql database url
+- ADMINS - comma separated values of admin emails (Note: admin must be an existing user, meaning it has previously logged in as faculty).
+- UUID - a unique identifier that controls the uniqueness of some unique entities imd coordinator and citl director for instance that cannot be tied to other entities for uniqueness
+- DEFAULT_VPAA - the default vpaa of admin settings
 
 ## Entity Relationship Diagram (ERD)
 
@@ -81,3 +97,14 @@ Description: ERD Editor vscode extension <br />
 Version: 0.9.15 <br />
 Publisher: dineug <br />
 VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=dineug.vuerd-vscode <br />
+
+## Expected Errors
+
+Error:
+
+```
+The webpage at http://localhost:3000/api/auth/callback/google?state=tRFmuGHnRqALhCr7agkw16BQED6gfczcYmHY24N7Qxw&code=4%2F0AbUR2VNMbzRutZmydH1TdMjJL9tlN2rVkISTqwwKSnYrhTUGgkITqZq8maZxuGXPjqLRrg&scope=email+profile+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&authuser=0&prompt=consent might be temporarily down or it may have moved permanently to a new web address.
+```
+
+Cause:
+This happens when logging in on local. Logging in passes through google which then redirects to this a localhost url (in their server) which does not exist. This should not occur in production unless there is a cors error, which can then be fixed by allowing that origin.

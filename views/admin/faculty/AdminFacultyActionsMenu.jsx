@@ -6,12 +6,14 @@ import { IconButton, ListItemIcon, ListItemText } from "@mui/material";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import * as React from "react";
+import TimelineIcon from "@mui/icons-material/Timeline";
 
 export default function AdminFacultyActionsMenu({
   onDelete,
   active,
   onActivate,
   onDeactivate,
+  onTimeline,
 }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -79,6 +81,18 @@ export default function AdminFacultyActionsMenu({
             <ListItemText>Activate</ListItemText>
           </MenuItem>
         )}
+
+        <MenuItem
+          onClick={() => {
+            handleClose();
+            onTimeline();
+          }}
+        >
+          <ListItemIcon>
+            <TimelineIcon fontSize='small' />
+          </ListItemIcon>
+          <ListItemText>Timeline</ListItemText>
+        </MenuItem>
       </Menu>
     </div>
   );

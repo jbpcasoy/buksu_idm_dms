@@ -71,9 +71,11 @@ export default function ProfileFormView({
             userImage={user?.image}
             onUploadImage={onUploadImage}
           />
-          <span className='text-sm text-gray-500 dark:text-gray-400'>
-            {department} | {college}
-          </span>
+          {department && college && (
+            <span className='text-sm text-gray-500 dark:text-gray-400'>
+              {department} | {college}
+            </span>
+          )}
           <h5 className='mb-1 text-xl font-semibold text-gray-900 dark:text-white'>
             {user?.name}
           </h5>

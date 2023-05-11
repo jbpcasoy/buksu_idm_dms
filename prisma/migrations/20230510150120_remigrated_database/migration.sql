@@ -496,7 +496,7 @@ CREATE TABLE `Notification` (
     `id` VARCHAR(191) NOT NULL,
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updatedAt` DATETIME(3) NOT NULL,
-    `Type` ENUM('SUBMITTED_PEER_REVIEW', 'SUBMITTED_CHAIRPERSON_REVIEW', 'SUBMITTED_COORDINATOR_REVIEW', 'SUBMITTED_PEER_SUGGESTION', 'SUBMITTED_CHAIRPERSON_SUGGESTION', 'SUBMITTED_COORDINATOR_SUGGESTION', 'COORDINATOR_ENDORSEMENT', 'DEAN_ENDORSEMENT', 'SUBMITTED_IMD_COORDINATOR_SUGGESTION', 'IMD_COORDINATOR_ENDORSEMENT', 'CITL_DIRECTOR_ENDORSEMENT') NOT NULL,
+    `Type` ENUM('SUBMITTED', 'SUBMITTED_PEER_REVIEW', 'SUBMITTED_CHAIRPERSON_REVIEW', 'SUBMITTED_COORDINATOR_REVIEW', 'SUBMITTED_PEER_SUGGESTION', 'SUBMITTED_CHAIRPERSON_SUGGESTION', 'SUBMITTED_COORDINATOR_SUGGESTION', 'DEPARTMENT_REVISED', 'COORDINATOR_ENDORSEMENT', 'DEAN_ENDORSEMENT', 'SUBMITTED_IMD_COORDINATOR_SUGGESTION', 'CITL_REVISED', 'IMD_COORDINATOR_ENDORSEMENT', 'CITL_DIRECTOR_ENDORSEMENT') NOT NULL,
     `submittedPeerReviewId` VARCHAR(191) NULL,
     `submittedChairpersonReviewId` VARCHAR(191) NULL,
     `submittedCoordinatorReviewId` VARCHAR(191) NULL,
@@ -508,6 +508,7 @@ CREATE TABLE `Notification` (
     `submittedIMDCoordinatorSuggestionId` VARCHAR(191) NULL,
     `iMDCoordinatorEndorsementId` VARCHAR(191) NULL,
     `cITLDirectorEndorsementId` VARCHAR(191) NULL,
+    `iMId` VARCHAR(191) NULL,
 
     UNIQUE INDEX `Notification_submittedPeerReviewId_key`(`submittedPeerReviewId`),
     UNIQUE INDEX `Notification_submittedChairpersonReviewId_key`(`submittedChairpersonReviewId`),
@@ -520,6 +521,8 @@ CREATE TABLE `Notification` (
     UNIQUE INDEX `Notification_submittedIMDCoordinatorSuggestionId_key`(`submittedIMDCoordinatorSuggestionId`),
     UNIQUE INDEX `Notification_iMDCoordinatorEndorsementId_key`(`iMDCoordinatorEndorsementId`),
     UNIQUE INDEX `Notification_cITLDirectorEndorsementId_key`(`cITLDirectorEndorsementId`),
+    INDEX `Notification_iMId_idx`(`iMId`),
+    UNIQUE INDEX `Notification_Type_iMId_key`(`Type`, `iMId`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -814,5 +817,17 @@ CREATE TABLE `Announcement` (
     `description` VARCHAR(191) NOT NULL,
     `link` VARCHAR(191) NOT NULL,
 
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `Settings` (
+    `id` VARCHAR(191) NOT NULL,
+    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `updatedAt` DATETIME(3) NOT NULL,
+    `uuid` VARCHAR(191) NOT NULL,
+    `vpaa` VARCHAR(191) NOT NULL,
+
+    UNIQUE INDEX `Settings_uuid_key`(`uuid`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
