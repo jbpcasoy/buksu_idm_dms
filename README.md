@@ -83,7 +83,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 - STORAGE - storage method for files "cloud" uses firebase while "local" uses host server storage
 - DATABASE_URL - The database mysql database url
 - ADMINS - comma separated values of admin emails (Note: admin must be an existing user, meaning it has previously logged in as faculty).
-- UUID - a unique identifier that controls the uniqueness of some non anchorable unique entities imd coordinator and citl director for instance
+- UUID - a unique identifier that controls the uniqueness of some unique entities imd coordinator and citl director for instance that cannot be tied to other entities for uniqueness
 - DEFAULT_VPAA - the default vpaa of admin settings
 
 ## Entity Relationship Diagram (ERD)
@@ -97,3 +97,14 @@ Description: ERD Editor vscode extension <br />
 Version: 0.9.15 <br />
 Publisher: dineug <br />
 VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=dineug.vuerd-vscode <br />
+
+## Expected Errors
+
+Error:
+
+```
+The webpage at http://localhost:3000/api/auth/callback/google?state=tRFmuGHnRqALhCr7agkw16BQED6gfczcYmHY24N7Qxw&code=4%2F0AbUR2VNMbzRutZmydH1TdMjJL9tlN2rVkISTqwwKSnYrhTUGgkITqZq8maZxuGXPjqLRrg&scope=email+profile+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&authuser=0&prompt=consent might be temporarily down or it may have moved permanently to a new web address.
+```
+
+Cause:
+This happens when logging in on local. Logging in passes through google which then redirects to this a localhost url (in their server) which does not exist. This should not occur in production unless there is a cors error, which can then be fixed by allowing that origin.
