@@ -1,9 +1,10 @@
 import { PRISMA_CLIENT } from "@/prisma/prisma_client";
 import abilityValidator from "@/services/validator/abilityValidator";
+import { TroubleshootOutlined } from "@mui/icons-material";
 const { createObjectCsvStringifier } = require("csv-writer");
 const archiver = require("archiver");
 
-export default async function getExportFacultyHandler(req, res) {
+export default async function getExportAnnouncementHandler(req, res) {
   return abilityValidator({
     req,
     res,
@@ -21,28 +22,10 @@ export default async function getExportFacultyHandler(req, res) {
 
       // Iterate over each model and export its data
       // Retrieve the data for the current model
-      const results = await prisma.faculty.findMany({
-        include: {
-          user: true,
-          department: {
-            include: {
-              college: true,
-            },
-          },
-          ActiveFaculty: true,
-        },
-      });
+      const results = await prisma.announcement.findMany();
 
       if (results && results.length > 0) {
-        const data = results.map((result) => ({
-          name: result.user.name,
-          email: result.user.email,
-          department: result.department.name,
-          college: result.department.college.name,
-          active: Boolean(result.ActiveFaculty) ? "yes" : "no",
-          createdAt: result.createdAt,
-          updatedAt: result.updatedAt,
-        }));
+        const data = results.map();
         // Create a CSV writer for the current model
         const csvStringifier = createObjectCsvStringifier({
           header: Object.keys(data[0]).map((field) => ({
@@ -57,15 +40,15 @@ export default async function getExportFacultyHandler(req, res) {
           csvStringifier.stringifyRecords(data);
 
         // Append the CSV content to the zip archive
-        archive.append(csvContent, { name: `faculty.csv` });
+        archive.append(csvContent, { name: `announcement.csv` });
       }
 
       // Finalize the archive
       archive.finalize();
     },
     action: "export",
-    subject: "Faculty",
+    subject: "Announcement",
     fields: undefined,
-    type: "Faculty",
+    type: "Announcement",
   });
 }

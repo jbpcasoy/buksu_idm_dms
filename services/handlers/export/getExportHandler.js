@@ -17,6 +17,7 @@ export default async function getExportHandler(req, res) {
       });
 
       // Create a writable stream for the zip file
+      res.setHeader("Content-Type", "application/zip");
       const output = res;
       const archive = archiver("zip", { zlib: { level: 9 } });
 

@@ -3,7 +3,7 @@ import abilityValidator from "@/services/validator/abilityValidator";
 const { createObjectCsvStringifier } = require("csv-writer");
 const archiver = require("archiver");
 
-export default async function getExportFacultyHandler(req, res) {
+export default async function getExportChairpersonHandler(req, res) {
   return abilityValidator({
     req,
     res,
@@ -21,25 +21,29 @@ export default async function getExportFacultyHandler(req, res) {
 
       // Iterate over each model and export its data
       // Retrieve the data for the current model
-      const results = await prisma.faculty.findMany({
+      const results = await prisma.chairperson.findMany({
         include: {
-          user: true,
-          department: {
+          Faculty: {
             include: {
-              college: true,
+              user: true,
+              department: {
+                include: {
+                  college: true,
+                },
+              },
             },
           },
-          ActiveFaculty: true,
+          ActiveChairperson: true,
         },
       });
 
       if (results && results.length > 0) {
         const data = results.map((result) => ({
-          name: result.user.name,
-          email: result.user.email,
-          department: result.department.name,
-          college: result.department.college.name,
-          active: Boolean(result.ActiveFaculty) ? "yes" : "no",
+          name: result.Faculty.user.name,
+          email: result.Faculty.user.email,
+          department: result.Faculty.department.name,
+          college: result.Faculty.department.college.name,
+          active: Boolean(result.ActiveChairperson) ? "yes" : "no",
           createdAt: result.createdAt,
           updatedAt: result.updatedAt,
         }));
@@ -57,15 +61,15 @@ export default async function getExportFacultyHandler(req, res) {
           csvStringifier.stringifyRecords(data);
 
         // Append the CSV content to the zip archive
-        archive.append(csvContent, { name: `faculty.csv` });
+        archive.append(csvContent, { name: `chairperson.csv` });
       }
 
       // Finalize the archive
       archive.finalize();
     },
     action: "export",
-    subject: "Faculty",
+    subject: "Chairperson",
     fields: undefined,
-    type: "Faculty",
+    type: "Chairperson",
   });
 }

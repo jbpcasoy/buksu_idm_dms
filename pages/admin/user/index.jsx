@@ -1,4 +1,5 @@
 import AdminLayout from "@/components/admin/AdminLayout";
+import ExportButton from "@/components/admin/ExportButton";
 import AdminUser from "@/components/admin/user/AdminUser";
 import frontendReadUsers from "@/services/frontend/admin/user/frontendReadUsers";
 import Sort from "@/views/admin/Sort";
@@ -120,6 +121,7 @@ export default function AdminUserTable() {
             ]}
             sortOrder={state.sortOrder}
           />
+          <ExportButton link='/api/export/user' />
         </Stack>
         <TableContainer>
           <Table sx={{ minWidth: 650 }} aria-label='simple table'>

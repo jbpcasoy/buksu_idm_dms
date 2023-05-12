@@ -1,5 +1,6 @@
 import AdminLayout from "@/components/admin/AdminLayout";
 import AdminCoordinator from "@/components/admin/coordinator/AdminCoordinator";
+import ExportButton from "@/components/admin/ExportButton";
 import frontendCreateCoordinator from "@/services/frontend/admin/coordinator/frontendCreateCoordinator";
 import frontendReadCoordinators from "@/services/frontend/admin/coordinator/frontendReadCoordinators";
 import AdminAddCoordinatorForm from "@/views/admin/coordinator/AdminAddCoordinatorForm";
@@ -211,6 +212,7 @@ export default function AdminCoordinatorPage() {
             ]}
             sortOrder={state.sortOrder}
           />
+          <ExportButton link='/api/export/coordinator' />
         </Stack>
         <TableContainer>
           <Table>

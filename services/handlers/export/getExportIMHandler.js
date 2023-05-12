@@ -11,6 +11,7 @@ export default async function getExportIMHandler(req, res) {
       const prisma = PRISMA_CLIENT;
 
       // Create a writable stream for the zip file
+      res.setHeader("Content-Type", "application/zip");
       const output = res;
       const archive = archiver("zip", { zlib: { level: 9 } });
 
@@ -34,20 +35,19 @@ export default async function getExportIMHandler(req, res) {
         },
       });
 
-      const data = results.map((result) => ({
-        serialNumber: result.serialNumber,
-        title: result.title,
-        type: result.type,
-        owner: result.owner.user.name,
-        authors: result.authors,
-        department: result.owner.department.name,
-        college: result.owner.department.college.name,
-        status: result.status,
-        createdAt: result.createdAt,
-        updatedAt: result.updatedAt,
-      }));
-
-      if (data && data.length > 0) {
+      if (results && results.length > 0) {
+        const data = results.map((result) => ({
+          serialNumber: result.serialNumber,
+          title: result.title,
+          type: result.type,
+          owner: result.owner.user.name,
+          authors: result.authors,
+          department: result.owner.department.name,
+          college: result.owner.department.college.name,
+          status: result.status,
+          createdAt: result.createdAt,
+          updatedAt: result.updatedAt,
+        }));
         // Create a CSV writer for the current model
         const csvStringifier = createObjectCsvStringifier({
           header: Object.keys(data[0]).map((field) => ({

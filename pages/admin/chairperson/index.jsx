@@ -1,5 +1,6 @@
 import AdminLayout from "@/components/admin/AdminLayout";
 import AdminChairperson from "@/components/admin/chairperson/AdminChairperson";
+import ExportButton from "@/components/admin/ExportButton";
 import frontendCreateChairperson from "@/services/frontend/admin/chairperson/frontendCreateChairperson";
 import frontendReadChairpersons from "@/services/frontend/admin/chairperson/frontendReadChairpersons";
 import AdminAddChairpersonForm from "@/views/admin/chairperson/AdminAddChairpersonForm";
@@ -210,6 +211,7 @@ export default function AdminChairpersonPage() {
             ]}
             sortOrder={state.sortOrder}
           />
+          <ExportButton link='/api/export/chairperson' />
         </Stack>
         <TableContainer>
           <Table>
