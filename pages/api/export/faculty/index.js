@@ -1,4 +1,5 @@
 import { reqLog } from "@/services/api/logger";
+import getExportFacultyHandler from "@/services/handlers/export/getExportFacultyHandler";
 import getExportHandler from "@/services/handlers/export/getExportHandler";
 import catchAllError from "@/services/middleware/catchAllError";
 
@@ -8,7 +9,7 @@ export default async function handler(req, res) {
 
     switch (req.method) {
       case "GET":
-        return getExportHandler(req, res);
+        return getExportFacultyHandler(req, res);
       default:
         return methodNaHandler(req, res);
     }
