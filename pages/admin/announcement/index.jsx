@@ -1,4 +1,5 @@
 import AdminLayout from "@/components/admin/AdminLayout";
+import ExportButton from "@/components/admin/ExportButton";
 import AdminAnnouncement from "@/components/admin/announcement/AdminAnnouncement";
 import frontendCreateAnnouncement from "@/services/frontend/announcement/frontendCreateAnnouncement";
 import frontendReadAnnouncements from "@/services/frontend/announcement/frontendReadAnnouncements";
@@ -182,6 +183,7 @@ export default function AdminAnnouncementPage() {
             ]}
             sortOrder={state.sortOrder}
           />
+          <ExportButton link='/api/export/announcement' />
         </Stack>
         <TableContainer>
           <Table sx={{ minWidth: 650 }} aria-label='simple table'>

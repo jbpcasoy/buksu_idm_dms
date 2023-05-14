@@ -1,4 +1,5 @@
 import AdminLayout from "@/components/admin/AdminLayout";
+import ExportButton from "@/components/admin/ExportButton";
 import AdminFaculty from "@/components/admin/faculty/AdminFaculty";
 import frontendReadFaculties from "@/services/frontend/admin/faculty/frontendReadFaculties";
 import frontendCreateFaculty from "@/services/frontend/faculty/frontendCreateFaculty";
@@ -216,6 +217,7 @@ export default function AdminFacultyPage() {
             ]}
             sortOrder={state.sortOrder}
           />
+          <ExportButton link='/api/export/faculty' />
         </Stack>
         <TableContainer>
           <Table>

@@ -1,4 +1,5 @@
 import AdminLayout from "@/components/admin/AdminLayout";
+import ExportButton from "@/components/admin/ExportButton";
 import AdminIM from "@/components/admin/im/AdminIM";
 import IMStatuses from "@/services/constants/im_status";
 import IMTypes from "@/services/constants/im_type";
@@ -202,6 +203,7 @@ export default function AdminIMTable() {
             ]}
             sortOrder={state.sortOrder}
           />
+          <ExportButton link='/api/export/im' />
         </Stack>
         <TableContainer>
           <Table>

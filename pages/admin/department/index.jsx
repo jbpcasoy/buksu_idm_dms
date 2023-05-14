@@ -1,4 +1,5 @@
 import AdminLayout from "@/components/admin/AdminLayout";
+import ExportButton from "@/components/admin/ExportButton";
 import AdminDepartment from "@/components/admin/department/AdminDepartment";
 import frontendCreateDepartment from "@/services/frontend/admin/department/frontendCreateDepartment";
 import frontendReadDepartments from "@/services/frontend/admin/department/frontendReadDepartments";
@@ -171,6 +172,7 @@ export default function AdminDepartmentPage() {
             ]}
             sortOrder={state.sortOrder}
           />
+          <ExportButton link='/api/export/department' />
         </Stack>
         <TableContainer>
           <Table>

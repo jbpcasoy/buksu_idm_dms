@@ -1,5 +1,6 @@
 import AdminLayout from "@/components/admin/AdminLayout";
 import AdminCITLDirector from "@/components/admin/citl_director/AdminCITLDirector";
+import ExportButton from "@/components/admin/ExportButton";
 import frontendCreateCITLDirector from "@/services/frontend/citl_director/frontendCreateCITLDirector";
 import frontendReadCITLDirectors from "@/services/frontend/citl_director/frontendReadCITLDirectors";
 import AdminAddCITLDirectorForm from "@/views/admin/citl_director/AdminAddCITLDirectorForm";
@@ -180,6 +181,7 @@ export default function AdminCITLDirectorPage() {
             ]}
             sortOrder={state.sortOrder}
           />
+          <ExportButton link='/api/export/citl_director' />
         </Stack>
         <TableContainer>
           <Table>
