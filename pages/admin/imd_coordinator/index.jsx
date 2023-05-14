@@ -1,4 +1,5 @@
 import AdminLayout from "@/components/admin/AdminLayout";
+import ExportButton from "@/components/admin/ExportButton";
 import AdminIMDCoordinator from "@/components/admin/imd_coordinator/AdminIMDCoordinator";
 import frontendCreateIMDCoordinator from "@/services/frontend/imd_coordinator/frontendCreateIMDCoordinator";
 import frontendReadIMDCoordinators from "@/services/frontend/imd_coordinator/frontendReadIMDCoordinators";
@@ -181,6 +182,8 @@ export default function AdminIMDCoordinatorPage() {
             ]}
             sortOrder={state.sortOrder}
           />
+
+          <ExportButton link='/api/export/imd_coordinator' />
         </Stack>
         <TableContainer>
           <Table>

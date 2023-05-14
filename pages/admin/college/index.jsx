@@ -1,5 +1,6 @@
 import AdminLayout from "@/components/admin/AdminLayout";
 import AdminCollege from "@/components/admin/college/AdminCollege";
+import ExportButton from "@/components/admin/ExportButton";
 import frontendCreateCollege from "@/services/frontend/admin/college/frontendCreateCollege";
 import frontendReadColleges from "@/services/frontend/admin/college/frontendReadColleges";
 import AdminAddCollegeForm from "@/views/admin/college/AdminAddCollegeForm";
@@ -155,6 +156,7 @@ export default function AdminCollegePage() {
             sortOptions={[{ value: "name", label: "Name" }]}
             sortOrder={state.sortOrder}
           />
+          <ExportButton link='/api/export/college' />
         </Stack>
         <TableContainer>
           <Table>

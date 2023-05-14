@@ -11,6 +11,7 @@ import Person3Icon from "@mui/icons-material/Person3";
 import Person4Icon from "@mui/icons-material/Person4";
 import SettingsIcon from "@mui/icons-material/Settings";
 import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
+import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
 import {
   Box,
   Drawer,
@@ -89,6 +90,12 @@ const menuItems = [
     icon: <SettingsIcon />,
     link: "/admin/settings",
   },
+  {
+    label: "Export",
+    icon: <CloudDownloadIcon />,
+    link: "/api/export",
+    target: "_blank",
+  },
   // Postponed idea
   // {
   //   label: "IM Review",
@@ -122,7 +129,11 @@ export default function AdminDrawerMenu() {
           <List>
             {menuItems.map((item) => (
               <ListItem disablePadding key={item.label}>
-                <ListItemButton component='a' href={item.link}>
+                <ListItemButton
+                  component='a'
+                  href={item.link}
+                  target={item?.target}
+                >
                   <ListItemIcon>{item.icon}</ListItemIcon>
                   <ListItemText primary={item.label} />
                 </ListItemButton>

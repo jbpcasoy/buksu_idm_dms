@@ -1,4 +1,5 @@
 import AdminLayout from "@/components/admin/AdminLayout";
+import ExportButton from "@/components/admin/ExportButton";
 import AdminDean from "@/components/admin/dean/AdminDean";
 import frontendCreateDean from "@/services/frontend/dean/frontendCreateDean";
 import frontendReadDeans from "@/services/frontend/dean/frontendReadDeans";
@@ -212,6 +213,7 @@ export default function AdminDeanPage() {
             ]}
             sortOrder={state.sortOrder}
           />
+          <ExportButton link='/api/export/dean' />
         </Stack>
 
         <TableContainer>
