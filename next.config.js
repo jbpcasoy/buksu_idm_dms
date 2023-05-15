@@ -6,6 +6,9 @@ const withPWA = require("next-pwa")({
   skipWaiting: true,
 });
 const nextConfig = {
+  compiler: {
+    removeConsole: process.env.NODE_ENV === "production",
+  },
   reactStrictMode: true,
 };
 
