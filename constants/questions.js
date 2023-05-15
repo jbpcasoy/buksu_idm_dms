@@ -7,7 +7,7 @@
  *  1. Section titles must be unique.
  *  2. Question labels must be unique.
  *  3. Question ids must be unique.
- *  4. run `npm run validate` each time this file was updated to validate for unique values such as titles, questions, and ids.
+ *  4. run `npm run validate` each time this file was updated to validate for unique values such as titles, labels, and ids.
  */
 
 const sections = [

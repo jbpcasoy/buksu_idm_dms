@@ -16,7 +16,7 @@
     box-shadow: none !important;
 }
 
-
+/* Scrollbar styles */
 /* width */
 ::-webkit-scrollbar {
     height: 7px;
