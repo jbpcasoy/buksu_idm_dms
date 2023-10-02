@@ -17,7 +17,6 @@ export default async function readNotifications({
     ? await readFaculty({ id: facultyId, ability })
     : undefined;
   const user = await readUser({ id: userId, ability });
-  console.log({ faculty });
 
   // TODO: check if faculty has roles
   // problem: shows submitted im notification on regular faculty

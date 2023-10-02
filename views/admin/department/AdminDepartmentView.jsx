@@ -1,8 +1,8 @@
 import { TableCell, TableRow } from "@mui/material";
 import { useState } from "react";
-import AdminCollegeUpdateForm from "../college/AdminCollegeUpdateForm";
 import AdminDeleteDepartmentAlert from "./AdminDeleteDepartmentAlert";
 import AdminDepartmentActionsMenu from "./AdminDepartmentActionsMenu";
+import AdminDepartmentUpdateForm from "./AdminDepartmentUpdateForm";
 
 export default function AdminDepartmentView({
   name,
@@ -35,8 +35,7 @@ export default function AdminDepartmentView({
         </TableCell>
       </TableRow>
 
-      {/* FIXME This must be DepartmentUpdateForm (make it)  */}
-      <AdminCollegeUpdateForm
+      <AdminDepartmentUpdateForm
         initialValues={{
           name,
         }}
