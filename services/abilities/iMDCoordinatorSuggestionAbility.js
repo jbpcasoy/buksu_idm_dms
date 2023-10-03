@@ -3,6 +3,10 @@ export default async function iMDCoordinatorSuggestionAbility({
   cannot,
   user,
 }) {
+  if (user?.ActiveFaculty?.ActiveDean) {
+    can("read", "IMDCoordinatorSuggestion");
+  }
+
   if (user?.IMDCoordinator?.ActiveIMDCoordinator) {
     can("connectToIMDCoordinatorSuggestion", "IM", {
       status: {

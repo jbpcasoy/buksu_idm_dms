@@ -3,6 +3,25 @@ export default async function submittedCoordinatorReviewAbility({
   cannot,
   user,
 }) {
+  if (user?.ActiveFaculty?.ActiveDean) {
+    can("read", "SubmittedCoordinatorReview", {
+      IM: {
+        is: {
+          owner: {
+            is: {
+              department: {
+                is: {
+                  collegeId: {
+                    equals: user.ActiveFaculty.ActiveDean.collegeId,
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    });
+  }
   if (user?.ActiveFaculty?.ActiveCoordinator) {
     can("connectToSubmittedCoordinatorReview", "CoordinatorReview", {
       coordinatorId: {

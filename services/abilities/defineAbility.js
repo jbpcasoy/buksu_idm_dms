@@ -89,7 +89,5 @@ export default async function userAbility(user) {
   settingsAbility({ can, cannot, user });
   facultyAbility({ can, cannot, user });
 
-  // TODO ensure that peer, chairperson, dean, imd coordinator,
-  // and citl director can still read suggestions, do the same on other resources
   return build();
 }
