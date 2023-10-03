@@ -13,5 +13,3 @@ export default async function getChairpersonSuggestionItemHandler(req, res) {
   });
   return res.status(200).json(chairpersonSuggestionItem);
 }
-
-// TODO continue: add user read ability on casl

@@ -30,5 +30,3 @@ export default async function deleteSubmittedPeerSuggestionHandler(req, res) {
     type: "SubmittedPeerSuggestion",
   });
 }
-
-// TODO test delete
