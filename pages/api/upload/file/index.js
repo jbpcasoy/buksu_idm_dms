@@ -9,8 +9,6 @@ import catchAllError from "@/services/middleware/catchAllError";
 import uploadMemoryStorageMiddleware from "@/services/middleware/upload/uploadFile";
 import nextConnect from "next-connect";
 
-// TODO implement logging
-
 const apiRoute = nextConnect({
   onError(error, req, res) {
     throw error;
@@ -24,7 +22,7 @@ apiRoute.use(uploadMemoryStorageMiddleware);
 
 apiRoute.post(async (req, res) => {
   return catchAllError(req, res, async (req, res) => {
-    reqLog(req, res);
+    await reqLog(req, res);
     const { fileId } = req.body;
     const file = req.file;
 
