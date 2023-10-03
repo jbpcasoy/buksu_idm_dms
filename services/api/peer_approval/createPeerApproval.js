@@ -9,7 +9,6 @@ export default async function createPeerApproval({
   facultyId,
 }) {
   const prisma = PRISMA_CLIENT;
-  // TODO find peer from same department as the IMApproval
 
   const peer = await findPeer({
     departmentApprovalId,

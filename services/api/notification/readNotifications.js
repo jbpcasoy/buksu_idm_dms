@@ -18,9 +18,6 @@ export default async function readNotifications({
     : undefined;
   const user = await readUser({ id: userId, ability });
 
-  // TODO: check if faculty has roles
-  // problem: shows submitted im notification on regular faculty
-
   const notifications = await prisma.notification.findMany({
     take: limit,
     skip: (page - 1) * limit,
