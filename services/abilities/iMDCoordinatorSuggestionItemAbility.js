@@ -3,10 +3,13 @@ export default async function iMDCoordinatorSuggestionItemAbility({
   cannot,
   user,
 }) {
-  if (user?.ActiveFaculty?.ActiveDean) {
+  if (
+    user?.ActiveFaculty?.ActiveDean ||
+    user?.CITLDirector?.ActiveCITLDirector
+  ) {
     can("read", "IMDCoordinatorSuggestionItem");
   }
-  
+
   if (user?.IMDCoordinator?.ActiveIMDCoordinator) {
     can("connectToIMDCoordinatorSuggestionItem", "IMDCoordinatorSuggestion", {
       iMDCoordinatorId: {

@@ -3,7 +3,10 @@ export default async function iMDCoordinatorSuggestionAbility({
   cannot,
   user,
 }) {
-  if (user?.ActiveFaculty?.ActiveDean) {
+  if (
+    user?.ActiveFaculty?.ActiveDean ||
+    user?.CITLDirector?.ActiveCITLDirector
+  ) {
     can("read", "IMDCoordinatorSuggestion");
   }
 

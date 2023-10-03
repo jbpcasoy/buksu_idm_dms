@@ -774,7 +774,7 @@ export default function ViewIM() {
           iM?.SubmittedPeerReview?.PeerReview?.facultyId ===
             user?.ActiveFaculty?.facultyId ||
           user?.IMDCoordinator?.ActiveIMDCoordinator ||
-          user?.ActiveFaculty?.ActiveDean) && (
+          user?.ActiveFaculty?.ActiveDean || user?.CITLDirector?.ActiveCITLDirector) && (
           <>
             {iM?.SubmittedPeerReview?.PeerReview &&
               iM?.SubmittedPeerSuggestion && (
