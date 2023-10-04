@@ -959,23 +959,23 @@ model QamisSuggestionItem {
   id                String          @id @default(cuid())
   createdAt         DateTime        @default(now())
   updatedAt         DateTime        @updatedAt
-  QamisSuggestion   QamisSuggestion @relation(fields: [QamisSuggestionId], references: [id], onDelete: Cascade)
-  QamisSuggestionId String
+  QamisSuggestion   QamisSuggestion @relation(fields: [qamisSuggestionId], references: [id], onDelete: Cascade)
+  qamisSuggestionId String
   value             String          @db.Text
   pageNumber        Int
   actionTaken       String?         @db.Text
   actionPageNumber  Int
   number            Int
 
-  @@index([QamisSuggestionId])
+  @@index([qamisSuggestionId])
 }
 
 model SubmittedQamisSuggestion {
   id                String          @id @default(cuid())
   createdAt         DateTime        @default(now())
   updatedAt         DateTime        @updatedAt
-  QamisSuggestion   QamisSuggestion @relation(fields: [QamisSuggestionId], references: [id], onDelete: Cascade)
-  QamisSuggestionId String          @unique
+  QamisSuggestion   QamisSuggestion @relation(fields: [qamisSuggestionId], references: [id], onDelete: Cascade)
+  qamisSuggestionId String          @unique
   IMEvent           IMEvent[]
   Notification      Notification[]
 }
