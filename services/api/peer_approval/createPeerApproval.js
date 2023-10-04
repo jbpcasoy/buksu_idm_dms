@@ -9,7 +9,6 @@ export default async function createPeerApproval({
   facultyId,
 }) {
   const prisma = PRISMA_CLIENT;
-  // TODO find peer from same department as the IMApproval
 
   const peer = await findPeer({
     departmentApprovalId,
@@ -33,7 +32,7 @@ async function findPeer({ departmentApprovalId, facultyId }) {
   const faculty = await readFaculty(iM.ownerId);
   const department = await readDepartment(faculty.departmentId);
 
-  const chairperson = await prisma.faculty.findFirstOrThrow({
+  const peer = await prisma.faculty.findFirstOrThrow({
     where: {
       departmentId: department.id,
       department: {
@@ -47,5 +46,5 @@ async function findPeer({ departmentApprovalId, facultyId }) {
     },
   });
 
-  return chairperson;
+  return peer;
 }

@@ -3,6 +3,34 @@ export default async function chairpersonSuggestionItemAbility({
   cannot,
   user,
 }) {
+  if (user?.ActiveFaculty?.ActiveDean) {
+    can("read", "ChairpersonSuggestionItem", {
+      ChairpersonSuggestion: {
+        is: {
+          SubmittedChairpersonReview: {
+            is: {
+              IM: {
+                is: {
+                  owner: {
+                    is: {
+                      department: {
+                        is: {
+                          collegeId: {
+                            equals: user.ActiveFaculty.ActiveDean.collegeId,
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    });
+  }
+
   if (user?.ActiveFaculty?.ActiveChairperson) {
     can("connectToChairpersonSuggestionItem", "ChairpersonSuggestion", {
       SubmittedChairpersonReview: {

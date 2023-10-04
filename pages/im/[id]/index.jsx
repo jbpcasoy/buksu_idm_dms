@@ -773,7 +773,8 @@ export default function ViewIM() {
           user?.ActiveFaculty?.ActiveCoordinator ||
           iM?.SubmittedPeerReview?.PeerReview?.facultyId ===
             user?.ActiveFaculty?.facultyId ||
-          user?.IMDCoordinator?.ActiveIMDCoordinator) && (
+          user?.IMDCoordinator?.ActiveIMDCoordinator ||
+          user?.ActiveFaculty?.ActiveDean || user?.CITLDirector?.ActiveCITLDirector) && (
           <>
             {iM?.SubmittedPeerReview?.PeerReview &&
               iM?.SubmittedPeerSuggestion && (

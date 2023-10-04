@@ -1,16 +1,15 @@
 import userAbility from "@/services/abilities/defineAbility";
-import deleteSubmittedPeerSuggestion from "@/services/api/submitted_peer_suggestion/deleteSubmittedPeerSuggestion";
-import readSubmittedPeerSuggestion from "@/services/api/submitted_peer_suggestion/readSubmittedPeerSuggestion";
+import deleteQamisSuggestion from "@/services/api/qamis_suggestion/deleteQamisSuggestion";
+import readQamisSuggestion from "@/services/api/qamis_suggestion/readQamisSuggestion";
 import getServerUser from "@/services/helpers/getServerUser";
 import abilityValidator from "@/services/validator/abilityValidator";
 
-export default async function deleteSubmittedPeerSuggestionHandler(req, res) {
+export default async function deleteQamisSuggestionHandler(req, res) {
   const { id } = req.query;
-
   const user = await getServerUser(req, res);
 
   async function findSubject({ id }) {
-    const subject = await readSubmittedPeerSuggestion({
+    const subject = await readQamisSuggestion({
       id,
       ability: await userAbility(user),
     });
@@ -21,12 +20,13 @@ export default async function deleteSubmittedPeerSuggestionHandler(req, res) {
     req,
     res,
     next: async (req, res) => {
-      const submittedPeerSuggestion = await deleteSubmittedPeerSuggestion(id);
-      return res.status(200).json(submittedPeerSuggestion);
+      const qamisSuggestion = await deleteQamisSuggestion(id);
+
+      return res.status(200).json(qamisSuggestion);
     },
     action: "delete",
     subject: await findSubject({ id }),
     fields: undefined,
-    type: "SubmittedPeerSuggestion",
+    type: "QamisSuggestion",
   });
 }

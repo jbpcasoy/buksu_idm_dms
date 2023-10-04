@@ -10,6 +10,26 @@ export default async function submittedPeerReviewAbility({
       },
     });
 
+    if (user?.ActiveFaculty?.ActiveDean) {
+      can("read", "SubmittedPeerReview", {
+        IM: {
+          is: {
+            owner: {
+              is: {
+                department: {
+                  is: {
+                    collegeId: {
+                      equals: user.ActiveFaculty.ActiveDean.collegeId,
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      });
+    }
+
     can("read", "SubmittedPeerReview", {
       IM: {
         is: {

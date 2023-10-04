@@ -5,8 +5,6 @@ import catchAllError from "@/services/middleware/catchAllError";
 import uploadMemoryStorageMiddleware from "@/services/middleware/upload/uploadFile";
 import nextConnect from "next-connect";
 
-// TODO implement logging
-
 const apiRoute = nextConnect({
   onError(error, req, res) {
     throw error;

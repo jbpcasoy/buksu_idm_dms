@@ -3,6 +3,34 @@ export default async function coordinatorSuggestionItemAbility({
   cannot,
   user,
 }) {
+  if (user?.ActiveFaculty?.ActiveDean) {
+    can("read", "CoordinatorSuggestionItem", {
+      CoordinatorSuggestion: {
+        is: {
+          SubmittedCoordinatorReview: {
+            is: {
+              IM: {
+                is: {
+                  owner: {
+                    is: {
+                      department: {
+                        is: {
+                          collegeId: {
+                            equals: user.ActiveFaculty.ActiveDean.collegeId,
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    });
+  }
+
   if (user?.ActiveFaculty?.ActiveCoordinator) {
     can("connectToCoordinatorSuggestionItem", "CoordinatorSuggestion", {
       SubmittedCoordinatorReview: {

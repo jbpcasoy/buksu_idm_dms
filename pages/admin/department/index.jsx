@@ -155,7 +155,6 @@ export default function AdminDepartmentPage() {
             label='Name'
             onChange={debouncedHandleNameChange}
           />
-          {/* TODO test when add department was implemented */}
           <TextField
             size='small'
             label='College'

@@ -1,9 +1,8 @@
+import { reqLog } from "@/services/api/logger";
 import multer from "multer";
 import nextConnect from "next-connect";
 import slugify from "slugify";
 import { v4 as uuidv4 } from "uuid";
-
-// TODO implement logging
 
 const upload = multer({
   storage: multer.diskStorage({
@@ -28,6 +27,8 @@ apiRoute.use(upload.single("file"));
 
 apiRoute.post(async (req, res) => {
   const file = req.file;
+
+  await reqLog(req, res);
 
   res.status(200).json(file);
 });

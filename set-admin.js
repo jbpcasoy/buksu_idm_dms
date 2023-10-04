@@ -1,10 +1,8 @@
 const { PrismaClient } = require("@prisma/client");
-const { PRISMA_CLIENT } = require("./prisma/prisma_client");
-
-const prisma = PRISMA_CLIENT;
 
 async function createAdmin(email) {
   try {
+    const prisma = new PrismaClient();
     const admin = await prisma.admin.create({
       data: {
         User: {
@@ -16,8 +14,11 @@ async function createAdmin(email) {
     });
 
     console.log("Admin set:", admin);
+    await prisma.$disconnect();
     return admin;
   } catch (error) {
+    await prisma.$disconnect();
+
     switch (error.code) {
       case "P2014":
         console.log(`Admin '${email}' already exists.`);
@@ -29,6 +30,7 @@ async function createAdmin(email) {
 }
 
 async function main() {
+  const prisma = new PrismaClient();
   const adminEmails = process.env.ADMINS.split(", ");
 
   await prisma.admin.deleteMany();
@@ -36,6 +38,8 @@ async function main() {
   for (let adminEmail of adminEmails) {
     const admin = await createAdmin(adminEmail);
   }
+
+  await prisma.$disconnect();
 }
 
 main()
