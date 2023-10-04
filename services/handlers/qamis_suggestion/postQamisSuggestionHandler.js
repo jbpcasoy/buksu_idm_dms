@@ -4,8 +4,14 @@ import createQamisSuggestion from "@/services/api/qamis_suggestion/createQamisSu
 import getServerUser from "@/services/helpers/getServerUser";
 import abilityValidator from "@/services/validator/abilityValidator";
 import { subject } from "@casl/ability";
+import * as Yup from "yup"
 
 export default async function postQamisSuggestionHandler(req, res) {
+  const validator = Yup.object({
+    iMId: Yup.string().required()
+  })
+  await validator.validate(req.body)
+
   const { iMId } = req.body;
 
   const user = await getServerUser(req, res);
