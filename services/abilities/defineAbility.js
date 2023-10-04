@@ -91,3 +91,5 @@ export default async function userAbility(user) {
 
   return build();
 }
+
+// TODO implement casl ability for users

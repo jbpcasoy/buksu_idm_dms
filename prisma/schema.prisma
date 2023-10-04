@@ -112,6 +112,7 @@ model IM {
   returned                       Boolean                         @default(false)
   Notification                   Notification[]
   QamisSuggestion                QamisSuggestion[]
+  SubmittedQamisSuggestion       SubmittedQamisSuggestion[]
 
   @@index([ownerId])
 }
@@ -577,6 +578,7 @@ enum Type {
   CITL_REVISED
   IMD_COORDINATOR_ENDORSEMENT
   CITL_DIRECTOR_ENDORSEMENT
+  SUBMITTED_QAMIS_SUGGESTION
 }
 
 model Notification {
@@ -874,6 +876,7 @@ enum IMEventType {
   CITL_REVISED
   IMD_COORDINATOR_ENDORSEMENT
   CITL_DIRECTOR_ENDORSEMENT
+  SUBMITTED_QAMIS_SUGGESTION
 }
 
 model IMEvent {
@@ -978,4 +981,8 @@ model SubmittedQamisSuggestion {
   qamisSuggestionId String          @unique
   IMEvent           IMEvent[]
   Notification      Notification[]
+  IM                IM              @relation(fields: [iMId], references: [id])
+  iMId              String
+
+  @@index([iMId])
 }
