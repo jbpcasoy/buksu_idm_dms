@@ -111,6 +111,7 @@ model IM {
   IMEvent                        IMEvent[]
   returned                       Boolean                         @default(false)
   Notification                   Notification[]
+  QamisSuggestion                QamisSuggestion[]
 
   @@index([ownerId])
 }
@@ -608,6 +609,8 @@ model Notification {
   cITLDirectorEndorsementId           String?                            @unique
   IM                                  IM?                                @relation(fields: [iMId], references: [id])
   iMId                                String?
+  SubmittedQamisSuggestion            SubmittedQamisSuggestion?          @relation(fields: [submittedQamisSuggestionId], references: [id])
+  submittedQamisSuggestionId          String?                            @unique
 
   @@unique([Type, iMId])
   @@index([iMId])
@@ -904,6 +907,8 @@ model IMEvent {
   iMDCoordinatorEndorsementId         String?
   CITLDirectorEndorsement             CITLDirectorEndorsement?           @relation(fields: [cITLDirectorEndorsementId], references: [id], onDelete: Cascade)
   cITLDirectorEndorsementId           String?
+  SubmittedQamisSuggestion            SubmittedQamisSuggestion?          @relation(fields: [submittedQamisSuggestionId], references: [id])
+  submittedQamisSuggestionId          String?
 
   @@index([iMId])
   @@index([fileId])
@@ -918,6 +923,7 @@ model IMEvent {
   @@index([submittedIMDCoordinatorSuggestionId])
   @@index([cITLDirectorEndorsementId])
   @@index([submittedChairpersonSuggestionId])
+  @@index([submittedQamisSuggestionId])
 }
 
 model Announcement {
@@ -935,4 +941,40 @@ model Settings {
   updatedAt DateTime @updatedAt
   uuid      String   @unique
   vpaa      String
+}
+
+model QamisSuggestion {
+  id                       String                    @id @default(cuid())
+  createdAt                DateTime                  @default(now())
+  updatedAt                DateTime                  @updatedAt
+  QamisSuggestionItem      QamisSuggestionItem[]
+  SubmittedQamisSuggestion SubmittedQamisSuggestion?
+  IM                       IM                        @relation(fields: [iMId], references: [id])
+  iMId                     String
+
+  @@index([iMId])
+}
+
+model QamisSuggestionItem {
+  id                String          @id @default(cuid())
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
+  QamisSuggestion   QamisSuggestion @relation(fields: [QamisSuggestionId], references: [id], onDelete: Cascade)
+  QamisSuggestionId String
+  value             String          @db.Text
+  actionTaken       String?         @db.Text
+  pageNumber        Int
+  remarks           String?         @db.Text
+
+  @@index([QamisSuggestionId])
+}
+
+model SubmittedQamisSuggestion {
+  id                String          @id @default(cuid())
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
+  QamisSuggestion   QamisSuggestion @relation(fields: [QamisSuggestionId], references: [id], onDelete: Cascade)
+  QamisSuggestionId String          @unique
+  IMEvent           IMEvent[]
+  Notification      Notification[]
 }
