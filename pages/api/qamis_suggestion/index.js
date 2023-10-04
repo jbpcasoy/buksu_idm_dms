@@ -11,8 +11,8 @@ export default async function handler(req, res) {
     switch (req.method) {
       case "POST":
         return postQamisSuggestionHandler(req, res);
-        case "GET":
-          return getQamisSuggestionsHandler(req, res);
+      case "GET":
+        return getQamisSuggestionsHandler(req, res);
       default:
         return methodNaHandler(req, res);
     }
