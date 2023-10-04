@@ -7,7 +7,7 @@ export default async function getQamisSuggestionsHandler(req, res) {
 
   const user = await getServerUser(req, res);
 
-  const qamisSuggestions = await readQamisSuggestions({ // TODO implement
+  const qamisSuggestions = await readQamisSuggestions({
     limit: limit ? parseInt(limit) : undefined,
     page: page ? parseInt(page) : undefined,
     ability: await userAbility(user),

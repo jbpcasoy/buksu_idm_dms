@@ -12,7 +12,7 @@ export default async function handler(req, res) {
       case "POST":
         return postQamisSuggestionHandler(req, res);
         case "GET":
-          return getQamisSuggestionsHandler(req, res); // TODO implement
+          return getQamisSuggestionsHandler(req, res);
       default:
         return methodNaHandler(req, res);
     }
