@@ -962,9 +962,10 @@ model QamisSuggestionItem {
   QamisSuggestion   QamisSuggestion @relation(fields: [QamisSuggestionId], references: [id], onDelete: Cascade)
   QamisSuggestionId String
   value             String          @db.Text
-  actionTaken       String?         @db.Text
   pageNumber        Int
-  remarks           String?         @db.Text
+  actionTaken       String?         @db.Text
+  actionPageNumber  Int
+  number            Int
 
   @@index([QamisSuggestionId])
 }

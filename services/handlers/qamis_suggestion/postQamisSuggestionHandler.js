@@ -10,7 +10,7 @@ export default async function postQamisSuggestionHandler(req, res) {
   const validator = Yup.object({
     iMId: Yup.string().required()
   })
-  await validator.validate(req.body)
+  await validator.validate(validator.cast(req.body))
 
   const { iMId } = req.body;
 
